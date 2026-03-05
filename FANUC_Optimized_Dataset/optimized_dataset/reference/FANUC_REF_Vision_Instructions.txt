@@ -1,0 +1,205 @@
+TOPIC: Vision Instructions
+KEYWORDS: vision, iRVision, VISION RUN_FIND, VISION GET_OFFSET, VR, camera, visual process, 2D, 3D, snap, calibration, exposure, found position, VISION GET_PASSFAIL
+CATEGORY: reference
+SOURCE: FANUC Teach Pendant Help System / Operator Manual
+APPLIES_TO: R-30iB Plus, TP Programming
+---
+
+25. VISION INSTRUCTIONS 25. VISION INSTRUCTIONS PROGRAM ELEMENTS 25. VISION INST
+RUCTIONS 25.1. Overview This page contains help for the Vision Instruction Set. 
+When editing the teach pendant program, press the F1,[INST] key for a list of te
+ach pendant instructions. The i RVision instructions are under the group heading
+VISION ( not to be confused with PC VISION - which is used with a PC based visio
+n system). After selecting the VISION group the vision instructions will be disp
+layed. Select one of the desired instructions: RUN_FIND GET_OFFSET SET_REFERENCE
+CAMERA_CALIB VR[].OFFSET VR[].MODELID 25.2. RUN_FIND VISION RUN_FIND '...' CAMER
+A_VIEW[...] This instruction begins with a request to acquire the image. After t
+he image has been acquired, control returns to the robot and the robot can move.
+The vision process continues to process. Parameters Vision Process Name: This in
+dicates the name of the vision process. The name can be selected from the list o
+f valid vision processes. Camera View Number: An option that is used with a visi
+on program with more than one camera image and the images can not be acquired at
+the same time. For example, suppose there is one overhead camera, and the robot 
+is holding a part with two target holes. The target holes are too far apart to b
+e in the same FOV. Hole one is acquired, the robot moves and hole two is acquire
+d. In this case there would be two RUN_FIND instructions — one for each hole. 25
+.3. GET_OFFSET VISION GET_OFFSET 'VP1' VR[2] JMP LBL[99] This command provides a
+destination vision register for the vision process. After the vision process has
+completed and the data has been transferred to the appropriate vision register, 
+control returns to the robot. Parameters Vision Process Name: Type the name of t
+he vision process. Vision Register Index: Type the index of the vision register 
+to receive the data. Jump Label: Type the label of a jump statement. The program
+jumps to this label in the event the vision program fails or no parts are found.
+25.4. GET_PASSFAIL Syntax VISION GET_PASSFAIL 'VP1' R[99] This instruction trans
+fers the vision pass fail result of a vision process to a general register. Para
+meters Vision Process Name: The name of the vision process. The name can be sele
+cted from the list of inspection vision processes. Pass Fail Register : This reg
+ister contains the pass fail result. 0 indicates the test failed. 1 indicates th
+e test passed. 2 indicates a parent tool failed and the child tool could not be 
+tested. Example VISION GET_PASSFAIL 'INSPECTVP' R[5] ; 25.5. GET_NFOUND Syntax V
+ISION GET_NFOUND 'VP1' R[...] [CAMERA_VIEW[...] ] This instruction returns the n
+umber of targets found in the specified view. If the camera view is omitted it d
+efaults to one. Parameters Vision Process Name: The name of the vision process. 
+The name can be selected from the list of valid vision processes. Number Found R
+egister Number: Camera View Number: (1 – 4) Example VISION GET_NFOUND 'FINDVP' R
+[6] CAMERA_VIEW[2] ; 25.6. SET_REFERENCE VISION SET_REFERENCE 'VP1' Use this ins
+truction to set the reference position from a program. The steps for training a 
+vision process are to train and find a vision target. Set this vision position t
+o be the zero or reference position thus Set Reference. Vision will return a zer
+o result for the offset. Record the pick/place robot position without an offset.
+The vision position and the robot position have been linked. Parameters Vision P
+rocess Name: Use the [CHOICE] key to select the vision process from a list of vi
+sion processes. 25.7. OVERRIDE Syntax VISION OVERRIDE 'AST' value This instructi
+on changes a value in the vision process as defined by the Application Setup Too
+l. The Application Setup Tool specifies a vision process name, a tool in the vis
+ion process, and a field value in the tool. The value is used only once. The use
+r must reset the override value to be used with the VISION RUN_FIND instruction,
+otherwise the original vision process value is used. Parameters VISION OVERRIDE 
+‘AST’ Value AST: Application Setup Tool Name Value:	Input value passed to the vi
+sion process Example VISION OVERRIDE 'EXPOSURE' 45.0 ; In this example an Applic
+ation Setup tool (EXPOSURE) was created to set the exposure time in the vision p
+rocess to .045 seconds. 25.8. CAMERA_CALIB VISION CAMERA_CALIB 'TWOPTCAL' Reques
+t=1 This instruction allows you to calibrate the system from a teach pendant pro
+gram. This is especially useful for a robot mounted camera. Checks can be made p
+eriodically. When calibration is required, the calibration program can be run to
+re-calibrate vision. This is useful after the camera has been bumped or replaced
+. Parameters Camera Name : Type the name of the camera calibration. Request Numb
+er: Type the plane number for the grid to be calibrated when used with grid cali
+bration. 25.9. VR[]. MODELID R[33]=VR[2].MODELID This instruction transfers the 
+vision process model ID from the Vision Data register to a register so that it c
+an be used to determine which model was found. Parameters Register Index: Specif
+y an integer to indicate the index of the destination register. Vision Register 
+Index: Specify an integer to indicate the source vision register. 25.10. VR[].ME
+S[] Syntax R[RN]=VR[VRN].MES[MN] This instruction retrieves a measurement value 
+from a specified vision register. A vision register contains ten measurement res
+ults. The measurement value is 0.0 by default. Parameters Register Number: Desti
+nation register Vision Register Number: (1-10) Measurement Number :(1-10) Exampl
+e R[5]=VR[1].MES[2] ; This sets R[5] with the contents of the 2nd measurement va
+lue in Vision register 1. 25.11. VR[].FOUND_POS[] Syntax PR[PRN]=VR[VRN].FOUND_P
+OS[VN] ; This instruction returns the found position result of a specified view 
+number of a vision register. When a view is not used the FOUND_POS is $NILPOS. P
+arameters PRN: The destination Position Register Number VRN: Vision Register Num
+ber (1–10). VN: View Number (1-4) Example PR[3]=VR[2].FOUND_POS[1] ; Load PR[3] 
+with view 1 found position of VisionRegister 2. 25.12. VR[].OFFSET PR[1]=VR[2].O
+FFSET This instruction transfers the vision offset from the Vision Data register
+to a position register so that it can be used with a Move instruction with an of
+fset clause. Parameters Position Register Index: Specify an integer to indicate 
+the index of the destination position register. Vision Register Index: Specify a
+n integer to indicate the source vision register. 25.13. VR.[].ENC Syntax R[RN]=
+VR[VRN].ENC ; This instruction transfer the vision register encoder value to a d
+estination register. It is used with visual tracking. The encoder value is recor
+ded at the time the camera image is acquired. Parameters RN : Register Number VR
+N: Vision Register Number: (1-10) Example R[4]=VR[2].ENC ; Set R[4] with the enc
+oder value of VR[2]. 25.14. RUN_FIND SR[] Syntax VISION RUN_FIND SR[SRN] {CAMERA
+_VIEW[CVN] } This instruction requests a vision view image to be acquired. The v
+ision process name is passed by a string register. If the camera view is omitted
+the default value is 1. Also see RUN_FIND. Parameters SRN: The String Register n
+umber (1- 4) the Vision Process Name CVN: The Camera View Number (1 – 4) , defau
+lts to 1 when omitted. Example VISION RUN_FIND SR[1] CAMERA_VIEW[2] 25.15. GET_O
+FFSET SR[] Syntax VISION GET_OFFSET SR[SRN] VR[VRN] JMP LBL[JL] ; This instructi
+on transfers the vision process result data to a vision register. The string reg
+ister contains the vision process name. Also see the GET_OFFSET instruction.. Pa
+rameters SRN: String register number (1- 4) contains the Vision Process Name VRN
+: Destinaiton Vision Register Number (1 – 10) JL: Jump Label Number for no part 
+or error. Example VISION GET_OFFSET SR[1] VR[2] JMP LBL[998] 25.16. SET_REF SR[]
+Syntax VISION SET_REFERENCE SR[SRN] This instruction sets the reference position
+in the vision process. The vision process name is passed by a string register. A
+lso see the SET_REFERENCE instruction. Parameters String register number: (1- 4)
+the string register contains the vision process name Example VISION SET_REFERENC
+E SR[2] 25.17. CAMERA_CAL SR[] Syntax VISION CAMERA_CALIB SR[SRN] Request=RN Thi
+s instruction finds the plane data for a camera calibration tool. It allows the 
+user to re-calibrate vision from a TP program. The camera calibration name is pa
+ssed by a string register. Also see the CAMERA_CALIB instruction. Parameters SRN
+: String register number (1- 4) contains the camera calibration name. RN: Reques
+t number Example VISION CAMERA_CAL SR[2] REQUEST=1 25.18. GET_PASSFAIL SR[] Synt
+ax VISION GET_PASSFAIL SR[SRN] R[PFN] ; This instruction transfers the pass fail
+result of a vision process to a general register. Also See the GET_PASSFAIL inst
+ruction. Parameters SRN: The String Register number (1- 4) contains the vision p
+rocess name. PFN: Pass Fail Register Number contains the vision result. 0 indica
+tes the test failed 1 indicates the test passed 2 indicates a parent tool failed
+and the child tool could not be tested. Example GET_PASSFAIL SR[2] R[5] ; 25.19.
+GET_READING Syntax VISION GET_READING 'BARCODEVP' SR[1] R[2] JMP LBL[997] The ge
+t barcode instruction returns the barcode value in a string register. The number
+of characters is returned in the supplied register. Note In case of an overflow,
+there is no error and the overflow characters are lost. The string register maxi
+mum size is 128. The user should check the register for number of characters rea
+d. Parameters Parameters Example VISION GET_READING 'BARCODEVP' SR[1] R[2] JMP L
+BL[997] 25.20. SAMPLE PROGRAM The following example illustrates how the vision i
+nstructions are used together: Line 2 finds the vision process VP1 Line 3 the re
+sults are stored in Vision register 5. If there were no parts found, the program
+will jump to LBL 999. Line 4 the offset is transferred to PR[1] Line 5 the model
+ID is saved in R[4] Line 7 is the approach point Line 8 is the pick position Lin
+e 9 actuates the gripper Line 10 Move through approach. 1: LBL[1] 2: VISION RUN_
+FIND 'VP1' 3: VISION GET_OFFSET 'VP1' VR[5] : JMP LBL[999] 4: PR[1]=VR[5].OFFSET
+5: R[4]=VR[1].MODELID 6: 7:L @P[1] 500MM/SEC CNT75 Offset,PR[1] 8:L @P[2] 100MM/
+SEC FINE Offset,PR[1]: 9: CALL PICK 10:L @P[1] 300mm/sec CNT75 Offset,PR[1] : Of
+fset,PR[1] 11: END 12: 13: LBL[999:NO PART] 14: UALM[1] [End] 25.21. Re-Calibrat
+ion and Verification Sample Program In this example the user re-calibrates and v
+erifies its accuracy (.05 mm). The camera is mounted on the robot. The calibrati
+on grid is the same frame as the application frame (uframe 1). Lines 1–6 moves t
+he camera to calibrate plane 1 Lines 7–9 moves the camera to calibrate plane 2 L
+ines 11–12 returns the robot to plane 1 and prepares to find the Big circle of a
+calibration grid. The user should use the Multi window tool with a child GPM for
+the Big Circle. The multi Window tool allows the user to define a window for eac
+h big circle and return a model ID as 0 + the search window index or (1 – 4) Lin
+es 15-16 tests for number of circles (must be 4) Lines 17-22 Loads R[9] and R[10
+] with X and Y Lines 23–52 Verified the circle centers are correct. 1: !Re-Calib
+Robot Mounted Cam ; 2: UFRAME_NUM=1 ; 3: UTOOL_NUM=1 ; 4:L P[1:Plane 1] 2000mm/s
+ec FINE ; 5: WAIT .25(sec) ; 6: VISION CAMERA_CALIB 'WTICALB' Request=1 ; 7:L P[
+2:Plane 2] 2000mm/sec FINE ; 8: WAIT .25(sec) ; 9: VISION CAMERA_CALIB 'WTICALB'
+Request=2 ; 10: !Test for valid calibration ; 11:L P[1:Plane 1] 2000mm/sec FINE 
+; 12: R[6:Window index]=0 ; 13: LBL[20] ; 14: VISION RUN_FIND 'BIGCIRCLE' ; 15: 
+VISION GET_NFOUND 'BIGCIRCLE' R[7] ; 16: IF R[7:N Big Circles]<>4,JMP LBL[999] ;
+17: LBL[50:Loop] ; 18: VISION GET_OFFSET 'BIGCIRCLE' VR[1] JMP LBL[200] ; 19: R[
+8]=VR[1].MODELID ; 20: PR[6]=VR[1].FOUND_POS[1] ; 21: R[9:X]=PR[6,1:Found Pos] ;
+22: R[10:Y]=PR[6,2:Found Pos] ; 23: SELECT R[8:MODEL ID]=1,JMP LBL[110] ; 24: =2
+,JMP LBL[120] ; 25: =3,JMP LBL[130] ; 26: =4,JMP LBL[140] ; 27: ELSE,JMP LBL[999
+] ; 28: LBL[110:Origin Circle] ; 29: IF R[9:X]>.05,JMP LBL[999] ; 30: IF R[9:X]<
+-.05,JMP LBL[999] ; 31: IF R[10:Y]>.05,JMP LBL[999] ; 32: IF R[10:Y]<-.05,JMP LB
+L[999] ; 33: JMP LBL[50] ; 34: LBL[120:Inner X Circle] ; 35: IF R[9:X]>15.05,JMP
+LBL[999] ; 36: IF R[9:X]<14.95,JMP LBL[999] ; 37: IF R[10:Y]>.05,JMP LBL[999] ; 
+38: IF R[10:Y]<-.05,JMP LBL[999] ; 39: JMP LBL[50] ; 40: LBL[130:Outer X Circle]
+; 41: IF R[9:X]>30.05,JMP LBL[999] ; 42: IF R[9:X]<29.95,JMP LBL[999] ; 43: IF R
+[10:Y]>.05,JMP LBL[999] ; 44: IF R[10:Y]<-.05,JMP LBL[999] ; 45: JMP LBL[50] ; 4
+6: LBL[140:Y Circle] ; 47: IF R[9:X]>.05,JMP LBL[999] ; 48: IF R[9:X]<-.05,JMP L
+BL[999] ; 49: IF R[10:Y]>-14.95,JMP LBL[999] ; 50: IF R[10:Y]<-15.05,JMP LBL[999
+] ; 51: JMP LBL[50] ; 52: LBL[200:Success] ; 53: END ; 54: LBL[999:Error] 55: UA
+LM[1] 25.22. Bar Code Reading Sample Program This programs read a barcode using 
+the “Barcode” VP .The value of the barcode label is placed in SR[1]. Register [1
+] has been programmed to indicate the result. 1: VISION RUN_FIND 'BARCODE' ; 2: 
+VISION GET_READING 'BARCODE' SR[1] R[12] JMP LBL[999] ; 3: IF R[12]>128,JMP LBL[
+20] ; 4: LBL[10:Success] ; 5: R[1]=0 ; 6: END ; 7: ; 8: LBL[20:SR Overflow] ; 9:
+R[1]=2 ; 10: END ; 11: ; 12: LBL[999:Error] ; 13: R[1]=(-1) ; 25.23. Inspection 
+Sample Program R[1] indicates the result of the InspectPart vision process. If R
+[1] contains a 1 it was successful, If R[1] is a 0 it failed. If R[1] is a 2, th
+e test could not be preformed because a parent tool failed to locate the test ar
+ea. 1: VISION RUN_FIND 'INSPECTPART' ; 2: VISION GET_PASSFAIL 'INSPECTPART' R[1]
+; 25.24. 2D Single Multi-View Vision Process Use Multi View 1 camera robot to pi
+ck a part. Hole One can not be larger than 1 inch Lines 1-6 The robot moves to v
+iew 1 to find a target. If not found skip going to view 2. Lines 7-10 The robot 
+move to view 2 and finds the second target. Lines 12-14 Provides a convenient me
+thod for setting the reference position. The user manually sets R[4](set referen
+ce flag) to 1 for a one time set reference. Lines 16-18 Find the part and stores
+Measurement[1] into R[15] (hole diameter). Lines 19 Skip pick if hole too large 
+Line 20. Pick part using the vision register as the frame offset. 1: UFRAME_NUM=
+1 ; 2: UTOOL_NUM=1 ; 3:L P[1] 2000mm/sec FINE ; 4: VISION RUN_FIND 'FINDPART' CA
+MERA_VIEW[1] ; 5: VISION GET_NFOUND 'FINDPART' R[11] ; 6: IF R[11:N found]<>1,JM
+P LBL[996] ; 7:L P[2] 2000mm/sec FINE ; 8: VISION RUN_FIND 'FINDPART' CAMERA_VIE
+W[2] ; 9: VISION GET_NFOUND 'FINDPART' R[11] ; 10: IF R[11:N found]<>1,JMP LBL[9
+97] ; 11: ; 12: IF R[4]<>1,JMP LBL[20] ; 13: VISION SET_REFERENCE 'FINDPART' ; 1
+4: R[4]=0 ; 15: ; 16: LBL[20] ; 17: VISION GET_OFFSET 'FINDPART' VR[1] JMP LBL[9
+98] ; 18: R[15]=VR[1].MES[1] ; 19: IF R[15:Diameter]>25.4,JMP LBL[999] ; 20:L P[
+3] 2000mm/sec FINE VOFFSET,VR[1] ; 25.25. Calling Vision by String Register Samp
+le Program The first program provides a simple method to load a string value int
+o a string register. PROGRAM GetPartName 1: !Set SR[1] to passed str ; 2: SR[1]=
+AR[1] ; Lines 1-5 load the appropriate vision process name into SR[1] using rout
+ine GetpartName. Lines 6-7 call vision by the contents of SR[1] Lines 8-9 moves 
+to the approach position (using a tool offset) Assume PR[3] is (0,0,50,0,0,0), a
+nd then the pick position 1: SELECT R[20:VP Name Index]=1,CALL GETPARTNAME('Find
+Part1') ; 2: =2,CALL GETPARTNAME('FindPart2') ; 3: =3,CALL GETPARTNAME('FindPart
+3') ; 4: =4,CALL GETPARTNAME('FindPart4') ; 5: ELSE,JMP LBL[999] ; 6: VISION RUN
+_FIND SR[1] ; 7: VISION GET_OFFSET SR[1] VR[1] JMP LBL[998] ; 8:L P[1] 2000mm/se
+c FINE VOFFSET,VR[1] Tool_Offset,PR[3] ; 9:L P[1] 2000mm/sec FINE VOFFSET,VR[1] 
+; 24. STRING REGISTER INSTRUCTIONS 26. WAIT INSTRUCTIONS
+Metadata:
+{}

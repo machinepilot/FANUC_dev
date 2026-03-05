@@ -1,0 +1,25 @@
+---
+description: LDJ press brake integration — consult LDJ references when working with Kvara, Modbus, or press brake
+globs: "**/LDJ/**","**/*press*brake*","**/*modbus*"
+alwaysApply: false
+---
+
+# LDJ Integration
+
+When working with LDJ, Kvara, or press brake integration:
+
+1. **robot_interface_reference.md** — Primary for beam control and cycle timing. BLM ver. 4.0, XC2F/XC3M/XC4M signals. Critical signals: E20.2 (UDP), E20.5 (End of Bend), A20.1 (Beam Down), A21.2 (Reset End Bend).
+
+2. **Consult LDJ_INTEGRATION_INDEX** — `LDJ/LDJ_INTEGRATION_INDEX.md` maps Modbus → PLC → ESA Rack I/O → terminals.
+
+3. **Reference LDJ_REF_* files** in `LDJ/reference/`:
+   - LDJ_REF_Physical_IO_Terminal_Map.txt — E20.x/A20.x (robot interface), ESA QW/IW, M1/M2, FANUC DI/DO
+   - LDJ_REF_ESA_Modbus.txt — Modbus registers, handshake, opcodes
+   - LDJ_REF_PLC_Signals.txt — C0–C11, PPTcpServer
+   - LDJ_REF_ESA_BLM_Manuals.txt — modes, ram sizing, robotic interface
+
+4. **press_brake_reference.md** — Electrical diagram; ESA Rack I/O (QW/IW), M1/M2 terminals, Section 13 Robot/PLC signals.
+
+5. **Always check VENDOR_DISCREPANCIES.md** before assuming ESA manual applies; actual BLM config overrides.
+
+6. **Reference `customer_programs/345-PJ/press_brake_tending/`** for tandem press brake patterns (WAIT/cycle-time, PNS jobs).

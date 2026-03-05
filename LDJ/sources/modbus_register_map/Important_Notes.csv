@@ -1,0 +1,35 @@
+CRITICAL NOTES & BEST PRACTICES
+HANDSHAKE PROTOCOL
+All commands must follow this exact sequence:
+1. Write data (if needed) to appropriate register
+2. Write command opcode to register 2
+3. Set register 1 BIT0 = 1 (strobe)
+4. Wait for register 1231 BIT0 = 1 (acknowledgment)
+5. Set register 1 BIT0 = 0 (clear strobe)
+6. Wait for register 1231 BIT0 = 0 (ack clear)
+7. Check register 1024 for error (0 = success)
+REGISTER ALIGNMENT
+DWORD (2 regs): Must start on EVEN address
+DOUBLE (4 regs): Must start on address divisible by 4
+STRING: Can start on any address
+READ/WRITE LIMITS
+Max registers per read: 125 (for strings)
+Max registers per write: 123 (for strings)
+For numeric data: 4-10 registers typical
+REQUIRED OPERATIONS
+Heartbeat: Read any register every <10 seconds
+Mode Check: Verify operating mode before commands
+Error Check: Always read register 1024 after commands
+MODE REQUIREMENTS
+Load Program: Requires EDITOR mode
+Start Cycle: Requires AUTOMATIC mode
+Modify Parameters: Requires EDITOR mode
+NETWORK CONFIGURATION
+Press Brake IP: 172.16.0.51 (typical)
+PLC IP: 172.16.0.50 (typical)
+Port: 502 (standard ModbusTCP)
+Unit ID: 1
+DATA FORMAT
+All multi-byte values: Big-Endian (MSB first)
+"Strings: ASCII encoding, NULL terminated"
+Floating point: IEEE 754 double-precision

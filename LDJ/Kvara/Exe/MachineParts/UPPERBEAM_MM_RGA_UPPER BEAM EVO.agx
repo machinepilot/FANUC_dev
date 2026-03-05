@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" ?>
+<job>
+    <settings>
+        <version>1</version>
+        <unit>millimeter</unit>
+        <backcolour>0</backcolour>
+    </settings>
+    <entities>
+        <entity id="UPPERBEAM_MM_RGA_UPPER BEAM EVO" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>UPPERBEAM_MM_RGA_UPPER BEAM EVO</reference_id>
+            </geometry>
+        </entity>
+    </entities>
+    <states>
+        <state id="default">
+            <visibility>
+                <show type="Unspecified">1</show>
+                <show entity="UPPERBEAM_MM_RGA_UPPER BEAM EVO">1</show>
+            </visibility>
+            <transformations />
+            <views>
+                <view id="1">
+                    <pos>14000,8000,-14000</pos>
+                    <target>0,0,-0</target>
+                    <near>6000</near>
+                    <far>25000</far>
+                    <width>9050</width>
+                    <height>5615</height>
+                    <perspective>1</perspective>
+                </view>
+            </views>
+        </state>
+        <state order="1" id="UPPERBEAM_MM_RGA_UPPER BEAM EVO">
+            <visibility />
+            <transformations />
+            <views />
+        </state>
+    </states>
+    <geometries>
+        <geometry id="UPPERBEAM_MM_RGA_UPPER BEAM EVO">
+            <data encoding="1">UEsDBBQAAgAIAERRyEz+5jpbJAQAAFAOAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81XbW+bSBD+K6vtZwy7sLxEmCqX650q5eoozZ3afLEoXttIBny8NPW/78zCYhJDiKr7cLZ2mGf22ZnZFwYI3//IDuS7LKu0yJeULSxKZJ4UmzTfLWlTbw2fvo/Cm9Xt7fXv1wTIebWk+7o+Xpnm09PTIikOh3gTL4pyZ3LLEiZjZsf+nOxlFtOhd2fBaBTGVSXrKEyKvC7Tb01dlGBr6j1crwHdrW5Ds8NAyjKZ11UUms/UwdCklHEtNxG3mGVYgWH5D4xdOfxKBI9A7XrDDCa1TSd5fXfY5GlNMlnLckmthcWFQ0keZ3JJ0zzZUxMYx3X8I62ix/Xfd6GpESTdTuyQfivj8rSO8zSLa5g69o0Zte2Q7vb1kKQNGsOQnRwStEFjcCnLND4MOQObNsntVibPIvUWbdjJAuZepui9008k3SxptzWacNKL8sfNDexpJqt9FFZFUyZylG4ciypV8wb29lDE9Touy/g0QzYUiZKkaPJ6SX2HRgYXIlgIC36MGA5skfoR46xNMFx7juF3xmmGzcS4E+7NhTkzJsLMzmUiDeY6CyfA3zBTYVtzFJ+/oFzEuXBywRj6YK7X5cqnwkxQmOeNceYDDRlDJ8wTop2xP5HKBGPcSUBmfAQTeXAO9suVN+YI50M0QTifoSkCH48xdlAnCOMx5mYxmkJoDm76KKxlss/Tfxu5xrJe5PAESBJZVUVJ2iKypO/eXBW4T0kFNWsDo2woL8e4jLOuPH2hpD4dQVHhsXoPe7++2vt40WvqLEG9nILZpv56HcyLMoOi/JYq2FFfzhaeoQbT6zpWMmAnPN/y7IHNWvieb/Mhn12OHHN2Gel8zqctxmsm4z89FeOr5P3PjgS8BdUpENVOI8ATkObHpiYVvCbl0Lmkd6vPHx8+rj7Rt9wEKrh2C2sHz/p8d4AI3QoITol+B1jS+z9/WzMmvED4fCTyPx/uHz58GcRtUyTFdgvvNPAihNFeDvq0uv/r+pbO783ZD1MLGnFOXMIFCrsXCnq9UNDthYJOD5Vm9UJBBsImFvGgia6h7nY6Xp2uoW51Ov5Zx+HQ0AekxAkDp1DatFCQnaHSur8CfgfwqsZ7KHpPrbA1W4lAD2NoQcXSgqlk4IrZedD8rqFuQwswb0zc75oCTE3HgZkBdDCKFggDVHCCDGfLeC9EOwqEoggUXi9EO8zBObiE+Si8XigYoHCBwhXP10JB7rUJCIwhMEctELoaoeIhECiCnu700O8hatzVooWehq6mCdwIJXRTgKsFdHDZnf6vAHdawZGJy9Y2BUS7NbY6I9zVAhFeQ/OIRUDfiKC3r8Wmvh8GL97D92xtU5818EEFH0wD5jPrL1C/p1UTH9ZVIvNn3xAv7OqK93hVx3kin3WTpoQS8q7JsQhuWpsqP90g/ckX/QRQSwECFwsUAAIACABEUchM/uY6WyQEAABQDgAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUABxpWGltQSwUGAAAAAAEAAQBCAAAAXgQAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="11579582" />
+                </material>
+            </materials>
+        </geometry>
+    </geometries>
+</job>

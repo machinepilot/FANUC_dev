@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" ?>
+<job>
+    <settings>
+        <version>1</version>
+        <unit>millimeter</unit>
+        <backcolour>0</backcolour>
+    </settings>
+    <entities>
+        <entity id="LOWERBEAM_MM_RGA_LOWER BEAM EVO" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>LOWERBEAM_MM_RGA_LOWER BEAM EVO</reference_id>
+            </geometry>
+        </entity>
+    </entities>
+    <states>
+        <state id="default">
+            <visibility>
+                <show type="Unspecified">1</show>
+                <show entity="LOWERBEAM_MM_RGA_LOWER BEAM EVO">1</show>
+            </visibility>
+            <transformations />
+            <views>
+                <view id="1">
+                    <pos>14000,8000,-14000</pos>
+                    <target>0,0,-0</target>
+                    <near>6000</near>
+                    <far>25000</far>
+                    <width>9050</width>
+                    <height>5615</height>
+                    <perspective>1</perspective>
+                </view>
+            </views>
+        </state>
+        <state order="1" id="LOWERBEAM_MM_RGA_LOWER BEAM EVO">
+            <visibility />
+            <transformations />
+            <views />
+        </state>
+    </states>
+    <geometries>
+        <geometry id="LOWERBEAM_MM_RGA_LOWER BEAM EVO">
+            <data encoding="1">UEsDBBQAAgAIAERRyEyxEkuOFgMAAOQJAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81WUW+bMBD+K5b7TLBJSEIFVFnXTZW6pmq7qetL5BInsQQmM6Zt/v3OgDvSkDSa9jDQic93n+9s39kmPHvNUvTMVSFyGWHaIxhxmeRzIZcRLvXCGeOzODyfXl1NPk8QkGUR4ZXW61PXfXl56SV5mrI56+Vq6XqE+C6lbsO+S1Y8Y7jtfdCjOA5ZUXAdh0kutRJPpc4V6Eq9gu8EWjfTq9Bt2kDKMi51EYfuFmx1TRRnms9jj1DikMAh43tKTwfeqR88ArWxhhlMaiH28t7MYSmFRhnXXEWY9IjnDzCSLOMRFjJZYRcY6xl7FUX8OPt+E7q2BYOuJ5aKJ8XUZsakyJiGqRtbl9LqUrFc6TbJKmwbuix5m2AVtg0uuRIsbXNaOqviiwVPtiK9aaxiyXOYuxLGe4M3SMwj3KTGEjZ2Ub6cn0NOM16s4rDIS5XwTrqzzgtRzRvYizRnesaUYpsPyE5FwijJS6kj3Cc4dvqBR3o+MQ9yKPF7pMHDFt5HIp2MY7x0OvECv3ssQdBN2sPxPOJ95Gcvp5NxhJNOH6Hbyk4cap6spPhV8pnZf7mErZokvChyhepsR/jk6PRROF4KKK459OpDHayZYllTRw8Y6c0aQBXebLO29edB6+OO1bWjBLg7Bbce+uGClbnKYPccU64N9d1sPTjsHLpbM23UH44DSreMgRcMhn6bRju77vg9FGrXdkDTFeZflEX3Mo3+s5qA+0oLIFapNg1TAkKuS40KuNAkGCN8M727vL+cXuNjdkEV3LqFtYNTWS5TiGC3xRAje1pH+Pbrpxml/ijwx15H5B8Xt/cXD6249RBRvljA7QNXlon2vtP19Pbb5Ap/nJs/fmi1oDFFAzQC6TdicAAyhHcMMmrE4KDS1sxxIwb71ReqHMRvxGAPxKA+iH0N9kDGwDJv0Ihfeam/XoOHgEYgg0ZGlcca08qLB3W7Num2Sw64vqpcO/PWZdi++6yu+tWAnxz4iWkxt7R/QX0WRcnSWZFwuXWvv9NXX5PNQjOZ8C0zKhUUy0kpTbnPa11VaE0n+xsW/wZQSwECFwsUAAIACABEUchMsRJLjhYDAADkCQAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUABxpWGltQSwUGAAAAAAEAAQBCAAAAUAMAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="11579582" />
+                </material>
+            </materials>
+        </geometry>
+    </geometries>
+</job>

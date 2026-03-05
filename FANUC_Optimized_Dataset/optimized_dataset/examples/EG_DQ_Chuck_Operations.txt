@@ -1,0 +1,324 @@
+TOPIC: Chuck/Gripper Control - Dual Machine Variant
+KEYWORDS: chuck, gripper, open, close, dual machine, DQ, clamp, unclamp
+CATEGORY: program_example
+SOURCE: TWA (The Way Automation) Standard Programs
+APPLIES_TO: R-30iB Plus, CNC Machine Tending, RoboDrill
+DESCRIPTION: Chuck/gripper programs for dual-machine configuration
+---
+
+============================================================
+! Source: dq_ch1_op_eg.txt
+============================================================
+
+/PROG  CH1_OP	  Macro
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= "hand1 open";
+PROG_SIZE	= 433;
+CREATE		= DATE 17-04-26  TIME 16:54:00;
+MODIFIED	= DATE 19-01-07  TIME 19:29:58;
+FILE_NAME	= CH1_CL;
+VERSION		= 0;
+LINE_COUNT	= 18;
+MEMORY_SIZE	= 865;
+PROTECT		= READ_WRITE;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= *,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+/APPL
+
+AUTO_SINGULARITY_HEADER;
+  ENABLE_SINGULARITY_AVOIDANCE   : TRUE;
+/MN
+   1:   ;
+   2:  IF R[19]=1,JMP LBL[1000] ;
+   3:   ;
+   4:  LBL[100] ;
+   5:   ;
+   6:  RO[1]=OFF ;
+   7:  RO[2]=ON ;
+   8:  WAIT    .30(sec) ;
+   9:   ;
+  10:  WAIT RI[2]=ON AND RI[1]=OFF TIMEOUT,LBL[20100] ;
+  11:   ;
+  12:  LBL[1000:succeeded] ;
+  13:  END ;
+  14:   ;
+  15:  LBL[20100:failed] ;
+  16:  UALM[5] ;
+  17:  JMP LBL[100] ;
+  18:   ;
+/POS
+/END
+
+
+============================================================
+! Source: dq_ch1_cl_eg.txt
+============================================================
+
+/PROG  CH1_CL	  Macro
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= "hand1 close";
+PROG_SIZE	= 443;
+CREATE		= DATE 17-04-26  TIME 16:51:56;
+MODIFIED	= DATE 18-02-14  TIME 15:49:34;
+FILE_NAME	= ;
+VERSION		= 0;
+LINE_COUNT	= 23;
+MEMORY_SIZE	= 855;
+PROTECT		= READ_WRITE;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= *,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+/APPL
+
+AUTO_SINGULARITY_HEADER;
+  ENABLE_SINGULARITY_AVOIDANCE   : TRUE;
+/MN
+   1:   ;
+   2:  IF R[19]=1,JMP LBL[1000] ;
+   3:   ;
+   4:  LBL[100] ;
+   5:   ;
+   6:  RO[2]=OFF ;
+   7:  RO[1]=ON ;
+   8:  WAIT    .30(sec) ;
+   9:   ;
+  10:  WAIT RI[2]=OFF TIMEOUT,LBL[20100] ;
+  11:  WAIT RI[1]=ON TIMEOUT,LBL[20110] ;
+  12:   ;
+  13:  LBL[1000] ;
+  14:  END ;
+  15:   ;
+  16:  LBL[20100] ;
+  17:  UALM[5] ;
+  18:  JMP LBL[100] ;
+  19:   ;
+  20:  LBL[20110] ;
+  21:  UALM[3] ;
+  22:  JMP LBL[100] ;
+  23:   ;
+/POS
+/END
+
+
+============================================================
+! Source: dq_ch2_op_eg.txt
+============================================================
+
+/PROG  CH2_OP	  Macro
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= "hand2 open";
+PROG_SIZE	= 433;
+CREATE		= DATE 17-04-26  TIME 16:56:06;
+MODIFIED	= DATE 19-01-07  TIME 19:30:24;
+FILE_NAME	= CH1_OP;
+VERSION		= 0;
+LINE_COUNT	= 18;
+MEMORY_SIZE	= 865;
+PROTECT		= READ_WRITE;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= *,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+/APPL
+
+AUTO_SINGULARITY_HEADER;
+  ENABLE_SINGULARITY_AVOIDANCE   : TRUE;
+/MN
+   1:   ;
+   2:  IF R[19]=1,JMP LBL[1000] ;
+   3:   ;
+   4:  LBL[100] ;
+   5:   ;
+   6:  RO[3]=OFF ;
+   7:  RO[4]=ON ;
+   8:  WAIT    .30(sec) ;
+   9:   ;
+  10:  WAIT RI[4]=ON AND RI[3]=OFF TIMEOUT,LBL[20100] ;
+  11:   ;
+  12:  LBL[1000:succeeded] ;
+  13:  END ;
+  14:   ;
+  15:  LBL[20100:failed] ;
+  16:  UALM[6] ;
+  17:  JMP LBL[100] ;
+  18:   ;
+/POS
+/END
+
+
+============================================================
+! Source: dq_ch2_cl_eg.txt
+============================================================
+
+/PROG  CH2_CL	  Macro
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= "hand2 close";
+PROG_SIZE	= 477;
+CREATE		= DATE 17-04-26  TIME 16:55:18;
+MODIFIED	= DATE 18-02-14  TIME 15:51:58;
+FILE_NAME	= CH1_CL;
+VERSION		= 0;
+LINE_COUNT	= 23;
+MEMORY_SIZE	= 889;
+PROTECT		= READ_WRITE;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= *,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+/APPL
+
+AUTO_SINGULARITY_HEADER;
+  ENABLE_SINGULARITY_AVOIDANCE   : TRUE;
+/MN
+   1:   ;
+   2:  IF R[19]=1,JMP LBL[1000] ;
+   3:   ;
+   4:  LBL[100] ;
+   5:   ;
+   6:  RO[4]=OFF ;
+   7:  RO[3]=ON ;
+   8:  WAIT    .30(sec) ;
+   9:   ;
+  10:  WAIT RI[4]=OFF TIMEOUT,LBL[20100] ;
+  11:  WAIT RI[3]=ON TIMEOUT,LBL[20110] ;
+  12:   ;
+  13:  LBL[1000] ;
+  14:  END ;
+  15:   ;
+  16:  LBL[20100] ;
+  17:  UALM[6] ;
+  18:  JMP LBL[100] ;
+  19:   ;
+  20:  LBL[20110] ;
+  21:  UALM[3] ;
+  22:  JMP LBL[100] ;
+  23:   ;
+/POS
+/END
+
+
+============================================================
+! Source: dq_chuck1_su_eg.txt
+============================================================
+
+/PROG  CHUCK1_SU	  Macro
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= "hand1 op/cl";
+PROG_SIZE	= 391;
+CREATE		= DATE 17-06-13  TIME 19:34:38;
+MODIFIED	= DATE 18-02-13  TIME 18:56:14;
+FILE_NAME	= ;
+VERSION		= 0;
+LINE_COUNT	= 19;
+MEMORY_SIZE	= 819;
+PROTECT		= READ_WRITE;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= *,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+/APPL
+
+AUTO_SINGULARITY_HEADER;
+  ENABLE_SINGULARITY_AVOIDANCE   : TRUE;
+/MN
+   1:   ;
+   2:  IF R[19]=1,JMP LBL[99] ;
+   3:  IF UO[3]=ON,JMP LBL[99] ;
+   4:  IF RI[2]=ON,JMP LBL[10] ;
+   5:   ;
+   6:  RO[1]=OFF ;
+   7:  RO[2]=ON ;
+   8:  END ;
+   9:   ;
+  10:  LBL[10] ;
+  11:   ;
+  12:  RO[1]=ON ;
+  13:  RO[2]=OFF ;
+  14:  END ;
+  15:   ;
+  16:  LBL[99] ;
+  17:  END ;
+  18:   ;
+  19:   ;
+/POS
+/END
+
+
+============================================================
+! Source: dq_chuck2_su_eg.txt
+============================================================
+
+/PROG  CHUCK2_SU	  Macro
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= "hand2 op/cl";
+PROG_SIZE	= 391;
+CREATE		= DATE 17-06-13  TIME 19:40:46;
+MODIFIED	= DATE 18-02-13  TIME 18:56:26;
+FILE_NAME	= ;
+VERSION		= 0;
+LINE_COUNT	= 19;
+MEMORY_SIZE	= 819;
+PROTECT		= READ_WRITE;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= *,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+/APPL
+
+AUTO_SINGULARITY_HEADER;
+  ENABLE_SINGULARITY_AVOIDANCE   : TRUE;
+/MN
+   1:   ;
+   2:  IF R[19]=1,JMP LBL[99] ;
+   3:  IF UO[3]=ON,JMP LBL[99] ;
+   4:  IF RI[4]=ON,JMP LBL[10] ;
+   5:   ;
+   6:  RO[3]=OFF ;
+   7:  RO[4]=ON ;
+   8:  END ;
+   9:   ;
+  10:  LBL[10] ;
+  11:   ;
+  12:  RO[3]=ON ;
+  13:  RO[4]=OFF ;
+  14:  END ;
+  15:   ;
+  16:  LBL[99] ;
+  17:  END ;
+  18:   ;
+  19:   ;
+/POS
+/END

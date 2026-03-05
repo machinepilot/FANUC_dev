@@ -1,0 +1,145 @@
+Ciclo piega con sensore d'angolo DATAM-IRIS predittivo Ver.012.58 : 130
+DBL RevPointDir ;Inversione direzione lettura punti
+SYN
+ %C255.0 = 0 ;Reset sono al PMI
+ %C255.2 = 0 ;Reset misura angolo ok
+ %C255.3 = 0 ;Reset misura angolo ko
+ %byNumPres = 0
+ %byNumFoto = 0
+ RevPointDir = 0 ;Inversione direzione lettura punti
+
+ %prog[%np].IMG.tp[0].dAngSB = 0 ;SpringBack angolare per Y1
+ %prog[%np].IMG.tp[0].dMAng = 0;Angolo IMG100 per Y1
+ %prog[%np].IMG.tp[0].dAngSB_YB = 0 ;SpringBack angolare per Y2
+ %prog[%np].IMG.tp[0].dMAng_YB = 0;Angolo IMG100 per Y2
+ VA1 = %parsensLC.nNumeroTentativiLC
+ IF(%C38.5) VA1 = %parIMG.nNumeroTentativi
+ VA3 = 0 ;Numero punti misura
+
+ ; doppio sensore LC
+ VA19 = %prog[%np].DatiIMG.nSensoriAttivi
+
+ ;Sel. punti misura con foto multiple
+ IF(%C38.8) THEN
+   VA2 = %prog[%np].DatiIMG.nSelPuntiMisura
+   VA3 = 1 ;Default misura su 1 punto
+   IF(VA2 == 0) VA3 = 3 ;Misura su 3 punti
+   IF(VA2 == 1) VA3 = 2 ;Misura su 2 punti
+ ENDIF
+
+ VL30 = VL1 ;per deb, quota prebend
+
+ AWAIT(%C38.4) ;attende sensore attivo da plc
+N20
+SYN
+ IF (%byNumPres == 0) JMPF 400 ;prebend gia eseguito, procede con la prima misura
+ 
+ ;Abilita filtro FIR su DAC pestone
+ _ppconf_sx(0x00,X,Y,0,0,0xFF00,%pargen_due.dgn[12],%pargen_due.dgn[13],0,0,0,0,%pargen_due.dgn[14],0)
+ ;Imposta guadagno variabile per raggiungimento punto target
+ _ppconf_sx(0x00,X,Y,0,0,0x03,%pargen_due.dgn[8],%pargen_due.dgn[9],0,0,0,0,%pargen_due.dgn[10],0)
+
+ ;Effettua piega
+ _ppconf_sx(0x00,X,Y,0,0,0,VL17,VL18,0,0,VL36,0,0.01,1)
+ ;?%ax0.ra50 = VL13; Crea il problema in risalita, è il parametro che abilita la velocità di sicurezza e non i flag dell'asse
+ _ppmove_sx(0x01,X,Y,0,0,VL13,VL25,VL26,VL1,VL2,0,0,%pst[30],0)
+
+
+ IF (%byNumPres == 1) VL31 = VL1 ;per deb, quota prima corr
+ IF (%byNumPres == 2) VL32 = VL1 ;per deb, quota seconda corr
+ IF (%byNumPres == 3) VL33 = VL1 ;per deb, quota terza corr
+
+SYN
+ IF (%byNumPres == VA1) JMPF 1000 ;se finiti i tentativi, esce
+ IF (%prog[%np].IMG.tp[(%byNumPres-1)].nRet == 2) JMPF 1000 ;precisione foto non corretta, prendo DB corry
+
+N400
+
+ ;se asse telecamere presente, lo posiziona
+ IF(!%C38.8) JMPF 500
+
+ %C21.27 = 1 ;richiede posizionamento telecamere
+ AWAIT(%C38.6) ;attende telecamere in posizione
+ %C21.27 = 0 ;azzera richiesta posizionamento telecamere
+ AWAIT(!%C38.6) ;attende conferma sincronismo
+
+N500
+ ;Ritardo lettura
+ IF(%pargen_due.dwgn30 != 0) THEN
+   G4 F(%pargen_due.dwgn30 / 1000)
+ ELSE
+   G4 F0.5 ;ritardo di default
+ ENDIF
+ SYN
+ VA4 = 0 ;Azzera abil. riposiz. centinatura
+
+ %C255.0 = 1 ;Sono al PMI
+
+ ;quote target vengono ricalcolate
+
+ AWAIT(%C255.2 || %C255.3) ;attende SET OK Angolo misurato e ricalcoli eseguiti
+
+ IF(%C255.3) JMPF 1000 ;ERRORE o angolo in tolleranza
+
+ VA4 = %C255.4 ;Legge abil. riposiz. centinatura
+
+ %C255.0 = 0 ;Reset sono al PMI
+ AWAIT(!%C255.2) ;attende RESET OK Angolo misurato e ricalcoli eseguiti
+
+ ;se asse telecamere presente, se deve fare altre foto ripete il ciclo
+ ;(con doppio sensore fa una sola foto)
+ IF((!%C38.8) || (VA19 == 3) || ((%byNumPres != 0) && (%parsensLC.byOttMis != 0))) JMPF 600
+
+ ;verifica completamento foto
+ IF((!RevPointDir) && ((%byNumFoto + 1) >= VA3)) JMPF 600
+ IF((RevPointDir) && (%byNumFoto <= 0)) JMPF 600
+
+ ;se mancano ancora delle foto, va alla prossima
+ IF(RevPointDir) THEN
+    %byNumFoto = %byNumFoto - 1 ; Foto successiva in direzione inversa
+ ELSE
+    %byNumFoto = %byNumFoto + 1 ; Foto successiva
+ ENDIF
+ JMPB 400
+
+N600
+
+ VL1 = %prog[%np].IMG.tp[%byNumPres].dPMI ;copia quota target Y1
+ VL2 = %prog[%np].IMG.tp[%byNumPres].dPMI_YB ;copia quota target Y2
+ IF((VL2==0) || (%C38.5)) VL2 = VL1 ;copia quota target Y1 in quota Y2
+
+ %byNumPres = %byNumPres + 1 ; Pressata successiva
+ RevPointDir = !RevPointDir ;Inversione direzione lettura punti
+
+ ;Galleggiamento a quota per riposizionamento centinatura
+ IF ((!%C35.6) || (%parsensLC.dQtaGallBomb == 0) || (VA4 == 0)) JMPF 900
+ G4 F%pargene.dwgn14 ;tempo attesa inizio galleggiamento
+ ?%C16.7 = 1 ;galleggiamento in corso
+ ;Disabilita filtro FIR su DAC pestone
+ _ppconf_sx(0x00,X,Y,0,0,0xFF00,0,0,0,0,0,0,0,0)
+ ;Disabilita guadagno variabile
+ _ppconf_sx(0x00,X,Y,0,0,0x01,0,0,0,0,0,0,0,0)
+ VA10 = QTA(X)
+ VA11 = QTA(Y)
+ VA12 = VA10 + %parsensLC.dQtaGallBomb
+ VA13 = VA11 + %parsensLC.dQtaGallBomb
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[49],%pst[50],0,0,VL36,0,0.01,1)
+ _ppmove_sx(0x01,X,Y,0,0,VL14,%pst[27],VL16,VA12,VA13,0,0,%pst[30],0)
+ ?%C21.22 = 1 ;abilitazione posiz. centinatura
+ _wait_bit( 0,"%C32.21",1) ;attende posiz. centinatura eseguito
+ ?%C16.7= 0 ;galleggiamento terminato
+ ?%C21.22 = 0 ;terminato posiz. centinatura
+
+N900
+ PAUSE
+ JMPB 20
+
+N1000
+ ?%C255.0 = 0 ;Reset sono al PMI
+
+ ;Disabilita filtro FIR su DAC pestone
+ _ppconf_sx(0x00,X,Y,0,0,0xFF00,0,0,0,0,0,0,0,0)
+ ;Disabilita guadagno variabile
+ _ppconf_sx(0x00,X,Y,0,0,0x01,0,0,0,0,0,0,0,0)
+ RET
+

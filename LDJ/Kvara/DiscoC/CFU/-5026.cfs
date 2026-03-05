@@ -1,0 +1,10 @@
+ S : G4026
+;//Azioni asincrone: interrogazione stato
+;//definire esternamente le variabili osr1 e osr2
+;S=VA18: system wide asse slave
+
+SYN
+osr1 = %ax[VA18].rgau[8]
+osr2 = %ax[VA18].rgau[9]
+
+RET

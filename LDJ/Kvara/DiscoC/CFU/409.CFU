@@ -1,0 +1,21 @@
+Ciclo fisso utente riscontri Ver.012.61 : 409
+
+;Rich. parcheggio A3 a zero per cambio utensili
+ IF ((!%C33.18) || (%cax10.dt0 != 1)) JMPF 200
+   %posac = 0 ;Forza target A3 a zero
+   %posbc = 0
+   %poscc = 0
+N200
+
+;Parcheggio staffe motorizzate gestito da plc
+ IF (%C35.11) THEN
+   ;Non posiziona gli assi delle staffe
+   %posad = QNAN() ;esclude A4
+   %posbd = QNAN()
+   %poscd = QNAN()
+   %posae = QNAN() ;esclude A5
+   %posbe = QNAN()
+   %posce = QNAN()
+ ENDIF
+
+ RET

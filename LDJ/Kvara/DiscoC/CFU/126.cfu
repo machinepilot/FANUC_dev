@@ -1,0 +1,33 @@
+Ciclo calcolo e attivazione bombatura con sensore di pressione Ver.012.54 : 126
+ ?%C16.13 = 1 ;Prebend effettuato per riposizionamento bombatura
+ SYN
+ AWAIT(%C38.25) ;attende conferma avanz. ciclo bombatura attiva meccanica dopo prebend
+ IF(%C38.26) THEN ;esegue galleggiamento se conferma effettuazione riposizionamento bombatura attiva meccanica
+   G4 F%pargene.dwgn14 ;tempo attesa inizio galleggiamento
+   ?%C16.7 = 1 ;galleggiamento in corso
+   ;Disabilita filtro e limiter su DAC pestone
+   _ppconf_sx(0x00,X,Y,0,0,0xFF00,0,0,0,0,0,0,0,0)
+   ;Disabilita guadagno variabile
+   _ppconf_sx(0x00,X,Y,0,0,0x01,0,0,0,0,0,0,0,0)
+   VA10 = QTA(X)
+   VA11 = QTA(Y)
+   ;Effettua il galleggiamento con PP_STOP da sensore
+   _ppconf_sx(0x00,X,Y,0,0,0,%pst[49],%pst[50],0,0,VL36,0,0.01,1)
+   _ppmove_sx(0x01,X,Y,0,0,(VL13+0x10),%pst[27],VL16,%PestQ[%np].pcl,%PestQ[%np].pcl,0,0,%pst[30],0)
+   IF (%C35.6) THEN
+     ?%C21.22 = 1 ;abilitazione posiz. centinatura
+     _wait_bit( 0,"%C32.21",1) ;attende posiz. centinatura eseguito
+   ENDIF
+   ?%C16.7 = 0 ;galleggiamento terminato
+   ?%C21.22 = 0 ;terminato posiz. centinatura
+   ;Riabilita filtro e limiter su DAC pestone
+   _ppconf_sx(0x00,X,Y,0,0,0xFF00,%pargen_due.dgn[12],%pargen_due.dgn[13],0,0,0,0,%pargen_due.dgn[14],0)
+   ;Riattiva guadagno variabile per raggiungimento punto target
+   _ppconf_sx(0x00,X,Y,0,0,0x03,%pargen_due.dgn[8],%pargen_due.dgn[9],0,0,0,0,%pargen_due.dgn[10],0)
+   IF (VA0) THEN
+     ;Riporta se richiesto il pestone alla posizione iniziale
+     _ppconf_sx(0x00,X,Y,0,0,0,VL17,VL18,0,0,VL36,0,0.01,1)
+     _ppmove_sx(0x01,X,Y,0,0,VL14,%pst[27],VL16,VA10,VA11,0,0,%pst[30],0)
+   ENDIF
+ ENDIF
+ RET

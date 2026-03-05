@@ -1,0 +1,143 @@
+File defcn non specificato da KVARA.INI.=
+Attenzione=
+Il file %s non esiste. Selezionare un file defcn valido.=
+Tipo di link da utilizzare non specificato da KVARA.INI: verrà utilizzata la modalità di simulazione.=
+Inizializzazione shared memory fallita!=
+Errore=
+# dialog button
+Modifica bottone=
+Aggiungi bottone=
+Inserisci dati bottone:=
+Testo bottone:=
+Descrizione:=
+Impulsivo=
+Bistabile=
+Normale Aperto=
+Normale Chiuso=
+Avvio attivo=
+Avvio inattivo=
+Nome variabile associata:=
+Indice bit:=Bit index:
+OK=
+Ok=
+Annulla=
+
+# dialog slider
+Modifica slider=
+La slider non puo' supportare il range impostato.=
+Aggiungi slider=
+Inserisci dati slider:=
+Val. minimo:=
+Val. massimo:=
+Risoluzione:=
+Val. iniziale:=
+
+Informazioni su TKSKey=
+TKSKey Versione=
+Tempo di rinfresco (ms):=
+
+Seleziona lingua=
+
+
+File=
+Nuovo=
+Apri=
+Chiudi=
+Salva=
+Salva con nome=
+Lingua=Lin&gua
+Apri ultimo file all'avvio=
+Ultimo file usato=
+Esci=
+
+Modifica=
+Aggiungi=
+Elimina=
+Modifica=
+Sposta in su=
+Sposta in giù=
+Timer di Rinfresco=
+Stato iniziale=
+Sync PLC=
+
+
+Visualizza=
+Barra degli strumenti=
+Barra di stato=
+Primo piano=
+Solo bottoni=
+Solo slider=
+Entrambi=
+Dimensioni comp.=
+Piccoli=
+Grandi=
+Finestra=
+Nuova finestra=
+Sovrapponi=
+Affianca=
+Disponi icone=
+Dividi=
+Bottoni=
+Slider=
+
+?=
+Informazioni su TKSKey=
+
+Procedere ad eliminazione bottone associato a =
+Procedere ad eliminazione slider associata a =
+
+Non è possibile mettere in watch tutti o alcuni dei bottoni richiesti.=
+Non è possibile mettere in watch tutte o alcune delle slider richieste.=
+
+impulsivo=
+bistabile=
+#NA/NC abbr. per normalmente aperto/chiuso
+NA=
+NC=
+Variabile %s (da %s a %s): %s=
+Errore di lettura da memoria shared.=
+Errore di scrittura su memoria shared.=
+Non è possibile mettere altri bottoni in watch.=
+Variabile non trovata o tipo errato!=
+Non e' possibile mettere altre slider in watch.=
+
+NUM=
+MA=MAIUSC
+
+Pronto=
+Crea un nuovo documento=
+Apre un documento esistente=
+Chiude il documento attivo=
+Salva il documento attivo=
+Salva il documento attivo con un nuovo nome=
+
+Visualizza le informazioni sul programma, il numero di versione e le informazioni di copyright=
+Esce dall'applicazione e chiede di salvare i documenti=
+Apre questo documento=
+Dispone le finestre sovrapponendole=
+Dispone le finestre senza sovrapporle=
+Mostra o nasconde la barra degli strumenti=
+Mostra o nasconde la barra di stato=
+Attiva riquadro bottoni=
+Attiva riquadro slider=
+Espande il riquadro bottoni=
+Espande il riquadro slider=
+Ridimensiona i riquadri bottoni e slider=
+Mostra la finestra sempre in primo piano=
+Aggiunge bottone/slider=
+Elimina bottone/slider=
+Sposta il bottone/slider nella posizione precedente=
+Sposta il bottone/slider nella posizione successiva=
+Modifica bottone/slider=
+Abilita l'apertura dell'ultimo file usato all'avvio dell'applicazione=
+Usa bottoni di dimensioni piccole=
+Usa bottoni di dimensioni grandi=
+Porta tutti i controlli allo stato iniziale=
+Seleziona la lingua per l'applicazione=
+Attiva segnale sicronismo per PLC=
+Imposta tempo di rinfresco=
+Attiva questa finestra=
+
+
+
+

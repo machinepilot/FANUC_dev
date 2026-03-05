@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" ?>
+<job>
+    <settings>
+        <version>1</version>
+        <unit>millimeter</unit>
+        <backcolour>0</backcolour>
+    </settings>
+    <entities>
+        <entity id="UPPERBEAM_MM_PRIMA POWER EP1030" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>UPPERBEAM_MM_PRIMA POWER EP1030</reference_id>
+            </geometry>
+        </entity>
+    </entities>
+    <states>
+        <state id="default">
+            <visibility>
+                <show type="Unspecified">1</show>
+                <show entity="UPPERBEAM_MM_PRIMA POWER EP1030">1</show>
+            </visibility>
+            <transformations />
+            <views>
+                <view id="1">
+                    <pos>14000,8000,-14000</pos>
+                    <target>0,0,-0</target>
+                    <near>6000</near>
+                    <far>25000</far>
+                    <width>9050</width>
+                    <height>5615</height>
+                    <perspective>1</perspective>
+                </view>
+            </views>
+        </state>
+        <state order="1" id="UPPERBEAM_MM_PRIMA POWER EP1030">
+            <visibility />
+            <transformations />
+            <views />
+        </state>
+    </states>
+    <geometries>
+        <geometry id="UPPERBEAM_MM_PRIMA POWER EP1030">
+            <data encoding="1">UEsDBBQAAgAIABZVbUVxvxAqjwcAAEwaAAALABEAY29sbGFkYS54bWxVVA0AB4uKZFSLimRUi4pkVM1ZWY/bRhL+KwTzLKrvw5AUeL3ZRQBvbDjeReKXgaLhzAjQMStRcebfp45usiXSiRHsw9qab6q+rqo+WF3d1Cy+/W2/q35tT+ft8bCsZSPqqj1sjvfbw+OyvnQPs1B/u1q8eff27eu/v67A+HBe1k9d9/xqPv/8+XOzOe526/t1czw9zpUQdi7lPFn/uHlq9+u6jG4aWa8W6/O57VaLzfHQnba/XLrjCbhL9wS/X4P2/t3bxTzpYLTft4fuvFrMr8TCdXNq1117v1JCipmIMxE+SvnKqFc2fgLT1LrYw6Qetl+065sXl8O2q/Zt156WtWiEsqauDut9u6y3h81TPQeL57v1b9vz6tPdv98v5lmDQfPEdttfTuvTy936sN2vO5g6tk2RmdttH5+60igTWQeXx7Y0yETWIWR72q53pU3BZap9eGg3Vz31TCYe2yPM/bTF6El+qbb3yzo9mmzwkhflH2/ewDPdt+en1eJ8vJw27aT57Pl43tK8wfphd1x3d+vTaf3yJ8YzMqqrzfFy6Ja1sqpezaQzsZppUenGOOF9NTBWmsbFnlGhmsEzFJr+JVbpxn6JlrGJ0WV/NSI8mkGnYSCGLm00MAg5ij7wt7blFDJzYzOaArJXAyOiHFgirgOp0IycwvWQdBwPs+BiwU24Jqq3UqYZnGFwQQ0s2/aklI102RRQ+YFl054UsBY2mxrZuJJm2541UTY+21romFaHWTYdyOAa29s6aIxxoNm4YE0T+/EGnWZ8RTtUSppj3BoTW9gqNYTwxt3SYkzCTMdcuHLXJmb3QBlQkOCeuSm7KbPJQU6NcWKIkyOcXtDp9ZxczsnVnH6mk490MlOmEmU6/ybTbzKrp5J6cqdMbZSJDTqxP8fbc7w7v1CpJgrVqE6NytRklbotUrc16rZEjSvUuECNqv6o6E/W/OmSP674twX/tt7flvvFvDjFVouu3Twdtv+9tHd4Tzke4Eqz2bTn8/FU8am4rL/56mMuwJXjDIfwPXhpOC+f16f1Pp23P9VV9/IMAnWP15Gy9ec/bP00ap3nUYI4nsKch/7HB/vheNrDLeNrjvVkejNbj2e6gFWPUblK0HOSSjqNZapyjVRa6XYmpOfGCHXDSpBFo5T2WiIZorFkIBpjvMCTUjTeGaEdkQ6bDZHCS+Er2F4q+pDiZhbabRTWkk8QXgiKroMOigNFpY1wSEqoCpG7jMEH6Mg1JqpoOCaMHXZSlA770HDOGehECZdaIbxzcLukLsG4kT4ohY2u8o2SxmIcOvEhjnLSpcaZb7yyMnCrrGwTYZIxT+Qq6tWAJPZSDGhqBlNTnViSYb2ml3Fq6aee0dTDnM4EiZO5yoT/xQacTkj1/7b94BWq24Ih7SpUcLdtD8+XrjrDO9YBGpf1+3c/fv/x+3c/1F9TcKjzHBYWD14UDo876CEtAVS7uspvEMv6wz//docZCZmlJ7r+z3cfPn73U9Exj7E6PjzAGxG8RmF3t04/vPvwr9dv6z9/OkMcSSu6otJdmYAIudNjYgQing+q8hrRxQETowqeZbYnDHqw9JZaTcHogWFf7FFR7yDrSsmEiVEDk2Q42URmWLYFMuPgJMoMy75AZmD8PsuB5FggMU7AyZUYlp0skBmYo82yJpkYALDSiKYH1r3sCRaDGDAxhBASmcI1BSh8cXeDWf8fZYGVraIuSHdJRh6rnkq6STLyEoWAgsiAWswKCZKMIzIxcVlByVP2OMok5wpkxhdyLJgIrkBHzKAErDoAvLuZyhNibmVkxuuEmLWK0BbIjClkOTC4lujN65yAVN9LtlctMfTxPfDHIRgQQwW7C9EWyIwrGJb10Ao7cOBdwfjCUg0RMFNgBJH67YF1XiKFswuUL14NmBjGgE8O1hhRFEiMo1YiFCVA8WGC0GIkR0tZfJgwJNKjcbT4zhbIDD0IjalHx7E2PZBKy09JiammRAZWJUNAlbLKM7CqssoSPiY4F+nmbJJKQKrtVZLIjYwDLCib+F6NCChpXAtWY1Y1bim8IOA8ROIISMVWg7tTw0OujMhAKhzVABHB9lzoVd2rujf2veowFJVgTaUZEykjM+ArqXfMGHpAyGRkxnAyU+HWFM2YAZnRLskRDSNOIAOpilX0UrnHHpmhY0DRHlKUttINyIy1A8OyNwMyY33BkGw5GkcWo8jEKF0wJCtbtMoR72/HpmUxBlswvKo0Hl1YJuQN6weGZfZiTIwo4thbXysHG56vk7frw4wrGZZt0WoHHmsw1lzZA/4olTWW0MqiarE0ux5ItaZXTfIPWVF9RAJypDqvruKwKnpV5P64QfccxrSqjxeyqkUGUo3JwGroOZJiVrW78mVV9ZLOKg1clbMjhReHSiKh74F1SduJ9qAMBS0Lxg6yEgVjC4ZCkp++DpEIHweCZS8KZCYgOrpZhFuTUPhTRQ18H3QDMhNUwah0Z+yRmcCnMlfmWPgyysFyMX/GO3y+R4PMX4nP8222+NK9/I49c/QnjeNu157Kr+ev2L9g+uv2fFnv7s6b9nD194Mbnn7jDf3crQ+b9qq5upzgBeCbywHfYe6Zo7eH5JT/3LP6HVBLAQIXCxQAAgAIABZVbUVxvxAqjwcAAEwaAAALAAkAAAAAAAAAAAAAgAAAAABjb2xsYWRhLnhtbFVUBQAHi4pkVFBLBQYAAAAAAQABAEIAAADJBwAAAAA=</data>
+            <materials>
+                <material id="1">
+                    <color emissive="14540253" />
+                </material>
+            </materials>
+        </geometry>
+    </geometries>
+</job>

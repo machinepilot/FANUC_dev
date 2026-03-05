@@ -1,0 +1,113 @@
+Ciclo fisso automatico assi riscontri 3-4 Ver.012.59: 601
+
+DBL MskRecG    ; Maschera per Disab/Enab recupero giochi
+DBL QRincX3, QRincX4, QRincZ3, QRincZ4
+
+N10
+IF( (%prog[%np].type != 2) && (%prog[%np].type != 10) && (%prog[%np].type != 7) ) THEN
+ JSR 611 ;ciclo utente prima della anticoll
+ENDIF
+ _wait_bit( 0,"%C39.1",1) ;attende anticoll eseguita da CH1
+ SYN ;legge le quote solo quando sono pronte (non in anticipo)
+ JSR 606 ;gestione parcheggio assi utente
+
+ MskRecG=%C81 ; Carica maschera per Disab/Enab recupero giochi
+
+ ;Gantry asse X1-X4 abilitato (X4 non va comandato)
+ IF((%ax[2].pa[3].25) && (%gantry[0].Gdat[0] == 23)) THEN
+   %faseaxd = QNAN()
+   %fasebxd = QNAN()
+   %fasecxd = QNAN()
+   %rincd = QNAN()
+   MskRecG = MskRecG & 0xFFFFFFE7 ;azzera bits X4 maschera recupero giochi
+ ENDIF
+
+ ;Gantry asse R1-R4 abilitato (R4 non va comandato)
+ IF((%ax[4].pa[3].25) && (%gantry[1].Gdat[0] == 25)) THEN
+   %faseard = QNAN()
+   %fasebrd = QNAN()
+   %fasecrd = QNAN()
+   MskRecG = MskRecG & 0xFFFFFE7F ;azzera bits R4 maschera recupero giochi
+ ENDIF
+
+ ?%C22.1 = 1 ;sblocco prima G0 su CH1
+
+ IF ((%faseaxc < %ap[22].pt[0]) || (%faseaxc > %ap[22].pt[1])) THEN
+   %faseaxc = QNAN()
+ ENDIF
+
+; Disabilita recupero giochi fase uno
+ IF (MskRecG & 0x1) THEN ;Test del bit generale
+    IF (MskRecG & 0x2) RCG[X]=0
+    IF (MskRecG & 0x8) RCG[Y]=0
+    IF (MskRecG & 0x20) RCG[Z]=0
+    IF (MskRecG & 0x80) RCG[U]=0
+    IF (MskRecG & 0x200) RCG[V]=0
+    IF (MskRecG & 0x800) RCG[W]=0
+ ENDIF
+ SYN
+ IF (%cax26.dt0 == 1) VA0 = QTA(V)
+ IF ((%cax26.dt0 == 1) && (%prog[%np].zc > VA0)) G4 F0.1
+ G0 X%faseaxc Y%faseaxd Z%fasearc U%faseard V%faseazc W%faseazd
+
+ PAUSE
+ ?%C22.2 = 1 ;sblocco seconda G0 su CH1
+ _wait_bit( 0,"%C39.2",1) ;attende sblocco seconda G0 da CH1
+
+; Disabilita recupero giochi fase due
+ IF (MskRecG & 1) THEN ;Test del bit generale
+    IF (MskRecG & 0x4) RCG[X]=0
+    IF (MskRecG & 0x10) RCG[Y]=0
+    IF (MskRecG & 0x40) RCG[Z]=0
+    IF (MskRecG & 0x100) RCG[U]=0
+    IF (MskRecG & 0x400) RCG[V]=0
+    IF (MskRecG & 0x1000) RCG[W]=0
+ ENDIF
+ SYN
+ IF (%cax26.dt0 == 1) VA0 = QTA(V)
+ IF ((%cax26.dt0 == 1) && (%prog[%np].zc > VA0)) G4 F0.1
+ G0 X%fasebxc Y%fasebxd Z%fasebrc U%fasebrd V%fasebzc W%fasebzd
+
+ ?%C22.3 = 1 ;sblocco terza G0 su CH1
+ _wait_bit( 0,"%C39.3",1) ;attende sblocco terza G0 da CH1
+
+; Riabilita recupero giochi
+IF (MskRecG & 1) THEN ;Test del bit generale
+  IF (MskRecG & 0x6) RCG[X]=1
+  IF (MskRecG & 0x18) RCG[Y]=1
+  IF (MskRecG & 0x60) RCG[Z]=1
+  IF (MskRecG & 0x180) RCG[U]=1
+  IF (MskRecG & 0x600) RCG[V]=1
+  IF (MskRecG & 0x1800) RCG[W]=1
+ENDIF
+ SYN
+ IF (%cax26.dt0 == 1) VA0 = QTA(V)
+ IF ((%cax26.dt0 == 1) && (%prog[%np].zc > VA0)) G4 F0.1
+ G0 X%fasecxc Y%fasecxd Z%fasecrc U%fasecrd V%faseczc W%faseczd
+
+ ?%C22.4 = 1 ;assi in posizione
+
+ ;verifica se abilitato rinculo assi X o Z
+ IF(!%C33.11) JMPF 200
+ QRincX3 = %prog[%np].xc + %prog[%np].corxc + %rincc ;quota rinculo X1
+ QRincX4 = %prog[%np].xd + %prog[%np].corxd + %rincd ;quota rinculo X2
+ VA2 = ABS(%pargene.dwgn[5]) ;quota rinculo assi Z
+ QRincZ3 = %prog[%np].zc - VA2 ;quota rinculo Z1
+ QRincZ4 = %prog[%np].zd + VA2 ;quota rinculo Z2
+ _wait_bit(0, "%C33.6", 1) ;attende abilitazione per rinculo
+ ?%C22.10 = 1 ;rinculo in corso
+ IF(!%C33.9) JMPF 170
+ G0 V(QRincZ3) W(QRincZ4) ;eventuale rinculo Z prima di X
+ ?%C22.12 = 1 ;rinculo Z prima di X terminato
+ _wait_bit(0, "%C39.16", 1) ;attende abilitazione per rinculo X
+N170 G0 X(QRincX3) Y(QRincX4) ;rinculo X
+ IF(!%C33.10) JMPF 200
+ ?%C22.13 = 1 ;rinculo X terminato
+ _wait_bit(0, "%C39.17", 1) ;attende abilitazione per rinculo Z dopo X
+ G0 V(QRincZ3) W(QRincZ4) ;eventuale rinculo Z dopo X
+
+N200
+ ?%C22.11 = 1 ;fine ciclo riscontri 3-4
+ _wait_bit( 0,"%C39.4",1) ;attende cambio passo da canale 1
+ ?%C22 = 1 ;mantiene attivo C22.0
+ JMPB 10

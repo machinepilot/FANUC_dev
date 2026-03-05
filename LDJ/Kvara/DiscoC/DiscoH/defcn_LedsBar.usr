@@ -1,0 +1,14 @@
+SECTION User //********** Sezione User **************************
+
+//-------------------------------------------------------------------
+//  Strutture per la gestione della barra leds Esa
+
+typedef struct {
+    dword  LedsBarStat;
+RETAIN  double LedsBarFConv;
+RETAIN  dword  LedsBarOffs;
+} S_LEDSBAR;
+
+S_LEDSBAR LedsBar;
+
+ENDSECTION User //*************** Sezione Applicativo ******************

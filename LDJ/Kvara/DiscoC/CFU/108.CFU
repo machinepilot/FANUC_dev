@@ -1,0 +1,110 @@
+Ciclo fisso richiamo pestone Ver.012.39 : 108
+ VA0 = %C55/1000 ;calcola quota richiamo in mm
+ VA24 = %pargen_due.dgn[24];Insensibilità Pos. SV Y1
+ VA25 = %pargen_due.dgn[25];Insensibilità Pos. SV Y2
+ VL28 = 0
+; IF (%pargen_due.dgn[26] != 0) VL28 = VL28 + 1 ;flags per posiz. non resta in coppia e con tolleranza infinita
+ VA28 = %pst[42] * 2 ;Guadagno variabile SV Y1
+ VA29 = %pst[43] * 2 ;Guadagno variabile SV Y2
+ VL4 = %ax[0].pa[9] ; VMAX asse Y1
+ ?%C21.6 = 1 ;richiamo in corso
+
+ ;Disabilita filtro FIR su DAC pestone
+ _ppconf_sx(0x00,X,Y,0,0,0xFF00,0,0,0,0,0,0,0,0)
+ ;Disabilita guadagno variabile
+ _ppconf_sx(0x00,X,Y,0,0,0x01,0,0,0,0,0,0,0,0)
+
+ ;verifica se abilitata salita manuale lenta
+N120 IF( %C32.3 ) JMPF 200
+ ;SALITA VELOCE
+ G4 F(%pstt[2]+%pst[45]) ;attendi rampa pressione + attesa iniziale salita veloce
+ IF(%C32.23) JMPF 150
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[42],%pst[43],0,0,0,0,0.01,0)
+ _ppconf_sx(0x00,X,Y,0,0,0xFF01,VL40,VL41,0,0,0,0,0,0)
+ _wait_bit( 0,"%C38.12",0); attesa pompe in pressione per salita
+ _ppmove_sx(0x01,X,Y,0,0,0x1000,%pst[41],%pst[53],VA0,VA0,0,0,%parspec.dsp[15],0)
+ JMPF 900
+N150 ;MAP Imposta guadagno variabile per raggiungimento punto target
+ _ppconf_sx(0x00,X,Y,0,0,0x01,VA28,VA29,0,0,0,0,%pargen_due.dgn[26],0)
+;MAP Abilita Soglie Ins SV
+ IF (VA24 != 0) THEN
+  _insensibilita(0x00,X,3,VA24,0)
+  _insensibilita(0x00,Y,3,VA25,0)
+ ENDIF
+ IF (%pargene.bgn.2) JMPF 160
+ _tollerap(0x00,X,0x00, 1, %pst44, 1)
+ _tollerap(0x00,Y,0x00, 1, %pst44, 1)
+ JMPF 170
+N160
+ _tollerap(0x00,X,0x00, 0.1, %pst44, 0.1)
+ _tollerap(0x00,Y,0x00, 0.1, %pst44, 0.1)
+N170
+ VL3 = %pst[41] * VL4 / %pst[53]
+ ACC[X]=VL3 ACC[Y]=VL3
+ IF (%C32.28) VL3 = %pargen_due.dgn[21] * VL4 / %pst[53]
+ DEC[X]=VL3 DEC[Y]=VL3
+ IF (%parspec.dwsp[8] != 0) THEN
+ _ppconf_sx(0x00,X,Y,0,0,0,%parspec.dwsp[8],%parspec.dwsp[8],0,0,0,0,0.01,1)
+ ELSE
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[42],%pst[43],0,0,0,0,0.01,1)
+ ENDIF
+ _ppconf_sx(0x00,X,Y,0,0,0xFF01,VL40,VL41,0,0,0,0,0,0)
+ _wait_bit( 0,"%C38.12",0); attesa pompe in pressione per salita
+ _ppmove_sx(0x01,X,Y,0,0,(VL28|0x1000),0,%pst[53],VA0,VA0,0,0,%parspec.dsp[15],0)
+;MAP Reimposta Soglie da parametri
+ IF (VA24 != 0) THEN
+ _tollerap(0x00,X,0x00, %pst[4], %pst[30], %pst[4]); RIPROGRAMMA TOLLERANZA
+ _tollerap(0x00,Y,0x00, %pst[4], %pst[30], %pst[4]);
+ _insensibilita(0x00,X,3,%pst[33],%pst[31])
+ _insensibilita(0x00,Y,3,%pst[34],%pst[32])
+ ENDIF
+ ;Disabilita guadagno variabile
+ _ppconf_sx(0x00,X,Y,0,0,0x01,0,0,0,0,0,0,0,0)
+ JMPF 900
+
+N200 ;SALITA LENTA
+ G4 F(%pstt[3]+%pst[52]) ;attendi rampa pressione + attesa iniziale salita lenta
+ IF(%C32.23) JMPF 250
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[49],%pst[50],0,0,0,0,0.01,%C32.23)
+ _ppmove_sx(0x01,X,Y,0,0,0x1000,%pst[48],%pst[53],VA0,VA0,0,0,%parspec.dsp[15],0)
+ JMPF 900
+N250 ;Imposta guadagno variabile per raggiungimento punto target
+ _ppconf_sx(0x00,X,Y,0,0,0x01,VA28,VA29,0,0,0,0,%pargen_due.dgn[26],0)
+;Abilita Soglie Ins SV (non esistono per SL)
+ IF (VA24 != 0) THEN
+  _insensibilita(0x00,X,3,VA24,0)
+  _insensibilita(0x00,Y,3,VA25,0)
+ ENDIF
+  IF (%pargene.bgn.2) JMPF 400
+ _tollerap(0x00,X,0x00, 1, %pst51, 1)
+ _tollerap(0x00,Y,0x00, 1, %pst51, 1)
+ JMPF 410
+N400
+ _tollerap(0x00,X,0x00, 0.1, %pst51, 0.1)
+ _tollerap(0x00,Y,0x00, 0.1, %pst51, 0.1)
+N410
+ VL3 = %pst[48] * VL4 / %pst[53]
+ ACC[X]=VL3 ACC[Y]=VL3
+ IF (%C32.28) VL3 = %pargen_due.dgn[21] * VL4 / %pst[53]
+ DEC[X]=VL3 DEC[Y]=VL3
+ IF (%parspec.dwsp[8] != 0) THEN
+ _ppconf_sx(0x00,X,Y,0,0,0,%parspec.dwsp[8],%parspec.dwsp[8],0,0,0,0,0.01,1)
+ ELSE
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[49],%pst[50],0,0,0,0,0.01,1)
+ ENDIF
+ _ppmove_sx(0x01,X,Y,0,0,(VL28|0x1000),0,%pst[53],VA0,VA0,0,0,%parspec.dsp[15],0)
+;Reimposta Soglie da parametri
+ IF (VA24 != 0) THEN
+ _tollerap(0x00,X,0x00, %pst[4], %pst[30], %pst[4]); RIPROGRAMMA TOLLERANZA
+ _tollerap(0x00,Y,0x00, %pst[4], %pst[30], %pst[4]);
+ _insensibilita(0x00,X,3,%pst[33],%pst[31])
+ _insensibilita(0x00,Y,3,%pst[34],%pst[32])
+ ENDIF
+ ;Disabilita guadagno variabile
+ _ppconf_sx(0x00,X,Y,0,0,0x01,0,0,0,0,0,0,0,0)
+
+N900 SYN
+
+ ?%C21.11=1 ;fine richiamo
+ _wait_bit( 0,"%C32.9",1) ;attende conferma fine ciclo
+ RET

@@ -1,0 +1,47 @@
+TOPIC: Async Part Presence Checking with Multitasking
+KEYWORDS: RUN, FLAG, multitask, async, part presence, cycle time, parallel task, F[]
+CATEGORY: article
+SOURCE: ONE Robotics Company Blog
+APPLIES_TO: FANUC TP Programming, R-30iB Plus
+---
+
+# Async Part Presence Checking with Multitasking
+
+Filed under:FANUCTP ProgrammingConcurrency
+I’ve spent a lot of time working on high-speed line tracking (iRPickTool) applications. When I first started working on them back in 2008, throughputs around 100 cycles per minute were really pushing the envelope (but this was when FANUC’s flagship high-speed picking robot was the M-430iA).
+Since then FANUC has introduced a number ofDelta robots: theM-1iAin 2009, theM-3iAin 2010, theM-2iAin 2013(?) and theDR-3iBin 2019. These robots are much better suited for high-speed picking applications than the articulated M-430iA arm: lighter, faster, better work envelope– great robots.
+Applications requiring throughputs in excess of 100 cycles per minute are pretty common now, but fast cycle times bring new challenges.
+Here’s what I normally like to do during a pick cycle:
+I had an application recently where the part-presence sensors were too slow. I put aWAIT-statement on the part-presence signals after the pick retreat move, and the system slowed to a grinding halt.
+To be fair, these M-2iAs are incredibly fast. At 1kg, an M-2iA/3S takes ~40ms to move through a 50mm linear retreat on a 100mm segment from a dead stop. (i.e.L PR[x] max_speed CNT100 Tool_Offset,PR[y:-100mm] RT_LD50)
+We were using vacuum sensors that had nowhere near the response time I wanted. Of course there were things we could have done to improve that response time a bit but not enough to get to the point where the robots were never held up. (Maybe vacuum switches weren’t the right choice here, but I digress…)
+It turns out that I didn’t really care whether the robot picked successfully or not at the pick retreat position. It was ok to check before placing.
+Great! So just move the part-presence checkingCALLand we’re done, right? I wish. This job had a lot going on.
+There were three different grippers: single-, double- and triple-pick with a tool changer. There were also accumulating buffers the robots would fill or pull from depending on the status of the infeed and outfeed. Oh, one more wrinkle: for the triple-pick gripper, it was ok to not be completely full… sometimes.
+We were picking blind on the infeed (coming away with 1 or 2 was ok), but we knew exactly what was coming out of the accumulators (mispick = bad). We’re also never quite sure (on the place side) where the parts are coming from. The dynamics of the system made any of these paths possible:
+How do we check part-presence correctly on the place side if we’re not sure where we picked from?
+I suppose you could do this by setting a bit for the pick location and then calling the correct part-presence check routine on the place side, but that seems brittle to me. I also prefer to figure out what I have as soon as possible – before I get to the place side, ideally.
+I ended up handling this part-presence checking asynchronously. The robot would fire off a task during the pick retreat (one version for a pick from the infeed and another for the accumulator), and the place routines would happily wait for either task to return, blissfully unaware of anything complicated going on.
+In the infeed pick program:
+In the accumulator pick program:
+In the place programs:
+Obviously the contract here is that bothPPCHK_INFEEDandPPCHK_ACCUMULATORsetF[1:PartPresenceDone]when they’re done. To avoid repeating myself, the general-purposeCHECK_PART_PRESENCEroutine can be called with an argument of0or1to indicate whether or not it should “double-check” against what itshouldhave from the pick side; it returns a0toR[2:Status]if things look ok.
+CHECK_PART_PRESENCElooked something like this:
+The asynchronous part-presence tasks use this same checking program.
+PPCHK_INFEED:
+PPCHK_ACCUMULATOR:
+I’ll leave the implementation ofRECORD_PART_PRESENCE,VALIDATE_TRIPLE_GRIPPERandSIGNAL_MISPICKto the imagination, but you get the idea.
+There are several takeaways here:
+Part-presence needs to be checked by the asynchronous routines and the placement routines; the only difference is whether or not we double-check the result. This is a prime example of when to use an argument (AR[x]).
+TP does not support functions and return values, but we can kinda do this by setting up a convention for a return parameter (e.g.R[2:Status]here) or explicitly provide it in an argument (e.g.CALL SOMETHING(x)whereSOMETHINGreturns toR[x]).
+When multitasking, you probably need to synchronize your tasks somehow. Otherwise you run the risk of a hanging task or running intoINTP-267 Run stmt failed/PROG-007 Program is already running.
+Here we explicitly turnF[4]off before starting the task and ensure that all asynchronous code paths turnF[4]on just before returning. The robot always waits forF[4]before continuing in the main task.
+I’ve written more on theRUNstatementhere, and you may findthis utilityuseful.
+The main task doesn’t care about the details of our part-presence checking. It just cares about the result once it’s done. I find that separating details behind a simple pass/fail interface tends to work really well.
+Hopefully this post provides a little bit of insight into how I break somewhat complex problems down into easy-to-chew bites, sometimes concurrently.
+I email(almost)every Tuesday with the latest insights, tools and techniques for programming FANUC robots. Drop your email in the box below, and I'll send new articles straight to your inbox!
+No spam, just robot programming. Unsubscribe any time. No hard feelings!
+©2013-2019 ONE Robotics Company LLC. All rights reserved.
+Privacy•Terms•RSS Feed
+
+URL: https://www.onerobotics.com/posts/2021/asynchronous-part-presence-checking/

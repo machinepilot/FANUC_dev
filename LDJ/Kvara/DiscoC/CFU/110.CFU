@@ -1,0 +1,27 @@
+Ciclo fisso diagnostica pestone Ver.012.51 : 110
+DBL SetVoltage, VoltageY1, VoltageY2
+
+ IF (%C38.14) THEN
+  IF (%tensaa < 0) %tensaa = 0 ;se per errore ho tensione negativa, la azzero
+  SetVoltage = %tensaa ;tensione impostata
+  IF (%C38.15) SetVoltage = 0 - SetVoltage ;cambia segno tensione se comando negativo
+  VoltageY1 = 0
+  VoltageY2 = 0
+  IF (%C38.16) VoltageY1 = SetVoltage
+  IF (%C38.17) VoltageY2 = SetVoltage
+  %C21.7 = 1 ;setta diagnostica pestone in corso
+  ;disattiva limitatore e filtri
+  _ppconf_sx(0x00,X,Y,0,0,0xFF00,0,0,0,0,0,0,0,0)
+  ;attiva comando tensione
+  _ppconf_ol(0x00,X,Y,%pst[20],%pst[18],%pst[18],%pst[23],1,0.01)
+  _ppmove_ol(0x00,X,Y,0x04,10,VoltageY1,VoltageY2,%pst[0],3600)
+ ELSE
+  %C21.7 = 1 ;setta diagnostica pestone in corso
+  ;disattiva limitatore e filtri
+  _ppconf_sx(0x00,X,Y,0,0,0xFF00,0,0,0,0,0,0,0,0)
+  ;attiva comando tensione
+  _ppconf_ol(0x00,X,Y,%pst[20],%pst[18],%pst[18],%pst[23],1,0.01)
+  _ppmove_ol(0x00,X,Y,0x04,10,%tensaa,%tensab,%pst[0],3600) ;dai tensione
+ ENDIF
+ _wait_bit( 0, "%C21.7", 0) ;attende all'infinito
+ RET

@@ -1,0 +1,5 @@
+SECTION User //********** Sezione User **************************
+
+RETAIN  dword   numblck[16];    // numero blocco canale corrente
+
+ENDSECTION User //*************** Sezione Applicativo ******************

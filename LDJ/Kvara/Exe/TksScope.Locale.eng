@@ -1,0 +1,209 @@
+Attenzione=Warning
+Errore=Error
+
+# dialog
+OK=OK
+Ok=Ok
+Annulla=Cancel
+Imposta Trigger=Trigger settings
+TRIGGER=TRIGGER
+Auto=Auto
+Singolo=Single
+VISUALIZZA=VIEW
+Traccia=Track
+Traccia A=Track A
+Traccia B=Track B
+Traccia C=Track C
+Traccia D=Track D
+Traccia E=Track E
+Traccia F=Track F
+Traccia G=Track G
+Traccia H=Track H
+
+TEMPO BASE=TIME BASE
+Tempo Base (ms)=Time base (ms)
+OFFLine=OFFLine
+ONLIne=ONLine
+RUN=RUN
+STOP=STOP
+START=START
+
+Informazioni su TKSScope=Information on TKSScope
+TKSScope versione=TKSScope version
+IMPOSTAZIONI=SETTING
+ERRORE=ERROR
+Coord. Centro=Center Coord.
+CCW=CCW
+CW=CW
+Delta=Delta
+Durata Campionam. (sec)=Sampling Time (sec)
+Tempo Trascorso=Elapsed Time
+
+Seleziona lingua=Select language
+Riavviare applicazione per caricare la nuova lingua=Please, restart application to load new language
+
+Parametri test=Test parameters
+Raggio Nominale:=Nominal radius:
+Centro=Center
+Feed:=Feed:
+Piano=Plane
+Dir=Dir
+
+Raggio Medio:=Medium Radius
+Deviazione Radiale Min:=Min. Radial Deviation
+Deviazione Radiale Max:=Max. Radial Deviation
+
+Segnale=&Signal
+Risorsa=&Resource
+Registro=&Register
+Unsigned=Unsigned
+Val. Max.=Max. Val.
+Val. Min.=Min Val.
+Cursori=Cursor
+
+
+
+
+File=&File
+Salva Campioni=&Save Samples
+Apri File Configurazione=&Open Configuration File
+Salva Nuova Configurazione=Save New Configuration
+Salva come BMP=Save as BMP
+Apri File Dati=Open Data File
+Apri File di Test=Open Test File
+Lingua=Lan&guage
+Esci=&Exit
+
+Visualizza=&View
+Cursori=Cursors
+Verticali=Verticals
+Orizzontali=Horizontals
+Cursori OFFLINE=OFFLINE Cursors
+AB=AB
+CD=CD
+Polare=Polar
+Statistiche=Statistics
+Zoom=Zoom
+Zoom +=Zoom +
+Primo piano=Always on top
+Pulisci=Clear
+
+Tempo Base=Ti&me Base
+Trigger=&Trigger
+Imposta=Settings
+Personalizza=&Customize
+Barra di stato=St&atus bar
+Griglia=Grid
+Run=R&un
+Stop=&Stop
+Modo=Mode
+
+
+?=&?
+Informazioni su tronix=&About tronix
+
+
+
+Pronto=Ready
+Salva i dati campionati e il file di configurazione=Save sampling data and the configuration file
+Apre un file di configurazione dei segnali=Open an existing signal file configuration
+Salva la configurazione dei segnali su file=Save the signal configuration on file
+Salva il grafico come immagine bitmap=Save the graphic as a bitmap image
+Apre in modalità OFFLINE un file di dati=Open in OFFLINE mode a data file
+Apre in modalità OFFLINE un file di test=Open in OFFLINE mode a test file
+Seleziona la lingua per l'applicazione=Select the language for the application
+Esce dall'applicazione e chiede di salvare i documenti=Exit from application and ask to save documents
+
+Mostra o Nasconde Traccia A=Show or hide Track A
+Mostra o Nasconde Traccia B=Show or hide Track B
+Mostra o Nasconde Traccia C=Show or hide Track C
+Mostra o Nasconde Traccia D=Show or hide Track D
+Mostra o Nasconde Traccia E=Show or hide Track E
+Mostra o Nasconde Traccia F=Show or hide Track F
+Mostra o Nasconde Traccia G=Show or hide Track G
+Mostra o Nasconde Traccia H=Show or hide Track H
+Mostra o nasconde i cursori verticali=Show or hide vertical cursors
+Mostra o nasconde i cursori orizzontali=Show or hide horizontal cursors
+Visualizza/nasconde la finestra di statistiche in modo test=Show/hide statistics window in test mode
+Mostra la finestra sempre in primo piano=Show the windows always on top
+Pulisce schermo oscilloscopio=Clear oscilloscope screen
+Imposta il tempo per divisione a 50 ms=Set division time to 50 ms
+Imposta il tempo per divisione a 100 ms=Set division time to 100 ms
+Imposta il tempo per divisione a 250 ms=Set division time to 250 ms
+Imposta il tempo per divisione a 500 ms=Set division time to 500 ms
+Imposta il tempo per divisione a 1 s=Set division time to 1 s   
+Imposta il tempo per divisione a 2,5 s=Set division time to 2,5 s 
+Imposta il tempo per divisione a 5 s=Set division time to 5 s   
+Imposta il tempo per divisione a 10 s=Set division time to 10 s  
+Imposta il tempo per divisione a 25 s=Set division time to 25 s  
+Imposta il tempo per divisione a 50 s=Set division time to 50 s  
+Imposta il tempo per divisione a 100 s=Set division time to 100 s 
+Imposta il tempo per divisione a 250 s=Set division time to 250 s 
+Imposta il tempo per divisione a 500 s=Set division time to 500 s 
+
+Dialog per le impostazioni del Trigger=Trigger's settings dialog
+Mostra o nasconde la barra di stato=Show/hide the statusbar
+Mostra o nasconde la griglia=Show/hide the grid
+Attiva o Disattiva il Campionamento=Start and Stop the sampling
+Visualizzazione X-Y=View X-Y mode
+
+Visualizza le informazioni sul programma, il numero di versione e le informazioni di copyright=Show information on program, version number and copyright
+Modifica le dimensioni della finestra=Modify the window dimensions
+Modifica la posizione della finestra=Modify the window position
+Riduce la finestra ad icona=Minimize the window to icon
+Allarga la finestra a tutto schermo=Enlarge the window to fit screen
+Chiude la finestra attiva e chiede di salvare i documenti=Close the application and ask to save documents
+Ripristina la finestra alle dimensioni normali=Restore the windows to its normal dimensions
+
+
+
+
+Memorizzazione Dati=Data storing
+Comando Hold fallito!=Hold command failed!
+Selezionare il file=Select file
+Errore di Link: impossibile salvare il file!=Link error: it's impossible to save the file
+Trigger Attivo: impossibile memorizzare!=Active Trigger: storing it's not possible 
+Selezionare Durata campionamento > 0 !=Please select sampling duration > 0!
+KENV: Installazione Fallita!=KENV: Failed installation!
+Chiave DEFCN o LINK non trovata in Kvara.ini!=DEFCN or LINK key not found on Kvara.ini
+Installazione Comunicazione fallita!=Failed to install communication!
+Inizializzazione VShared.dll fallita!=Failed initialization of VShared.dll
+Oscilloscopio non connesso!=Oscilloscope not connected!
+Verificare che KVARA.INI contenga in [CHA.PATH] la chiave SLAOSC=Verify that KVARA.INI contains the key SLAOSC in [CHA.PATH] section
+Verificare che sia presente sul CN la SlaOsc.DLL=Verify presence of SlaOsc.dll on CNC
+Installazione client oscilloscopio fallita!=Failed installation of oscilloscope client!
+Impossibile Salvare il file CFG!=Impossible to save CFG file!
+Impossibile Salvare il file DATI!=Imposible to save DATA file!
+Impossibile Aprire il file=Impossible to open the file
+SetTime fallita!=SetTime failed!
+SetTrack%d fallita!=SetTrack%d failed!
+Selezionare almeno una traccia da Visualizzare!=Please select at least one track to show
+Campionamento in Corso=Sampling running
+POSSIBILE PERDITA DI DATI=POSSIBLE DATA LOSS
+Stop Campionamento: Nessuna Traccia da Visualizzare!=Sampling stopped: No track to show
+Campionamento in Arresto=Sampling is stopping
+Cursore Polare=Polar Cursor
+Manca il file .test=.test file is missing
+Statistiche=Statistics
+File di configurazione=Configuration files
+Tutti i file=All files
+Salva file di configurazione=Save configuration file
+Seleziona file di configurazione=Select configuration file
+File di dati=Data Files
+Seleziona file di dati=Select data file name
+File bitmap=Bitmap Files
+Salva file bitmap=Save bitmap file
+Errore: Registro di tipo Stringa=Error: Register of type String
+
+
+
+
+
+
+
+
+
+
+
+
+

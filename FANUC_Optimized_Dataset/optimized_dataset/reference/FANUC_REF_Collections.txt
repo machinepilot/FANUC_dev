@@ -1,0 +1,41 @@
+TOPIC: Collections
+KEYWORDS: collection, PNS, program number select, condition handler, production, collection instructions
+CATEGORY: reference
+SOURCE: FANUC Teach Pendant Help System / Operator Manual
+APPLIES_TO: R-30iB Plus, TP Programming
+---
+
+3. COLLECTIONS 3. COLLECTIONS PROGRAM ELEMENTS 3. COLLECTIONS 3.1. Overview Coll
+ections are used to collect programs together to simplify program maintenance. C
+ollections are shown as a [TYPE] in the Select Menu. They are created as a new T
+P program type, CO. Collection names must be unique among all programs. Use the 
+SYSTEM Configuration menu to setup collection names for CREATE. Collections are 
+enabled by default but can be disabled by setting $COLLECT_ENB to FALSE. Collect
+ions are backed and restored same as other TP programs. To create a collection, 
+press CREATE in the Select menu and enter a name. In the DETAIL screen, verify t
+he Sub type field is Collection. 3.2. Adding to a Collection Select the collecti
+on in the Select Menu. Using the DETAIL screen, cursor to the Collection field a
+nd press ENTER. A Collection Editor is used to add or remove existing programs t
+o or from the selected collection. Programs can be in multiple collections. If $
+COLLECT_CFG.$MULTI_PROG is FALSE, then a program can only be in 1 collection at 
+a time. All types of programs can be added except Process. Process should always
+belong to a Job which can be added. If $COLLECT_CFG.$ALLOW_PROC is TRUE, then Pr
+ocess can be directly added to a collection. While a collection is selected, if 
+you create a TP program, it is automatically added to the collection. If you del
+ete a program, you will be prompted to remove it from the collection(s) in which
+it is contained. A program can also be added to a collection(s) using the Collec
+tion field in the DETAIL screen. In this case, a list of Collections is shown wi
+th checkboxes if $COLLECT_CFG.$MULTI_PROG is TRUE. If FALSE, then a dialog box i
+s shown allowing you to select a single collection. 3.3. Displaying a Collection
+Once a collection has programs, when you select the collection using the ENTER k
+ey, it will expand to show all the programs. Use the key to exit the collection.
+Since collections are only used for organizing other programs, they will not be 
+set as the default program, are not allowed in the TP Editor, and are not execut
+ed. From the Top Menu, TreeView/Select can be selected. This will display the Tr
+eeView in the left window and the Select menu in the right window. The 2 windows
+are linked so when a collection is selected in the TreeView, the Select menu dis
+plays the collection and only those programs within the collection. The TreeView
+will gray any programs in the collection which are not loaded. 2. PROGRAM HEADER
+INFORMATION 4. LINE NUMBER AND PROGRAM END MARKER
+Metadata:
+{}

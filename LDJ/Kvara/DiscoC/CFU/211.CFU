@@ -1,0 +1,634 @@
+Ciclo fisso utente riscontri prima della anticoll Ver.012.59 : 211
+DBL TargetX1, TargetX2, TargetX3
+DBL TargetZ1, TargetZ2, TargetZ3
+DBL ActualX1, ActualX2, ActualX3
+DBL ActualZ1, ActualZ2, ActualZ3
+DBL DieSafeX, DieSafeR, DistToGo
+DBL MZedMode, TargetPosMZed
+DBL InTolerX1, InTolerX2, InTolerX3
+DBL TargetR1, TargetR2
+DBL ActualR1, ActualR2
+DBL XMinNoColl, InTolerZ
+DBL LowerATall, LowerATsing
+DBL SafeTrgX1, SafeTrgX2, SafeTrgX3
+DBL SafeTrgR1, SafeTrgR2
+DBL LowerSafeTrg, LowerXTrg
+DBL TrgR1withX, TrgR1withZ
+DBL RiseREnab, NoParkX
+DBL XsafeTarg, RiseRReq
+DBL BaseSafeX, BaseSafeR, BaseColl, BaseCheck
+DBL BaseSafeX1, BaseSafeR1, BaseSafeX2, BaseSafeR2
+DBL BaseSafeX3, BaseSafeR3, BaseSafeX4, BaseSafeR4
+
+ ; Abil. salita forzata assi R se abilitata ed esiste almeno R1
+ RiseREnab = ((%pargen_due.dwgn64.7) && (%cax4.dt0 == 1))
+
+ ;Verifica se abilitato il controllo collisione con basamento
+ BaseSafeX1 = %pargen_due.dgn55 ;Area sicurezza 1 basamento in X
+ BaseSafeR1 = %pargen_due.dgn56 ;Area sicurezza 1 basamento in R 
+ BaseSafeX2 = %pargen_due.dgn63 ;Area sicurezza 2 basamento in X
+ BaseSafeR2 = %pargen_due.dgn64 ;Area sicurezza 2 basamento in R 
+ BaseSafeX3 = %pargen_due.dgn65 ;Area sicurezza 3 basamento in X
+ BaseSafeR3 = %pargen_due.dgn66 ;Area sicurezza 3 basamento in R 
+ BaseSafeX4 = %pargen_due.dgn67 ;Area sicurezza 4 basamento in X
+ BaseSafeR4 = %pargen_due.dgn68 ;Area sicurezza 4 basamento in R 
+ BaseCheck = 0
+ IF((BaseSafeX1 != 0) && (BaseSafeR1 != 0) && (%cax4.dt0 == 1)) THEN
+   BaseCheck = 1
+ ENDIF
+
+ ;Logica anticollisione per casi non gestiti dalla anticoll standard
+ ;Deve esistere almeno X1 e (X2 e/o uno o due Z)
+ VL0 = 0 ;Assi non configurati
+ IF ((%cax2.dt0 != 1) || ((%cax3.dt0 != 1) && (%cax6.dt0 != 1) && (%cax7.dt0 != 1) && !(RiseREnab) && !(BaseCheck))) JMPF 1100
+ IF (%cax27.dt0 == 1) JMPF 1100 ;Se esiste Z4, esce, perché non è gestito
+ SYN
+ TargetX1 = %prog[%np].xa + %prog[%np].corxa ;target X1
+ TargetX2 = %prog[%np].xb + %prog[%np].corxb ;target X2
+ IF (%cax3.dt0 != 1) TargetX2 = QNAN()
+ TargetX3 = %prog[%np].xc + %prog[%np].corxc ;target X3
+ IF (%cax22.dt0 != 1) TargetX3 = QNAN()
+ ;se gantry asse X1-X2 abilitato X2 non va comandato
+ IF((%ax[2].pa[3].25) && (%gantry[0].Gdat[0] == 3)) TargetX2 = QNAN()
+ TargetZ1 = %prog[%np].za ;target Z1
+ IF (%cax6.dt0 != 1) TargetZ1 = QNAN()
+ TargetZ2 = %prog[%np].zb ;target Z2
+ IF (%cax7.dt0 != 1) TargetZ2 = QNAN()
+ TargetZ3 = %prog[%np].zc ;target Z3
+ IF (%cax26.dt0 != 1) TargetZ3 = QNAN()
+ ActualX1 = QTA(X) ;actual X1
+ ActualX2 = QNAN() ;actual X2
+ IF (%cax3.dt0 == 1) ActualX2 = QTA(Y) ;actual X2
+ ActualX3 = QNAN() ;actual X3
+ IF (%cax22.dt0 == 1) ActualX3 = %ax[22].ra[4] / 1000;actual X3
+ ActualZ1 = QNAN() ;actual Z1
+ IF (%cax6.dt0 == 1) ActualZ1 = QTA(V) ;actual Z1
+ ActualZ2 = QNAN() ;actual Z2
+ IF (%cax7.dt0 == 1) ActualZ2 = QTA(W) ;actual Z2
+ ActualZ3 = QNAN() ;actual Z3
+ IF (%cax26.dt0 == 1) ActualZ3 = %ax[26].ra[4] / 1000;actual Z3
+ DieSafeX = %dap[%np].dimp + %gen0 ;quota X sicurezza matrice
+ DieSafeR = %dap[%np].altm + %gen1 + %dap[%np].altDieHolder ;quota R sicurezza matrice
+ DistToGo = 0
+ IF (!(ISQNAN(TargetX1))) DistToGo = ABS(TargetX1 - ActualX1) ;distance to go X1
+ InTolerX1 = (DistToGo <= %ap[2].pt[4]) ;X1 in tolleranza
+ DistToGo = 0
+ IF (!(ISQNAN(TargetX2))) DistToGo = ABS(TargetX2 - ActualX2) ;distance to go X2
+ InTolerX2 = (DistToGo <= %ap[3].pt[4]) ;X2 in tolleranza
+ DistToGo = 0
+ IF (!(ISQNAN(TargetX3))) DistToGo = ABS(TargetX3 - ActualX3) ;distance to go X3
+ InTolerX3 = (DistToGo <= %ap[22].pt[4]) ;X3 in tolleranza
+
+ MZedMode = 0 ;Magic zed escluso
+ TargetPosMZed = QNAN()
+ JSR 212 ;Ciclo inizializzazione zeta passivo
+
+ DistToGo = 0
+ IF (!(ISQNAN(TargetZ1))) THEN
+  DistToGo = ABS(TargetZ1 - ActualZ1) ;distance to go Z1
+  IF (DistToGo < %ap[6].pt[4]) TargetZ1 = QNAN()
+ ENDIF
+ DistToGo = 0
+ IF (!(ISQNAN(TargetZ2))) THEN
+  DistToGo = ABS(TargetZ2 - ActualZ2) ;distance to go Z2
+  IF (DistToGo < %ap[7].pt[4]) TargetZ2 = QNAN()
+ ENDIF
+ DistToGo = 0
+ IF (!(ISQNAN(TargetZ3))) THEN
+  DistToGo = ABS(TargetZ3 - ActualZ3) ;distance to go Z3
+  IF (DistToGo < %ap[26].pt[4]) TargetZ3 = QNAN()
+ ENDIF
+ TargetR1 = %prog[%np].ara ;target R1
+ IF (%cax4.dt0 != 1) TargetR1 = QNAN()
+ TargetR2 = %prog[%np].arb ;target R2
+ IF (%cax5.dt0 != 1) TargetR2 = QNAN()
+ ActualR1 = QNAN() ;actual R1
+ IF (%cax4.dt0 == 1) ActualR1 = QTA(Z) ;actual R1
+ ActualR2 = QNAN() ;actual R2
+ IF (%cax5.dt0 == 1) ActualR2 = QTA(U) ;actual R2
+ XMinNoColl = 0 ;quota X minima per traslazione senza collisione con Z
+ LowerXTrg = QNAN() ;Target minimo assi X
+ LowerATall = QNAN() ;Actual o target minimo assi X
+
+ ;Per il controllo collisione con basamento, porta gli R a quota di sicurezza se la pos. attuale di almeno un X e' in zona basamento
+ ;e il target di R e' inferiore alla quota sicurezza basamento
+ BaseColl = 0
+ BaseSafeX = 0
+ BaseSafeR = 0
+ IF(BaseCheck) THEN
+  BaseSafeX1 = BaseSafeX1 + 1
+  BaseSafeR1 = BaseSafeR1 + 1
+  BaseSafeX = BaseSafeX1
+  BaseSafeR = BaseSafeR1
+  IF((BaseSafeX2 != 0) && (BaseSafeR2 != 0)) THEN 
+   BaseSafeX2 = BaseSafeX2 + 1
+   BaseSafeR2 = BaseSafeR2 + 1
+   IF(BaseSafeX2 > BaseSafeX) BaseSafeX = BaseSafeX2
+   IF(BaseSafeR2 > BaseSafeR) BaseSafeR = BaseSafeR2
+  ENDIF
+  IF((BaseSafeX3 != 0) && (BaseSafeR3 != 0)) THEN
+   BaseSafeX3 = BaseSafeX3 + 1
+   BaseSafeR3 = BaseSafeR3 + 1
+   IF(BaseSafeX3 > BaseSafeX) BaseSafeX = BaseSafeX3
+   IF(BaseSafeR3 > BaseSafeR) BaseSafeR = BaseSafeR3
+  ENDIF
+  IF((BaseSafeX4 != 0) && (BaseSafeR4 != 0)) THEN
+   BaseSafeX4 = BaseSafeX4 + 1
+   BaseSafeR4 = BaseSafeR4 + 1
+   IF(BaseSafeX4 > BaseSafeX) BaseSafeX = BaseSafeX4
+   IF(BaseSafeR4 > BaseSafeR) BaseSafeR = BaseSafeR4
+  ENDIF
+ 
+  ;Trova quota target peggiore tra X1 e X2
+  LowerXTrg = TargetX1
+  IF (!(ISQNAN(TargetX2))) THEN
+   IF(%cax3.dt27 == 7) THEN
+    ;modo di funzionamento 7 (Conico Incrementale)
+    IF(TargetX2 < 0) LowerXTrg = TargetX1 + TargetX2
+   ELSE
+    ;X2 assoluto
+    IF(TargetX2 < LowerXTrg) LowerXTrg = TargetX2
+   ENDIF
+  ENDIF
+  ;Trova quota target peggiore tra X1-2 e X3
+  IF (!(ISQNAN(TargetX3))) THEN
+   IF(%cax22.dt27 == 7) THEN
+    ;modo di funzionamento 7 (Conico Incrementale)
+    IF(LowerXTrg > (TargetX1 + TargetX3)) LowerXTrg = TargetX1 + TargetX3
+   ELSE
+    ;X3 assoluto
+    IF(TargetX3 < LowerXTrg) LowerXTrg = TargetX3
+   ENDIF
+  ENDIF
+
+  ;Se target X-R in zona basamento, segnala errore e blocca il programma.
+  IF((LowerXTrg < BaseSafeX1) && (TargetR1 < BaseSafeR1)) JMPF 150
+  IF((LowerXTrg < BaseSafeX2) && (TargetR1 < BaseSafeR2)) JMPF 150
+  IF((LowerXTrg < BaseSafeX3) && (TargetR1 < BaseSafeR3)) JMPF 150
+  IF((LowerXTrg < BaseSafeX4) && (TargetR1 < BaseSafeR4)) JMPF 150
+  JMPF 160
+N150  
+  %C17.14 = 1 ;Quota riscontri errata
+  AWAIT(!%C17.1) ; attesa reset canale
+N160 
+  ;Memorizza gestione sequenza per collisione con il basamento se
+  ;la pos. target  di almeno un X e' in zona sicurezza basamento
+  ;e la pos. attuale di R1 e' inferiore alla quota sicurezza basamento
+  IF(!(ISQNAN(ActualR1)) && (LowerXTrg < BaseSafeX) && (ActualR1 < BaseSafeR)) THEN
+   BaseColl = 1
+  ELSE
+
+   ;trova il peggiore tra quote actual e target degli X, partendo da X1
+   LowerATall = ActualX1
+   IF(TargetX1 < LowerATall) LowerATall = TargetX1
+  
+   ;se X2 esiste
+   IF (!(ISQNAN(TargetX2))) THEN
+    ;trova il peggiore tra quote actual e target di X2
+    LowerATsing = ActualX2
+    IF(TargetX2 < LowerATsing) LowerATsing = TargetX2
+  
+    ;trova il peggiore tra X1 e X2
+    IF(%cax3.dt27 == 7) THEN
+     ;modo di funzionamento 7 (Conico Incrementale)
+     IF(LowerATsing < 0) LowerATall = LowerATall + LowerATsing
+    ELSE
+     ;X2 assoluto
+     IF(LowerATsing < LowerATall) LowerATall = LowerATsing
+    ENDIF
+   ENDIF
+  
+   ;se X3 esiste
+   IF (!(ISQNAN(TargetX3))) THEN
+    ;trova il peggiore tra quote actual e target di X3
+    LowerATsing = ActualX3
+    IF(TargetX3 < LowerATsing) LowerATsing = TargetX3
+  
+    ;trova il peggiore tra X1-2 e X3
+    IF(%cax22.dt27 == 7) THEN
+     ;modo di funzionamento 7 (Conico Incrementale)
+     IF(LowerATsing < 0) LowerATall = LowerATall + LowerATsing
+    ELSE
+     ;X3 assoluto
+     IF(LowerATsing < LowerATall) LowerATall = LowerATsing
+    ENDIF
+   ENDIF
+
+   IF(!(ISQNAN(TargetR1)) && (LowerATall < BaseSafeX) && (TargetR1 < BaseSafeR)) THEN
+    BaseColl = 2
+   ENDIF
+  ENDIF
+ ENDIF
+ 
+ VL0 = 1 ;Assi in tolleranza
+ NoParkX = 0 ;esclude parcheggio X
+ InTolerZ = (ISQNAN(TargetZ1)) && (ISQNAN(TargetZ2)) && (ISQNAN(TargetZ3)) ;Assi Z in tolleranza
+ IF(BaseColl==2) JMPF 210 ;se richiesto parcheggio X per basamento, non esclude il parcheggio X
+ ;se non deve muovere ne Z1-2-3 ne X2-3, esce
+ IF (!(InTolerZ) || !(InTolerX2) || !(InTolerX3)) JMPF 200
+ ;se serve la risalita R iniziale, esce solo se anche X1 non si deve muovere
+ IF ((!(RiseREnab) && !(BaseColl)) || (InTolerX1)) JMPF 1100
+ NoParkX = 1 ;esclude parcheggio X1 per X2-3 e Z gia' in posizione
+ JMPF 210
+N200
+ ;esclude parcheggio X1 per X2-3 e Z gia' in posizione
+ IF ((InTolerZ) && (InTolerX2 || (%cax3.dt27 != 7)) && (InTolerX3 || (%cax22.dt27 != 7))) NoParkX = 1
+N210
+ ;se almeno uno Z si deve muovere, usa come limite anche la zona di lento per uscirne
+ IF (!InTolerZ) THEN
+  ;trova limite minimo ammesso per X per potere muovere gli Z
+  ;se la quota limitazione velocita  per collisione X e' impostata
+  IF (%pargene.dwgn15 != 0) THEN
+   ;carica la quota minima per traslazione Z con margine per uscire dallo spazio di rallentamento
+   XMinNoColl=%pargene.dwgn15/1000 + 5
+  ENDIF
+ ENDIF
+ ;aumenta la quota minima se il parametro di distanza di sicurezza lo richiede
+ IF (XMinNoColl < %gen0) XMinNoColl = %gen0
+ XMinNoColl = XMinNoColl + %dap[%np].dimp
+
+ ;trova il peggiore tra quote actual e target degli X, partendo da X1 (se non l'ha gia fatto)
+ IF(ISQNAN(LowerATall)) THEN
+  LowerATall = ActualX1
+  IF(TargetX1 < LowerATall) LowerATall = TargetX1
+
+  ;se X2 esiste
+  IF (!(ISQNAN(TargetX2))) THEN
+   ;trova il peggiore tra quote actual e target di X2
+   LowerATsing = ActualX2
+   IF(TargetX2 < LowerATsing) LowerATsing = TargetX2
+
+   ;trova il peggiore tra X1 e X2
+   IF(%cax3.dt27 == 7) THEN
+    ;modo di funzionamento 7 (Conico Incrementale)
+    IF(LowerATsing < 0) LowerATall = LowerATall + LowerATsing
+   ELSE
+    ;X2 assoluto
+    IF(LowerATsing < LowerATall) LowerATall = LowerATsing
+   ENDIF
+  ENDIF
+
+  ;se X3 esiste
+  IF (!(ISQNAN(TargetX3))) THEN
+   ;trova il peggiore tra quote actual e target di X3
+   LowerATsing = ActualX3
+   IF(TargetX3 < LowerATsing) LowerATsing = TargetX3
+
+   ;trova il peggiore tra X1-2 e X3
+   IF(%cax22.dt27 == 7) THEN
+    ;modo di funzionamento 7 (Conico Incrementale)
+    IF(LowerATsing < 0) LowerATall = LowerATall + LowerATsing
+   ELSE
+    ;X3 assoluto
+    IF(LowerATsing < LowerATall) LowerATall = LowerATsing
+   ENDIF
+  ENDIF
+ ENDIF
+
+ VL0 = 2 ;Assi X non a rischio di collisione con matrice
+ ;se il caso peggiore non e' a rischio collisione
+ ;e non c'e' da gestire uno zeta passivo, esce
+ IF((LowerATall >= XMinNoColl) && (MZedMode == 0) && !(BaseColl)) JMPF 1100
+
+ IF((LowerATall < XMinNoColl) || (BaseColl)) JMPF 300
+ ;Gestione del solo zeta passivo
+ SafeTrgX1 = QNAN()
+ SafeTrgX2 = QNAN()
+ SafeTrgX3 = QNAN()
+ SafeTrgR1 = QNAN()
+ SafeTrgR2 = QNAN()
+ TrgR1withX = QNAN()
+ TrgR1withZ = QNAN()
+ VL0 = 3 ;Gestione del solo zeta passivo
+ JMPF 800
+N300
+ VL0 = 5 ;Gestione collisioni
+
+ ;Per il controllo collisione con basamento, porta gli X a quota di sicurezza
+ IF((BaseColl==2) && (XMinNoColl < BaseSafeX)) THEN
+  XMinNoColl = BaseSafeX
+ ENDIF
+
+ ;trova il migliore tra quote actual e target di X1
+ SafeTrgX1 = ActualX1 ;X1 safe target
+ IF(TargetX1 > SafeTrgX1) SafeTrgX1 = TargetX1
+ LowerSafeTrg = SafeTrgX1 ;caso peggiore X sul safe target
+
+ SafeTrgX2 = QNAN() ;X2 safe target
+ ;se X2 esiste
+ IF (!(ISQNAN(TargetX2))) THEN
+  ;se X2 in tolleranza, pone quota attuale pari a quota target per evitare errori nei calcoli
+  IF (InTolerX2) ActualX2 = TargetX2
+  ;trova il migliore tra quote actual e target di X2
+  SafeTrgX2 = ActualX2
+  IF(TargetX2 > SafeTrgX2) SafeTrgX2 = TargetX2
+
+  IF(%cax3.dt27 == 7) THEN
+   ;modo di funzionamento 7 (Conico Incrementale)
+   ;modifica la distanza peggiore se target X2 negativo
+   IF(SafeTrgX2 < 0) LowerSafeTrg = SafeTrgX1 + SafeTrgX2
+  ELSE
+   ;X2 assoluto
+   ;se necessario porta la quota target X2 in posizione di sicurezza
+   IF(SafeTrgX2 < XMinNoColl) SafeTrgX2 = XMinNoColl
+  ENDIF
+ ENDIF
+
+ SafeTrgX3 = QNAN() ;X3 safe target
+ ;se X3 esiste
+ IF (!(ISQNAN(TargetX3))) THEN
+  ;se X3 in tolleranza, pone quota attuale pari a quota target per evitare errori nei calcoli
+  IF (InTolerX3) ActualX3 = TargetX3
+  ;trova il migliore tra quote actual e target di X3
+  SafeTrgX3 = ActualX3
+  IF(TargetX3 > SafeTrgX3) SafeTrgX3 = TargetX3
+
+  IF(%cax22.dt27 == 7) THEN
+   ;modo di funzionamento 7 (Conico Incrementale)
+   ;modifica la distanza peggiore se target X3 negativo
+   IF(LowerSafeTrg > (SafeTrgX1 + SafeTrgX3)) LowerSafeTrg = SafeTrgX1 + SafeTrgX3
+  ELSE
+   ;X3 assoluto
+   ;se necessario porta la quota target X3 in posizione di sicurezza
+   IF(SafeTrgX3 < XMinNoColl) SafeTrgX3 = XMinNoColl
+  ENDIF
+ ENDIF
+
+ ;aumenta la posizione sicurezza di X1 se usando le migliori posizioni
+ ;si resta comunque in zona di collisione, in modo da uscirne
+ IF(LowerSafeTrg < XMinNoColl) SafeTrgX1 = SafeTrgX1 + XMinNoColl - LowerSafeTrg
+
+ ;verifica se la quota sicura di tutti gli X e' pari alla quota target
+ XsafeTarg = 1 ;cumulativo safe target X
+ ;quota sicura non pari a target X1
+ IF(SafeTrgX1 != TargetX1) XsafeTarg = 0 ;cumulativo safe target X
+ ;se X2 esiste e quota sicura non pari a target X2
+ IF(!(ISQNAN(SafeTrgX2)) && (SafeTrgX2 != TargetX2)) XsafeTarg = 0 ;cumulativo safe target X
+ ;se X3 esiste e quota sicura non pari a target X3
+ IF(!(ISQNAN(SafeTrgX3)) && (SafeTrgX3 != TargetX3)) XsafeTarg = 0 ;cumulativo safe target X
+
+ ;se la quota sicura di tutti gli X e' pari alla quota target
+ ;esclude il movimento degli Z per lasciare tutte le ottimizzazioni alla anticoll.
+ ;(se c'e' da gestire uno zeta passivo, non puo delegarlo alla anticoll.)
+ IF((XsafeTarg) && (MZedMode == 0)) THEN
+  ;esclude movimento Z
+  TargetZ1 = QNAN()
+  TargetZ2 = QNAN()
+  TargetZ3 = QNAN()
+  VL0 = 4 ;Escluso movimento Z sicuro
+ ENDIF
+
+ ;se X1 e' gia' sulla quota sicura, non lo muove
+ IF(SafeTrgX1 <= ActualX1) SafeTrgX1 = QNAN()
+ ;se X2 esiste ed e' gia' sulla quota sicura o oltre, non lo muove
+ IF (!(ISQNAN(SafeTrgX2))) THEN
+  IF(SafeTrgX2 <= ActualX2) SafeTrgX2 = QNAN()
+ ENDIF
+ ;se X3 esiste ed e' gia' sulla quota sicura o oltre, non lo muove
+ IF (!(ISQNAN(SafeTrgX3))) THEN
+  IF(SafeTrgX3 <= ActualX3) SafeTrgX3 = QNAN()
+ ENDIF
+
+ ;Richiesta salita R se almeno un X in zona matrice
+ ;e movimento verso matrice
+ RiseRReq = 0
+ IF (!(ISQNAN(TargetX1))) THEN
+  IF ((!(ISQNAN(SafeTrgX1))) && (TargetX1 < ActualX1)) RiseRReq = 1
+ ENDIF
+ IF (!(ISQNAN(TargetX2))) THEN
+  IF ((!(ISQNAN(SafeTrgX2))) && (TargetX2 < ActualX2)) RiseRReq = 1
+ ENDIF
+ IF (!(ISQNAN(TargetX3))) THEN
+  IF ((!(ISQNAN(SafeTrgX3))) && (TargetX3 < ActualX3)) RiseRReq = 1
+ ENDIF
+
+ ;se gli Z non sono da muovere, X2-X3 non sono da muovere o sono assoluti,
+ ;non deve portare gli X a quota sicura
+ IF(NoParkX) THEN
+  SafeTrgX1 = QNAN()
+  SafeTrgX2 = QNAN()
+  SafeTrgX3 = QNAN()
+ ENDIF
+
+ ;se configurato, porta gli R a quota di sicurezza se la pos. attuale di almeno un X e' in zona matrice
+ ;con moto verso matrice e il target di R e' inferiore alla quota sicurezza matrice meno la tolleranza
+ SafeTrgR1 = QNAN()
+ SafeTrgR2 = QNAN()
+ IF((RiseREnab) && (RiseRReq)) THEN
+  IF(!(ISQNAN(ActualR1)) && (ActualR1 < (DieSafeR - %ap[4].pt[4]))) SafeTrgR1 = DieSafeR
+  IF(!(ISQNAN(ActualR2)) && (ActualR2 < (DieSafeR - %ap[5].pt[4]))) SafeTrgR2 = DieSafeR
+  ;se quota target R1 molto vicina a quota sicura, va direttamente al target
+  IF(!(ISQNAN(SafeTrgR1))) THEN
+   DistToGo = ABS(TargetR1 - SafeTrgR1) ;delta tra quota sicura e quota target
+   IF (DistToGo < %ap[4].pt[4]) SafeTrgR1 = TargetR1
+   VL0 = VL0 + 2 ;Salita iniziale R1 a quota sicurezza matrice
+  ENDIF
+  ;se quota target R2 molto vicina a quota sicura, va direttamente al target
+  IF(!(ISQNAN(SafeTrgR2))) THEN
+   DistToGo = ABS(TargetR2 - SafeTrgR2) ;delta tra quota sicura e quota target
+   IF (DistToGo < %ap[5].pt[4]) SafeTrgR2 = TargetR2
+  ENDIF
+ ENDIF
+
+ ;Trova quota target peggiore tra X1 e X2 (se non l'ha gia fatto)
+ IF(ISQNAN(LowerXTrg)) THEN
+  LowerXTrg = TargetX1
+  IF (!(ISQNAN(TargetX2))) THEN
+   IF(%cax3.dt27 == 7) THEN
+    ;modo di funzionamento 7 (Conico Incrementale)
+    IF(TargetX2 < 0) LowerXTrg = TargetX1 + TargetX2
+   ELSE
+    ;X2 assoluto
+    IF(TargetX2 < LowerXTrg) LowerXTrg = TargetX2
+   ENDIF
+  ENDIF
+  ;Trova quota target peggiore tra X1-2 e X3
+  IF (!(ISQNAN(TargetX3))) THEN
+   IF(%cax22.dt27 == 7) THEN
+    ;modo di funzionamento 7 (Conico Incrementale)
+    IF(LowerXTrg > (TargetX1 + TargetX3)) LowerXTrg = TargetX1 + TargetX3
+   ELSE
+    ;X3 assoluto
+    IF(TargetX3 < LowerXTrg) LowerXTrg = TargetX3
+   ENDIF
+  ENDIF
+ ENDIF
+
+ ;Per il controllo collisione con basamento, porta gli R a quota di sicurezza
+ IF((BaseColl==1) && (ISQNAN(SafeTrgR1))) THEN
+  SafeTrgR1 = BaseSafeR
+  IF(!(ISQNAN(ActualR2))) SafeTrgR2 = BaseSafeR 
+ ENDIF
+
+ ;se R1 esiste, e gli Z si debbono muovere, tenta di muoverlo insieme a loro,
+ ;altrimenti tenta di muoverlo insieme agli X.
+ ;se R1 e' stato portato gia' a quota sicura e deve rientrare in zona matrice,
+ ;non lo deve muovere ne con X ne con Z.
+ ;esclude ottimizzazioni R1 se esiste anche R2
+ TrgR1withX = QNAN() ;target R1 insieme a X
+ TrgR1withZ = QNAN() ;target R1 insieme a Z
+ IF (!(ISQNAN(TargetR1)) && ((ISQNAN(SafeTrgR1)) || (TargetR1 > DieSafeR)) && (ISQNAN(ActualR2))) THEN
+  ;se almeno uno Z si deve muovere in questo ciclo vuol dire che poi
+  ;occorre rientrare in zona di collisione,
+  ;(se c'e' da gestire uno zeta passivo, non muove mai R con gli Z)
+  IF (((!(ISQNAN(TargetZ1))) || (!(ISQNAN(TargetZ2))) || (!(ISQNAN(TargetZ3)))) && (MZedMode == 0)) THEN
+   TrgR1withZ = TargetR1
+   ;quindi porta R1 a quota di sicurezza se il target X e' sopra matrice
+   ; e il target R1 e' inferiore a questa, altrimenti lo porta sul target
+   IF((LowerXTrg < DieSafeX) && (TrgR1withZ < DieSafeR)) TrgR1withZ = DieSafeR
+   DistToGo = ABS(TrgR1withZ - ActualR1) ;distance to go R1
+   ;se R1 in tolleranza, non lo muove
+   IF (DistToGo < %ap[4].pt[4]) TrgR1withZ = QNAN()
+  ELSE
+   ;se almeno un X si deve muovere in questo ciclo, ma non si muovono gli Z
+   ;cerca di muovere R1 insieme ad essi
+   IF ((!(ISQNAN(SafeTrgX1))) || (!(ISQNAN(SafeTrgX2)))) THEN
+    TrgR1withX = TargetR1
+    ;quindi porta R1 a quota di sicurezza se il target X e' sopra matrice
+    ; e il target R1 e' inferiore a questa, altrimenti lo porta sul target
+    IF((LowerXTrg < DieSafeX) && (TrgR1withX < DieSafeR)) TrgR1withX = DieSafeR
+    ;non muove R1 se il target X e' fuori matrice,
+    ;l'attuale di X e' sopra matrice, e R1 dovrebbe scendere.
+    IF(TrgR1withX < ActualR1) TrgR1withX = ActualR1
+    DistToGo = ABS(TrgR1withX - ActualR1) ;distance to go R1
+    ;se R1 in tolleranza, non lo muove
+    IF (DistToGo < %ap[4].pt[4]) TrgR1withX = QNAN()
+   ;se gli Z non si debbono muovere, gli X non debbono andare a quota di sicurezza,
+   ;X2-3 vanno in zona collisione e X1 no,
+   ;porta comunque R1 sopra matrice (la anticoll non lo farebbe)
+   ELSE
+    IF((LowerXTrg < DieSafeX) && (TargetX1 > DieSafeX) && (TargetR1 < DieSafeR)) THEN
+     TrgR1withX = DieSafeR
+     DistToGo = ABS(TrgR1withX - ActualR1) ;distance to go R1
+     ;se R1 in tolleranza, non lo muove
+     IF (DistToGo < %ap[4].pt[4]) TrgR1withX = QNAN()
+    ENDIF
+   ENDIF
+  ENDIF
+ ENDIF
+
+N800
+ ;Passa le quote target di X3 e Z3 a CH5
+ VG2 = SafeTrgX3 ;target sicuro X3
+ VG3 = TargetZ3 ;target Z3
+ VG4 = TargetX3 ;target finale X3 (per fare il recupero giochi se uguale al target sicuro)
+ VG5 = QNAN()
+ IF (MZedMode == 2) THEN
+  VG5 = TargetPosMZed ;target Z3 per posizionamento zeta passivo
+ ENDIF
+
+ ;se R1 deve andare a quota sicura e questa e' diversa dal target, disabilita recupero giochi
+ IF (!(ISQNAN(SafeTrgR1)) && (SafeTrgR1 != TargetR1)) RCG[Z]=0
+
+ ;se R2 deve andare a quota sicura e questa e' diversa dal target, disabilita recupero giochi
+ IF (!(ISQNAN(SafeTrgR2)) && (SafeTrgR2 != TargetR2)) RCG[U]=0
+
+ ;porta R1-R2 a quota sicura
+ G0 Z(SafeTrgR1) U(SafeTrgR2)
+
+ ;ripristina il recupero giochi di R1
+ IF (!(ISQNAN(SafeTrgR1))) RCG[Z]=1
+
+ ;ripristina il recupero giochi di R2
+ IF (!(ISQNAN(SafeTrgR2))) RCG[U]=1
+
+ ?%C17.28 = 1 ;sblocco primo step a CH5
+
+ ;se X1 si deve muovere e la quota sicura e' diversa dal target, disabilita recupero giochi
+ IF (!(ISQNAN(SafeTrgX1))) THEN
+  IF(SafeTrgX1 != TargetX1) RCG[X]=0
+ ENDIF
+
+ ;se X2 si deve muovere e la quota sicura e' diversa dal target, disabilita recupero giochi
+ IF (!(ISQNAN(SafeTrgX2))) THEN
+  IF(SafeTrgX2 != TargetX2) RCG[Y]=0
+ ENDIF
+
+ ;se R1 si deve muovere e la quota sicura e' diversa dal target, disabilita recupero giochi
+ IF (!(ISQNAN(TrgR1withX))) THEN
+  IF(TrgR1withX != TargetR1) RCG[Z]=0
+ ENDIF
+
+ ;se X1 e X2 debbono muoversi li muove
+ ;e se possibile muove R1 insieme agli X per guadagnare tempo.
+ G0 X(SafeTrgX1) Y(SafeTrgX2) Z(TrgR1withX)
+
+ ;ripristina il recupero giochi di R1
+ IF (!(ISQNAN(TrgR1withX))) RCG[Z]=1
+
+ ;ripristina il recupero giochi X1-X2
+ RCG[X]=1
+ IF (!(ISQNAN(SafeTrgX2))) RCG[Y]=1
+
+ _wait_bit( 0,"%C33.28",1) ;attende fine primo step da CH5
+
+ ?%C17.29 = 1 ;sblocco secondo step a CH5
+
+ IF (MZedMode != 0) THEN
+  JSR 212 ;Ciclo movimentazione zeta passivo
+ ELSE
+  ;posiziona gli Z se previsto un rientro in zona a rischio, altrimenti avremo NAN nella quota
+  ;e se possibile muove R1 insieme agli Z per guadagnare tempo.
+
+  ;se R1 si deve muovere e la quota sicura e' diversa dal target, disabilita recupero giochi
+  IF (!(ISQNAN(TrgR1withZ))) THEN
+   IF(TrgR1withZ != TargetR1) RCG[Z]=0
+  ENDIF
+
+  G0 Z(TrgR1withZ) V(TargetZ1) W(TargetZ2)
+
+  ;ripristina il recupero giochi di R1
+  IF (!(ISQNAN(TrgR1withZ))) RCG[Z]=1
+ ENDIF
+
+ _wait_bit( 0,"%C33.29",1) ;attende fine secondo step da CH5
+
+N1100
+ ;Copia delle variabili in shared a fini diagnostici
+ IF(VL0 > 0) THEN
+  VL1 = TargetX1
+  VL2 = TargetX2
+  VL3 = TargetX3
+  VL4 = TargetZ1
+  VL5 = TargetZ2
+  VL6 = TargetZ3
+  VL7 = TargetR1
+  VL8 = ActualX1
+  VL9 = ActualX2
+  VL10 = ActualX3
+  VL11 = ActualZ1
+  VL12 = ActualZ2
+  VL13 = ActualZ3
+  VL14 = ActualR1
+  VL15 = XMinNoColl
+  VL16 = LowerATall
+  VL17 = SafeTrgX1
+  VL18 = SafeTrgX2
+  VL19 = SafeTrgX3
+  VL20 = LowerSafeTrg
+  VL21 = LowerXTrg
+  VL22 = TrgR1withX
+  VL23 = TrgR1withZ
+  VL24 = MZedMode
+  VL25 = TargetPosMZed
+  VL26 = ActualR2
+  VL27 = SafeTrgR1
+  VL28 = SafeTrgR2
+  VL29 = BaseColl
+ ENDIF
+
+ ;Forzamento quota attuale assi X non esistenti al valore di X1,
+ ;per evitare problemi con i calcoli della anticoll
+ SYN ;necessario per leggere la quota attuale di X1
+ IF (%cax3.dt0 != 1) %ax3.ra4 = %ax2.ra4
+ IF (%cax22.dt0 != 1) %ax22.ra4 = %ax2.ra4
+ IF (%cax23.dt0 != 1) %ax23.ra4 = %ax2.ra4
+ ;Sblocco CH5 su quote nulle
+ %C17.28 = 1 ;sblocco primo step a CH5
+ %C17.29 = 1 ;sblocco secondo step a CH5
+ VG2 = QNAN() ;target sicuro X3
+ VG3 = QNAN() ;target Z3
+ VG4 = QNAN() ;target finale X3 (per fare il recupero giochi se uguale al target sicuro)
+ VG5 = QNAN() ;target Z3 per posizionamento zeta passivo
+
+RET

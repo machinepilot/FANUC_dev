@@ -1,0 +1,7 @@
+Ciclo fisso inizializzazione pestone Ver.012.38 : 103
+
+ ; init DLL per uscite veloci pestone a sola lettura o sensore pressione
+ _ppconf_sx(0x00,X,X,0,0,0x8000,0,0,0,0,0,0,0,0)
+ ?%C18.16 = 1 ;inizializzazione completata
+ _wait_bit( 0,"%C32.13",1) ;attende conferma fine ciclo
+ RET

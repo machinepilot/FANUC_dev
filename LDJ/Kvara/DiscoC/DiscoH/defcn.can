@@ -1,0 +1,108 @@
+
+#include <defcncan.h>
+
+SECTION CanOpen //********** Sezione CanOpen **************************
+
+typedef struct {
+    byte    PdoTy;      // Input(TX)/Output(RX)
+    word    PdoTx;      // Transmit type
+    word    PdoTm;      // Inhibit time
+    word    PdoId;      // Pdo CobID number
+    word    PdoEt;      // Event time
+    word    PdoIw[8];   // IW/QW number
+    dword   PdoMp[8];   // Mapping
+} CAN_IO;
+
+typedef struct {
+    word    QueueStat;
+    dword   QueueQuotePEdge;
+    dword   QueueQuoteNEdge;
+} DRV_FASTINQUEUE;
+
+typedef struct {
+    byte    AxTy;       // Axis/Encoder type
+    word    AxSw;       // Axis/Encoder syswide
+    byte    AxRegTy;    // Regolatore Velocity/Interpolated Position
+    dword   AxFeed;     // Feed constant
+    dword   AxShaft;    // Shaft revolutions
+    dword   AxFeedDelay;// Feedback delay 
+} CAN_AX;
+
+typedef struct {
+            string  CanAName[8];    // Axis name
+            string  CanDName[20];   // Device name
+            string  CanHVers[20];   // HW Version
+            string  CanSVers[20];   // SW Version
+    CHKSUM  string  CanMName[40];   // Motors name
+			string  CanNodeReport[40]; // Report
+    CHKSUM  dword   VendorID;     	// Vendor ID
+    CHKSUM  dword   ProductCode;    // Product Code
+    CHKSUM  dword   RevisionNumber; // Revision Number
+    CHKSUM  dword   CanSNumber;     // Serial Number
+            dword   CanSts[16];     // Node status
+            dword   CanFb[64];      // Interfaccia Function Blocks
+            word    Canalmcode;     // Alarm Code
+            dword   PrimaryErCode;  // Codice EMCY primario per error handler
+            dword   SecondaryErCode; // Codice EMCY secondario per error handler
+    CHKSUM  word    CanNode;        // Node number (dip switch)
+    CHKSUM  word    CanProf;        // Profile (CIA)
+    CHKSUM  word    CanLife;        // LifeTime
+    CHKSUM  word    CanGuard;       // Guarding type
+    CHKSUM  word    CanDevs;        // Number of Pdo
+    CHKSUM  word    CanObjs;        // Loading objects
+            word    CanGUICmd;      // Gui command
+			dword   CanNodeDiag[8];	// Diag Vars.
+			dword   CanNodeOutput[64];// Diag Node Output
+    CHKSUM  CAN_AX  CanAx[2];       // Asse / Encoder
+    CHKSUM  CAN_IO  CanIo[8];       // Io pdo
+    CHKSUM  dword   CanIx[NUM_OBJ]; // Objects address (IIIISSLL)
+    CHKSUM  dword   CanVx[NUM_OBJ]; // Objects values
+
+    // Gestione del latch degli I/O veloci del drive
+    word    DrvFastInCtrl;                  // Richiesta probe I/O  
+    word    DrvFastInStat;                  // Stato dell'ultimo campionamento
+    dword   DrvFastInPEdge;            // Quota dell'ultimo campionamento fronte di salita
+    dword   DrvFastInNEdge;            // Quota dell'ultimo campionamento fronte di discesa
+    word    DrvFastInRow;                   // Indice nella coda dell'ultimo campionamento inserito
+    DRV_FASTINQUEUE CanDrvFastInQueue[10];  // Coda di memorizzazione delle quote campionate
+
+	// Ethercat { 
+		CHKSUM	string  xmlDriveConf[80]; // File di configurazione drive
+		CHKSUM  dword   EcEnableCyclicOp;
+		CHKSUM  dword   EcEnableSYNCA;
+		CHKSUM  dword   EcCycleTimeSYNCA;
+		CHKSUM  dword   EcShiftTimeSYNCA;
+		CHKSUM  dword   EcEnableSYNCB;
+		CHKSUM  dword   EcCycleTimeSYNCB;
+		CHKSUM  dword   EcShiftTimeSYNCB;
+        CHKSUM  dword   ECatVx[32];     // ECAT Objects values
+
+		dword   EcMDPOut[EC_MODULAR_DEVICE]; 	// ETG.5001 Modular device profile
+		dword   EcMDPIn[EC_MODULAR_DEVICE]; 	// ETG.5001 Modular device profile
+	// }
+} CAN_NODE;
+
+typedef struct {
+            dword   can_status[8];  // Ring status
+    CHKSUM  byte    can_sync;       // Sync object time
+    CHKSUM  byte    can_drives;     // Nr of devices
+    CHKSUM  byte    can_baud;       // Baudrate index
+    CHKSUM  dword   can_enable;     // Loading dll code
+    CHKSUM  dword   can_ringtype;   // Tipologia del ring
+
+    CHKSUM  byte    ec_mskoption;   // ECAT mask option (config, ...)
+    CHKSUM  byte    ec_dcenab; 		// Distribuited clock enabled
+    CHKSUM  byte    ec_refclock;    // Reference clock master
+    CHKSUM  byte    ec_wrmtime;  	// Write master time to reference device
+    CHKSUM  byte    ec_propdelay;   // ECAT Propagation delay compensation
+    CHKSUM  dword   ec_usrshifttim; // ECAT User Shift Time
+
+            dword   can_msync;      // Measured Sync Time
+			dword   CanRingDiag[8];	// Diag Vars.
+    CAN_NODE        Node[NUM_CAN_NODES];   // Ring nodes
+} CAN_RING;
+
+CAN_RING        can_ring[NUM_CAN_RINGS];   // Dati rings Canopen
+
+ENDSECTION CanOpen //*************** Sezione CanOpen ******************
+

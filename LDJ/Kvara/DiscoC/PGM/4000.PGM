@@ -1,0 +1,11 @@
+Loop principale canale 3 ausiliari Ver.012.38 %4000
+ G71
+ %C20 = 0 ;resetta sincronismi canale 3
+ ;CON[%cn[3].cc[1]] = 1 ;serve per pilotare gli assi con freno da PP
+N10
+ AWAIT(!%C53 && %C35.0)
+ %C20.0=1
+ AWAIT(%C53)
+ JSR %C53
+ ?%C20 = 0 ;resetta sincronismi canale 3
+ JMPB 10

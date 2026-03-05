@@ -1,0 +1,190 @@
+TOPIC: Collection / PNS Programs
+KEYWORDS: collection, PNS, program number select, production, job select
+CATEGORY: program_example
+SOURCE: TWA (The Way Automation) Standard Programs
+APPLIES_TO: R-30iB Plus, CNC Machine Tending, RoboDrill
+DESCRIPTION: Collection programs for selecting job variants based on production requirements
+---
+
+============================================================
+! Source: crdq_col0001_eg.txt
+============================================================
+
+/PROG  COL0001	  Collection
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= "1ST_SINGLE";
+PROG_SIZE	= 168;
+CREATE		= DATE 20-08-19  TIME 09:19:14;
+MODIFIED	= DATE 20-08-19  TIME 09:28:16;
+FILE_NAME	= ;
+VERSION		= 0;
+LINE_COUNT	= 3;
+MEMORY_SIZE	= 536;
+PROTECT		= READ_WRITE;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= *,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+/MN
+   1:  CALL PNS0001    ;
+/POS
+/END
+
+
+============================================================
+! Source: crdq_col0002_eg.txt
+============================================================
+
+/PROG  COL0002	  Collection
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= "1ST_DOUBLE";
+PROG_SIZE	= 222;
+CREATE		= DATE 20-08-19  TIME 09:28:30;
+MODIFIED	= DATE 20-08-19  TIME 09:30:10;
+FILE_NAME	= COL0001;
+VERSION		= 0;
+LINE_COUNT	= 5;
+MEMORY_SIZE	= 582;
+PROTECT		= READ_WRITE;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= *,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+/APPL
+/MN
+   1:  CALL PNS0002    ;
+/POS
+/END
+
+
+============================================================
+! Source: dq_col0001_eg.txt
+============================================================
+
+/PROG  COL0001	  Collection
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= "SERVO_SINGLE";
+PROG_SIZE	= 168;
+CREATE		= DATE 20-08-19  TIME 09:19:14;
+MODIFIED	= DATE 20-08-19  TIME 09:28:16;
+FILE_NAME	= ;
+VERSION		= 0;
+LINE_COUNT	= 3;
+MEMORY_SIZE	= 536;
+PROTECT		= READ_WRITE;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= *,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+/MN
+   1:  CALL PNS0001    ;
+/POS
+/END
+
+
+============================================================
+! Source: dq_col0002_eg.txt
+============================================================
+
+/PROG  COL0002	  Collection
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= "SERVO_DOUBLE";
+PROG_SIZE	= 222;
+CREATE		= DATE 20-08-19  TIME 09:28:30;
+MODIFIED	= DATE 20-08-19  TIME 09:30:10;
+FILE_NAME	= COL0001;
+VERSION		= 0;
+LINE_COUNT	= 5;
+MEMORY_SIZE	= 582;
+PROTECT		= READ_WRITE;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= *,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+/APPL
+/MN
+   1:  CALL PNS0002    ;
+/POS
+/END
+
+
+============================================================
+! Source: dq_col0003_eg.txt
+============================================================
+
+/PROG  COL0003	  Collection
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= "CYLINDER_SINGLE";
+PROG_SIZE	= 254;
+CREATE		= DATE 20-08-19  TIME 09:34:12;
+MODIFIED	= DATE 20-08-19  TIME 09:58:26;
+FILE_NAME	= COL0002;
+VERSION		= 0;
+LINE_COUNT	= 9;
+MEMORY_SIZE	= 598;
+PROTECT		= READ_WRITE;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= *,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+/APPL
+/MN
+   1:  CALL PNS0003    ;
+/POS
+/END
+
+
+============================================================
+! Source: dq_col0004_eg.txt
+============================================================
+
+/PROG  COL0004	  Collection
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= "CYLINDER_DOUBLE";
+PROG_SIZE	= 254;
+CREATE		= DATE 20-08-19  TIME 09:38:18;
+MODIFIED	= DATE 20-08-19  TIME 09:38:54;
+FILE_NAME	= COL0003;
+VERSION		= 0;
+LINE_COUNT	= 9;
+MEMORY_SIZE	= 598;
+PROTECT		= READ_WRITE;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= *,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+/APPL
+/MN
+   1:  CALL PNS0004    ;
+/POS
+/END

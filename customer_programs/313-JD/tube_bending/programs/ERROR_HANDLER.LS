@@ -1,0 +1,49 @@
+/PROG  ERROR_HANDLER
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= "";
+PROG_SIZE	= 381;
+CREATE		= DATE 25-01-24  TIME 15:56:16;
+MODIFIED	= DATE 25-01-24  TIME 16:21:08;
+FILE_NAME	= ;
+VERSION		= 0;
+LINE_COUNT	= 23;
+MEMORY_SIZE	= 813;
+PROTECT		= READ_WRITE;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= 1,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+LOCAL_REGISTERS	= 0,0,0;
+/APPL
+
+AUTO_SINGULARITY_HEADER;
+  ENABLE_SINGULARITY_AVOIDANCE   : FALSE;
+/MN
+   1:  R[50]=AR[1]    ;
+   2:   ;
+   3:  SELECT R[50]=101,JMP LBL[1] ;
+   4:         =102,JMP LBL[2] ;
+   5:         ELSE,JMP LBL[3] ;
+   6:   ;
+   7:  LBL[1] ;
+  10:   ;
+  11:  MESSAGE[Pallets Exhausted] ;
+  12:  PAUSE ;
+  13:   ;
+  14:  LBL[2] ;
+  15:   ;
+  16:  MESSAGE[Part Missing] ;
+  17:  PAUSE ;
+  18:   ;
+  19:  LBL[3] ;
+  20:   ;
+  21:  MESSAGE[Unknown Error] ;
+  22:  PAUSE ;
+  23:   ;
+/POS
+/END

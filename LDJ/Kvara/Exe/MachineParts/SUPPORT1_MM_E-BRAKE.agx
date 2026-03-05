@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" ?>
+<job>
+    <settings>
+        <version>1</version>
+        <unit>millimeter</unit>
+        <backcolour>0</backcolour>
+    </settings>
+    <entities>
+        <entity id="SUPPORT1_MM_E-BRAKE" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>SUPPORT1_MM_E-BRAKE</reference_id>
+            </geometry>
+        </entity>
+    </entities>
+    <states>
+        <state id="default">
+            <visibility>
+                <show type="Unspecified">1</show>
+                <show entity="SUPPORT1_MM_E-BRAKE">1</show>
+            </visibility>
+            <transformations />
+            <views>
+                <view id="1">
+                    <pos>14000,8000,-14000</pos>
+                    <target>0,0,-0</target>
+                    <near>6000</near>
+                    <far>25000</far>
+                    <width>9050</width>
+                    <height>5615</height>
+                    <perspective>1</perspective>
+                </view>
+            </views>
+        </state>
+        <state order="1" id="SUPPORT1_MM_E-BRAKE">
+            <visibility />
+            <transformations />
+            <views />
+        </state>
+    </states>
+    <geometries>
+        <geometry id="SUPPORT1_MM_E-BRAKE">
+            <data encoding="1">UEsDBBQAAgAIAN5xY0Ugeqf4zAIAAAgIAAALABEAY29sbGFkYS54bWxVVA0AB8eNV1THjVdUx41XVM1VbU/bMBD+K5b5nCZOU1ZQEtQxNiF1FAGbGF8qkzqtpcTubGfQf7+zE9MUOkDTPkyp4/Nzj32+l17Sk8e6Qr+Y0lyKDJNBhBEThVxwscxwY8pgjE/y9HQ2nU4+TRCQhc7wypj1cRg+PDwMCllVdEEHUi3DOIpGISFhx74uVqymuH96MiA4T6nWzORpIYVR/L4xUgHWmBXME1hdzqZp2K2BVNdMGJ2n4Y7Y21ooRg1b5HFEoiA6CqLxDSHHSXw8OroDaqdNa3Cq5H/kPanTRnCDamaYynA0iOJRgpGgNcswF8UKh8BYz+kj1/nd/NtlGvoVXLp1rOL3iqrNnApeUwOuW90+0GMVX65Mn+QBv4YtS9YneMCv4UimOK36nB7mIVaWrNix9IR4YMkk+K64Pb2TN4gvMtylxhM2PiifT08hpzXTqzzVslEF20sP1lJz5zewy0pSM6dK0c0b5MCRMCpkI0yG4wTnwTBCQRLB6xCGX3RiD7VYn7plbomel4a9K+WpYcVK8J8Nm9uikwLqsyiY1lKh1sUMH7z7zmOMNAR0AZuG4PuaKlp3sbvFyGzWIDjrtrT62h+vau9eaEN/SRBfehC2N389SUKqGirmPSnqqM+cJWNIEEFtgOFHOsGLEXLT9vVvYr//Mof/WeShExoORBdQu7CB5mLdGKShVQpQZvhydn1+cz67wO8pNWfcHwuxg/+7WFZgwacjxsj3gQxfffk4D8gem9/Prm7ObnsW28shWZbQ0aANWjvPN13Mrr5OpvjtrGzPIS6U+RCyHrtSaIeV7XOIRugDjKQbVh65OQFdgobdsHLs5thJ/kncSXYmsIs8WbAycfMQzhqC1A4r2ycN1zZxPnggt+0s9J70Gma/P3rMfY7gQwgfuh5zB/0L6i+uG1rNdcHETu9/hrvZZkcbKgq2o0aNgrQfNMIW7qLFXMl0m/ynOv8NUEsBAhcLFAACAAgA3nFjRSB6p/jMAgAACAgAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAfHjVdUUEsFBgAAAAABAAEAQgAAAAYDAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+    </geometries>
+</job>

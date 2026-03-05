@@ -1,0 +1,238 @@
+Ciclo fisso taratura asse sensore S4 con potenziometro in auto Ver.012.38 : 504
+ ?%C18.26 = 1 ; Taratura Automatica Sensori in corso
+IF(%M15.20) JMPF 600
+G4 F(%pargen_due.dwgn60 / 1000)
+ VA0 = 18 ; Asse S3
+IF ( !%cax[VA0].dt0 ) JMPF 100
+ VA1 = %ax[VA0].pa11 / 1000 ; gradini fondo scala
+
+;/* Type del comando TARAPOT */
+;#define CALIBRA 0x80    // Calibrazione in OR con TIMMQTA o TIMMQTB
+;#define TIMMQTA 10      // Immediato quota A
+;#define TIMMQTB 11      // Immediato quota B
+;#define GETDATA 12      // Copia dati da defcn
+;#define PUTDATA 13      // Salva dati in defcn
+;#define RESDATA 14      // Reset calibrazione
+
+ IF( %cax[VA0].dt27 == 3 ) JMPF 50
+
+ ;taratura punto A, al valore attuale
+ _tarapot( 0x00, VA0, 14, 0.000) ;reset parametri taratura
+; _tarapot( 0x00, VA0, 10, %pargen_due.dwgn61) ;scrive quota fissa a parametro
+ _tarapot( 0x00, VA0, 10, %ap[VA0].pt2) ;scrive quota fissa a parametro
+ _tarapot( 0x00, VA0, 13, 0.000) ;scrive parametri in defcn
+ SYN
+
+ VA2 = %ax[VA0].pa5 / 10 ; corsa totale in micron
+ ; rilegge i dati del punto A dalla shared
+ VA3 = %ax[VA0].cal[0] ;gradini Pto A
+ VA4 = %ax[VA0].cal[2] ;quota   Pto A
+
+ ;impostazione dati punto B sul fondo scala
+ %ax[VA0].cal[1] = VA1  ;gradini Pto B
+ %ax[VA0].cal[3] = VA4 + VA2 * (1 - VA3 / VA1) ;quota   Pto B
+
+ _tarapot( 0x0, VA0, 12, 0.000 ) ; carica i dati dalla defcn
+
+ JMPF 100
+ 
+ ; Per i sensori pressione azzera la calibrazione,
+ ; quindi la lettura è sempre in punti.
+N50
+ %ax[VA0].cal[0] = 0  ;gradini Pto A
+ %ax[VA0].cal[1] = VA1  ;gradini Pto B
+ %ax[VA0].cal[2] = 0  ;quota   Pto A
+ %ax[VA0].cal[3] = VA1  ;quota   Pto B
+
+ _tarapot( 0x0, VA0, 12, 0.000 ) ; carica i dati dalla defcn
+
+N100
+
+ VA0 = 19 ; Asse S4
+ IF (!%cax[VA0].dt0) JMPF 1000
+ VA1 = %ax[VA0].pa11 / 1000 ; gradini fondo scala
+
+;/* Type del comando TARAPOT */
+;#define CALIBRA 0x80    // Calibrazione in OR con TIMMQTA o TIMMQTB
+;#define TIMMQTA 10      // Immediato quota A
+;#define TIMMQTB 11      // Immediato quota B
+;#define GETDATA 12      // Copia dati da defcn
+;#define PUTDATA 13      // Salva dati in defcn
+;#define RESDATA 14      // Reset calibrazione
+
+ IF( %cax[VA0].dt27 == 3 ) JMPF 500
+
+ ;taratura punto A, al valore attuale
+ _tarapot( 0x00, VA0, 14, 0.000) ;reset parametri taratura
+ _tarapot( 0x00, VA0, 10, %ap[VA0].pt2) ;scrive quota taratura parametri sensore
+ _tarapot( 0x00, VA0, 13, 0.000) ;scrive parametri in defcn
+ SYN
+
+ VA2 = %ax[VA0].pa5 / 10 ; corsa totale in micron
+ ; rilegge i dati del punto A dalla shared
+ VA3 = %ax[VA0].cal[0] ;gradini Pto A
+ VA4 = %ax[VA0].cal[2] ;quota   Pto A
+
+ ;impostazione dati punto B sul fondo scala
+ %ax[VA0].cal[1] = VA1  ;gradini Pto B
+ %ax[VA0].cal[3] = VA4 + VA2 * (1 - VA3 / VA1) ;quota   Pto B
+
+ _tarapot( 0x0, VA0, 12, 0.000 ) ; carica i dati dalla defcn
+
+ JMPF 1000
+
+ ; Per i sensori pressione azzera la calibrazione,
+ ; quindi la lettura è sempre in punti.
+N500
+ %ax[VA0].cal[0] = 0  ;gradini Pto A
+ %ax[VA0].cal[1] = VA1  ;gradini Pto B
+ %ax[VA0].cal[2] = 0  ;quota   Pto A
+ %ax[VA0].cal[3] = VA1  ;quota   Pto B
+
+ _tarapot( 0x0, VA0, 12, 0.000 ) ; carica i dati dalla defcn
+
+JMP 1000
+ 
+ ; Taratura bombatura multiasse 
+N600
+G4 F(%pargen_due.dwgn60 / 1000)
+ VA0 = 16 ; Asse S1
+SYN
+ IF ( !%cax[VA0].dt0 ) JMPF 620
+ IF( %cax[VA0].dt27 == 3 ) JMPF 620
+ VA1 = %ax[VA0].pa11 / 1000 ; gradini fondo scala
+ ;taratura punto A, al valore attuale
+ _tarapot( 0x00, VA0, 14, 0.000) ;reset parametri taratura
+ _tarapot( 0x00, VA0, 10, %ap[VA0].pt2) ;scrive quota fissa a parametro
+ _tarapot( 0x00, VA0, 13, 0.000) ;scrive parametri in defcn
+ SYN
+
+ VA2 = %ax[VA0].pa5 / 10 ; corsa totale in micron
+ ; rilegge i dati del punto A dalla shared
+ VA3 = %ax[VA0].cal[0] ;gradini Pto A
+ VA4 = %ax[VA0].cal[2] ;quota   Pto A
+
+ ;impostazione dati punto B sul fondo scala
+ %ax[VA0].cal[1] = VA1  ;gradini Pto B
+ %ax[VA0].cal[3] = VA4 + VA2 * (1 - VA3 / VA1) ;quota   Pto B
+
+ _tarapot( 0x0, VA0, 12, 0.000 ) ; carica i dati dalla defcn
+
+
+N620 VA0 = 17 ; Asse S2
+SYN 
+ IF ( !%cax[VA0].dt0 ) JMPF 630
+ IF( %cax[VA0].dt27 == 3 ) JMPF 630
+ VA1 = %ax[VA0].pa11 / 1000 ; gradini fondo scala
+ ;taratura punto A, al valore attuale
+ _tarapot( 0x00, VA0, 14, 0.000) ;reset parametri taratura
+ _tarapot( 0x00, VA0, 10, %ap[VA0].pt2) ;scrive quota fissa a parametro
+ _tarapot( 0x00, VA0, 13, 0.000) ;scrive parametri in defcn
+ SYN
+
+ VA2 = %ax[VA0].pa5 / 10 ; corsa totale in micron
+ ; rilegge i dati del punto A dalla shared
+ VA3 = %ax[VA0].cal[0] ;gradini Pto A
+ VA4 = %ax[VA0].cal[2] ;quota   Pto A
+
+ ;impostazione dati punto B sul fondo scala
+ %ax[VA0].cal[1] = VA1  ;gradini Pto B
+ %ax[VA0].cal[3] = VA4 + VA2 * (1 - VA3 / VA1) ;quota   Pto B
+
+ _tarapot( 0x0, VA0, 12, 0.000 ) ; carica i dati dalla defcn
+
+N630 VA0 = 18 ; Asse S3
+SYN 
+ IF ( !%cax[VA0].dt0 ) JMPF 640
+ IF( %cax[VA0].dt27 == 3 ) JMPF 640
+ VA1 = %ax[VA0].pa11 / 1000 ; gradini fondo scala
+ ;taratura punto A, al valore attuale
+ _tarapot( 0x00, VA0, 14, 0.000) ;reset parametri taratura
+ _tarapot( 0x00, VA0, 10, %ap[VA0].pt2) ;scrive quota fissa a parametro
+ _tarapot( 0x00, VA0, 13, 0.000) ;scrive parametri in defcn
+ SYN
+
+ VA2 = %ax[VA0].pa5 / 10 ; corsa totale in micron
+ ; rilegge i dati del punto A dalla shared
+ VA3 = %ax[VA0].cal[0] ;gradini Pto A
+ VA4 = %ax[VA0].cal[2] ;quota   Pto A
+
+ ;impostazione dati punto B sul fondo scala
+ %ax[VA0].cal[1] = VA1  ;gradini Pto B
+ %ax[VA0].cal[3] = VA4 + VA2 * (1 - VA3 / VA1) ;quota   Pto B
+
+ _tarapot( 0x0, VA0, 12, 0.000 ) ; carica i dati dalla defcn
+
+N640 VA0 = 19 ; Asse S4
+SYN 
+ IF ( !%cax[VA0].dt0 ) JMPF 650
+ IF( %cax[VA0].dt27 == 3 ) JMPF 650
+ VA1 = %ax[VA0].pa11 / 1000 ; gradini fondo scala
+ ;taratura punto A, al valore attuale
+ _tarapot( 0x00, VA0, 14, 0.000) ;reset parametri taratura
+ _tarapot( 0x00, VA0, 10, %ap[VA0].pt2) ;scrive quota fissa a parametro
+ _tarapot( 0x00, VA0, 13, 0.000) ;scrive parametri in defcn
+ SYN
+
+ VA2 = %ax[VA0].pa5 / 10 ; corsa totale in micron
+ ; rilegge i dati del punto A dalla shared
+ VA3 = %ax[VA0].cal[0] ;gradini Pto A
+ VA4 = %ax[VA0].cal[2] ;quota   Pto A
+
+ ;impostazione dati punto B sul fondo scala
+ %ax[VA0].cal[1] = VA1  ;gradini Pto B
+ %ax[VA0].cal[3] = VA4 + VA2 * (1 - VA3 / VA1) ;quota   Pto B
+
+ _tarapot( 0x0, VA0, 12, 0.000 ) ; carica i dati dalla defcn
+
+N650 VA0 = 20 ; Asse S5
+SYN 
+ IF ( !%cax[VA0].dt0 ) JMPF 660
+ IF( %cax[VA0].dt27 == 3 ) JMPF 660
+ VA1 = %ax[VA0].pa11 / 1000 ; gradini fondo scala
+ ;taratura punto A, al valore attuale
+ _tarapot( 0x00, VA0, 14, 0.000) ;reset parametri taratura
+ _tarapot( 0x00, VA0, 10, %ap[VA0].pt2) ;scrive quota fissa a parametro
+ _tarapot( 0x00, VA0, 13, 0.000) ;scrive parametri in defcn
+ SYN
+
+ VA2 = %ax[VA0].pa5 / 10 ; corsa totale in micron
+ ; rilegge i dati del punto A dalla shared
+ VA3 = %ax[VA0].cal[0] ;gradini Pto A
+ VA4 = %ax[VA0].cal[2] ;quota   Pto A
+
+ ;impostazione dati punto B sul fondo scala
+ %ax[VA0].cal[1] = VA1  ;gradini Pto B
+ %ax[VA0].cal[3] = VA4 + VA2 * (1 - VA3 / VA1) ;quota   Pto B
+
+ _tarapot( 0x0, VA0, 12, 0.000 ) ; carica i dati dalla defcn
+
+N660 VA0 = 21 ; Asse S6
+SYN 
+ IF ( !%cax[VA0].dt0 ) JMPF 1000
+ IF( %cax[VA0].dt27 == 3 ) JMPF 1000
+ VA1 = %ax[VA0].pa11 / 1000 ; gradini fondo scala
+ ;taratura punto A, al valore attuale
+ _tarapot( 0x00, VA0, 14, 0.000) ;reset parametri taratura
+ _tarapot( 0x00, VA0, 10, %ap[VA0].pt2) ;scrive quota fissa a parametro
+ _tarapot( 0x00, VA0, 13, 0.000) ;scrive parametri in defcn
+ SYN
+
+ VA2 = %ax[VA0].pa5 / 10 ; corsa totale in micron
+ ; rilegge i dati del punto A dalla shared
+ VA3 = %ax[VA0].cal[0] ;gradini Pto A
+ VA4 = %ax[VA0].cal[2] ;quota   Pto A
+
+ ;impostazione dati punto B sul fondo scala
+ %ax[VA0].cal[1] = VA1  ;gradini Pto B
+ %ax[VA0].cal[3] = VA4 + VA2 * (1 - VA3 / VA1) ;quota   Pto B
+
+ _tarapot( 0x0, VA0, 12, 0.000 ) ; carica i dati dalla defcn
+
+N1000
+ ?%C18.14 = 1 ;setta sincronismo taratura eseguita a plc
+ _wait_bit(0, "%C37.1", 1) ;attende taratura immediata eseguita da plc
+ ?%C18.14 = 0 ;resetta sincronismo taratura eseguita a plc
+ ?%C18.26 = 0 ; Taratura Automatica Sensori in terminata
+
+ RET

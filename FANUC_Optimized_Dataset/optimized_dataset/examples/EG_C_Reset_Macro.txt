@@ -1,0 +1,48 @@
+TOPIC: Counter Reset Macro
+KEYWORDS: reset, counter, zero, initialize, macro, R[], clear counters
+CATEGORY: program_example
+SOURCE: TWA (The Way Automation) Standard Programs
+APPLIES_TO: R-30iB Plus, CNC Machine Tending, RoboDrill
+DESCRIPTION: Macro to reset all counters to zero for fresh production run
+---
+
+/PROG  C_RESET3
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= "";
+PROG_SIZE	= 387;
+CREATE		= DATE 20-01-21  TIME 13:04:30;
+MODIFIED	= DATE 20-01-21  TIME 13:16:30;
+FILE_NAME	= C_RESET2;
+VERSION		= 0;
+LINE_COUNT	= 13;
+MEMORY_SIZE	= 839;
+PROTECT		= READ_WRITE;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= *,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+/APPL
+
+AUTO_SINGULARITY_HEADER;
+  ENABLE_SINGULARITY_AVOIDANCE   : TRUE;
+/MN
+   1:   ;
+   2:  IF R[81]=0 AND R[82]=0,JMP LBL[9000] ;
+   3:   ;
+   4:  R[195]=R[81]    ;
+   5:  R[196]=R[82]    ;
+   6:   ;
+   7:  R[81]=0    ;
+   8:  R[82]=0    ;
+   9:   ;
+  10:  MESSAGE[The counter was reset] ;
+  11:   ;
+  12:  LBL[9000] ;
+  13:   ;
+/POS
+/END

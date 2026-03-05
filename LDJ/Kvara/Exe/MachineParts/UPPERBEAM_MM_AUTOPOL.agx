@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<job>
+    <settings>
+        <version>1</version>
+        <unit>millimeter</unit>
+        <backcolour>0</backcolour>
+    </settings>
+    <entities>
+        <entity id="UPPERBEAM_MM_AUTOPOL" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>UPPERBEAM_MM_AUTOPOL</reference_id>
+            </geometry>
+        </entity>
+    </entities>
+    <states>
+        <state id="default">
+            <visibility>
+                <show type="Unspecified">1</show>
+                <show entity="UPPERBEAM_MM_AUTOPOL">1</show>
+            </visibility>
+            <transformations />
+            <views>
+                <view id="1">
+                    <pos>14000,8000,-14000</pos>
+                    <target>0,0,-0</target>
+                    <near>6000</near>
+                    <far>25000</far>
+                    <width>9050</width>
+                    <height>5615</height>
+                    <perspective>1</perspective>
+                </view>
+            </views>
+        </state>
+        <state order="1" id="UPPERBEAM_MM_AUTOPOL">
+            <visibility />
+            <transformations />
+            <views />
+        </state>
+    </states>
+    <geometries>
+        <geometry id="UPPERBEAM_MM_AUTOPOL">
+            <data encoding="1">UEsDBBQAAgAIAHRajj0aDfry4QQAAIUQAAALABEAY29sbGFkYS54bWxVVA0AB95SB03eUgdN3lIHTd2YXW/bNhSG/4rAXlvih6iPQFaRpd1QIKuDJBu63BiqTNsCLMmT5Kb59z0kRYmy3dQoerOhiEg+fMlzeA5JWU3efi13zhfRtEVdzRFxMXJElderotrM0aFbzyL0Nk1uFre31++uHRBX7Rxtu25/5XnPz89uXu922Spz62bjUYy5R4jXqx/yrSgzZM/uuwSlSda2okuTvK66pvh86OoG2KHbQnkNrbvFbeL1bRCVpai6Nk28SdUamjci68QqpZjgGY5nOHok5MqnVzx+Amnfm5SwqHXxXd3QnRyqonNK0YlmjrCLKfeRU2WlmKOiyrfIA8V+mX0t2vRp+ddd4pkWOK0Xtis+N1nzssyqosw6WLrsOwcN2xWbbWeLDDBtGLIRtsAA04YpRVNkO1tjMYPEei3yiaWBGLARNay9KeTsff3FKVZz1KfGCF5MUH6/uYGclqLdpklbH5pcnJXP9nVbqHWDer2rs26ZNU328gPxTImQk9eHqpujMELpjHCGnRn8wXOoB5T3LavD8ChgLo+VjlAeu0EwMBuFEXVxSLSOEYB0hDYLosglxO+FPHQtZiEehW7IaC8L8UgMOFEcC85YOjV0zu8zbp+JwmkQCKdQmpC6LOIGTciQATsBY9/YZfUknpX3NOlEvq2Kfw9iKU92XcElkOeibevG0ftojt5cvDFogJwWtu0KRjHYYfusycp+h35CTveyh4oyLw+w3fvPq71PJ72e8RKqp0vwtOuvH4Wqbko4l5cchF56tFoWyGPgzNROx24QxYEPOSMuC8IwFjNMuIPdkPrED6XAj3jkR0oQcR4YQRT62GdSQDmOuTxALo2D0DcCqMcx7BjqUhaSUGJpBvaxi3EcEQDM792AreYGsNOMCvLvTMYRPU/MuGxHzmjVd2NGCdOyweroduDykMZDf+/2uG44MjHD3PT36+7j8yt23fksEPof2nNltp/l26yqxI5csvFs/dG6Y5RiV+0PBg+ZJ1kPdD1WO4//osC/4gX7fvAfXg3v46u9dz8bfPiZ0xUgVOGUDXm+i2p/6JwWfgdV0AmzLx4+PH5YfESXXHHKuJkWAggv82qzAwt9BODKM+/4Obr/47fljJwx+ff7+8f3nyyD2jenXq/h1wr8xJFmjgd9XNz/eX2LfnwkxnnIuXnA8s1icf8OXZjjcTp5toZp9ym8GWFLUXjCrSILqouB+Yph9Y+oP6o6qUWYJvBGkhXmyDuJEiioLkbIFUy8vcy5ifuZFPj0OAeU8/9tEiDIREYSwgOlSgQhOhNTzjSHRygDzxx5G3N4UvUcEIltFivGFGI2osRiqqESLpkqRmjbCLUJPbZ3RTNtlfRme522S9gExhMjln/Y8SWhUMgV+3KojSi2GVbMV8i3EbwGR6YawPqheAKpgmp2tU1tI5FWBraS0AnUtrUwOGMmsDyE+QjW0Sfy2MAcscSysGg4obKl7EQSymKEfAJlS7kZaDcDC7IJ1IeRYA3xBOpjy9XJ1jlQmRqSI0lgETUFuMOgjNVNoElkEVkfpib6RugZNrfEJDKQANJfKdOIRZoTyz2mriRmEXVvnV4ynv6W8szZtL7W7I8zw9S3MHyFw1e2pZzQn5B+KdpDtlu2uagmH55HXJXyxmm7rMrFpNs5NHAnvjlU8sW60ky90vpB5v8J0m9QSwECFwsUAAIACAB0Wo49Gg368uEEAACFEAAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUAB95SB01QSwUGAAAAAAEAAQBCAAAAGwUAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+                <material id="2">
+                    <color emissive="255" />
+                </material>
+            </materials>
+        </geometry>
+    </geometries>
+</job>

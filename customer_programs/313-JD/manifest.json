@@ -1,0 +1,12 @@
+{
+  "customer_id": "313-JD",
+  "customer_name": "JD Tube",
+  "systems": [
+    {
+      "id": "tube_bending",
+      "robot": "Tube bending cell",
+      "controller": "R-30iB",
+      "revisions": ["programs"]
+    }
+  ]
+}

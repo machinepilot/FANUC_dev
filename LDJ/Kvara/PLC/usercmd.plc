@@ -1,0 +1,592 @@
+* File USERCMD.PLC
+
+#include "iof.inc"
+#include "iol.inc"
+#include "mem.inc"
+
+VAR
+IN_LUBR_ERR    AT %IW0.13;  * IW0.13 Errore Centralina Lubrificazione (cartuccia Vuota)
+LUBR_ERR: BOOL;              * IW0.13 Errore Centralina Lubrificazione (cartuccia Vuota) Solo quando lubrificazzione in corso
+LUBR_OK     AT %IW0.14;  * IW0.14 Lubrificazione OK
+IN_CELLA_APERTA AT %IW3.8; * IW3.8 Ingresso Cella Aperta
+BRAKE_OPEN  AT %IW3.0;   * IW3.0 Freni aperti, consenso al movimento Ok
+STOP_PCV    AT %IW3.3;   * IW3.3 Blocco ciclo al PCV
+STOP_PCL    AT %IW3.4;   * IW3.4 Blocco ciclo al PCL dopo il rinculo
+STOP_PMI    AT %IW3.5;   * IW3.5 Blocco ciclo al PMI dopo il tempo sosta
+LUBR_REQ    AT %QW1.8;   * QW1.8 Richiesta Lubrificazione
+FIRST_BEND  AT %QW2.13;  * QW2.13 Prima Piega Attiva
+PMS_ROBOT   AT %QW2.8;   * QW2.8 PMS per Robot
+OUT_INT_LAMP AT %QW1.10; * QW1.10 Uscita Accensione Lampada Interna
+PUMP_ON_PUNCH_HOLDER AT %QW1.11; * Uscita Attivazione Pompa Bloccaggi Superiori
+PUMP_ON_DIE_HOLDER   AT %QW1.12; * Uscita Attivazione Pompa Bloccaggi Inferiori o Bloccaggio Singolo
+HOLDER_OPENED        AT %QW1.13; * Uscita Bloccaggi Aperti
+PUNCH_HOLDER_OPENED  AT %QW1.14; * Uscita Bloccaggi Superiori Aperti
+DIE_HOLDER_OPENED    AT %QW1.15; * Uscita Bloccaggi Inferiori Aperti
+ANIN2       AT %IW51;    * Ingresso analogico Pin 2
+ANIN3       AT %IW52;    * Ingresso analogico Pin 3
+VOLT_LED    AT %QW102;   * QW102 Tensione regolazione intensità luminosa Lampada
+
+Cond_Cont_Lubr: BOOL; * Condizione Conteggio Lubrificazione
+Cond_Reload_Cont: BOOL; * Condizione Reload Conteggio Lubrificazione
+Param_Changed: BOOL; * Parametro Cambiato
+LUB_ERR_REMIND: BOOL; * Reminder Cartuccia Lubrificazione Terminata
+LubrErr: BOOL; * Cartuccia Vuota
+Lubrinproc: BOOL; * Cartuccia Vuota stato in memoria
+VLED_0_BIT: WORD; * Tensione Lampada 0% in Bit
+VLED_100_BIT: WORD; * Tensione Lampada 100% in Bit
+
+***** Limitazione Sbilanciamento in Discesa Lenta *****
+Y1_STOP_UNBALANCE: BOOL; * Necessario Stop Y1 per sbilanciamento eccessivo
+Y2_STOP_UNBALANCE: BOOL; * Necessario Stop Y2 per sbilanciamento eccessivo
+Y1_FEED_CALC: WORD; * Valore Feed Y1 Ricalcolata
+Y2_FEED_CALC: WORD; * Valore Feed Y2 Ricalcolata
+***** Fine Limitazione Sbilanciamento in Discesa Lenta *****
+
+TON_FILTER: TON;
+#defcom TON_FILTER.Q Filtro per pedale di discesa
+#defcom CTD_LUBR.Q Fine Conteggio per attivazione lubrificazione
+#defcom CTD_LUBR.CV Stato del Contatore Lubrificazione
+CTD_LUBR: CTD;
+#defcom CTD_LUBR_OK.Q Fine Conteggio per check lubrificazione
+CTD_LUBR_OK: CTD;
+#defcom TP_LUBR.Q    Tempo Uscita Lubrificazione Attiva
+TP_LUBR: TP;
+#defcom TOF_LUBR_EMPTY.Q    Cartuccia Vuota
+TOF_LUBR_EMPTY: TOF;
+#defcom R_TRIG_LUBR.Q Fronte salita Richiesta Lubrificazione
+R_TRIG_LUBR: R_TRIG;
+#defcom TRIG_LUBR_OK.Q Fronte salita Ingresso Lubrificazione in corso
+TRIG_LUBR_OK: TRIG;
+#defcom F_TRIG_LUBREMPTY.Q Fronte discesa Cartuccia vuota
+F_TRIG_LUBREMPTY: F_TRIG;
+
+#defcom TOF_PRES_SUP.Q    Filtro apertura bloccaggi superiori
+TOF_PRES_SUP: TOF;
+#defcom TOF_PRES_INF.Q    Filtro apertura bloccaggi inferiori
+TOF_PRES_INF: TOF;
+
+#defcom %paruser.dwuser0     Numero cicli per lubrificazione
+#defcom %paruser.dwuser1     Tensione Lampada allo 0%
+#defcom %paruser.dwuser2     Tensione Lampada al 100%
+#defcom %paruser.buser.0     Bloccaggi Singolo
+#defcom %paruser.buser.1     Bloccaggi Doppio
+V_MAX_CLOSE_TOOLS AT %paruser.dwuser4;   * Tensione Massima per Attivazione Pompa
+V_MIN_CLOSE_TOOLS AT %paruser.dwuser5;   * Tensione Minima per Attivazione Pompa
+V_TOOLS_OPENED    AT %paruser.dwuser6;   * Tensione Utensili Aperti
+
+#defcom %PLCerr3.3    Allarme Richiesta Lubrificazione, Centralina non risponde
+#defcom %PLCerr3.4    Allarme Cartuccia Danneggiata
+#defcom %PLCerr3.5    Allarme Cartuccia Vuota
+#defcom %PLCerr3.6    Allarme Freni Chiusi
+
+END_VAR
+
+VAR_IN_OUT
+
+INTERNAL_LIGTH  AT %R65.0;   * R65.0 Pulsante UI accensione / spegnimento Lampada interna
+VOUT_LED        AT %R64;     * R64 Tensione Bit in uscita
+COUNT_LUBR_MEM  AT %R63;     * R63 Parametro Conteggio Lubrificazione in Memoria
+Lubrinprocmem   AT %R62.0;   * Cartuccia vuota stato in memoria
+COUNT_LUBR_CV   AT %M127;    * M127 Strokes Left for Lubrification
+PERC_V_LED      AT %M128;    * M128 Percentuale Tensione LED
+VOLT_LED_DEC    AT %M129.0;  * M129.0 Pulsante decremento Tensione LED 1%
+VOLT_LED_INC    AT %M129.1;  * M129.1 Pulsante incremento Tensione LED 1%
+VOLT_LED_DEC10  AT %M129.2;  * M129.2 Pulsante decremento Tensione LED 10%
+VOLT_LED_INC10  AT %M129.3;  * M129.3 Pulsante incremento Tensione LED 10%
+VOLT_LED_OFF    AT %M129.4;  * M129.4 Pulsante spegnimento Lamada
+VOLT_LED_100    AT %M129.5;  * M129.5 Pulsante accensione Lampada al 100%
+COUNTER         AT %paruser.dwuser0; ** Numero cicli per lubrificazione
+
+END_VAR
+
+
+
+* Funzione utente per la gestione di input ausiliari e il forzamento
+* di input per il programma MAIN.
+
+FUNCTION USERIN
+
+** Filtro per pedale discesa Starmatik **
+
+*CAL   TON_FILTER(IN=%C60.0, PT=300)
+
+*LD    TON_FILTER.Q
+*ST    %C60.0
+
+*CAL   TOF_PRES_SUP(IN=%C61.26, PT=1000)  * IN Pressostato bloccaggi superiori
+*CAL   TOF_PRES_INF(IN=%C61.27, PT=1000)  * IN Pressostato bloccaggi inferiori
+
+*LD    TOF_PRES_SUP.Q
+*ST    %C61.26   * IN Pressostato bloccaggi superiori
+
+*LD    TOF_PRES_INF.Q
+*ST    %C61.27   * IN Pressostato bloccaggi inferiori
+
+LDN    %C62.20   ** Allarme Utente 2
+ST     %C62.20   ** Allarme Utente 2
+
+END_FUNCTION
+
+* Funzione utente per il comando di segnalazioni e uscite ausiliarie.
+
+FUNCTION USERCMD
+
+* Esempio
+*LD   %IW0.0
+*ST   %PLCerr3.0
+
+************************** Gestione Lubrificazione ***********************************
+
+LD   IN_LUBR_ERR     * IW0.13 Errore Centralina Lubrificazione (cartuccia Vuota)
+ORN  LUBR_REQ        ** QW1.8 Richiesta Lubrificazione
+ST   LUBR_ERR        * IW0.13 Errore Centralina Lubrificazione (cartuccia Vuota) Solo quando lubrificazzione in corso
+
+LD   %paruser.dwuser0 ** Numero cicli per lubrificazione
+EQ   0
+JMPC NOLUBR
+
+LD   %C70.16      ** OUT Macchina al PMS
+ST   Cond_Cont_Lubr ** Condizione Conteggio Lubrificazione
+
+LD   COUNTER      ** Parametro Conteggio Lubrificazione
+EQ   COUNT_LUBR_MEM ** R63 Parametro Conteggio Lubrificazione in Memoria
+JMPC PARAM_NOT_CHANGED
+
+LD   %PLCFLAGS.1  ** Sempre a uno
+ST   Param_Changed ** Parametro Cambiato
+
+LD   COUNTER      ** Parametro Conteggio Lubrificazione
+ST   COUNT_LUBR_MEM ** R63 Parametro Conteggio Lubrificazione in Memoria
+
+PARAM_NOT_CHANGED:
+
+LD   CTD_LUBR.Q   ** Fine Conteggio per attivazione lubrificazione
+OR   Param_Changed ** Parametro Cambiato
+ST   Cond_Reload_Cont ** Condizione Reload Conteggio Lubrificazione
+
+LD   %PLCFLAGS.0  ** Sempre a zero
+ST   Param_Changed ** Parametro Cambiato
+
+CAL  CTD_LUBR(CD:=Cond_Cont_Lubr, LD:=Cond_Reload_Cont , PV:=%paruser.dwuser0) ** Condizione Conteggio Lubrificazione
+
+CAL  TP_LUBR(IN=CTD_LUBR.Q,PT=10000) ** Fine Conteggio per attivazione lubrificazione
+
+CAL  R_TRIG_LUBR(CLK=TP_LUBR.Q) ** Tempo Uscita Lubrificazione Attiva
+
+CAL  F_TRIG_LUBREMPTY(CLK=LUBR_ERR) ** IW0.13 Errore Centralina Lubrificazione (cartuccia Vuota)
+
+
+
+CAL  TRIG_LUBR_OK(CLK=LUBR_OK) ** IW0.14 Lubrificazione OK
+
+CAL  CTD_LUBR_OK(CD:=TRIG_LUBR_OK.Q, LD:=R_TRIG_LUBR.Q , PV:=1) ** Fronte salita Ingresso Lubrificazione in corso
+
+LD   R_TRIG_LUBR.Q ** Fronte salita Richiesta Lubrificazione
+S    Lubrinprocmem ** Cartuccia vuota stato in memoria
+
+LD   R_TRIG_LUBR.Q ** Fronte salita Richiesta Lubrificazione
+OR   (
+LD   Lubrinprocmem ** Cartuccia vuota stato in memoria
+AND  %PLCFLAGS.8  ** Bit a uno alla prima scansione
+)
+S    Lubrinproc   ** Cartuccia Vuota stato in memoria
+
+LD   CTD_LUBR_OK.Q ** Fine Conteggio per check lubrificazione
+R    Lubrinprocmem ** Cartuccia vuota stato in memoria
+
+LD   CTD_LUBR_OK.Q ** Fine Conteggio per check lubrificazione
+OR   %M5.5         ** Comando stop
+R    Lubrinproc   ** Cartuccia Vuota stato in memoria
+
+LD   CTD_LUBR.CV  ** Stato del Contatore Lubrificazione
+ST   COUNT_LUBR_CV ** M127 Strokes Left for Lubrification
+
+LD   LUBR_ERR     ** IW0.13 Errore Centralina Lubrificazione (cartuccia Vuota)
+ST   LubrErr      ** Cartuccia Vuota
+
+CAL  TOF_LUBR_EMPTY(IN=LubrErr,PT=4000) ** Cartuccia Vuota
+
+LD   Lubrinproc   ** Cartuccia Vuota stato in memoria
+ANDN TP_LUBR.Q    ** Tempo Uscita Lubrificazione Attiva
+ST   %PLCerr3.4   ** Allarme Cartuccia Danneggiata
+
+LD   %PLCFLAGS.8  ** Bit a uno alla prima scansione
+ANDN LUBR_ERR     ** IW0.13 Errore Centralina Lubrificazione (cartuccia Vuota)
+OR   F_TRIG_LUBREMPTY.Q ** Fronte discesa Cartuccia vuota
+S    LUB_ERR_REMIND ** Reminder Cartuccia Lubrificazione Terminata
+
+LD   %M5.5        ** Comando stop
+R    LUB_ERR_REMIND ** Reminder Cartuccia Lubrificazione Terminata
+
+LD   LUB_ERR_REMIND ** Reminder Cartuccia Lubrificazione Terminata
+ST   %PLCerr3.5   ** Allarme Cartuccia Vuota
+
+LD   TP_LUBR.Q    ** Tempo Uscita Lubrificazione Attiva
+ST   LUBR_REQ     ** QW1.8 Richiesta Lubrificazione
+
+NOLUBR:
+
+****************** Gestione Luminosità Lampada *********************
+
+LD   %paruser.dwuser1 ** Tensione Lampada allo 0%
+DIV  10
+MUL  4095
+DIV  1000
+ST   VLED_0_BIT   ** Tensione Lampada 0% in Bit
+
+LD   %paruser.dwuser2 ** Tensione Lampada allo 100%
+DIV  10
+MUL  4095
+DIV  1000
+ST   VLED_100_BIT ** Tensione Lampada 100% in Bit
+
+LD   VOLT_LED_DEC ** M129.0 Pulsante decremento Tensione LED 1%
+AND  (
+LD   VOUT_LED     ** R64 Tensione Bit in uscita
+GT   VLED_0_BIT   ** Tensione Lampada 0% in Bit
+)
+JMPCN NO_LED_DEC
+
+LD   VOUT_LED     ** R64 Tensione Bit in uscita
+SUB  10
+ST   VOUT_LED     ** R64 Tensione Bit in uscita
+
+NO_LED_DEC:
+
+LD   VOLT_LED_INC ** M129.1 Pulsante incremento Tensione LED 1%
+AND  (
+LD   VOUT_LED     ** R64 Tensione Bit in uscita
+LT   VLED_100_BIT ** Tensione Lampada 100% in Bit
+)
+JMPCN NO_LED_INC
+
+LD   VOUT_LED     ** R64 Tensione Bit in uscita
+ADD  10
+ST   VOUT_LED     ** R64 Tensione Bit in uscita
+
+NO_LED_INC:
+
+LD   VOLT_LED_DEC10 ** M129.2 Pulsante decremento Tensione LED 10%
+AND  (
+LD   VOUT_LED     ** R64 Tensione Bit in uscita
+GT   VLED_0_BIT   ** Tensione Lampada 0% in Bit
+)
+JMPCN NO_LED_DEC10
+
+LD   VOUT_LED     ** R64 Tensione Bit in uscita
+SUB  50
+ST   VOUT_LED     ** R64 Tensione Bit in uscita
+
+NO_LED_DEC10:
+
+LD   VOLT_LED_INC10 ** M129.3 Pulsante incremento Tensione LED 10%
+AND  (
+LD   VOUT_LED     ** R64 Tensione Bit in uscita
+LT   VLED_100_BIT ** Tensione Lampada 100% in Bit
+)
+JMPCN NO_LED_INC10
+
+LD   VOUT_LED     ** R64 Tensione Bit in uscita
+ADD  50
+ST   VOUT_LED     ** R64 Tensione Bit in uscita
+
+NO_LED_INC10:
+
+LD   VOLT_LED_OFF ** M129.4 Pulsante spegnimento Lamada
+JMPCN LED_OFF
+
+LD   VLED_0_BIT   ** Tensione Lampada 0% in Bit
+ST   VOUT_LED     ** R64 Tensione Bit in uscita
+
+LED_OFF:
+
+LD   VOLT_LED_100 ** M129.5 Pulsante accensione Lampada al 100%
+JMPCN LED_100
+
+LD   VLED_100_BIT ** Tensione Lampada 100% in Bit
+ST   VOUT_LED     ** R64 Tensione Bit in uscita
+
+LED_100:
+
+LD   VOUT_LED     ** R64 Tensione Bit in uscita
+SUB  VLED_0_BIT   ** Tensione Lampada 0% in Bit
+MUL  100
+DIV  (
+LD   VLED_100_BIT ** Tensione Lampada 100% in Bit
+SUB  VLED_0_BIT   ** Tensione Lampada 0% in Bit
+)
+*DIV  4095
+ST   PERC_V_LED   ** M128 Percentuale Tensione LED
+
+LD   VOUT_LED     ** R64 Tensione Bit in uscita
+ST   VOLT_LED     ** QW102 Tensione regolazione intensità luminosa Lampada
+
+LD   INTERNAL_LIGTH   ** R65.0 Pulsante UI accensione / spegnimento Lampada interna
+ST   OUT_INT_LAMP     ** QW1.10 Uscita Accensione Lampada Interna
+
+******************************BLOCCO VELOCITA' IN CASO DI CELLA APERTA******************
+
+LD      %C32.22            **LIMITAZIONE VELOCITà LAVORO
+OR      IN_CELLA_APERTA    **INGRESSO CELLA APERTA
+ST      %C32.22            **LIMITAZIONE VELOCITà LAVORO
+
+
+******************************USCITA PIEGA CORRENTE NUMERO1*****************************
+
+LD      %M6.27           ** Prima piega del pezzo attiva (ad uso PLC cliente)
+EQ      1
+ST      FIRST_BEND            **NUMERO PIEGA ATTIVA 1
+****************************************************************************************
+****************************** Stop Mute ************************************
+
+LD      STOP_PCV         ** IW3.3 Blocco ciclo al PCV
+ST      %M15.0           ** Blocco ciclo al PCV
+
+LD      %C70.8           ** OUT Configurazione valvole bit 0
+ANDN    (
+LD      %C70.17          ** OUT Macchina al PCV
+AND     %C60.0           ** IN Pedale discesa
+AND     %M15.0           ** Blocco ciclo al PCV
+)
+ST      %C70.8           ** OUT Configurazione valvole bit 0
+
+LD      %C70.9           ** OUT Configurazione valvole bit 1
+ANDN    (
+LD      %C70.17          ** OUT Macchina al PCV
+AND     %C60.0           ** IN Pedale discesa
+AND     %M15.0           ** Blocco ciclo al PCV
+)
+ST      %C70.9           ** OUT Configurazione valvole bit 1
+
+****************************** Stop Pinch ************************************
+
+LD      STOP_PCL         ** IW3.4 Blocco ciclo al PCL dopo il rinculo
+ST      %M15.1           ** Blocco ciclo al PCL dopo il rinculo
+
+****************************** Stop BDC ************************************
+
+LD      STOP_PMI         ** IW3.5 Blocco ciclo al PMI dopo il tempo sosta
+ST      %M15.3           ** Blocco ciclo al PMI dopo il tempo sosta
+
+LD    %C70.16            ** OUT Macchina al PMS
+ST    PMS_ROBOT          ** QW2.8 PMS per Robot
+
+***** Limitazione Sbilanciamento in Discesa Lenta *****
+
+LD    0            * disabilita override canale
+ST    %cn0.rc2     * override pestone
+
+LD    %ax0.ra4     * Quota attuale Y1
+LT    (
+LD    %ax1.ra4     * Quota attuale Y2
+SUB   1000
+)
+AND   %M3.1        ** Discesa lavoro in corso
+ST    Y1_STOP_UNBALANCE  * Necessario Stop Y1 per sbilanciamento eccessivo
+
+LD    %ax1.ra4     * Quota attuale Y2
+LT    (
+LD    %ax0.ra4     * Quota attuale Y1
+SUB   1000
+)
+AND   %M3.1        ** Discesa lavoro in corso
+ST    Y2_STOP_UNBALANCE  * Necessario Stop Y2 per sbilanciamento eccessivo
+
+LD    Y1_STOP_UNBALANCE  * Necessario Stop Y1 per sbilanciamento eccessivo
+JMPC  CONTROL_UNBAL_Y1
+
+LD    100000000
+ST    %ax0.ra49           ** Feed Alta Risoluzione Y1
+
+JMP   UNBAL_Y1_OK
+
+CONTROL_UNBAL_Y1:
+
+LD    %pst5              ** PAR-PLC Correzione sbilanciamento
+MUL   100000
+DIV   %C131              ** AX_PLC Differenza fra Y1 ed Y2
+SUB   100000
+ST    Y1_FEED_CALC       ** Valore Feed Y1 Ricalcolata
+
+LD    Y1_FEED_CALC       ** Valore Feed Y1 Ricalcolata
+LE    0
+JMPCN FEED_Y1_ZERO
+
+LD   0
+ST   %ax0.ra49           ** Feed Alta Risoluzione Y1
+ST   %ax1.ra49           ** Feed Alta Risoluzione Y2
+
+JMP  UNBAL_Y1_OK
+
+FEED_Y1_ZERO:
+
+LD   Y1_FEED_CALC        ** Valore Feed Y1 Ricalcolata
+ST   %ax0.ra49           ** Feed Alta Risoluzione Y1
+ST   %ax1.ra49           ** Feed Alta Risoluzione Y2
+
+UNBAL_Y1_OK:
+
+LD    Y2_STOP_UNBALANCE  * Necessario Stop Y2 per sbilanciamento eccessivo
+JMPC  CONTROL_UNBAL_Y2
+
+LD    100000000
+ST    %ax1.ra49           ** Feed Alta Risoluzione Y2
+
+JMP   UNBAL_Y2_OK
+
+CONTROL_UNBAL_Y2:
+
+LD    %pst5              ** PAR-PLC Correzione sbilanciamento
+MUL   100000
+DIV   %C131              ** AX_PLC Differenza fra Y1 ed Y2
+SUB   100000
+ST    Y2_FEED_CALC       ** Valore Feed Y2 Ricalcolata
+
+LD    Y2_FEED_CALC       ** Valore Feed Y2 Ricalcolata
+LE    0
+JMPCN FEED_Y2_ZERO
+
+LD   0
+ST   %ax0.ra49           ** Feed Alta Risoluzione Y1
+ST   %ax1.ra49           ** Feed Alta Risoluzione Y2
+
+JMP  UNBAL_Y2_OK
+
+FEED_Y2_ZERO:
+
+LD   Y2_FEED_CALC        ** Valore Feed Y2 Ricalcolata
+ST   %ax0.ra49           ** Feed Alta Risoluzione Y1
+ST   %ax1.ra49           ** Feed Alta Risoluzione Y2
+
+UNBAL_Y2_OK:
+
+***** Fine Limitazione Sbilanciamento in Discesa Lenta *****
+
+LD    BRAKE_OPEN         ** IW3.0 Freni aperti, consenso al movimento Ok
+JMPC  BRAKE_CLOSED
+
+LD    0
+ST    %ax0.ra49           ** Feed Alta Risoluzione Y1
+ST    %ax1.ra49           ** Feed Alta Risoluzione Y2
+
+BRAKE_CLOSED:
+
+LDN   BRAKE_OPEN         ** IW3.0 Freni aperti, consenso al movimento Ok
+ST    %PLCerr3.6         ** Allarme Freni Chiusi
+
+*****Gestione Bloccaggi*****
+
+LDN   %paruser.buser.0   ** Bloccaggi Singolo
+JMPC  DOUBLE_LOCK
+
+LD    10000000
+DIV   4095
+MUL   ANIN2              ** Ingresso analogico Pin 2
+DIV   1000
+LT    V_MIN_CLOSE_TOOLS  ** Tensione Minima per Attivazione Pompa
+S     PUMP_ON_DIE_HOLDER ** Uscita Attivazione Pompa Bloccaggi Inferiori o Bloccaggio Singolo
+
+LD    10000000
+DIV   4095
+MUL   ANIN2              ** Ingresso analogico Pin 2
+DIV   1000
+GT    V_MAX_CLOSE_TOOLS  ** Tensione Massima per Attivazione Pompa
+R     PUMP_ON_DIE_HOLDER ** Uscita Attivazione Pompa Bloccaggi Inferiori o Bloccaggio Singolo
+
+LD    10000000
+DIV   4095
+MUL   ANIN2              ** Ingresso analogico Pin 2
+DIV   1000
+GT    V_TOOLS_OPENED     ** Tensione Utensili Aperti
+ST    HOLDER_OPENED      ** Uscita Bloccaggi Aperti
+
+JMP   NO_LOCK
+
+DOUBLE_LOCK:
+
+LDN   %paruser.buser.1   ** Bloccaggi Doppio
+JMPC  NO_LOCK
+
+LD    10000000
+DIV   4095
+MUL   ANIN2              ** Ingresso analogico Pin 2
+DIV   1000
+LT    V_MIN_CLOSE_TOOLS  ** Tensione Minima per Attivazione Pompa
+S     PUMP_ON_PUNCH_HOLDER ** Uscita Attivazione Pompa Bloccaggi Superiori
+
+LD    10000000
+DIV   4095
+MUL   ANIN2              ** Ingresso analogico Pin 2
+DIV   1000
+GT    V_MAX_CLOSE_TOOLS  ** Tensione Massima per Attivazione Pompa
+R     PUMP_ON_PUNCH_HOLDER ** Uscita Attivazione Pompa Bloccaggi Superiori
+
+LD    10000000
+DIV   4095
+MUL   ANIN3              ** Ingresso analogico Pin 3
+DIV   1000
+LT    V_MIN_CLOSE_TOOLS  ** Tensione Minima per Attivazione Pompa
+S     PUMP_ON_DIE_HOLDER ** Uscita Attivazione Pompa Bloccaggi Inferiori o Bloccaggio Singolo
+
+LD    10000000
+DIV   4095
+MUL   ANIN3              ** Ingresso analogico Pin 3
+DIV   1000
+GT    V_MAX_CLOSE_TOOLS  ** Tensione Massima per Attivazione Pompa
+R     PUMP_ON_DIE_HOLDER ** Uscita Attivazione Pompa Bloccaggi Inferiori o Bloccaggio Singolo
+
+LD    10000000
+DIV   4095
+MUL   ANIN2              ** Ingresso analogico Pin 2
+DIV   1000
+GT    V_TOOLS_OPENED     ** Tensione Utensili Aperti
+AND   (
+LD    10000000
+DIV   4095
+MUL   ANIN3              ** Ingresso analogico Pin 3
+DIV   1000
+GT    V_TOOLS_OPENED     ** Tensione Utensili Aperti
+)
+ST    HOLDER_OPENED      ** Uscita Bloccaggi Aperti
+
+LD    10000000
+DIV   4095
+MUL   ANIN2              ** Ingresso analogico Pin 2
+DIV   1000
+GT    V_TOOLS_OPENED     ** Tensione Utensili Aperti
+ST    PUNCH_HOLDER_OPENED ** Uscita Bloccaggi Superiori Aperti
+
+LD    10000000
+DIV   4095
+MUL   ANIN3              ** Ingresso analogico Pin 3
+DIV   1000
+GT    V_TOOLS_OPENED     ** Tensione Utensili Aperti
+ST    DIE_HOLDER_OPENED  ** Uscita Bloccaggi Inferiori Aperti
+
+NO_LOCK:
+
+*****Fine Gestione Bloccaggi*****
+
+LD    5
+ST    %UPLCVERS   * Versione PLC
+
+LD    0
+ST    %UPLCREL    * Release PLC
+
+LDN   %IW3.15     	*  Fusibiliera Elettronica		
+ST    %PLCerr3.15
+
+LDN   %IW3.14	  	*  Sequenza Fasi
+ST    %PLCerr3.14
+
+LDN   %IW3.13	 	*  Scatto Termico Bloccaggi
+ST    %PLCerr3.13
+
+*LDN   %IW3.12	  	*  Scatto termico Bombatura
+*ST    %PLCerr3.12
+
+
+
+
+
+END_FUNCTION

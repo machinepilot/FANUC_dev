@@ -1,0 +1,81 @@
+TOPIC: Full System Reset Program
+KEYWORDS: reset, system reset, home position, initialize, clear, startup
+CATEGORY: program_example
+SOURCE: TWA (The Way Automation) Standard Programs
+APPLIES_TO: R-30iB Plus, CNC Machine Tending, RoboDrill
+DESCRIPTION: Full system reset: clears counters, resets I/O, moves to home position
+---
+
+/PROG  RESET3
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= "";
+PROG_SIZE	= 963;
+CREATE		= DATE 20-01-21  TIME 13:08:30;
+MODIFIED	= DATE 20-01-21  TIME 15:18:20;
+FILE_NAME	= RESET2;
+VERSION		= 0;
+LINE_COUNT	= 46;
+MEMORY_SIZE	= 1411;
+PROTECT		= READ_WRITE;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= *,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+/APPL
+
+AUTO_SINGULARITY_HEADER;
+  ENABLE_SINGULARITY_AVOIDANCE   : TRUE;
+/MN
+   1:  !********************* ;
+   2:  !Signal,Register reset program ;
+   3:  !********************* ;
+   4:   ;
+   5:  !Open hand ;
+   6:  RO[2:Gripper Close]=ON ;
+   7:  RO[4:Finish Grip Close]=ON ;
+   8:  !--------------------- ;
+   9:   ;
+  10:  !Reset signal to robodrill ;
+  11:  LBL[100] ;
+  12:  DO[1]=OFF ;
+  13:  DO[2]=OFF ;
+  14:  DO[3]=OFF ;
+  15:  DO[4]=OFF ;
+  16:  DO[5]=OFF ;
+  17:  DO[6]=OFF ;
+  18:  DO[8]=OFF ;
+  19:  DO[9]=OFF ;
+  20:  DO[10]=OFF ;
+  21:  DO[11]=OFF ;
+  22:  DO[12]=OFF ;
+  23:  DO[13]=OFF ;
+  24:  DO[14]=OFF ;
+  25:  DO[15]=OFF ;
+  26:   ;
+  27:  !Reset the register ;
+  28:  LBL[9000] ;
+  29:  R[6]=0    ;
+  30:  R[7]=0    ;
+  31:  R[93]=0    ;
+  32:  R[94]=0    ;
+  33:  R[95]=0    ;
+  34:  R[96]=0    ;
+  35:  R[97]=0    ;
+  36:  R[100:Num Grippers]=0    ;
+  37:  R[101:Infeed Type]=0    ;
+  38:   ;
+  39:  R[110]=1    ;
+  40:  R[111]=1    ;
+  41:  R[112]=0    ;
+  42:  R[113]=0    ;
+  43:  R[114]=0    ;
+  44:  R[115]=0    ;
+  45:  !--------------------- ;
+  46:   ;
+/POS
+/END

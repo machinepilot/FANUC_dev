@@ -1,0 +1,68 @@
+﻿Ciclo fisso utente forzamento quota target riscontri a quota rinculo Ver.012.59 : 213
+
+DBL ActualX1, ActualX2, ActualZ1, ActualZ2
+DBL ActualX3, ActualX4, ActualZ3, ActualZ4
+DBL QRincX1, QRincX2, QRincZ1, QRincZ2
+DBL QRincX3, QRincX4, QRincZ3, QRincZ4
+
+; Forza quota rinculo nel target X1
+QRincX1 = %prog[%np].xa + %prog[%np].corxa + %rinca ;quota rinculo X1
+IF (!ISQNAN(%faseaxa)) %faseaxa = QRincX1
+IF (!ISQNAN(%fasebxa)) %fasebxa = QRincX1
+ActualX1 = QMEASQ(X) ;actual X1
+IF (!(ISQNAN(ActualX1)) && ((ABS(QRincX1 - ActualX1) > %ap[2].pt[4]) || (!(ISQNAN(%fasecxa))))) %fasecxa = QRincX1
+
+; Forza quota rinculo nel target X2
+QRincX2 = %prog[%np].xb + %prog[%np].corxb + %rincb ;quota rinculo X2
+IF (!ISQNAN(%faseaxb)) %faseaxb = QRincX2
+IF (!ISQNAN(%fasebxb)) %fasebxb = QRincX2
+ActualX2 = QMEASQ(Y) ;actual X2
+IF (!(ISQNAN(ActualX2)) && ((ABS(QRincX2 - ActualX2) > %ap[3].pt[4]) || (!(ISQNAN(%fasecxb))))) %fasecxb = QRincX2
+
+; Forza quota rinculo nel target X3
+QRincX3 = %prog[%np].xc + %prog[%np].corxc + %rincc ;quota rinculo X3
+IF (!ISQNAN(%faseaxc)) %faseaxc = QRincX3
+IF (!ISQNAN(%fasebxc)) %fasebxc = QRincX3
+ActualX3 = %ax[22].ra[4] / 1000 ;actual X3
+IF ((%cax22.dt0 == 1) && ((ABS(QRincX3 - ActualX3) > %ap[22].pt[4]) || (!(ISQNAN(%fasecxc))))) %fasecxc = QRincX3
+
+; Forza quota rinculo nel target X4
+QRincX4 = %prog[%np].xd + %prog[%np].corxd + %rincd ;quota rinculo X4
+IF (!ISQNAN(%faseaxd)) %faseaxd = QRincX4
+IF (!ISQNAN(%fasebxd)) %fasebxd = QRincX4
+ActualX4 = %ax[23].ra[4] / 1000 ;actual X4
+IF ((%cax23.dt0 == 1) && ((ABS(QRincX4 - ActualX4) > %ap[23].pt[4]) || (!(ISQNAN(%fasecxd))))) %fasecxd = QRincX4
+
+IF(%C33.9 || %C33.10) THEN
+ VA2 = ABS(%pargene.dwgn[5]) ;quota rinculo assi Z
+
+ ; Forza quota rinculo nel target Z1
+ QRincZ1 = %prog[%np].za - VA2 ;quota rinculo Z1
+ IF (!ISQNAN(%faseaza)) %faseaza = QRincZ1
+ IF (!ISQNAN(%fasebza)) %fasebza = QRincZ1
+ ActualZ1 = QMEASQ(V) ;actual Z1
+ IF (!(ISQNAN(ActualZ1)) && ((ABS(QRincZ1 - ActualZ1) > %ap[6].pt[4]) || (!(ISQNAN(%fasecza))))) %fasecza = QRincZ1
+
+ ; Forza quota rinculo nel target Z2
+ QRincZ2 = %prog[%np].zb + VA2 ;quota rinculo Z2
+ IF (!ISQNAN(%faseazb)) %faseazb = QRincZ2
+ IF (!ISQNAN(%fasebzb)) %fasebzb = QRincZ2
+ ActualZ2 = QMEASQ(W) ;actual Z2
+ IF (!(ISQNAN(ActualZ2)) && ((ABS(QRincZ2 - ActualZ2) > %ap[7].pt[4]) || (!(ISQNAN(%faseczb))))) %faseczb = QRincZ2
+
+ ; Forza quota rinculo nel target Z3
+ QRincZ3 = %prog[%np].zc + VA2 ;quota rinculo Z3
+ IF (!ISQNAN(%faseazc)) %faseazc = QRincZ3
+ IF (!ISQNAN(%fasebzc)) %fasebzc = QRincZ3
+ ActualZ3 = %ax[26].ra[4] / 1000 ;actual Z3
+ IF ((%cax26.dt0 == 1) && ((ABS(QRincZ3 - ActualZ3) > %ap[26].pt[4]) || (!(ISQNAN(%faseczc))))) %faseczc = QRincZ3
+
+ ; Forza quota rinculo nel target Z4
+ QRincZ4 = %prog[%np].zd - VA2 ;quota rinculo Z4
+ IF (!ISQNAN(%faseazd)) %faseazd = QRincZ4
+ IF (!ISQNAN(%fasebzd)) %fasebzd = QRincZ4
+ ActualZ4 = %ax[27].ra[4] / 1000 ;actual Z4
+ IF ((%cax27.dt0 == 1) && ((ABS(QRincZ4 - ActualZ4) > %ap[27].pt[4]) || (!(ISQNAN(%faseczd))))) %faseczd = QRincZ4
+ENDIF
+
+RET

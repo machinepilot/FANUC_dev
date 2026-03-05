@@ -1,0 +1,921 @@
+<?xml version="1.0" ?>
+<job>
+    <settings>
+        <version>1</version>
+        <unit>millimeter</unit>
+        <backcolour>5275838</backcolour>
+        <machine_origo>0,-1525,0</machine_origo>
+    </settings>
+    <entities>
+        <entity id="MACHINE_1" displaytype="Machine">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_DURMA AD-S30100 MODELED#1</reference_id>
+            </geometry>
+        </entity>
+        <entity id="MACHINE_2" displaytype="Machine">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_DURMA AD-S30100 MODELED#2</reference_id>
+            </geometry>
+        </entity>
+        <entity id="MACHINE_3" displaytype="Machine">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_DURMA AD-S30100 MODELED#3</reference_id>
+            </geometry>
+        </entity>
+        <entity id="MACHINE_4" displaytype="Machine">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_DURMA AD-S30100 MODELED#4</reference_id>
+            </geometry>
+        </entity>
+        <entity id="MACHINE_5" displaytype="Machine">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_DURMA AD-S30100 MODELED#5</reference_id>
+            </geometry>
+        </entity>
+        <entity id="MACHINE_6" displaytype="Machine">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_DURMA AD-S30100 MODELED#6</reference_id>
+            </geometry>
+        </entity>
+        <entity id="MACHINE_7" displaytype="Machine">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_DURMA AD-S30100 MODELED#7</reference_id>
+            </geometry>
+        </entity>
+        <entity id="MACHINE_8" displaytype="Machine">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_DURMA AD-S30100 MODELED#8</reference_id>
+            </geometry>
+        </entity>
+        <entity id="MACHINE_9" displaytype="Machine">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_DURMA AD-S30100 MODELED#9</reference_id>
+            </geometry>
+        </entity>
+        <entity id="BEAM_UPPER" displaytype="Upper beam">
+            <geometry type="Body">
+                <reference_id>UPPERBEAM_MM_DURMA AD-S 30175</reference_id>
+            </geometry>
+        </entity>
+        <entity id="BEAM_LOWER" displaytype="Lower beam">
+            <geometry type="Body">
+                <reference_id>LOWERBEAM_MM_DURMA AD-S 30175</reference_id>
+            </geometry>
+        </entity>
+        <entity id="TOOL_FINGER_1" displaytype="Fingers">
+            <geometry type="Body">
+                <reference_id>FINGER1_MM_DURMA AD-S 30175</reference_id>
+            </geometry>
+        </entity>
+        <entity id="TOOL_FINGER_2" displaytype="Fingers">
+            <geometry type="Body">
+                <reference_id>FINGER2_MM_DURMA AD-S 30175</reference_id>
+            </geometry>
+        </entity>
+        <entity id="TOOL_SUPPORT_FORWARD_1" displaytype="Support">
+            <geometry type="Body">
+                <reference_id>SUPPORT1_MM_DURMA AD-S 30175</reference_id>
+            </geometry>
+        </entity>
+        <entity id="TOOL_SUPPORT_FORWARD_2" displaytype="Support">
+            <geometry type="Body">
+                <reference_id>SUPPORT2_MM_DURMA AD-S 30175</reference_id>
+            </geometry>
+        </entity>
+        <entity id="HOLDER_LOWER" displaytype="Lower beam">
+            <geometry type="Body">
+                <reference_id>LOWERHOLDER_MM_DURMA AD-S 30175</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FLOOR" displaytype="Floor">
+            <geometry type="Body">
+                <reference_id>Floor</reference_id>
+            </geometry>
+        </entity>
+        <entity id="TOOL_UPPER" displaytype="Punch">
+            <geometry type="Body">
+                <reference_id>UPPERTOOL_MM_BIU-002</reference_id>
+            </geometry>
+        </entity>
+        <entity id="TOOL_UPPER_2" displaytype="Punch">
+            <geometry type="Body">
+                <reference_id>UPPERTOOL_MM_BIU-002_2</reference_id>
+            </geometry>
+        </entity>
+        <entity id="TOOL_UPPER_3" displaytype="Punch">
+            <geometry type="Body">
+                <reference_id>UPPERTOOL_MM_BIU-002_3</reference_id>
+            </geometry>
+        </entity>
+        <entity id="TOOL_LOWER" displaytype="Die">
+            <geometry type="Body">
+                <reference_id>LOWERTOOL_MM_OZU-322</reference_id>
+            </geometry>
+        </entity>
+        <entity id="TOOL_LOWER_2" displaytype="Die">
+            <geometry type="Body">
+                <reference_id>LOWERTOOL_MM_OZU-322_2</reference_id>
+            </geometry>
+        </entity>
+        <entity id="TOOL_LOWER_3" displaytype="Die">
+            <geometry type="Body">
+                <reference_id>LOWERTOOL_MM_OZU-322_3</reference_id>
+            </geometry>
+        </entity>
+        <entity id="PART" displaytype="Sheet">
+            <geometry type="Body">
+                <reference_id>SMpart 1_6</reference_id>
+            </geometry>
+        </entity>
+        <entity id="PART_2" displaytype="Sheet">
+            <geometry type="Body">
+                <reference_id>SMpart 1</reference_id>
+            </geometry>
+        </entity>
+        <entity id="PART_2_2" displaytype="Sheet">
+            <geometry type="Body">
+                <reference_id>SMpart 1_7</reference_id>
+            </geometry>
+        </entity>
+        <entity id="PART_3" displaytype="Sheet">
+            <geometry type="Body">
+                <reference_id>SMpart 1_8</reference_id>
+            </geometry>
+        </entity>
+        <entity id="PART_4" displaytype="Sheet">
+            <geometry type="Body">
+                <reference_id>SMpart 1_2</reference_id>
+            </geometry>
+        </entity>
+        <entity id="PART_4_2" displaytype="Sheet">
+            <geometry type="Body">
+                <reference_id>SMpart 1_9</reference_id>
+            </geometry>
+        </entity>
+        <entity id="PART_5" displaytype="Sheet">
+            <geometry type="Body">
+                <reference_id>SMpart 1_10</reference_id>
+            </geometry>
+        </entity>
+        <entity id="PART_6" displaytype="Sheet">
+            <geometry type="Body">
+                <reference_id>SMpart 1_3</reference_id>
+            </geometry>
+        </entity>
+        <entity id="PART_6_2" displaytype="Sheet">
+            <geometry type="Body">
+                <reference_id>SMpart 1_11</reference_id>
+            </geometry>
+        </entity>
+        <entity id="PART_7" displaytype="Sheet">
+            <geometry type="Body">
+                <reference_id>SMpart 1_12</reference_id>
+            </geometry>
+        </entity>
+        <entity id="PART_8" displaytype="Sheet">
+            <geometry type="Body">
+                <reference_id>SMpart 1_4</reference_id>
+            </geometry>
+        </entity>
+        <entity id="PART_8_2" displaytype="Sheet">
+            <geometry type="Body">
+                <reference_id>SMpart 1_13</reference_id>
+            </geometry>
+        </entity>
+        <entity id="PART_9" displaytype="Sheet">
+            <geometry type="Body">
+                <reference_id>SMpart 1_14</reference_id>
+            </geometry>
+        </entity>
+        <entity id="PART_10" displaytype="Sheet">
+            <geometry type="Body">
+                <reference_id>SMpart 1_5</reference_id>
+            </geometry>
+        </entity>
+        <entity id="PART_10_2" displaytype="Sheet">
+            <geometry type="Body">
+                <reference_id>SMpart 1_15</reference_id>
+            </geometry>
+        </entity>
+        <entity id="PART_11" displaytype="Sheet">
+            <geometry type="Body">
+                <reference_id>SMpart 1_16</reference_id>
+            </geometry>
+        </entity>
+    </entities>
+    <states>
+        <state id="default">
+            <visibility>
+                <show type="Machine">1</show>
+                <show type="Upper beam">1</show>
+                <show type="Lower beam">1</show>
+                <show type="Fingers">1</show>
+                <show type="Support">1</show>
+                <show type="Floor">0</show>
+                <show type="Punch">1</show>
+                <show type="Die">1</show>
+                <show type="Sheet">1</show>
+                <show entity="MACHINE_1">1</show>
+                <show entity="MACHINE_2">1</show>
+                <show entity="MACHINE_3">1</show>
+                <show entity="MACHINE_4">1</show>
+                <show entity="MACHINE_5">1</show>
+                <show entity="MACHINE_6">1</show>
+                <show entity="MACHINE_7">1</show>
+                <show entity="MACHINE_8">1</show>
+                <show entity="MACHINE_9">1</show>
+                <show entity="BEAM_UPPER">1</show>
+                <show entity="BEAM_LOWER">1</show>
+                <show entity="TOOL_FINGER_1">1</show>
+                <show entity="TOOL_FINGER_2">1</show>
+                <show entity="TOOL_SUPPORT_FORWARD_1">1</show>
+                <show entity="TOOL_SUPPORT_FORWARD_2">1</show>
+                <show entity="HOLDER_LOWER">1</show>
+                <show entity="FLOOR">1</show>
+                <show entity="TOOL_UPPER">1</show>
+                <show entity="TOOL_UPPER_2">1</show>
+                <show entity="TOOL_UPPER_3">1</show>
+                <show entity="TOOL_LOWER">1</show>
+                <show entity="TOOL_LOWER_2">1</show>
+                <show entity="TOOL_LOWER_3">1</show>
+                <show entity="PART">1</show>
+                <show entity="PART_2">0</show>
+                <show entity="PART_2_2">1</show>
+                <show entity="PART_3">1</show>
+                <show entity="PART_4">0</show>
+                <show entity="PART_4_2">1</show>
+                <show entity="PART_5">1</show>
+                <show entity="PART_6">0</show>
+                <show entity="PART_6_2">1</show>
+                <show entity="PART_7">1</show>
+                <show entity="PART_8">0</show>
+                <show entity="PART_8_2">1</show>
+                <show entity="PART_9">1</show>
+                <show entity="PART_10">0</show>
+                <show entity="PART_10_2">1</show>
+                <show entity="PART_11">1</show>
+            </visibility>
+            <transformations>
+                <trf entity="MACHINE_1">1,0,0,0,0,1,0,0,0,0,1,0,0,0,-0,1</trf>
+                <trf entity="MACHINE_2">1,0,0,0,0,1,0,0,0,0,1,0,0,0,-0,1</trf>
+                <trf entity="MACHINE_3">1,0,0,0,0,1,0,0,0,0,1,0,0,0,-0,1</trf>
+                <trf entity="MACHINE_4">1,0,0,0,0,1,0,0,0,0,1,0,0,0,-0,1</trf>
+                <trf entity="MACHINE_5">1,0,0,0,0,1,0,0,0,0,1,0,0,0,-0,1</trf>
+                <trf entity="MACHINE_6">1,0,0,0,0,1,0,0,0,0,1,0,0,0,-0,1</trf>
+                <trf entity="MACHINE_7">1,0,0,0,0,1,0,0,0,0,1,0,0,0,-0,1</trf>
+                <trf entity="MACHINE_8">1,0,0,0,0,1,0,0,0,0,1,0,0,0,-0,1</trf>
+                <trf entity="MACHINE_9">1,0,0,0,0,1,0,0,0,0,1,0,0,0,-0,1</trf>
+                <trf entity="BEAM_UPPER">1,0,0,0,0,1,0,0,0,0,1,0,0,407,-0,1</trf>
+                <trf entity="BEAM_LOWER">1,0,0,0,0,1,0,0,0,0,1,0,0,0,-0,1</trf>
+                <trf entity="TOOL_FINGER_1">1,0,0,0,0,1,0,0,0,0,1,0,95.5,178.99,171.693,1</trf>
+                <trf entity="TOOL_FINGER_2">1,0,0,0,0,1,0,0,0,0,1,0,435.5,178.99,171.693,1</trf>
+                <trf entity="TOOL_SUPPORT_FORWARD_1">1,0,0,0,0,1,0,0,0,0,1,0,-215.349,195,-120,1</trf>
+                <trf entity="TOOL_SUPPORT_FORWARD_2">1,0,0,0,0,1,0,0,0,0,1,0,798.564,195,-120,1</trf>
+                <trf entity="HOLDER_LOWER">1,0,0,0,0,1,0,0,0,0,1,0,0,95,-0,1</trf>
+                <trf entity="FLOOR">1,0,0,0,0,1,0,0,0,0,1,0,0,0,-0,1</trf>
+                <trf entity="TOOL_UPPER">-1,0,0,0,0,1,0,0,0,0,-1,0,265.5,309,-0,1</trf>
+                <trf entity="TOOL_UPPER_2">-1,0,0,0,0,1,0,0,0,0,-1,0,-265.5,309,-0,1</trf>
+                <trf entity="TOOL_UPPER_3">-1,0,0,0,0,1,0,0,0,0,-1,0,-65.5,309,-0,1</trf>
+                <trf entity="TOOL_LOWER">-1,0,0,0,0,1,0,0,0,0,-1,0,265.5,195,-0,1</trf>
+                <trf entity="TOOL_LOWER_2">-1,0,0,0,0,1,0,0,0,0,-1,0,-265.5,195,-0,1</trf>
+                <trf entity="TOOL_LOWER_3">-1,0,0,0,0,1,0,0,0,0,-1,0,-65.5,195,-0,1</trf>
+                <trf entity="PART">0,0,-1,0,0,-1,0,0,-1,0,0,0,65.5,197,88.5679,1</trf>
+                <trf entity="PART_2">0,0,-1,0,0,-1,0,0,-1,0,0,0,65.5,197,88.5679,1</trf>
+                <trf entity="PART_2_2">0,0,-1,0,0,-1,0,0,-1,0,0,0,65.5,197,88.5679,1</trf>
+                <trf entity="PART_3">0,0,-1,0,0,-1,0,0,-1,0,0,0,65.5,197,88.5679,1</trf>
+                <trf entity="PART_4">0,0,-1,0,0,-1,0,0,-1,0,0,0,65.5,197,88.5679,1</trf>
+                <trf entity="PART_4_2">0,0,-1,0,0,-1,0,0,-1,0,0,0,65.5,197,88.5679,1</trf>
+                <trf entity="PART_5">0,0,-1,0,0,-1,0,0,-1,0,0,0,65.5,197,88.5679,1</trf>
+                <trf entity="PART_6">0,0,-1,0,0,-1,0,0,-1,0,0,0,65.5,197,88.5679,1</trf>
+                <trf entity="PART_6_2">0,0,-1,0,0,-1,0,0,-1,0,0,0,65.5,197,88.5679,1</trf>
+                <trf entity="PART_7">0,0,-1,0,0,-1,0,0,-1,0,0,0,65.5,197,88.5679,1</trf>
+                <trf entity="PART_8">0,0,-1,0,0,-1,0,0,-1,0,0,0,65.5,197,88.5679,1</trf>
+                <trf entity="PART_8_2">0,0,-1,0,0,-1,0,0,-1,0,0,0,65.5,197,88.5679,1</trf>
+                <trf entity="PART_9">0,0,-1,0,0,-1,0,0,-1,0,0,0,65.5,197,88.5679,1</trf>
+                <trf entity="PART_10">0,0,-1,0,0,-1,0,0,-1,0,0,0,65.5,197,88.5679,1</trf>
+                <trf entity="PART_10_2">0,0,-1,0,0,-1,0,0,-1,0,0,0,65.5,197,88.5679,1</trf>
+                <trf entity="PART_11">0,0,-1,0,0,-1,0,0,-1,0,0,0,65.5,197,88.5679,1</trf>
+            </transformations>
+            <views>
+                <view id="1">
+                    <pos>14617,5854.89,-14691.9</pos>
+                    <target>167.729,365.48,451.699</target>
+                    <near>6267.89</near>
+                    <far>122371</far>
+                    <width>8726.18</width>
+                    <height>4776.11</height>
+                    <perspective>1</perspective>
+                </view>
+            </views>
+        </state>
+        <state order="1" id="Bend 1: Unbent">
+            <visibility />
+            <transformations />
+            <views>
+                <view id="1">
+                    <pos>18369.2,2573.45,-11041.7</pos>
+                    <target>160.642,510.573,466.495</target>
+                    <near>6267.89</near>
+                    <far>122371</far>
+                    <perspective>1</perspective>
+                    <fov>0.124132</fov>
+                </view>
+            </views>
+        </state>
+        <state order="2" id="Bend 1: Bent">
+            <visibility>
+                <show entity="PART_10">1</show>
+                <show entity="PART_10_2">0</show>
+            </visibility>
+            <transformations>
+                <trf entity="BEAM_UPPER">1,0,0,0,0,1,0,0,0,0,1,0,0,293.208,-0,1</trf>
+                <trf entity="TOOL_UPPER">-1,0,0,0,0,1,0,0,0,0,-1,0,265.5,195.208,-0,1</trf>
+                <trf entity="TOOL_UPPER_2">-1,0,0,0,0,1,0,0,0,0,-1,0,-265.5,195.208,-0,1</trf>
+                <trf entity="TOOL_UPPER_3">-1,0,0,0,0,1,0,0,0,0,-1,0,-65.5,195.208,-0,1</trf>
+                <trf entity="PART">0,-0.382683,-0.92388,0,0,-0.92388,0.382683,0,-1,0,0,0,65.5,228.609,81.5017,1</trf>
+                <trf entity="PART_2">0,-0.382683,-0.92388,0,0,-0.92388,0.382683,0,-1,0,0,0,65.5,228.609,81.5017,1</trf>
+                <trf entity="PART_2_2">0,-0.382683,-0.92388,0,0,-0.92388,0.382683,0,-1,0,0,0,65.5,228.609,81.5017,1</trf>
+                <trf entity="PART_3">0,-0.382683,-0.92388,0,0,-0.92388,0.382683,0,-1,0,0,0,65.5,228.609,81.5017,1</trf>
+                <trf entity="PART_4">0,-0.382683,-0.92388,0,0,-0.92388,0.382683,0,-1,0,0,0,65.5,228.609,81.5017,1</trf>
+                <trf entity="PART_4_2">0,-0.382683,-0.92388,0,0,-0.92388,0.382683,0,-1,0,0,0,65.5,228.609,81.5017,1</trf>
+                <trf entity="PART_5">0,-0.382683,-0.92388,0,0,-0.92388,0.382683,0,-1,0,0,0,65.5,228.609,81.5017,1</trf>
+                <trf entity="PART_6">0,-0.382683,-0.92388,0,0,-0.92388,0.382683,0,-1,0,0,0,65.5,228.609,81.5017,1</trf>
+                <trf entity="PART_6_2">0,-0.382683,-0.92388,0,0,-0.92388,0.382683,0,-1,0,0,0,65.5,228.609,81.5017,1</trf>
+                <trf entity="PART_7">0,-0.382683,-0.92388,0,0,-0.92388,0.382683,0,-1,0,0,0,65.5,228.609,81.5017,1</trf>
+                <trf entity="PART_8">0,-0.382683,-0.92388,0,0,-0.92388,0.382683,0,-1,0,0,0,65.5,228.609,81.5017,1</trf>
+                <trf entity="PART_8_2">0,-0.382683,-0.92388,0,0,-0.92388,0.382683,0,-1,0,0,0,65.5,228.609,81.5017,1</trf>
+                <trf entity="PART_9">0,-0.382683,-0.92388,0,0,-0.92388,0.382683,0,-1,0,0,0,65.5,228.609,81.5017,1</trf>
+                <trf entity="PART_10">0,0.382683,-0.92388,0,0,-0.92388,-0.382683,0,-1,0,0,0,65.5,160.822,82.1504,1</trf>
+                <trf entity="PART_10_2">0,0.382683,-0.92388,0,0,-0.92388,-0.382683,0,-1,0,0,0,65.5,160.822,82.1504,1</trf>
+                <trf entity="PART_11">0,0.382683,-0.92388,0,0,-0.92388,-0.382683,0,-1,0,0,0,65.5,160.822,82.1504,1</trf>
+            </transformations>
+            <views>
+                <view id="1">
+                    <pos>14617,5854.89,-14691.9</pos>
+                    <target>167.729,365.48,451.699</target>
+                    <near>6267.89</near>
+                    <far>122371</far>
+                    <perspective>1</perspective>
+                    <fov>0.219829</fov>
+                </view>
+            </views>
+        </state>
+        <state order="3" id="Bend 2: Unbent">
+            <visibility>
+                <show entity="PART_10">1</show>
+                <show entity="PART_10_2">0</show>
+            </visibility>
+            <transformations>
+                <trf entity="BEAM_UPPER">1,0,0,0,0,1,0,0,0,0,1,0,0,313,-0,1</trf>
+                <trf entity="TOOL_FINGER_1">1,0,0,0,0,1,0,0,0,0,1,0,95.5,178.99,147.642,1</trf>
+                <trf entity="TOOL_FINGER_2">1,0,0,0,0,1,0,0,0,0,1,0,435.5,178.99,147.642,1</trf>
+                <trf entity="TOOL_SUPPORT_FORWARD_2">1,0,0,0,0,1,0,0,0,0,1,0,1424.35,195,-120,1</trf>
+                <trf entity="TOOL_UPPER">-1,0,0,0,0,1,0,0,0,0,-1,0,265.5,215,-0,1</trf>
+                <trf entity="TOOL_UPPER_2">-1,0,0,0,0,1,0,0,0,0,-1,0,-265.5,215,-0,1</trf>
+                <trf entity="TOOL_UPPER_3">-1,0,0,0,0,1,0,0,0,0,-1,0,-65.5,215,-0,1</trf>
+                <trf entity="PART">0,0,-1,0,0,1,0,0,1,0,0,0,465.5,195,49.5226,1</trf>
+                <trf entity="PART_2">0,0,-1,0,0,1,0,0,1,0,0,0,465.5,195,49.5226,1</trf>
+                <trf entity="PART_2_2">0,0,-1,0,0,1,0,0,1,0,0,0,465.5,195,49.5226,1</trf>
+                <trf entity="PART_3">0,0,-1,0,0,1,0,0,1,0,0,0,465.5,195,49.5226,1</trf>
+                <trf entity="PART_4">0,0,-1,0,0,1,0,0,1,0,0,0,465.5,195,49.5226,1</trf>
+                <trf entity="PART_4_2">0,0,-1,0,0,1,0,0,1,0,0,0,465.5,195,49.5226,1</trf>
+                <trf entity="PART_5">0,0,-1,0,0,1,0,0,1,0,0,0,465.5,195,49.5226,1</trf>
+                <trf entity="PART_6">0,0,-1,0,0,1,0,0,1,0,0,0,465.5,195,49.5226,1</trf>
+                <trf entity="PART_6_2">0,0,-1,0,0,1,0,0,1,0,0,0,465.5,195,49.5226,1</trf>
+                <trf entity="PART_7">0,0,-1,0,0,1,0,0,1,0,0,0,465.5,195,49.5226,1</trf>
+                <trf entity="PART_8">0,0,-1,0,0,1,0,0,1,0,0,0,465.5,195,49.5226,1</trf>
+                <trf entity="PART_8_2">0,0,-1,0,0,1,0,0,1,0,0,0,465.5,195,49.5226,1</trf>
+                <trf entity="PART_9">0,0,-1,0,0,1,0,0,1,0,0,0,465.5,195,49.5226,1</trf>
+                <trf entity="PART_10">0,-0.707107,-0.707107,0,0,0.707107,-0.707107,0,1,0,0,0,465.5,257.875,24.181,1</trf>
+                <trf entity="PART_10_2">0,-0.707107,-0.707107,0,0,0.707107,-0.707107,0,1,0,0,0,465.5,257.875,24.181,1</trf>
+                <trf entity="PART_11">0,-0.707107,-0.707107,0,0,0.707107,-0.707107,0,1,0,0,0,465.5,257.875,24.181,1</trf>
+            </transformations>
+            <views>
+                <view id="1">
+                    <pos>14617,5854.89,-14691.9</pos>
+                    <target>167.729,365.48,451.699</target>
+                    <near>6267.89</near>
+                    <far>122371</far>
+                    <perspective>1</perspective>
+                    <fov>0.219829</fov>
+                </view>
+            </views>
+        </state>
+        <state order="4" id="Bend 2: Bent">
+            <visibility>
+                <show entity="PART_8">1</show>
+                <show entity="PART_8_2">0</show>
+                <show entity="PART_10">1</show>
+                <show entity="PART_10_2">0</show>
+            </visibility>
+            <transformations>
+                <trf entity="BEAM_UPPER">1,0,0,0,0,1,0,0,0,0,1,0,0,293.208,-0,1</trf>
+                <trf entity="TOOL_FINGER_1">1,0,0,0,0,1,0,0,0,0,1,0,95.5,178.99,147.642,1</trf>
+                <trf entity="TOOL_FINGER_2">1,0,0,0,0,1,0,0,0,0,1,0,435.5,178.99,147.642,1</trf>
+                <trf entity="TOOL_SUPPORT_FORWARD_2">1,0,0,0,0,1,0,0,0,0,1,0,1424.35,195,-120,1</trf>
+                <trf entity="TOOL_UPPER">-1,0,0,0,0,1,0,0,0,0,-1,0,265.5,195.208,-0,1</trf>
+                <trf entity="TOOL_UPPER_2">-1,0,0,0,0,1,0,0,0,0,-1,0,-265.5,195.208,-0,1</trf>
+                <trf entity="TOOL_UPPER_3">-1,0,0,0,0,1,0,0,0,0,-1,0,-65.5,195.208,-0,1</trf>
+                <trf entity="PART">0,-0.382683,-0.92388,0,0,0.92388,-0.382683,0,1,0,0,0,465.5,211.819,46.194,1</trf>
+                <trf entity="PART_2">0,-0.382683,-0.92388,0,0,0.92388,-0.382683,0,1,0,0,0,465.5,211.819,46.194,1</trf>
+                <trf entity="PART_2_2">0,-0.382683,-0.92388,0,0,0.92388,-0.382683,0,1,0,0,0,465.5,211.819,46.194,1</trf>
+                <trf entity="PART_3">0,-0.382683,-0.92388,0,0,0.92388,-0.382683,0,1,0,0,0,465.5,211.819,46.194,1</trf>
+                <trf entity="PART_4">0,-0.382683,-0.92388,0,0,0.92388,-0.382683,0,1,0,0,0,465.5,211.819,46.194,1</trf>
+                <trf entity="PART_4_2">0,-0.382683,-0.92388,0,0,0.92388,-0.382683,0,1,0,0,0,465.5,211.819,46.194,1</trf>
+                <trf entity="PART_5">0,-0.382683,-0.92388,0,0,0.92388,-0.382683,0,1,0,0,0,465.5,211.819,46.194,1</trf>
+                <trf entity="PART_6">0,-0.382683,-0.92388,0,0,0.92388,-0.382683,0,1,0,0,0,465.5,211.819,46.194,1</trf>
+                <trf entity="PART_6_2">0,-0.382683,-0.92388,0,0,0.92388,-0.382683,0,1,0,0,0,465.5,211.819,46.194,1</trf>
+                <trf entity="PART_7">0,-0.382683,-0.92388,0,0,0.92388,-0.382683,0,1,0,0,0,465.5,211.819,46.194,1</trf>
+                <trf entity="PART_8">0,0.382683,-0.92388,0,0,0.92388,0.382683,0,1,0,0,0,465.5,173.916,45.3119,1</trf>
+                <trf entity="PART_8_2">0,0.382683,-0.92388,0,0,0.92388,0.382683,0,1,0,0,0,465.5,173.916,45.3119,1</trf>
+                <trf entity="PART_9">0,0.382683,-0.92388,0,0,0.92388,0.382683,0,1,0,0,0,465.5,173.916,45.3119,1</trf>
+                <trf entity="PART_10">0,-0.382683,-0.92388,0,0,0.92388,-0.382683,0,1,0,0,0,465.5,241.703,45.9606,1</trf>
+                <trf entity="PART_10_2">0,-0.382683,-0.92388,0,0,0.92388,-0.382683,0,1,0,0,0,465.5,241.703,45.9606,1</trf>
+                <trf entity="PART_11">0,-0.382683,-0.92388,0,0,0.92388,-0.382683,0,1,0,0,0,465.5,241.703,45.9606,1</trf>
+            </transformations>
+            <views>
+                <view id="1">
+                    <pos>14617,5854.89,-14691.9</pos>
+                    <target>167.729,365.48,451.699</target>
+                    <near>6267.89</near>
+                    <far>122371</far>
+                    <perspective>1</perspective>
+                    <fov>0.219829</fov>
+                </view>
+            </views>
+        </state>
+        <state order="5" id="Bend 3: Unbent">
+            <visibility>
+                <show entity="PART_8">1</show>
+                <show entity="PART_8_2">0</show>
+                <show entity="PART_10">1</show>
+                <show entity="PART_10_2">0</show>
+            </visibility>
+            <transformations>
+                <trf entity="BEAM_UPPER">1,0,0,0,0,1,0,0,0,0,1,0,0,313,-0,1</trf>
+                <trf entity="TOOL_FINGER_1">1,0,0,0,0,1,0,0,0,0,1,0,-335.5,188,28.2781,1</trf>
+                <trf entity="TOOL_FINGER_2">1,0,0,0,0,1,0,0,0,0,1,0,4.5,188,28.2781,1</trf>
+                <trf entity="TOOL_SUPPORT_FORWARD_2">1,0,0,0,0,1,0,0,0,0,1,0,1424.35,195,-120,1</trf>
+                <trf entity="TOOL_UPPER">-1,0,0,0,0,1,0,0,0,0,-1,0,265.5,215,-0,1</trf>
+                <trf entity="TOOL_UPPER_2">-1,0,0,0,0,1,0,0,0,0,-1,0,-265.5,215,-0,1</trf>
+                <trf entity="TOOL_UPPER_3">-1,0,0,0,0,1,0,0,0,0,-1,0,-65.5,215,-0,1</trf>
+                <trf entity="PART">0,0,1,0,0,1,0,0,-1,0,0,0,-365.5,195,-298.278,1</trf>
+                <trf entity="PART_2">0,0,1,0,0,1,0,0,-1,0,0,0,-365.5,195,-298.278,1</trf>
+                <trf entity="PART_2_2">0,0,1,0,0,1,0,0,-1,0,0,0,-365.5,195,-298.278,1</trf>
+                <trf entity="PART_3">0,0,1,0,0,1,0,0,-1,0,0,0,-365.5,195,-298.278,1</trf>
+                <trf entity="PART_4">0,0,1,0,0,1,0,0,-1,0,0,0,-365.5,195,-298.278,1</trf>
+                <trf entity="PART_4_2">0,0,1,0,0,1,0,0,-1,0,0,0,-365.5,195,-298.278,1</trf>
+                <trf entity="PART_5">0,0,1,0,0,1,0,0,-1,0,0,0,-365.5,195,-298.278,1</trf>
+                <trf entity="PART_6">0,0,1,0,0,1,0,0,-1,0,0,0,-365.5,195,-298.278,1</trf>
+                <trf entity="PART_6_2">0,0,1,0,0,1,0,0,-1,0,0,0,-365.5,195,-298.278,1</trf>
+                <trf entity="PART_7">0,0,1,0,0,1,0,0,-1,0,0,0,-365.5,195,-298.278,1</trf>
+                <trf entity="PART_8">0,0.707107,0.707107,0,0,0.707107,-0.707107,0,-1,0,0,0,-365.5,160.32,-282.958,1</trf>
+                <trf entity="PART_8_2">0,0.707107,0.707107,0,0,0.707107,-0.707107,0,-1,0,0,0,-365.5,160.32,-282.958,1</trf>
+                <trf entity="PART_9">0,0.707107,0.707107,0,0,0.707107,-0.707107,0,-1,0,0,0,-365.5,160.32,-282.958,1</trf>
+                <trf entity="PART_10">0,0,1,0,0,1,0,0,-1,0,0,0,-365.5,222.698,-309.499,1</trf>
+                <trf entity="PART_10_2">0,0,1,0,0,1,0,0,-1,0,0,0,-365.5,222.698,-309.499,1</trf>
+                <trf entity="PART_11">0,0,1,0,0,1,0,0,-1,0,0,0,-365.5,222.698,-309.499,1</trf>
+            </transformations>
+            <views>
+                <view id="1">
+                    <pos>14617,5854.89,-14691.9</pos>
+                    <target>167.729,365.48,451.699</target>
+                    <near>6267.89</near>
+                    <far>122371</far>
+                    <perspective>1</perspective>
+                    <fov>0.219829</fov>
+                </view>
+            </views>
+        </state>
+        <state order="6" id="Bend 3: Bent">
+            <visibility>
+                <show entity="PART_6">1</show>
+                <show entity="PART_6_2">0</show>
+                <show entity="PART_8">1</show>
+                <show entity="PART_8_2">0</show>
+                <show entity="PART_10">1</show>
+                <show entity="PART_10_2">0</show>
+            </visibility>
+            <transformations>
+                <trf entity="BEAM_UPPER">1,0,0,0,0,1,0,0,0,0,1,0,0,291.653,-0,1</trf>
+                <trf entity="TOOL_FINGER_1">1,0,0,0,0,1,0,0,0,0,1,0,-335.5,188,28.2781,1</trf>
+                <trf entity="TOOL_FINGER_2">1,0,0,0,0,1,0,0,0,0,1,0,4.5,188,28.2781,1</trf>
+                <trf entity="TOOL_SUPPORT_FORWARD_2">1,0,0,0,0,1,0,0,0,0,1,0,1424.35,195,-120,1</trf>
+                <trf entity="TOOL_UPPER">-1,0,0,0,0,1,0,0,0,0,-1,0,265.5,193.653,-0,1</trf>
+                <trf entity="TOOL_UPPER_2">-1,0,0,0,0,1,0,0,0,0,-1,0,-265.5,193.653,-0,1</trf>
+                <trf entity="TOOL_UPPER_3">-1,0,0,0,0,1,0,0,0,0,-1,0,-65.5,193.653,-0,1</trf>
+                <trf entity="PART">0,-0.707107,0.707107,0,0,0.707107,0.707107,0,-1,0,0,0,-365.5,402.081,-212.132,1</trf>
+                <trf entity="PART_2">0,-0.707107,0.707107,0,0,0.707107,0.707107,0,-1,0,0,0,-365.5,402.081,-212.132,1</trf>
+                <trf entity="PART_2_2">0,-0.707107,0.707107,0,0,0.707107,0.707107,0,-1,0,0,0,-365.5,402.081,-212.132,1</trf>
+                <trf entity="PART_3">0,-0.707107,0.707107,0,0,0.707107,0.707107,0,-1,0,0,0,-365.5,402.081,-212.132,1</trf>
+                <trf entity="PART_4">0,-0.707107,0.707107,0,0,0.707107,0.707107,0,-1,0,0,0,-365.5,402.081,-212.132,1</trf>
+                <trf entity="PART_4_2">0,-0.707107,0.707107,0,0,0.707107,0.707107,0,-1,0,0,0,-365.5,402.081,-212.132,1</trf>
+                <trf entity="PART_5">0,-0.707107,0.707107,0,0,0.707107,0.707107,0,-1,0,0,0,-365.5,402.081,-212.132,1</trf>
+                <trf entity="PART_6">0,0.707107,0.707107,0,0,0.707107,-0.707107,0,-1,0,0,0,-365.5,-19.7484,-209.697,1</trf>
+                <trf entity="PART_6_2">0,0.707107,0.707107,0,0,0.707107,-0.707107,0,-1,0,0,0,-365.5,-19.7484,-209.697,1</trf>
+                <trf entity="PART_7">0,0.707107,0.707107,0,0,0.707107,-0.707107,0,-1,0,0,0,-365.5,-19.7484,-209.697,1</trf>
+                <trf entity="PART_8">0,0,1,0,0,1,0,0,-1,0,0,0,-365.5,366.725,-225.822,1</trf>
+                <trf entity="PART_8_2">0,0,1,0,0,1,0,0,-1,0,0,0,-365.5,366.725,-225.822,1</trf>
+                <trf entity="PART_9">0,0,1,0,0,1,0,0,-1,0,0,0,-365.5,366.725,-225.822,1</trf>
+                <trf entity="PART_10">0,-0.707107,0.707107,0,0,0.707107,0.707107,0,-1,0,0,0,-365.5,429.6,-200.48,1</trf>
+                <trf entity="PART_10_2">0,-0.707107,0.707107,0,0,0.707107,0.707107,0,-1,0,0,0,-365.5,429.6,-200.48,1</trf>
+                <trf entity="PART_11">0,-0.707107,0.707107,0,0,0.707107,0.707107,0,-1,0,0,0,-365.5,429.6,-200.48,1</trf>
+            </transformations>
+            <views>
+                <view id="1">
+                    <pos>14617,5854.89,-14691.9</pos>
+                    <target>167.729,365.48,451.699</target>
+                    <near>6267.89</near>
+                    <far>122371</far>
+                    <perspective>1</perspective>
+                    <fov>0.219829</fov>
+                </view>
+            </views>
+        </state>
+        <state order="7" id="Bend 4: Unbent">
+            <visibility>
+                <show entity="PART_6">1</show>
+                <show entity="PART_6_2">0</show>
+                <show entity="PART_8">1</show>
+                <show entity="PART_8_2">0</show>
+                <show entity="PART_10">1</show>
+                <show entity="PART_10_2">0</show>
+            </visibility>
+            <transformations>
+                <trf entity="BEAM_UPPER">1,0,0,0,0,1,0,0,0,0,1,0,0,337,-0,1</trf>
+                <trf entity="TOOL_FINGER_1">1,0,0,0,0,1,0,0,0,0,1,0,-335.5,188,28.2781,1</trf>
+                <trf entity="TOOL_FINGER_2">1,0,0,0,0,1,0,0,0,0,1,0,4.5,188,28.2781,1</trf>
+                <trf entity="TOOL_SUPPORT_FORWARD_2">1,0,0,0,0,1,0,0,0,0,1,0,1424.35,195,-120,1</trf>
+                <trf entity="TOOL_UPPER">-1,0,0,0,0,1,0,0,0,0,-1,0,265.5,239,-0,1</trf>
+                <trf entity="TOOL_UPPER_2">-1,0,0,0,0,1,0,0,0,0,-1,0,-265.5,239,-0,1</trf>
+                <trf entity="TOOL_UPPER_3">-1,0,0,0,0,1,0,0,0,0,-1,0,-65.5,239,-0,1</trf>
+                <trf entity="PART">0,0,-1,0,0,1,0,0,1,0,0,0,34.5,195,-94.8342,1</trf>
+                <trf entity="PART_2">0,0,-1,0,0,1,0,0,1,0,0,0,34.5,195,-94.8342,1</trf>
+                <trf entity="PART_2_2">0,0,-1,0,0,1,0,0,1,0,0,0,34.5,195,-94.8342,1</trf>
+                <trf entity="PART_3">0,0,-1,0,0,1,0,0,1,0,0,0,34.5,195,-94.8342,1</trf>
+                <trf entity="PART_4">0,0,-1,0,0,1,0,0,1,0,0,0,34.5,195,-94.8342,1</trf>
+                <trf entity="PART_4_2">0,0,-1,0,0,1,0,0,1,0,0,0,34.5,195,-94.8342,1</trf>
+                <trf entity="PART_5">0,0,-1,0,0,1,0,0,1,0,0,0,34.5,195,-94.8342,1</trf>
+                <trf entity="PART_6">0,1,0,0,0,0,1,0,1,0,0,0,34.5,-101.556,-394.834,1</trf>
+                <trf entity="PART_6_2">0,1,0,0,0,0,1,0,1,0,0,0,34.5,-101.556,-394.834,1</trf>
+                <trf entity="PART_7">0,1,0,0,0,0,1,0,1,0,0,0,34.5,-101.556,-394.834,1</trf>
+                <trf entity="PART_8">0,0.707107,-0.707107,0,0,0.707107,0.707107,0,1,0,0,0,34.5,160.32,-110.154,1</trf>
+                <trf entity="PART_8_2">0,0.707107,-0.707107,0,0,0.707107,0.707107,0,1,0,0,0,34.5,160.32,-110.154,1</trf>
+                <trf entity="PART_9">0,0.707107,-0.707107,0,0,0.707107,0.707107,0,1,0,0,0,34.5,160.32,-110.154,1</trf>
+                <trf entity="PART_10">0,0,-1,0,0,1,0,0,1,0,0,0,34.5,222.698,-83.6138,1</trf>
+                <trf entity="PART_10_2">0,0,-1,0,0,1,0,0,1,0,0,0,34.5,222.698,-83.6138,1</trf>
+                <trf entity="PART_11">0,0,-1,0,0,1,0,0,1,0,0,0,34.5,222.698,-83.6138,1</trf>
+            </transformations>
+            <views>
+                <view id="1">
+                    <pos>14617,5854.89,-14691.9</pos>
+                    <target>167.729,365.48,451.699</target>
+                    <near>6267.89</near>
+                    <far>122371</far>
+                    <perspective>1</perspective>
+                    <fov>0.219829</fov>
+                </view>
+            </views>
+        </state>
+        <state order="8" id="Bend 4: Bent">
+            <visibility>
+                <show entity="PART_4">1</show>
+                <show entity="PART_4_2">0</show>
+                <show entity="PART_6">1</show>
+                <show entity="PART_6_2">0</show>
+                <show entity="PART_8">1</show>
+                <show entity="PART_8_2">0</show>
+                <show entity="PART_10">1</show>
+                <show entity="PART_10_2">0</show>
+            </visibility>
+            <transformations>
+                <trf entity="BEAM_UPPER">1,0,0,0,0,1,0,0,0,0,1,0,0,291.653,-0,1</trf>
+                <trf entity="TOOL_FINGER_1">1,0,0,0,0,1,0,0,0,0,1,0,-335.5,188,28.2781,1</trf>
+                <trf entity="TOOL_FINGER_2">1,0,0,0,0,1,0,0,0,0,1,0,4.5,188,28.2781,1</trf>
+                <trf entity="TOOL_SUPPORT_FORWARD_2">1,0,0,0,0,1,0,0,0,0,1,0,1424.35,195,-120,1</trf>
+                <trf entity="TOOL_UPPER">-1,0,0,0,0,1,0,0,0,0,-1,0,265.5,193.653,-0,1</trf>
+                <trf entity="TOOL_UPPER_2">-1,0,0,0,0,1,0,0,0,0,-1,0,-265.5,193.653,-0,1</trf>
+                <trf entity="TOOL_UPPER_3">-1,0,0,0,0,1,0,0,0,0,-1,0,-65.5,193.653,-0,1</trf>
+                <trf entity="PART">0,0.707107,-0.707107,0,0,0.707107,0.707107,0,1,0,0,0,34.5,258.224,-68.2755,1</trf>
+                <trf entity="PART_2">0,0.707107,-0.707107,0,0,0.707107,0.707107,0,1,0,0,0,34.5,258.224,-68.2755,1</trf>
+                <trf entity="PART_2_2">0,0.707107,-0.707107,0,0,0.707107,0.707107,0,1,0,0,0,34.5,258.224,-68.2755,1</trf>
+                <trf entity="PART_3">0,0.707107,-0.707107,0,0,0.707107,0.707107,0,1,0,0,0,34.5,258.224,-68.2755,1</trf>
+                <trf entity="PART_4">0,-0.707107,-0.707107,0,0,0.707107,-0.707107,0,1,0,0,0,34.5,124.108,-65.8403,1</trf>
+                <trf entity="PART_4_2">0,-0.707107,-0.707107,0,0,0.707107,-0.707107,0,1,0,0,0,34.5,124.108,-65.8403,1</trf>
+                <trf entity="PART_5">0,-0.707107,-0.707107,0,0,0.707107,-0.707107,0,1,0,0,0,34.5,124.108,-65.8403,1</trf>
+                <trf entity="PART_6">0,0.707107,0.707107,0,0,-0.707107,0.707107,0,1,0,0,0,34.5,260.659,-490.104,1</trf>
+                <trf entity="PART_6_2">0,0.707107,0.707107,0,0,-0.707107,0.707107,0,1,0,0,0,34.5,260.659,-490.104,1</trf>
+                <trf entity="PART_7">0,0.707107,0.707107,0,0,-0.707107,0.707107,0,1,0,0,0,34.5,260.659,-490.104,1</trf>
+                <trf entity="PART_8">0,1,0,0,0,0,1,0,1,0,0,0,34.5,244.534,-103.631,1</trf>
+                <trf entity="PART_8_2">0,1,0,0,0,0,1,0,1,0,0,0,34.5,244.534,-103.631,1</trf>
+                <trf entity="PART_9">0,1,0,0,0,0,1,0,1,0,0,0,34.5,244.534,-103.631,1</trf>
+                <trf entity="PART_10">0,0.707107,-0.707107,0,0,0.707107,0.707107,0,1,0,0,0,34.5,269.876,-40.7557,1</trf>
+                <trf entity="PART_10_2">0,0.707107,-0.707107,0,0,0.707107,0.707107,0,1,0,0,0,34.5,269.876,-40.7557,1</trf>
+                <trf entity="PART_11">0,0.707107,-0.707107,0,0,0.707107,0.707107,0,1,0,0,0,34.5,269.876,-40.7557,1</trf>
+            </transformations>
+            <views>
+                <view id="1">
+                    <pos>14617,5854.89,-14691.9</pos>
+                    <target>167.729,365.48,451.699</target>
+                    <near>6267.89</near>
+                    <far>122371</far>
+                    <perspective>1</perspective>
+                    <fov>0.219829</fov>
+                </view>
+            </views>
+        </state>
+        <state order="9" id="Bend 5: Unbent">
+            <visibility>
+                <show entity="PART_4">1</show>
+                <show entity="PART_4_2">0</show>
+                <show entity="PART_6">1</show>
+                <show entity="PART_6_2">0</show>
+                <show entity="PART_8">1</show>
+                <show entity="PART_8_2">0</show>
+                <show entity="PART_10">1</show>
+                <show entity="PART_10_2">0</show>
+            </visibility>
+            <transformations>
+                <trf entity="BEAM_UPPER">1,0,0,0,0,1,0,0,0,0,1,0,0,337,-0,1</trf>
+                <trf entity="TOOL_FINGER_1">1,0,0,0,0,1,0,0,0,0,1,0,-340.5,178.99,73.2887,1</trf>
+                <trf entity="TOOL_FINGER_2">1,0,0,0,0,1,0,0,0,0,1,0,9.5,178.99,73.2887,1</trf>
+                <trf entity="TOOL_SUPPORT_FORWARD_2">1,0,0,0,0,1,0,0,0,0,1,0,1424.35,195,-120,1</trf>
+                <trf entity="TOOL_UPPER">-1,0,0,0,0,1,0,0,0,0,-1,0,265.5,239,-0,1</trf>
+                <trf entity="TOOL_UPPER_2">-1,0,0,0,0,1,0,0,0,0,-1,0,-265.5,239,-0,1</trf>
+                <trf entity="TOOL_UPPER_3">-1,0,0,0,0,1,0,0,0,0,-1,0,-65.5,239,-0,1</trf>
+                <trf entity="PART">0,0,-1,0,0,1,0,0,1,0,0,0,34.5,195,1.72192,1</trf>
+                <trf entity="PART_2">0,0,-1,0,0,1,0,0,1,0,0,0,34.5,195,1.72192,1</trf>
+                <trf entity="PART_2_2">0,0,-1,0,0,1,0,0,1,0,0,0,34.5,195,1.72192,1</trf>
+                <trf entity="PART_3">0,0,-1,0,0,1,0,0,1,0,0,0,34.5,195,1.72192,1</trf>
+                <trf entity="PART_4">0,-1,0,0,0,0,-1,0,1,0,0,0,34.5,101.888,98.2781,1</trf>
+                <trf entity="PART_4_2">0,-1,0,0,0,0,-1,0,1,0,0,0,34.5,101.888,98.2781,1</trf>
+                <trf entity="PART_5">0,-1,0,0,0,0,-1,0,1,0,0,0,34.5,101.888,98.2781,1</trf>
+                <trf entity="PART_6">0,1,0,0,0,0,1,0,1,0,0,0,34.5,-101.556,-298.278,1</trf>
+                <trf entity="PART_6_2">0,1,0,0,0,0,1,0,1,0,0,0,34.5,-101.556,-298.278,1</trf>
+                <trf entity="PART_7">0,1,0,0,0,0,1,0,1,0,0,0,34.5,-101.556,-298.278,1</trf>
+                <trf entity="PART_8">0,0.707107,-0.707107,0,0,0.707107,0.707107,0,1,0,0,0,34.5,160.32,-13.5978,1</trf>
+                <trf entity="PART_8_2">0,0.707107,-0.707107,0,0,0.707107,0.707107,0,1,0,0,0,34.5,160.32,-13.5978,1</trf>
+                <trf entity="PART_9">0,0.707107,-0.707107,0,0,0.707107,0.707107,0,1,0,0,0,34.5,160.32,-13.5978,1</trf>
+                <trf entity="PART_10">0,0,-1,0,0,1,0,0,1,0,0,0,34.5,222.698,12.9424,1</trf>
+                <trf entity="PART_10_2">0,0,-1,0,0,1,0,0,1,0,0,0,34.5,222.698,12.9424,1</trf>
+                <trf entity="PART_11">0,0,-1,0,0,1,0,0,1,0,0,0,34.5,222.698,12.9424,1</trf>
+            </transformations>
+            <views>
+                <view id="1">
+                    <pos>14617,5854.89,-14691.9</pos>
+                    <target>167.729,365.48,451.699</target>
+                    <near>6267.89</near>
+                    <far>122371</far>
+                    <perspective>1</perspective>
+                    <fov>0.219829</fov>
+                </view>
+            </views>
+        </state>
+        <state order="10" id="Bend 5: Bent">
+            <visibility>
+                <show entity="PART_2">1</show>
+                <show entity="PART_2_2">0</show>
+                <show entity="PART_4">1</show>
+                <show entity="PART_4_2">0</show>
+                <show entity="PART_6">1</show>
+                <show entity="PART_6_2">0</show>
+                <show entity="PART_8">1</show>
+                <show entity="PART_8_2">0</show>
+                <show entity="PART_10">1</show>
+                <show entity="PART_10_2">0</show>
+            </visibility>
+            <transformations>
+                <trf entity="BEAM_UPPER">1,0,0,0,0,1,0,0,0,0,1,0,0,291.653,-0,1</trf>
+                <trf entity="TOOL_FINGER_1">1,0,0,0,0,1,0,0,0,0,1,0,-340.5,178.99,73.2887,1</trf>
+                <trf entity="TOOL_FINGER_2">1,0,0,0,0,1,0,0,0,0,1,0,9.5,178.99,73.2887,1</trf>
+                <trf entity="TOOL_SUPPORT_FORWARD_2">1,0,0,0,0,1,0,0,0,0,1,0,1424.35,195,-120,1</trf>
+                <trf entity="TOOL_UPPER">-1,0,0,0,0,1,0,0,0,0,-1,0,265.5,193.653,-0,1</trf>
+                <trf entity="TOOL_UPPER_2">-1,0,0,0,0,1,0,0,0,0,-1,0,-265.5,193.653,-0,1</trf>
+                <trf entity="TOOL_UPPER_3">-1,0,0,0,0,1,0,0,0,0,-1,0,-65.5,193.653,-0,1</trf>
+                <trf entity="PART">0,0.707107,-0.707107,0,0,0.707107,0.707107,0,1,0,0,0,34.5,189.949,-0,1</trf>
+                <trf entity="PART_2">0,-0.707107,-0.707107,0,0,0.707107,-0.707107,0,1,0,0,0,34.5,192.384,2.43516,1</trf>
+                <trf entity="PART_2_2">0,-0.707107,-0.707107,0,0,0.707107,-0.707107,0,1,0,0,0,34.5,192.384,2.43516,1</trf>
+                <trf entity="PART_3">0,-0.707107,-0.707107,0,0,0.707107,-0.707107,0,1,0,0,0,34.5,192.384,2.43516,1</trf>
+                <trf entity="PART_4">0,-0.707107,0.707107,0,0,-0.707107,-0.707107,0,1,0,0,0,34.5,194.819,136.551,1</trf>
+                <trf entity="PART_4_2">0,-0.707107,0.707107,0,0,-0.707107,-0.707107,0,1,0,0,0,34.5,194.819,136.551,1</trf>
+                <trf entity="PART_5">0,-0.707107,0.707107,0,0,-0.707107,-0.707107,0,1,0,0,0,34.5,194.819,136.551,1</trf>
+                <trf entity="PART_6">0,0.707107,0.707107,0,0,-0.707107,0.707107,0,1,0,0,0,34.5,192.384,-421.829,1</trf>
+                <trf entity="PART_6_2">0,0.707107,0.707107,0,0,-0.707107,0.707107,0,1,0,0,0,34.5,192.384,-421.829,1</trf>
+                <trf entity="PART_7">0,0.707107,0.707107,0,0,-0.707107,0.707107,0,1,0,0,0,34.5,192.384,-421.829,1</trf>
+                <trf entity="PART_8">0,1,0,0,0,0,1,0,1,0,0,0,34.5,176.259,-35.3553,1</trf>
+                <trf entity="PART_8_2">0,1,0,0,0,0,1,0,1,0,0,0,34.5,176.259,-35.3553,1</trf>
+                <trf entity="PART_9">0,1,0,0,0,0,1,0,1,0,0,0,34.5,176.259,-35.3553,1</trf>
+                <trf entity="PART_10">0,0.707107,-0.707107,0,0,0.707107,0.707107,0,1,0,0,0,34.5,201.6,27.5199,1</trf>
+                <trf entity="PART_10_2">0,0.707107,-0.707107,0,0,0.707107,0.707107,0,1,0,0,0,34.5,201.6,27.5199,1</trf>
+                <trf entity="PART_11">0,0.707107,-0.707107,0,0,0.707107,0.707107,0,1,0,0,0,34.5,201.6,27.5199,1</trf>
+            </transformations>
+            <views>
+                <view id="1">
+                    <pos>14617,5854.89,-14691.9</pos>
+                    <target>167.729,365.48,451.699</target>
+                    <near>6267.89</near>
+                    <far>122371</far>
+                    <perspective>1</perspective>
+                    <fov>0.219829</fov>
+                </view>
+            </views>
+        </state>
+    </states>
+    <geometries>
+        <geometry id="LOWERHOLDER_MM_DURMA AD-S 30175">
+            <data encoding="1">UEsDBBQAAgAIAL5sjj05Sg0TMQMAADUKAAALABEAY29sbGFkYS54bWxVVA0ABytzB00rcwdNK3MHTdVWbU/bMBD+K5b5nOalSUtREtQBm5A6igqbGF8qk7qtpcTJHAfov9/ZiSEppVSILxPCOT/33J3vzq4dnj5nKXqkomQ5j7DbczCiPMkXjK8iXMmldYxP4/BsOpmMz8cIyLyM8FrK4sS2n56eekmepmRBerlY2Z7jBLbr2g37JlnTjOC2d7/n4jgkZUllHCY5l4I9VDIXgFVyDd8xzK6nk9Bu5kDKMsplGYd2R2yZJoISSRex57iO5Yws5/jWdU987yQY3QO10YYZJLVk7/Je1GHFmUQZlVRE2Ok5XuBjxElGI8x4ssY2MIo5eWZlfD//dR3aZgaLrhNL2YMgYjMnnGVEQupKtws0WMpWa9kmGcDMwWRF2wQDmDm4pIKRtM1pYQaiyyVNOpFeEAOsaA65C6a8N/IGsUWEm9YYwsYU5fvZGfQ0o+U6Dsu8EgndSbeKvGQ6b2Av05zIORGCbD4gW5qEUZJXXEbY83FsuYEXIMv1HGSNlPAydZpJV1VrukZtm45JyyK0W8uMQ0mTNWd/KzpXGzHnsGeThJZlLlCddoSPDs7jGKMSirwAoz7UoyCCZE097zCSmwIEHV1tt7b2z17t/RutbRYJ4tsM7Hrl+xvHc5HBLjqkbQ11K1n3WDVNdaduEXJqGSRLCwqp/62vKvzulQz+o7JnpLCSNeGcpu4htW/zt9Ie4djpuQFyev1AFb/nK3lQyyMlD4MvqvueVfTfL/7N3vLe7tVef7b4cC9JBkRdTjVRW5zxopKohIuLgxK8T28uby+nV/iQQ66DG7dQQPj15asUIpiD4GFkfpUjPPvxbW65O2L+vpjdXty1ItaLQ/lyCfcLXEoqzrbR1XT2czzBHx+JVz/uLj8Q+Ww6nZ3jA5v86g6Se3VbxI4+5vWx9mD09GiQvkYC/R3C6GrMazQ10tfIEPmADGBUiA9Iv4V4Ghlo3762917+DFLH9rUU6EhmTa+Iq5EABdpKYUMYPT0aZKCR0C7UvjK9Bbm++2xTntbt2r5MDabfLvBqgldRi9lBP0F9ZGVF0nmZUN55KGzh+quaXkrCE9pRo0rArjyquDpXixrTO7oxMu+6+B9QSwECFwsUAAIACAC+bI49OUoNEzEDAAA1CgAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUABytzB01QSwUGAAAAAAEAAQBCAAAAawMAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="Floor">
+            <data encoding="1">UEsDBBQAAgAIAL5sjj07wbWgTwMAAIAKAAALABEAY29sbGFkYS54bWxVVA0ABytzB00rcwdNK3MHTdVWbW+bOhT+K5b3GbAh5KUCpt5u92pSt1RtN239EnnESSyBYcasy7/fscENaVkWTftyhTDHz3l87POC7eT1j7JA37lqRCVTTH2CEZd5tRZym+JWb7w5fp0lV8vr68s3lwjIsknxTuv6IggeHx/9vCoKtmZ+pbZBSEgcUBr07Lt8x0uGh9YnPsVZwpqG6yzJK6mV+NrqSgHW6h18L6F3s7xOgr4PpLLkUjdZEhyJg6G54kzzdRYSSjyy8Mj8ntKLSXgRLx6A2muTEpzaiF/yntRJK4VGJddcpZj4JIwnGElW8hQLme9wAIx6xX6IJntYfbxJAteDRXeOFeKrYmq/YlKUTIPrRjcGOqwQ250ekhzg+jBky4cEB7g+mORKsGLIGWAO4psNz49mekIcsOUV+K6Esd7LeyTWKe5T4wh7F5R/r64gpyVvdlnSVK3K+Sjdq6tGWL+BvSkqpldMKbb/DdmzJIzyqpU6xeEEZ15I5hM/Rl40nUX+Yoq8BYXeS5SQJzQkIfGn82PqAQTmqNFRm2MmxywmwcDNLNE830nxreUrU8iVhJrPc940lUJd2FL86uw4zDFqIElrGBRBPGumWNnn4zNGel+DYGc35TrUfjmpfXihDdwiQXzpQdCt/HTiZaVKqMJz0t5TnzlL55B0ijyCzAMS6WQnURT7kzhaUO4ROkMGtWzv7+RgfFHT/1EGSlZ7+Y5JyQt6ThqG/GduL3BGfCh44kexSQcEHpppJy+MPDPy34j7iVVEvw7+3cnw3p/U3vxp8OGI0wKINpymY6pdyLrVqIEzUIISrC/v3t2/W37A5/zvdnJnFgIIG7ncFjCD+ydCjNwGn+Lb//5ZeXRkzk9vb+/ffh7M2C0OVZsNHFVwvpl5ng/6sLx9f3mNf/9LHOzQMTsw89VyefsGn5nkgzlw7mC2ziI0gZqaQUtRCG1oW4dMLTJDpu5ieAwCW7FtHTKxSNzvDdQina0DQixC7SYT2Z6RQkQGSGiRqO9F8M6gDW3rkNgipH9DO1fYr9shU/tNgtrUlcstyN0xGrjwDA7q4bnsMHsNggsYXLAGzCP0D6jfRdOyYtXkXB7dOZ7h9muS3mgmc36kRq2CqnzVSvNfrTvMVnQ/yF0Rs59QSwECFwsUAAIACAC+bI49O8G1oE8DAACACgAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUABytzB01QSwUGAAAAAAEAAQBCAAAAiQMAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                    <textures>
+                        <texture id="1" file="floor.jpg" />
+                    </textures>
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="UPPERTOOL_MM_BIU-002">
+            <data encoding="1">UEsDBBQAAgAIAL5sjj2njcRm9gQAAAMRAAALABEAY29sbGFkYS54bWxVVA0ABytzB00rcwdNK3MHTdWY3W/bNhDA/xVCfbbED30Gsoos7YYCWR0k2dDlxVBl2RZgS54kN81/v+ORtClHdoOiL3uIxfvxeMc7Hkkp6fvv2w35VrZd1dRTh7nUIWVdNIuqXk2dfb+cxM77LL2Z3d5ef7gmoFx3U2fd97srz3t+fnaLZrPJF7nbtCuPUxp4jHla+6FYl9vcsa37LnOyNO+6ss/Soqn7tvq675sW2L5fw/MapLvZbeppGZS227Luuyz1Bk1raNGWeV8uMk4ZndBkQuNHxq58fhUkT6Cqe9MtBLWszuodutN9XfVkW/ZlO3WoS3ngO6TOt+XUqepi7XigsZvn36sue5r/dZd6RoJJq8A21dc2b1/meV1t8x5Cl31j0LBNtVr3tpIBRoYhq9JWMMDIYLJsq3xj61jMoHK5LIuBpwMxYFU2EHtbSeu6/UKqxdTRS2MUXkxSfr+5gTXdlt06S7tm3xblqPpk13QVxg3ay02T9/O8bfOXHyhPUMkhRbOv+6mTCCebMErJhHESQ7lSHpEDSGLdDt0gYEyQyOUBC5mm1I3CkPo+oa4IIg4DDA9iESFncUzDIxdhIHwGnIYJ46E4dDDuCxxAaRSFNEpUz4WOcVNnXJ+ZKScscONDyJyEkZUBiJf5biIidpAxIW7kB0KMhX+aSCuPo2k8k8UzSTyXw7MpPJfBMwkcz994+obZGybvJHfH1KWeVadZ2pfFuq7+3ZdzeRI1NRxaRVF2XdMSVfdT592bC1kwh3SwzRYwCmo63eVtvtU76otD+pcdNNC9PHDs3n8u9j696vXMLKH5OgRPTf3y1q2bdgvnyFs2rlY9idYP5LYlct3lj2zZlQSt0OdRHGtKI0ajQcsSjg2r6KAVM5YIbUHXCrQSQePIJ3bFSZpwLhJll+BsXndaNWfbGXU5GgnDP4z4V1TSeGZZ8D+qo22+mxTrvK7LDXtLMdn6pxeBk8GaBbjDcQF82Q5VO5HtKPhFib8wC3E++Q8X0/t4sffuZ5MPr1p9BYqYTinIPVvVu31POngXq6ETrM8ePj1+mn123nJsoXNjFhIILxT1agMedAaC2CHmRWPq3P/x23zCRnz+/fH+8eMXy6OaHGmWS3hlgvcs6ed00OfZ/Z/Xt86P98TRDhuzA55vZrP7D84bF/lojsOQg9ldBteC3M0MfwiTG5yrxwEmNksQxYjwmCDRyEjFQhuFiAJEWNLEHxmomLCRQMQHE+NqqNYTA+gjpIoppAdzmyk1FqNLuDJ9dOLDH7cReEQW4TgeSyQhU7OxIUcIEs44hAdCoVxbkCoWqqlEhOk5cTM7hbSTCPMsKFFuYskGyEcmqM5Hgje/xAzd+CdcKC5lzEuoZi45V9kccqo5HfJEhs/V40h5MMSBzpUvxx8xijIKpuoIK81QDm8qFpUSg4qSLFLFqFAIIlcCMNlpWIgFqBGX9MCkIMswxDIMj4hTkA9MCnLlA6yG4IhYoCtEMhQYriZXCsASZFoPJSrLzIaBDbnNuGUQ+rFKwQbD6ozkk+unxemQKxkDV9xUOx+3c+DihAvNfc19zYMzdgwPT3ioeXLCzfxjzeMhF3TIhY6Lab/M5CEc2km9nbxSzLEObfUl55mT0fpWtD8NDcMv8WazgW98S3NAf0L1W9Xt8828K8p68Nl7wvEpz/uuz+uiHHSTfQsX0rt9La/UhWJ4melB5r8U2X9QSwECFwsUAAIACAC+bI49p43EZvYEAAADEQAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUABytzB01QSwUGAAAAAAEAAQBCAAAAMAUAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="UPPERTOOL_MM_BIU-002_2">
+            <data encoding="1">UEsDBBQAAgAIAKBsjj2njcRm9gQAAAMRAAALABEAY29sbGFkYS54bWxVVA0AByxzB00scwdNLHMHTdWY3W/bNhDA/xVCfbbED30Gsoos7YYCWR0k2dDlxVBl2RZgS54kN81/v+ORtClHdoOiL3uIxfvxeMc7Hkkp6fvv2w35VrZd1dRTh7nUIWVdNIuqXk2dfb+cxM77LL2Z3d5ef7gmoFx3U2fd97srz3t+fnaLZrPJF7nbtCuPUxp4jHla+6FYl9vcsa37LnOyNO+6ss/Soqn7tvq675sW2L5fw/MapLvZbeppGZS227Luuyz1Bk1raNGWeV8uMk4ZndBkQuNHxq58fhUkT6Cqe9MtBLWszuodutN9XfVkW/ZlO3WoS3ngO6TOt+XUqepi7XigsZvn36sue5r/dZd6RoJJq8A21dc2b1/meV1t8x5Cl31j0LBNtVr3tpIBRoYhq9JWMMDIYLJsq3xj61jMoHK5LIuBpwMxYFU2EHtbSeu6/UKqxdTRS2MUXkxSfr+5gTXdlt06S7tm3xblqPpk13QVxg3ay02T9/O8bfOXHyhPUMkhRbOv+6mTCCebMErJhHESQ7lSHpEDSGLdDt0gYEyQyOUBC5mm1I3CkPo+oa4IIg4DDA9iESFncUzDIxdhIHwGnIYJ46E4dDDuCxxAaRSFNEpUz4WOcVNnXJ+ZKScscONDyJyEkZUBiJf5biIidpAxIW7kB0KMhX+aSCuPo2k8k8UzSTyXw7MpPJfBMwkcz994+obZGybvJHfH1KWeVadZ2pfFuq7+3ZdzeRI1NRxaRVF2XdMSVfdT592bC1kwh3SwzRYwCmo63eVtvtU76otD+pcdNNC9PHDs3n8u9j696vXMLKH5OgRPTf3y1q2bdgvnyFs2rlY9idYP5LYlct3lj2zZlQSt0OdRHGtKI0ajQcsSjg2r6KAVM5YIbUHXCrQSQePIJ3bFSZpwLhJll+BsXndaNWfbGXU5GgnDP4z4V1TSeGZZ8D+qo22+mxTrvK7LDXtLMdn6pxeBk8GaBbjDcQF82Q5VO5HtKPhFib8wC3E++Q8X0/t4sffuZ5MPr1p9BYqYTinIPVvVu31POngXq6ETrM8ePj1+mn123nJsoXNjFhIILxT1agMedAaC2CHmRWPq3P/x23zCRnz+/fH+8eMXy6OaHGmWS3hlgvcs6ed00OfZ/Z/Xt86P98TRDhuzA55vZrP7D84bF/lojsOQg9ldBteC3M0MfwiTG5yrxwEmNksQxYjwmCDRyEjFQhuFiAJEWNLEHxmomLCRQMQHE+NqqNYTA+gjpIoppAdzmyk1FqNLuDJ9dOLDH7cReEQW4TgeSyQhU7OxIUcIEs44hAdCoVxbkCoWqqlEhOk5cTM7hbSTCPMsKFFuYskGyEcmqM5Hgje/xAzd+CdcKC5lzEuoZi45V9kccqo5HfJEhs/V40h5MMSBzpUvxx8xijIKpuoIK81QDm8qFpUSg4qSLFLFqFAIIlcCMNlpWIgFqBGX9MCkIMswxDIMj4hTkA9MCnLlA6yG4IhYoCtEMhQYriZXCsASZFoPJSrLzIaBDbnNuGUQ+rFKwQbD6ozkk+unxemQKxkDV9xUOx+3c+DihAvNfc19zYMzdgwPT3ioeXLCzfxjzeMhF3TIhY6Lab/M5CEc2km9nbxSzLEObfUl55mT0fpWtD8NDcMv8WazgW98S3NAf0L1W9Xt8828K8p68Nl7wvEpz/uuz+uiHHSTfQsX0rt9La/UhWJ4melB5r8U2X9QSwECFwsUAAIACACgbI49p43EZvYEAAADEQAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUAByxzB01QSwUGAAAAAAEAAQBCAAAAMAUAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="UPPERTOOL_MM_BIU-002_3">
+            <data encoding="1">UEsDBBQAAgAIAKBsjj2njcRm9gQAAAMRAAALABEAY29sbGFkYS54bWxVVA0AByxzB00scwdNLHMHTdWY3W/bNhDA/xVCfbbED30Gsoos7YYCWR0k2dDlxVBl2RZgS54kN81/v+ORtClHdoOiL3uIxfvxeMc7Hkkp6fvv2w35VrZd1dRTh7nUIWVdNIuqXk2dfb+cxM77LL2Z3d5ef7gmoFx3U2fd97srz3t+fnaLZrPJF7nbtCuPUxp4jHla+6FYl9vcsa37LnOyNO+6ss/Soqn7tvq675sW2L5fw/MapLvZbeppGZS227Luuyz1Bk1raNGWeV8uMk4ZndBkQuNHxq58fhUkT6Cqe9MtBLWszuodutN9XfVkW/ZlO3WoS3ngO6TOt+XUqepi7XigsZvn36sue5r/dZd6RoJJq8A21dc2b1/meV1t8x5Cl31j0LBNtVr3tpIBRoYhq9JWMMDIYLJsq3xj61jMoHK5LIuBpwMxYFU2EHtbSeu6/UKqxdTRS2MUXkxSfr+5gTXdlt06S7tm3xblqPpk13QVxg3ay02T9/O8bfOXHyhPUMkhRbOv+6mTCCebMErJhHESQ7lSHpEDSGLdDt0gYEyQyOUBC5mm1I3CkPo+oa4IIg4DDA9iESFncUzDIxdhIHwGnIYJ46E4dDDuCxxAaRSFNEpUz4WOcVNnXJ+ZKScscONDyJyEkZUBiJf5biIidpAxIW7kB0KMhX+aSCuPo2k8k8UzSTyXw7MpPJfBMwkcz994+obZGybvJHfH1KWeVadZ2pfFuq7+3ZdzeRI1NRxaRVF2XdMSVfdT592bC1kwh3SwzRYwCmo63eVtvtU76otD+pcdNNC9PHDs3n8u9j696vXMLKH5OgRPTf3y1q2bdgvnyFs2rlY9idYP5LYlct3lj2zZlQSt0OdRHGtKI0ajQcsSjg2r6KAVM5YIbUHXCrQSQePIJ3bFSZpwLhJll+BsXndaNWfbGXU5GgnDP4z4V1TSeGZZ8D+qo22+mxTrvK7LDXtLMdn6pxeBk8GaBbjDcQF82Q5VO5HtKPhFib8wC3E++Q8X0/t4sffuZ5MPr1p9BYqYTinIPVvVu31POngXq6ETrM8ePj1+mn123nJsoXNjFhIILxT1agMedAaC2CHmRWPq3P/x23zCRnz+/fH+8eMXy6OaHGmWS3hlgvcs6ed00OfZ/Z/Xt86P98TRDhuzA55vZrP7D84bF/lojsOQg9ldBteC3M0MfwiTG5yrxwEmNksQxYjwmCDRyEjFQhuFiAJEWNLEHxmomLCRQMQHE+NqqNYTA+gjpIoppAdzmyk1FqNLuDJ9dOLDH7cReEQW4TgeSyQhU7OxIUcIEs44hAdCoVxbkCoWqqlEhOk5cTM7hbSTCPMsKFFuYskGyEcmqM5Hgje/xAzd+CdcKC5lzEuoZi45V9kccqo5HfJEhs/V40h5MMSBzpUvxx8xijIKpuoIK81QDm8qFpUSg4qSLFLFqFAIIlcCMNlpWIgFqBGX9MCkIMswxDIMj4hTkA9MCnLlA6yG4IhYoCtEMhQYriZXCsASZFoPJSrLzIaBDbnNuGUQ+rFKwQbD6ozkk+unxemQKxkDV9xUOx+3c+DihAvNfc19zYMzdgwPT3ioeXLCzfxjzeMhF3TIhY6Lab/M5CEc2km9nbxSzLEObfUl55mT0fpWtD8NDcMv8WazgW98S3NAf0L1W9Xt8828K8p68Nl7wvEpz/uuz+uiHHSTfQsX0rt9La/UhWJ4melB5r8U2X9QSwECFwsUAAIACACgbI49p43EZvYEAAADEQAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUAByxzB01QSwUGAAAAAAEAAQBCAAAAMAUAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="LOWERTOOL_MM_OZU-322">
+            <data encoding="1">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</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="LOWERTOOL_MM_OZU-322_2">
+            <data encoding="1">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</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="LOWERTOOL_MM_OZU-322_3">
+            <data encoding="1">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</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="SMpart 1">
+            <data encoding="1">UEsDBBQAAgAIAKBsjj3K0g7UKQUAAJIQAAALABEAY29sbGFkYS54bWxVVA0AByxzB00scwdNLHMHTdWYX4+bOBDAvwqizwGPjY1ZkVR7296p0l6z2t079fYlooQkSAnkgHS73/7GNgaz/7qq+nIv2P7NYM94ZhyT9P33w977VjRtWVdzHwLie0WV1+uy2s79U7eZSf/9Ir1YXl6efzj3ULlq5/6u645nYXh/fx/k9X6frbOgbrYhJYSHAGGvfZPvikPmu7NHAfiLNGvbolukeV11Tfn11NUNslO3w/YcR1fLyzTsx6h0OBRV1y7ScNJ1Xs2bIuuK9YISIDOSzIi8BTiL6BlP7lC1l6YHdGpTvqg3iNNTVXbeoeiKZu6TgFAe+V6VHYq5X1b5zg9R47jKvpft4m7111Ua2hEabRzbl1+brHlYZVV5yDp0Xcmeg5bty+2uc5UssGN8ZVu4ChbYMU5ZNGW2d3UcZlGx2RT5ZKWBWLAtavS9KdXsff/BK9dzvw+NVXiwm/L7xQXG9FC0u0Xa1qcmL55Vnx3rttR+o/ZmX2fdKmua7OEHyjOt5Ht5faq6uS8jfzEjgYiBSe7NIkI84j0C1AWP5L0UKEso69UDElMSu3iEJGBSUJpYVSoZSxw6YQmLwRoVQEQozjXiCZQ0YmpNM6uAhEcOHRkEIEgkjCILCI8FjNBFuEgcWz0uYhwMcILQcmaN5BwYEyOdsChiMjKaWLfAUWGAI0L/cWep0YOAEs7oCF0kE8ph2HNt9gBHxAJGmKCjxwTYCF30jH3sqX1p6CTbIu2KfFeV/56KlTpO6gpPnjwv2rZuPJO8c//dm7ORSt9rsVbW+BbDtD5mTXboy+KL73UPR+zo5dWp4Ur/eVV690QaWiux+9SF0Jj+ev1VdXPAw+At1derPvI2klh7MJRUInhChadShnIpQVVDIIXAA9ObQcAjIWQxIyBVTilZTGJQ2Y0ZIagUVmax1pJBQpM4VjJVUna6YQm12rAwGoMPGkRUEj2dwKhj7kbYZ5ESY6UAVpyRqWQ0D9fmKMBKZolZ0XFL2+y49IL9o18vOK/9GqZFWYwJP4h6K7Rd6AlwSWNj7a/I2+fjCOJ/lLWH7DjLd1lVFXt4S+q6+o/8TvwFnsAqGIzrFIhUX5h+oiOs+r9i41+xgr28+Tevbu/tq9Krn918vJ11JSrq7VQDdUKU1fHUeS1e3yoU4uzLm0+3n5af/bccknpxOy1uIN5Bqu0eV+h3gFPfs3eTuX/9x2+rGTyz5t8fr28/fnFWNMZ59WaDtyy8mql1Hr/0eXn95/ml/+OaGOeB5+bBlS+Wy+sP/huDPE6Hzo3THhdY3HjIeVjtEqucxthQ04xQGCg8YaBQMMKGmmaAMIWR0aQGUhfCFFKjSQwkLoQpJAYKDUG4cMKERlIj6ZDIIcYUMz9xCGjCVN1pCWgtag7mnpge89SRzz11QlJ8Uv20JNGEaxI7JHEIxBrFGgG4DCaQgoFgIHMhnUJmNI1xwF1Ip5AbTWMiJC6kU9ibJLXj+odOh1u5rZsR8gnkevfQFupApjcTqIHUbGkP8YblQDXSOaAh0UHpYYzRGpgaqLAppJ6WRLj9VPdVUPhA1NMSptPbEKYzHkzC43tEeW/iHWuLHCRVQ00zQEw/AJOGAA6Op9iMdQC1q5absS4Fsz26dTjr99JyPdZFZrhuHc7Vpjuc91GLeq5bhwsVMtqPiYq7CWjP0/Cojmt7ZGLffFiF9tRxPt3cLzXL9IcxfpLjJ7ejOaE/ofqtbE/ZftXmRTX5Cn3EdavO0rbLqryYiL1Tg4f9u1Olfq7Whukfiv4l+6fB4j9QSwECFwsUAAIACACgbI49ytIO1CkFAACSEAAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUAByxzB01QSwUGAAAAAAEAAQBCAAAAYwUAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="4568517" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="SMpart 1_2">
+            <data encoding="1">UEsDBBQAAgAIAKBsjj3wZHFx9QQAAEQQAAALABEAY29sbGFkYS54bWxVVA0AByxzB00scwdNLHMHTdWXX2/bNhDAvwqhPkvikSIlBbKLLO2GAlkdJNnQ9cVQFTkWYEueJDfNt9/xn005aRoUfdmDRd6PJ/J4dzyLxdtv2w35WvdD07WzACIakLqturumvZ8F+3EVZsHbeXGxuLw8f3dOULkdZsF6HHdncfzw8BBV3WZT3pVR19/HjFIRA8RW+6Za19sy8GdPIgjmRTkM9Tgvqq4d++bLfux6ZPtxje05SleLyyK2Miptt3U7DvMinnS9V6u+Lsf6bs4o0JDmIc1uAc4Sdibyz6hqR4stbmrVfFfvMFzs22Yk23qs+1lAI8pEEpC23NazoGmrdRCjxm5ZfmuG+eflX1dF7CQ02mxs03zpy/5xWbbNthxx62rsOejYprlfj76SA07GV+5rX8EBJ+OUdd+UG1/HYw7Vq1VdTVY6EAfu6w733jdqdtt/JM3dLLChcQqPzim/X1xgTLf1sJ4XQ7fvq/pZ9XDXDY3eN2qvNl05Lsu+Lx9/oBxqpYBU3b4dZ0GWBPMwTyPGUkHChFJCyVRmnjwdNWMykhkFqxvRlNHUo1MGMs+dJss4zz16ylhi7YkgoYxxD0+giFIOmZtVQi4Sj04Zz0VqNHlERSrBo1MGWZI4TSHTNPXoCTvsiUZCAOfSw6cQlMlKFw8uCGu/oT5LIg6pNJoQMSo486jPeCQllwfvW/sdnTImmDjungL36JQ9Zyd/YmcRe2k3L8a6WrfNv/t6qQpL12INqqp6GLqemDSeBW9enZcsC8iAp+YO3+KY4LuyL7f2gHwKyPi4w45eXtUPf/SfF0c/PxmNnZXYfbqF2Jj+8klsu36LZeE159Cqnuw2yfAUgj1fNMqlyJkkKnmYyDJQiRRlUmLp1FDFK0ppCnislGy7oRpRslUND68reJjULMSjBDMoqUMKOvyK8ihNk1QeGBD1Cyd2+PZFwgJn29ES38KjPdZEN4EBdmprlZQ5tRb8ivx63t8g/0fZtS13YbUu27bewGtSzNc/2XcezLFyqghwkymJ6kvTz3UAVf9XOP4FK/j3nX/zontvXxy9+lnn4/fU2KCidqcS1Elu2t1+JAN+cLU4iLMvbj7cflh8DF5TzPTiblp0IH41tPcbXMF6QLCAuK+JWXD9x2/LEJ5Z8+/317fvP3krGuNIt1rhdxF+TKl1Tl/6uLj+8/wy+PGZOM4Dz82DK18sFtfvglcG+Tgdbu447W6OZztThSTDBghLsWGmOUJpoCTSQKlggg0zzQHCFCZGkxnIfAhTyIwmNZD6EKaQGig1BOnDCZMaZRplHkk8Ykwx81OPgCZcnTs9AlqL6acjpseJKt+CqALJ8Mn005FcE6FJ6pHcI5BqlGoE4DOYQAYGgoHch2wKudE0xoHwIZtCYTSNiZD7kE2hNSnTG9d/Wjrcatu6OUIxgUJ7D21hHuTamcAMZMalFgLhHlSSzgENqQ6KhSlG68CUoMKmkHo6kqD7me6roIgDUU9HuE5vQ7jOeDAJT9QfeK6WAD0h088DylTDTHOAmH4AJg0BPJxOsZF1APVWHTeyPgrGPbr1OLe+dFzL+pAZrluPC+V0jwsbtcRy3XpcqpAxK1MVdxNQy4t4p8q1K5nYN1eh2FUd77Ll360c01dZvETjJdnTnNCfUP3aDPtysxyqup3cG0+4blUtHcayrerJMNn3WOzf7Fv1d3VnmP6jsC+5a/78P1BLAQIXCxQAAgAIAKBsjj3wZHFx9QQAAEQQAAALAAkAAAAAAAAAAAAAgAAAAABjb2xsYWRhLnhtbFVUBQAHLHMHTVBLBQYAAAAAAQABAEIAAAAvBQAAAAA=</data>
+            <materials>
+                <material id="1">
+                    <color emissive="4568517" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="SMpart 1_3">
+            <data encoding="1">UEsDBBQAAgAIAKBsjj3gt93G9AQAAD0QAAALABEAY29sbGFkYS54bWxVVA0AByxzB00scwdNLHMHTdWXUW/bNhCA/4rAPlsiKYqiAllFlnZDgawOkmzo+mKoihwLsCVPkpvm3+94pCTKSdOg6MsebPI+Hsnj8Xgi07ff9jvva9l2VVMvCfMp8cq6aO6q+n5Jjv1mocjbLL1YXV6evzv3QLnulmTb94ezIHh4ePCLZrfL73K/ae8DTmkUMBZY7ZtiW+5z4o4ufEayNO+6ss/Soqn7tvpy7JsW2LHfQnkO0tXqMg2sDEr7fVn3XZYGs6rTtWjLvC/vMk4ZXdBkQdUtY2eCn0XJZ1C1rekeFrWpvqs3NqfHuuq9fdmX7ZJQn/JIEK/O9+WSVHWxJQFoHNb5t6rLPq//ukqDQQKjzcJ21Zc2bx/XeV3t8x6WrtuegwPbVffb3lUawCBDl/vSVRjAIMOQZVvlO1fHYQMqN5uymM00kgHclw2sva306Lb+6FV3S2K3ZlB4HJzy+8UF7Om+7LZZ2jXHtiifVV8cmq7CdYP2Ztfk/Tpv2/zxB8oLVCJe0RzrfkmUIBlPpB9F0lsISj2IKBbx0BvhHMnE6oU+jShzoItin9HY6HGAsWQTnCNdoh7zOY1CPkEXqefsU0/tU75kwuhRaGVhKCd6yrgaVhLJOI4nOEdKTAs2VhvmksRnsRzWK1kSiQnOkaRysI8JytFqS0/ZsBLucxWGyQQnFFLowkc9GnPw8AjnSMbW03Qu8kmctemWNHACK0v7stjW1b/Hcq1TR1NDlimKsuua1jOBuiRvXh15XBGvg3NxB71CCOFD3uZ7ewQ+Ea9/PEAFp9cZwm3958XWz09ag8FKqD5dQmBMf/ms1U27h4P/mpNmVU9WKxTJFsxEjaJUhOWCsghkP5FRwqWX+FyIWGmcaMwjpUxNSQk5U3cFAbvENLZHyRX8QWfsMAwS+iKiXA+tnBlBl3m45X4Us4TZdgZyHItYGgvhGNrfOJyuDmP4EYp2ytEa6lTHRqM9TT8OyIzhvyTcnnc/k/+jYNvnh0Wxzeu63LHXRJyrf7LuhGSQDLTXQ7MBQtelqSe4Ybr+Kxz/ghXh951/86J7b19svfpZ58MFqq9AEd2pBX2wq/pw7L0Oblg1NMLoq5sPtx9WH8lrchtOPgwLDoRrQn2/gxmsByJOvOH6sCTXf/y2XrBn5vz7/fXt+0/OjMY4r9ls4CIEtyc9z2mnj6vrP88vyY/PxDQOe24cmPlitbp+R165ydNwsLhp2EOmPAUxlcC/ThsKviPUIQxJ4uk8ApeFBBF83fB/RCGi0EURomjWccYiZDGi2EVsxmLD7KTMhXwGUQLNxMDEhTycQWOOTuMAsZigmRwSIGZT+DBDiRhKbkuHS8uFp3MkdJPaBgUFN8UIOZ9BbiCdQWq6W0hnULoQJeYZJl3EhMsEMoOEixh3mTUGEXeRtcQw5SBl/AAtMCA6OcI4mVHYdyi5LR0eacRt6XBxwlHGtTPucpQxUgzHcuLgMsYcbmQMGOSmdDj61eEoY9gYjqXDYzwVRsQNVg6VXmwiJDbhGJnIixyoXIgS7rpwoJbQHGFCXExQeuHEtKCPUYhHJhyJwK00BIfAKTn+DyTETRdI0J+WhLjNhuACLaF4tzBtaXDQaXtInVA3b6BgyD7OK8t9VA0M37DweobXsaM5oz+h+rXqjvlu3RVlPXswnnAsdU7t+rwuylmzd2wh6b851vqzdWcYfjBsp+F9n/0HUEsBAhcLFAACAAgAoGyOPeC33cb0BAAAPRAAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAcscwdNUEsFBgAAAAABAAEAQgAAAC4FAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="4568517" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="SMpart 1_4">
+            <data encoding="1">UEsDBBQAAgAIAKBsjj3COs/OMgQAACwNAAALABEAY29sbGFkYS54bWxVVA0AByxzB00scwdNLHMHTdWXXW/bNhSG/wrBXksiKUqWAllFlnZDgawOkmzocmOoMm0LsChPH03z73dIihKdpqlR9GYXts55+PKQPPwQlb39Wh/QF9F2VSOXmPoEIyHLZlPJ3RIP/dZL8Ns8u1pdX1++u0Qglt0S7/v+eBEEj4+PftkcDsWm8Jt2FzBCooDSYFTflXtRF9iNzn2K86zoOtHnWdnIvq0+D33TAhv6PTwvwbtZXWfB6IOoroXsuzwLTkynatmKohebnBFKPJJ6JLmn9IKziyh9AOlYmtUwqG31Xd1UnA2y6lEtetEuMfEJizhGsqjFEley3OMAFMd18bXq8of1XzdZYD3otBnYofrcFu3TupBVXfQwdFX2ErTsUO32vSuywPpQZSdcgQXWh5CirYqDq3GYRWK7FeVJSxOxYCcaGHtbqeij/YSqzRKPU2MFTzYpv19dwZzWotvnWdcMbSlelHvHpqv0uEG9PTRFvy7atnj6gdjTIozKZpD9EvME53zh0yTmyGNpiqifREkSoQlSQmeY+BEhiVESgIQtwpkqqUtjQmKjDX1AZDFDJZ1g6kRlfpSwkM1QKS2MYPmENLLtMxqzKJypaX+mEU+pjUp5QmdmghpG/XjBRx05ddns6tinLkNZ4CQ+z3pR7mX17yDWams1EnZhWYqua1pkJnKJ35w9MzTGqIN1s4FaIUzxsWiLelwinzDqn45g6ObVDnJL/3m19OGb0sD2EsxvhxCYrr++FmXT1rAxzlmJo/TZaMMY5x7xF2RBYUV4cG4ywlPhEQrezB0LuVRNvs94mvCpShLHcNQoi8HapalShCknbFKkcZSyWIXy1Nyqh895aAVUlbhEibTQRjwJOMVTvTnpzNSXqccnw5up7gr5Javq5SxT9j9aU3Vx9Mp9IaU40HMWlqt/Nu4U58SnagLCSE8gV3Zs7FRPjLJ/ReJf6UX4/eTfvZre+1dLb342+XCP6CsQ6nQqR+3fSh6HHnVw0ZBQCNFXdx/uP6w+4nOOMN24DQsJhLel3B2ghTEDLMHIvkWX+PaP39YefaHNv9/f3r//5LRoOoea7RbuA3CJUO08r/Rxdfvn5TX+8Z6Y49CX4kDLV6vV7Tt85iTP4dTmmsIec64PCzgLxoODjceHIVSTCMH+h99C+wsg1CGhJgtNKHVQ6KLU1DMVaeSw1EWUG12opEB1FapKqeqJeTqcjxxexQrDCx1oAv9M/0+IEpcRzZhGzEWxg2JkcsN1TmbCNYlUFV2J6GykOgfpjGIHKZuqniYmB8nMiMu0p0cbm8HGDgwN5CgyCYh0BkOdwXBGiYOUTbXP9L8lzCFMTyfVlnnBMMfKgqPannaLgG2ufIFdZc6l0r1DWqav7PCxAB8DjvKE/oT0S9UNxWHdlUKe3I+fcf1Ue6frC1mKk2I0tLC53wxSHU8bw/TBMFaynzP5f1BLAQIXCxQAAgAIAKBsjj3COs/OMgQAACwNAAALAAkAAAAAAAAAAAAAgAAAAABjb2xsYWRhLnhtbFVUBQAHLHMHTVBLBQYAAAAAAQABAEIAAABsBAAAAAA=</data>
+            <materials>
+                <material id="1">
+                    <color emissive="4568517" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="SMpart 1_5">
+            <data encoding="1">UEsDBBQAAgAIAKBsjj3FpjWgIAQAACANAAALABEAY29sbGFkYS54bWxVVA0AByxzB00scwdNLHMHTdWXXY+bOBSG/wpyrwGbb0aEanbaXVWabUYzs6vu3ESUOAkSmCyYTvPv99jG4KRpGlW92YuAz+PXx/Y5tnGyt1+b2vpCu75q2QIRByOLsrJdV2y7QAPf2Al6m2d3y/v723e3FohZv0A7zvc3rvv6+uqUbV0X68Jpu63rYRy6hLij+qnc0aZApvfAISjPir6nPM/KlvGu+jzwtgM28B28b8F6WN5n7miDqGko432euUdFo2nZ0YLTde5hgm2c2jh5JuQm8G7C9AWkY23WwKQ21Xd1U3U2sIpbDeW0WyDsYC8MkMWKhi5QxcodckGxXxVfqz5/Wf31kLnagkGridXV567oDquCVU3BYeqi7hzUrK62O26KNNA2NNlSU6CBtsEl7aqiNjUG04huNrQ86mkiGmxpC3PvKuF9LB+sar1AY2q04KCD8vvdHeS0of0uz/p26Ep6Vm7v276S8wb1pm4Lviq6rjj8QGxLEbLKdmB8gUJYP0nkeD6JLdtLUws7JCAkiKyJEkwMGjthEBGlJUDT2J+hkBowCsJUKW3ieLGP45kK6UwTw6uNnTDxfC+YsRTPOHVwHMV6DHHix+EM1RgmGKZBMPklQUJwMOPR74hT7MQk9cc4HJueaSaOR0ITyRAdm56VuUZW8ozTcseqfwe6EvuuZbBFy5L2fdtZKssL9ObqtJEYWT0sqjW08iH/+6IrmnH9fEIWP+yhILsX28us/edi7cs3ta4eJRS/nYKrhn55obK2a2DXXLNMR+nJbP0I5ZCmGMcEFouNLdMwsElDBZIoggNHAC9MEpIqmkZh6kWQMpsod6ooS+IlflML2Z1uAX6lPfqdejTHpH3+igVwPiDE+x+lvyn2drkrGKM1uWYNmPqTeacoh90qwu6HMkWBKEeqnMp0iPKvCPyFUfjfD/7TxfA+X6x9+Nngw32AVyCU4RSG2GoV2w/c6uHCwKASvC+fPjx/WH5E15w2snPtFgIIXz22raEHHQG41eiv4QI9/vHbyiZn+vz7/ePz+09Gj2pwVrvZwHcdLgOin9NGH5ePf97eox/vidkPOecHer5bLh/foSuTPLsTm2tyu8/F4aCPhQCennxqEkoSWrG0YvmLgcQG8Q3iS0KIRPKlWWqiVMlCxUKTRYpFQgo9BOItpYQo7TH3Rh6M3D/hvpxOAk8JA8E8k2HJkmnuE5IvzSKJdGxmEhkkUM3U8Srfvmwjnpp4BvGkOpWWeGqSGESUZVAiFZRoZoFkiZTBNKOZQZBE3ohInExGoiKfGBAfQWGJzKQykemMIgOJslgRRC0JgicWKJa5e7GV9XaCsrrmuXpFGhdJ896ombymwx8E+ANgKI/oT0i/VP1Q1Ku+pOzoTnzC5Vvss54XrKRH1dbQwUHwZmDiKFsrJg+RsZH+C5P/B1BLAQIXCxQAAgAIAKBsjj3FpjWgIAQAACANAAALAAkAAAAAAAAAAAAAgAAAAABjb2xsYWRhLnhtbFVUBQAHLHMHTVBLBQYAAAAAAQABAEIAAABaBAAAAAA=</data>
+            <materials>
+                <material id="1">
+                    <color emissive="4568517" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="SMpart 1_6">
+            <data encoding="1">UEsDBBQAAgAIAKBsjj1vhc4UyAMAADEMAAALABEAY29sbGFkYS54bWxVVA0AByxzB00scwdNLHMHTdWWUW/bNhCA/wrBPksiKcu2AllFlnZDgawOkmzo8mKwMm0LkChPopr63+9IijaVpq5R9GUwEh6/Ox6PdyTF7O3XukJfRNuVjVxgGhKMhCyadSm3C9yrTTDHb/PsZnl7e/3uGoGx7BZ4p9T+Koqen5/DoqkqvuZh024jRkgSURoN1g/FTtQc+94nIcV5xrtOqDwrGqna8nOvmhZYr3bQXkPvbnmbRUMfjOpaSNXlWTQSvaFFK7gS65wRSgKSBmT+SOnVhF0l6ROYDtqshkVtyu/aHdVZL0uFaqFEu8AkJCyZYCR5LRa4lMUOR2CxX/GvZZc/rf66yyLXg6Dtwqryc8vbw4rLsuYKlq51r0HHqnK7U76RA64PQ7bCN3DA9cGlaEte+TYec0hsNqIYzXQkDmxFA2tvS+19kA+oXC/wUBpncHBJ+f3mBmpai26XZ13Tt4V41TzYN11p1g3Wm6rhasXblh9+YBwYI4yKppdqgSdznMMmogmLUTAhBBE06rJTd6QzmlkYzyhDQWzH+V1PS8daarQsIW7cURwoPdHBNk3C+Txx8Y26nnak05os8tKSZ0oUO1n+24uV3viNhDNSFKLrmhbZNC/wm4vzRqcYdVDVNYyKoQB73vJ6KOAnjNRhD4KZXu9vX/vPWe3TN9rIRQnit0uIbOjnd4ps2hq27SX7ZDB9uVrYJQG1KdZl0VIwiEbSjf0z+Fdk/vVI/k9pr/k+KHZcSlHRS3Lv279YdopzEtIEkTBOdA3CiZanVk61PEt+Ud7PRBF/P/kPZ9P7eFZ797PJhw+hKsHQpFN39BYv5b5XqIMvpQQleF8+fHj8sPyILznlZnLnFhII173cVjCDywDDyH0GFvj+j99WAX1lzr/f3z++/+TNaINDzWYDHzT4Cup5Xg76uLz/8/oW//hInPzQ1/zAzDfL5f07fGGRT+5gcSe3+zw1p53acz3Xt6v5f0TU3Li6p/szTTSjmhGPTQ2aIb1DE/hpkgCZemRiSAItQSn812SivyIemRtC4+GmMT9mp2MeGyIwkcbDvaTjJB5hhsTGOU2Md2a8Mx9RGwNNTKAwcWKhDtU0J8gsjI3/FMUmktjEcSKJRxJDZpbYYdSy1LDUR3TwlRgYjxj1mHU3ePMIMwumZjG6NsyWyIdsBI0MCWem5h4iHjLFP2btRJhH7KipaaceGYLIor0+4u6YgWzfPZHbqd7Lyn9IOWberfBihhexZzmiP2H6pex6Xq26QsjRI/EFN60+f53ishAjNepbuCDe9FJfcWvLzOUyDHJv+vw/UEsBAhcLFAACAAgAoGyOPW+FzhTIAwAAMQwAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAcscwdNUEsFBgAAAAABAAEAQgAAAAIEAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="4568517" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="SMpart 1_7">
+            <data encoding="1">UEsDBBQAAgAIAKJsjj02A28qPgMAAEUKAAALABEAY29sbGFkYS54bWxVVA0ABy1zB00tcwdNLXMHTdVW227bOBD9FYJ9lkRKlu0Ekoo07S4KZOsgyRZtXgxWpm0CEqWlqKb++x1SYkK7rmsUfSkMU8Mzh0POhZfs9be6Ql+56kQjc0xDghGXZbMScpPjXq+DOX5dZNeLm5urt1cIyLLL8Vbr9jKKnp6ewrKpKrZiYaM2UUxIGlEajez7cstrhn3rk5DiImNdx3WRlY3USnzpdaMA6/UWvlfQu13cZNHYB1Jdc6m7Iov2RG9oqTjTfFXEhJKAXARk/kDp5SS+TC8egTpqsxqcWosf8p7VWS+FRjXXXOWYhCROJxhJVvMcC1lucQSMdsm+ia54XP57m0WuB4seHKvEF8XUbsmkqJkG143uGOiwSmy22ic5wPVhyIb7BAe4PpjkSrDK53iYg/h6zcu9mZ4RB2x4A74rYayP8g6JVY7H1DjCzgXlr+tryGnNu22RdU2vSn6UHrRNJ6zfwF5XDdNLphTb/YQcWBJGZdNLneN4gouAhNMZTeYpCiaEIIIOgNgHDvRGC0VI0zhxo/e6nnZPZzRZ5C27yDQvt1L81/OlKcxGQg2XJe+6RqEhDDl+dbZfc4w6CPoKBiUQn5YpVo/x/YSR3rUg2NlN+fnazye1j99pI7dIEL/3IBpWfjqRslE1VNU5aRypB87SOSSRDhGG7FCbIk8yn+Ef2P7vCPzxlUz/oLDXrA3KLZOSV/Sc2Pv8A7cvcEFCmiISJqnJQTgx8nSQL4w8M/LviPuJVSQ/Dv79yfA+nNTe/mrw4Z7SAog2nKZjSlzItteog4tMghKsL+7fP7xffMDnbHI7uTMLAYTTWG4qmMFthBgjd0rn+O7vN8uAHpnz47u7h3efvBmHxaFmvYb7Bi4pM8/hoA+Lu3+ubvDPt8SLHXrMDsx8vVjcvcVnJvnFHDj3YrYtZsjUVAo/iqbQxrZ1yMQi6bjvqUWoOY49hFiE2lMjGc8IczATD4ktksA4gmbPNmLbOmRqkdSOmEFrbCfW8guSWGRq7U2sLn7+OYTYXha1pq5cbkEe7sLIhce7bf3L1WH2LQOvKHglecw99BeoX0XXs2rZlVzuPRwOcPs1Se80kyXfU6NeQVW+6qXZV6sBsxU9DnLvvOJ/UEsBAhcLFAACAAgAomyOPTYDbyo+AwAARQoAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAActcwdNUEsFBgAAAAABAAEAQgAAAHgDAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="4568517" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="SMpart 1_8">
+            <data encoding="1">UEsDBBQAAgAIAKJsjj0qgACvQQMAAEkKAAALABEAY29sbGFkYS54bWxVVA0ABy1zB00tcwdNLXMHTdVW227bOBD9FYJ9lkTKki+BpCKbdhcFsnWQpItsXgxWpm0CEqWVqCb++w4pMaFc1zGKviwMWTNnDoeci0gm75/LAn3jTSsqmWLqE4y4zKu1kNsUd2rjzfH7LLlaXl9ffrhEQJZtindK1RdB8PT05OdVUbA186tmG4SExAGlwcC+y3e8ZNj1HvkUZwlrW66yJK+kasTXTlUNYJ3awfsStJvldRIMOpDKkkvVZkkwEp2hecOZ4ussJJR4ZOGR+T2lF1F4ES8egTpYkxKC2oif8l7MSSeFQiVXvEkx8UkYRxhJVvIUC5nvcACMesWeRZs9rr7cJIHVYNF9YIX42rBmv2JSlExB6Np2DLRYIbY75ZIsYHUYsuUuwQJWB5e8EaxwOQ5mIb7Z8Hw00wtigS2vIPZGaO+DvEdineKhNJawt0n58+oKalrydpclbdU1OT9K9+qqFSZuYG+KiqkVaxq2f4PsGRJGedVJleIwwpm3CP0oIgvkRYQggsZ66Ohjq7ERfzqjk3n8MngMjBgHdm1NAmfpWaJ4vpPiv46vdHNWEvo4z3nbVg3qU5Hid2fHNseohcSvYdAEclSzhpVDjh8wUvsaBDO7bkHX+u9J6+MP1sAuEsQfIwj6lZ8upqyaEjrrnFIO1INg6RwKSfscQ5apSbUj6Vf/eEb/HYk/vpLp/yjtJau9fMek5AU9J/cu/yDsBc6IT2NE/Emsa+BHWp728kLLMy3/jryfWMXk58m/O5ne+5PWm19NPpxVSgDRpFMrusWFrDuFWjjMJBjB+/Lu0/2n5Wd8zkduJrduIYGwI8ttATPYDyHEyO7UKb7964+VR4/M+c/H2/uPD86M/eJQtdnAmQMHlZ7ncNDn5e3fl9f47U/i1Q895gdmvloubz/gM4v86g6Ce3VbZxMUQU/N4J/CZhrBEzrI1CAzpPsuhp9GYkCmDhIZJB72BmqQ3tcrQgxCzc4yGfYRvXkTBwkNMhm0CTwz+A/Nv0Vig5DhCc1c4bBui0zNOwlq3Ve2tiD352Fg0+OcuO4BazFzn4GbFNyUHOYI/QXqN9F2rFi1OZejy8MBbt666K1iMucjM+oa6Mp3ndTf1brHTEcPg+xdL/sOUEsBAhcLFAACAAgAomyOPSqAAK9BAwAASQoAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAActcwdNUEsFBgAAAAABAAEAQgAAAHsDAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="4568517" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="SMpart 1_9">
+            <data encoding="1">UEsDBBQAAgAIAKJsjj20+CjUPQMAAEUKAAALABEAY29sbGFkYS54bWxVVA0ABy1zB00tcwdNLXMHTdVW227bOBD9FYJ9lkTKkh0Hkoo07S4KZOsgyRZtXgxWpm0CEqWlqKb++x1SYkynrmsUfSkMUzNnDoecGd6y19/qCn3lqhONzDENCUZcls1KyE2Oe70OLvDrIrte3Nxcvb1CQJZdjrdat5dR9PT0FJZNVbEVCxu1iWJC0ojSaGTfl1teM+x7T0KKi4x1HddFVjZSK/Gl140CrNdb+F6Bdru4yaJRB1Jdc6m7IosORK9rqTjTfFXEhJKAzANy8UDpZRJfpvNHoI7WrIag1uKHvGdz1kuhUc01VzkmIYnTBCPJap5jIcstjoDRLtk30RWPy39vs8hpMOkhsEp8UUztlkyKmmkI3diOgQ6rxGarfZIDnA5dNtwnOMDp4JIrwSqf42EO4us1Lw9GekYcsOENxK6E8T7KOyRWOR5L4wg7l5S/rq+hpjXvtkXWNb0q+VF60DadsHEDe101TC+ZUmz3E3JgSRiVTS91juMEF8F8FsbxLEVBQggi6FCPPf3QOtjiMEnIfN/X1337odXYssibdpFpXm6l+K/nS7MwGwlruCx51zUKDWnI8auz47rAqIOkr6DTBPLTMsXqMb+fMNK7FgQ7ull+vvXzSevjd9bITRLE7yOIhpmfLqRsVA2r6pwyjtQXwdILKCIdUgxJpqbxJfMZ/oHVf0fij89k+gelvWZtUG6ZlLyi5+Te578Ie44LEtIUkXCSmhqEiZGngzw38szIvyPvJ2Yx+XHy70+m9+Gk9fZXkw/3lBZAtOk0ilniQra9Rh1cZBKM4H1x//7h/eIDPmeT28GdW0ggnMZyU8EIbiPEGLlTOsd3f79ZBvTImB/f3T28++SNOEwONes13DdwSZlxXnb6sLj75+oG/3xL7P3QY35g5OvF4u4tPrPIe3cQ3N5tW8yQWVMp/CiaQhvb1iGJRdJx31OLUEASDyEWofbUmIxnhDmYiYfEFplAP4Jmzz5i2zpkapHU9phBa3xPrOc9MrHI1PpLrC1+/jmEWC2LWrOuXG1BHu7CyKXHu239y9Vh9i0Dryh4JXnMA/QXqF9F17Nq2ZVcHjwcXuD2a4reaSZLfmBGvYJV+aqXZl+tBsyu6LGTe+cV/wNQSwECFwsUAAIACACibI49tPgo1D0DAABFCgAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUABy1zB01QSwUGAAAAAAEAAQBCAAAAdwMAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="4568517" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="SMpart 1_10">
+            <data encoding="1">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</data>
+            <materials>
+                <material id="1">
+                    <color emissive="4568517" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="SMpart 1_11">
+            <data encoding="1">UEsDBBQAAgAIAKJsjj3hxZoVOQMAAD0KAAALABEAY29sbGFkYS54bWxVVA0ABy1zB00tcwdNLXMHTdVWbW/TMBD+K5b5nMRJk75MSdAYL0IadNoGgn2pTOq2lhInOA6j/56zE1NnlFIhvqAq9d1zj+9859f0+feqRN+YbHktMhz6BCMminrNxTbDndp4c/w8T6+W19eXLy8RkEWb4Z1SzUUQPD4++kVdlnRN/Vpug4iQJAjDYGDfFTtWUex6j/0Q5yltW6bytKiFkvxLp2oJWKd20F6CdrO8ToNBB1JVMaHaPA1GotO1kIwqts4jEhKPLDwyvw/Dizi6SBYPQB2saQVJbfhveT/NaSe4QhVTTGaY+CRKYowErViGuSh2OABGs6LfeZs/rD7cpIHVYNB9YiX/Iqncr6jgFVWQurYdAy1W8u1OuSQLWB26bJlLsIDVwSWTnJYux8EsxDYbVowi/UQssGU15C659j7Ie8TXGR6mxhL2tiivr65gTivW7vK0rTtZsKN0r6lbbvIG9qasqVpRKen+D2TPkDAq6k6oDEcxzqNF4s/nCfJiQhBBIzU6qCObtkwI8aez0PYbqY51ZNOWNHCGm6eKFTvBv3ZspRdkLWDtFgVr21qiPv0MPzs7nzlGLRR7DZ0mUJeGSloNdf2Ekdo3IJjoetm51s8nrQ+/WAM7SBB/zSDoR356AkUtK1hN50zfQH2SbDjHuTdUmCCQSC9bSTf95xn9XxT++Eim/1HZK9p4xY4KwcrwnNq7/CdpL3BO/DBBxJ8keg78WMvTXl5oeablf1H3E6OY/L74dyfLe3/SevO3xYf7SXEgmnJqRS9xLppOoRYuMAFG8L68e3v/dvken7PJTXDrFgoIp7DYlhDBboQII3s6Z/j2zYuVFx6J+fHV7f2rT07EfnCo3mzgnoHLScd52un98vbd5TX+85Y4+AmP+YHIV8vl7Ut85iQf3EFyB7dNHprdPhn2tj5QiYNEBpmgGNoZ/Gsk1se4g0wNMkN6bSbw00gCyNRBYoMkw/kRGqT3dUD6eJMh8gS+GfxH5t8iiUHI8EXGTzSMySJT06ZBo9eVnVuQ+zswsOVxbln3UrWYecPA6wleRw5zhP4F9RtvO1qu2oKJ0YPhCW5aPemtoqJgIzPqJKzKZ53Q+2rdY2ZFD53s+y7/AVBLAQIXCxQAAgAIAKJsjj3hxZoVOQMAAD0KAAALAAkAAAAAAAAAAAAAgAAAAABjb2xsYWRhLnhtbFVUBQAHLXMHTVBLBQYAAAAAAQABAEIAAABzAwAAAAA=</data>
+            <materials>
+                <material id="1">
+                    <color emissive="4568517" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="SMpart 1_12">
+            <data encoding="1">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</data>
+            <materials>
+                <material id="1">
+                    <color emissive="4568517" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="SMpart 1_13">
+            <data encoding="1">UEsDBBQAAgAIAKJsjj0MNXgEQgMAAEUKAAALABEAY29sbGFkYS54bWxVVA0ABy1zB00tcwdNLXMHTdVWYW+bPBD+K5b3GbAJJE0FTH27va8mdUvVdtPWL5FHnMQSGGbMuvz7nQ1enC7LomlfXiHw3XOP73xnGzt7+a2u0FeuOtHIHNOQYMRl2ayE3OS41+vgAr8ssuvFzc3VqysEZNnleKt1exlFT09PYdlUFVuxsFGbKCYkjSiNRvZ9ueU1w773JKS4yFjXcV1kZSO1Ep973SjAer2F9gq028VNFo06kOqaS90VWXQgel1LxZnmqyImlARkHpCLB0ovk/gynT8CdbRmNSS1Fr/k/TBnvRQa1VxzlWMSkjhNMJKs5jkWstziCBjtkn0TXfG4fH+bRU6DQQ+JVeKzYmq3ZFLUTEPqxnYMdFglNlvtkxzgdOiy4T7BAU4Hl1wJVvkcD3MQX695eRDpB+KADW8gdyWM91HeIbHK8Tg1jrBzRfn3+hrmtObdtsi6plclP0oP2qYTNm9gr6uG6SVTiu1+Qw4sCaOy6aXOcZzgIpmFkxmNURDP54igAzXeq5RQ32rUGKU0nM4S6voeqJ516HugxiiLvGEXmeblVoovPV+ahdlIWMNlybuuUWgoQ45fnJ3XBUYdFH0FnSZQn5YpVo/1/YiR3rUg2Ohm+fnWTyetjz9ZIzdIEH/OIBpGfnoiZaNqWFXnTONIfZYsvcBFAGUlyDyBKXXgS6YZ3sDqf6Pwx0cy/R+VvWZtUG6ZlLyi59Te5z9Le44LEtIUkXCSmjkIEyNPB3lu5JmR/0bdT4xi8uvi358s78NJ6+2fFh/OKS2AaMtpFLPEhWx7jTo4yCQYwfvi/s3Dm8U7fM4mt8GdWygg/I3lpoIIbiPEGLm/dI7v/vtnGdAjMT+8vnt4/dGLOAwONes1nDdwSJk4zzu9W9y9vbrBv98Sez/0mB+IfL1Y3L3CZ07y3h0kt3fbFtTu9sm4twn8UImHxBaZoATaGXwNksAbe8jUIjNk1mYKj0FSQKYeklgkHf8f1CKDrz0yxJuMkSfwzuAb269DUouQ8Y2tn3gck0Omts2i1qwrN7cgD2dh5Mrjnbb+4eowe5eBWxTckjzmAfoH1K+i61m17EouDy4Oz3DbmknvNJMlPzCjXsGqfNFLs69WA2ZX9NjJ3fOK71BLAQIXCxQAAgAIAKJsjj0MNXgEQgMAAEUKAAALAAkAAAAAAAAAAAAAgAAAAABjb2xsYWRhLnhtbFVUBQAHLXMHTVBLBQYAAAAAAQABAEIAAAB8AwAAAAA=</data>
+            <materials>
+                <material id="1">
+                    <color emissive="4568517" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="SMpart 1_14">
+            <data encoding="1">UEsDBBQAAgAIAKJsjj3JlCpZQgMAAEQKAAALABEAY29sbGFkYS54bWxVVA0ABy1zB00tcwdNLXMHTdVWbW/bNhD+KwT7WRIpS34JJBVZ2g0FsjpIsqHLF4OVaZuARGkU1dT/fkdKjOnUdY2iXwbB1t1zD+94x6PI7O3XukJfuOpEI3NMQ4IRl2WzFnKb415vgjl+W2Q3y9vb63fXCMiyy/FO6/Yqip6fn8OyqSq2ZmGjtlFMSBpRGo3sh3LHa4Z970lIcZGxruO6yMpGaiU+97pRgPV6B+9r0O6Wt1k06kCqay51V2TRkegNLRVnmq+LmFASkEVA5o+UXiXxVbp4AupozWpIaiO+y3sxZ70UGtVcc5VjEpI4TTCSrOY5FrLc4QgY7Yp9FV3xtPrrLoucBpMeEqvEZ8XUfsWkqJmG1I3tFOiwSmx32ic5wOkwZMt9ggOcDi65EqzyOR7mIL7Z8PIo0gvigC1vIHcljPdR3iOxzvG4NI6wd0X5/eYG1rTm3a7IuqZXJT9JD9qmEzZvYG+qhukVU4rtf0AOLAmjsumlznGc4CKl4XSWUBTEiwUi6EiNDyol1LcaNUbzaZjQaeLGHqmedRh7pMYoi7xpF5nm5U6Kf3u+Mo3ZSOjhsuRd1yg0lCHHby7Oa45RB0Vfw6AJ1KdlitVjfT9hpPctCDa6aT/f+s9Z69M31shNEsRvM4iGmZ9fSNmoGrrqkmUcqa+SpXNcBLAkBJknMKUOfMm8hp+Ff0XdT09k+j+qes3aoNwxKXlFLym9z3+V9gIXJKQpIuEkNUsQJkaeDvLCyLP0F9X9zCwm3y/+w9nyPp613v1s8eGY0gKItpxGMR0uZNtr1ME5JsEI3pcPHx4/LD/iS/a4De7cQgHhYyy3FURw+yDGyH2kc3z/x2+rgJ6I+ff7+8f3n7yIw+RQs9nAcQNnlInzetDH5f2f17f4x1vi4Iee8gORb5bL+3f4wkU+uIPkDm7bIh23tHkSZL6niYcQi1D7QZiM258AQjwktsgExhE0e/ER23+HTC0yQ6Z/U5RaJAVk6iGJRVLrdQb/Jv7ERj8gE4tMbczE2uKXxyHEalnUmr5yawvycBRGrjzeYeufrQ6zVxm4RMElyWMeoT9B/SK6nlWrruTy6N7wCrdvs+idZrLkR2bUK+jKN700+2o9YLajx0Humlf8B1BLAQIXCxQAAgAIAKJsjj3JlCpZQgMAAEQKAAALAAkAAAAAAAAAAAAAgAAAAABjb2xsYWRhLnhtbFVUBQAHLXMHTVBLBQYAAAAAAQABAEIAAAB8AwAAAAA=</data>
+            <materials>
+                <material id="1">
+                    <color emissive="4568517" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="SMpart 1_15">
+            <data encoding="1">UEsDBBQAAgAIAKJsjj3izj4KRAMAAEUKAAALABEAY29sbGFkYS54bWxVVA0ABy1zB00tcwdNLXMHTdVWbY/bKBD+K4h+tg2OnZeV7Wpv2ztV2mtWu3tVu18i6pAEycY+jLvNv78Bm4Zs0zSq+uVk2cw88zDDDGDIXn+tK/SFq040Msc0JBhxWTZrIbc57vUmmOPXRXazvL29fnONgCy7HO+0bq+i6Pn5OSybqmJrFjZqG8WEpBGl0ch+KHe8Ztj3noQUFxnrOq6LrGykVuJzrxsFWK930F6Ddre8zaJRB1Jdc6m7IouORK9rqTjTfF3EhJKALAIyf6T0Komv0sUTUEdrVkNSG/FD3jdz1kuhUc01VzkmIYnTBCPJap5jIcsdjoDRrthX0RVPq3/usshpMOghsUp8VkztV0yKmmlI3dhOgQ6rxHanfZIDnA5dttwnOMDp4JIrwSqf42EO4psNL48ifUMcsOUN5K6E8T7KeyTWOR6nxhH2rih/3tzAnNa82xVZ1/Sq5CfpQdt0wuYN7E3VML1iSrH9T8iBJWFUNr3UOY4TXMynYUKnCQrixQIRdKTGB5US6luNGqMFCWd0MXF9j1TPOvQ9UmOURd6wi0zzcifFvz1fmYXZSFjDZcm7rlFoKEOOX12c1xyjDoq+hk4TqE/LFKvH+n7ESO9bEGx0s/x866ez1qfvrJEbJIjfZxANIz8/kbJRNayqS6ZxpL5Ils5xEVAUEGSewJQ68CXTDG9g9d9R+NMjmf6Pyl6zNih3TEpe0Utq7/NfpL3ABQlpikg4Sc0chImRp4O8MPLMyL+j7mdGMflx8R/OlvfxrPXuV4sP55QWQLTlNIpZ4kK2vUYdHGQSjOB9+fDu8d3yPb5kk9vgzi0UEP7GcltBBLcRYozcXzrH93/9sQroiZgf3t4/vv3oRRwGh5rNBs4bOKRMnJed3i/v/76+xT/fEgc/9JQfiHyzXN6/wRdO8sEdJHdw2xbU7vbJuLcJ/FCJh8QWmaAE2hl8DZLAG3vI1CIzZNZmCo9BUkCmHpJYJB3/H9Qig68DMsSbjJEn8M7gG9uvQ1KLkPGNrZ94HJNDprbNotasKze3IA9nYeTK4522/uHqMHuXgVsU3JI85hH6C9QvoutZtepKLo8uDi9w25pJ7zSTJT8yo17BqnzVS7Ov1gNmV/TYyd3ziv8AUEsBAhcLFAACAAgAomyOPeLOPgpEAwAARQoAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAActcwdNUEsFBgAAAAABAAEAQgAAAH4DAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="4568517" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="SMpart 1_16">
+            <data encoding="1">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</data>
+            <materials>
+                <material id="1">
+                    <color emissive="4568517" />
+                </material>
+            </materials>
+        </geometry>
+    </geometries>
+</job>

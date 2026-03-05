@@ -1,0 +1,44 @@
+/PROG  CLAMP_TUBE
+/ATTR
+OWNER		= ASCBIN;
+COMMENT		= "Press to pinch p";
+PROG_SIZE	= 357;
+CREATE		= DATE 25-01-27  TIME 09:31:22;
+MODIFIED	= DATE 25-04-11  TIME 02:22:34;
+FILE_NAME	= ;
+VERSION		= 0;
+LINE_COUNT	= 16;
+MEMORY_SIZE	= 797;
+PROTECT		= READ_WRITE;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= 1,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+LOCAL_REGISTERS	= 0,0,0;
+/APPL
+
+AUTO_SINGULARITY_HEADER;
+  ENABLE_SINGULARITY_AVOIDANCE   : TRUE;
+/MN
+   1:  IF (DI[106]),JMP LBL[1] ;
+   2:   ;
+   3:  DO[26]=ON ;
+   4:   ;
+   5:  WAIT (DI[118])    ;
+   6:  DO[26]=OFF ;
+   7:   ;
+   8:  JMP LBL[2] ;
+   9:   ;
+  10:  LBL[1] ;
+  11:   ;
+  12:  MESSAGE[Manual Override On] ;
+  13:   ;
+  14:  ABORT ;
+  15:   ;
+  16:  LBL[2] ;
+/POS
+/END

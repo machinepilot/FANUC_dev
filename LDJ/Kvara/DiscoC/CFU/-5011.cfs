@@ -1,0 +1,55 @@
+ [A]0 [B]0 [C]0 [D]0 [E]0 [F]0 [G]0 [H]0 M [N]-1 [O]-1 [P]-1 S T : G4011
+;Collega un asse slave ad un certo numero di assi master
+;A=VA0: Parametro 1
+;B=VA1: Parametro 2
+;C=VA2: Parametro 3
+;D=VA3: Parametro 4
+;E=VA4: Parametro 5
+;F=VA5: Parametro 6
+;G=VA6: Parametro 7
+;H=VA7: Parametro 8
+;M=VA12: system wide asse master 1
+;N=VA13: system wide asse master 2
+;O=VA14: system wide asse master 3
+;P=VA15: system wide asse master 4
+;S=VA18: system wide asse slave
+;T=VA19: Tipo di connessione
+
+?%rg17.1 = 1 ;test tempo ciclo completo
+
+?%ax[VA18].rgdau0 = 0
+?%ax[VA18].rgdau1 = 0
+?%ax[VA18].rgdau2 = 0
+?%ax[VA18].rgdau3 = 0
+?%ax[VA18].rgdau4 = 0
+?%ax[VA18].rgdau5 = 0
+?%ax[VA18].rgdau6 = 0
+?%ax[VA18].rgdau7 = 0
+?%ax[VA18].rgau0  = 0
+?%ax[VA18].rgau1  = 0
+?%ax[VA18].rgau2  = 0
+?%ax[VA18].rgau3  = 0
+?%ax[VA18].rgau4  = 0
+?%ax[VA18].rgau5  = 0
+?%ax[VA18].rgau6  = 0
+?%ax[VA18].rgau7  = 0
+?%ax[VA18].rgau8  = 0   ;//reserved as output status register
+?%ax[VA18].rgau9  = 0   ;//reserved as output status register
+
+?%ax[VA18].rga3 = VA12 ;numero asse master 1
+?%ax[VA18].rga4 = VA13 ;numero asse master 2
+?%ax[VA18].rga5 = VA14 ;numero asse master 3
+?%ax[VA18].rga6 = VA15 ;numero asse master 4
+?%ax[VA18].rga7 = VA19 ;tipo di connessione
+?%ax[VA18].rgda0 = VA0 ;parametro 1
+?%ax[VA18].rgda1 = VA1 ;parametro 2
+?%ax[VA18].rgda2 = VA2 ;parametro 3
+?%ax[VA18].rgda3 = VA3 ;parametro 4
+?%ax[VA18].rgda4 = VA4 ;parametro 5
+?%ax[VA18].rgda5 = VA5 ;parametro 6
+?%ax[VA18].rgda6 = VA6 ;parametro 7
+?%ax[VA18].rgda7 = VA7 ;parametro 8
+?%ax[VA18].rga0.2 = 1 ;richiedi connessione slave
+?%rg17.0 = 1 ;busy
+
+RET

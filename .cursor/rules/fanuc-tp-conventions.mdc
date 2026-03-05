@@ -1,0 +1,17 @@
+---
+description: TWA FANUC TP conventions from dataset examples
+globs: "**/*.LS,**/*.ls"
+alwaysApply: false
+---
+
+# FANUC TP Conventions (TWA)
+
+When editing TP programs, follow patterns from the dataset examples:
+
+- **Program structure:** Main job with LBL[100] loop, SELECT for program selection, CALL for subprograms
+- **Registers:** Use descriptive comments (e.g. `R[1:PART INDEX]`); avoid bare indices
+- **I/O:** Verify DI/DO before motion; use WAIT with TIMEOUT where appropriate
+- **Error handling:** Use recovery macros for counter restore; check gripper state before operations
+- **Macros:** Group utility logic (reset, chuck, recovery) into reusable macros
+
+Reference: `examples/EG_JOB_A_CRDrill_SingleHand.txt`, `examples/EG_Chuck_Operations.txt`, `examples/EG_Background_Logic.txt`

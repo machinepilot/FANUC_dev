@@ -1,0 +1,27 @@
+Ciclo calcolo e attivazione bombatura con sensore di pressione Ver.012.54 : 128
+ SYN
+ CALL CallPMI(0,0)
+ ?%C21.21 = 1 ;conferma ricalcolo dati piega effettuato
+ IF (%parpres.dQtaGallegg == 0) JMPF 1000
+ G4 F%pargene.dwgn14 ;tempo attesa inizio galleggiamento
+ ?%C16.7 = 1 ;galleggiamento in corso
+ ;Disabilita filtro FIR su DAC pestone
+ _ppconf_sx(0x00,X,Y,0,0,0xFF00,0,0,0,0,0,0,0,0)
+ ;Disabilita guadagno variabile
+ _ppconf_sx(0x00,X,Y,0,0,0x01,0,0,0,0,0,0,0,0)
+ VA10 = QTA(X)
+ VA11 = QTA(Y)
+ VA12 = VA10 + %parpres.dQtaGallegg
+ VA13 = VA11 + %parpres.dQtaGallegg
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[49],%pst[50],0,0,VL36,0,0.01,1)
+ _ppmove_sx(0x01,X,Y,0,0,VL14,%pst[27],VL16,VA12,VA13,0,0,%pst[30],0)
+ IF (!%C35.6) JMPF 400
+ ?%C21.22 = 1 ;abilitazione posiz. centinatura
+ _wait_bit( 0,"%C32.21",1) ;attende posiz. centinatura eseguito
+N400 ?%C16.7= 0 ;galleggiamento terminato
+ ?%C21.22 = 0 ;terminato posiz. centinatura
+ IF (!VA0) JMPF 1000
+ ;Riporta se richiesto il pestone alla posizione iniziale
+ _ppconf_sx(0x00,X,Y,0,0,0,VL17,VL18,0,0,VL36,0,0.01,1)
+ _ppmove_sx(0x01,X,Y,0,0,VL14,%pst[27],VL16,VA10,VA11,0,0,%pst[30],0)
+N1000 RET

@@ -1,0 +1,24 @@
+TOPIC: Overview
+KEYWORDS: overview, program elements, TP program, teach pendant, instruction types, program structure
+CATEGORY: reference
+SOURCE: FANUC Teach Pendant Help System / Operator Manual
+APPLIES_TO: R-30iB Plus, TP Programming
+---
+
+1. OVERVIEW 1. OVERVIEW PROGRAM ELEMENTS 1. OVERVIEW A program element is a comp
+onent of a program. A teach pendant program is a series of program elements sele
+cted and organized to perform an application. A program consists of the followin
+g program elements: Program header information, which can include information su
+ch as program name, comment, group mask, program type, application mask, write p
+rotection setting, cycle time, gun on time, and material volume Line numbers, as
+signed to each program instruction Motion instructions, which include commands t
+hat tell the robot where and how to move Program instructions for logic, I/O, da
+ta handling, program control, advanced functions, and so forth. Remarks to annot
+ate the program. Program end marker, indicating that there are no more instructi
+ons in the program. PROGRAM ELEMENTS 2. PROGRAM HEADER INFORMATION
+Metadata:
+{}
+
+PROGRAM ELEMENTS PROGRAM ELEMENTS PROGRAM ELEMENTS PROGRAM ELEMENTS 1. OVERVIEW
+Metadata:
+{}

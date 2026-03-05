@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<job>
+    <settings>
+        <version>1</version>
+        <unit>millimeter</unit>
+        <backcolour>0</backcolour>
+    </settings>
+    <entities>
+        <entity id="FINGER1_MM_DURMA AD-S 30175" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FINGER1_MM_DURMA AD-S 30175</reference_id>
+            </geometry>
+        </entity>
+    </entities>
+    <states>
+        <state id="default">
+            <visibility>
+                <show type="Unspecified">1</show>
+                <show entity="FINGER1_MM_DURMA AD-S 30175">1</show>
+            </visibility>
+            <transformations />
+            <views>
+                <view id="1">
+                    <pos>14000,8000,-14000</pos>
+                    <target>0,0,-0</target>
+                    <near>6000</near>
+                    <far>25000</far>
+                    <width>9050</width>
+                    <height>5615</height>
+                    <perspective>1</perspective>
+                </view>
+            </views>
+        </state>
+        <state order="1" id="FINGER1_MM_DURMA AD-S 30175">
+            <visibility />
+            <transformations />
+            <views />
+        </state>
+    </states>
+    <geometries>
+        <geometry id="FINGER1_MM_DURMA AD-S 30175">
+            <data encoding="1">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</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+    </geometries>
+</job>

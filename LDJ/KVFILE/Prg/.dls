@@ -1,0 +1,11 @@
+[General]
+BendNum=1
+[Bend1]
+SpringBack=0.000000
+Warp=180.000000
+Confidence=0.000000
+NumeroTentativi=0
+Metodo=0
+TolleranzaPiega=0.000000
+PreBend=0.000000
+VelSalEst=0.000000

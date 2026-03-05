@@ -1,0 +1,27 @@
+Ciclo fisso posizionamento accompagnatori Ver.012.38 : 303
+ ;posiziona l'asse selezionato alla quota richiesta
+ VA1 = %ap[%selasse].pt6 * 1000 ;velocità manuale per volantino
+ IF( %C0.3 ) VA1 = %ap[%selasse].pt5 * 1000 ;velocità massima
+ VA2 = %ap[%selasse].pt1 ;quota massima
+ VA3 = %ap[%selasse].pt0 ;quota minima
+ IF( %C33.13 ) JMPF 100
+ VA0 = %C91 / 1000 ;quota da PLC
+ IF( (VA0 > VA2) || (VA0 < VA3) ) JMPF 1000
+ JMPF 300
+N100
+ IF( %C33.14 ) JMPF 200
+ VA0 = VA2
+ JMPF 300
+N200
+ VA0 = VA3
+N300
+ ;se l'accompagnatore deve scendere, attiva C19.30 per indicare
+ ;la direzione prima di avviare l'asse.
+ IF( VA0 < (%ax[%selasse].ra4 / 1000) ) %C19.30 = 1
+ POS[%selasse]=VA0 FA[%selasse]=VA1
+N1000
+ ?%C18.15 = 1 ;sincronismo ciclo eseguito a PLC
+ _wait_bit( 0,"%C33.25",1) ;attende sincronismo di ritorno da PLC
+ ?%C18.15 = 0
+ RET
+

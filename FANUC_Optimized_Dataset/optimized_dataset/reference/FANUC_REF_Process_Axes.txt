@@ -1,0 +1,46 @@
+TOPIC: Process Axes
+KEYWORDS: process axes, extended axes, auxiliary axes, servo gun, weld, dispense, application instruction
+CATEGORY: reference
+SOURCE: FANUC Teach Pendant Help System / Operator Manual
+APPLIES_TO: R-30iB Plus, TP Programming
+---
+
+7. BASIC PROCESS AXES INSTRUCTIONS (OPTION) 7. BASIC PROCESS AXES INSTRUCTIONS (
+OPTION) PROGRAM ELEMENTS 7. BASIC PROCESS AXES INSTRUCTIONS (OPTION) 7.1. Overvi
+ew The Basic Process Axes software option (R689) provides two TP instructions th
+at can be used to set the speed for some or all properly set process axes: SET I
+SDT SPEED STOP ALL ISDT 7.2. SET ISDT SPEED Instruction The SET ISDT SPEED instr
+uction, when executed, sends the specified speed values as commands directly to 
+the specified process axes motors. The units of the speed value are user units. 
+The relationship between the “user units” used in the SET ISDT SPEED instruction
+and the RPM at the motor shaft is defined by the following two quantities: The g
+ear ratio specified in the Process Axes Setup routine at CONTROLLED start The sc
+ale factor specified in the Process Axes Setup menu. This relationship is define
+d in the following equation: Note Please see the Software Installation Manual fo
+r more information on setting the gear ratio for Process Axes, specifically the 
+section entitled “Displaying, Modifying and Installing Process Axes.” Note Pleas
+e see the “Basic Process Axes” section in the “Advanced Functions” chapter of th
+is manual for more details on how to set the scale factor in the Process Axes Se
+tup menu. Any properly setup process axes that are not specified in the SET ISDT
+SPEED instruction will not be affected by the instruction; they will continue op
+erating at their current speed. The syntax of the instruction is shown in figure
+Figure 37, "SET ISDT SPEED A...=..." . Figure 37. SET ISDT SPEED A...=... By def
+ault, when the SET ISDT SPEED instruction is first inserted, by default it has t
+wo fields, one for the axis number and one for the speed as shown in figure Figu
+re 37, "SET ISDT SPEED A...=..." . Additional fields may be added by pressing F1
+ADD AX. This creates an additional set of axis and speed fields as shown: 1: SET
+ISDT SPEED A...=...,A...=... The cursor can then be moved to any of the fields a
+nd integer data can be entered. Additional fields can be added in this way, to a
+total of eight sets of axis and speed data in a single instruction. Note If an a
+xis number is specified that does not correspond to a valid, properly setup proc
+ess axes, then an ISDT-012 alarm will be posted at run time. Note If the same ax
+is number is specified in multiple fields on the same instruction line, then an 
+ISDT-013 alarm will be posted at run time. Note The speed value cannot be a nega
+tive number. If negative speed is desired, either indirect (i.e. numeric registe
+r) must be used for the speed value, or a negative scale factor should be set . 
+7.3. STOP ALL ISDT Instruction The STOP ALL ISDT instruction, when executed, wil
+l send a zero speed value to all process axes that are properly setup in the con
+troller. This instruction does not have any arguments. 6. MOTION OPTIONS INSTRUC
+TION 8. BRANCHING INSTRUCTIONS
+Metadata:
+{}

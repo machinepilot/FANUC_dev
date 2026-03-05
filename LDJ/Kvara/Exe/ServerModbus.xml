@@ -1,0 +1,489 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--Generic Server version: 1.0 licensed to ESAutomotion-->
+<!--Copyright (c) 2013-2014 Esautomotion. All rights reserved.-->
+<ServerModbus>
+	<Server>
+		<IPAddr>127.0.0.1</IPAddr>
+		<Port>502</Port>
+	</Server>
+	<InputRegister>
+    <StandardISO>
+      <RefreshTime>100</RefreshTime>
+    </StandardISO>
+	</InputRegister>
+	<HoldingRegister Size = 2048>
+		<OutputArea>
+			<Field Priority=0 Size=1>
+				<Comment><![CDATA[Select Operating Modes]]></Comment>
+				<MbAddr>0</MbAddr>
+				<ShAddr>PPTcpServer.PPMode</ShAddr>
+			</Field>
+			<Field Priority=0 Size=1>
+				<Comment><![CDATA[Command]]></Comment>
+				<MbAddr>1</MbAddr>
+				<ShAddr>PPTcpServer.PPCommand</ShAddr>
+			</Field>
+			<Field Priority=0 Size=80 EndianConversion=1>
+				<Comment><![CDATA[Program Name]]></Comment>
+				<MbAddr>2</MbAddr>
+				<ShAddr>PPTcpServer.PPProgram</ShAddr>
+			</Field>
+			<Field Priority=0 Size=80 EndianConversion=1>
+				<Comment><![CDATA[List Name]]></Comment>
+				<MbAddr>42</MbAddr>
+				<ShAddr>PPTcpServer.PPList</ShAddr>
+			</Field>
+			<Field Priority=0 Size=1>
+				<Comment><![CDATA[Active Command]]></Comment>
+				<MbAddr>82</MbAddr>
+				<ShAddr>PPTcpServer.PPClientAckCmd</ShAddr>
+			</Field>
+
+
+			<Field Priority=0 Size=1>
+				<Comment><![CDATA[Active Data]]></Comment>
+				<MbAddr>83</MbAddr>
+				<ShAddr>PPTcpServer.PPActiveData</ShAddr>
+			</Field>			
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Width]]></Comment>
+				<MbAddr>84</MbAddr>
+				<ShAddr>PPTcpServer.PPlargO</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Y1 Angle]]></Comment>
+				<MbAddr>86</MbAddr>
+				<ShAddr>PPTcpServer.PPangyaO</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[X1]]></Comment>
+				<MbAddr>88</MbAddr>
+				<ShAddr>PPTcpServer.PPxaO</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[X2]]></Comment>
+				<MbAddr>90</MbAddr>
+				<ShAddr>PPTcpServer.PPxbO</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[BDC]]></Comment>
+				<MbAddr>92</MbAddr>
+				<ShAddr>PPTcpServer.PPyaO</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Mute]]></Comment>
+				<MbAddr>94</MbAddr>
+				<ShAddr>PPTcpServer.PPMuteO</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[To do]]></Comment>
+				<MbAddr>96</MbAddr>
+				<ShAddr>PPTcpServer.PPpiecedO</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Comp.Pcs.]]></Comment>
+				<MbAddr>98</MbAddr>
+				<ShAddr>PPTcpServer.PPpiecefO</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Corr X1]]></Comment>
+				<MbAddr>100</MbAddr>
+				<ShAddr>PPTcpServer.PPcorxaO</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Corr X2]]></Comment>
+				<MbAddr>102</MbAddr>
+				<ShAddr>PPTcpServer.PPcorxbO</ShAddr>
+			</Field>
+			<Field Priority=0 Size=1>
+				<Comment><![CDATA[Active DataB]]></Comment>
+				<MbAddr>104</MbAddr>
+				<ShAddr>PPTcpServer.PPActiveDataB</ShAddr>			
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Num Bend]]></Comment>
+				<MbAddr>105</MbAddr>
+				<ShAddr>PPTcpServer.PPbendO</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Beam FeedRate]]></Comment>
+				<MbAddr>107</MbAddr>
+				<ShAddr>PPTcpServer.PPBeamFeedRateO</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Back Gauge FeedRate]]></Comment>
+				<MbAddr>109</MbAddr>
+				<ShAddr>PPTcpServer.PPBackGFeedRateO</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Function New3]]></Comment>
+				<MbAddr>111</MbAddr>
+				<ShAddr>PPTcpServer.PPnewpbO</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Function New4]]></Comment>
+				<MbAddr>113</MbAddr>
+				<ShAddr>PPTcpServer.PPnewpcO</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[A1]]></Comment>
+				<MbAddr>115</MbAddr>
+				<ShAddr>PPTcpServer.PPaaO</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[A2]]></Comment>
+				<MbAddr>117</MbAddr>
+				<ShAddr>PPTcpServer.PPabO</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Cor. Ang Y1]]></Comment>
+				<MbAddr>119</MbAddr>
+				<ShAddr>PPTcpServer.PPcorayaO</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Cor. Ang Y2]]></Comment>
+				<MbAddr>121</MbAddr>
+				<ShAddr>PPTcpServer.PPcoraybO</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Force]]></Comment>
+				<MbAddr>123</MbAddr>
+				<ShAddr>PPTcpServer.PPforceO</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Bend Time]]></Comment>
+				<MbAddr>125</MbAddr>
+				<ShAddr>PPTcpServer.PPtbendO</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[TDC]]></Comment>
+				<MbAddr>127</MbAddr>
+				<ShAddr>PPTcpServer.PPpmsO</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Pinch P]]></Comment>
+				<MbAddr>129</MbAddr>
+				<ShAddr>PPTcpServer.PPcorpinO</ShAddr>
+			</Field>
+
+			<Field Priority=0 Size=2>
+				<Comment><![M131]]></Comment>
+				<MbAddr>131</MbAddr>
+				<ShAddr>M131</ShAddr>
+			</Field>
+
+
+
+			<Field Priority=0 Size=80 EndianConversion=1>
+				<Comment><![CDATA[Work Prog Path]]></Comment>
+				<MbAddr>175</MbAddr>
+				<ShAddr>PPTcpServer.PPWorkProgPath</ShAddr>
+			</Field>
+			
+		</OutputArea>
+		<InputArea>
+			<Field Priority=0 Size=128 EndianConversion=1>
+				<Comment><![CDATA[String that contains the system alarm messages]]></Comment>
+				<MbAddr>256</MbAddr>
+				<ShAddr>ErHlErr0.ErHlText</ShAddr>
+			</Field>
+			<Field Priority=0 Size=128 EndianConversion=1>
+				<Comment><![CDATA[String that contains the motion control alarm]]></Comment>
+				<MbAddr>320</MbAddr>
+				<ShAddr>ErHlErr1.ErHlText</ShAddr>
+			</Field>
+			<Field Priority=0 Size=128 EndianConversion=1>
+				<Comment><![CDATA[String that contains the PLC alarm messages]]></Comment>
+				<MbAddr>384</MbAddr>
+				<ShAddr>ErHlErr2.ErHlText</ShAddr>
+			</Field>			
+			<Field Priority=0 Size=1 EndianConversion=1>
+				<Comment><![CDATA[UI run-time error code and popup windows]]></Comment>
+				<MbAddr>448</MbAddr>
+				<ShAddr>PPTcpServer.PPErrorCode</ShAddr>
+			</Field>
+			<Field Priority=0 Size=1>
+				<Comment><![CDATA[Active mode]]></Comment>
+				<MbAddr>449</MbAddr>
+				<ShAddr>PPTcpServer.PPAckMode</ShAddr>
+			</Field>
+			<Field Priority=0 Size=1>
+				<Comment><![CDATA[Active command]]></Comment>
+				<MbAddr>450</MbAddr>
+				<ShAddr>PPTcpServer.PPAckCommand</ShAddr>
+			</Field>
+			<Field Priority=0 Size=1>
+				<Comment><![CDATA[Active mode]]></Comment>
+				<MbAddr>451</MbAddr>
+				<ShAddr>PPTcpServer.PPActualMode</ShAddr>
+			</Field>
+			<Field Priority=0 Size=200 EndianConversion=1>
+				<Comment><![CDATA[Errors and messages from UI Line 1]]></Comment>
+				<MbAddr>452</MbAddr>
+				<ShAddr>PPTcpServer.PPErUITextA</ShAddr>
+			</Field>
+			<Field Priority=0 Size=200 EndianConversion=1>
+				<Comment><![CDATA[Errors and messages from UI Line 2]]></Comment>
+				<MbAddr>552</MbAddr>
+				<ShAddr>PPTcpServer.PPErUITextB</ShAddr>
+			</Field>
+			<Field Priority=0 Size=1 EndianConversion=1>
+				<Comment><![CDATA[Ack Data]]></Comment>
+				<MbAddr>693</MbAddr>
+				<ShAddr>PPTcpServer.PPAckData</ShAddr>
+			</Field>			
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Force I]]></Comment>
+				<MbAddr>694</MbAddr>
+				<ShAddr>PPTcpServer.PPforceI</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[BDC I]]></Comment>
+				<MbAddr>696</MbAddr>
+				<ShAddr>PPTcpServer.PPyaI</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Mute I]]></Comment>
+				<MbAddr>698</MbAddr>
+				<ShAddr>PPTcpServer.PPMuteI</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Bend Time I]]></Comment>
+				<MbAddr>700</MbAddr>
+				<ShAddr>PPTcpServer.PPtbendI</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[TDC I]]></Comment>
+				<MbAddr>702</MbAddr>
+				<ShAddr>PPTcpServer.PPpmsI</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Pinch P I]]></Comment>
+				<MbAddr>704</MbAddr>
+				<ShAddr>PPTcpServer.PPcorpinI</ShAddr>
+			</Field>
+			
+						
+			<Field Priority=0 Size=1 EndianConversion=1>
+				<Comment><![CDATA[Err Data]]></Comment>
+				<MbAddr>735</MbAddr>
+				<ShAddr>PPTcpServer.PPErrData</ShAddr>
+			</Field>			
+			<Field Priority=0 Size=2 EndianConversion=1>
+				<Comment><![CDATA[Data Value]]></Comment>
+				<MbAddr>736</MbAddr>
+				<ShAddr>PPTcpServer.PPErrValue</ShAddr>
+			</Field>
+			<Field Priority=0 Size=1 EndianConBversion=1>
+				<Comment><![CDATA[Ack DataB]]></Comment>
+				<MbAddr>738</MbAddr>
+				<ShAddr>PPTcpServer.PPAckDataB</ShAddr>
+			</Field>	
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Beam FeedRate]]></Comment>
+				<MbAddr>739</MbAddr>
+				<ShAddr>PPTcpServer.PPBeamFeedRateI</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Back Gauge FeedRate]]></Comment>
+				<MbAddr>741</MbAddr>
+				<ShAddr>PPTcpServer.PPBackGFeedRateI</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Width I]]></Comment>
+				<MbAddr>743</MbAddr>
+				<ShAddr>PPTcpServer.PPlargI</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Y1 Angle I]]></Comment>
+				<MbAddr>745</MbAddr>
+				<ShAddr>PPTcpServer.PPangyaI</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[X1 I]]></Comment>
+				<MbAddr>747</MbAddr>
+				<ShAddr>PPTcpServer.PPxaI</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[X2 I]]></Comment>
+				<MbAddr>749</MbAddr>
+				<ShAddr>PPTcpServer.PPxbI</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Corr X1 I]]></Comment>
+				<MbAddr>751</MbAddr>
+				<ShAddr>PPTcpServer.PPcorxaI</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Corr X2 I]]></Comment>
+				<MbAddr>753</MbAddr>
+				<ShAddr>PPTcpServer.PPcorxbI</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Comp.Pcs. I]]></Comment>
+				<MbAddr>755</MbAddr>
+				<ShAddr>head.piecef</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[To do I]]></Comment>
+				<MbAddr>757</MbAddr>
+				<ShAddr>head.pieced</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Function New3 I]]></Comment>
+				<MbAddr>759</MbAddr>
+				<ShAddr>PPTcpServer.PPnewpbI</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Function New4 I]]></Comment>
+				<MbAddr>761</MbAddr>
+				<ShAddr>PPTcpServer.PPnewpcI</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Bend I]]></Comment>
+				<MbAddr>763</MbAddr>
+				<ShAddr>np</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[A1 I]]></Comment>
+				<MbAddr>765</MbAddr>
+				<ShAddr>PPTcpServer.PPaaI</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[A2 I]]></Comment>
+				<MbAddr>767</MbAddr>
+				<ShAddr>PPTcpServer.PPabI</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Calibration I]]></Comment>
+				<MbAddr>769</MbAddr>
+				<ShAddr>C32</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Cor. Ang Y1 I]]></Comment>
+				<MbAddr>771</MbAddr>
+				<ShAddr>PPTcpServer.PPcorayaI</ShAddr>
+			</Field>
+			<Field Priority=0 Size=2>
+				<Comment><![CDATA[Cor. Ang Y2 I]]></Comment>
+				<MbAddr>773</MbAddr>
+				<ShAddr>PPTcpServer.PPcoraybI</ShAddr>
+			</Field>
+
+			<Field Priority=0 Size=2>
+				<Comment><![M130]]></Comment>
+				<MbAddr>775</MbAddr>
+				<ShAddr>M130</ShAddr>
+			</Field>
+
+			
+			<Field Priority=0 Size=40 EndianConversion=1>
+				<Comment><![CDATA[Prog1 I]]></Comment>
+				<MbAddr>800</MbAddr>
+				<ShAddr>PPTcpServer.ListProg[0].NameProg</ShAddr>
+			</Field>
+			<Field Priority=0 Size=40 EndianConversion=1>
+				<Comment><![CDATA[Prog2 I]]></Comment>
+				<MbAddr>820</MbAddr>
+				<ShAddr>PPTcpServer.ListProg[1].NameProg</ShAddr>
+			</Field>
+			<Field Priority=0 Size=40 EndianConversion=1>
+				<Comment><![CDATA[Prog3 I]]></Comment>
+				<MbAddr>840</MbAddr>
+				<ShAddr>PPTcpServer.ListProg[2].NameProg</ShAddr>
+			</Field>
+			<Field Priority=0 Size=40 EndianConversion=1>
+				<Comment><![CDATA[Prog4 I]]></Comment>
+				<MbAddr>860</MbAddr>
+				<ShAddr>PPTcpServer.ListProg[3].NameProg</ShAddr>
+			</Field>
+			<Field Priority=0 Size=40 EndianConversion=1>
+				<Comment><![CDATA[Prog5 I]]></Comment>
+				<MbAddr>880</MbAddr>
+				<ShAddr>PPTcpServer.ListProg[4].NameProg</ShAddr>
+			</Field>
+			<Field Priority=0 Size=40 EndianConversion=1>
+				<Comment><![CDATA[Prog6 I]]></Comment>
+				<MbAddr>900</MbAddr>
+				<ShAddr>PPTcpServer.ListProg[5].NameProg</ShAddr>
+			</Field>
+			<Field Priority=0 Size=40 EndianConversion=1>
+				<Comment><![CDATA[Prog7 I]]></Comment>
+				<MbAddr>920</MbAddr>
+				<ShAddr>PPTcpServer.ListProg[6].NameProg</ShAddr>
+			</Field>
+			<Field Priority=0 Size=40 EndianConversion=1>
+				<Comment><![CDATA[Prog8 I]]></Comment>
+				<MbAddr>940</MbAddr>
+				<ShAddr>PPTcpServer.ListProg[7].NameProg</ShAddr>
+			</Field>
+			<Field Priority=0 Size=40 EndianConversion=1>
+				<Comment><![CDATA[Prog9 I]]></Comment>
+				<MbAddr>960</MbAddr>
+				<ShAddr>PPTcpServer.ListProg[8].NameProg</ShAddr>
+			</Field>
+			
+			<Field Priority=0 Size=40 EndianConversion=1>
+				<Comment><![CDATA[Prog10 I]]></Comment>
+				<MbAddr>980</MbAddr>
+				<ShAddr>PPTcpServer.ListProg[9].NameProg</ShAddr>
+			</Field>
+			<Field Priority=0 Size=40 EndianConversion=1>
+				<Comment><![CDATA[Prog11 I]]></Comment>
+				<MbAddr>1000</MbAddr>
+				<ShAddr>PPTcpServer.ListProg[10].NameProg</ShAddr>
+			</Field>
+			<Field Priority=0 Size=40 EndianConversion=1>
+				<Comment><![CDATA[Prog12 I]]></Comment>
+				<MbAddr>1020</MbAddr>
+				<ShAddr>PPTcpServer.ListProg[11].NameProg</ShAddr>
+			</Field>
+			<Field Priority=0 Size=40 EndianConversion=1>
+				<Comment><![CDATA[Prog13 I]]></Comment>
+				<MbAddr>1040</MbAddr>
+				<ShAddr>PPTcpServer.ListProg[12].NameProg</ShAddr>
+			</Field>
+			<Field Priority=0 Size=40 EndianConversion=1>
+				<Comment><![CDATA[Prog14 I]]></Comment>
+				<MbAddr>1060</MbAddr>
+				<ShAddr>PPTcpServer.ListProg[13].NameProg</ShAddr>
+			</Field>
+			<Field Priority=0 Size=40 EndianConversion=1>
+				<Comment><![CDATA[Prog15 I]]></Comment>
+				<MbAddr>1080</MbAddr>
+				<ShAddr>PPTcpServer.ListProg[14].NameProg</ShAddr>
+			</Field>
+			<Field Priority=0 Size=40 EndianConversion=1>
+				<Comment><![CDATA[Prog16 I]]></Comment>
+				<MbAddr>1100</MbAddr>
+				<ShAddr>PPTcpServer.ListProg[15].NameProg</ShAddr>
+			</Field>
+			<Field Priority=0 Size=40 EndianConversion=1>
+				<Comment><![CDATA[Prog17 I]]></Comment>
+				<MbAddr>1120</MbAddr>
+				<ShAddr>PPTcpServer.ListProg[16].NameProg</ShAddr>
+			</Field>
+			<Field Priority=0 Size=40 EndianConversion=1>
+				<Comment><![CDATA[Prog18 I]]></Comment>
+				<MbAddr>1140</MbAddr>
+				<ShAddr>PPTcpServer.ListProg[17].NameProg</ShAddr>
+			</Field>
+			<Field Priority=0 Size=40 EndianConversion=1>
+				<Comment><![CDATA[Prog19 I]]></Comment>
+				<MbAddr>1160</MbAddr>
+				<ShAddr>PPTcpServer.ListProg[18].NameProg</ShAddr>
+			</Field>
+			<Field Priority=0 Size=40 EndianConversion=1>
+				<Comment><![CDATA[Prog20 I]]></Comment>
+				<MbAddr>1180</MbAddr>
+				<ShAddr>PPTcpServer.ListProg[19].NameProg</ShAddr>
+			</Field>
+			<Field Priority=0 Size=520 EndianConversion=1>
+				<Comment><![CDATA[Prog. Name]]></Comment>
+				<MbAddr>1200</MbAddr>
+				<ShAddr>npr</ShAddr>
+			</Field>								
+		</InputArea>
+	</HoldingRegister>
+</ServerModbus>
+

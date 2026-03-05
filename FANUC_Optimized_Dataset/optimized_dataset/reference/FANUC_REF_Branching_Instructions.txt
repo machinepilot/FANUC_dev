@@ -1,0 +1,254 @@
+TOPIC: Branching Instructions
+KEYWORDS: branching, JMP, LBL, label, jump, IF, SELECT, conditional branch, ELSE, program flow, goto, IF THEN ENDIF
+CATEGORY: reference
+SOURCE: FANUC Teach Pendant Help System / Operator Manual
+APPLIES_TO: R-30iB Plus, TP Programming
+---
+
+8. BRANCHING INSTRUCTIONS 8. BRANCHING INSTRUCTIONS PROGRAM ELEMENTS 8. BRANCHIN
+G INSTRUCTIONS 8.1. Overview Branching instructions cause the program to branch,
+or jump, from one place in a program to another. There are three kinds of branch
+ing instructions: Label definition instruction Unconditional branching instructi
+ons Conditional branching instructions 8.2. Label Definition Instruction LBL[x] 
+A label marks the location in a program that is the destination of a program bra
+nch. A label is defined using a label definition instruction . A comment can be 
+added to describe the label. After a label has been defined, it can be used with
+conditional and unconditional branching instructions. See Figure 38, " LBL[x] " 
+. Figure 38. LBL[x] 8.3. Unconditional Branching Instructions Unconditional bran
+ching instructions branch from one place in a program to another any time they a
+re executed. There are two kinds of unconditional branching instructions: Jump i
+nstructions - Cause the program to branch to a named label. Sub program call ins
+tructions - Cause the program to branch to another program. JMP LBL[x] The JMP L
+BL[x] instruction causes the program to branch to the specified label. See Figur
+e 39, " JMP LBL[x] " . Figure 39. JMP LBL[x] CALL program The CALL program instr
+uction causes the program to branch to another program and execute it. When the 
+called program finishes executing, it returns to the main program at the first i
+nstruction after the call program instruction. See Figure 40, " CALL program " .
+Refer to Section 17, " PARAMETERS FOR PROGRAM CALL AND MACRO INSTRUCTIONS " for 
+information on program call parameters. In DispenseTool, this instruction can be
+used only in a job program. Figure 40. CALL program Note When you enable an appl
+ication process for a program, you are setting the application mask. The followi
+ng rules dictate the kinds of programs you can CALL when application masks are u
+sed: A program with an application mask set to NONE can CALL a program (using th
+e program CALL instruction) that has an application mask set to a specific appli
+cation (SpotTool+, HandlingTool, or DispenseTool). A program with an application
+mask set to a specific application can CALL a program that has an application ma
+sk set to NONE or to the same application. A program with an application mask se
+t to a specific application cannot CALL a program that has a different applicati
+on mask. Note If you have the Parameters for CALL Program option, you can includ
+e parameters in the CALL program instruction. Refer to Section 17, " PARAMETERS 
+FOR PROGRAM CALL AND MACRO INSTRUCTIONS " for more information. END The program 
+end instruction signals the end of a program. See Figure 41, " Program End Instr
+uction " . Figure 41. Program End Instruction 8.4. Conditional Branching Instruc
+tions Conditional branching instructions branch from one place to another in a p
+rogram, depending on whether certain conditions are true. There are two kinds of
+conditional branching instructions: IF instructions - Branch to a specified labe
+l or program if certain conditions are true. There are register IF instructions 
+and input/output IF instructions. SELECT instructions - Branch to one of several
+jump or call instructions, depending on the value of a register. IF R[x] [operat
+or] [value] [action] Register IF instructions compare the value contained in a r
+egister with another value and take an action if the comparison is true. See Fig
+ure 42, " Register IF Instruction " . Figure 42. Register IF Instruction IF [I/O
+] [operator] [value] [action] Input/output IF instructions compare an input or o
+utput value with another value and take an action if the comparison is true. See
+Figure 43, " I/O IF Instruction for DI/DO, RI/RO, SI/SO and UI/UO " to Figure 45
+, " I/O IF Instruction for R, AI/AO, GI/GO and System Variable " . Figure 43. I/
+O IF Instruction for DI/DO, RI/RO, SI/SO and UI/UO Figure 44. I/O IF Instruction
+for PL Figure 45. I/O IF Instruction for R, AI/AO, GI/GO and System Variable For
+an IF instruction, conditions can be connected using AND or OR, as follows: AND 
+operator IF [cond1] AND [cond2] AND ..., [action] For example, 1: IF R[1]=1 AND 
+R[2]=2 AND DI[2]=ON,JMP LBL[2] OR instruction IF[cond1] OR [cond2] OR ..., [acti
+on] For example, 1: IF DI[10]=ON OR R[7]=R[8], JMPLBL[2] Note You cannot mix the
+AND and OR operators in the same operation. When you replace the operator betwee
+n AND and OR, any operators taught in the same line are also replaced automatica
+lly and the following message is displayed. TPIF-062 AND operator was replaced t
+o OR TPIF-063 OR operator was replaced to AND The maximum number of logical cond
+itions that can be taught in the same operation is 5. IF [cond1] OR [cond2] OR [
+cond 3] OR [cond4]OR [cond5], [action] (Maximum of five logical conditions) Mixe
+d Logic IF Statement The following is an example of a mixed logic IF statement: 
+IF (R[1] = (GI[1] + R[1]) * AI[1]), JMP LBL[1] IF (DI[1] AND (!DI[2] OR DI[3])),
+JMP LBL[1] You can specify mixed logic expressions in the condition part of an I
+F statement. The result of the IF statement must be boolean. When the result of 
+the expression is on, the action part of the statement, for example, JMP LBL, is
+executed. The following statements can be used in the action part of an IF state
+ment when mixed logic is used in the condition part: JMP LBL[ ] CALL Mixed Logic
+assignment statement Pulse statement Mixed Logic assignment statements and Pulse
+statements can be specified in the action part of the IF statement only when the
+condition part is a Mixed Logic expression. See the following example: IF (DI[1]
+), DO[1]=(On) IF (DI[2]), DO[1]=Pulse The maximum number of items (data or opera
+tors) in an IF statement is approximately 20. The exact maximum number of items 
+varies according to data type. Refer to Section 14, " MIXED LOGIC INSTRUCTIONS "
+for more information on mixed logic instructions. SELECT R[x] = [value1] [action
+]= [value2] [action]= [valueN] [action] ELSE [action] A select instruction compa
+res the value of a register with one of several values and takes an action if th
+e comparison is true: If the value of the register equals one of the values, the
+jump or call instruction associated with that value is executed. If the value of
+the register does not equal one of the values, the jump or call instruction asso
+ciated with the word ELSE is executed. See Figure 46, " Select Instruction " . F
+igure 46. Select Instruction 8.5. Wizard to Input Arguments 8.5.1. Overview Wiza
+rd to input arguments allows you to use a wizard to teach call instruction argum
+ents in any sequence. For example, there is a program called, "TRACKING". 1: CAL
+L TRACKING(’CStn_Out_R1’,2,(-1),1,1,1) This program needs to be called with six 
+arguments of a specific type and in the correct order. Using Wizard to input arg
+uments, allows you to teach the arguments in any sequence. The argument descript
+ion is also displayed. 1: CALL TRACKING(Area Name='CStn_Out_R1',VR num=2, : Time
+out Time=(-1),Reg num timeout=1,NOT-CONSECUTIVE, : Model ID=1) 8.5.2. Preparatio
+n To use this function, you must prepare and load a text file (DT file) that inc
+ludes information for the wizard. File Format The following is an example text (
+.DT) file. Figure 47. Example Text (.DT) File How to Write the Text File The tex
+t file details are described below. [PROGRAM] Section NAME is for the program na
+me to call with arguments. (Max length is 36 characters) ARGUMENT is the number 
+of the argument. (Max. is 30.) [ARGUMENT] Section Basic writing style is | N(typ
+e of argument) 02(what number for argument) =(equal mark) "VR num"(displayed mea
+ning of argument) The number of (type of argument) is 4 types (N: Constant numbe
+r, V: Macro definition, S: String, W: List of string) (What number for argument)
+is from 01 to 30 (Equal mark) is must Max length for (displayed meaning of argum
+ent) is 15 characters, enclosed it double quotes. - In the case of V: Macro defi
+nition Writing style is | V05 = "NOT-CONSECUTIVE"(macro definition name) :(colon
+) '1'(value) | Max length for (macro definition name) is 15 characters. Describe
+macro definitions as long as necessary after | =(equal mark) with each macro def
+inition separated by a | ,(comma) |. The number of definable macros for an argum
+ent is to 35. The details are explained later in the section called "Macro defin
+ition". - In the case of W: List of string Writing style is | W04 = "NO_WELD"(st
+ring) | - Max length is 34 characters for (string). Describe strings as long as 
+necessary after | =(equal mark) with each string separated by a | ,(comma) |. Th
+e number of string for an argument is to 35. Define the meaning of the string it
+self. [ENDPROGRAM] - End. Write procedures from 1 to 3 additionally if it is nee
+ded. to 1000 different programs can be included in the .dt file. Write procedure
+s from 1 to 3 additionally if it is needed. The number of describable program is
+to 1000. Place a comment within braces if necessary { } . Quote marks are used a
+s follows. The following codes are prohibited to use for String enclosed in quot
+es " ": comma (,) semicolon (;) colon (:) single quotes (') double quotes (") Li
+ne feed code Tab code Macro Definition Macros are used to define certain strings
+as a specific value. For example, it is described in the text file as follows. V
+03 = "MAX_SPD":'100', "NORMAL_SPD":'50', "SLOW_SPD":'10' In this instance, '100'
+is passed as an argument if “MAX_SPD” is displayed in the field of the third arg
+ument on the EDIT programlisting. For example, ---------------------------------
+-------------------------------------- [PROGRAM] NAME = "HANDLING" ARGUMENT : '4
+' [ARGUMENT] N01 = "LINE" V02 = "SLOW":'1', "FAST":'2' V03 = "SMALL":'1', "NORMA
+L":'2', "BIG":'3' V04 = "MAX_LOAD":'10000', "NO_LOAD":'0' [ENDPROGRAM] ---------
+-------------------------------------------------------------- If this text file
+is used, the following will be displayed on the Edit programlisting. -----------
+------------------------------------------------------------ (Example) [ Display
+] CALL HANDLING(LINE=3,SLOW,BIG,NO_LOAD) [ Process ] CALL HANDLING(3,1,3,0) ----
+------------------------------------------------------------------- The followin
+g integer is used for the macro: -16777216 ~ 16777216 ( -2^24 ~ 2^24 ) A decimal
+number is unusable for the macro definition. The same name or value cannot be us
+ed for an argument. The number of definable macros for an argument is to 35. Cha
+nge of Default Value The default value for N(Constant number) is 0, for S(String
+) is '…'(null string). You can change this default value for each argument. In t
+he case of N(Constant number), :(colon) where: ---------------------------------
+-------------------------------------- [PROGRAM] {OFFSSET} NAME = "POS_OFFSET" A
+RGUMENT = '3' [ARGUMENT] N01 = "X-OFFSET":'10' N02 = "Y-OFFSET":'20' N03 = "Z-OF
+FSET":'30' [ENDPROGRAM] --------------------------------------------------------
+--------------- The specified default value is used when arguments are taught au
+tomatically, if you teach the call instruction while loading this text file. 1:C
+ALL POS_OFFSET(X-OFFSET=10,Y-OFFSET=20,Z-OFFSET=30) By default, integer numbers 
+within the following range can be used: -16777216 ~ 16777216 ( -2^24 ~ 2^24 ) Si
+x significant figures are used in a decimal number. For example, 123.456 If the 
+default value is described over six significant figures, it is truncated. Additi
+onally, you can use the register or argument register as a default too. In that 
+case, you describe :(colon) and (R) or (AR) as follows: N01 = "X-OFFSET":'10' N0
+2 = "Y-OFFSET":(R) N03 = "Z-OFFSET":(AR) If you teach a call instruction in this
+state, a register or argument register is used as default: 1: CALL POS_OFFSET(X-
+OFFSET=10,Y-OFFSET=R[...], : Z-OFFSET=AR[...]) In the case of S(String), you des
+cribe :(colon) as follows: S01 = "Area Name":"Booth1" If you teach the call inst
+ruction as well as the case of S(String), the specified string is used as the de
+fault when arguments are taught automatically. Additionally, you can also use th
+e string register or argument register as the default. In that case, :(colon) an
+d (SR) or (AR) are described as follows: S01 = "Area Name":(SR)	or S01 = "Area N
+ame":(AR) File Name File name is fixed as ARGDISPEG01.DT. Where the configuratio
+n is "ARGDISP(fixed) + EG(language) + 01(serial number) + .DT(extension)" ARGDIS
+P(fixed) : Common part EG(language) : language-specific where: - EG : English - 
+KN : Japanese [Kanji] - GR : German - FR : French - SP : Spanish - CH : Chinese 
+- TW : Taiwanese - CS : Czech - OT : Other 01(serial number) : Usable from 01 to
+99 It is possible to load different serial number files all together. .DT(fixed 
+extension) : Common part Note Japanese is not JP but KN. This is because there a
+re two display styles for Japanese. JP is used for old software versions that us
+e katakana. KN is used for current software versions where Kanji (2 byte charact
+er) is used. How to Load a Text File Use the following procedure to load the tex
+t file. Create the text file on the MC: (Memory Card). Move the cursor to the fi
+le in the File programlisting, and select F3, [LOAD]. Cycle power. Save and Load
+a Text File as a Backup The text file is backed and restored as follows: (Backup
+) - At the File programlisting, select F4, [BACKUP] and “All of above” or “Appli
+cation” in Cold start. (Restore) - At the File programlisting, select F4, [RESTO
+RE] and “All of above” or “Application” in Controlled start. Alarm for Failure t
+o Read Text File If content of the loaded text file is not formatted correctly, 
+it will not be read. An alarm such as “FILE-095 (ARGDISPEG01.DT) is not loaded.”
+is posted and recorded in the alarm history. View the cause of the failure in re
+lated alarm messages displayed on the alarm history programlisting. The followin
+g alarm messages can be displayed: FILE-095 (ARGDISPKN01.DT) is not loaded	: Fil
+e name to fail to read FILE-096 on line n, xxx : The line (n) and characters or 
+value (xxx) to fail to	read FILE-097 Out of memory : Out of Temporary memory to 
+be required FILE-098 Over 1000 programs : Over the maximum programs FILE-099 Wro
+ng end of file : End of file not after [ENDPROGRAM] FILE-100 Wrong tag/item/char
+acter code : Miss of tag, item or character code FILE-101 Over 35 definitions : 
+Over the maximum definitions of macro or list of string FILE-102 Over limit valu
+e : Over the maximum value for macro definition or default value for Constant nu
+mber 8.5.3. Editing Use the following procedure to teach the call instruction ar
+guments. Procedure 6. Teaching of Arguments . Input a CALL statement and select 
+the program that is described in the text file. 1: CALL ... [END] , the argument
+s are taught automatically. (The default value is 0 or '…' (null string). For a 
+macro definition or list of strings, the first item is set.) The argument descri
+ptions are displayed in each field as follows. 1: CALL TRACKING(Area Name='...',
+VR num=0, : Timeout Time=0,Reg num timeout=0,NOT-CONSECUTIVE, : Model ID=0) [END
+] Change of value The appearance is changed, but the input operation is not chan
+ged 1: CALL TRACKING(Area Name='CStn_Out_R1',VR num=0, : Timeout Time=0,Reg num 
+timeout=0,NOT-CONSECUTIVE, : Model ID=0) [END] | | | v Input Value 1: CALL TRACK
+ING(Area Name='CStn_Out_R1',2 , : Timeout Time=0,Reg num timeout=0,NOT-CONSECUTI
+VE, : Model ID=0) [END] | | | v Push “Enter” 1: CALL TRACKING(Area Name='CStn_Ou
+t_R1',VR num=2, : Timeout Time=0,Reg num timeout=0,NOT-CONSECUTIVE, : Model ID=0
+) [END] Submenu For Editing The sub menu is displayed when F4, [CHOICE] is press
+ed while the cursor is on an argument. The sub menu items displayed are differen
+t. Argument is N (Constant number) Constant, Register and Argument register are 
+displayed as items on the submenu. Argument is V (Macro definition) Strings that
+are defined as macros are displayed as items on the submenu. Argument is S (Stri
+ng) String, String register and Argument registers are displayed as items on the
+submenu. Argument is W (list of String) The list of strings is displayed as item
+s on the submenu. Note to 15 characters can be displayed as items on the submenu
+. And over 15 characters can be used for the list of string. If over 15 characte
+rs are used, the first 13 characters and '..' (two colons) are displayed as item
+s on the submenu. For example) ”PAINT_APPLICATION” -> “PAINT_APPLICA..” Teaching
+Arguments Automatically When you teach the CALL instruction and select the progr
+am that is written in the Text file, arguments are automatically set with the de
+fault value (See "Teaching of Arguments"). If you change the program name of the
+CALL instruction, arguments are taught. The default value is set for each argume
+nt also as follows. 1: CALL TRACKING(Area Name='CStn_Out_R1',VR num=2, : Timeout
+Time=(-1),Reg num timeout=1,NOT-CONSECUTIVE, : Model ID=1) | | | v Change the pr
+ogram name from TRACKING to POS_OFFSET 1: CALL POS_OFFSET(X-OFFSET=10,Y-OFFSET=2
+0,Z-OFFSET=30) If the called program name is changed to the another program name
+that is not described in text file, Wizard to input arguments is disabled and th
+e previous argument value(s) will be restored. 8.5.4. Handling of Multiple Langu
+ages The text file (DT file) is needed to be prepared for each language. The tex
+t file is read by the current language setting on start-. If the current languag
+e is switched and the text files of multiple languages is loaded, controller pow
+er must be cycled for the new language file to be read. The Text file for the cu
+rrent language must exist for Wizard to input arguments to operate properly. 8.5
+.5. Save and Upload of ASCII Files If you save a TP program as an ASCII file (LS
+file) when Wizard to input arguments is enabled, the meaning of argument is encl
+osed by " "(double quotes). [For example : VR num=2 > "VR num"=2]. And in case o
+f macro definition, not only macro definition name is enclosed by " ", but also 
+the defined value is described as | =(value) |. [For example : NOT-CONSECUTIVE >
+"NOT-CONSECUTIVE"=1] 1: CALL TRACKING(Area Name='CStn_Out_R1',VR num=2, : Timeou
+t Time=(-1),Reg num timeout=1,NOT-CONSECUTIVE, : Model ID=1) | | | v Save as ASC
+II file 1: CALL TRACKING("Area Name"='CStn_Out_R1',"VR num"=2, : "Timeout Time"=
+(-1),"Reg num timeout"=1, : "NOT-CONSECUTIVE"=1,"Model ID"=1) You can upload thi
+s ASCII file if the ASCII upload option is loaded. The argument description encl
+osed in quotes ( " ") is ignored when the ASCII file is uploaded. Therefore, you
+can upload the ASCII file without considering whether the language is set correc
+tly or the text file is loaded in advance. Note Wizard to input arguments and th
+e process to ignore the argument description enclosed by quotes (" ") is support
+ed only in 7DC3(V8.30) and later. An ASCII file that includes an argument descri
+ption enclosed in quotes ( “ “) will cause the process to fail in versions relea
+sed before 7DC3(V8.30). 8.5.6. Mode Selection You can change the mode of Wizard 
+to input arguments using the system variable $ARGDISPMODE, as follows: 0 : Wizar
+d to input arguments is disabled. 1 : Wizard to input arguments is enabled. (Def
+ault) 2 : Wizard to input arguments is enabled and the value of macro definition
+is displayed. ------------------------------------------------------------------
+----------- (Example) [ $ARGDISPMODE=0 ] CALL HANDLING(3,1,3,0) [ $ARGDISPMODE=1
+] CALL HANDLING(LINE=3,SLOW,BIG,NO_LOAD) [ $ARGDISPMODE=2 ] CALL HANDLING(LINE=3
+,SLOW=1,BIG=3,NO_LOAD=0) -------------------------------------------------------
+---------------------- The change of the mode is reflected after power is cycled
+. 7. BASIC PROCESS AXES INSTRUCTIONS (OPTION) 9. FOR/ENDFOR INSTRUCTIONS
+Metadata:
+{}

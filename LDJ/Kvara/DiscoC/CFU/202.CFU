@@ -1,0 +1,57 @@
+Ciclo fisso taratura diretta riscontri Ver.012.43 : 202
+ ;presetta l'asse selezionato alla quota impostata dall'operatore
+ VA0 = %C90 / 1000
+ ;Gantry asse X1-X2 o X1-X4 abilitato
+ IF(%ax[2].pa[3].25) THEN
+   ;Gantry su X1-X2
+   IF(%gantry[0].Gdat[0] == 3) THEN
+     IF( %selasse == 2 ) THEN
+       PRS[X] = VA0
+       _isocmd(0,X,6);
+       PRS[Y] = VA0
+       _isocmd(0,Y,6);
+     ENDIF
+   ;Gantry su X1-X4
+   ELSE
+     IF( %selasse == 2 ) THEN
+       PRS[X] = VA0
+       _isocmd(0,X,6);
+       _taraim(0x01,23,VA0)
+     ENDIF
+     IF( %selasse == 3 ) PRS[Y] = VA0
+   ENDIF
+ ELSE
+   IF( %selasse == 2 ) PRS[X] = VA0
+   IF( %selasse == 3 ) PRS[Y] = VA0
+ ENDIF
+
+ ;Gantry asse R1-R2 o R1-R4 abilitato
+ IF(%ax[4].pa[3].25) THEN
+   ;Gantry su R1-R2
+   IF(%gantry[1].Gdat[0] == 5) THEN
+     IF( %selasse == 4 ) THEN
+       PRS[Z] = VA0
+       _isocmd(0,Z,6);
+       PRS[U] = VA0
+       _isocmd(0,U,6);
+     ENDIF
+   ;Gantry su R1-R4
+   ELSE
+     IF( %selasse == 4 ) THEN
+       PRS[Z] = VA0
+       _isocmd(0,Z,6);
+       _taraim(0x01,25,VA0)
+     ENDIF
+     IF( %selasse == 5 ) PRS[U] = VA0
+   ENDIF
+ ELSE
+   IF( %selasse == 4 ) PRS[Z] = VA0
+   IF( %selasse == 5 ) PRS[U] = VA0
+ ENDIF
+
+ IF( %selasse == 6 ) PRS[V] = VA0
+ IF( %selasse == 7 ) PRS[W] = VA0
+ ?%C18.10 = 1 ;sincronismo taratura eseguita a u.i.
+ _wait_bit( 0,"%C33.23",1) ;attende sincronismo di ritorno da u.i.
+ ?%C18.10 = 0 ;sincronismo taratura eseguita a u.i.
+ RET

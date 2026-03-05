@@ -1,0 +1,45 @@
+/PROG  MUTE_LIGHT_CURTAIN
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= "Press to pinch p";
+PROG_SIZE	= 413;
+CREATE		= DATE 25-02-11  TIME 12:26:52;
+MODIFIED	= DATE 25-05-16  TIME 12:42:12;
+FILE_NAME	= UNCLAMP_;
+VERSION		= 0;
+LINE_COUNT	= 17;
+MEMORY_SIZE	= 849;
+PROTECT		= READ_WRITE;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= 1,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+LOCAL_REGISTERS	= 0,0,0;
+/APPL
+
+AUTO_SINGULARITY_HEADER;
+  ENABLE_SINGULARITY_AVOIDANCE   : TRUE;
+/MN
+   1:  IF (DI[106]),JMP LBL[1] ;
+   2:   ;
+   3:  DO[32]=OFF ;
+   4:   ;
+   5:  WAIT (!DI[122])    ;
+   6:   ;
+   7:  DO[28]=OFF ;
+   8:   ;
+   9:  JMP LBL[2] ;
+  10:   ;
+  11:  LBL[1] ;
+  12:   ;
+  13:  MESSAGE[Manual Override On] ;
+  14:   ;
+  15:  ABORT ;
+  16:   ;
+  17:  LBL[2] ;
+/POS
+/END

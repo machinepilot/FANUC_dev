@@ -1,0 +1,81 @@
+/PROG  BG_LOGIC
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= "";
+PROG_SIZE	= 987;
+CREATE		= DATE 25-12-12  TIME 08:45:54;
+MODIFIED	= DATE 26-02-24  TIME 03:30:18;
+FILE_NAME	= ;
+VERSION		= 0;
+LINE_COUNT	= 52;
+MEMORY_SIZE	= 1279;
+PROTECT		= READ_WRITE;
+STORAGE		= SHADOW;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= *,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+LOCAL_REGISTERS	= 0,0,0;
+/APPL
+
+AUTO_SINGULARITY_HEADER;
+  ENABLE_SINGULARITY_AVOIDANCE   : TRUE;
+/MN
+   1:  !UFRAME CALC--------------------- ;
+   2:  IF (F[1:L_SLOT]=ON OR F[3:BIN]=ON) THEN ;
+   3:  R[99:UFRAME_TEMP]=(R[2:SORT CODE]+21) ;
+   4:  R[96:DI_REG]=R[2:SORT CODE]+25    ;
+   5:  ENDIF ;
+   6:   ;
+   7:   ;
+   8:  IF (F[2:S_SLOT]=ON) THEN ;
+   9:  R[99:UFRAME_TEMP]=R[2:SORT CODE]+15    ;
+  10:  R[96:DI_REG]=R[2:SORT CODE]+25    ;
+  11:  ENDIF ;
+  12:   ;
+  13:   ;
+  14:   ;
+  15:  IF (F[4:PANEL]=ON) THEN ;
+  16:  R[99:UFRAME_TEMP]=(R[2:SORT CODE]+11) ;
+  17:  R[96:DI_REG]=R[2:SORT CODE]+31    ;
+  18:  ENDIF ;
+  19:   ;
+  20:   ;
+  21:  !CURRENT COUNT TRACKER----------- ;
+  22:  !L_SLOT ;
+  23:  R[90:LSLOTREG]=R[2:SORT CODE]+24    ;
+  24:  R[100:L_SLOT_COUNT]=R[R[90]]    ;
+  25:   ;
+  26:  !S_SLOT ;
+  27:  R[91:SSLOTREG]=R[2:SORT CODE]+34    ;
+  28:  R[101:S_SLOT_COUNT]=R[R[91]]    ;
+  29:   ;
+  30:   ;
+  31:  !PANEL ;
+  32:  R[92:PANELREG]=R[2:SORT CODE]+44    ;
+  33:  R[102:PANEL_COUNT]=R[R[91]]    ;
+  34:   ;
+  35:  !BIN_1 ;
+  36:  R[93:BIN1REG]=((2*R[2:SORT CODE])+3) ;
+  37:   ;
+  38:  R[103:BIN1_COUNT]=R[R[93]]    ;
+  39:   ;
+  40:   ;
+  41:  !BIN_2 ;
+  42:  R[94:BIN1REG]=((2*R[2:SORT CODE])+4) ;
+  43:   ;
+  44:  R[104:BIN2_COUNT]=R[R[94]]    ;
+  45:   ;
+  46:   ;
+  47:  !PR SELECTOR ;
+  48:  R[98:PR_REG]=R[1:PART INDEX]+100    ;
+  49:   ;
+  50:   ;
+  51:  !DI SELECTOR ;
+  52:  R[96:DI_REG]=R[2:SORT CODE]+128    ;
+/POS
+/END

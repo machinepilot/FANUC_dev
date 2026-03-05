@@ -1,0 +1,29 @@
+{
+  "version": "1.0",
+  "description": "TWA customer FANUC program repository",
+  "customers": [
+    {
+      "id": "345-PJ",
+      "name": "PJ Trailers",
+      "path": "345-PJ",
+      "systems": ["press_brake_tending"]
+    },
+    {
+      "id": "308-GH",
+      "name": "Greenheck Fan",
+      "path": "308-GH",
+      "systems": ["infeed_sort_cart_placement"]
+    },
+    {
+      "id": "313-JD",
+      "name": "JD Tube",
+      "path": "313-JD",
+      "systems": ["tube_bending"]
+    }
+  ],
+  "application_types": {
+    "press_brake_tending": "Tandem/single press brake load/unload",
+    "infeed_sort_cart_placement": "Infeed sort to cart (slot/bin/panel/foam)",
+    "tube_bending": "Tube bending cell (infeed → bender → outfeed)"
+  }
+}

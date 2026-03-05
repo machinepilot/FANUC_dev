@@ -1,0 +1,88 @@
+TOPIC: FANUC Background Logic Programming
+KEYWORDS: background logic, BG Logic, background program, monitoring, watchdog, continuous
+CATEGORY: article
+SOURCE: ONE Robotics Company Blog
+APPLIES_TO: FANUC TP Programming, R-30iB Plus
+---
+
+# FANUC Background Logic Programming
+
+Filed under:FANUCTP ProgrammingTP+Workflow
+FANUC’s TP programming language and the teach pendant’s built-in editor
+are great tools. They allow relatively novice programmers to get up and
+running very quickly. Teach a couple points, throw in a couple labels
+andIFstatements, and you’re off to the races. However, anyone who’s
+tried to do anything a bit more complex quickly realizes how cumbersome
+programming on the teach pendant is. Navigating through multiple levels
+of menus to find thePAYLOADinstruction or creating an extensive
+mixed-logic conditional is really painful. At this point many
+programmers switch to programming.LSfiles by hand.
+Here’s the smallest program you can load onto a robot:
+However, it might be good practice to start with a template that
+includes all available sections:
+The/PROGsection simply accepts the name of your program (letters,
+numbers and underscores only, and it must start with a letter) followed
+by an optional sub-type (e.g. Macro, Cond, etc.).
+The/ATTRsection stores the rest of the program header information:
+things like the creation date, comment, group mask, etc. If you choose
+not to include any of this, the robot assumes a sensible set of
+defaults.
+I’m not sure what/MNstands for (motion?), but this is where your
+program goes. You must start each line with a:and end it with a;.
+You can optionally include a line number before the colon, but I think
+including line numbers in your source code is a tragedy.
+At this point there’s no good way of populating the/POSsection of
+your program. I generally upload my program to the robot, teach the
+point, then use the robot web page to view the program source and
+copy/paste the position data after positions are taught. Maybe I’ll
+write something better someday.
+Unfortunately FANUC decided to squeeze an additional $500 out of
+anyone who needs to do any real programming. The robot will not
+translate your ASCII*.LSfiles into binary.TPfiles unless you
+purchase the ASCII Upload option.
+If you’re lucky enough to have a ROBOGUIDE license, you can side-step
+the ASCII Upload option by having your virtual robot translate them for
+you.
+Here’s a simple Windows Batch file and FTP script that will upload all.LSfiles located in./srcto the virtual robot on127.0.0.2and then download the.TPfiles into./bin:
+Note:keep an eye on your virtual robot’s error log or the FTP output
+to see if any files failed to translate. Also make sure your the
+currently selected program on your virtual does not to be translated.
+(Abort all then select another program.)
+You might write another batch file to then upload files to your real
+robot at192.168.1.101:
+Note:Again, the robot won’t load a file if that file is currently
+selected on the teach pendant. (Abort all, select another program)
+That’s what I said to myself last week while trying to find a rare bug
+hidden within 15000 lines of TP code. The bug ended up being a simple
+typo… something like this:
+Can you spot the issue? Here’s how it looks after translating and
+loading the file onto the controller:
+I meant to useR[2:numreg two]in both conditionals, but I
+accidentally changed the 2 to a 3 while hastily changing the other
+expressions. The translator ignores the comment completely, so you have
+no idea your code doesn’t work until you test it.
+This can be particularly catastrophic when using positions and position
+registers. Tell the robot to move toP[10:position one]when you meantP[1:position one]could be pretty bad. Gotta be careful when
+programming by hand.
+Here’s how this program might look if written with TP+:
+Of course you can still make typos, but I think it’s a lot harder to
+mis-type names than numbers. The translator will catch it if you typenmrg_oneinstead ofnumreg_one.
+Iintroduced TP+back in January.
+There’sa demowhere you can try it out.
+I used TP+ exclusively on my most recent machine tending project, and it
+was really refreshing. A single environment file holds all variables for
+numeric registers, position registers, I/O, etc. Namespaces allow me to
+organize data and I/O into logical groups independent of the robot data
+numbering.
+Let’s say you have to moveDI[1]toDI[56]for some reason, and this input
+is used in 100 programs. Simply update the variable definition in the
+environment file, re-translate and all the programs are instantly
+up-to-date.
+I’ll release a standalone version of TP+ eventually. Let me know if
+you’re interested and I might get it done sooner rather than later.
+I email(almost)every Tuesday with the latest insights, tools and techniques for programming FANUC robots. Drop your email in the box below, and I'll send new articles straight to your inbox!
+No spam, just robot programming. Unsubscribe any time. No hard feelings!
+©2013-2019 ONE Robotics Company LLC. All rights reserved.
+Privacy•Terms•RSS Feed
+
+URL: https://www.onerobotics.com/posts/2014/writing-tp-programs-by-hand---pros-and-cons/

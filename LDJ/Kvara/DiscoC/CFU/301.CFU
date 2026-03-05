@@ -1,0 +1,202 @@
+Ciclo fisso automatico assi accompagnatori Ver.012.63 : 301
+
+DBL QuoteStartEnd = %pargen_due.dwgn64.19 ;Abil. quote inizio-fine ciclo accompagnatori da programma
+DBL OffsetQuotaFA = %pargen_due.dgn37 ;Offset quota accompagnatori
+DBL MaxVelA1 = %ax[8].pa[9] ;Velocita massima A1
+DBL MaxVelA2 = %ax[9].pa[9] ;Velocita massima A2
+DBL CorrPCL = %pargen_due.dgn[28] ;Correzione PCL
+DBL ReturnSpeed = %parspec.dsp[14]*1000 ;Velocita ritorno accompagnatori
+DBL UnhookDist, UnhookSpeed
+DBL BeamWorkSpeed, BeamRelativeSpeed
+DBL PinchPosition, HalfPreBend
+DBL MatchSpeed, RetSpeedA, RetSpeedB
+
+N100 ;CALCOLI PER POSIZIONAMENTO IN SALITA
+ BeamWorkSpeed = %prog[%np].velw*1000 ;velocita di lavoro pestone (mm/min)
+ PinchPosition = %PestQ[%np].pcl
+
+ IF (QuoteStartEnd) THEN ;Abil. quote inizio-fine ciclo accompagnatori da programma
+  VA23 = %SpecialProg.SpecialStep[%np].dAHoming[0] ;Pos. inizio ciclo A1
+  VA24 = %SpecialProg.SpecialStep[%np].dAHoming[1] ;Pos. inizio ciclo A2
+  PinchPosition = PinchPosition + CorrPCL
+
+  %accasal = %prog[%np].aa ;target A1
+  VA13 = %accasal + OffsetQuotaFA - VA23 ;Distance A1
+  VA15 = PinchPosition - %prog[%np].ya ;Distanza di piega
+  IF (VA15 > 0.1) THEN
+   %vaccas = BeamWorkSpeed * VA13 / VA15
+   IF (%vaccas < 0.1) %vaccas = MaxVelA1
+  ELSE
+   %vaccas = MaxVelA1
+  ENDIF
+
+  %accbsal = %prog[%np].ab ;target A2
+  VA14 = %accbsal + OffsetQuotaFA - VA24 ;Distance A2
+  VA16 = PinchPosition - %prog[%np].yb ;Distanza di piega
+  IF (VA16 > 0.1) THEN
+   %vaccbs = BeamWorkSpeed * VA14 / VA16
+   IF (%vaccbs < 0.1) %vaccbs = MaxVelA2
+  ELSE
+   %vaccbs = MaxVelA2
+  ENDIF
+
+ ELSE
+  CALL DatiAcc(0,0) ;chiama routine di calcolo dati accompagnatori
+ ENDIF
+
+ ;VERIFICA CORRETTEZZA VELOCITA PESTONE
+ SYN ;attesa C34.1-2 aggiornati se cambia tra due pieghe
+ IF( (%vaccas > MaxVelA1) && %C34.1 ) JMPF 103
+ IF( (%vaccbs > MaxVelA2) && %C34.2 ) JMPF 103
+ JMPF 105
+N103 ?%C19.8 = 1 ;segnala errore velocita accompagnatori eccessiva
+
+ ;POSIZIONA ACCOMPAGNATORI A QUOTA INIZIO CICLO
+N105
+ ?%C19.10 = 1 ;Ciclo accompagnatori avviato
+ IF (QuoteStartEnd) THEN ;Abil. quote inizio-fine ciclo accompagnatori da programma
+  IF( !%C34.1 ) VA23 = QNAN() ;verifica abil. accompagnatore 1
+  IF( !%C34.2 ) VA24 = QNAN() ;verifica abil. accompagnatore 2
+  FA[X]=ReturnSpeed ;setta velocita ritorno accompagnatori
+  FA[Y]=ReturnSpeed
+  POS[X]=VA23 POS[Y]=VA24 ;posizionamento a quota di inizio ciclo
+  ?%C19.9 = 1 ;Accompagnatori pronti a inizio ciclo
+ ENDIF
+
+ ;ATTESA CONSENSO SALITA DA PESTONE
+ _wait_bit( 0,"%C34.4",1) ;attende consenso alla salita da pestone
+ SYN
+ IF(!%C34.3) JMPF 150 ;verifica abil. accompagnatori
+ ?%C19.1 = 1 ;ciclo accompagnatori in corso
+ IF(!%C34.12) JMPF 120 ;Test se abilitato albero elettrico per discesa pestone
+
+ ;SALITA ACCOMPAGNATORI IN ALBERO ELETTRICO PER DISCESA PESTONE
+ ;calcolo costanti di inseguimento
+ ;Con la gestione delle quote di inizio-fine, usa sempre il pcl corretto per uniformare la gestione
+ ;Mezzo angolo prebend da sottrarre se piega con sensore d'angolo
+ HalfPreBend = 0
+ IF (%C38.7) HalfPreBend = %prog[%np].DatiIMG.dPrebend / 2
+ VA4 = 1 ;costante inseguimento A1
+ VA5 = 1 ;costante inseguimento A2
+
+ IF( !%C34.1 ) JMPF 107
+ VA8 = %accasal + OffsetQuotaFA - QTA(X) - HalfPreBend ;Angolo da percorrere A1
+ VA4 = VA8 / (%prog[%np].ya - PinchPosition) ;K inseguimento Y1 = spazio accompagnatore A1 / spazio Y1
+ FWR[X]= 0 ;disabilita errore di inseguimento A1
+N107
+
+ IF( !%C34.2 ) JMPF 110
+ VA9 = %accbsal + OffsetQuotaFA - QTA(Y) - HalfPreBend ;Angolo da percorrere A2
+ VA5 = VA9 / (%prog[%np].yb - PinchPosition) ;K inseguimento Y2 = spazio accompagnatore A2 / spazio Y2
+ FWR[Y]= 0 ;disabilita errore di inseguimento A2
+
+N110 ; Calcolo per scalatura guadagni
+ BeamRelativeSpeed = BeamWorkSpeed / (%pst[26]*1000) ; Rapporto Vel / Vmax pestone
+ VA6 = %parspec.dsp[17] * BeamRelativeSpeed ; Kpe = Kpe * Vel / Vmax
+ VA7 = %parspec.dsp[18] * BeamRelativeSpeed
+
+ IF( %C34.1) _albero_e(0x00,0x02,X,X,VA6,0,0)
+ IF( %C34.2) _albero_e(0x00,0x02,Y,Y,VA7,0,0)
+ IF( %C34.1 ) _albero_e(0x00,0x81,X,0,VA4,"%C34.5",1) ;aggancia albero elettrico A1 a Y1
+ IF( %C34.2 ) _albero_e(0x00,0x81,Y,1,VA5,"%C34.5",1) ;aggancia albero elettrico A2 a Y2
+ IF( %C34.1 ) FWR[X]= 1 ;abilita errore di inseguimento A1
+ IF( %C34.2 ) FWR[Y]= 1 ;abilita errore di inseguimento A2
+ JMPF 150
+
+N120 ;SALITA ACCOMPAGNATORI IN PSEUDO-INTERPOLAZIONE PER DISCESA PESTONE
+ VA17 = (%accasal + OffsetQuotaFA)
+ VA20 = (%accbsal + OffsetQuotaFA)
+ IF( !%C34.1 ) VA17 = QNAN() ;verifica abil. accompagnatore 1
+ IF( !%C34.2 ) VA20 = QNAN() ;verifica abil. accompagnatore 2
+ FA[X]=%vaccas ;setta velocità di salita accompagnatori
+ FA[Y]=%vaccbs
+ POS[X]=VA17 POS[Y]=VA20 ;posizionamento a quota target
+
+ ;SALITA ACCOMPAGNATORI TERMINATA
+N150 ?%C19.2 = 1 ;salita accompagnatori terminata
+
+ ;ATTESA RICHIESTA POSIZIONAMENTO IN DISCESA
+ _wait_bit( 0,"%C34.6",1) ;attende ripartenza pestone dopo fine piega
+ IF(!%C34.3) JMPF 250 ;verifica abil. accompagnatori
+
+ ;CALCOLA QUOTE DI DISCESA
+ SYN
+ IF (QuoteStartEnd) THEN ;Abil. quote inizio-fine ciclo accompagnatori da programma
+  VA21 = %SpecialProg.SpecialStep[%np].dAHoming[2] ;Pos. fine ciclo A1
+  VA22 = %SpecialProg.SpecialStep[%np].dAHoming[3] ;Pos. fine ciclo A2
+ ELSE
+  VA21 = 0
+  VA22 = 0
+ ENDIF
+
+ IF( !%C34.1 ) VA21 = QNAN() ;verifica abil. accompagnatore 1
+ IF( !%C34.2 ) VA22 = QNAN() ;verifica abil. accompagnatore 2
+
+ ;test se abilitato albero elettrico per salita pestone e accompagnamento e ciclo sgancio non attivo
+ IF(!%C34.13 || %C34.10) JMPF 210
+ ?%C19.5 = 1 ;discesa accompagnatori in corso
+ ;DISCESA ACCOMPAGNATORI CON SALITA PESTONE IN ALBERO ELETTRICO
+ _wait_bit(0, "%C34.15", 1) ;attende aggancio albero elettrico pestone
+
+ RetSpeedA = ReturnSpeed
+ RetSpeedB = ReturnSpeed
+ MatchSpeed = %prog[%np].accomp*1000 ;Vel. accompagnamento del pestone
+
+ ;DISCESA ACCOMPAGNATORI CON VELOCITA DI MATCH + albero elettrico
+ IF ( MatchSpeed == 0 ) JMPF 200
+
+ ;calcolo costanti di inseguimento
+ ;Con la gestione delle quote di inizio-fine, usa sempre il pcl corretto per uniformare la gestione
+ VA25 = 1 ;costante inseguimento A1 per discesa
+ VA26 = 1 ;costante inseguimento A2 per discesa
+
+ IF(ISQNAN(VA21)) JMPF 180
+ VA27 = QTA(X) - VA21 ;Angolo da percorrere A1 per discesa 
+ VA25 = VA27 / (PinchPosition - %prog[%np].ya) ;K inseguimento Y1 = spazio accompagnatore A1 / spazio Y1
+ RetSpeedA = VA25 * MatchSpeed
+ IF (RetSpeedA > ReturnSpeed) RetSpeedA = ReturnSpeed
+N180
+
+ IF(ISQNAN(VA22)) JMPF 200
+ VA28 = QTA(Y) - VA22 ;Angolo da percorrere A2 per discesa 
+ VA26 = VA28 / (PinchPosition - %prog[%np].yb) ;K inseguimento Y2 = spazio accompagnatore A2 / spazio Y2
+ RetSpeedB = VA26 * MatchSpeed
+ IF (RetSpeedB > ReturnSpeed) RetSpeedB = ReturnSpeed
+ 
+N200
+ FA[X]=RetSpeedA ;setta velocita ritorno accompagnatori
+ FA[Y]=RetSpeedB
+ POS[X]=VA21 POS[Y]=VA22 ;posizionamento a quota di fine ciclo
+ ?%C19.6 = 1 ;discesa con albero elettrico terminata
+ _wait_bit(0, "%C34.15", 0) ;attende sgancio albero elettrico pestone
+ SYN
+ JMPF 250
+ 
+N210 ;CICLO SGANCIO ACCOMPAGNATORI
+ IF(!%C34.10) JMPF 220
+ ?%C19.3 = 1 ;ciclo sgancio in corso
+ UnhookDist = %parspec.dsp[16] ;Oltrecorsa per sgancio
+ VA11 = %prog[%np].aa + UnhookDist
+ VA12 = %prog[%np].ab + UnhookDist
+ IF( !%C34.1 ) VA11 = QNAN() ;verifica abil. accompagnatore 1
+ IF( !%C34.2 ) VA12 = QNAN() ;verifica abil. accompagnatore 2
+ UnhookSpeed = %parspec.dsp[8]*1000 ;Velocita sgancio
+ FA[X]=UnhookSpeed
+ FA[Y]=UnhookSpeed
+ POS[X]=VA11 POS[Y]=VA12 ;posizionamento a quota di sgancio
+ ?%C19.4 = 1 ;setta fine sgancio
+ _wait_bit( 0, "%C34.7", 1)
+
+N220 ;DISCESA ACCOMPAGNATORI INDIPENDENTE
+ ?%C19.5 = 1 ;discesa accompagnatori in corso
+ FA[X]=ReturnSpeed ;setta velocita ritorno accompagnatori
+ FA[Y]=ReturnSpeed
+ POS[X]=VA21 POS[Y]=VA22 ;posizionamento in quota di fine ciclo
+
+ ;DISCESA ACCOMPAGNATORI TERMINATA
+N250 ?%C19.7 = 1 ;setta accompagnatori in posizione
+ _wait_bit( 0,"%C34.9",1) ;attende cambio passo da canale 1
+ ?%C19 = 1 ;mantiene attivo C19.0
+ SYN ;attende cambio passo per dati piega
+ _wait_bit(0, "%C34.8", 1) ;attende conferma fine ciclo
+ JMPB 100

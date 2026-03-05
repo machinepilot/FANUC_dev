@@ -1,0 +1,116 @@
+TOPIC: FANUC Motion Speed and Acceleration Tuning
+KEYWORDS: speed, acceleration, ACC, motion tuning, performance, cycle time, trajectory
+CATEGORY: article
+SOURCE: ONE Robotics Company Blog
+APPLIES_TO: FANUC TP Programming, R-30iB Plus
+---
+
+# FANUC Motion Speed and Acceleration Tuning
+
+Filed under:FANUCLine TrackingVision
+Inpart one of this
+series,
+we covered gripper design and testing, vision considerations, robot
+selection, cell layout and choosing the correct number of robots for
+visual tracking applications. This post will cover some other
+considerations: conveyor flow, hardware requirements, setup and
+configuration, and finally, programming.
+Here’s the full list with links to each section:
+If you consider a simple system with two conveyors: one for parts coming
+in, and one for parts going out, which direction(s) do they go? Do they
+both move in the same direction, or do they oppose eachother?
+We call it “parallel-flow” when the conveyors both move in the same
+direction, and we call it “counterflow” when the conveyors move in
+opposite directions.
+Some people may instinctually imagine a parallel-flow system while
+others picture a counterflow system.
+Each options has its own advantages and disadvantages, and those become
+more evident and important as the number of robots increases.
+What happens when a part is missed on the infeed? It simply goes off the
+end of the conveyor. If there is something collecting excess at the end
+of the system, it can simply place to any empty slot on the outfeed
+without affecting the robot operation since it will be done downstream.
+Imagine a long line of 10 robots. How does the most upstream robot
+operate? This robot has a very easy job: it can pick 100% of the
+incoming parts and place to 100% of the outgoing slots. What about the
+10th robot? This one has it a little bit of harder. Assuming equal load
+distribution, this robot has only 10% of the infeed choices the first
+robot had, and it also has only 10% of the outfeed slots available.
+Depending on the decisions the other robots have made, this robot’s
+picks and drops may or may not be in sync with eachother. This causes
+misses on both the infeed and outfeed sides of the system.
+If a missed part on the infeed is placed directly onto the outfeed, this
+immediately causes an imbalance in the system. Assuming the system has
+equal part coming in and no excess going out, you’ve just filled a slot
+that was meant for a robot to use.
+What about the balancing problem? Picture the same line of 10 robots:
+how does the upstream robot operate now? It has 100% pick opportunity,
+but now it’s starved on the outfeed side, with only 10% to work with.
+The 10th robot has the opposite problem: 10% of the available parts to
+pick, but it can always place immediately.
+It usually comes down to space and money. Parallel-flow typically makes
+more sense from an automated line perspective (everything always moving
+in the same direction from start to finish), but counterflow does have
+some balancing advantages.
+Load-balancing becomes extremely important as soon as you start working
+with more than one robot no matter which direction your conveyors flow.
+Counterflow systems tend to self-balance better, but you’ll probably end
+up having to control it yourself anyway if you can’t tolerate many
+missed parts on either side.
+Go with parallel-flow if you can stop one or both conveyors without
+affecting the rest of the system. Ideally you’ll be able to have a
+slight buffer upstream on both sides that will allow the system to start
+and stop both sides as necessary to prevent any lost parts.
+At minimum, a dual-track visual tracking system will require:
+If you are using multiple robots, you’ll need to decide how to get the
+encoder signals to the other robots. You can either use a multiplexer +
+additional cables or use the Ethernet Encoder option to send the signals
+over ethernet. You’ll need a good switch (pretty sure FANUC recommends a
+fancy and expensive managed switch, but you might be able to get away
+with a cheap one) and a couple ethernet cables.
+Here’s how the pieces fit together:
+With the ethernet encoder option, you can connect one encoder to each
+controller and then the signals will be passed over ethernet to the
+other controller(s). The vision offsets will also be passed over
+ethernet.
+Without the ethernet encoder, you would have each encoder connect to a
+multiplexer which then outputs each encoder signal to each controller.
+Encoders are typically connected to the conveyor with either a coupling
+or friction wheel. Both have advantages/disadvantages. Whatever you
+choose, make sure you end up with ~20-30+ encoder counts/mm of conveyor
+travel as your final encoder scale.
+Setup is pretty easy:
+I could probably write an article for each item 3-6, but I’ll leave
+it at this for now.
+When it comes to programming a visual tracking system, you have two
+choices:
+So the question is, should I use PickTool? The answer depends on a
+couple of things:
+The real question is, “will using PickTool save me time and/or money?”
+Visual tracking is difficult, especially at high throughputs. Regardless
+of whether or not you use PickTool, you will have to learn how visual
+tracking works: how you teach your tracking frames, how you calibrate
+vision, how reference positions work, etc. Adding PickTool requires you
+to learn an additional set of conventions, programs, setup requirements,
+etc., and it gets you further from the “metal” of the application.
+Instead of writing a few hundred lines of code yourself, you have to
+learn to work within the PickTool framework’s way of doing things.
+If your application is simple (i.e. just one or two robots, nothing too
+fancy), I would contend that writing your own TP programs would be a
+very worthwhile exercise. You’ll develop a deeper understand for how
+visual tracking works and eventually understand PickTool better if you
+decide to use it.
+I haven’t spent much time with the new iRPickTool software, but I
+understand that FANUC has made the integration between iRPickTool and
+the underlying visual tracking architecture much tighter. As a result
+there should be less confusion over redundant setup screens, setup
+conflicts, etc.
+I hope visual tracking is not so intimidating now. I know I only skimmed
+over a couple of topics (setup, programming), but I’ll expand on those
+topics in future articles.
+I email(almost)every Tuesday with the latest insights, tools and techniques for programming FANUC robots. Drop your email in the box below, and I'll send new articles straight to your inbox!
+No spam, just robot programming. Unsubscribe any time. No hard feelings!
+©2013-2019 ONE Robotics Company LLC. All rights reserved.
+Privacy•Terms•RSS Feed
+
+URL: https://www.onerobotics.com/posts/2014/your-first-visual-tracking-application-part-two/

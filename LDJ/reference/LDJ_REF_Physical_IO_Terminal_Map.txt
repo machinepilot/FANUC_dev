@@ -1,0 +1,119 @@
+TOPIC: Physical IO and Terminal Block Map
+KEYWORDS: ESA, QW, IW, XC2F, XC3M, XC4M, E20, A20, terminal block, M1, M2, robot interface, CNC OK, Ram UP, clamping, FANUC DI, FANUC DO, PLC
+CATEGORY: reference
+SOURCE: robot_interface_reference.md, press_brake_reference.md Sections 6, 12, 13
+APPLIES_TO: BLM SERIES 420-200, ESA/Kvara, FANUC + PLC integration, Phase 1A (primary), Phase 1B (alternative)
+---
+
+============================================================
+0 ROBOT INTERFACE (XC2F/XC3M/XC4M) — PRIMARY MAP
+============================================================
+Use when XC2F/XC3M/XC4M connectors present. Full reference: robot_interface_reference.md.
+
+PRESS → ROBOT/PLC (XC2F inputs):
+Signal           | Connector | Address | FANUC DI | PLC Addr | Notes
+-----------------|-----------|---------|----------|----------|---------------------------
+Press in Auto    | XC2F P3   | E20.0   | DI       | —        | Machine ready
+Beam at Mute     | XC2F P4   | E20.1   | DI       | —        | Speed change point
+Beam at UDP      | XC2F P5   | E20.2   | DI       | —        | Safe to load/unload
+Beam at CP       | XC2F P6   | E20.3   | DI       | —        | Sheet pinched
+Beam at LDP      | XC2F P7   | E20.4   | DI       | —        | Lower dead point
+End of Bend      | XC2F P8   | E20.5   | DI       | —        | Bend complete
+Axis in Position | XC2F P9   | E20.6   | DI       | —        | Backgauge ready
+Angle Ctrl OK    | XC2F P10  | E20.7   | DI       | —        | Angle measured OK
+Finger 1-4       | XC2F P11-14| E21.0-3| DI       | —        | Sheet contact
+First Bend       | XC2F P15  | E21.4   | DI       | —        | Step 1 active
+Devices Clear    | XC2F P16-17| E21.6  | DI       | —        | Collision avoidance
+Angle Ctrl Active| XC2F P18-19| E22.3  | DI       | —        | Measuring
+Die/Punch Clamp  | XC4M P1-2 | E22.0-1| DI       | —        | Tooling secure
+
+ROBOT/PLC → PRESS (XC3M outputs, 24V):
+Signal           | Connector | Address | FANUC DO | PLC Addr | Notes
+-----------------|-----------|---------|----------|----------|---------------------------
+Beam Upwards     | XC3M P17  | A20.0   | DO       | —        | Abort/retract
+Beam Downwards   | XC3M P18  | A20.1   | DO       | —        | Initiate bend
+Change Step      | XC3M P19  | A20.4   | DO       | —        | Next bend
+Pump Shut-Down   | XC3M P20  | A20.6   | DO       | —        | End of run
+Start First Bend | XC3M P21  | A20.7   | DO       | —        | New part cycle
+Reset Mute       | XC3M P22  | A21.0   | DO       | —        | Continue past mute
+Reset Clamping   | XC3M P23  | A21.1   | DO       | —        | Continue past CP
+Reset End Bend   | XC3M P24  | A21.2   | DO       | —        | Command retract
+
+XC3M Pins 1-16: Dry contacts (safety) — Enable, Fence, Emergency. See robot_interface_reference.md.
+XC4M A22.x: Tool change, program selection. See robot_interface_reference.md.
+
+NOTE: ESA QW/IW (15.D4, 10.D4) may correlate with E20.2 (UDP) — verify on-site if both interfaces exist.
+
+============================================================
+1 SIGNALS FROM PRESS → ROBOT/PLC (Robot receives) — ALTERNATIVE
+============================================================
+ESA QW/IW — use when robot interface (XC2F/XC3M/XC4M) not available.
+
+Signal           | ESA/PCSS Ref | Terminal (M1/M2) | Direction | FANUC DI | PLC Addr | Notes
+-----------------|--------------|------------------|-----------|----------|----------|---------------------------
+CNC OK            | QW 1.6       | 15.D4            | OUT       | DI       | —        | Machine ready, no fault
+Ram UP (UDP)      | QW 2.4       | 10.D4            | OUT       | DI       | —        | Ram at upper dead point
+Clamping Status   | QW 1.13      | 15.D6            | OUT       | DI       | —        | Clamping open alarm/status
+Clamping Light    | —            | M1-1411          | OUT       | DI       | —        | Clamping engaged indicator
+Drive OK          | IW 0.12      | 14.C6            | OUT       | DI       | —        | Y1+Y2 drives healthy
+Pedalboard Active | —            | M1-151           | OUT       | DI       | —        | Operator pedalboard enabled
+Out of Grease     | IW 0.15      | M1-57            | OUT       | DI       | —        | Lubrification fault
+Up Movement       | IW 0.13      | 11.D6            | OUT       | DI       | —        | Ram moving up
+Down Enable       | PCSS CN2 Y09 | 11.D6            | OUT       | DI       | —        | PCSS allowing downward motion
+
+============================================================
+2 SIGNALS TO PRESS ← ROBOT/PLC (Robot sends) — ALTERNATIVE
+============================================================
+Foot Pedal Sim — use when robot interface (XC2F/XC3M/XC4M) not available.
+
+Signal           | ESA/PCSS Ref | Terminal (M1/M2) | Direction | FANUC DO | PLC Addr | Notes
+-----------------|--------------|------------------|-----------|----------|----------|---------------------------
+Foot Pedal Sim   | KP16.7/16.8  | M1-167 / M1-168  | IN        | DO       | —        | Wire PLC relay in parallel with NO contact; trigger bend cycle
+Robot Cell Clear | Gate/PCSS    | FC14.x / spare   | IN        | DO       | —        | Arm clear, safe to cycle
+Inhibit Down     | QW 2.0/2.1   | CN3 X02/X03 gate | IN        | DO       | —        | Prevent ram down while robot in zone
+Clamping Command | QW 1.12      | 7A.B6 / 4-6 rail | IN        | DO       | —        | On/Off clamping
+E-Stop (Robot)   | PCSS CH1/CH2 | KE14.x chain     | IN        | DO       | —        | Dual-channel safety; PLd
+Part Present     | ESA M.IN     | Spare PCSS       | IN        | DO       | —        | Part positioned for bend
+
+============================================================
+3 ESA RACK I/O MAP (Section 6 Summary)
+============================================================
+
+M.OUT1:
+  QW 1.6   CNC OK
+  QW 1.8   Lubrification command
+  QW 1.10  Internal lamp
+  QW 1.12  Clamping command
+  QW 1.13  Clamping open alarm
+  QW 1.14  Crowning +
+  QW 1.15  Crowning -
+
+M.OUT2:
+  QW 2.0   Slow down
+  QW 2.1   Fast down
+  QW 2.2   Up movement
+  QW 2.3   Decompression
+  QW 2.4   Upper dead point
+  QW 2.5   Torque enable
+
+M.IN1:
+  IW 0.8   High ram proximity + emergency
+  IW 0.9   Ram area (M1-112 / M2-11A)
+  IW 0.10  Brake Y1
+  IW 0.11  Brake Y2
+  IW 0.12  Drive OK
+  IW 0.13  Enable descent
+  IW 0.14  Slow speed photocell excluded
+  IW 0.15  Out of grease / lubrification
+
+============================================================
+4 TERMINAL BLOCK M1/M2 KEY ASSIGNMENTS (Section 12)
+============================================================
+
+M1: OV4, 4-1..4-6, M1-51..M1-1610 (lamps, clamping, brakes, gates, E-stop, pedalboard)
+M2: M2-7 (clamping), M2-11A, M2-12A/B, M2-13, M2-14A..14F, M2-15A/B
+
+24V SOURCE: FE4.1 channel 4-6 (6A) = Robot Interface & Clamping (7.E0) — use for PLC outputs to press
+
+EXTERNAL SIGNALS: QW 1.6, QW 2.4, IW 0.12 are internal (15.D4, 10.D4, 14.C6 = diagram cross-refs).
+If "Robotic interface optional" is installed, signals may be at dedicated terminals; otherwise add interface relays.

@@ -1,0 +1,12 @@
+{
+  "customer_id": "308-GH",
+  "customer_name": "Greenheck Fan",
+  "systems": [
+    {
+      "id": "infeed_sort_cart_placement",
+      "robot": "7-axis with E1 track",
+      "controller": "R-30iB Plus",
+      "revisions": ["programs"]
+    }
+  ]
+}

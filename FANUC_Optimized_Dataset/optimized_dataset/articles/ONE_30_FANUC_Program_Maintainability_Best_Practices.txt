@@ -1,0 +1,73 @@
+TOPIC: FANUC Program Maintainability Best Practices
+KEYWORDS: maintainability, best practices, clean code, naming convention, structure, readability, jumping
+CATEGORY: article
+SOURCE: ONE Robotics Company Blog
+APPLIES_TO: FANUC TP Programming, R-30iB Plus
+---
+
+# FANUC Program Maintainability Best Practices
+
+Filed under:FANUCTP ProgrammingWorkflow
+Continuing with last week’s theme of best-practices, I’d like to
+discuss what makes certain programs maintainable and others impossible
+to work with.Eliminating as much jumping as
+possibleis a good start,
+but there are a few other rules I always try to follow when working on a
+project.
+FANUC’s Teach Pendant doesn’t have much screen real estate. The default
+editor can only display 11 lines of code (LOC), and you only get 20 in
+the Double or Single Wide modes. That means that if you need to
+troubleshoot a 200 LOC routine on the floor, you can at best only see
+10% of the program at any given time.
+It’s probably not realistic to keep your programs to fewer than 20
+lines, but I generally like to keep them shorter than 60 LOC. Any time
+you have a routine going much higher than 100 lines, you probably have a
+good candidate for refactoring.
+Check out theGnuWinproject,
+specifically theCureUtils for Windows.
+This will give you access to some great unix utilities such aswc,
+which you can use to see how long each of your programs is:> wc -l src/*.ls
+It’s pretty common to have to conditionally approach a given fixture
+differently depending on where you’re coming from. You might accomplish
+this with something like:
+You pull up a routine calledUNLOAD_FIXTURE, and all you see is a screen
+full of logic handling how the robot approaches the fixture. I tend to
+extract pretty much any conditional to it’s own subroutine. This way you
+end up with two shorter, more focused routines:APPROACH_FIXTUREandUNLOAD_FIXTURE.
+I talked about the DRY Principle (Don’t Repeat Yourself) inmy previous
+article about Clean Code. I absolutely
+hate repeating myself: both in conversation and coding. Unfortunately
+there’s not much we can do about an unattentive listener or a loud
+restaurant, but we can generally avoid this annoyance when writing code.
+Reducing duplication often comes at the expense of a little bit of
+indirection, and it’s up to you strike the delicate balance. Personally,
+I will almost always favor indirection over duplication. There’s nothing
+worse than having to go and make the same change in 100 different places
+when you could have just used a register in the first place.
+This is in direct correlation with the previous point. Imagine having to
+open or close your robot’s gripper in 20 different subroutines.
+Something changes and the open gripper output moves by one. If you had
+the foresight to put your gripper operation into its own subroutines,
+you only have to change those subroutines– not the 20 programs that use
+them.
+Nothing ever runs perfectly. At some point your gripper is not going to
+close all the way or a part-presence sensor isn’t going to get made. You
+have to plan for these issues even if they only happen once a year. When
+they do happen, it’s important to help your customer troubleshoot and
+recover from the issue as quickly as possible.
+Take the gripper issue for instance. The robot attempts to pick up a
+part, and the gripper open/close signals do not look correct. What could
+be the issue?
+What kind of error do you present to the user? Hopefully not “The
+gripper failed to close.” I would tend to present the user with the
+issue, what could have happened, and how to fix each issue.
+Clear error messages should result in fewer service calls and happier
+customers. If you’ve kept your programs short and focused with little
+duplication you’ll hopefully avoid many bugs that can keep you from
+closing a project too.
+I email(almost)every Tuesday with the latest insights, tools and techniques for programming FANUC robots. Drop your email in the box below, and I'll send new articles straight to your inbox!
+No spam, just robot programming. Unsubscribe any time. No hard feelings!
+©2013-2019 ONE Robotics Company LLC. All rights reserved.
+Privacy•Terms•RSS Feed
+
+URL: https://www.onerobotics.com/posts/2014/writing-maintainable-tp-code/

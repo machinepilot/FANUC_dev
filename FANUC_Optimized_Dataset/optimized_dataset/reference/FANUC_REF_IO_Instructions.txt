@@ -1,0 +1,79 @@
+TOPIC: IO Instructions
+KEYWORDS: I/O, input, output, DI, DO, RI, RO, GI, GO, UI, UO, AI, AO, digital, analog, group, robot I/O, user operator panel, flag, F[], WAIT, PULSE, signal
+CATEGORY: reference
+SOURCE: FANUC Teach Pendant Help System / Operator Manual
+APPLIES_TO: R-30iB Plus, TP Programming
+---
+
+10. INPUT/OUTPUT INSTRUCTIONS 10. INPUT/OUTPUT INSTRUCTIONS PROGRAM ELEMENTS 10.
+INPUT/OUTPUT INSTRUCTIONS 10.1. Overview Input/output , or I/O, instructions all
+ow the program to turn on and off output signals and receive input signals. Ther
+e are several kinds of I/O instructions: Digital input and output instructions R
+obot digital input and output instructions Analog input and output instructions 
+Group input and output instructions Welding Input and output instructions Note I
+/O instructions are initiated immediately after completion of the previous instr
+uction. The format of the I/O instructions in the TP editor is controlled by thr
+ee items in the [EDCMD] pull- menu. Comment IO Status Color 10.2. Digital Input 
+and Output Instructions Digital input (DI) and digital output (DO) signals are u
+ser-controlled input and output signals. Use digital input and output instructio
+ns to control digital input and output signals in a program. Refer to the “Input
+/Output (I/O) Setup” chapter in the Setup and Operations Manual. R[x] = DI[x] Th
+e R[x] = DI[x] instruction stores the condition of a digital input signal line (
+ON=1, OFF=0) in a register. See Figure 48, " R[x] = DI[x] " . Figure 48. R[x] = 
+DI[x] DO[x] = ON/OFF The DO[x] = ON/OFF instruction turns on or off the specifie
+d digital output signal. See Figure 49, " DO[x] = ON/OFF " . Figure 49. DO[x] = 
+ON/OFF DO[x] = PULSE [,width] The DO[x]=PULSE [,width] instruction turns on the 
+digital output signal for the time specified. See Figure 50, " DO[x] = PULSE [,w
+idth] " . Figure 50. DO[x] = PULSE [,width] DO[x] = R[x] The DO[x] = R[x] instru
+ction turns on or off the specified digital output signal based on the value of 
+the register. A value of 0 turns the specified digital output OFF. All values ex
+cept zero turn the specified digital output ON. See Figure 51, " DO[x] = R[x] " 
+. Figure 51. DO[x] = R[x] 10.3. Robot Digital Input and Output Instructions Robo
+t digital input (RI) and robot digital output (RO) signals are used to communica
+te between the controller and the robot. Refer to the “Input/Output (I/O) Setup”
+chapter in the Setup and Operations Manual. R[x] = RI[x] The R[x] = RI[x] instru
+ction stores the condition of specified robot digital input signal (ON=1, OFF=0)
+in a register. See Figure 52, " R[x] = RI[x] " . Figure 52. R[x] = RI[x] RO[x] =
+ON/OFF The RO[x] = ON/OFF instruction turns on or off the specified robot digita
+l output signal. See Figure 53, " RO[x] = ON/OFF " . Figure 53. RO[x] = ON/OFF R
+O[x] = PULSE [,width] The RO[x]=PULSE [,width] instruction turns on the specifie
+d robot digital output signal for the time specified. See Figure 54, " RO[x] = P
+ULSE [,width] " . Figure 54. RO[x] = PULSE [,width] RO[x] = R[x] The RO[x] = R[x
+] instruction turns on or off the specified robot digital output signal based on
+the value of the register (1=ON, 0=OFF). See Figure 55, " RO[x] = R[x] " . Figur
+e 55. RO[x] = R[x] 10.4. Analog Input and Output Instructions Analog input (AI) 
+and analog output (AO) signals are continuous input and output signals whose mag
+nitudes indicate data values, such as temperatures and voltages. Refer to the “I
+nput/Output (I/O) Setup” chapter in the Setup and Operations Manual. R[x] = AI[x
+] The R[x] = AI[x] instruction stores the value on an analog input channel in a 
+register. See Figure 56, " R[x] = AI[x] " . Figure 56. R[x] = AI[x] AO[x] = valu
+e The AO[x]=value instruction sends a value on an analog output channel. See Fig
+ure 57, " AO[x] = value " . Figure 57. AO[x] = value 10.5. Group Input and Outpu
+t Instructions Group input (GI) and group output (GO) signals are several digita
+l input and output signals that have been assigned to a group, can be read as a 
+binary number, and can be controlled by one instruction. Refer to the “Input/Out
+put (I/O) Setup” chapter in the Setup and Operations Manual. R[x] = GI[x] The R[
+x] = GI[x] instruction places the decimal value of the binary number on the spec
+ified group input into the specified register. See Figure 58, " R[x] = GI[x] " .
+Figure 58. R[x] = GI[x] GO[x] = value The GO[x]=value instruction sends the bina
+ry equivalent of a value on the specified group output lines. See Figure 59, " G
+O[x] = value " . Figure 59. GO[x] = value 10.6. Input and Output Instruction For
+mat All of the I/O instructions discussed in the previous sections can either be
+displayed in a concise format or, if you prefer, you can enhance the format with
+: Comment IO Status Color These three display options can be selected in the [ED
+CMD] pull- menu using the F5 function key. Selecting an item in the menu will to
+ggle the feature ON and OFF. These three display options can be used together or
+independently. Comments A comment string can be added to an I/O signal in the I/
+O screen. You can display comments in the editor by selecting the Comment item i
+n the [EDCMD] menu. IO Status A Digital I/O signal has a state of ON or OFF. Thi
+s can be observed in the Digital I/O screens. An Analog or Group I/O signal also
+has a value, and it can be viewed in the corresponding I/O screens. The status o
+r value of these signals can also be displayed in the I/O instructions in the TP
+editor. You can enable or disable this feature by selecting the IO Status item i
+n the [EDCMD] menu. Color Color can be used by some TP instructions. The ON and 
+OFF states of Digital I/O can be displayed with Green and Red background colors,
+respectively. The I/O value of Analog and Group I/O signals can be highlighted w
+ith a yellow background. 9. FOR/ENDFOR INSTRUCTIONS 11. MACRO COMMAND INSTRUCTIO
+N
+Metadata:
+{}

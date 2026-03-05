@@ -1,0 +1,13 @@
+# Add directories or file patterns to ignore during indexing (e.g. foo/ or *.csv)
+roboguide_sdk_api_doc/
+roboguide_workcells/
+Robowave Exports/
+Scripts/
+Tools/
+Outputs/
+fanuc_robot_backups/
+Fanuc_Roboguide_Documentation_Raw/
+fanuc_postprocessor_EXP/
+Configs/
+Assets/
+almacam_files_archive/

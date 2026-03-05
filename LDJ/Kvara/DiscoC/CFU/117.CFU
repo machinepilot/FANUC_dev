@@ -1,0 +1,7 @@
+Ciclo fisso comando prop. per filtraggio olio Ver.012.38 : 117
+ ?%C21.14 = 1 ;sincronismo comando attivo
+ VA0 = %pargen_due.dwgn33 / 1000
+ _ppconf_ol(0x00,X,Y,%pst[20],%pst[18],%pst[18],%pst[23],1,0.01)
+ _ppmove_ol(0x00,X,Y,0x04,10,VA0,VA0,%pst[0],3600) ;dai tensione
+ _wait_bit( 0, "%C16.0", 0) ;attende all'infinito
+ RET

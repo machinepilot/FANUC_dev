@@ -1,0 +1,34 @@
+COMMON USAGE EXAMPLES,,,,
+EXAMPLE 1: Load Program 'PART_A',,,,
+Step,Action,Register,Value,Wait For
+1a,Switch to Editor Mode,0,1 (BIT0),-
+1b,Wait Mode Ack,-,-,"Reg 1226, BIT0=1"
+1c,Clear Mode Request,0,0,-
+1d,Wait Mode Ack Clear,-,-,"Reg 1226, BIT0=0"
+2,Write Program Name,53-56,"0x5041,0x5254,0x5F41,0x0000",-
+3,Write Command,2,3030,-
+4,Set Strobe,1,1 (BIT0),-
+5,Wait Command Ack,-,-,"Reg 1231, BIT0=1"
+6,Clear Strobe,1,0,-
+7,Wait Ack Clear,-,-,"Reg 1231, BIT0=0"
+8,Check Error,1024,-,Should be 0
+EXAMPLE 2: Change Angle to 95.0°,,,,
+Step,Action,Register,Value,Notes
+1,Ensure Editor Mode,-,-,"Follow Example 1, steps 1a-1d if needed"
+2,Convert to DOUBLE,9-12,"0x4057,0xC000,0x0000,0x0000",IEEE 754 format
+3,Write Command,2,1009,PG_ANGY1
+4,Set Strobe,1,1,-
+5,Wait Command Ack,-,-,"Reg 1231, BIT0=1"
+6,Clear Strobe,1,0,-
+7,Wait Ack Clear,-,-,"Reg 1231, BIT0=0"
+8,Verify,1253-1256,-,"Read back, should be 95.0"
+EXAMPLE 3: Change Thickness to 3.2mm,,,,
+Step,Action,Register,Value,Notes
+1,Ensure Editor Mode,-,-,"Follow Example 1, steps 1a-1d if needed"
+2,Convert to DOUBLE,9-12,"0x4009,0x9999,0x9999,0x999A",3.2 in IEEE 754
+3,Write Command,2,1006,PG_THICK
+4,Set Strobe,1,1,-
+5,Wait Command Ack,-,-,"Reg 1231, BIT0=1"
+6,Clear Strobe,1,0,-
+7,Wait Ack Clear,-,-,"Reg 1231, BIT0=0"
+8,Verify,1242-1245,-,"Read back, should be 3.2"

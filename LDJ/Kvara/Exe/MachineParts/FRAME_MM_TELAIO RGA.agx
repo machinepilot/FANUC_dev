@@ -1,0 +1,722 @@
+﻿<?xml version="1.0" ?>
+<job>
+    <settings>
+        <version>1</version>
+        <unit>millimeter</unit>
+        <backcolour>0</backcolour>
+    </settings>
+    <entities>
+        <entity id="FRAME_MM_TELAIO RGA#1" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#1</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#2" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#2</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#3" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#3</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#4" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#4</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#5" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#5</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#6" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#6</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#7" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#7</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#8" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#8</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#9" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#9</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#10" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#10</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#11" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#11</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#12" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#12</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#13" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#13</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#14" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#14</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#15" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#15</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#16" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#16</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#17" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#17</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#18" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#18</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#19" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#19</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#20" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#20</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#21" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#21</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#22" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#22</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#23" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#23</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#24" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#24</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#25" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#25</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#26" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#26</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#27" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#27</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#28" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#28</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#29" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#29</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#30" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#30</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#31" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#31</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#32" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#32</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#33" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#33</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#34" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#34</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#35" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#35</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#36" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#36</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#37" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#37</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#38" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#38</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#39" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#39</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#40" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#40</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#41" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#41</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#42" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#42</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#43" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#43</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#44" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#44</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#45" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#45</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#46" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#46</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#47" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#47</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#48" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#48</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_TELAIO RGA#49" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_TELAIO RGA#49</reference_id>
+            </geometry>
+        </entity>
+    </entities>
+    <states>
+        <state id="default">
+            <visibility>
+                <show type="Unspecified">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#1">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#2">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#3">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#4">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#5">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#6">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#7">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#8">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#9">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#10">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#11">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#12">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#13">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#14">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#15">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#16">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#17">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#18">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#19">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#20">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#21">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#22">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#23">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#24">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#25">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#26">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#27">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#28">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#29">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#30">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#31">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#32">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#33">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#34">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#35">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#36">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#37">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#38">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#39">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#40">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#41">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#42">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#43">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#44">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#45">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#46">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#47">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#48">1</show>
+                <show entity="FRAME_MM_TELAIO RGA#49">1</show>
+            </visibility>
+            <transformations />
+            <views>
+                <view id="1">
+                    <pos>14000,8000,-14000</pos>
+                    <target>0,0,-0</target>
+                    <near>6000</near>
+                    <far>25000</far>
+                    <width>9050</width>
+                    <height>5615</height>
+                    <perspective>1</perspective>
+                </view>
+            </views>
+        </state>
+        <state order="1" id="FRAME_MM_TELAIO RGA">
+            <visibility />
+            <transformations />
+            <views />
+        </state>
+    </states>
+    <geometries>
+        <geometry id="FRAME_MM_TELAIO RGA#1">
+            <data encoding="1">UEsDBBQAAgAIAERRyEyv+j8/nQIAALYHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VbU/bMBD+K5b5nMYOrXhREtQxNiF1FAGbGF8i4zqNpcTObAfov98ljbsUyoumfVirqvfy+M733OkcnzxVJXoQxkqtEkxHBCOhuF5ItUxw4/LgEJ+k8el8Npt+niIAK5vgwrn6OAwfHx9HXJclW7CRNsswImQSUhr26GteiIrhYfTxiOI0ZtYKl8ZcK2fkfeO0AVvjCvifgnY5n8VhrwOoqoRyNo3DLXFwlBvBnFikEaEkIEcBObyh9HgcHU+O7gDae+MKisrlq7iNO26UdKgSTpgEkxGJJmOMFKtEgqXiBQ4BUWfsSdr0Lvt+GYdeg0uvCyvlvWFmlTElK+ag9Na3y+htpVwWbgjyBq/DkaUYArzB6xBSGMnKIWZg8yaR54JvZdpYvGEpNNRuZBu9l1dILhLct8YDVp6UL6en0NNK2CKNrW4MFzvhQa2t7OoGdF5q5jJmDFu9Aw46EEZcN8rBCEU4DaKITEak+6AxjbxIxwfEy69hooOIbjD06JC8GSd6FTOME4eDctLYCV4o+asRWTuwWsFscy6s1Qat6Unw3ofrhdGz0IwFHNoH3mpmWNXzfouRW9UgdNnbsRx6f77pvXvhDf0lQXxZQbi++dsNVtpUMG0faW8PfVYsVLjhesMu+Zc0785L/zOSYWE6CcCOu1ZpOZWqbhyysFEVOBN8Ob8+vzmfX+CPTFWX3IcF7mAtqGUJGXoGIoz8tkjw1ddPWUB3pPxxdnVzdjtIuL4b0nkOew+WZZvm+aGL+dW36Qy/35Q/cWjHZEoRQfvw899WjlA7CHXLn68B5PXyCX3EwXobbjNv6x4PeLbgWRogt6x/AX2QtmFlZrlQW5v6mb37b1myjikuttyoMUD/XqPa+VmsbV3n+kP+YU1/A1BLAQIXCxQAAgAIAERRyEyv+j8/nQIAALYHAAALAAkAAAAAAAAAAAAAgAAAAABjb2xsYWRhLnhtbFVUBQAHGlYaW1BLBQYAAAAAAQABAEIAAADXAgAAAAA=</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#2">
+            <data encoding="1">UEsDBBQAAgAIAERRyExRPvPyogQAADIPAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81XW2/bNhT+K4T6bIkXUTwMZBdZ1w0FsiZIs6HLi6HKcizAljxJbpp/3yOK1MVJq2DYw0wBPuc7H+8fb/Hbb4c9+ZpVdV4WS4/51CNZkZabvHhYeqdmuwDv7Sp+d311dfnrJUFyUS+9XdMcL4Lg8fHRT8v9Ptkkflk9BJxSGTAWWPandJcdEm9ceugzbxUndZ01qzgti6bKv5yaskLs1Ozw/xK9m+urOLA+kg6HrGjqVRxMzFHWtMqSJtusOGV0QfWCwh1jFyG/kPoeqTYaH7BT2/yHvD4cn4q8IYesyaqlR33KZeiRIjlkSy8v0p0XIOO4Tr7l9ep+/edNHDgPG911bJ9/qZLqaZ0U+SFpsOtt7CXQYfv8YdeMSQ5wPmZ5yMYEBzgfi8yqPNmPOSPMQdl2m6WTmnrEAQ9ZiX2v8rZ0az+RfLP07NQ4wpMblN/evcM5PWT1bhXX5alKsxfpi2NZ56bfyN7uy6RZJ1WVPM2QF4bkkbQ8FQ1KiHJvxTTFeTE/Ihh3JkBvThhc+1pRgAgZzMeQBj5lhOALzSOqCSjwo4hRFU4ZkfKpYFHIkBH6XGmlz8oA6UcMdIjtQLKWCouZMEIqfJCgmSIgtR/JCOi0jJDjCgmZllhGqLFJmlExZQjwqdQRDwkIhe2gkYApQwofyxFSEuDWVFNGZDNiO6gtLpoylK2cE6Vtk876ArYDjChlu6WnDG0HgRIl7dBMeytpP5BK2OEVZ4x+MhTrpohN2yFZP6GRttMMZ4xeFNFYHzCrIJhVEMwqCGYVBLMKglkFwayCYFZB8FxB0VRBMKsgmFUQzCoIZhUEswqCWQXBrIJgRkFxMNrDVnGTpbsi/+eUrdtTqizwQEvTrK7LinR74tJ78+pNTuCBU+MWvMFcAnfLY1IlB7vbfvZI83REw1TfHkbj6N8/jd4/iwaulWg+70LQNf3n23pRVgc8Y16zqVvqWW8lXgn6wV70FnMGHRmgQYZoaC017nCjEAOmI9GGQAg6CXElmYQ2FDEU5TgkUIC6JWuuFcA4FErE2hDqgUM4DslQcdYaIFAz0TgUCcp1W45SkZBiHFJUoRDHxhBy5D57H+qr6CsdQq5hfVP7UN+dvoNDyA1CPyxDyA1dP5hDqB9wNwU/nKb/YmW8rBSm/mfrAm+2TY5EI/fWaZdBXhxPDanx6ltgcOndXH/6cPfh+qP3mp3AVO6KxcHD+1vxsMca3NbAPeLudUvv9vdf1gv2Qp1/vb+9e/95VGPXOFJut3hDxWttW895po/Xt39cXnnz0zKUw8xQrvBAQiXgtol/XTKOScbQhDu/c9rUGXjwWd86bepQRkLrW6dNxuCcSOtbp03G4IJE1rdOm4yBZ56yvnXaZAyO1yXrW6dNxsCjTVvfOm0yBsdzkVrAed3X2Rw7zwZwQMzX2RxPPT6AA2K+zhaYVwzggJivswXmDQdwQMzX2QLzygEcEPN1tsC80QAOiPni4NguCSdLtLuLf+A0MnpajF8SDjMPN3wy4pNwxJyg/4L6Na9PyX5dp1kxeSWd4ea/1X3dJEWaTcLkVOGCenMq2i1h02FmMdpM7lG7+g5QSwECFwsUAAIACABEUchMUT7z8qIEAAAyDwAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUABxpWGltQSwUGAAAAAAEAAQBCAAAA3AQAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#3">
+            <data encoding="1">UEsDBBQAAgAIAERRyEydQspbnAIAALYHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VbW+bMBD+K5b7mWDTZH0RUGVdN1XKmqrtpq5fkOuYYAlsZpu1+fc7CM5Im75o2ochIc53j+98zx3n+OSxKtEvYazUKsF0RDASiuuFVMsENy4PDvFJGp/OZ7PppykCsLIJLpyrj8Pw4eFhxHVZsgUbabMMI0ImIaVhj77mhagYHnofjyhOY2atcGnMtXJG3jdOG9A1roDvFFaX81kc9msAVZVQzqZxuCUOtnIjmBOLNCKUBOQoIIc3lB6Po+PJ0R1Ae2tcQVK5fBG3MceNkg5VwgmTYDIi0WSMkWKVSLBUvMAhIOqMPUqb3mXfLuPQr+DQ68RKeW+YWWVMyYo5SL217VJ6XSmXhRuCvMKvYctSDAFe4dfgUhjJyiFmoPMqkeeCb0XaaLxiKTTkbmTrvZdXSC4S3JfGA1aelM+np1DTStgija1uDBc74UGtrezyBnReauYyZgxbvQEOOhBGXDfKQQtFOKUfDiYj0j0ooPTQy3R8QDbyC5iIHNCdmMnbbiY7vcThIJk0doIXSv5sRNa2q1bQ2ZwLa7VBa3ISvPfubKHxLJRiAZv2gbWaGVb1rN9i5FY1CF30timH1h+vWu+eWUN/SBCfZxCuT/56eZU2FfTae4rbQ58kCxluSA3Ic+lfEL07Mv3PaIaB6SQAO/baRcuqVHXjkIWJqsCY4Mv59fnN+fwCv6evuuDeLXAHY0EtS4jQMxBh5KdFgq++fMwCuiPk97Orm7PbQcD12ZDOc5h7MCzbME83Xcyvvk5n+O2i/PFDOyZTguBPg5f2byvvo7YR6pY/nwPI6+ETeo+D8TacZl7XXR5wbcG1NEBuaf8C+kvahpWZ5UJtTeon+u7bsmQdU1xsmVFjgP69RrX9s1jrusr1m/zFmv4GUEsBAhcLFAACAAgARFHITJ1CylucAgAAtgcAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAcaVhpbUEsFBgAAAAABAAEAQgAAANYCAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#4">
+            <data encoding="1">UEsDBBQAAgAIAERRyEzjYcX/lAIAALIHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VUU/bMBD+K5Z5Tp0EkApygjrGJqSOVsAmxktkXKexlNiZ7QD997ukcZdCoWjawxJFOd99vvN9dzrTs+eqRI/CWKlVgqNRiJFQXC+kWia4cXkwxmcpPZ9Np5PPEwRgZRNcOFefEvL09DTiuizZgo20WZI4DI9JFJEefcMLUTE89H40inBKmbXCpZRr5Yx8aJw2oGtcAf8JrOazKSX9GkBVJZSzKSVb4mArN4I5sUjjMAqD8CQIx7dRdHoUnx6f3AO0t9IKksrlm7iNmTZKOlQJJ0yCw1EYHx9hpFglEiwVLzABRJ2xZ2nT++z7nBK/gkOvEyvlg2FmlTElK+Yg9da2S+l1pVwWbgjyCr+GLUsxBHiFX4NLYSQrh5iBzqtEngu+FWmj8Yql0JC7ka33Xl4huUhwXxoPWHlSvpyfQ00rYYuUWt0YLnbCg1pb2eUN6LzUzGXMGLbaAw46EEZcN8pBC8U4DaKTMdSle1Acx14cjzfiFuQwegMS7vcS7vFCySCVlDrBCyV/NSJrm1Ur6GvOhbXaoDU1CT74cK7QdhYKsYBNh8BZzQyres7vMHKrGoQuetuSQ+vPd633r6zEHxLE1xmQ9cnfL67SpoJO+0hpe+iLZCHDDdUbIfqXNO+OG/1nJMOwdBKAHXftouVUqrpxyMI0VWBM8Hx2c3l7ObvCH+mqLrh3C9zBSFDLEiL0DMQY+UmR4Ouvn7Ig2hHyx8X17cXdIOD6bEjnOcw8GJRtmJebrmbX3yZTvL8of/xEHZPpIYLqwxf3Xyu3LyV1y5/PAeT14CHe42C0DSeZ13UXB1xZcCUNkFvav4A+StuwMrNcqK0p/ULf/VuWrGOKiy0zagzQf9Cotn8Wa11XuX6Tv1TT31BLAQIXCxQAAgAIAERRyEzjYcX/lAIAALIHAAALAAkAAAAAAAAAAAAAgAAAAABjb2xsYWRhLnhtbFVUBQAHGlYaW1BLBQYAAAAAAQABAEIAAADOAgAAAAA=</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#5">
+            <data encoding="1">UEsDBBQAAgAIAERRyEyg1nWUvwQAABQOAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81XW2/bNhT+K4L6bIr3SyC7yLJuKJA1QZoNXV4MVZZtAbbkSXJT//se0qIsyU4TDHuYgtDnHH48d4pU/P77dhN8y6o6L4tpSBAOg6xIy0VerKbhvllOdPh+Ft/c3d5e/3odALiop+G6aXZXUfT8/IzScrNJFgkqq1VEMRYRIVGL/pyus20S9rVzRMJZnNR11szitCyaKv+6b8oKZPtmDb/XwN3f3cZRywNou82Kpp7F0YDsLU2rLGmyxYxigifYTLB+JOSK0ythngDazsZbCGqZv4jrpuN9kTfBNmuyahpihKngYVAk22wa5kW6DiNA7ObJ97yePc3/vI8jz4HTx8A2+dcqqQ7zpMi3SQOh27lLQi/b5Kt10wd5gedhySrrA7zA86Ayq/Jk08f0ZF6ULZdZOrDUSbxglZUQe5Vb7S19CPLFNGxL4wEHn5Tfbm6gptusXs/iutxXaXYRPtmVde7iBvRyUybNPKmq5PAKeOJAYZCW+6KBFiLQQMRoqIt7AoKFJycECtvJX8LIliYDCKUEGfcEWtNLSnoIwlUrpgMII91KrVu0HiKYes0TxinSUhMmAq0MkpgLPfSESQ6kkURbJRQZzDFWQ4hiSBCsjFVCEcOak5GvBiNNieEClAgJaKPl0A7HDEnBsNSBFgYpKYQZIU4Bv5STHoQqSOGFzHKiEDGSMw6ucIEE53psiEFSjOCCBBAJYlQKPcwsh7QpzQS1maUGcYhe8iFEYiQkphhqTIRNm2BmhJBQNUw0s80EXknJFRtCtADzjBkVKKixMvpMidaQNmVg4UQpC1Z0mBOBOWIEjNFAMbBIlNR8hBCIKsEYRMM0woIaJUYIg8A2hnZU0PWMaiaHGYH6I8qkASuQVkiOAldGiFNLX9w4PYD0u2K0b7BRr9WXEgy0VsQQi8HQSUypMwxDRBCh+BGDGYjkGCNtSQingCEaKXiEGmMMwgZraA/AQHIZdDAfYSAsLRSmDgO1MJgaNsaAnHGmbFyQHaOJ5mcYCRmG8loM+MYNZeYCRmPCucMwpKF1+Jk/6tV3WB8EiogvRhz13qWzuMnSdZH/s8/m9rQsCzhY0zSr67IKju/mafjuzS9bpsKghqNgAasYvLV3SZVs27f+lzBoDjsgnHl7KPZn//7p7NPZbOS9BPI8hOjo+s+Pl6KstnDWveVwaaHjaOFg6crQ5b0j/otEXzZM/mdZhvtakwPQJc8yNql5sds3QQ0XugImp+H93eePjx/vPoVv6Stn3KuF3MGtpFhtwIJPvQgDf1uZhg+//zKfkAs2//rw8PjhS8/i0bmgXC7h3gWXNWtnvOjT3cMf17fh61U56SEulTM4MWEPEhio9INjWcc6ipFucCzrWEdZLZbgfrkbLNcptIRuYbSdtDzBgzVH9qTHUbIb9BBsWdopcBTrfHYspR3rKOEHx9IT6wbeDWwIdl6TjnXGTTeoAdix5MTawf85hjDPWcK0/6oHs7Rf5lZ0gfEu5y46M6iNY4+FdJQe1PXIWtVxtLPbw7co0MerbeT7pXd57t+Vvcx9msBHEXz09JAD6b+AfsvrfbKZ12lWDL4DRnL3a/dA3SRFmg2mg30Fm+vdvrCvh8VR5jZmu8h/ts1+AFBLAQIXCxQAAgAIAERRyEyg1nWUvwQAABQOAAALAAkAAAAAAAAAAAAAgAAAAABjb2xsYWRhLnhtbFVUBQAHGlYaW1BLBQYAAAAAAQABAEIAAAD5BAAAAAA=</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#6">
+            <data encoding="1">UEsDBBQAAgAIAERRyEwvAvRJnQIAALQHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VbW+bMBD+K5b7mYBpoqYVUGVdN1XKmqjNpi5fkOuYYAlsZpu2+fc7CM5Im75o2ocFRdjPPb7jnjudo/OnskAPXBuhZIzJIMCIS6ZWQq5jXNvMG+PzJLqYTaeTzxMEZGlinFtbnfn+4+PjgKmioCs6UHrth0Ew8gnxO/Yty3lJcd/7cEBwElFjuE0ipqTV4r62SgNW2xzeE9jNZ9PI7/ZAKksurUkif2/ZO8o0p5avkjAggRecesF4QcjZMDwbnS6B2lmjEpLKxKu8nTmqpbCo5JbrGAeDIBwNMZK05DEWkuXYB0aV0idhkmX6fR75bgcfvU2sEPea6k1KpSiphdQb2yHQYYVY57ZPcoDbw5E17xMc4PbgkmtBiz6nhzmIZxlne5F2iAPWXEHuWjTeu/UGiVWMu9I4wsaJ8uXiAmpacpMnkVG1Zvwg3auUEW3ewM4KRW1Ktaabd8heS8KIqVpaaKEQJ+R0DGVpf8gbjd2SDE928CuU8CQkhyhhGL70Er5G6XuJ/F4qSWQ5y6X4VfO0aVYloa8Z48YojbbSxPjow7lC2xkoxAoOHYNmFdW07DS/w8huKli00ZuW7Ft/vmldvrD67iNh+TIDf/vlbxdXKl1Cp32ktB31WbKQobdT1dvJHvxLoQ9HJv+ZzDAurQBiq16zaVQVsqotMjBPJRhjPJ/dXi2uZtf4I33VBnduQTsYCnJdQIROgRAjNytifPP1U+qRAyF/XN4sLu96AbffhlSWwdSDUdmEeX7oenbzbTLF7xfljx/SKpmEKGif4+7fPAQ1jVA1+rkcYL0dPb7z2Btu/VnmsPbqgEsLLqUecw/9C+qDMDUtUsO43JvTz/D23ahkLJWM75lRrUH+o1o2/bPaYm3lukPuWk1+A1BLAQIXCxQAAgAIAERRyEwvAvRJnQIAALQHAAALAAkAAAAAAAAAAAAAgAAAAABjb2xsYWRhLnhtbFVUBQAHGlYaW1BLBQYAAAAAAQABAEIAAADXAgAAAAA=</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#7">
+            <data encoding="1">UEsDBBQAAgAIAERRyEwS/rTulwIAALsHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VbU/bMBD+K5b5nCYORbQoCeoYm5A6WgGbGF8i4zqNpcTubAfov98ljcGFDqppH1Yp6t1zj+98Lzonp091hR64NkLJFJNBhBGXTC2EXKa4sUUwwqdZcjabTiefJwjI0qS4tHZ1EoaPj48DpqqKLuhA6WUYR9FRSEjYs69ZyWuKfe/DAcFZQo3hNkuYklaL+8YqDVhjS/ifgDafTZOw14FU11xakyXhlugdZZpTyxdZHJEoiMZBNLoh5GQYnxyN74DaW5MakirEH3nP5qSRwqKaW65THA2i+GiIkaQ1T7GQrMQhMFY5fRImu8u/z5PQaXDpTWKVuNdUr3MqRU0tpN7adoEOq8SytD7JAU6HI0vuExzgdHDJtaCVz/EwB/Gi4Gwr0jPigCVXkLsWrfdeXiOxSHHfGkdYu6J8OTuDntbclFliVKMZ30kPVsqILm9gF5WiNqda0/UH5KAjYcRUIy2MUIyzgIzH0Jfuh0AZOZkMj318Nyk+jskLPtrH0+hjT0nopZQllrNSil8Nz9uhVRLmmzFujNJoU6IUH+ydM4yfgYYs4NAh1G5FNa372t9iZNcrELro7Wj61p/vWu/eWEN3SRDfZhBubv5+k6XSNUzcPi3uqa+ShQy9Yjsp+pd13h2Y/GdVhq1pBRC74rVKW1QhV41FBtaqBGOK57Pri5uL2SXeZ6y64M4t1A52g1xWEKGvQIyRWxkpvvr6KQ/IjpA/zq9uzm+9gJu7IVUUsPxgY7ZhXh+6nF19m0zxx0158UO6SmbQexTDR/qvlQ9ROwirtn4uB5A3Gyh0Hr0d5680h3UvCLxd8DZ5zC30L6gPwjS0yg3jcmtdv8K7/7ZKxlLJ+JYZNRrKf9DIdn4WG6zrXH/Iva7Zb1BLAQIXCxQAAgAIAERRyEwS/rTulwIAALsHAAALAAkAAAAAAAAAAAAAgAAAAABjb2xsYWRhLnhtbFVUBQAHGlYaW1BLBQYAAAAAAQABAEIAAADRAgAAAAA=</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#8">
+            <data encoding="1">UEsDBBQAAgAIAERRyEzSbvJPlgIAALQHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VbU/bMBD+K5b5nNoJoBWUBHWMTUgdRcAmxpfIuE5jKbEz2wH677mkcZdCoWjah7Wqei+P73zPnc7xyVNVogdhrNQqweGIYiQU13OpFgluXB6M8Ukan86m08mXCQKwsgkunKuPCXl8fBxxXZZszkbaLEhE6SEJQ9Kjr3khKoaH0Q9GIU5jZq1wacy1ckbeN04bsDWugP8JaJezaUx6HUBVJZSzaUw2xMFRbgRzYp5GNKQBPQro+CYMjw+i48OjO4D23riConL5Jm7tjhslHaqEEybBdESjwwOMFKtEgqXiBSaAqDP2JG16l/24jInX4NKrwkp5b5hZZkzJijkovfVtM3pbKReFG4K8wetwZCGGAG/wOoQURrJyiBnYvEnkueAbmdYWb1gIDbUb2Ubv5SWS8wT3rfGApSfl6+kp9LQStkhjqxvDxVZ4UGsru7oBnZeauYwZw5Y7wEEHwojrRjkYoQinQXg0hr50HxRFkRfH47X4FiT6FIUDDN0dhu4KE5NBMWnsBC+U/N2IrB1XrWCyORfWaoNW5CR478PVwuBZaMUcDu0DazUzrOpZv8XILWsQuuztUA69v9713r3yEn9JEF9XQFY3f7+9SpsKZu0jze2hL4qFCtdcr9ml/5Lm7XnD/4xkWJdOArDjrlVaTqWqG4cs7FMFzgRfzq7Pb85nF/gjU9Ul92GBO1gKalFChp6BCCO/KxJ89e1zFoRbUv48u7o5ux0kXN0N6TyHrQersk3z8tDF7Or7ZIp3N+VPnLBjMg0RRfvw899WjlA7CHXLn68B5NXqIT7iYLkNd5m3dU8HPFrwKA2QG9a/gD5I27Ays1yojT39wt79tyxZxxQXG27UGKB/r1Ht/MxXtq5z/SH/rKbPUEsBAhcLFAACAAgARFHITNJu8k+WAgAAtAcAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAcaVhpbUEsFBgAAAAABAAEAQgAAANACAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#9">
+            <data encoding="1">UEsDBBQAAgAIAERRyEwGYDbLpgIAALAHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VUU/bMBD+K5Z5ThOnBFqUBHWMTUgdRcAmxktlXKexlNiZ7QD997ukMaSQAZr2sEpRzt999uW+u57j48eyQPdcG6FkgskowIhLplZCrhNc28yb4OM0PlnM57PPMwRkaRKcW1sd+f7Dw8OIqaKgKzpSeu2HQRD5hPgd+4rlvKS4f/r+iOA0psZwm8ZMSavFXW2VBqy2ObxnsLpYzGO/WwOpLLm0Jo39HbO3lWlOLV+lYUACL5h6weSakKP98Cia3gK188YlJJWJP/Ke3HEthUUlt1wnOBgFYbSPkaQlT7CQLMc+MKolfRQmvV1+v4h9t4KP3iZWiDtN9WZJpSiphdQb3xDosEKsc9snOcCtYcua9wkOcGs4kmtBiz6nhzmIZxlnO5GeEAesuYLctWhO7+wNEqsEd6VxhI0T5cvJCdS05CZPY6Nqzfgg3auUEW3ewM4KRe2Sak0375C9loQRU7W00EIhTqEm7Q95hEycTSaTJ/yZEA36ycFhNHRGGBySQU40SIn9XhppbDnLpfhV82XTqEpCTzPGjVEabWVJ8N6H84SWM1CEFWwag14V1bTs9L7ByG4qMNroTTv2vT/f9N6+8vruI8F8nYG//fK3CyuVLqHLPlLWjvoiWcjQC0aEjMPpAfJ6ZZxOx9EB+SdCD0cm/5nMMCqtAGKrXrNoVBWyqi0yMEslOBN8sbg6uz5bnOOP9FUb3B0L2sFAkOsCInQKhBi5OZHgy6+flh4ZCPnj9PL69KYXcPttSGUZTDwYk02Yl5vOF5ffZnP8flGezyGtkinUHoXwkO5p7DFq/nFVo5/LAezt2PHdib3B1p9jDmuvDbiw4ELqMXfQv6DeC1PTYmkYlzsz+gXevhuVjKWS8R03qjXIv1fLpn9WW6ytXLfJXanpb1BLAQIXCxQAAgAIAERRyEwGYDbLpgIAALAHAAALAAkAAAAAAAAAAAAAgAAAAABjb2xsYWRhLnhtbFVUBQAHGlYaW1BLBQYAAAAAAQABAEIAAADgAgAAAAA=</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#10">
+            <data encoding="1">UEsDBBQAAgAIAERRyEwRtU48qgIAALoHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VbW+bMBD+K5b7GbApWZMKqLKumyplTdV2U9cvkUtMsAQ2s83a/PsdBGekTV807cMiIe6ee3zHveQcnzxWJfrFtRFKJpj6BCMuM7UUcpXgxubeGJ+k8el8Npt+miIgS5Pgwtr6OAgeHh78TJUlWzJf6VUQEjIKKA169nVW8IrhoffIpziNmTHcpnGmpNXivrFKA9bYAt5T0C7nszjodSBVFZfWpHGwIw6OZpozy5dpSCjxyMQj4xtKj6PweDS5A2pvjStIKhcv8rbmuJHCoopbrhNMfBKOIowkq3iChcwKHACjXrBHYdK7xbfLOHAafPQmsVLca6bXCyZFxSyk3tr2gQ4rxaqwQ5IDnA5HVnxIcIDTwSXXgpVDzgBzEM9znu1E2iIOWHEFuWvReu/lNRLLBPetcYS1K8rn01PoacVNkcZGNTrje+lerYzo8gZ2XipmF0xrtn6D7HUkjDLVSAsjFOLUC0My8kn3Q9547EQaHZEt/AInPArpFqaTCRko+x29RBp6ioNBQmlseVZI8bPhi3ZklYTpzjJujNJoU6AEH7w7Yxg+A+1YwqFDqFzNNKv6yt9iZNc1CF30djCH1h+vWu+eWQP3kSA+zyDYfPnrLZZKVzBv72lwT32SLGToET8ajaKjDwik8YSE0RiRf1no/ZHpf1ZmWJpWALGrXqu0VRWybiwysFUlGBN8Ob8+vzmfX+D3zFUX3LmF2sFqkKsSIvQVCDFyGyPBV18+Ljy6J+T3s6ubs9tBwM23IZXnsPtgYbZhnh66mF99nc7w203544d2lUwJgn8aPLR/WvkQtYNQt/VzOYC8WUCB8zhYccON5rDuAoGrC66mAXMH/QvqL2EaVi5MxuXOtn6Cd++2SsYymfEdM2o0lP+gke38LDdY17n+kLtc099QSwECFwsUAAIACABEUchMEbVOPKoCAAC6BwAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUABxpWGltQSwUGAAAAAAEAAQBCAAAA5AIAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#11">
+            <data encoding="1">UEsDBBQAAgAIAERRyEy4aKxWnQIAALgHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VbU/bMBD+K5b5nCYOrSgoCeoYm5A6ioBNjC+RcZ3GUmJ3tgP033NJ4+JCedG0D2tV1X7u8Z3vudM5OX6sK3TPtRFKppgMIoy4ZGou5CLFjS2CMT7OkpPZdDr5OkFAlibFpbXLozB8eHgYMFVVdE4HSi/COIpGISFhz75iJa8p9r0PBwRnCTWG2yxhSlot7hqrNGCNLeF/AruL2TQJ+z2Q6ppLa7Ik3Fp6R5nm1PJ5FkckCqLDIBpfE3I0jI9Gh7dA7a1JDUkV4k3expw0UlhUc8t1iqNBFI+GGEla8xQLyUocAmOZ00dhstv850USuh1cep1YJe401aucSlFTC6m3tl2gwyqxKK1PcoDbw5EF9wkOcHtwybWglc/xMAfxouBsK9IGccCCK8hdi9Z7v14hMU9xXxpHWDlRvp2cQE1rbsosMarRjO+kB0tlRJc3sItKUZtTrenqA3LQkTBiqpEWWijGWRDH0WgQdR8UjMduSYYH0QZ+gxMfxGQnZ0jiD/14HN9PEnrpZInlrJTiT8PztmGVhN5mjBujNFrLk+K9T+cLrWegGHM4tA+6Lammda/7DUZ2tYRFF71tS9/6+13r7Str6C4Jy9cZhOubv19gqXQN3faZ8vbUF8lChsFG1ecSRP9S6N2RyX8mM4xMK4DYqdduWlWFXDYWGZipEowpvphdnV2fzc7xZ/qqC+7cgnYwGOSiggi9AjFGbl6k+PL7lzwgO0L+Or28Pr3xAq7vhlRRwOSDcdmGeXnofHb5YzLFHxfl2Q/plMwIitA+/Ny3XceobYRlq5/LAdbr8RM6j96A8+eZw7rnAx4ueJg85hb6F9R7YRpa5YZxuTWrX+Ddf6uSsVQyvmVGjQb59xrZ9s98jXWV6w+5pzV7AlBLAQIXCxQAAgAIAERRyEy4aKxWnQIAALgHAAALAAkAAAAAAAAAAAAAgAAAAABjb2xsYWRhLnhtbFVUBQAHGlYaW1BLBQYAAAAAAQABAEIAAADXAgAAAAA=</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#12">
+            <data encoding="1">UEsDBBQAAgAIAERRyEyHiwDkwAIAAHoIAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81WUU/bMBD+K5Z5ThOHFlKUBHWMTUgdRcAmxktlUrexlNiZ7QD991zSuHWhQDXtYa2i3H332ee7s8+JT5/LAj0ypbkUCSa9ACMmMjnjYpHg2sy9CJ+m8dlkPB59HSEgC53g3JjqxPefnp56mSwKOqM9qRZ+GAQDnxC/Y99kOSspdmfv9whOY6o1M2mcSWEUf6iNVIDVJof3CLSryTj2Ox1IZcmE0Wnsb4nO0EwxatgsDQMSeMHQC6JbQk764clgeA/UzhqXENScv8tbm+NacINKZphKcNALwkEfI0FLlmAushz7wKim9Jnr9H768yr2rQaLXgVW8AdF1XJKBS+pgdAb2y7QYgVf5MYlWcDqMGTBXIIFrA5TMsVp4XIczEJsPmfZlqc1YoEFkxC74s3snbxEfJbgrjSWsLRJ+XZ2BjUtmc7TWMtaZWwn3auk5m3cwJ4XkpopVYouPyF7LQmjTNbCJDjs49QLw2DQC9of8qLIiqR/HKxhl9Mn4U4OGQ5dJXqHFG2Uweecd51F+zg7Ot5ERsgepN0rin0nw2lsWJYL/qdm0+YMSQHHLcuY1lKhVcUSfLB3CSKMNOyPGQw6hFJWVNGy2wp3GJllBULrvTkprvX3h9b7N1bfLhLEtxH4q5V/vOeEVCUcgH12XEd9FSxEuEn8WiL/Ms+7HZP/LMvQxA0HYpu8RmmSykVVG6ShywswJvhqcnNxezG5xPtsq9a5nRZyB61KLArw0GXgCCPbwRJ8/f3L1CM7XP46v749v3McrtaG5HwOvRgaeOPm9aDLyfWP0Rh/XpTNPKTNZNpHUH14DrunkYNObv5h9wwcTiMfd++jTo79qsm3jRnkVQP17QqcFu12ZIu1FyBcvXC1Oswt9C+oj1zXtJjqjImt2+YV3r6brGpDRca2zKhWUK6DWjT7bbbC2kp3g+zHQfoCUEsBAhcLFAACAAgARFHITIeLAOTAAgAAeggAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAcaVhpbUEsFBgAAAAABAAEAQgAAAPoCAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#13">
+            <data encoding="1">UEsDBBQAAgAIAERRyEx39vHdqAIAALEHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VbU/bMBD+K5b5nBenBFqUBHWMTUgdRcAmxpfIpE5jKbEz2wH673dJY0ghAzTtwypFOT/32Jd77nqOjh+rEt0zpbkUMSaujxETmVxxsY5xY3Jnio+T6GS5WMw/zxGQhY5xYUx95HkPDw9uJsuSrqgr1doLfD/0CPF69lVWsIri4en7LsFJRLVmJokyKYzid42RCrDGFPCew+piuYi8fg2kqmLC6CTydszB1kwxatgqCXziO/7M8afXhBztB0fh7BaovTeqIKmc/5H35I4awQ2qmGEqxr7rB+E+RoJWLMZcZAX2gFGn9JHr5Db9fhF5dgUfvU2s5HeKqk1KBa+ogdRb3xhosZKvCzMkWcCuYcuaDQkWsGs4kilOyyFngFmI5TnLdiI9IRZYMwm5K96e3tsbxFcx7ktjCRsrypeTE6hpxXSRRFo2KmOjdKeWmnd5AzsvJTUpVYpu3iE7HQmjTDbCQAsFOHHIwWHo+t0POYRMrR34h+QZH5LCUY4/dgiZTv3XhHDUH3mDRJLIsKwQ/FfD0rZVpYCuzjKmtVRoK0yM9z6cKTSdhjKsYNMEFKupolWv+A1GZlOD0UVvG3Lo/fmm9/aV17MfCebrDLztl79dWiFVBX32kcL21BfJQoa+S8gkmB0gZyD/bDYJD8g/0Xk8MPnPVIZZaTgQO/HaRSsqF3VjkIZhKsAZ44vl1dn12fIcf6StuuD2WNAOJoJYlxChVyDAyA6KGF9+/ZQ6ZCTkj9PL69ObQcDttyGZ5zDyYE62YV5uOl9efpsv8PtFeT6HdEomUHsUwEP6p7UnqP3D1a1+Ngewt3PHsycOJttwkFmsuzfgxoIbacDcQf+Ces91Q8tUZ0zsDOkXePduVdKGioztuFGjQP69RrT9s9piXeX6TfZOTX4DUEsBAhcLFAACAAgARFHITHf28d2oAgAAsQcAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAcaVhpbUEsFBgAAAAABAAEAQgAAAOICAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#14">
+            <data encoding="1">UEsDBBQAAgAIAERRyEx0X5uFoQIAAOUHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VbU/bMBD+K5b5nDou7SgoCeoYm5A6ioBNjC+VcZ3GUmJntkPpv98ljUsKBappH1Yp8vm5x3e+l56j06ciR4/CWKlVjGkvxEgorudSLWJcuTQY4dMkOptOJuMvYwRkZWOcOVeeELJcLntc5zmbs542C9IPwyGhlLTsG56JguGu9UGP4iRi1gqXRFwrZ+RD5bQBrHIZrGPYXU0nEWn3QCoKoZxNIrIldo5yI5gT86Qf0jAIj4NwdEvpyaB/Mjy+B2qrjQoIKpVv8jbqqFLSoUI4YWIc9sL+cICRYoWIsVQ8wwQY5Yw9SZvcz35cRcTv4NLrwHL5YJhZzZiSBXMQeq3bBXosl4vMdUke8Hs4shBdggf8HkwKI1ne5XQwD4k0FXzL0wbxwEJoiN3I2norr5Ccx7gtjSesfFK+np1BTQthsySyujJc7KQHpbayiRvYaa6ZmzFj2OoDctCQMOK6Ug5aaIiTgH46GvbC5ocCSkde7odH9Bl/i3TU35DCXQQ6Gm3wfTzt4yginYiTyAmeKfm7ErO6p7WC9udcWKsNWmcwxgd7p2SIkYV6zeHQIaS2ZIYVbWnuMHKrEoTGe925Xe2vd7X3r7TEXxLE1xGQ9c3f7wGlTQENuU8HtNQXwUKEz8V5VcZ/kebdful/lmSYqU4CscldvalzKlVZOWRh6CpQxvhqenNxezG9xPt0VePcm4XcweRQixw8bDKP/ECJ8fW3z7OA7nD58/z69vyu43B9N6TTFEYjzNPazctDl9Pr7+MJ/rgoz3Zok8nkEMH/DL5B+9UybdewlSNS1rn08YC8nlXEW+9Mw+7w81jz1sArB69Yh7mF/gX1UdqK5TPLhdoa7C/wZq0zZh1TXGypUWWgFAeVqntpvsaaKraH/Duc/AFQSwECFwsUAAIACABEUchMdF+bhaECAADlBwAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUABxpWGltQSwUGAAAAAAEAAQBCAAAA2wIAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#15">
+            <data encoding="1">UEsDBBQAAgAIAERRyEx9vFa3mQIAALIHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VbU/bMBD+K5b53DoOrXhREtQxNiF1tAI2Mb5ExnUaS4md2Q7Qf88ljUsK5UXTPqxV1Xt5fOd77nSOTh7LAt0LY6VWMabDACOhuF5ItYxx7bLBIT5JotPZdDr5OkEAVjbGuXPVMSEPDw9DrouCLdhQmyUJg2BMKCUd+ornomS4H300pDiJmLXCJRHXyhl5VzttwFa7HP4noM1n04h0OoDKUihnk4hsib2j3AjmxCIJAxoMgqNBcHhN6fEoPB4f3QK080YlFJXJN3Ebd1Qr6VApnDAxDoZBOB5hpFgpYiwVzzEBRJWyR2mT2/TnPCJeg0uvCyvknWFmlTIlS+ag9Ma3y+hthVzmrg/yBq/DkaXoA7zB6xBSGMmKPqZn8yaRZYJvZdpYvGEpNNRuZBO9k1dILmLctcYDVp6Ub6en0NNS2DyJrK4NFzvhg0pb2dYN6KzQzKXMGLb6ADxoQRhxXSsHIxTihB4dQlvaDxrR0It0dLAxvwEJD0K6kcNg/EGUNyD9KBHplZJETvBcyT+1SJth1QrmmnNhrTZoTU2M9z5dK4ydhUYs4NA+cFYxw8qO8xuM3KoCoc3ejGTf+/td7+0rL/GXBPF1BWR98/ebq7QpYdI+09oO+qJYqPC5e14I/iXNu/PS/4xkWJZOArDlrlEaTqWqaocsbFMFzhjPZ1fn1+ezC/yZqWqT+7DAHawEtSwgQ8dAiJHfFDG+/P4lHdAdKX+dXV6f3fQSru+GdJbBzoNF2aR5eehidvljMsUfN+U5Dm2ZTCgK0D78/LeRQ9QMQtXw52sAeb14iI/YW239TeZt7cMBTxY8ST3klvUvoPfS1qxILRdqa0u/sLf/DUvWMcXFlhvVBujfq1UzP4u1re1cd8g/qskTUEsBAhcLFAACAAgARFHITH28VreZAgAAsgcAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAcaVhpbUEsFBgAAAAABAAEAQgAAANMCAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#16">
+            <data encoding="1">UEsDBBQAAgAIAERRyEw0KvudSQMAADoLAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81WX2+bMBD/Ksh7Jtg0NFABU9f90aRuqbpu2voSecRJLIHJwKzLt9/ZsYnThRZNexgIc3f++c53PtuXvvxVld5P1rS8FhkiE4w8Jop6ycU6Q51c+TF6madX8+vry9eXHoBFm6GNlNuLIHh4eJgUdVnSJZ3UzToIMY4CQgKD/lRsWEWRq306IShPadsymadFLWTDv3eybkDWyQ38L4G7mV+ngeEBVFVMyDZPgyPSGVo0jEq2zENMsI8TH8d3hFxMw4souQeo6U0rcGrFB3F9d9oJLr2KSdZkCE9wGE2RJ2jFMsRFsUEBILYL+ou3+f3i800aWA4mvXes5N8b2uwWVPCKSnBd9Z0SWlnJ1xvpgqzA8jBkzVyAFVgeVLKG09LFODIrYqsVK44s9RIrWLMafG+40m7onceXGTJLYwE7G5S3V1ewphVrN3na1l1TsJNwf1u3XPsN6FVZU7mgTUN3z4B9DUJeUXdCZuj8HOV+GOJogvXj+XG8J4kXzkLSi13MlISWPMKQJMEOEw+AYmwt+NFskuhnGBOG4bN6hifk6MHJ7DQoTpJ+FoPGcO/ZU4pc9wdcO58dYk3IyRiNwvTGwsFYH836tGdHzg84NmLFRizYiPUas1yHHBv2e0Q+j0jnNHB2VZ5KVmwE/9GxhTo3awFHbFGwtq0bb79LM/Ri9LYLQ+S1cCgsYdQZ7N8tbWhl9v9X5MndFghtXh2Pbu+3J3vv/+gN7CyB/NOFYD/1pw8aUTcVnHpjjhkDfeQteHjYGM4W+ZeRPm2Z/GdhhqtbcgDq6ClGRZWLbSe9Fu52AZ0Zupl/en/3fv4RjUksbdyqhdjBBSXWJViwmQYFiL24MnT77tXCJydsfnlze/fmq2NxPzmvXq3gCoZ7W9l5POjj/PbD5TV6flUOeogOZZ54sNfgOzOforGh1Ts1n3qJodU/gi8xOIJto7moF2mK9I1mlQEyU5a07Nw2mg1xzx4URD2b9LKkV6UVnFml+0az057VVAyNwsZm8pGhZ4aeGefSYKsyx64e0PsCILChdEoMt6KwMl3AQekIpaGDPJL+BfQnbztaLtqCiaNq6ZFc/1V6tJKKgh11e10DefeiE2rnLPcynbNmkC1u899QSwECFwsUAAIACABEUchMNCr7nUkDAAA6CwAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUABxpWGltQSwUGAAAAAAEAAQBCAAAAgwMAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#17">
+            <data encoding="1">UEsDBBQAAgAIAERRyEzMQdbGmQIAAL4HAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VbU/bMBD+K5b5nCYOVAOUBHWMTUgdRcAmxpfIuE5jKbEz2wH673dJY+pCgWrah1WKci+P73LPXc/JyVNdoQeujVAyxWQUYcQlU3MhFylubREc4pMsOZ1Np5MvEwRgaVJcWtsch+Hj4+OIqaqiczpSehHGUTQOCQkH9DUreU2xH/1gRHCWUGO4zRKmpNXivrVKg621JbwnoF3Opkk46ACqay6tyZJwQ/SOMs2p5fMsjkgUREdBdHhDyPFBfDw+ugPo4E1qKKoQb+Ke3UkrhUU1t1ynOBpF8fgAI0lrnmIhWYlDQDQ5fRImu8t/XCah0+CjV4VV4l5TvcypFDW1UHrn22Z0tkosSuuDnMHpcGTBfYAzOB1Cci1o5WM8mzPxouBsI9OzxRkWXEHtWnTRB3mJxDzFQ2scYOlI+Xp6Cj2tuSmzxKhWM74VHjTKiL5uQBeVojanWtPlB+CgB2HEVCstjFCMs4AcHUJf+h8i0diJAYHGrhUPFBPy6S1UtEuo6ONQSegVlSWWs1KK3y3Pu7FVEiacMW6M0mhFUor3dq4aBtBAS+ZwaB/Ya6im9cD+LUZ22YDQZ++G0/f+etd798obuo8E8XUF4erL32+zVLqGmdulyQP0RbFQYbDmft2df0n09szkP6MZFqcVAOzZ65SOVSGb1iIDm1WCM8WXs+vzm/PZBd5lrvrkLixwB+tBLirIMDAQY+S2Roqvvn3OA7Il5c+zq5uzWy/h6tuQKgrYf7A0uzQvD13Mrr5PpvjjpqzjkJ7JLELwt4OHDE8n76NuEJqOP1cDyKslFLqI3przt5qz9ZcIXF9wPXnIDetfQB+EaWmVG8blxsZ+Ye/fHUvGUsn4hhu1Gujfa2U3P/OVre/ccMhdsNkfUEsBAhcLFAACAAgARFHITMxB1saZAgAAvgcAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAcaVhpbUEsFBgAAAAABAAEAQgAAANMCAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#18">
+            <data encoding="1">UEsDBBQAAgAIAERRyEzK/45BwgIAAHIIAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81WX0/bMBD/KpZ5TmOHFlqUBHWMTUgdRcAmxktkUre1lNiZ7Qz67XdOY5pCoWjaw1pFPt/9fP9zTnz6VBboN9dGKJlg2iMYcZmrmZCLBNd2HgzxaRqfTSeT8ecxArA0CV5aW52E4ePjYy9XRcFmrKf0IowIGYSUhi36Jl/ykuGu9n6P4jRmxnCbxrmSVouH2ioNvNouYR3D7mo6icN2D6Cy5NKaNA63yM7RXHNm+SyNCCUBGQVkeEvpST86GYzuAdpK4xKCmos3cc/iuJbCopJbrhNMeiQa9DGSrOQJFjJf4hAQVcaehEnvs+9Xceh34PQ6sEI8aKZXGZOiZBZCd7JdTM8rxGJpuyDP8Hs4suBdgGf4PajkWrCii+nwPIvP5zzfsvTM8YwFVxC7Fk57S6+QmCW4LY0HrHxSvpydQU1LbpZpbFStc74THlTKiCZuQM8LxWzGtGarPeCgAWGUq1raBEd9nNKj40GPND8UUDr0NO0fk2e6ixnshgxHZKNmtBszGpJ9ajqQPo12Q/ZbiiKycXi4F/KGpTjsZDaNLc+XUvyqeebeHSXhNctzbozSaF2pBB98OPVDjAz0xQwOHUIJK6ZZ2bbAHUZ2VQHRWHdvSFf6813p/Stp6J0E8nUE4drz93tNKl1C43+k01roi2Ahwk3JNoX8l3nebZj+Z1mG4W0FAJvkuY1LqpBVbZGB6S5BmOCr6c3F7cX0En+krRrjXi3kDkaUXBRgoc3AEUZ+ciX4+uunLKA7TP44v749v+sYXPuG1HwOMxgGtzPz8tDl9PrbeIL3F2WjhzaZTAeIoEN4ovZxNG1pt7q/wxy1ssOWPm5pt/aRa5zK5dvHDPR6cIbeg85o7k5iz2suPrhy4UrtILe4fwH9LUzNiszkXG7dMi/4zeqyaiyTOd8So1pDuQ5q6fpttuY1lW4P+Y+C9A9QSwECFwsUAAIACABEUchMyv+OQcICAAByCAAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUABxpWGltQSwUGAAAAAAEAAQBCAAAA/AIAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#19">
+            <data encoding="1">UEsDBBQAAgAIAERRyEzDVfTe2AQAAL4OAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81XbW/bNhD+K4L62RTfXwLZRZZ1Q4GsCdJs6PLFUGU5FmBLniQ3zb/vkRIVSbabYNiHOTBzz/Hh3fHuZFLx+++7bfAtq+q8LOYhQTgMsiItV3nxOA8PzXqmw/eL+Orm+vry18sAyEU9DzdNs7+IoqenJ5SW222ySlBZPUYUYxEREnXsz+km2yXh0DpHJFzESV1nzSJOy6Kp8q+HpqxAd2g28P8S0O3NdRx1GEi7XVY09SKORuJgaVplSZOtFhQTPMNmhvU9IRecXgjzANRuNt7Bptb5WV4/HR+KvAl2WZNV8xAjTAUPgyLZZfMwL9JNGAFjv0y+5/XiYfnnbRx5BEG3G9vmX6ukel4mRb5LGti6nTul9Lpt/rhphiSv8BiWPGZDgld4DCazKk+2Q85A51XZep2lI0+9xisesxL2XuXWeic/B/lqHnal8YRnn5Tfrq6gprus3iziujxUaXaSPtuXde72Dez1tkyaZVJVyfMr5JkjhUFaHooGWoiocDEjBkNh3CcgWHhxRqCyL+AcSXYyGXMoJci4T6B1J+qzFKpAPuWKEerFc2YYU69GwzhFWmrCRKCVQRJzoaeeJAfRSGLNS4oM5hirCUcxJAhWxpqhiGHNCZ1QDEaaEsMF6IUEutFy4opjhqRgWOpAC4OUFMJMKUQhYiRnHPRcIMG5PuIw2JQRXJAA4kCMSqEnueGwb6WZoHYpNYhD8JJPOBIjITHFUCki7L4FM1OKhNRjopntCohMSq7YhKOpTz2Ripwsw4BDFTTXqXJyLWArjBkVKKi4Mvo4HK0hf8rYEJSybEUnZRCYI0YgbhooBsETJTWfUgSiSjAGuWEaYUGNElOKQeAfQ4facBnVTE7ChXZAlEkjbQAckq0gnCml73NzcssDgnzJ0PhZwabv8rMPCyVW1ooYm1+KobOYUsckhoggQvGWhBmo5BFJ2ioTTm2lNFLwEeqI1Md0tuRD0tmaA8kgbLCG/gUS1IvB48GnJEiTFgpTR4L6GkwNOyLBBONMeXeaaH5MklA06BpLgp1yQ5k5RdKYcO5IDGnoSX4ck3r993LIAlN9ouJo8Mu9iJss3RT5P4dsac/msoBjPE2zui6roD0J5uG7N/+0MxMGNRw8K1jF4IzYJ1Wy686YL2HQPO9BcO7tETyc/funsw9Hs5GPEsTjLURt6D8/zIqy2sHJ+pajrKNOd2uPMZ/ilyL00n+R6dOeyf8szXA9bHIguuxZYLOaF/tDE9Rwfyxgch7e3nz+eP/x5lP4lsZyzr1ZyB1cgorHLXgYdJq/HM3Du99/Wc7ICZ9/fbi7//Bl4LENLijXa7jmwd3Q+pku+nRz98fldfh6VV7sEJfKBVWBvT3AQKUfHCTKQyex7usAkR65Nd3XAW6BW6q9pda6hdT00Em0H9iI3ELeQyeJfpBjsoMv3pyE+8FB1UMXGvdDC603Gw+x6/2fA4R5xHozykMiemgl4kzAVwysWFl1svJu7EDJyKCDLpA2ODHahIOU9tBlHPuBjHfsoKtFK/Eeyh725Wol7Ac94lrUA1/cONrbJ8t3N8jtJTzyrTa45g9v9V7nXqLg9Q1ezwbMkfZfUL/l9SHZLus0K0ZvLBO9+28fn7pJijQbTQeHCp7Ld4fC/rKsWp17prtF/gVz8QNQSwECFwsUAAIACABEUchMw1X03tgEAAC+DgAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUABxpWGltQSwUGAAAAAAEAAQBCAAAAEgUAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#20">
+            <data encoding="1">UEsDBBQAAgAIAERRyEz3uVcEqwIAALsHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VbU/bMBD+K5b5nBen7dqiJKhjbELqKAI2Mb5EJnUaS4md2Q6l/36XNIYUWkDTPqxVlPNzj+98LzmHJ49lgR6Y0lyKCBPXx4iJVC65WEW4NpkzwSdxeLqYz2dfZgjIQkc4N6Y69rz1eu2msijokrpSrbzA90ceIV7Hvk5zVlLctz50CY5DqjUzcZhKYRS/r41UgNUmh/cMVpeLeeh1ayCVJRNGx6G3I/a2popRw5Zx4BPf8aeOP7kh5HgYHI+md0DttGEJQWX8IO9JHdaCG1Qyw1SEfdcPRkOMBC1ZhLlIc+wBo0roI9fxXfLjMvTsCg69Dazg94qqTUIFL6mB0BvdPtBiBV/lpk+ygF3DlhXrEyxg12CSKU6LPqeHWYhlGUt3PD0hFlgxCbEr3ljv5A3iywh3pbGEjU3K19NTqGnJdB6HWtYqZXvpTiU1b+MGdlZIahKqFN28Q3ZaEkaprIWBFgpw7JDJFOrS/pBDphMrk+G4hx8gBeOAPOOfxqPnBTlg6QCpbyn0eiHFoWFpLvjvmiVN00oB/Z2mTGup0DZFET76cMzQfhoKsoRNA8hdRRUtu9zfYmQ2FQit96Y1+9pfb2rvXmk9e0gQX0fgbU/+dpGFVCV03EdK3FFfBAsR+u5gOBkPhsjx3elgHAQB8v9lnvc7Jv9ZlmFqGg7ENnnNokkqF1VtkIaxKkAZ4cvF9fnN+eICf6StWufWLOQOZoNYFeChy0CAkR0ZEb769jlxyB6XP8+ubs5uew63Z0Myy2D4wcRs3LzcdLG4+j6b4/eL8myHtJmMBwi+RniC7mnk5h96VZM/GwPI2wnkWYu9GdcfaRZrbxC4u+Bu6jF30L+gPnBd0yLRKRM74/oF3r6bLGlDRcp21KhWkP6jWjT9s9xibeW6TfZ2jf8AUEsBAhcLFAACAAgARFHITPe5VwSrAgAAuwcAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAcaVhpbUEsFBgAAAAABAAEAQgAAAOUCAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#21">
+            <data encoding="1">UEsDBBQAAgAIAERRyEybMVXbtgQAAIQPAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81XbW/bNhD+K4T62RJfJbKQXWRdNxTImqDNhq5fDFWRYwG25Ely0/z7HV8kSkpWC8M+zBTgu+cekkfyji/pm+/HA/pWNG1ZV+uAhDhARZXX92X1sA7O3W4lgzeb9O3N9fXVz1cIyFW7DvZdd3odRY+Pj2FeHw7ZfRbWzUNEMRYRIZFjf8r3xTELxq3zkASbNGvbotukeV11Tfn13NUNYOduD/9XoN3eXKeR04F0PBZV127SaCKOquZNkXXF/YZigldYrbC8I+Q1p6+F+gJUZ02PMKhd+Y+8wZyeq7JDx6IrmnWAQ0wFD1CVHYt1UFb5PoiAcdpm38t282X7+20a9Ro4bQd2KL82WfO0zarymHUwdG17CeyxQ/mw78akHuh1qPJQjAk90OvQZNGU2WHMGWE9VOx2RT7paUB64KGoYexNqVt38hMq79eBW5qe8NRPyi9v38KaHot2v0nb+tzkxYv01aluSzNuYO8OddZts6bJni6QV4YUoLw+Vx2EEKbBZkWUhIUxP8RY0osrEgsvjzmChgnlggrN4SFVlGA148QylJwJxjSHhjiRnM/bkSIkgsYyBlzIkHIuiZxyOIYwB0cS3Y7ul1Al2IxDkpAlsTA4FyHnKsF0xmFQNyYJ1n2xOOQJp0TMOBzawZQkBHAqQhkTief+xDhMOLM+E2blZMZJqK2rcYxtm3OfJbM+cLSCaTCuzZtR1A4F3EmwHSGfU9QwI4LbiZoNSmAxTCyTdr7lnKLM+jBYQ0rsss06EoQMyyzs4idzBu1FFSr9M73gBZGFF0QWXhBZeEFk4QWRhRdEFl4QWXhBZOEFkYUXRBa+HFn4cmThy5GFL0cWvhxZ+GJk4ZciiwxgGo02vU3aFfm+Kv86F1t9rNUVnIB5XrRt3SC7ia6DV4t3RQYnVAt79j3UYrC9nrImO7rt+XOAuqcTCKZ7fXqNrX/+0PrlmTXqvQTx+RAi6/qPz4Gqbo5wKC05BRx1NloBd4hhWldeIs8xEKSSOlQwpLhQQkyMRBIVM2OUjOGpkSYCMtEYY8KUmhgh0rEyfEVVIuXEyAWAxiilpJJPjAJSghgfJYuViifGGPJDmcaSJGaCTYyQFUQnxljyxoHv2xiMviffuzcOPnq/B6MfnR+xNw7z4ufKG4cZ9bPsjX4t7PoMthcW8b/InJcjiST/s7yBq3JXAtGkg1Z0mpTV6dyhFu7SFRjXwe3Np/d3728+BEt2CtN53yxMHlwIq4cD9NBvHTRA/UVxHXz89aftirzQ5x/vPt69+zzq0TqH6t0OrrxwT9b9zCt9uPn429V1cHlZfDvETOUGjkoSI0YRnEsgDJ9DzGdlRhCcGwPoEfNZmUFYMQ96xHxWpgoR6kGPmM/KVCJCPOgR81kZzgLIrwH0iPmsTGOkPNYDuhgB7hLS6U7RxQiUo8TpTtHFCJSh2OlO0cUIlCLhdKfoYgRKEHe6U3QxAoVbidOdoosRCPjldKfoYgQ4W4nTnWKKERKEe90quqTRSedEH5cg26dE1AfJ6LEyfpv0mHkKwiMUHpkj5gT9F9RvZXvODts2L6rJu2uGm38d+G2XVXkxMaNzAxn16lzpPeHeYiYbXaX+mbz5G1BLAQIXCxQAAgAIAERRyEybMVXbtgQAAIQPAAALAAkAAAAAAAAAAAAAgAAAAABjb2xsYWRhLnhtbFVUBQAHGlYaW1BLBQYAAAAAAQABAEIAAADwBAAAAAA=</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#22">
+            <data encoding="1">UEsDBBQAAgAIAERRyEz6o2kYmAIAALgHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VUU/bMBD+K5Z5ThMHugFKgjrGJqSOImAT4yUyrtNYSuzMdoD+ey5pDC4UqKY9LFWU893nO99313Ny9FBX6I5rI5RMMRlFGHHJ1FzIRYpbWwT7+ChLjmfT6eTrBAFYmhSX1jaHYXh/fz9iqqronI6UXoRxFI1DQsIBfclKXlPse98bEZwl1Bhus4QpabW4ba3SoGttCd8JrM5n0yQc1gCqay6tyZJwTfS2Ms2p5fMsjkgURAdBtH9FyOFefDg+uAHoYE1qSKoQb+KezEkrhUU1t1ynOBpF8XgPI0lrnmIhWYlDQDQ5fRAmu8l/niehW8GhV4lV4lZTvcypFDW1kHpn26R0ukosSuuDnMKtYcuC+wCncGtwybWglY/xdE7Fi4KztUhPGqdYcAW5a9F5H+QlEvMUD6VxgKUj5dvxMdS05qbMEqNazfhGeNAoI/q8AV1Uitqcak2XH4CDHoQRU6200EIxzgJysA916R9EorETA/LJkz3M7u7nNzDRFn6ij/wkoZdOlljOSin+tDzvGlZJ6G3GuDFKoxU9Kd7ZOl9oPQPFmMOmXeCtoZrWA+/XGNllA0IfvWtL3/r7XevNK2voDgni6wzC1cnfL7BUuoZu26a8A/RFspDhE9fBs0T+JdGbI5P/jGYYmVYAsGevW3SsCtm0FhmYqRKMKT6fXZ5enc7O8DZ91Qd3boE7GAxyUUGEgYEYIzcvUnzx/UsekA0hf51cXJ1cewFXZ0OqKGDywbjswrzcdDa7+DGZ4o+L8uyH9ExmBMGfDl736+QYdY3QdPy5HEBejZ/QefQGnD/PnK6/PuDigovJQ65p/wJ6J0xLq9wwLtdm9Qt9/+1YMpZKxtfMqNVA/04ru/6Zr3R95YZN7mrNHgFQSwECFwsUAAIACABEUchM+qNpGJgCAAC4BwAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUABxpWGltQSwUGAAAAAAEAAQBCAAAA0gIAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#23">
+            <data encoding="1">UEsDBBQAAgAIAERRyExTid5GmQIAAL4HAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VbU/bMBD+K5b5nMYOIF6UBHWMTUjdioBNjC+RcZ3GUmJ3tgP03++SxuBCgWrahzWqci+P73LPnc7pyWNTo3thrNQqw3REMBKK65lU8wy3rowO8Umenk4nk/HnMQKwshmunFscx/HDw8OI67pmMzbSZh4nhOzHlMYD+opXomE4jL43ojhPmbXC5SnXyhl51zptwNa6Ct5j0C6mkzQedAA1jVDO5mm8JgZHuRHMiVmeEEoichSRw2tKj/eS4/2jW4AO3rSBokr5Ju7JnbZKOtQIJ0yGyYgk+3sYKdaIDEvFKxwDYlGwR2nz2+LHRRp7DT56VVgt7wwzy4Ip2TAHpXe+TUZvq+W8ciHIG7wOR+YiBHiD1yGkMJLVISaweZMoS8HXMj1ZvGEuNNRuZBd9kJdIzjI8tMYDlp6UL6en0NNG2CpPrW4NFxvh0UJb2dcN6LLWzBXMGLb8ABz1IIy4bpWDEUpwHtGjQ+hL/0MJpQdejih09ll5A5UcEBqAyFahyIeh0jgoKk+d4JWSv1tRdGOrFUw458JabdCKpAzvbF01DKCFlszg0C6wt2CGNQP7Nxi55QKEPns3nKH317ve21fe2H8kiK8riFdf/n6blTYNzNw2TR6gL4qFCqOAei+Rf0n05sz0P6MZFqeTAOzZ65SOVakWrUMWNqsCZ4Yvplfn1+fT73ibueqT+7DAHawHNa8hw8BAgpHfGhm+/PqpiOiGlD/PLq/PboKEq29Duixh/8HS7NK8PPR9evltPMEfN+U5Du2ZzCki/bM7/LsnQd0gLDr+fA0gr5ZQ7CMGay7cat7WXyJwfcH1FCDXrH8BvZe2ZXVhuVBrG/uFvX93LFnHFBdrbtQaoH+nVd38zFa2vnPDIX/B5n8AUEsBAhcLFAACAAgARFHITFOJ3kaZAgAAvgcAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAcaVhpbUEsFBgAAAAABAAEAQgAAANMCAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#24">
+            <data encoding="1">UEsDBBQAAgAIAERRyEwMLqnwlQIAALAHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VUU/bMBD+K5Z5ThMHkApKgjrGJqSOVsAmxktkXKexlNiZ7QD997ukcXGho2jawyJFOd99vvN9dzknZ891hR65NkLJFJNRhBGXTC2EXKa4tUUwxmdZcj6bTiefJwjA0qS4tLY5DcOnp6cRU1VFF3Sk9DKMo+g4JCQc0Des5DXFvvejEcFZQo3hNkuYklaLh9YqDbrWlvCdwGo+mybhsAZQXXNpTZaEW6K3lWlOLV9kcUSiIDoJovEtIadH8enxyT1AB2tSQ1KF+CNuY05aKSyqueU6xdEoio+PMJK05ikWkpU4BEST02dhsvv8+zwJ3QoOvU6sEg+a6lVOpaiphdQ72y6l01ViWVof5BRuDVuW3Ac4hVuDS64FrXyMp3MqXhScbUXaaJxiyRXkrkXnfZBXSCxSPJTGAVaOlC/n51DTmpsyS4xqNeM74UGjjOjzBnRRKWpzqjVd7QEHPQgjplppoYVinJGTCMrSPyiOYyeOxxvRRxyS3YjxXh/jPT6S0EsjSyxnpRS/Wp53jaok9DRj3Bil0ZqWFB98OE9oOQNFWMCmQ+CroZrWA993GNlVA0IfvWtH3/rzXev9G2voDgni2wzC9cnfL6xUuoYu+0hZB+irZCHDYMP1i0T+JdG7I5P/jGYYlVYAsGevW3SsCtm0FhmYpRKMKZ7Pbi5vL2dX+CN91Qd3boE7GAhyWUGEgYEYIzcnUnz99VMekB0hf1xc317ceQHXZ0OqKGDiwZjswrzedDW7/jaZ4v1FefFDeiazCMFfCS8Z3k4+RF0jNB1/LgeQ12MndB69webPMafrrw24sOBC8pBb2r+APgrT0io3jMutGf1K3387loylkvEtM2o10H/Qyq5/FmtdX7lhk7tSs99QSwECFwsUAAIACABEUchMDC6p8JUCAACwBwAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUABxpWGltQSwUGAAAAAAEAAQBCAAAAzwIAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#25">
+            <data encoding="1">UEsDBBQAAgAIAERRyEyh5IkIwgQAADkOAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81XbW/bNhD+K4L62RTfXwLZRZZ1Q4GsCdJs6PLFUGXZFmBLniQ39b/vkRJlWXaaYNiHyTB1d3x4d7w7vih+/327Cb5lVZ2XxTQkCIdBVqTlIi9W03DfLCc6fD+Lb+5ub69/vQ4AXNTTcN00u6soen5+Rmm52SSLBJXVKqIYi4iQqEN/TtfZNgmH2jki4SxO6jprZnFaFk2Vf903ZQWyfbOG9zVw93e3cdTxANpus6KpZ3F0Qg6GplWWNNliRjHBE2wmWD8ScsXplTBPAO164y1Mapm/iOu7432RN8E2a7JqGmKEqeBhUCTbbBrmRboOI0Ds5sn3vJ49zf+8jyPPgdPtxDb51yqpDvOkyLdJA1O3fZeEXrbJV+tmCPICz8OQVTYEeIHnQWVW5clmiBnIvChbLrP0xFIv8YJVVsLcq9xq7+hDkC+mYZcaDzj4oPx2cwM53Wb1ehbX5b5Ks4vwya6sczdvQC83ZdLMk6pKDq+AJw4UBmm5LxooIQIFNCFGQ2LcExAsPDkhkNkj8xJIdjQ5xVBKkHFPoHVH6hchhKvLphihnnxJDWPqVW8Yp0hLTZgItDJIYi702JLkQBpJrHpJkcEcYzXCKIYEwcpYNRQxrDmhI4jBSFNiuAC5kAA3Wo5MccyQFAxLHWhhkJJCmDHkOO9jbOiLGKoglpfix4lCxEjOOMi5QIJzfWaLQXCM4IIEMB/EqBR6FGMO8VOaCWqHUoM4BEHyEUZiJCSmGDJOhI2fYGYMkZBCTDSz1QWeSckVG2G0ABcYMypQkHFl9LkarSF+ytihSlm0oqPYCMwRI2CPBoqBUaKk5mOIQFQJxmBOTCMsqFFiDDEI7GOoUAVrgVHN5CgyUA6IMmmkdYBDkBS4M4b0dW4uVvAAIDW9vJywUa8mmxIMtFbEEAvCUFlMqXMQQ0QQoXgLwgxE8gwkbXYIpwAiGil4hDoDGYQN1lAtAIIoMyhqPgbB5LRQmDoQZMVgatgZCDoYZ8rODiJqNNH8HCQh1JBrCwL/uKHMXAJpTDh3IIY0VBI/90m9vssNUaCK+LzE0WC/ncVNlq6L/J99NrcnalnA4ZumWV2XVdDu39Pw3Zs3ZKbCoIbjYgGjGOzsu6RKtt3J8CUMmsMOCGfeHpzD3r9/2vt01ht5L4E8n0LUuv7zI6goqy2ch285gDroeLb28PEhPiahp/6LSF+2TP5nYYZLXZMD0EXPMjaqebHbN0ENt74COqfh/d3nj48f7z6FbyksZ9yrhdjB1aVYbcCCj70IA3+lmYYPv/8yn5ALNv/68PD44cvAYutcUC6XcDmDG521Mx706e7hj+vb8PWsHPUQF8oZnKaw2CQ0hPjGsayXOQq2gK5pWTdM2Ub7EW3jWNOzlmLENy3rtFgFjJ30tqzs2V5p28H7XteI3g3as7axJogd4H+OIcJzwqNd41iietZSxKmAvxhosbTqaOXNuHmSE4WOpaxnLUV53xxxzhl9EviWPSbDUbxv8CnYsv14S8juz09wLmzdm3Z0HO3s8vAlCnR7/418vQxu2MMLtZe57xf4coIvowHyRPovoN/yep9s5nWaFScfCyO5e9s1UDdJkWYn3cG+gsX1bl/Y7WHRytzC7Ab5b7vZD1BLAQIXCxQAAgAIAERRyEyh5IkIwgQAADkOAAALAAkAAAAAAAAAAAAAgAAAAABjb2xsYWRhLnhtbFVUBQAHGlYaW1BLBQYAAAAAAQABAEIAAAD8BAAAAAA=</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#26">
+            <data encoding="1">UEsDBBQAAgAIAERRyEzlXZLemAIAALQHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VUU/bMBD+K5Z5ThMHuhWUBHWMTUgdRdBNjJfIuE5jKbEz26H03++SxiUtHUXTHpYqyvnu853vu+s5On8uC/TEtRFKxpgMAoy4ZGou5CLGtc28ET5PoovpZDL+PEYAlibGubXVme8vl8sBU0VB53Sg9MIPg2DoE+J36DuW85LivveTAcFJRI3hNomYklaLx9oqDbra5vAdw+pmOon8bg2gsuTSmiTyt8TeVqY5tXyehAEJvODUC0YzQs5OwrPh6QNAO2tUQlKZ+CNuY45qKSwqueU6xsEgCIcnGEla8hgLyXLsA6JK6bMwyUP6/Sby3QoOvU6sEI+a6lVKpSiphdQb2z6l0xVikds+yCncGrYseB/gFG4NLrkWtOhjejqn4lnG2VakjcYpFlxB7lo03jt5hcQ8xl1pHGDlSPlycQE1LbnJk8ioWjO+F+5Vyog2b0BnhaI2pVrT1QGw14IwYqqWFlooxAk5DaAs7YNIMHSiRz5s5D7k+PjjfsjosJfRIS+R30sliSxnuRS/ap42zaok9DVj3Bil0ZqaGB+9O1doOwOFmMOmY+CsopqWHef3GNlVBUIbvWnJvvXnm9aHV1bfHRLE1xn465O/XVypdAmd9p7SdtCdZCHDDdfei0T+JdH7I5P/jGYYl1YAsGWvWTSsClnVFhmYpxKMMb6Z3l3NrqbX+D191QZ3boE7GApyUUCEjoEQIzcrYnz79VPqkT0hf1zezi7vewHXZ0Mqy2Dqwahswuxuup7efhtP8OGivPghLZMJQfCng9f9GjlETSNUDX8uB5DXo8d3HnvDrT/LnK69OuDSgkuph9zS/gX0SZiaFqlhXG7N6R19+21YMpZKxrfMqNZA/1Etm/6Zr3Vt5bpN7lpNfgNQSwECFwsUAAIACABEUchM5V2S3pgCAAC0BwAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUABxpWGltQSwUGAAAAAAEAAQBCAAAA0gIAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#27">
+            <data encoding="1">UEsDBBQAAgAIAERRyEy66RQFnAIAALQHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VUU/bMBD+K5Z5ThOHMlqUBHWMTUgdRcAmxktkXKexlNiZ7VD677mkcZdCgWrawyJZOd99vvN9dzpHp09lgR65NkLJGJNBgBGXTM2FXMS4tpk3wqdJdDabTidfJgjA0sQ4t7Y68f3lcjlgqijonA6UXvhhEBz5hPgd+oblvKS47304IDiJqDHcJhFT0mrxUFulQVfbHP4T2F3NppHf7QFUllxak0T+ltg7yjSnls+TMCCBF4y9YHRLyMkwPDka3wO0s0YlJJWJN3Ebc1RLYVHJLdcxDgZBeDTESNKSx1hIlmMfEFVKn4RJ7tMfV5HvdnDpdWKFeNBUr1IqRUktpN7YdimdrhCL3PZBTuH2cGTB+wCncHtwybWgRR/T0zkVzzLOtiJtNE6x4Apy16Lx3skrJOYx7krjACtHytezM6hpyU2eREbVmvGdcK9SRrR5AzorFLUp1ZquPgB7LQgjpmppoYVCnHhkHEBd2g8NR6ETyadj4uS3MOExCQbj5huhPdy87WUDifxeMklkOcul+F3ztGlXJaGzGePGKI3W5MT4YO9sofEMlGIOhw6BtYpqWnas32FkVxUIbfSmKfvWX+9a719ZfXdJEF9n4K9v/n55pdIl9No+xe2gL5KFDDdcb9gN/iXNu+OS/4xkGJdWALDlrtk0nApZ1RYZmKcSjDG+mt1c3F7MLvE+XdUGd26BOxgKclFAhI6BECM3K2J8/e1z6pEdIX+eX9+e3/UCru+GVJbB1INR2YR5eehydv19MsUfF+WPH9IymUDtEYEVdquRD1HTCFXDn8sB5PXo8Z3H3nDrzzKna58OeLTgUeoht7R/AX0UpqZFahiXW3P6hb79NywZSyXjW2ZUa6D/oJZN/8zXurZy3SH3rCbPUEsBAhcLFAACAAgARFHITLrpFAWcAgAAtAcAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAcaVhpbUEsFBgAAAAABAAEAQgAAANYCAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#28">
+            <data encoding="1">UEsDBBQAAgAIAERRyEzyYwMxlQIAALAHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VbU/bMBD+K5b5nCYOdCooCeoYm5C6FQGbGF8i4zqNpcTObAfov98ljTsXCkXTPqxV1Xt5fOd77nROTp/qCj1wbYSSKSajCCMumVoIuUxxa4tggk+z5Gw+m00/TRGApUlxaW1zEoaPj48jpqqKLuhI6WUYR9E4JCQc0Nes5DXFfvSjEcFZQo3hNkuYklaL+9YqDbbWlvA/Be1yPkvCQQdQXXNpTZaEW6J3lGlOLV9kcUSiIDoOoskNISdH8cn4+A6ggzepoahCvIrbuJNWCotqbrlOcTSK4vERRpLWPMVCshKHgGhy+iRMdpd/v0xCp8Gl14VV4l5TvcqpFDW1UHrn22V0tkosS+uDnMHpcGTJfYAzOB1Cci1o5WM8mzPxouBsK9PG4gxLrqB2Lbrog7xCYpHioTUOsHKkfD47g57W3JRZYlSrGd8JDxplRF83oItKUZtTrelqDzjoQRgx1UoLIxTjLCDHE+hL/0FjEjuRbIyvIT5MYg8S7Q0S7QmShF4hWWI5K6X41fK8G1UlYaoZ48YojdbEpPjg3ZXC0BlowwIOHQJjDdW0Hhi/xciuGhD67N1A+t6fb3rvXnhDd0kQX1YQrm/+dmul0jXM2XsaO0CfFQsVbqgmToj+Jc2785L/jGRYlVYAsOeuUzpOhWxaiwzsUgnOFF/Ory9uLubf8Humqk/uwgJ3sBDksoIMAwMxRm5PpPjqy8c8IDtS/ji/ujm/9RKu74ZUUcDGgzXZpXl+6Nv86ut0hvc35U8c0jOZERShQ/i5byfHqBuEpuPP1QDyeu2ELqK32Pw95mz9swEPFjxIHnLL+hfQB2FaWuWGcbm1o5/Z+/+OJWOpZHzLjVoN9B+0spufxdrWd2445J7U7DdQSwECFwsUAAIACABEUchM8mMDMZUCAACwBwAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUABxpWGltQSwUGAAAAAAEAAQBCAAAAzwIAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#29">
+            <data encoding="1">UEsDBBQAAgAIAERRyExnZbwKlwQAAKYPAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81XW2/bNhT+K4T6bIkXkSID2UXWdUOBrAnSbOjyYqiybAuwJU+Sm+bf9/BmSXbaCMMeZgrwOd/5eP94S99+2+/Q16Jpy7qaByTEASqqvF6V1WYeHLv1TAZvF+m725ub61+vEZCrdh5su+5wFUVPT09hXu922SoL62YTUYx5REjk2J/ybbHPgmHpcUiCRZq1bdEt0ryuuqb8cuzqBrBjt4X/a/Dubm/SyPlA2u+LqmsXaTQyB1nzpsi6YrWgmOAZVjMsHwi5iukVV49AddF0D51alz/kncLpsSo7tC+6opkHOMSUxwGqsn0xD8oq3wYRMA7L7FvZLh6Xf96lkfeg0bZju/JLkzXPy6wq91kHXdexl0CP7crNthuSPOB9yLIphgQPeB+KLJoy2w05A8xDxXpd5KOaTogHNkUNfW9KXbqzn1G5mgduajzh2Q/Kb+/ewZzui3a7SNv62OTFi/TZoW5L029gr3d11i2zpsmeXyHPDClAeX2sOpAQpsFiRpSEiTE/RLFKTnZCibfPSTJMVIKl0iQcKqIAOiMRjEPBFBXEkoQQBCcXJBpyzIiILYlSKFddkOKQCSKVJhEVcsUTIS5IIiSSS0U1CdonuJD4gpSEKo6J4pqUhAlTilySVCgwV8KUJEJOEwztOyMREpKYEiY0iXv7nER9biAxWyq7IDHfDiAR375zUux7BCTse3pO4n5soFLpx+ycJPwo65b50b8kufkCUuzn8ZLkZh5I1CvinDTQEx7qCU8RHZ4iOjxFdHiK6PAU0eEposNTRIeniA5PER2eIjo8RXR4iujwFNHhKaLDU0SHp4gOvyq6NBrslIu0K/JtVf5zLJb6LKwrODbzvGjbukF2550HbyZvpQyOtRY2+hXkYrAnH7Im27s9/XOAuucDGKZ6feQNo3//NPp4EY18K8G87EJkm/7zw6Oqmz2cZFOODkc96y2Hi8dpuGcni1xCYEgleQyGUqATPooRSbQ2ISYZwxwNQjThhEsdEgSEOsrGQJJKsxVViZSjWMwB1DEpJZXxKMZj2F20IZlQSoxigmGqdH1JIhhno1iCE63KkzGKWfqpgGHMVXOqeBSzzRs0+BRyvTr1c5jNjcZpfEYxP4huWEcxO/iD6fjxnP0X6+Rl3ZDkf7ZK4DbdlUA04teOXhRldTh2qIXrdgXBeXB3++nDw4fbj8GUfcFU7ouFwYM7Y7XZQQ1+o6AB8nfJeXD/+y/LGXmhzr/e3z+8/zyo0TYO1es13IrhKq3rOc/08fb+j+ub4PVp6cshZigXBNSNiEQE/mwyjknGgI3b+9bRyRoYMec7RyeLEhQ73zk6GYNSxJ3vHJ2MQRkSzneOTsagMUqc7xydjEE5ks53jk7GoAIp5ztHJ2PQBMG6VB4ynv2sTaHzpAd7xHzWpgoR2oM9Yj5rM8jLerBHzGdtBnnjHuwR81mbQV7egz1iPmszyCt6sEfMl0YHvSS8LMG2j43Ia2TwnBm+XjxmHovwTIVn6IA5Qv8F9WvZHrPdss2LavQyO8PNv9Z922VVXozC6NjAgnpzrPSWsLKYWYwuk39IL74DUEsBAhcLFAACAAgARFHITGdlvAqXBAAApg8AAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAcaVhpbUEsFBgAAAAABAAEAQgAAANEEAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#30">
+            <data encoding="1">UEsDBBQAAgAIAERRyEwxEo9+qgIAALYHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VbW+bMBD+K5b7GbBJsiQVUGVdN1XKmqrtpq5fIpeYYAnszDZN8+93EJySNn3RtA8DIc53j+98z53O0cljWaAHro1QMsbUJxhxmaqFkMsYVzbzRvgkiU5n0+nkywQBWJoY59aujoNgvV77qSoKtmC+0ssgJGQQUBq06Os05yXDXe99n+IkYsZwm0SpklaL+8oqDbrK5vCfwOpyNo2Cdg2gsuTSmiQK9sTO1lRzZvkiCQklHhl7ZHRD6XE/PB6M7wDaWqMSksrEq7idOaqksKjklusYE5+Egz5GkpU8xkKmOQ4AsZqzR2GSu/mPyyhwKzj0NrFC3GumN3MmRckspF7bDimdrhDL3HZBTuHWsGXJuwCncGtwybVgRRfT0TkVzzKe7kXaaZxiyRXkrkXtvZU3SCxi3JbGATaOlK+np1DTkps8iYyqdMoPwr2VMqLJG9BZoZidM63Z5h2w14AwSlUlLbRQiBP6aTjwSfMgj9KRk2l/SHbyK5hwGNIdZjQmT5jxYT+vYLp+oqCTThJZnuZS/K74vG5YJaG305QbozTa0hPjow/nC61noBgL2NQD3lZMs7Ll/RYju1mB0ESv27Jr/fWm9e6FNXCHBPFlBsH25G8XWCpdQrd9pLwt9FmykCHxe/3RsNdHxB/3hmEYIvIvaT4cl/5nJMPAtAKADXf1ouZUyFVlkYGJKsEY48vZ9fnN+ewCf6SrmuDOLXAHY0EuC4jQMhBi5KZFjK++fZ579EDIn2dXN2e3nYDbsyGVZTD3YFjWYZ5vuphdfZ9M8ftFefJDGyYTqH3z9tqvfimqG2FV8+dyAHk7fALnsTPeutPM6ZrLA64tuJY6yD3tX0AfhKlYMTcpl3uT+pm++dcsGctkyvfMqNJA/1El6/5ZbHVN5dpN7mJN/gBQSwECFwsUAAIACABEUchMMRKPfqoCAAC2BwAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUABxpWGltQSwUGAAAAAAEAAQBCAAAA5AIAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#31">
+            <data encoding="1">UEsDBBQAAgAIAERRyEw9hosolgIAALAHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VbU/bMBD+K5b53DoORSsoCeoYm5A6ioBNrF8i4zqNpcTObAfov98ljUsKhaJpH9aq6r08vvM9dzpHp09lgR6EsVKrGNNhgJFQXC+kWsa4dtlgjE+T6Gw2nU6+TBCAlY1x7lx1Qsjj4+OQ66JgCzbUZknCIDgilJIOfcNzUTLcjz4aUpxEzFrhkohr5Yy8r502YKtdDv8T0K5m04h0OoDKUihnk4hsib2j3AjmxCIJAxoMguNBML6l9GQUnhwdzwHaeaMSisrkm7iNO6qVdKgUTpgYB8MgPBphpFgpYiwVzzEBRJWyJ2mTefrjKiJeg0uvCyvkvWFmlTIlS+ag9Ma3y+hthVzmrg/yBq/DkaXoA7zB6xBSGMmKPqZn8yaRZYJvZdpYvGEpNNRuZBO9k1dILmLctcYDVp6Ur2dn0NNS2DyJrK4NFzvhg0pb2dYN6KzQzKXMGLbaAx60IIy4rpWDEQpxQo8DaEv7QWEYenE83ohvIMJPIX2GjPcGGe8LEpFeIUnkBM+V/F2LtBlVrWCqORfWaoPWxMT44MOVwtBZaMMCDh0CYxUzrOwYv8PIrSoQ2uzNQPa9v971zl95ib8kiK8rIOubv99apU0Jc/aRxnbQF8VChRuuN+wG/5Lm3Xnpf0YyrEonAdhy1ygNp1JVtUMWdqkCZ4yvZjcXtxezS/yRqWqT+7DAHSwEtSwgQ8dAiJHfEzG+/vY5HdAdKX+eX9+e3/USru+GdJbBxoM12aR5eehydv19MsX7m/Ich7ZMJhQF6BB+/tvIIWoGoWr48zWAvF47xEfsLbb+HvO29tmABwsepB5yy/oX0Adpa1aklgu1taNf2Nv/hiXrmOJiy41qA/Qf1KqZn8Xa1nauO+Sf1OQPUEsBAhcLFAACAAgARFHITD2GiyiWAgAAsAcAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAcaVhpbUEsFBgAAAAABAAEAQgAAANACAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#32">
+            <data encoding="1">UEsDBBQAAgAIAERRyEyqRZmclgIAALYHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VbU/bMBD+K5b5nDoOZbwoCeoYm5A6ioBNjC+RcZ3GUmJntgP03++Sxl0KHVTTPixRlPPd4zvfc6dzfPpclehRGCu1SjAdhRgJxfVcqkWCG5cHR/g0jc9m0+nk0wQBWNkEF87VJ4Q8PT2NuC5LNmcjbRYkCsMDQinp0Te8EBXDQ+/jEcVpzKwVLo25Vs7Ih8ZpA7rGFfCfwOpqNo1JvwZQVQnlbBqTDXGwlRvBnJinUUjDIDwOwqNbSk/G0cnB8T1Ae2tcQVK5/CNubY4bJR2qhBMmweEojA7GGClWiQRLxQtMAFFn7Fna9D77dhUTv4JDrxIr5YNhZpkxJSvmIPXWtk3pdaVcFG4I8gq/hi0LMQR4hV+DS2EkK4eYgc6rRJ4LvhFprfGKhdCQu5Gt915eIjlPcF8aD1h6Uj6fnUFNK2GLNLa6MVxshQe1trLLG9B5qZnLmDFs+Q446EAYcd0oBy0U4TSgxyHUpXvQ+CjyIv1wSL28gYloeLgNtIOfXdzEZJBOGjvBCyV/NiJrG1Yr6G3OhbXaoBU9Cd7bOV9oPQvFmMOmfeCtZoZVPe93GLllDUIXvW3LofXHm9b7V1biDwni6wzI6uRvF1hpU0G37VLeHvoiWchwTfZa+Kc0b49L/zOSYWA6CcCOu3bRcipV3ThkYaIqMCb4anZzcXsxu8S7dFUX3LsF7mAsqEUJEXoGIoz8tEjw9ZePWUC3hPx+fn17fjcIuDob0nkOcw+GZRvm5abL2fXXyRS/X5TffmjHZLqPoPrwRf3Xyu0bk7rlz+cA8mr4EO9xMN6G08zrussDri24lgbIDe1fQB+lbViZWS7UxqR+oe/+LUvWMcXFhhk1Bujfa1TbP/OVrqtcv8lfrOkvUEsBAhcLFAACAAgARFHITKpFmZyWAgAAtgcAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAcaVhpbUEsFBgAAAAABAAEAQgAAANACAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#33">
+            <data encoding="1">UEsDBBQAAgAIAERRyEwkxpi8ngIAALoHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VUU/bMBD+K5Z5TmMHGBQlQR1jE1JHEbCJ8VIZ12ksJXZmO5T++13SuKRQoJr2sERRznef73zfnc7x6VNZoEdhrNQqwXRAMBKK65lU8wTXLguO8Wkan03G49GXEQKwsgnOnatOwnCxWAy4Lgo2YwNt5mFEyGFIadihb3guSob73g8GFKcxs1a4NOZaOSMfaqcN6GqXw38Eq6vJOA67NYDKUihn0zjcEHtbuRHMiVkaEUoCMgzI8S2lJwfRyeHwHqCdNS4hqUy+iVub41pJh0rhhEkwGZDo8AAjxUqRYKl4jkNAVFP2JG16P/1xFYd+BYdeJVbIB8PMcsqULJmD1BvbNqXXFXKeuz7IK/watsxFH+AVfg0uhZGs6GN6Oq8SWSb4RqS1xivmQkPuRjbeO3mJ5CzBXWk8YOlJ+Xp2BjUthc3T2OracLEVHlTayjZvQGeFZm7KjGHLD8BBC8KI61o5aKEIpwEdEqhL+6CIkiMv009H1MtvgqIjugbt4ugdP2QwbJ5jFIe9hNLYCZ4r+bsW06ZltYLu5lxYqw1aEZTgvZ0zhuazUI4ZbNoH5ipmWNkxf4eRW1YgtNGbxuxbf71rvX9lDf0hQXydQbg6+fslVtqU0G+7FLiDvkgWMgzIcwm9tFb9C6K3R6b/Gc0wNJ0EYMtes2hYlaqqHbIwVRUYE3w1ubm4vZhc4l36qg3u3QJ3MBrUvIAIHQMRRn5iJPj62+dpQLeE/Hl+fXt+1wu4OhvSWQazDwZmE+blpsvJ9ffRGH9clGc/tGUypYi07373NW+EmkaoGv58DiCvBlDoPfZGXH+ieV17gcDVBVdTD7mh/Qvoo7Q1K6aWC7UxrV/o23/DknVMcbFhRrUB+vdq1fTPbKVrK9dt8pdr+gdQSwECFwsUAAIACABEUchMJMaYvJ4CAAC6BwAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUABxpWGltQSwUGAAAAAAEAAQBCAAAA2AIAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#34">
+            <data encoding="1">UEsDBBQAAgAIAERRyExB26k/mAIAALYHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VbU/bMBD+K5b5nCYORbQoCeoYm5A6WgGbGF8i4zqNpcTObAfov+eSxiWFAtW0D2tV9V4e3/meO52j06eyQA9cG6FkjMkgwIhLphZCLmNc28wb4dMkOptNp5OvEwRgaWKcW1ud+P7j4+OAqaKgCzpQeumHQXDkE+J36GuW85LifvThgOAkosZwm0RMSavFfW2VBlttc/ifgDafTSO/0wFUllxak0T+ltg7yjSnli+SMCCBF4y9YHRDyMkwPDka3wG080YlFJWJd3Ebd1RLYVHJLdcxDgZBeDTESNKSx1hIlmMfEFVKn4RJ7tKf88h3Glx6XVgh7jXVq5RKUVILpTe+XUZnK8Qyt32QMzgdjix5H+AMToeQXAta9DE9mzPxLONsK9PG4gxLrqB2LZronbxCYhHjrjUOsHKkfDs7g56W3ORJZFStGd8J9yplRFs3oLNCUZtSrenqE7DXgjBiqpYWRijECRmNoS3tB3lkPHIyGR5v7O9hwuOQbDDjPeKMP48T+b1ykshylkvxp+ZpM7BKwmwzxo1RGq3pifHB3vXC6BloxgIOHQJvFdW07Hi/xciuKhDa7M1Y9r2/P/TevfH67pIgvq3AX9/84wZLpUuYtn3a20FfFQsVvhDvhOBf0rw7L/nPSIaFaQUAW+4apeFUyKq2yMBGleCM8Xx2fXFzMbvE+0xVm9yFBe5gLchlARk6BkKM3LaI8dX3L6lHdqT8dX51c37bS7i+G1JZBnsPlmWT5vWhy9nVj8kUf96UlzikZTIhKECH8HPfRg5RMwhVw5+rAeT18vFdxN56628zZ2sfD3i24FnqIbesfwF9EKamRWoYl1ub+pW9/W9YMpZKxrfcqNZA/0Etm/lZrG1t57pD7mFNngFQSwECFwsUAAIACABEUchMQdupP5gCAAC2BwAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUABxpWGltQSwUGAAAAAAEAAQBCAAAA0gIAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#35">
+            <data encoding="1">UEsDBBQAAgAIAERRyExtU8iDsQQAAFUPAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81XbW/bNhD+K4T62dKRFEUysF1kWTcUyJogzYYuXwxVlmMBtuRJctP8+x4pUpbVtAqGfZhIkHfPPeLr8W3+9ut+R77kdVNU5SKgIQQkL7NqXZSPi+DYbmYqeLucX91cX1/+ekmQXDaLYNu2h4soenp6CrNqt0vXaVjVjxEDEBGlkWN/zLb5Pg2GpcchDZbztGnydjnPqrKti8/HtqoRO7ZbzC9Ru725nkdOR9J+n5dts5xHZ+Lg16zO0zZfLxlQmIGegbqn9CJmF0I/INVZ53vs1Kb4Ia83z49l0ZJ93ub1IoAQmIgDUqb7fBEUZbYNImQcVunXolk+rP68nUdew0Z3HdsVn+u0fl6lZbFPW+y6sb0EemxXPG7bIckDXsdfHvMhwQNexyLzukh3Q84A81C+2eTZWU094oHHvMK+14Up3cnPpFgvAjc1nvDsB+W3qyuc033ebJfzpjrWWf4ifXaomsL2G9mbXZW2q7Su0+cJ8sySApJVx7JFFwIWLGdUK5wY+xFOmReV6sVzCtOhlqBUghQaUg1asRElViHXLAFNlFRhklCQ8YiSyBA4TWKKlDhkUks9LkWJMKFKx9gWZGshsaBzSgw8VEJpKokSOkxEomBUSsxwocRUCywl1tgsTYGPKFyFIHTCYqK4xLZAwtWIIniIJXGBnWZOlCNK4n7FtoArMBlRpGsAI1K7Zo17pFw3KJHSdU6PKNoNBhAp3BCNOi2gH1LJ3UDzMaWfGEm76aKjtgjaT2+i3aSrMaV3kuTMX2DapWDapWDapWDapWDapWDapWDapWDapWDapWDapWDapWDapWDapWDapWDapWDapWDCpebRYJdbzts825bFP8d8Zc6xqsQjL8vypqlq0u2ai+DNq7dBjkdSg5v0Gv/iuJ8e0jrdu/34U0Da5wMKtnpzXA2tf//U+vCdNfKtRPH7LkRd03++8ZdVvcdT6DXbvqOOeivw0jDrR/skUS/AQFBaiRgFrYUWYmiiiuqEG5PiHM5MTAoqlDElFH1zaOLohtqQNdNSqaEpFogZE3oEU/HQJGLJqBEUR69JhqaEA9OmHCkTLvjQJEGiLw6Fk8mT+997U19FX+nJ5BvWN7U39d3pO3gy+UHoh+Vk8kPXD+bJ1A+4n4IfTtN/sTRedhUq/2cLAy+/bYFE6+9GMeugKA/HljR4Oy7RuAhubz6+v39/8yF4zVZgK/fF4uDhFa983GENfm9gAfFXv0Vw9/svqxl9oc6/3t3dv/s0qLFrHKk2G7zE4s3X1DP+6cPN3R+X18H0tJzKoXYolzQhJgoTOTdylzqEOcHE2MQOcXiHUCeYyE3sEId3CDjBRGZihzjcIkw7wURqYoc4vEOUE0wEEzvE4R0inYBRY+j0LrV6YjM8/TFYxSZWEzZTRGKwik2sFttMkgSDVWxiNW6zhAgMVrGJ1ZjNBIkxWMUmVqM2w3HCYBWbWA1shoIJ4BGj4XHLOsEE7RGrqS4juKCdoryGWxYu7oNZEt4tUe7eBpH3kcHrY/jY8Jh92+GrEl+NA+YZ+i+oX4rmmO5WTZaXZw+pEW5z4/dNm5ZZfmYmxxoX1JtjabaEdYfZxeh+8u/e5TdQSwECFwsUAAIACABEUchMbVPIg7EEAABVDwAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUABxpWGltQSwUGAAAAAAEAAQBCAAAA6wQAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#36">
+            <data encoding="1">UEsDBBQAAgAIAERRyEw9cQWTmAIAALgHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VbU/bMBD+K5b5nDoORbwoCeoYm5A6WgGbGF8i4zqNpcTObAfov98ljSGFDqppHxYpyvnu8Z3vucs5Pn2qSvQgjJVaJZiOQoyE4noh1TLBjcuDI3yaxmez6XTyeYIArGyCC+fqE0IeHx9HXJclW7CRNksSheEBoZT06GteiIrhoffxiOI0ZtYKl8ZcK2fkfeO0AV3jCvhOYDWfTWPSrwFUVUI5m8ZkQxxs5UYwJxZpFNIwCI+D8OiG0pNxdHJwfAfQ3hpXkFQu/4h7NseNkg5VwgmT4HAURgdjjBSrRIKl4gUmgKgz9iRtepd9n8fEr+DQ68RKeW+YWWVMyYo5SL21bVN6XSmXhRuCvMKvYctSDAFe4dfgUhjJyiFmoPMqkeeCb0R61njFUmjI3cjWey+vkFwkuC+NB6w8KV/OzqCmlbBFGlvdGC62woNaW9nlDei81MxlzBi2+gAcdCCMuG6UgxaKcBrQ4xDq0j1ofBR5MTqk1MsbmIiGh9tAO/jZxU1MBumksRO8UPJXI7K2YbWC3uZcWKsNWtOT4L2d84XWs1CMBWzaB95qZljV836LkVvVIHTR27YcWn++a717YyX+kCC+zYCsT/5+gZU2FXTbLuXtoa+ShQyfyQ5epH9K9PbI9D+jGUamkwDs2GsXLatS1Y1DFmaqAmOC57Pri5uL2SXepa+64N4tcAeDQS1LiNAzEGHk50WCr75+ygK6JeSP86ub89tBwPXZkM5zmHwwLtswrzddzq6+Tab446K8+KEdk2mI4A+EN+rfVt5HbSPULX8+B5DX44d4j4MBN5xnXtddH3BxwcU0QG5o/wL6IG3DysxyoTZm9St9921Zso4pLjbMqDFA/16j2v5ZrHVd5fpN/mpNfwNQSwECFwsUAAIACABEUchMPXEFk5gCAAC4BwAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUABxpWGltQSwUGAAAAAAEAAQBCAAAA0gIAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#37">
+            <data encoding="1">UEsDBBQAAgAIAERRyEw8wsnnmwIAALYHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VbU/bMBD+K5b5nDoJrSgoCeoYm5C6FQGbGF8i4zqNpcTObAfov98ljcGF8qJpH9Yqyvnu8Z3vucs5OX6oK3THtRFKpjgahRhxydRSyFWKW1sEU3ycJSeL+Xz2eYYALE2KS2ubI0Lu7+9HTFUVXdKR0isSh+GERBEZ0Jes5DXFvvfxKMJZQo3hNkuYklaL29YqDbrWlvCewep8MU/IsAZQXXNpTZaQLdHbyjSnli+zOIzCIDwMwulVFB2N46PJ4Q1AB2tSQ1KFeBX3aE5aKSyqueU6xeEojCdjjCSteYqFZCUmgGhy+iBMdpP/OE+IW8GhN4lV4lZTvc6pFDW1kHpn26V0ukqsSuuDnMKtYcuK+wCncGtwybWglY/xdE7Fi4KzrUiPGqdYcQW5a9F5H+Q1EssUD6VxgLUj5cvJCdS05qbMEqNazfhOeNAoI/q8AV1Uitqcak3X74CDHoQRU6200EIxzoLocAp16X8omEydGI0PntSvYOKDONqJieP4XT8exveTEC+dLLGclVL8bnneNayS0NuMcWOURht6Urz34Xyh9QwUYwmb9oG3hmpaD7xfY2TXDQh99K4tfeuvN603L6zEHRLElxmQzcnfLrBUuoZu+0h5B+izZCHDR1LDF8K/oHl33Og/IxkGphUA7LnrFh2nQjatRQYmqgRjis8Xl2dXZ4vv+CNd1Qd3boE7GAtyVUGEgYEYIzctUnzx9VMeRDtC/jy9uDq99gJuzoZUUcDcg2HZhXm+6fvi4ttsjt8vypOfqGcy20fwLcITD08nd/+ENB1/LgeQN8OHOI/eePOnmdP1lwdcW3Atecgt7V9A74RpaZUbxuXWpH6m798dS8ZSyfiWGbUa6N9rZdc/y42ur9ywyV2s2R9QSwECFwsUAAIACABEUchMPMLJ55sCAAC2BwAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUABxpWGltQSwUGAAAAAAEAAQBCAAAA1QIAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#38">
+            <data encoding="1">UEsDBBQAAgAIAERRyExyaPucqQIAALUHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VbW+bMBD+K5b7GbApWZMKqLKumyplTdV2U9cvkUtMsAQ2s83a/PsdBGekTV807cOCIuznHt9xz53O8cljVaJfXBuhZIKpTzDiMlNLIVcJbmzujfFJGp/OZ7PppykCsjQJLqytj4Pg4eHBz1RZsiXzlV4FISGjgNKgZ19nBa8YHnqPfIrTmBnDbRpnSlot7hurNGCNLeA9hd3lfBYH/R5IVcWlNWkc7CwHRzPNmeXLNCSUeGTikfENpcdReDya3AG1t8YVJJWLF3lbc9xIYVHFLdcJJj4JRxFGklU8wUJmBQ6AUS/YozDp3eLbZRy4HXz0JrFS3Gum1wsmRcUspN7a9oEOK8WqsEOSA9wejqz4kOAAtweXXAtWDjkDzEE8z3m2E2mLOGDFFeSuReu9X6+RWCa4L40jrJ0on09PoaYVN0UaG9XojO+le7Uyossb2HmpmF0wrdn6DbLXkTDKVCMttFCIUzqZQFm6H/LoZOzWNDra4i9xwqOQbtchGW05471uXqAMvcTBIJk0tjwrpPjZ8EXbrkpCZ2cZN0ZptBEnwQfvzhYaz0AplnDoEFSrmWZVr/otRnZdw6KL3jbl0PrjVevdM2vgPhKWzzMINl/+enml0hX02nuK21OfJAsZesSPRqPo6AMi/nhCwmiMyL/UeX9g+p+pDPPSCiB24rWbVlQh68YiAwNVgjHBl/Pr85vz+QV+T1t1wZ1b0A6mglyVEKFXIMTIDYsEX335uPDonpDfz65uzm4HATffhlSew9iDWdmGeXroYn71dTrDbxfljx/aKZmGiHTPYf9vH4raRqhb/VwOsN7MnsB5HEy34TBzWHd3wK0Ft9KAuYP+BfWXMA0rFybjcmdQP8G7d6uSsUxmfMeMGg3yHzSy7Z/lBusq1x9y92r6G1BLAQIXCxQAAgAIAERRyExyaPucqQIAALUHAAALAAkAAAAAAAAAAAAAgAAAAABjb2xsYWRhLnhtbFVUBQAHGlYaW1BLBQYAAAAAAQABAEIAAADjAgAAAAA=</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#39">
+            <data encoding="1">UEsDBBQAAgAIAERRyEx42WlUmAIAALoHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VbU/bMBD+K5b5nMYOIApKgjrGJqSOImAT40tkXKexlNiZ7QD991zSGFIoUE37sFZV7+Xxne+50zk+fqxKdC+MlVolmI4IRkJxPZdqkeDG5cEYH6fxyWw6nXydIAArm+DCufooDB8eHkZclyWbs5E2izAiZD+kNOzRV7wQFcPD6HsjitOYWStcGnOtnJF3jdMGbI0r4H8C2sVsGoe9DqCqEsrZNA7XxMFRbgRzYp5GhJKAHAZkfE3p0V50tH94C9DeG1dQVC7fxT2740ZJhyrhhEkwGZFofw8jxSqRYKl4gUNA1Bl7lDa9zX5exKHX4NKrwkp5Z5hZZkzJijkovfVtMnpbKReFG4K8wetwZCGGAG/wOoQURrJyiBnYvEnkueBrmZ4t3rAQGmo3so3ey0sk5wnuW+MBS0/Kt5MT6GklbJHGVjeGi43woNZWdnUDOi81cxkzhi0/AQcdCCOuG+VghCKc0kMCbek+KKL0wMsBhcZ65T1QdEDoC2a8TaDxp4HicFBQGjvBCyX/NCJrR1YrmG7OhbXaoBVBCd7ZumIYPgvtmMOhXWCuZoZVPfM3GLllDUKXvR3Moff3h97bN97QXxLEtxWEq5t/3GKlTQXztk2De+irYqFC8tKFZ4n8S6I3Z6b/Gc2wNJ0EYMdeq7SsSlU3DlnYqgqcCb6YXZ1dn83O8TZz1SX3YYE7WA1qUUKGnoEII78xEnz5/UsW0A0pf51eXp/eDBKu7oZ0nsPug4XZpnl96Hx2+WMyxZ835SUO7ZhMI0TQLvz8t5UpagehbvnzNYC8WkChjzhYccON5m3dAwJPFzxNA+Sa9S+g99I2rMwsF2ptW7+yd/8tS9YxxcWaGzUG6N9pVDs/85Wt61x/yD+u6RNQSwECFwsUAAIACABEUchMeNlpVJgCAAC6BwAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUABxpWGltQSwUGAAAAAAEAAQBCAAAA0gIAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#40">
+            <data encoding="1">UEsDBBQAAgAIAERRyEy8yQ5y0QQAAJcOAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW82XbW/bNhCA/4qgfjbF95dAdpF13VAga4I0G7p8MVRZjgXYkifJTfPve6RFVpKdJhj2YTZM3x0fkcc7vil9+223jb4WTVvW1TwmCMdRUeX1qqwe5vGhW890/HaRvru+urr89TICuGrn8abr9hdJ8vj4iPJ6u81WGaqbh4RiLBJCkp7+lG+KXRYPW+eIxIs0a9uiW6R5XXVN+eXQ1Q3YDt0G/i9Bu7m+SpNeB2i3K6quXaTJSBw8mjdF1hWrBcUEz7CZYX1HyAWnF8LcA9rXpjsY1Lp8lgvV6aEqu2hXdEUzjzHCVPA4qrJdMY/LKt/ECRD7ZfatbBf3yz9v0sRr4PRxYNvyS5M1T8usKndZB0O3deeM3rYtHzbdEPIGr8MjD8UQ8AavQ5NFU2bbITOweVOxXhf5qKdg8YaHooaxN6VtvZefonI1j/vUeODJB+W3d+8gp7ui3SzStj40eXEWn+3rtnTjBnq9rbNumTVN9vQCPHNQHOX1oepgChEVL4jBkBf3iQgWXpwRSGywP8fIXiYjhFKCjPtEWtNzjQwIqkA+gzASntS6p/WYYOolTxinSEtNmIi0MkhiLvSkG8lBNJJo2whFBnOM1RhRDAmClbGNUMSw5oSOCYORpsRwAY0ICbTRctwPxwxJwbDUkRYGKSmEmRBEIWIkZxwa4QIJzvUUYTAcI7ggEfiAGJVCj2PCYcBKM0FtTKhBHPyWfIxIjITEFEN2iLADFsxMCAnxxkQzOw3AKym5YmPE5xXiLRU5F/sBQhXMpTMZ5FrAIBgzKlKQY2X0iStaQ9iUge5nSllY0XHsBeaIEXCZRoqB30RJzSeEQFQJxiAmTCMsqFFiQhgEfWOYjtZTRjWTY08h/4gyaaAXSA6EWIErEyJM6fMLZwDIQfSGqwKbMKOfWxaUWFkrYmxYKYaZxJQ6YRgiggjFjwxmYJJTRtrEEk5tejRS8BFqygR/nsvykHkuzcAYhA3WMFmBgSQxWAl8wkB4tFCYOgZyajA1bMqAnXGmfF+aaH7CSMgUTBPLwBi5ocycYTQmnDuGIQ1TkJ/4o17cC4cQNBQClCaDPXmRdkW+qcp/DsXSnrp1BQd0nhdtWzfRcY+fx29evWkzE0ctHCkreIrB7r/PmmzXnx6f46h72oPgureH67D275/W3p/UJt5LEE+HkBxd//kxVdXNDs7M1xxSPTodLRxQIQ0h7kH4LwJ9vmPyP4sy3Pu6EkAXPKvYoJbV/tBFLVwMK6icxzfXnz7cfbj+GL9mXrnOfbMQO7jdVA9b6GEw0fytZx7f/v7LckbO9PnX+9u7958HPR6di+r1Gu5vcOmz/Uwf+nh9+8flVfxyVn60Q1woFzSCQyGy+5EvrBYU+9P9j+ARd1RpUJ3EQ6HHsFUZ9hLFXnWFUykNqpWoCAUfw05VweYk7SvgFPE25VVKgmolYkIhRrBTSWjASf7rFEK8ZgXT/9QAs7LoZddacNMFgITCqTKoThKh4GPYqSyoTqK+oGYEO5WG3pxEVSjkGHa5+VHhNVcwnzwXQ6+kyd6uLD+7QT7erhM/1Qb39+F13dvc2xG8l8F714AcWf8F+rVsD9l22eZFNXoVmdjdv10+bZdVeTGqjg4NrMs3h8ruLKujza3p/iH/5rj4DlBLAQIXCxQAAgAIAERRyEy8yQ5y0QQAAJcOAAALAAkAAAAAAAAAAAAAgAAAAABjb2xsYWRhLnhtbFVUBQAHGlYaW1BLBQYAAAAAAQABAEIAAAALBQAAAAA=</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#41">
+            <data encoding="1">UEsDBBQAAgAIAERRyEwDh0uVpgQAAHYPAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81XW2+cOBT+KxZ9HrANNnbEUGWz3VWlbBOl2VWblxFlPDNIA8wC0zT/vsfGZhiSNqjah8WWfc53Pnw9viVvv5V79FU1bVFXS4/42EOqyut1UW2X3rHbLIT3Nk2ubq6vL3+/RECu2qW367rDRRA8Pj76eb3fZ+vMr5ttQDFmASGBZX/Md6rMvHHpkU+8NMnaVnVpktdV1xRfjl3dAHbsdpBfgnZ7c50EVgdSWaqqa9MkOBNHv+aNyjq1TikmeIHlAot7Qi4iesHkA1CtNSmhU5vih7zBnByrokOl6lSz9LCPKYs8VGWlWnpFle+8ABiHVfataNOH1d+3SeA0aHTfsX3xpcmap1VWFWXWQde17SXQYftiu+vGJAc4HX7ZqjHBAU6HIlVTZPsxZ4Q5SG02Kj+raUAcsFU19L0pdOlWfkLFeunZqXGEJzcof1xdwZyWqt2lSVsfm1y9SF8c6rYw/Qb2Zl9n3SprmuzpFfLCkDyU18eqAxfC1EuJxDAv5kMUy3iQY0qcPOEIP5YxFlJzsC/BKsU5h4DMQ0k56Tmcc4LjKYf6DIeERz2HUihVTjmRH3IipOYQ6TPJYs6nHO4TwYSkmgNt44wLPOXEvowiIpnmxH4cSkmecaTPMZPclMN9RmMMbTvnEOKTiJKQaw5z8oRD3b/ACfsywykndG0ADnFtm3Ai1xfgYNfHCYe5MYEahRurCYe7sdWtcmP+jGPnCDiRm7tnHDvXwKHOByackf/gkf+IGT4mZviYmOFjYoaPiRk+Jmb4mJjhY2KGj4kZPiZm+JiY4WNiho+JGT4mZviYmOFjYoaPiVd9LAlG+2CadCrfVcW/R7XSJ11dwaGY56pt6wb1++rSezN7owzh0GphG1/DXyHsuIesyUq7Y3/yUPd0AMFUrw+0sfXzT60Pz6yBayWIz7sQ9E3/+dFQ1U0J59Scg8FSJ71lcK0YhnsxSMNI45EgpGARCFKCi7CxiQiiXRJMIgzxmYnGjDChTZyAg45NIbii1GRJZSzE2BQxwLRJCEFFNDaxCDYSLYiQS8nHJh5iKnU5ccxDFo5NMY61M46Ek8mRh98H01DFUOnJ5Bo2NHUwDd0ZOngyuUEYhuVkckM3DObJNAy4m4IfTtN/sTJe9hQS/8/WBdyOuwKIxt21opdBUR2OHWrh+lyBcend3nx8f//+5oM3ZycwlbtiYfDgDlht91CD2xqoh9zdcOnd/fnbakFeqPOfd3f37z6Nauwbh+rNBm65cDXW9Ux/+nBz99fltff6tJzKIWYoUwLnBUSmYxhquU8tQq2gY6Rjj1i8R4gVdAx17BGL9wi2go5Uxx6xuEGotIKORMcesXiPCCvoiHXsEYv3SGwFiBJJq/ep0bnJJBIQjGISozGTCRRDMIpJjBaZLEYcglFMYrTQZBwxCEYxidGoyRiKIBjFJEYjJoNxgmAUkxgNmwwEHbBDtEZkDyKig3SI0USfIVjQVhFOgy0LFvdBLwnnliD3j4fA+cjoeTJ+jTjMPP7g2QnPyhHzDP0F6teiPWb7VZur6uylNcFNrv2+7bIqV2dmdGxgQb05VnpLWPeYWYz2J/cwTr8DUEsBAhcLFAACAAgARFHITAOHS5WmBAAAdg8AAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAcaVhpbUEsFBgAAAAABAAEAQgAAAOAEAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#42">
+            <data encoding="1">UEsDBBQAAgAIAERRyExvcFb8mwIAALIHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VbU/bMBD+K5b5nDoJrSgoCeoYm5A6ioBNjC+RcZ3GUmJntgP03++SxsyF8qJpH9Yqyvnu8Z3vucs5OX6sK3TPtRFKpjgahRhxydRSyFWKW1sEU3ycJSeL+Xz2eYYALE2KS2ubI0IeHh5GTFUVXdKR0isSh+GERBEZ0Fes5DXFvvfxKMJZQo3hNkuYklaLu9YqDbrWlvCewepiMU/IsAZQXXNpTZaQLdHbyjSnli+zOIzCIDwMwul1FB2N46PJ4S1AB2tSQ1KFeBX3ZE5aKSyqueU6xeEojCdjjCSteYqFZCUmgGhy+ihMdpt/v0iIW8GhN4lV4k5Tvc6pFDW1kHpn26V0ukqsSuuDnMKtYcuK+wCncGtwybWglY/xdE7Fi4KzrUhPGqdYcQW5a9F5H+Q1EssUD6VxgLUj5cvJCdS05qbMEqNazfhOeNAoI/q8AV1Uitqcak3X74CDHoQRU6200EIxzuI4nIzC/oeC6dSJ0fggdPIrkPggjnZBxlH8nhcP4ntJiJdKlljOSil+tTzvmlVJ6GvGuDFKow01Kd77cK7QdgYKsYRN+8BZQzWtB85vMLLrBoQ+eteSvvXnm9bbF1biDgniywzI5uRvF1cqXUOnfaS0A/RZspDhE6nhC+Ff0Lw7bvSfkQzD0goA9tx1i45TIZvWIgPTVIIxxReLq7Prs8U5/khX9cGdW+AORoJcVRBhYCDGyE2KFF9+/ZQH0Y6QP04vr09vvICbsyFVFDDzYFB2YZ5vOl9cfpvN8ftF+eMn6pnM9hF8ivDEw9PJ3T8hTcefywHkzeAhzqM32vxJ5nT9xQFXFlxJHnJL+xfQe2FaWuWGcbk1pZ/p+3fHkrFUMr5lRq0G+vda2fXPcqPrKzdscpdq9htQSwECFwsUAAIACABEUchMb3BW/JsCAACyBwAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUABxpWGltQSwUGAAAAAAEAAQBCAAAA1QIAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#43">
+            <data encoding="1">UEsDBBQAAgAIAERRyExAvy5ymQIAALoHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VUU/bMBD+K5Z5ThOHVisoCeoYm5A6WgGbWF8i4zqNpcTObAfov98ljUsKBappD4sU5Xz3+c733eUcnT2VBXrg2gglY0wGAUZcMrUUchXj2mbeGJ8l0flsOp18mSAASxPj3Nrq1PcfHx8HTBUFXdKB0is/DIKRT4jfoW9YzkuK+96HA4KTiBrDbRIxJa0W97VVGnS1zeE7gdV8No38bg2gsuTSmiTyd8TeVqY5tXyZhAEJvODEC8a3hJwOw9PRyQKgnTUqIalMvInbmqNaCotKbrmOcTAIwtEQI0lLHmMhWY59QFQpfRImWaQ/5pHvVnDoTWKFuNdUr1MqRUktpN7Y9imdrhCr3PZBTuHWsGXF+wCncGtwybWgRR/T0zkVzzLOdiJtNU6x4gpy16Lx3slrJJYx7krjAGtHytfzc6hpyU2eREbVmvG9cK9SRrR5AzorFLUp1ZquPwB7LQgjpmppoYVCnJCTAMrSPogEIyd6BOq61fcwISGf3gCND3A0/thR5PcSSiLLWS7F75qnTcsqCd3NGDdGabQhKMZHB2cMzWegHEvYdAzMVVTTsmP+DiO7rkBoozeN2bf+ete6eGX13SFBfJ2Bvzn5+yWWSpfQb4cUuIO+SBYy9LasPkvkXxK9PzL5z2iGoWkFAFv2mkXDqpBVbZGBqSrBGOP57Oby9nJ2hQ/pqza4cwvcwWiQqwIidAyEGLmJEePrb59Tj+wJ+fPi+vbirhdwczaksgxmHwzMJszLTVez6++TKf64KM9+SMtkEiD47eAl3dvIx6hphKrhz+UA8mYA+c5jb8T1J5rTtRcIXF1wNfWQO9q/gD4IU9MiNYzLnWn9Qt9+G5aMpZLxHTOqNdB/VMumf5YbXVu5bpO7XJM/UEsBAhcLFAACAAgARFHITEC/LnKZAgAAugcAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAcaVhpbUEsFBgAAAAABAAEAQgAAANMCAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#44">
+            <data encoding="1">UEsDBBQAAgAIAERRyEwFTX+tlgIAALQHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VUU/bMBD+K5Z5Th0HOhWUBHWMTUgdRcAmxktkXKexlNiZ7QD997ukMaRQoJr2sEZV7O8+3+W+O53j48eqRPfCWKlVgukoxEgorhdSLRPcuDyY4OM0PpnPZtMvUwRkZRNcOFcfEfLw8DDiuizZgo20WZIoDMeEUtKzr3ghKoaH3g9GFKcxs1a4NOZaOSPvGqcNYI0r4D2F3cV8FpN+D6SqEsrZNCYby8FRbgRzYpFGIQ2D8DAIJ9eUHh1ER+PDW6D21riCpHL5Ju/JHDdKOlQJJ0yCw1EYjQ8wUqwSCZaKF5gAo87Yo7TpbfbjIiZ+Bx+9TqyUd4aZVcaUrJiD1FvbNtBjpVwWbkjygN/DkaUYEjzg9+BSGMnKIWeAeUjkueAbkZ4QDyyFhtyNbL336xWSiwT3pfGElRfl68kJ1LQStkhjqxvDxVZ6UGsru7yBnZeauYwZw1YfkIOOhBHXjXLQQhFO6WEIZel+iIZjvwwo1PUJf4vzafxMmezgZvKRm5gMkkljJ3ih5O9GZG27agWdzbmwVhu0FifBeztnC41noRQLOLQPqtXMsKpX/QYjt6ph0UVvm3Jo/fWu9faVlfiPhOXrDMj6y98vr9Kmgl7bpbg99UWykOGz1n4R/kuZt8el/5nIMC6dBGKnXbtpNZWqbhyyME8VGBN8Mb86uz6bn+NduqoL7t2CdjAU1LKECL0CEUZ+ViT48tvnLKBbQv48vbw+vRkEXH8b0nkOUw9GZRvm5aHz+eX36Qx/XJRnP7RTMo1Q2D37/b99KGoboW718znAej16iPc4GG7DWeax7uqASwsupQFzA/0L6r20DSszy4XamNMv8O7dqmQdU1xsmFFjQP69RrX9s1hjXeX6Q/5aTf8AUEsBAhcLFAACAAgARFHITAVNf62WAgAAtAcAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAcaVhpbUEsFBgAAAAABAAEAQgAAANACAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#45">
+            <data encoding="1">UEsDBBQAAgAIAERRyEzfaBjAxgIAAKAIAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81WbU/bMBD+K5b5nOaFlrYoCeoYm5A6ioBNjC+VSZ3GUmJ3tgP033NObZpCgWjah6WyfL57fOd78bnxyVNVogcqFRM8wWEvwIjyTCwYXya41rk3widpfDqbTidfJwjAXCW40Hp17PuPj4+9TJQlWZCekEs/CoKBH4a+RV9nBa0Ibmvv90KcxkQpqtM4E1xLdl9rIYFX6wLmCawuZ9PYt2sAVRXlWqWxv0O2tmaSEk0XaRSEgReMvWB0E4bH/eh4ML4DqJXGFTiVs3dxL+K45kyjimoqExz0gmjQx4iTiiaY8azAPiBWc/LEVHo3/3kZ+24Fh944VrJ7SeR6TjiriAbXjWwf0/FKtix0G+QYbg1blrQNcAy3BpVUMlK2MS2eY9E8p9mOpReOYyypAN8lM9otvUZskWCbGgdYu6B8Oz2FnFZUFWmsRC0zuhfurYRijd+AzktB9JxISdafgL0GhFEmaq4THA1x6oXjEeSl+ZA3GDky7A+37Hcw0TAKt5ij4eBTPfsxUQCYcfOhvWcZbc13MNPBSgenO/gc+63Qp7GmWcHZn5rOzeUSHO5hllGlhESbVCb4oHNuxhgpKJwFbDqEHK+IJJWtkVuM9HoFRGPdXKG29PeH0rs3Ut8dEsi3Hvibk39cjFzICm5Gl1K00FfOgoetInmhgn8Z6P2Ww/8szNDeNQNgEz2zMFFlfFVrpKD/cxAm+HJ2fX5zPrvAXeqqMe7UQuygifFlCRZsBIYYud6W4KvvX+ZeuMfkr7Orm7PblsHN2ZDIc+jS0NqNmdebLmZXPyZT/HlStnrCJpLpAAVoCOPIDkOPLG3mvh2GDi1t5kM7DB1Y2vwiZIpoZWLv/Ad602Z9d5pWI2/3bcdrnkl4oOEBbiF3uH8BfWCqJuVcZZTvvEmv+M1sIqw04RndEaNaQuoOam5qb7HhNVm3m9xfiPQZUEsBAhcLFAACAAgARFHITN9oGMDGAgAAoAgAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAcaVhpbUEsFBgAAAAABAAEAQgAAAAADAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#46">
+            <data encoding="1">UEsDBBQAAgAIAERRyEx5xr3ttQQAAGMPAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81XbW/bNhD+K4T6WRJfJbKQXWRdNxTImqDNhq5fDFWWYwG25Ely0/z7HSlSlJysCoZ9mCnAd8895B3J41v25vvxgL6VbVc19SogEQ5QWRfNtqrvV8G534UyeLPO3t5cX1/9fIWAXHerYN/3p9dx/PDwEBXN4ZBv86hp72OKsYgJiS37U7Evj3kwbZ1HJFhnedeV/Tormrpvq6/nvmkBO/d7+L8C7fbmOoutDqTjsaz7bp3FM3FStWjLvC+3a4oJDrEKsbwj5DWnr4X6AlRrzY7QqV31j7zRnJ3rqkfHsi/bVYAjTAUPUJ0fy1VQ1cU+iIFx2uTfq279ZfP7bRY7DYIeOnaovrZ5+7jJ6+qY99B1bXsOdNihut/3U5IDnA5V7sspwQFOhybLtsoPU84Ec1C525XFzNOIOOC+bKDvbaVbt/IjqrarwE6NIzy6Qfnl7VuY02PZ7ddZ15zbonyWHp6arjL9Bvbu0OT9Jm/b/HGBHBpSgIrmXPeQQpgGa6IwzIv5IcZSJ4YkEU6eUQSNUsoFFZrCI6oowWpOSWQkOROMaQqNcCo5v2hFiogImsgEKEJGlHNJ5IzCMWQ4BJHqVrRTQpVgcwpJI5YmQmgKFxHnKsV0TmFQMyEp1o5YEvGUUyLmFA6tYEpSAhQqIpkQiS9iSXCUcjaES9ggp3NKSoeaKVAANi1ehCvZ4J+jEPpvwrpoRNGhExBKioe+8QuGciMRCj4M0Lw7Ags3nCGTwyjLC4Yyc8IUCikZpmruRRDiJjYUw3SnFwTqRBUp/dMu5HIiyeVEksuJJJcTSS4nklxOJLmcSHI5keRyIsnlRJKLiSQXE0kuJpJcTCS5mEhyKZHkc4lERjCLJ1vaOuvLYl9Xf53LjT60mhrOt6Iou65p0bBFroJXL97zGJw/HezIW6jFYPM85W1+tJvv5wD1jycQjHt9Nk2tf/7Q+uWJNXZRgvi0C/EQ+o93+bppj3DkvGSPt9SL3gq4IYzDGnqJPMVAkEpClgCklFBCzIxEEpUwY5SM4bmRpgIWnzEmhCk1M0KGY2X4iqpUypmRCwCNUUpJJZ8ZBawFYmKULFEqmRkTWBjKNJamCRNsZoT1QPQCmkreOPJ9G6PRe/LevXGM0cc9Gn3vfI+9cRwXP1beOI6oH2Vv9HMxzo9bMU9n8b9YOs+nEkn/ZwsHbsJ9BUSzHrSi10lVn8496uCqXINxFdzefHp/9/7mQ/CSrcI4d83C4MF9r74/gAe3d9AAuXvgKvj460+bkDzj8493H+/efZ54HIJDzW4HN1q4Bms/l5U+3Hz87eo6WJ4W3w4xQ7mG05EkiMFxJbQwfhYx3yAzguDIGEGPmG+QGaQV86BHzDfIFI5p6kGPmG+QKRwVxIMeMd8g67MAe9Aj5htkmiDlMQfoYgS4PUirW0UXI1COUqtbRRcjUIYSq1tFFyNQioTVraKLEShB3OpW0cUIFG4iVreKLkYgEJfVraKLEfRFxepWMcUIKcJOHxRdsvik14TLS5CHl0LskmTyFpk+PRxmXnrwxoQ35IQ5Q/8F9VvVnfPDpivKevasusDNv078rs/ropyZ0bmFFfXqXOs9YTtgZjXaSu4VvP4bUEsBAhcLFAACAAgARFHITHnGve21BAAAYw8AAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAcaVhpbUEsFBgAAAAABAAEAQgAAAO8EAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#47">
+            <data encoding="1">UEsDBBQAAgAIAERRyEwKm3+8lAIAAKwHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VUU/bMBD+K5Z5bh0HOrUoCeoYm5A6WgGbGC+RcZ3GUmJntgP03++SxpBCoWjawxpVsb/7fJf77nSOTh7LAt0LY6VWMabDACOhuF5KtYpx7bLBGJ8k0el8Npt+mSIgKxvj3LnqmJCHh4ch10XBlmyozYqEQTAilJKOfcVzUTLc9340pDiJmLXCJRHXyhl5VzttAKtdDu8p7BbzWUS6PZDKUihnk4hsLXtHuRHMiWUSBjQYBJNBML6m9PgoPB5NboHaWaMSksrkm7wnc1Qr6VApnDAxDoZBODrCSLFSxFgqnmMCjCplj9Imt+mPRUT8Dj56k1gh7wwz65QpWTIHqTe2XaDHCrnKXZ/kAb+HIyvRJ3jA78GlMJIVfU4P85DIMsG3Ij0hHlgJDbkb2Xjv1msklzHuSuMJay/K19NTqGkpbJ5EVteGi530QaWtbPMGdlZo5lJmDFvvIQ9aEkZc18pBC4U4oZMAytL+0IiGfkmfwDcIn8bP3Ml4n4vxHhcR6SWRRE7wXMnftUibNtUKOppzYa02aCNKjA8+nCU0nIUSLOHQIahVMcPKTu0bjNy6gkUbvWnGvvXXu9bbV1biPxKWrzMgmy9/v6xKmxJ67CNF7agvkoUMn2X3i+Bfyrw7Lv3PRIYx6SQQW+2aTaOpVFXtkIU5qsAY48X86vz6fH6BP9JVbXDvFrSDYaBWBUToFAgx8jMixpffPqcDuiPkz7PL67ObXsDNtyGdZTDtYEQ2YV4euphffp/O8P6iPPuhrZJJiIL2Oez+zUNR0whVo5/PAdabkUO8x95Q688wj7VXBlxWcBn1mFvoX1Dvpa1ZkVou1NZ8foG370Yl65jiYsuMagPyH9Sq6Z/lBmsr1x3y12nyB1BLAQIXCxQAAgAIAERRyEwKm3+8lAIAAKwHAAALAAkAAAAAAAAAAAAAgAAAAABjb2xsYWRhLnhtbFVUBQAHGlYaW1BLBQYAAAAAAQABAEIAAADOAgAAAAA=</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#48">
+            <data encoding="1">UEsDBBQAAgAIAERRyEz4DWNjlgIAALgHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VbU/bMBD+K5b5nMYOdKIoCeoYm5A6ioBNjC+RcZ3GUmJntgP03++SxpBCgWrah7Wqei+P73zPnc7x8WNVonthrNQqwXREMBKK64VUywQ3Lg8O8XEan8xns+mXKQKwsgkunKuPwvDh4WHEdVmyBRtpswwjQsYhpWGPvuKFqBgeRj8YUZzGzFrh0phr5Yy8a5w2YGtcAf9T0C7mszjsdQBVlVDOpnG4IQ6OciOYE4s0IpQEZBKQw2tKjw6io/HkFqC9N66gqFy+iXtyx42SDlXCCZNgMiLR+AAjxSqRYKl4gUNA1Bl7lDa9zX5cxKHX4NLrwkp5Z5hZZUzJijkovfVtM3pbKZeFG4K8wetwZCmGAG/wOoQURrJyiBnYvEnkueAbmZ4s3rAUGmo3so3eyyskFwnuW+MBK0/K15MT6GklbJHGVjeGi63woNZWdnUDOi81cxkzhq0+AAcdCCOuG+VghCKcBnRyCH3pPoiSsRcDCo19Vt4CfRrIE7JLIPJRoDgcFJTGTvBCyd+NyNqR1Qqmm3NhrTZoTVCC93auGIbPQjsWcGgfmKuZYVXP/A1GblWD0GVvB3Po/fWu9/aVN/SXBPF1BeH65u+3WGlTwbzt0uAe+qJYqPCZay+Qf0nz9rz0PyMZVqaTAOy4a5WWU6nqxiELO1WBM8EX86uz67P5Od5lqrrkPixwB4tBLUvI0DMQYeT3RYIvv33OArol5c/Ty+vTm0HC9d2QznPYfLAu2zQvD53PL79PZ/jjpjzHoR2TKUUE7cPPf1s5Qu0g1C1/vgaQ1+sn9BEHC264z7ytez7g4YKHaYDcsP4F9F7ahpWZ5UJt7OoX9u6/Zck6prjYcKPGAP17jWrnZ7G2dZ3rD/mnNf0DUEsBAhcLFAACAAgARFHITPgNY2OWAgAAuAcAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAcaVhpbUEsFBgAAAAABAAEAQgAAANACAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_TELAIO RGA#49">
+            <data encoding="1">UEsDBBQAAgAIAERRyEy1Ofv3nQIAALoHAAALABEAY29sbGFkYS54bWxVVA0ABxpWGlsaVhpbGlYaW81VUU/bMBD+K5Z5ThOHdkCVBHWMTUgdRYVNjJfIuE5jKbEz2wH673dJ45JCgWrawypFtb/7fOf77nSOTp/KAj1wbYSSMSaDACMumVoIuYxxbTPvGJ8m0dlsOp18mSAgSxPj3Npq7PuPj48DpoqCLuhA6aUfBsHIJ8Tv2Ncs5yXFfe/DAcFJRI3hNomYklaL+9oqDVhtc/ifwO5qNo38bg+ksuTSmiTyt5a9o0xzavkiCQMSeMGJFxzfEDIehuPRyR1QO2tUQlKZeJO3MUe1FBaV3HId42AQhKMhRpKWPMZCshz7wKhS+iRMcpf+uIp8t4NLrxMrxL2mepVSKUpqIfXGtgt0WCGWue2THOD2cGTJ+wQHuD245FrQos/pYQ7iWcbZVqQN4oAlV5C7Fo33br1CYhHjrjSOsHKifD07g5qW3ORJZFStGd9J9yplRJs3sLNCUZtSrenqA7LXkjBiqpYWWijEiUc+HY0GQftDHiHHbk2GR8Ez/gYpDI7IbtJoD0ejnX4iv5dQElnOcil+1zxtWlZJ6G7GuDFKo7VAMT7YO2NoPgPlWMChQ1CuopqWnfK3GNlVBYs2etOYfeuvd613r6y+uyQsX2fgr2/+foml0iX02z4F7qgvkj1sqrsRe1OD4F8KvTsy+c9khqFpBRBb9ZpNo6qQVW2RgakqwRjjq9n1xc3F7BLv01dtcOcWtIPRIJcFROgUCDFyEyPG82+fU4/sCPnzfH5zftsLuL4bUlkGsw8GZhPm5aHL2fz7ZIo/LsqzH9IqmUDtEYEv7L5mfYiaRqga/VwOsF4PIN957I24/kRzWPuAwNMFT1OPuYX+BfVBmJoWqWFcbk3rF3j736hkLJWMb5lRrUH+g1o2/bNYY23lukPucU3+AFBLAQIXCxQAAgAIAERRyEy1Ofv3nQIAALoHAAALAAkAAAAAAAAAAAAAgAAAAABjb2xsYWRhLnhtbFVUBQAHGlYaW1BLBQYAAAAAAQABAEIAAADXAgAAAAA=</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+    </geometries>
+</job>

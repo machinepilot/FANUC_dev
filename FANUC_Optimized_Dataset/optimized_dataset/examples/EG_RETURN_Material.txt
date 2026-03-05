@@ -1,0 +1,84 @@
+TOPIC: Return Material Operation
+KEYWORDS: RETURN, material, put back, return to pallet, reject, completed part
+CATEGORY: program_example
+SOURCE: TWA (The Way Automation) Standard Programs
+APPLIES_TO: R-30iB Plus, CNC Machine Tending, RoboDrill
+DESCRIPTION: Return completed/rejected material to pallet position
+---
+
+/PROG  RETURN_M3
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= "";
+PROG_SIZE	= 1461;
+CREATE		= DATE 20-01-21  TIME 13:08:46;
+MODIFIED	= DATE 20-01-29  TIME 11:39:00;
+FILE_NAME	= RETURN_M;
+VERSION		= 0;
+LINE_COUNT	= 46;
+MEMORY_SIZE	= 1917;
+PROTECT		= READ_WRITE;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= 1,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+/APPL
+/MN
+   1:  !********************* ;
+   2:  !Each operation program ;
+   3:  !Operation content:return ;
+   4:  !Work placement:Grid ;
+   5:  !********************* ;
+   6:   ;
+   7:  !Various setting and ;
+   8:  !move to wait pos ;
+   9:   ;
+  10:  UFRAME_NUM=5 ;
+  11:  UTOOL_NUM=5 ;
+  12:   ;
+  13:  LBL[100] ;
+  14:   ;
+  15:  LBL[1000] ;
+  16:J PR[42] 10% FINE    ;
+  17:  !--------------------- ;
+  18:   ;
+  19:  !Calculate of correction amount ;
+  20:  !to return position ;
+  21:  PR[48]=LPOS    ;
+  22:  PR[48]=PR[48]-PR[48]    ;
+  23:  PR[48,1]=((R[81]-1) MOD R[83]*R[89]) ;
+  24:  PR[48,2]=((R[81]-1) DIV R[83]*R[90]) ;
+  25:  !--------------------- ;
+  26:   ;
+  27:  !Operation return unmachined work ;
+  28:J P[1:Work pos] 100% CNT100 Offset,PR[48] Tool_Offset,PR[5]    ;
+  29:J P[1:Work pos] 100% CNT10 Offset,PR[48] Tool_Offset,PR[6]    ;
+  30:  PAYLOAD[1] ;
+  31:L P[1:Work pos] 100mm/sec FINE Offset,PR[48]    ;
+  32:   ;
+  33:  CALL CH1_OP    ;
+  34:   ;
+  35:L P[1:Work pos] 100mm/sec CNT10 Offset,PR[48] Tool_Offset,PR[6]    ;
+  36:  WAIT DO[102]=OFF    ;
+  37:J P[1:Work pos] 100% CNT100 Offset,PR[48] Tool_Offset,PR[5]    ;
+  38:  !--------------------- ;
+  39:   ;
+  40:  !Count down and move to wait pos ;
+  41:  R[81]=R[81]-1    ;
+  42:   ;
+  43:J PR[42] 100% FINE    ;
+  44:   ;
+  45:  END ;
+  46:  !--------------------- ;
+/POS
+P[1:"Work pos"]{
+   GP1:
+	UF : 5, UT : 5,		CONFIG : 'N U T, 0, 0, 0',
+	X =   233.451  mm,	Y =    26.716  mm,	Z =  -105.436  mm,
+	W =     1.270 deg,	P =     -.137 deg,	R =     2.269 deg
+};
+/END

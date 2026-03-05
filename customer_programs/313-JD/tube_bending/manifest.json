@@ -1,0 +1,9 @@
+{
+  "customer_id": "313-JD",
+  "application": "tube_bending",
+  "robot": "Tube bending cell",
+  "controller": "R-30iB",
+  "program_count": 114,
+  "notes": "JD Tube cell: infeed carts → bender → outfeed; JD_TUBE_TROUBLESHOOTING_REPORT.md documents field issues",
+  "known_issues": ["Multiple programmers; Robot Error signal to YLM; ghost trips on outfeed; Cart 4 logic; see JD_TUBE_TROUBLESHOOTING_REPORT.md"]
+}

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" ?>
+<job>
+    <settings>
+        <version>1</version>
+        <unit>inch</unit>
+        <backcolour>0</backcolour>
+    </settings>
+    <entities>
+        <entity id="SUPPORT2_INCH_PRIMA POWER EP" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>SUPPORT2_INCH_PRIMA POWER EP</reference_id>
+            </geometry>
+        </entity>
+    </entities>
+    <states>
+        <state id="default">
+            <visibility>
+                <show type="Unspecified">1</show>
+                <show entity="SUPPORT2_INCH_PRIMA POWER EP">1</show>
+            </visibility>
+            <transformations />
+            <views>
+                <view id="1">
+                    <pos>14000,8000,-14000</pos>
+                    <target>0,0,-0</target>
+                    <near>6000</near>
+                    <far>25000</far>
+                    <width>9050</width>
+                    <height>5615</height>
+                    <perspective>1</perspective>
+                </view>
+            </views>
+        </state>
+        <state order="1" id="SUPPORT2_INCH_PRIMA POWER EP">
+            <visibility />
+            <transformations />
+            <views />
+        </state>
+    </states>
+    <geometries>
+        <geometry id="SUPPORT2_INCH_PRIMA POWER EP">
+            <data encoding="1">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</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+                <material id="2">
+                    <color emissive="0" />
+                </material>
+                <material id="3">
+                    <color emissive="36048" />
+                </material>
+            </materials>
+        </geometry>
+    </geometries>
+</job>

@@ -1,0 +1,41 @@
+Ciclo fisso risalita pestone per ciclo Z manuali Ver.012.40: 127
+ VA0 = VG1 ; quota limite superiore
+ VA1 = %ax0.ra4 / 1000
+ VA2 = %ax1.ra4 / 1000
+ IF (VA1 > VA0) JMP 100
+ IF (VA2 > VA0) JMP 100
+ VA24 = %pargen_due.dgn[24];Insensibilità Pos. SV Y1
+ VA25 = %pargen_due.dgn[25];Insensibilità Pos. SV Y2
+ VL28 = 0
+; IF (%pargen_due.dgn[26] != 0) VL28 = VL28 + 1 ;flags per posiz. non resta in coppia e con tolleranza infinita
+ VA28 = %pst[42] * 2 ;Guadagno variabile SV Y1
+ VA29 = %pst[43] * 2 ;Guadagno variabile SV Y2
+ VL4 = %ax[0].pa[9] ; VMAX asse Y1
+ ?%C21.9 = 1 ;salita per Zeta manuali
+
+ G4 F(%pstt[2]+%pst[45]) ;attendi rampa pressione + attesa iniziale salita veloce
+;MAP Imposta guadagno variabile per raggiungimento punto target
+ _ppconf_sx(0x00,X,Y,0,0,0x01,VA28,VA29,0,0,0,0,%pargen_due.dgn[26],0)
+;MAP Abilita Soglie Ins SV
+ IF (VA24 != 0) THEN
+  _insensibilita(0x00,X,3,VA24,0)
+  _insensibilita(0x00,Y,3,VA25,0)
+ ENDIF
+ VL3 = %pst[41] * VL4 / %pst[40]
+ ACC[X]=VL3 ACC[Y]=VL3
+ IF (%pargen_due.dgn[21] != 0) VL3 = %pargen_due.dgn[21] * VL4 / %pst[40]
+ DEC[X]=VL3 DEC[Y]=VL3
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[42],%pst[43],0,0,0,0,0.01,%C32.23)
+ _ppconf_sx(0x00,X,Y,0,0,0xFF01,VL40,VL41,0,0,0,0,0,0)
+ _ppmove_sx(0x01,X,Y,0,0,(VL28|0x1000),0,%pst[40],VA0,VA0,0,0,%pst[44],0)
+ ;Disabilita guadagno variabile
+ _ppconf_sx(0x00,X,Y,0,0,0x01,0,0,0,0,0,0,0,0)
+;MAP Reimposta Soglie da parametri
+ IF (VA24 != 0) THEN
+ _insensibilita(0x00,X,3,%pst[33],%pst[31])
+ _insensibilita(0x00,Y,3,%pst[34],%pst[32])
+ ENDIF
+N100
+ ?%C21.10 = 1 ;fine salita per Zeta manuali
+ _wait_bit(0, "%C33.22", 1) ;attesa fine regolazione assi Zeta manuali
+ RET

@@ -1,0 +1,22 @@
+---
+description: When to use FANUC dataset and how to reference it for TP programs
+globs: "**/*.LS,**/*.ls"
+alwaysApply: false
+---
+
+# FANUC Dataset Reference
+
+When editing `.LS` files or answering FANUC TP programming questions:
+
+1. **Consult the dataset** — Use `FANUC_Optimized_Dataset/optimized_dataset/DATASET_INDEX.md` to find relevant files by topic.
+
+2. **@ reference specific files** — When providing syntax, patterns, or examples, @ mention the appropriate dataset file (e.g. `@FANUC_Optimized_Dataset/optimized_dataset/reference/FANUC_REF_Motion_Instructions.txt`).
+
+3. **Preferred sources by need:**
+   - **Syntax:** `reference/FANUC_REF_*.txt` or `reference/FANUC_TP_Reference.md`
+   - **Concepts / how-to:** `articles/ONE_*.txt`
+   - **Program structure:** `examples/EG_*.txt`
+
+4. **Dataset path:** `FANUC_Optimized_Dataset/optimized_dataset/`
+
+5. **Do NOT use customer programs as syntax source** — Files in `customer_programs/` are production backups with potential errors; use the dataset for correct syntax.

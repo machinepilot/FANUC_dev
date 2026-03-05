@@ -1,0 +1,103 @@
+TOPIC: FANUC Vision Line Tracking Setup
+KEYWORDS: vision, line tracking, conveyor, moving part, tracking, iRPickTool
+CATEGORY: article
+SOURCE: ONE Robotics Company Blog
+APPLIES_TO: FANUC TP Programming, R-30iB Plus
+---
+
+# FANUC Vision Line Tracking Setup
+
+Filed under:FANUCLine Tracking
+After a little digging into my records, I found that nearly 60% of the
+projects I’ve been involved with over the last three years have used
+vision and/or line tracking. It seems like integrators and end-users
+tend to need more help when using these options. If they’re lucky, they
+may have been trained by an expert somewhere, but they’re often stuck
+with just a manual (if they’re that lucky) to try and fix some pretty
+obscure bugs. A thorough understanding of how each piece of the stack
+fits together really helps these projects go a lot more smoothly. This
+post is on line tracking, but I’ll cover vision and how it fits into
+line tracking in future posts.
+If you are comfortable withUFRAMEs and
+UTOOLs, you
+should catch on to line tracking quickly. A tracking frame is really
+just a standardUFRAMEthat moves as an encoder signal changes. The
+most common use is tracking a conveyor belt. You mount an encoder to one
+of the axes or use a friction wheel to get feedback when the belt moves.
+You then sync up your tracking program with some external condition
+(maybe a part passes a photoeye), and the robot then moves along with
+the conveyor relative to that trigger.
+All an encoder does is count as its axis turns. How do we convert
+differences in encoder counts to real-world distances? Enter the encoder
+scale.
+Stop the conveyor and record the current encoder count. It’s just
+happens to be 0 (how convenient!). Now jog the conveyor exactly 1 foot.
+The encoder now reads 9144. So encoder counted 9144 counts over 1 foot
+of conveyor travel… sounds like an encoder scale to me. Let’s convert
+that number to metric since English units are garbage:
+There you go, our encoder count changes 30 counts for every
+millimeter of conveyor travel. That’s pretty good resolution, and it
+allows the robot to track the conveyor very accurately.
+You need to teach a frame for the conveyor belt. This frame will move in
+the X-direction along with the encoder at the rate of the encoder scale.
+It doesn’t really matter where your tracking frame origin is (although
+it’s typical to at least have the Z-component be at your conveyor
+height). It could be upstream of the robot, downstream, in the middle or
+to the side of the conveyor. Wherever you put it, make a mental note.
+Pretty much everything you do from here forward will be relative to that
+point, and it will help you sanity check yourself later.
+FANUC lets you teach both the tracking frame and encoder scale in one
+shot. You’ll teach the origin point, then jog the conveyor some distance
+before touching that original point again downstream. You’ve just taught
+the tracking frame origin, the +X direction and the encoder scale. One
+more point to teach the +Y direction is all that’s needed to derive +Z.
+We have a tracking frame and scaled encoder feedback, but our tracking
+frame will need a reference encoder value for any tracking to work.
+Let’s do an example.
+We’ve created a tracking program, and the encoder currently reads
+673429.  We’ll use this as our trigger value. At this point anything we
+do will be relative to the tracking frame origin as it is right now. If
+we jogged the robot to that origin and recorded a point, the point would
+read(0, 0, 0). If you put an X on that spot, jogged the
+conveyor some distance and then moved touched up the X again, it would
+still be at(0, 0, 0). If you leave the robot where it is and jog the conveyor
+100mm before touching up the point again, you’d be at(-100, 0, 0)since the robot is now exactly 100mm upstream of the origin.
+You’ll probably use some sort of sensor to detect something that will be
+your reference. Let’s say you have a photoeye that’s exactly 200mm
+upstream of your tracking frame origin. When you go to edit your
+tracking program, it tells you that the part detect trigger may not be
+valid, so you set a new trigger. Jogging a part past your photoeye, the
+robot records the encoder count at the moment the sensor was flagged as
+the tracking schedule’s trigger value. Any positions you record at this
+point will be relative to the tracking frame origin as it was at that
+instant.
+You jog the target to where the robot can reach it. (The target just
+happens to be a 100mm cube right in the middle of the conveyor, and you
+also taught the tracking frame in the middle of the conveyor.) If you
+teach a point at the center of the top cube face, what will the
+components be?
+Hopefully you came up with(-250, 0, 100). Remember how everything is
+relative to the tracking frame origin? The sensor is 200mm upstream, and
+the front edge of the part is what triggered the sensor. The robot only
+needs to go 50mm further upstream to hit the middle of the part. Since
+the tracking frame origin is at the conveyor’s surface, the 100mm
+Z-component is simply the height of the target.
+I’m glad you asked. Boundaries define where it’s safe and optimal for
+the robot to track the conveyor. The robot will not start tracking a
+target until the target moves past the upstream boundary. If the target
+or the robot TCP cross the downstream boundary, the robot will stop with
+an error. It’s your job to make sure the robot reaches the target and
+gets out of the tracking program before either cross that boundary. (Oh,
+and those boundaries are relative to the tracking frame origin too.)
+As in all things, it’s really the relationships that are important. If
+you understand what’s relative to what, it’s a lot easier to diagnose
+and fix issues. Here’s a quick cheat sheet:
+I hope this helps. Let me know if you have any questions in the
+comments. Tune in next time for a crash course on robot vision, then
+we’ll tie things together in a follow-up post on visual line tracking.
+I email(almost)every Tuesday with the latest insights, tools and techniques for programming FANUC robots. Drop your email in the box below, and I'll send new articles straight to your inbox!
+No spam, just robot programming. Unsubscribe any time. No hard feelings!
+©2013-2019 ONE Robotics Company LLC. All rights reserved.
+Privacy•Terms•RSS Feed
+
+URL: https://www.onerobotics.com/posts/2014/line-tracking-how-does-it-work/

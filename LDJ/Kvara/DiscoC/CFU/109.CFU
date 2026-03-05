@@ -1,0 +1,21 @@
+Beam user fixed cycle Ver.012.38 : 109
+ ;Sample to align the beam using an external sensor
+ %C21.13 = 1 ;Signal beam user cycle running
+ %valvd = %outsl ;Slow rise valve select
+ %tensap = %pstp3 * 10000 / 255 ; Slow rise pressure select (mVolt)
+ %tenscp = 0 ; Null crowning pressure select
+ ;if Y1 is lower than Y2, drive only Y1
+ IF( %M64.0 ) THEN
+   VA1 = 0.5 ;Voltage Y1 (Volt)
+   VA2 = 0 ;Voltage Y2 (Volt)
+ ;else, drive only Y2
+ ELSE
+   VA1 = 0 ;Voltage Y1 (Volt)
+   VA2 = 0.5 ;Voltage Y2 (Volt)
+ ENDIF
+ %C21.7 = 1 ;set beam diagnostic mode
+ _ppconf_ol(0x00,X,Y,%pst[20],%pst[18],%pst[18],%pst[23],1,0.01)
+ _ppmove_ol(0x00,X,Y,0x04,10,VA1,VA2,%pst[0],3600) ;supply voltage
+ _wait_bit( 0, "%C21.7", 0) ;wait forever
+ ?%C21.13 = 0 ;Signal beam user cycle terminated (unused in this example)
+ RET

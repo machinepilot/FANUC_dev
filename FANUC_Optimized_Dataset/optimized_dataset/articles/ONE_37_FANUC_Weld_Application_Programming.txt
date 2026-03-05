@@ -1,0 +1,100 @@
+TOPIC: FANUC Weld Application Programming
+KEYWORDS: welding, arc weld, weld schedule, torch, seam, weld start, weld end
+CATEGORY: article
+SOURCE: ONE Robotics Company Blog
+APPLIES_TO: FANUC TP Programming, R-30iB Plus
+---
+
+# FANUC Weld Application Programming
+
+Filed under:FANUCKAREL Programming
+You can do just about anything with FANUC’s TP programming language,
+but there are some things it just can’t do. Enter KAREL.
+KAREL is a lower-level language very similar toPascal. It
+features strongly typed variables, constants, custom types, procedures,
+functions, and gives you access to all sorts of useful built-ins for
+things you may not be able to do with TP. (By the way, if you’re interesting in TP programming, please check outthe book I wrote on programming FANUC robots.)
+KAREL is a compiled language; the source must be translated from a KAREL
+source file (.KL) into p-code (.PC) before it can be loaded and executed
+on the controller. Once your KAREL program has been loaded onto the
+controller, it acts like ablack box; you can’t see the source or step
+through it like a TP program.
+As of the R-30iB controller your robot must have the KAREL software
+option in order to load your own custom KAREL programs.
+We all know that outputting “Hello, world” is absolutely vital to
+learning any new programming language. Let’s make it happen in KAREL:
+Let’s take a quick look at this program. The PROGRAM statement followed
+by the name of the program must be the first statement in any KAREL
+program. The END statement must use the same identifier.
+Any statements within the BEGIN and END statements are executed by the KAREL
+program. You can probably guess what the WRITE statement does. You can
+optionally provide it with a FILE to write to, but by default it will
+write to the default TPDISPLAY, the USER screen. Each item you want to
+write can be separated by commas, and the CR stands for ‘carriage
+return.’ Any subsequent WRITE statements will take place on the next line.
+You can either edit and translate your KAREL source files directly in
+ROBOGUIDE or use the ktrans command line utility that comes with it.
+You can test your program in ROBOGUIDE or on a real controller. Just transfer
+the .PC file to the controller via your favorite method (FTP, USB
+stick, PCMCIA card, etc.), then run it or CALL it from a TP program. If you go to
+the USER screen (Menu > 9), you should see “Hello, world!” on the screen.
+Here’s how a KAREL program is structured:
+Let’s create a quick program that demonstrates all of these options.
+There’s a lot going on in this program, so let’s go through it section
+by section.
+The %COMMENT directive changes the comment that displays on the right of
+the teach pendant SELECT menu.
+Constants are values that cannot be changed in the program. I’ve created
+a unique ID for each language that I know won’t be changed.
+I created a custom type for a person. Each person data structure can
+have a name of type STRING[16] and a language_id of type INTEGER. You
+can access elements of your custom type with “dot” syntax (e.g.
+type.element).
+I defined a variable named people that is an array of up to 3 person_t
+data structures.
+I defined two routines: greeting, a FUNCTION which returns a STRING
+value, and the PROCEDURE greet, which just WRITEs a message to the
+screen.
+Since I’ve created a 3-slot array of people, I have to initialize those
+values. (Alternatively, you could set the KAREL VARs directly from the
+DATA screen, but this is more demonstrative for this contrived example.)
+I then call the greet() PROCEDURE, which takes a person_t as an
+argument.
+The output should be:
+KAREL is an old language, so it has some pretty nasty limitations that
+are remnants of an era when memory was hard to come by.
+Identifiers (program name, constant names, variable names, routine
+names, etc.) are all limited to 12 characters. Naming is hard. It’s even
+harder when you have to smash things into 12 characters.
+If your program gets too long, you’ll have to split it up into multiple
+programs.
+You may run into issues if you change a variable’s type or do something
+like expanding an array, etc. If you run into any errors like this,
+you’ll have to delete both the .PC and .VR file for your program before
+re-loading it.
+Many of the built-in procedures aren’t exactly easy or intuitive to use.
+Take for example, the GET_VAR built-in for getting a variable:
+Personally, I like to use assignment over calling procedures. I’d
+generally write some general-purpose ROUTINEs to simplify things e.g.
+While KAREL does provide quite a few built-in procedures, it’s missing
+many common features you might expect from a programming language for
+things like Arrays, Strings, etc. You may find yourself implementing
+rudimentary methods over and over again before developing your own
+environment libraries.
+This is just the tip of the KAREL iceberg. Hopefully this example will
+get you thinking how KAREL may be the right choice for certain
+programming tasks where TP may not be so good. If you really want to
+learn KAREL, see if you can get a copy of the KAREL manual from your
+local FANUC rep or integrator.
+I’ve written several otherarticles on FANUC KAREL programming.
+If you are already familiar with KAREL or you want to look at some more
+programming examples, check outKUnit, an open-source unit testing
+framework for FANUC KAREL. If you want to learn more
+about unit testing, read this article abouttesting FANUC TP and KAREL code.
+If you enjoyed this post and are interested in TP Programming, please checkout the book I wrote,Robot Whispering: The Unofficial Guide to Programming FANUC Robots.
+I email(almost)every Tuesday with the latest insights, tools and techniques for programming FANUC robots. Drop your email in the box below, and I'll send new articles straight to your inbox!
+No spam, just robot programming. Unsubscribe any time. No hard feelings!
+©2013-2019 ONE Robotics Company LLC. All rights reserved.
+Privacy•Terms•RSS Feed
+
+URL: https://www.onerobotics.com/posts/2013/introduction-to-karel-programming/

@@ -1,0 +1,28 @@
+DATA TYPE FORMATS,
+WORD (16-bit),
+Size,1 register
+Range,0-65535 (unsigned) or -32768 to +32767 (signed)
+Byte Order,Big-Endian (MSB first)
+Example,Value 1000 = 0x03E8
+DWORD (32-bit),
+Size,2 registers (must start on EVEN address)
+Range,"0 to 4,294,967,295 (unsigned)"
+Byte Order,Big-Endian
+Example,"Value 100000 = Reg N: 0x0001, Reg N+1: 0x86A0"
+DOUBLE (64-bit IEEE 754),
+Size,4 registers (must start on address divisible by 4)
+Format,IEEE 754 double-precision floating point
+Byte Order,Big-Endian
+Example,90.5 degrees = 0x4056A00000000000
+,"Reg N: 0x4056, N+1: 0xA000, N+2: 0x0000, N+3: 0x0000"
+STRING (ASCII),
+Size,Variable (2 bytes per register)
+Encoding,ASCII characters
+Byte Order,Big-Endian
+Terminator,0x0000 (NULL)
+Maximum,80 characters (40 registers)
+Example,"""PART_A"""
+,"Reg 53: 0x5041 (P,A)"
+,"Reg 54: 0x5254 (R,T)"
+,"Reg 55: 0x5F41 (_,A)"
+,Reg 56: 0x0000 (NULL)

@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" ?>
+<job>
+    <settings>
+        <version>1</version>
+        <unit>inch</unit>
+        <backcolour>0</backcolour>
+    </settings>
+    <entities>
+        <entity id="LOWERBEAM_INCH_PRIMA POWER EP1336" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>LOWERBEAM_INCH_PRIMA POWER EP1336</reference_id>
+            </geometry>
+        </entity>
+    </entities>
+    <states>
+        <state id="default">
+            <visibility>
+                <show type="Unspecified">1</show>
+                <show entity="LOWERBEAM_INCH_PRIMA POWER EP1336">1</show>
+            </visibility>
+            <transformations />
+            <views>
+                <view id="1">
+                    <pos>14000,8000,-14000</pos>
+                    <target>0,0,-0</target>
+                    <near>6000</near>
+                    <far>25000</far>
+                    <width>9050</width>
+                    <height>5615</height>
+                    <perspective>1</perspective>
+                </view>
+            </views>
+        </state>
+        <state order="1" id="LOWERBEAM_INCH_PRIMA POWER EP1336">
+            <visibility />
+            <transformations />
+            <views />
+        </state>
+    </states>
+    <geometries>
+        <geometry id="LOWERBEAM_INCH_PRIMA POWER EP1336">
+            <data encoding="1">UEsDBBQAAgAIAKpG6USQmrHkiQMAAD8LAAALABEAY29sbGFkYS54bWxVVA0AB/ECvVPxAr1T8QK9U81WbY/bKBD+K4h+tg1+i7OyXe3t9U6Vts1qu3fq7ZfIdUiCZOPUxt3m39+AYeO87qqq1MoC5uUZBmYGTPr2e12hb6zteCMyTF2CERNls+BileFeLp0Ev83Tm9nt7fWf1wjAosvwWsrNlec9PT25ZVNVxaJwm3bl+YREHqWeQX8q16wu8Hj20KU4T4uuYzJPy0bIln/pZdOCrJdrGK+Bu5vdpp7hAVTXTMguT709cmRatqyQbJH7hBKHTB2SPFB6FfpX0fQRoEab1rCpJT+Le1anveAS1UyyNsPEJX4UYiSKmmWYi3KNPUBs5sV33uWP83/uUs9ysOhhYxX/0hbtdl4IXhcStq50p4RWVvHVWo5BVmB5MFmxMcAKLA9TspYX1RgzklkRWy5ZuefpWWIFK9bA3luuZjf0FvFFhk1qLGBrg/LXzQ3ktGbdOk+7pm9LdhLubJqO630Delk1hZwXbVtsXwA7GoRR2fRCZjhMcO5MEjcOaYwc4iZJlPgRcoLAJROSoFM64tJpnEQ7ne/6cTCZnLB61uxsfJeEE3p6viNd4pIojgLmEBru9OdntZo9uwsuX/B41uFlf+fDeSGaZ4N5NpapN0p7nkpWrgX/2rO5OtiNgDugLFnXNS0ayijDb15dFzTGqIOqXYBVAAW2KdqiNgX6GSO53QCh3avzO9b+d1H7eKT17CqBPN6CNyz98kkQTVvDsXzNOTDQw92qU6Cz6ZMwUlmMEUHOHu+oKlFSokg9HlgoKT2woq4/ocFA/4x8nV7/75Ys+ENJDkCdA8Wo3HCx6SXq4BcmQJnhu9mn9w/vZx/xa8pTO7fTQuzgHharCjzsMojs/Zzh+7//mAcxUZfbkdt/390/vPs8cjqsDzXLJfxs4A+lXB0afZzdf7i+xS8nZjcP1dHMAygKXxfG0BRN9OgjuCt8IzIMNeII0Uh1/nOn2UB1FIWIEugmpmkmVkSkutCKhk6xvuV8g4wNHUCbIj0jSkwLzVoTM4J/qkGRUapGx0pY1wBPvY0qDJucU3kih3micKv5fhT/+lRBZAMIaACbHZqiIz0SpC6EyDRFh3oM9Beapj41B1VGEO9ARcZ2ik0GQicRfjWmaWaKouPwecMrwLNLH70zxs8KK9OvOHg/wvtwhNyT/gD0G+/6opp3JRN7T6YDuR5VOjpZiJLtqVHfQrbf9ELdK4tBpk+0MbIv3Px/UEsBAhcLFAACAAgAqkbpRJCaseSJAwAAPwsAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAfxAr1TUEsFBgAAAAABAAEAQgAAAMMDAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="36048" />
+                </material>
+                <material id="2">
+                    <color emissive="12632256" />
+                </material>
+            </materials>
+        </geometry>
+    </geometries>
+</job>

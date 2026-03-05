@@ -1,0 +1,80 @@
+Ciclo fisso manuale salita Ver.012.39 : 102
+ VA1 = %C57 / 1000 ;quota minima pestone in mm
+ ;_paras(0x0, X, 0) ;dis. limiti SW per evitare allarmi
+ IF(VA1 >= VG1) JMPF 1000 ;se oltre quota limite, esce
+ VA0 = VG1 ;carica quota limite
+ VA24 = %pargen_due.dgn[24];Insensibilità Pos. SV Y1
+ VA25 = %pargen_due.dgn[25];Insensibilità Pos. SV Y2
+ VL28 = 0
+ ;IF (%pargen_due.dgn[26] != 0) VL28 = VL28 + 1 ;flags per posiz. non resta in coppia e con tolleranza infinita
+ VA28 = %pst[42] * 2 ;Guadagno variabile SV Y1
+ VA29 = %pst[43] * 2 ;Guadagno variabile SV Y2
+ VL4 = %ax[0].pa[9] ; VMAX asse Y1
+
+ IF (%pargen_due.dgn[30] == 0) JMPF 30
+ FWR[X]= 0;abilita errore di inseguimento Y1
+ FWR[Y]= 0 ;abilita errore di inseguimento Y2
+ %ax0.pa5 = %pargen_due.dgn[30] * 1000
+ %ax1.pa5 = %pargen_due.dgn[30] * 1000
+ IF( !%C32.3 ) JMPF 20
+ %ax0.pa5 = %pst54 * 1000
+ %ax1.pa5 = %pst54 * 1000
+N20
+ FWR[X]= 1 ;abilita errore di inseguimento Y1
+ FWR[Y]= 1 ;abilita errore di inseguimento Y2
+N30
+
+ ;se richiesto, va al PMS calcolato
+ IF(!%C32.1) JMPF 50
+ VA0 = %C58 / 1000 ;quota PMS calcolato
+ IF(VA1 >= VA0) JMPF 1000 ;se oltre quota limite, esce
+
+N50 ?%C21.4 = 1 ;salita manuale in corso
+ ;Disabilita filtro FIR su DAC pestone
+ _ppconf_sx(0x00,X,Y,0,0,0xFF00,0,0,0,0,0,0,0,0)
+ ;Disabilita guadagno variabile
+ _ppconf_sx(0x00,X,Y,0,0,0x01,0,0,0,0,0,0,0,0)
+ ;verifica richiesta salita lenta
+ IF( %C32.3 ) JMPF 200
+ ;SALITA VELOCE
+ G4 F(%pstt[2]+%pst[45]) ;attendi rampa pressione + attesa iniziale salita veloce
+ ;MAP Imposta guadagno variabile per raggiungimento punto target
+ _ppconf_sx(0x00,X,Y,0,0,0x01,VA28,VA29,0,0,0,0,%pargen_due.dgn[26],0)
+;MAP Abilita Soglie Ins SV
+ IF (VA24 != 0) THEN
+  _insensibilita(0x00,X,3,VA24,0)
+  _insensibilita(0x00,Y,3,VA25,0)
+ ENDIF
+ VL3 = %pst[41] * VL4 / %pst[40]
+ ACC[X]=VL3 ACC[Y]=VL3
+ IF (%C32.28) VL3 = %pargen_due.dgn[21] * VL4 / %pst[40]
+ DEC[X]=VL3 DEC[Y]=VL3
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[42],%pst[43],0,0,VL44,0,0.01,%C32.23)
+ _ppconf_sx(0x00,X,Y,0,0,0xFF01,VL40,VL41,0,0,0,0,0,0)
+ _wait_bit( 0,"%C38.12",0); attesa pompe in pressione per salita
+ _ppmove_sx(0x01,X,Y,0,0,(VL28|0x1000),0,%pst[40],VA0,VA0,0,0,%pst[44],0)
+ ;Disabilita guadagno variabile
+ _ppconf_sx(0x00,X,Y,0,0,0x01,0,0,0,0,0,0,0,0)
+;MAP Reimposta Soglie da parametri
+ IF (VA24 != 0) THEN
+ _insensibilita(0x00,X,3,%pst[33],%pst[31])
+ _insensibilita(0x00,Y,3,%pst[34],%pst[32])
+ ENDIF
+ ;Ripristina errore inseguimento
+ IF ((%pargen_due.dgn[29] == 0) || (%pargen_due.dgn[30] == 0)) JMPF 150
+ FWR[X]= 0 ;disabilita errore di inseguimento Y1
+ FWR[Y]= 0 ;disabilita errore di inseguimento Y2
+ %ax0.pa5 = %pargen_due.dgn[29] * 1000
+ %ax1.pa5 = %pargen_due.dgn[29] * 1000
+ FWR[X]= 1 ;abilita errore di inseguimento Y1
+ FWR[Y]= 1 ;abilita errore di inseguimento Y2
+N150
+ JMPF 1000
+N200 ;SALITA LENTA
+ G4 F(%pstt[3]+%pst[52]) ;attendi rampa pressione + attesa iniziale salita lenta
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[49],%pst[50],0,0,VL44,0,0.01,%C32.23)
+ _ppmove_sx(0x01,X,Y,0,0,0x1000,%pst[48],%pst[47],VA0,VA0,0,0,%pst[51],0)
+N1000
+ ?%C21.8=1 ;fine salita manuale
+ _wait_bit( 0,"%C32.2",1) ;attende conferma fine ciclo
+ RET

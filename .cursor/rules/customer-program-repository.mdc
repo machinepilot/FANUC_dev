@@ -1,0 +1,17 @@
+---
+description: Customer program repository — production backups, not reference; use dataset for syntax
+globs: "customer_programs/**/*"
+alwaysApply: false
+---
+
+# Customer Program Repository
+
+When editing or discussing files under `customer_programs/`:
+
+1. **Customer programs = production backups** — May contain errors, multiple programmer styles, and different philosophies. Do NOT use customer code as syntax or reference.
+
+2. **Use the dataset for syntax** — Use `FANUC_Optimized_Dataset/optimized_dataset/` for correct syntax, patterns, and best practices. @ reference dataset files when suggesting fixes.
+
+3. **Consult context** — Read `customer_programs/PROGRAM_REPOSITORY_INDEX.md` and `customer_programs/_manifest.json` for customer/system context before making changes.
+
+4. **When fixing customer code** — Preserve application logic; suggest dataset patterns for improvements. Do not copy patterns from other customer programs without verification.

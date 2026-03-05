@@ -1,0 +1,143 @@
+TOPIC: Vision Wait / Trigger Program
+KEYWORDS: vision, wait, trigger, snap, exposure, VISION RUN_FIND, camera ready, part detect
+CATEGORY: program_example
+SOURCE: TWA (The Way Automation) Standard Programs
+APPLIES_TO: R-30iB Plus, CNC Machine Tending, RoboDrill
+DESCRIPTION: Wait for vision system to complete acquisition and return results
+---
+
+/PROG  VISION_WAIT3
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= "";
+PROG_SIZE	= 2194;
+CREATE		= DATE 20-01-21  TIME 13:09:40;
+MODIFIED	= DATE 20-01-21  TIME 16:32:20;
+FILE_NAME	= VISION_W;
+VERSION		= 0;
+LINE_COUNT	= 111;
+MEMORY_SIZE	= 2646;
+PROTECT		= READ_WRITE;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= 1,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+/APPL
+/MN
+   1:   ;
+   2:  LBL[100] ;
+   3:  UFRAME_NUM=0 ;
+   4:  UTOOL_NUM=5 ;
+   5:   ;
+   6:J PR[42] 100% FINE    ;
+   7:  R[101:Infeed Type]=0    ;
+   8:  VISION OVERRIDE 'EXPO2' R[109] ;
+   9:   ;
+  10:  !Mark detection at wait pos ;
+  11:  LBL[1000] ;
+  12:  WAIT    .50(sec) ;
+  13:  VISION RUN_FIND 'VP2'    ;
+  14:  VISION GET_PASSFAIL 'VP2' R[91] ;
+  15:  IF R[91]=2,JMP LBL[11000] ;
+  16:  R[101:Infeed Type]=0    ;
+  17:   ;
+  18:  IF R[110]=0 AND RI[2:Gripper Opened]=ON,JMP LBL[1100] ;
+  19:  IF R[111]=0 AND RI[1:Gripper Closed]=ON,JMP LBL[1200] ;
+  20:   ;
+  21:  IF R[110]=1,JMP LBL[4000] ;
+  22:  IF R[111]=1,JMP LBL[4100] ;
+  23:   ;
+  24:  LBL[1100] ;
+  25:  CALL IRVGETMSR('VP2',94,1,2) ;
+  26:  R[96]=R[112]    ;
+  27:  R[97]=R[113]    ;
+  28:  JMP LBL[2000] ;
+  29:   ;
+  30:  LBL[1200] ;
+  31:  CALL IRVGETMSR('VP2',94,1,2) ;
+  32:  R[96]=R[114]    ;
+  33:  R[97]=R[115]    ;
+  34:  JMP LBL[2000] ;
+  35:   ;
+  36:  !------------------------------- ;
+  37:   ;
+  38:  !Confirm vertical displacement ;
+  39:  LBL[2000] ;
+  40:  IF ((R[96]-R[94])>R[98] OR (R[94]-R[96])>R[98]),JMP LBL[9000] ;
+  41:  !----------------------- ;
+  42:   ;
+  43:  !Confirm horizontal displacement ;
+  44:  LBL[3000] ;
+  45:  IF ((R[97]-R[95])>R[99] OR (R[95]-R[97])>R[99]),JMP LBL[9000] ;
+  46:  !----------------------- ;
+  47:   ;
+  48:  !End if no displacement ;
+  49:  END ;
+  50:   ;
+  51:  !Initial setting ;
+  52:  LBL[4000] ;
+  53:  CALL IRVGETMSR('VP2',112,1,2) ;
+  54:  R[110]=0    ;
+  55:  END ;
+  56:   ;
+  57:  LBL[4100] ;
+  58:  CALL IRVGETMSR('VP2',114,1,2) ;
+  59:  R[111]=0    ;
+  60:  END ;
+  61:  !--------------------- ;
+  62:   ;
+  63:  !When 3 points correction req. ;
+  64:  LBL[9000] ;
+  65:  R[100:Num Grippers]=1    ;
+  66:  R[110]=1    ;
+  67:  R[111]=1    ;
+  68:  END ;
+  69:  !---------------------- ;
+  70:   ;
+  71:  !vision detection retry ;
+  72:  LBL[11000] ;
+  73:  R[101:Infeed Type]=R[101:Infeed Type]+1    ;
+  74:  IF R[101:Infeed Type]>100,JMP LBL[21000] ;
+  75:   ;
+  76:  R[103:Post Process]=R[101:Infeed Type] MOD 2    ;
+  77:  R[104:Machine No]=R[101:Infeed Type] DIV 2    ;
+  78:  R[105:Num Machines]=R[103:Post Process]+R[104:Machine No]    ;
+  79:   ;
+  80:  IF R[103:Post Process]=0,JMP LBL[11100] ;
+  81:  JMP LBL[11200] ;
+  82:   ;
+  83:  LBL[11100] ;
+  84:  R[105:Num Machines]=R[105:Num Machines]*(-1)    ;
+  85:   ;
+  86:  LBL[11200] ;
+  87:  R[106:Finish Type]=R[105:Num Machines]*1    ;
+  88:  R[107:Num Infeed]=R[109]+R[106:Finish Type]    ;
+  89:   ;
+  90:  IF R[107:Num Infeed]>250,JMP LBL[11300] ;
+  91:  IF R[107:Num Infeed]<.04,JMP LBL[11400] ;
+  92:  JMP LBL[11500] ;
+  93:   ;
+  94:  LBL[11300] ;
+  95:  R[107:Num Infeed]=250    ;
+  96:  JMP LBL[11500] ;
+  97:   ;
+  98:  LBL[11400] ;
+  99:  R[107:Num Infeed]=.04    ;
+ 100:   ;
+ 101:  LBL[11500] ;
+ 102:  VISION OVERRIDE 'EXPO2' R[107] ;
+ 103:  JMP LBL[1000] ;
+ 104:  !---------------------------- ;
+ 105:   ;
+ 106:  !Abnormal processing ;
+ 107:  LBL[21000] ;
+ 108:  UALM[19] ;
+ 109:  JMP LBL[1000] ;
+ 110:  !-------------------------- ;
+ 111:   ;
+/POS
+/END

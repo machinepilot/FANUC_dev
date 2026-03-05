@@ -1,0 +1,956 @@
+* Blocchi gestione periferiche CANopen da PLC
+
+VAR_IN_OUT
+AS_DATA0 AT %CanFb48; * CanFb48 buffer I/O Canopen
+AS_DATA1 AT %CanFb49; * CanFb49 buffer I/O Canopen
+AS_DATA2 AT %CanFb50; * CanFb50 buffer I/O Canopen
+AS_DATA3 AT %CanFb51; * CanFb51 buffer I/O Canopen
+AS_DATA4 AT %CanFb52; * CanFb52 buffer I/O Canopen
+AS_DATA5 AT %CanFb53; * CanFb53 buffer I/O Canopen
+AS_DATA6 AT %CanFb54; * CanFb54 buffer I/O Canopen
+AS_DATA7 AT %CanFb55; * CanFb55 buffer I/O Canopen
+DI_DATA0 AT %CanFb56; * CanFb56 Dato 0 input
+DI_DATA1 AT %CanFb57; * CanFb57 Dato 1 input
+DI_COBID AT %CanFb58; * CanFb58 Identificatore oggetto CanOpen
+CONTROLREG AT %CanFb59; * CanFb59 registro comando (bit 0-7=codice comando)
+CMD_RESET AT %CanFb59.30; * CanFb59.30 Reset nodo
+CMD_ENAB AT %CanFb59.31; * CanFb59.31 Enable esecuzione comando
+STATUSREG AT %CanFb60; * CanFb60 registro stato
+DO_CONFIRM AT %CanFb60.31; * CanFb60.31 conferma comando eseguito
+DO_ERROR AT %CanFb61; * CanFb61 codice errore comando
+DO_DATA0 AT %CanFb62; * CanFb62 Dato 0 output
+DO_DATA1 AT %CanFb63; * CanFb63 Dato 1 output
+END_VAR
+
+* -------------------------------------------------------*
+* Blocco Funzionale generico invio comando a nodo CANopen
+* -------------------------------------------------------*
+
+FUNCTION_BLOCK COP_COMMAND
+
+VAR_INPUT
+CM_ENAB: BOOL; * Richiesta esecuzione comando
+CM_RESET: BOOL; * Richiesta di reset del nodo
+CM_CODE: DWORD; * Codice del comando
+CI_COBID: DWORD; * Identificatore oggetto CanOpen
+CI_DATA0: DWORD; * Dato 0 in input
+CI_DATA1: DWORD; * Dato 1 in input
+END_VAR
+
+VAR_OUTPUT
+CS_CONFIRM: BOOL; * Conferma comando eseguito
+CO_ERROR: WORD; * Codice di errore
+CO_ERRORINFO: DWORD; * Informazioni aggiuntive su errore
+CO_DATA0: DWORD; * Dato 0 in output
+CO_DATA1: DWORD; * Dato 1 in output
+CO_DATA2: DWORD; * Dato 2 in output
+CO_DATA3: DWORD; * Dato 3 in output
+CO_DATA4: DWORD; * Dato 4 in output
+CO_DATA5: DWORD; * Dato 5 in output
+CO_DATA6: DWORD; * Dato 6 in output
+CO_DATA7: DWORD; * Dato 7 in output
+CO_DATA8: DWORD; * Dato 8 in output
+END_VAR
+
+VAR
+StPrecEnab: BOOL; * Stato precedente ingresso ENAB
+StPrecReset: BOOL; * Stato precedente ingresso RESET
+StPrecConfirm: BOOL; * Stato precedente segnale CONFIRM
+RTEnab: BOOL; * Fronte salita ingresso ENAB
+MemCmdInProg: BOOL; * Mem. comando in corso
+MemErrBusy: BOOL; * Mem. errore area comandi occupata
+CmdFinished: BOOL; * Conferma comando terminato
+END_VAR
+
+* Sul fronte di salita del comando, copia tutti i dati in andata
+
+LD   CM_ENAB      ** Richiesta esecuzione comando
+ANDN StPrecEnab   ** Stato precedente ingresso ENAB
+ST   RTEnab       ** Fronte salita ingresso ENAB
+
+LD   RTEnab       ** Fronte salita ingresso ENAB
+ANDN CMD_ENAB     ** CanFb59.31 Enable esecuzione comando
+ANDN DO_CONFIRM   ** CanFb60.31 conferma comando eseguito
+S    MemCmdInProg ** Mem. comando in corso
+
+LDN  CM_ENAB      ** Richiesta esecuzione comando
+ANDN CMD_ENAB     ** CanFb59.31 Enable esecuzione comando
+ANDN DO_CONFIRM   ** CanFb60.31 conferma comando eseguito
+OR   CM_RESET     ** Richiesta di reset del nodo
+R    MemCmdInProg ** Mem. comando in corso
+
+LD   RTEnab       ** Fronte salita ingresso ENAB
+ANDN MemCmdInProg ** Mem. comando in corso
+S    MemErrBusy   ** Mem. errore area comandi occupata
+
+LDN  CM_ENAB      ** Richiesta esecuzione comando
+R    MemErrBusy   ** Mem. errore area comandi occupata
+
+LD   RTEnab       ** Fronte salita ingresso ENAB
+AND  MemCmdInProg ** Mem. comando in corso
+JMPCN END_COMMAND
+
+LD   CONTROLREG   ** CanFb59 registro comando (bit 0-7=codice comando)
+AND  16#FFFFFF00
+OR   CM_CODE      ** Codice del comando
+ST   CONTROLREG   ** CanFb59 registro comando (bit 0-7=codice comando)
+
+LD   CI_COBID     ** Identificatore oggetto CanOpen
+ST   DI_COBID     ** CanFb58 Identificatore oggetto CanOpen
+
+LD   CM_CODE      ** Codice del comando
+EQ   4            * PDO SEND
+JMPC PDO_SEND_CMD
+
+LD   CI_DATA0     ** Dato 0 in input
+ST   DI_DATA0     ** CanFb56 Dato 0 input
+
+LD   CI_DATA1     ** Dato 1 in input
+ST   DI_DATA1     ** CanFb57 Dato 1 input
+
+JMP  END_COMMAND
+
+PDO_SEND_CMD:
+LD   DI_COBID     ** CanFb58 Identificatore oggetto CanOpen
+AND  16#FFFF00FF  * Mask offset
+OR   16#3000      * Offset AS_DATA0 (48)
+ST   DI_COBID     ** CanFb58 Identificatore oggetto CanOpen
+
+LD   CI_DATA0     ** Dato 0 in input
+ST   AS_DATA0     ** CanFb48 buffer I/O Canopen
+
+LD   CI_DATA1     ** Dato 1 in input
+ST   AS_DATA1     ** CanFb49 buffer I/O Canopen
+
+END_COMMAND:
+
+LD   CM_ENAB      ** Richiesta esecuzione comando
+ST   StPrecEnab   ** Stato precedente ingresso ENAB
+
+* Scrive i bit di ENAB e RESET
+
+LD   MemCmdInProg ** Mem. comando in corso
+JMPCN END_CMD_ENAB
+
+LD   CM_ENAB      ** Richiesta esecuzione comando
+ST   CMD_ENAB     ** CanFb59.31 Enable esecuzione comando
+
+END_CMD_ENAB:
+
+LD   CM_RESET     ** Richiesta di reset del nodo
+OR   StPrecReset  ** Stato precedente ingresso RESET
+JMPCN END_RESET
+
+LD   CM_RESET     ** Richiesta di reset del nodo
+ST   CMD_RESET    ** CanFb59.30 Reset nodo
+
+LD   %PLCFLAGS.0
+ST   CMD_ENAB     ** CanFb59.31 Enable esecuzione comando
+
+END_RESET:
+
+LD   CM_RESET     ** Richiesta di reset del nodo
+ST   StPrecReset  ** Stato precedente ingresso RESET
+
+* Sul fronte di salita della conferma fine comando, legge tutti i dati di ritorno
+
+LD   DO_CONFIRM   ** CanFb60.31 conferma comando eseguito
+AND  MemCmdInProg ** Mem. comando in corso
+ST   CmdFinished  ** Conferma comando terminato
+
+LD   DO_CONFIRM   ** CanFb60.31 conferma comando eseguito
+ANDN StPrecConfirm ** Stato precedente segnale CONFIRM
+AND  CmdFinished  ** Conferma comando terminato
+JMPCN END_DATA
+
+LD   DO_ERROR     ** CanFb61 codice errore comando
+ST   CO_ERROR     ** Codice di errore
+
+LD   DO_ERROR     ** CanFb61 codice errore comando
+NE   0
+JMPC TAKE_ERRINFO
+
+LD   0
+ST   CO_ERRORINFO ** Informazioni aggiuntive su errore
+
+LD   CM_CODE      ** Codice del comando
+EQ   5            * PDO READ
+OR   (
+LD   CM_CODE      ** Codice del comando
+EQ   9            * SDO READSTR
+)
+OR   (
+LD   CM_CODE      ** Codice del comando
+EQ   10           * HISTORY ALARM
+)
+JMPC PDO_READ_CMD
+
+LD   DO_DATA0     ** CanFb62 Dato 0 output
+ST   CO_DATA0     ** Dato 0 in output
+
+LD   DO_DATA1     ** CanFb63 Dato 1 output
+ST   CO_DATA1     ** Dato 1 in output
+
+JMP  END_DATA
+
+PDO_READ_CMD:
+
+LD   DO_DATA0     ** CanFb62 Dato 0 output
+ST   CO_DATA0     ** Dato 0 in output
+
+LD   AS_DATA0     ** CanFb48 buffer I/O Canopen
+ST   CO_DATA1     ** Dato 1 in output
+
+LD   AS_DATA1     ** CanFb49 buffer I/O Canopen
+ST   CO_DATA2     ** Dato 2 in output
+
+LD   CM_CODE      ** Codice del comando
+EQ   5            * PDO READ
+JMPC END_DATA
+
+LD   AS_DATA2     ** CanFb50 buffer I/O Canopen
+ST   CO_DATA3     ** Dato 3 in output
+
+LD   AS_DATA3     ** CanFb51 buffer I/O Canopen
+ST   CO_DATA4     ** Dato 4 in output
+
+LD   AS_DATA4     ** CanFb52 buffer I/O Canopen
+ST   CO_DATA5     ** Dato 5 in output
+
+LD   AS_DATA5     ** CanFb53 buffer I/O Canopen
+ST   CO_DATA6     ** Dato 6 in output
+
+LD   AS_DATA6     ** CanFb54 buffer I/O Canopen
+ST   CO_DATA7     ** Dato 7 in output
+
+LD   AS_DATA7     ** CanFb55 buffer I/O Canopen
+ST   CO_DATA8     ** Dato 8 in output
+
+JMP  END_DATA
+
+TAKE_ERRINFO:
+
+LD   DO_DATA0     ** CanFb62 Dato 0 output
+ST   CO_ERRORINFO ** Informazioni aggiuntive su errore
+
+LD   0
+ST   CO_DATA0     ** Dato 0 in output
+ST   CO_DATA1     ** Dato 1 in output
+
+END_DATA:
+
+LD   MemErrBusy   ** Mem. errore area comandi occupata
+JMPCN END_TR_ERR
+
+LD   16#25        * Errore TRANSFER_BUSY
+ST   CO_ERROR     ** Codice di errore
+
+END_TR_ERR:
+
+* Scrive in output la conferma
+
+LD   DO_CONFIRM   ** CanFb60.31 conferma comando eseguito
+ST   StPrecConfirm ** Stato precedente segnale CONFIRM
+
+LD   CmdFinished  ** Conferma comando terminato
+OR   MemErrBusy   ** Mem. errore area comandi occupata
+ST   CS_CONFIRM   ** Conferma comando eseguito
+
+END_FUNCTION_BLOCK
+
+
+* -------------------------------------------------------*
+* Comando di cambio di stato a nodo CANopen
+* -------------------------------------------------------*
+
+FUNCTION_BLOCK COP_NMT
+
+VAR_INPUT
+CM_ENAB: BOOL; * Richiesta esecuzione comando
+CM_RESET: BOOL; * Richiesta di reset del nodo
+CI_STATE: DWORD; * Stato richiesto
+END_VAR
+
+VAR_OUTPUT
+CS_CONFIRM: BOOL; * Conferma comando eseguito
+CO_ERROR: WORD; * Codice di errore
+END_VAR
+
+VAR
+COPFB: COP_COMMAND;
+END_VAR
+
+LD   CM_ENAB      ** Richiesta esecuzione comando
+ST   COPFB.CM_ENAB
+
+LD   CM_RESET     ** Richiesta di reset del nodo
+ST   COPFB.CM_RESET
+
+LD   1
+ST   COPFB.CM_CODE
+
+LD   CI_STATE     ** Stato richiesto
+ST   COPFB.CI_DATA0
+
+CAL  COPFB
+
+LD   COPFB.CS_CONFIRM
+ST   CS_CONFIRM   ** Conferma comando eseguito
+
+LD   COPFB.CO_ERROR
+ST   CO_ERROR     ** Codice di errore
+
+END_FUNCTION_BLOCK
+
+* -------------------------------------------------------*
+* Comando di lettura SDO a nodo CANopen
+* -------------------------------------------------------*
+
+FUNCTION_BLOCK COP_SDO_READ
+
+VAR_INPUT
+CM_ENAB: BOOL; * Richiesta esecuzione comando
+CM_RESET: BOOL; * Richiesta di reset del nodo
+CI_INDEX: DWORD; * Numero index dato da leggere
+CI_SUBINDEX: DWORD; * Numero subindex dato da leggere
+END_VAR
+
+VAR_OUTPUT
+CS_CONFIRM: BOOL; * Conferma comando eseguito
+CO_ERROR: WORD; * Codice di errore
+CO_ERRORINFO: DWORD; * Informazioni aggiuntive su errore
+CO_DATALENGTH: DWORD; * Lunghezza dato letto in byte
+CO_DATA0: DWORD; * Valore del dato letto
+END_VAR
+
+VAR
+COPFB: COP_COMMAND;
+END_VAR
+
+LD   CM_ENAB      ** Richiesta esecuzione comando
+ST   COPFB.CM_ENAB
+
+LD   CM_RESET     ** Richiesta di reset del nodo
+ST   COPFB.CM_RESET
+
+LD   2
+ST   COPFB.CM_CODE
+
+LD   CI_INDEX     ** Numero index dato da leggere
+SHL  16
+OR   (
+LD   CI_SUBINDEX  ** Numero subindex dato da leggere
+SHL  8
+)
+ST   COPFB.CI_COBID
+
+CAL  COPFB
+
+LD   COPFB.CS_CONFIRM
+ST   CS_CONFIRM   ** Conferma comando eseguito
+
+LD   COPFB.CO_ERROR
+ST   CO_ERROR     ** Codice di errore
+
+LD   COPFB.CO_ERRORINFO
+ST   CO_ERRORINFO ** Informazioni aggiuntive su errore
+
+LD   COPFB.CO_DATA0
+ST   CO_DATALENGTH ** Lunghezza dato letto in byte
+
+LD   COPFB.CO_DATA1
+ST   CO_DATA0     ** Valore del dato letto
+
+END_FUNCTION_BLOCK
+
+* -------------------------------------------------------*
+* Comando di scrittura SDO a nodo CANopen
+* -------------------------------------------------------*
+
+FUNCTION_BLOCK COP_SDO_WRITE
+
+VAR_INPUT
+CM_ENAB: BOOL; * Richiesta esecuzione comando
+CM_RESET: BOOL; * Richiesta di reset del nodo
+CI_INDEX: DWORD; * Numero index dato da scrivere
+CI_SUBINDEX: DWORD; * Numero subindex dato da scrivere
+CI_DATALENGTH: DWORD; * Lunghezza dato da scrivere in byte
+CI_DATA0: DWORD; * Valore da scrivere
+END_VAR
+
+VAR_OUTPUT
+CS_CONFIRM: BOOL; * Conferma comando eseguito
+CO_ERROR: WORD; * Codice di errore
+CO_ERRORINFO: DWORD; * Informazioni aggiuntive su errore
+END_VAR
+
+VAR
+COPFB: COP_COMMAND;
+END_VAR
+
+LD   CM_ENAB      ** Richiesta esecuzione comando
+ST   COPFB.CM_ENAB
+
+LD   CM_RESET     ** Richiesta di reset del nodo
+ST   COPFB.CM_RESET
+
+LD   3
+ST   COPFB.CM_CODE
+
+LD   CI_INDEX     ** Numero index dato da scrivere
+SHL  16
+OR   (
+LD   CI_SUBINDEX  ** Numero subindex dato da scrivere
+SHL  8
+)
+OR   CI_DATALENGTH ** Lunghezza dato da scrivere in byte
+ST   COPFB.CI_COBID
+
+LD   CI_DATA0     ** Valore da scrivere
+ST   COPFB.CI_DATA0
+
+CAL  COPFB
+
+LD   COPFB.CS_CONFIRM
+ST   CS_CONFIRM   ** Conferma comando eseguito
+
+LD   COPFB.CO_ERROR
+ST   CO_ERROR     ** Codice di errore
+
+LD   COPFB.CO_ERRORINFO
+ST   CO_ERRORINFO ** Informazioni aggiuntive su errore
+
+END_FUNCTION_BLOCK
+
+* -------------------------------------------------------*
+* Comando di invio PDO a nodo CANopen
+* -------------------------------------------------------*
+
+FUNCTION_BLOCK COP_PDO_SEND
+
+VAR_INPUT
+CM_ENAB: BOOL; * Richiesta esecuzione comando
+CM_RESET: BOOL; * Richiesta di reset del nodo
+CI_COBID: DWORD; * Identificatore oggetto CanOpen
+CI_DATALENGTH: DWORD; * Lunghezza dato da scrivere in byte
+CI_DATA0: DWORD; * Valore da inviare (BYTE 0-3)
+CI_DATA1: DWORD; * Valore da inviare (BYTE 4-7)
+END_VAR
+
+VAR_OUTPUT
+CS_CONFIRM: BOOL; * Conferma comando eseguito
+CO_ERROR: WORD; * Codice di errore
+END_VAR
+
+VAR
+COPFB: COP_COMMAND;
+END_VAR
+
+LD   CM_ENAB      ** Richiesta esecuzione comando
+ST   COPFB.CM_ENAB
+
+LD   CM_RESET     ** Richiesta di reset del nodo
+ST   COPFB.CM_RESET
+
+LD   4
+ST   COPFB.CM_CODE
+
+LD   CI_COBID     ** Identificatore oggetto CanOpen
+SHL  16
+OR   CI_DATALENGTH ** Lunghezza dato da scrivere in byte
+ST   COPFB.CI_COBID
+
+LD   CI_DATA0     ** Valore da inviare (BYTE 0-3)
+ST   COPFB.CI_DATA0
+
+LD   CI_DATA1     ** Valore da inviare (BYTE 4-7)
+ST   COPFB.CI_DATA1
+
+CAL  COPFB
+
+LD   COPFB.CS_CONFIRM
+ST   CS_CONFIRM   ** Conferma comando eseguito
+
+LD   COPFB.CO_ERROR
+ST   CO_ERROR     ** Codice di errore
+
+END_FUNCTION_BLOCK
+
+
+* -------------------------------------------------------*
+* Comando di lettura PDO da nodo CANopen
+* -------------------------------------------------------*
+
+FUNCTION_BLOCK COP_PDO_READ
+
+VAR_INPUT
+CM_ENAB: BOOL; * Richiesta esecuzione comando
+CM_RESET: BOOL; * Richiesta di reset del nodo
+CI_COBID: DWORD; * Identificatore oggetto CanOpen
+END_VAR
+
+VAR_OUTPUT
+CS_CONFIRM: BOOL; * Conferma comando eseguito
+CO_ERROR: WORD; * Codice di errore
+CO_DATALENGTH: DWORD; * Lunghezza PDO letto in byte
+CO_DATA0: DWORD; * Valore del dato letto (BYTE 0-3)
+CO_DATA1: DWORD; * Valore del dato letto (BYTE 4-7)
+END_VAR
+
+VAR
+COPFB: COP_COMMAND;
+END_VAR
+
+LD   CM_ENAB      ** Richiesta esecuzione comando
+ST   COPFB.CM_ENAB
+
+LD   CM_RESET     ** Richiesta di reset del nodo
+ST   COPFB.CM_RESET
+
+LD   5
+ST   COPFB.CM_CODE
+
+LD   CI_COBID     ** Identificatore oggetto CanOpen
+SHL  16
+ST   COPFB.CI_COBID
+
+CAL  COPFB
+
+LD   COPFB.CS_CONFIRM
+ST   CS_CONFIRM   ** Conferma comando eseguito
+
+LD   COPFB.CO_ERROR
+ST   CO_ERROR     ** Codice di errore
+
+LD   COPFB.CO_DATA0
+ST   CO_DATALENGTH ** Lunghezza PDO letto in byte
+
+LD   COPFB.CO_DATA1
+ST   CO_DATA0     ** Valore del dato letto (BYTE 0-3)
+
+LD   COPFB.CO_DATA2
+ST   CO_DATA1     ** Valore del dato letto (BYTE 4-7)
+
+END_FUNCTION_BLOCK
+
+* -------------------------------------------------------*
+* Comando di registrazione PDO
+* -------------------------------------------------------*
+
+FUNCTION_BLOCK COP_PDO_REGISTER
+
+VAR_INPUT
+CM_ENAB: BOOL; * Richiesta esecuzione comando
+CM_RESET: BOOL; * Richiesta di reset del nodo
+CI_COBID: DWORD; * Identificatore oggetto CanOpen
+CI_DATALENGTH: DWORD; * Lunghezza in BYTE e tipo dato (FFFF = cancella registr.)
+                      * lungh + 0: legge con COP_PDO_READ
+                      * lungh + 256: legge da CanFb0-CanFb47
+                      * lungh + 512: legge da IW0-IW2047
+CI_DATAOFFSET: DWORD; * Offset rinfresco (CanFb[0-47] / IO[0-2047])
+END_VAR
+
+VAR_OUTPUT
+CS_CONFIRM: BOOL; * Conferma comando eseguito
+CO_ERROR: WORD; * Codice di errore
+END_VAR
+
+VAR
+COPFB: COP_COMMAND;
+END_VAR
+
+LD   CM_ENAB      ** Richiesta esecuzione comando
+ST   COPFB.CM_ENAB
+
+LD   CM_RESET     ** Richiesta di reset del nodo
+ST   COPFB.CM_RESET
+
+LD   6
+ST   COPFB.CM_CODE
+
+LD   CI_COBID     ** Identificatore oggetto CanOpen
+SHL  16
+OR   CI_DATALENGTH ** Lunghezza in BYTE e tipo dato (FFFF = cancella registr.)
+ST   COPFB.CI_COBID
+
+LD   CI_DATAOFFSET ** Offset rinfresco (CanFb[0-47] / IO[0-2047])
+ST   COPFB.CI_DATA0
+
+CAL  COPFB
+
+LD   COPFB.CS_CONFIRM
+ST   CS_CONFIRM   ** Conferma comando eseguito
+
+LD   COPFB.CO_ERROR
+ST   CO_ERROR     ** Codice di errore
+
+END_FUNCTION_BLOCK
+
+
+* -------------------------------------------------------*
+* Comando di impostazione sincronizzazione ciclica
+* -------------------------------------------------------*
+
+FUNCTION_BLOCK COP_CYCLIC_SYNC
+
+VAR_INPUT
+CM_ENAB: BOOL; * Richiesta esecuzione comando
+CM_RESET: BOOL; * Richiesta di reset del nodo
+CI_SYNC_TIME: DWORD; * Tempo ciclo (0=Disab, 1=Singolo, 10-250=Ciclico in ms)
+END_VAR
+
+VAR_OUTPUT
+CS_CONFIRM: BOOL; * Conferma comando eseguito
+CO_ERROR: WORD; * Codice di errore
+END_VAR
+
+VAR
+COPFB: COP_COMMAND;
+END_VAR
+
+LD   CM_ENAB      ** Richiesta esecuzione comando
+ST   COPFB.CM_ENAB
+
+LD   CM_RESET     ** Richiesta di reset del nodo
+ST   COPFB.CM_RESET
+
+LD   7
+ST   COPFB.CM_CODE
+
+LD   CI_SYNC_TIME ** Tempo ciclo (0=Disab, 1=Singolo, 10-250=Ciclico in ms)
+ST   COPFB.CI_DATA0
+
+CAL  COPFB
+
+LD   COPFB.CS_CONFIRM
+ST   CS_CONFIRM   ** Conferma comando eseguito
+
+LD   COPFB.CO_ERROR
+ST   CO_ERROR     ** Codice di errore
+
+END_FUNCTION_BLOCK
+
+
+* -------------------------------------------------------*
+* Comando di remote request oggetto CANopen
+* -------------------------------------------------------*
+
+FUNCTION_BLOCK COP_REM_REQUEST
+
+VAR_INPUT
+CM_ENAB: BOOL; * Richiesta esecuzione comando
+CM_RESET: BOOL; * Richiesta di reset del nodo
+CI_COBID: DWORD; * Identificatore oggetto CanOpen
+END_VAR
+
+VAR_OUTPUT
+CS_CONFIRM: BOOL; * Conferma comando eseguito
+CO_ERROR: WORD; * Codice di errore
+END_VAR
+
+VAR
+COPFB: COP_COMMAND;
+END_VAR
+
+LD   CM_ENAB      ** Richiesta esecuzione comando
+ST   COPFB.CM_ENAB
+
+LD   CM_RESET     ** Richiesta di reset del nodo
+ST   COPFB.CM_RESET
+
+LD   8
+ST   COPFB.CM_CODE
+
+LD   CI_COBID     ** Identificatore oggetto CanOpen
+ST   COPFB.CI_COBID
+
+CAL  COPFB
+
+LD   COPFB.CS_CONFIRM
+ST   CS_CONFIRM   ** Conferma comando eseguito
+
+LD   COPFB.CO_ERROR
+ST   CO_ERROR     ** Codice di errore
+
+END_FUNCTION_BLOCK
+
+
+* -------------------------------------------------------*
+* Comando di lettura SDO su stringa da nodo CANopen
+* -------------------------------------------------------*
+
+FUNCTION_BLOCK COP_SDO_READSTRING
+
+VAR_INPUT
+CM_ENAB: BOOL; * Richiesta esecuzione comando
+CM_RESET: BOOL; * Richiesta di reset del nodo
+CI_INDEX: DWORD; * Numero index dato da leggere
+CI_SUBINDEX: DWORD; * Numero subindex dato da leggere
+END_VAR
+
+VAR_OUTPUT
+CS_CONFIRM: BOOL; * Conferma comando eseguito
+CO_ERROR: WORD; * Codice di errore
+CO_ERRORINFO: DWORD; * Informazioni aggiuntive su errore
+CO_DATALENGTH: DWORD; * Lunghezza stringa letta in byte
+CO_DATA0: DWORD; * Stringa letta (BYTE 0-3)
+CO_DATA1: DWORD; * Stringa letta (BYTE 4-7)
+CO_DATA2: DWORD; * Stringa letta (BYTE 8-11)
+CO_DATA3: DWORD; * Stringa letta (BYTE 12-15)
+CO_DATA4: DWORD; * Stringa letta (BYTE 16-19)
+CO_DATA5: DWORD; * Stringa letta (BYTE 20-23)
+CO_DATA6: DWORD; * Stringa letta (BYTE 24-27)
+CO_DATA7: DWORD; * Stringa letta (BYTE 28-31)
+END_VAR
+
+VAR
+COPFB: COP_COMMAND;
+END_VAR
+
+LD   CM_ENAB      ** Richiesta esecuzione comando
+ST   COPFB.CM_ENAB
+
+LD   CM_RESET     ** Richiesta di reset del nodo
+ST   COPFB.CM_RESET
+
+LD   9
+ST   COPFB.CM_CODE
+
+LD   CI_INDEX     ** Numero index dato da leggere
+SHL  16
+OR   (
+LD   CI_SUBINDEX  ** Numero subindex dato da leggere
+SHL  8
+)
+ST   COPFB.CI_COBID
+
+CAL  COPFB
+
+LD   COPFB.CS_CONFIRM
+ST   CS_CONFIRM   ** Conferma comando eseguito
+
+LD   COPFB.CO_ERROR
+ST   CO_ERROR     ** Codice di errore
+
+LD   COPFB.CO_ERRORINFO
+ST   CO_ERRORINFO ** Informazioni aggiuntive su errore
+
+LD   COPFB.CO_DATA0
+ST   CO_DATALENGTH ** Lunghezza stringa letta in byte
+
+LD   COPFB.CO_DATA1
+ST   CO_DATA0     ** Stringa letta (BYTE 0-3)
+
+LD   COPFB.CO_DATA2
+ST   CO_DATA1     ** Stringa letta (BYTE 4-7)
+
+LD   COPFB.CO_DATA3
+ST   CO_DATA2     ** Stringa letta (BYTE 8-11)
+
+LD   COPFB.CO_DATA4
+ST   CO_DATA3     ** Stringa letta (BYTE 12-15)
+
+LD   COPFB.CO_DATA5
+ST   CO_DATA4     ** Stringa letta (BYTE 16-19)
+
+LD   COPFB.CO_DATA6
+ST   CO_DATA5     ** Stringa letta (BYTE 20-23)
+
+LD   COPFB.CO_DATA7
+ST   CO_DATA6     ** Stringa letta (BYTE 24-27)
+
+LD   COPFB.CO_DATA8
+ST   CO_DATA7     ** Stringa letta (BYTE 28-31)
+
+END_FUNCTION_BLOCK
+
+
+* -------------------------------------------------------*
+* Comando Read/Reset History alarm da nodo CANopen
+* -------------------------------------------------------*
+
+FUNCTION_BLOCK COP_ALARMS_HIST
+
+VAR_INPUT
+CM_ENAB:  BOOL; * Richiesta esecuzione comando
+CM_RESET: BOOL; * Richiesta di reset del nodo
+CI_MODE:  BOOL; * 0=Read  1=Read & Reset
+END_VAR
+
+VAR_OUTPUT
+CS_CONFIRM: BOOL; * Conferma comando eseguito
+CO_ERROR:   WORD; * Codice di errore
+CO_ERRORINFO: DWORD;  * Informazioni aggiuntive su errore
+CO_ALARMS:    DWORD;  * Numero di allarmi presenti
+CO_ALRM1: DWORD; * Ultimo allarme "n"
+CO_ALRM2: DWORD; * Allarme "n-1"
+CO_ALRM3: DWORD; * Allarme "n-2"
+CO_ALRM4: DWORD; * Allarme "n-3"
+CO_ALRM5: DWORD; * Allarme "n-4"
+CO_ALRM6: DWORD; * Allarme "n-5"
+CO_ALRM7: DWORD; * Allarme "n-6"
+CO_ALRM8: DWORD; * Allarme "n-7"
+END_VAR
+
+VAR
+COPFB: COP_COMMAND;
+END_VAR
+
+LD   CM_ENAB      ** Richiesta esecuzione comando
+ST   COPFB.CM_ENAB
+
+LD   CM_RESET     ** Richiesta di reset del nodo
+ST   COPFB.CM_RESET
+
+LD   10
+ST   COPFB.CM_CODE
+
+LD   CI_MODE      ** 0=Read  1=Read & Reset
+ST   COPFB.CI_DATA0.0   ** CanFb56 Dato 0 input
+
+CAL  COPFB
+
+LD   COPFB.CS_CONFIRM
+ST   CS_CONFIRM   ** Conferma comando eseguito
+
+LD   COPFB.CO_ERROR
+ST   CO_ERROR     ** Codice di errore
+
+LD   COPFB.CO_ERRORINFO
+ST   CO_ERRORINFO ** Informazioni aggiuntive su errore
+
+LD   DO_DATA0     ** CanFb62 Dato 0 output
+ST   CO_ALARMS    ** Numero di allarmi presenti
+
+LD   COPFB.CO_DATA1
+ST   CO_ALRM1     ** Ultimo allarme "n"
+
+LD   COPFB.CO_DATA2
+ST   CO_ALRM2     ** Allarme "n-1"
+
+LD   COPFB.CO_DATA3
+ST   CO_ALRM3     ** Allarme "n-2"
+
+LD   COPFB.CO_DATA4
+ST   CO_ALRM4     ** Allarme "n-3"
+
+LD   COPFB.CO_DATA5
+ST   CO_ALRM5     ** Allarme "n-4"
+
+LD   COPFB.CO_DATA6
+ST   CO_ALRM6     ** Allarme "n-5"
+
+LD   COPFB.CO_DATA7
+ST   CO_ALRM7     ** Allarme "n-6"
+
+LD   COPFB.CO_DATA8
+ST   CO_ALRM8     ** Allarme "n-7"
+
+END_FUNCTION_BLOCK
+
+
+* -------------------------------------------------------*
+* Comando di lettura VACON ReadAnyParam
+* -------------------------------------------------------*
+
+FUNCTION_BLOCK VAC_PAR_READ
+
+VAR_INPUT
+CM_ENAB: BOOL; * Richiesta esecuzione comando
+CM_RESET: BOOL; * Richiesta di reset del nodo
+CI_INDEX: DWORD; * Numero parametro da leggere
+END_VAR
+
+VAR_OUTPUT
+CS_CONFIRM: BOOL; * Conferma comando eseguito
+CO_ERROR: WORD; * Codice di errore
+CO_ERRORINFO: DWORD; * Informazioni aggiuntive su errore
+CO_DATALENGTH: DWORD; * Lunghezza dato letto in byte
+CO_DATA0: DWORD; * Valore del dato letto
+END_VAR
+
+VAR
+COPFB: COP_COMMAND;
+END_VAR
+
+LD   CM_ENAB      ** Richiesta esecuzione comando
+ST   COPFB.CM_ENAB
+
+LD   CM_RESET     ** Richiesta di reset del nodo
+ST   COPFB.CM_RESET
+
+LD   255
+ST   COPFB.CM_CODE
+
+LD   CI_INDEX     ** Numero index dato da leggere
+ST   COPFB.CI_COBID
+
+CAL  COPFB
+
+LD   COPFB.CS_CONFIRM
+ST   CS_CONFIRM   ** Conferma comando eseguito
+
+LD   COPFB.CO_ERROR
+ST   CO_ERROR     ** Codice di errore
+
+LD   COPFB.CO_ERRORINFO
+ST   CO_ERRORINFO ** Informazioni aggiuntive su errore
+
+LD   COPFB.CO_DATA0
+ST   CO_DATALENGTH ** Lunghezza dato letto in byte
+
+LD   COPFB.CO_DATA1
+ST   CO_DATA0     ** Valore del dato letto
+
+END_FUNCTION_BLOCK
+
+* -------------------------------------------------------*
+* Comando di scrittura VACON WriteAnyParam
+* -------------------------------------------------------*
+
+FUNCTION_BLOCK VAC_PAR_WRITE
+
+VAR_INPUT
+CM_ENAB: BOOL; * Richiesta esecuzione comando
+CM_RESET: BOOL; * Richiesta di reset del nodo
+CI_INDEX: DWORD; * Numero parametro dato da scrivere
+CI_DATA0: DWORD; * Valore da scrivere
+END_VAR
+
+VAR_OUTPUT
+CS_CONFIRM: BOOL; * Conferma comando eseguito
+CO_ERROR: WORD; * Codice di errore
+CO_ERRORINFO: DWORD; * Informazioni aggiuntive su errore
+END_VAR
+
+VAR
+COPFB: COP_COMMAND;
+END_VAR
+
+LD   CM_ENAB      ** Richiesta esecuzione comando
+ST   COPFB.CM_ENAB
+
+LD   CM_RESET     ** Richiesta di reset del nodo
+ST   COPFB.CM_RESET
+
+LD   254
+ST   COPFB.CM_CODE
+
+LD   CI_INDEX     ** Numero index dato da scrivere
+ST   COPFB.CI_COBID
+
+LD   CI_DATA0     ** Valore da scrivere
+ST   COPFB.CI_DATA0
+
+CAL  COPFB
+
+LD   COPFB.CS_CONFIRM
+ST   CS_CONFIRM   ** Conferma comando eseguito
+
+LD   COPFB.CO_ERROR
+ST   CO_ERROR     ** Codice di errore
+
+LD   COPFB.CO_ERRORINFO
+ST   CO_ERRORINFO ** Informazioni aggiuntive su errore
+
+END_FUNCTION_BLOCK

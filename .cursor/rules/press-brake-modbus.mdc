@@ -1,0 +1,19 @@
+---
+description: Press brake Modbus handshake and mode requirements for .LS programs
+globs: "**/*.LS","**/LDJ/**"
+alwaysApply: false
+---
+
+# Press Brake Modbus
+
+When programming FANUC TP for press brake tending:
+
+1. **Phase 1 primary:** Hardwire XC2F/XC3M/XC4M per LDJ/robot_interface_reference.md. Beam control via A20.1 (Beam Down), A21.2 (Reset End Bend); status via E20.2 (UDP), E20.5 (End of Bend). Cycle timing and interlock rules in robot_interface_reference.md.
+
+2. **Modbus TCP (Phase 2):** Program load, mode, strobe — not beam control. Handshake: Write data → write opcode to Reg 2 → strobe Reg 1 BIT0=1 → wait Reg 1231 BIT0=1 → clear strobe → wait ack clear → check Reg 1024 for error.
+
+3. **Mode requirements:** Editor for Load/Modify; Auto for Start.
+
+4. **Network:** Press 172.16.0.51, PLC 172.16.0.50, Port 502.
+
+5. **Reference:** LDJ/robot_interface_reference.md, LDJ/reference/LDJ_REF_ESA_Modbus.txt, LDJ/INTEGRATION_FLOW.md.

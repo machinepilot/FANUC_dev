@@ -1,0 +1,37 @@
+Ciclo fisso taratura assi pestone con potenziometro Ver.012.38 : 116
+ VA0 = %selasse
+ VA1 = %pst[7] ; gradini fondo scala (fattore conversione)
+
+;/* Type del comando TARAPOT */
+;#define CALIBRA 0x80    // Calibrazione in OR con TIMMQTA o TIMMQTB
+;#define TIMMQTA 10      // Immediato quota A
+;#define TIMMQTB 11      // Immediato quota B
+;#define GETDATA 12      // Copia dati da defcn
+;#define PUTDATA 13      // Salva dati in defcn
+;#define RESDATA 14      // Reset calibrazione
+
+ ;taratura punto B, al valore attuale
+ _tarapot( 0x00, VA0, 14, 0.000) ;reset parametri taratura
+ _tarapot( 0x00, VA0, 11, %tara) ;campiona quota B
+ _tarapot( 0x00, VA0, 13, 0.000) ;scrive parametri in defcn
+ SYN
+
+ VA2 = %pst2 * 1000 ; corsa totale Y1 in micron (quota taratura Y1)
+ IF(VA0==1) VA2 = %pst3 * 1000 ; corsa totale Y2 in micron (quota taratura Y2)
+ ; rilegge i dati del punto B dalla shared
+ VA3 = %ax[VA0].cal[1] ;gradini Pto B
+ VA4 = %ax[VA0].cal[3] ;quota   Pto B
+
+ ;impostazione dati punto A su inizio scala
+ %ax[VA0].cal[0] = 0 ;gradini Pto A
+ ; Il punto campionato deve essere vicino al fondo scala,
+ ; quindi trova il punto A tracciando una retta verso gradini 0.
+ %ax[VA0].cal[2] = VA4 - VA2 * (VA3 / VA1) ;quota   Pto A
+
+ _tarapot( 0x0, VA0, 12, 0.000 ) ; carica i dati dalla defcn
+
+ ?%C18.12 = 1 ;sincronismo taratura eseguita a u.i.
+ _wait_bit( 0, "%C0.9", 0) ;attende conferma
+ ?%C18.12 = 0 ;sincronismo taratura eseguita a u.i.
+
+ RET

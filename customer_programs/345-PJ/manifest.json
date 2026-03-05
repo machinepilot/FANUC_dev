@@ -1,0 +1,12 @@
+{
+  "customer_id": "345-PJ",
+  "customer_name": "PJ Trailers",
+  "systems": [
+    {
+      "id": "press_brake_tending",
+      "robot": "M950iA/500",
+      "controller": "R-30iB",
+      "revisions": ["rev_22526"]
+    }
+  ]
+}

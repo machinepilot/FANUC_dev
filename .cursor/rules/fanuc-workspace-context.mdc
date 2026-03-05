@@ -1,0 +1,13 @@
+---
+description: FANUC workspace context - use dataset when TP programming is discussed
+alwaysApply: true
+---
+
+# FANUC Workspace
+
+This workspace contains FANUC TP programs and a reference dataset.
+
+- **Customer programs** live in `customer_programs/` — production backups by customer and robot system.
+- **Reference dataset** is in `FANUC_Optimized_Dataset/` — use for syntax, concepts, and patterns.
+
+When FANUC TP programming, syntax, or robot code is discussed, consult `FANUC_Optimized_Dataset/optimized_dataset/DATASET_INDEX.md` and @ reference relevant dataset files.

@@ -1,0 +1,19 @@
+Ciclo fisso autotuning pestone Ver.012.38 : 115
+ %C21.23 = 1 ;ciclo autotuning in corso
+N10
+ IF (%pstt[1] < 0.1) G4 F0.1 ;tempo minimo per sincronizzazione
+ G4 F%pstt[1] ;attendi tempo di rampa
+ SYN
+ G4 F0.4
+ ?%C21.26 = 1
+ G4 F0.55
+ _ppconf_sx(0x00,X,Y,0,0,%at_ppconf.ppc_typ,%at_ppconf.ppc_gy_a,%at_ppconf.ppc_gy_b,%at_ppconf.ppc_gs_a,%at_ppconf.ppc_gs_b,%at_ppconf.ppc_kbil,%at_ppconf.ppc_tols,%at_ppconf.ppc_sbil,%at_ppconf.ppc_abins)
+ ?%C21.24 = 1 ;assi in movimento per autotuning
+ _ppmove_sx(0x01,X,Y,0,0,%at_ppmove.ppm_typ,%at_ppmove.ppm_acc,%at_ppmove.ppm_vel,%at_ppmove.ppm_qy_a,%at_ppmove.ppm_qy_b,%at_ppmove.ppm_qs_a,%at_ppmove.ppm_qs_b,%at_ppmove.ppm_ttol,3 )
+  ?%C21.25 = 1 ;posiz. terminato
+ _wait_bit( 0, "%C33.26", 1) ;attende conferma
+ ?%C21.24 = 0 ;assi in movimento per autotuning
+ ?%C21.25 = 0 ;posiz. terminato
+ ?%C21.26 = 0
+ JMP 10
+ RET

@@ -1,0 +1,860 @@
+Ciclo automatico standard pestone Ver.012.63 : 120
+DBL MinTandPos, Tand1Pos, Tand2Pos, Tand3Pos, Tand4Pos, TandVel
+DBL PreBend, Angle, Index
+
+ ;CALCOLO FLAG POSIZIONAMENTO PESTONE
+ VA0 = 0x800 ; Ab. limitazione tensione in uscita
+ IF( !%C36.1 ) VA0 = VA0+0x08 ;Disab. regolazione pestone con arresto in piega
+ IF( %C36.26 ) VA0 = VA0+0x80 ;Abil. arresto rapido con blocco avanzamento
+ VL12 = VA0 ;flags per posiz. non resta in coppia e senza tolleranza infinita
+ VL13 = 0x03+VA0 ;flags per posiz. resta in coppia e con tolleranza infinita
+ VL28 = VA0
+; IF (%pargen_due.dgn[26] != 0) VL28 = VL28 + 1 ;flags per posiz. non resta in coppia e con tolleranza infinita
+ VA22 = %pargen_due.dgn[22];Insensibilità Neg. DV Y1
+ VA23 = %pargen_due.dgn[23];Insensibilità Neg. DV Y2
+ VA24 = %pargen_due.dgn[24];Insensibilità Pos. SV Y1
+ VA25 = %pargen_due.dgn[25];Insensibilità Pos. SV Y2
+ VA26 = %pst[21] * 2 ;Guadagno variabile DV Y1
+ VA27 = %pst[22] * 2 ;Guadagno variabile DV Y2
+ VA28 = %pst[42] * 2 ;Guadagno variabile SV Y1
+ VA29 = %pst[43] * 2 ;Guadagno variabile SV Y2
+ VA30 = %pargen_due.dgn[27] ;Tempo tolleranza in discesa veloce
+ VA8 = (%PestQ[%np].pcl + %pargen_due.dgn[28]);quota target Y
+ IF ((%prog[%np].ya > VA8) || (%prog[%np].yb > VA8)) VA8 = %PestQ[%np].pcl
+ VL4 = %ax[0].pa[9] ; VMAX asse Y1
+ VL45 = %pst[19]
+ IF (%pst[16] == 0) VL45 = %pst[19]*1000 ; Se abilitato Regolazione 0 riscala la Vmax altrimenti calc. Acc e Dec sbagliate
+
+ ?%C16.1 = 1 ;ciclo automatico pestone in corso
+ %dwFlagPressione.8 = 1 ;inizializza dati sensore pressione
+
+ ;Salita ad anello aperto prima della discesa
+ IF (%pargen_due.dwgn[38] != 0) THEN
+  ?%C21.29 = 1
+  ;Disabilita filtro e limiter su DAC pestone
+  _ppconf_sx(0x00,X,Y,0,0,0xFF00,0,0,0,0,0,0,0,0)
+  ;Setta parametri open loop, anche se non li usa, altrim. va in blocco
+  _ppconf_ol(0x00,X,Y,%pst[20],%pst[18],%pst[18],%pst[23],1,0.01)
+  ;da tensione
+  _ppmove_ol(0x00,X,Y,4,10,%pargen_due.dwgn[38]/1000,%pargen_due.dwgn[38]/1000,0,%pargen_due.dwgn[39]/1000)
+  ;toglie coppia
+  _ppmove_ol(0x00,X,Y,0,0,0,0,0,0)
+  ?%C21.29 = 0
+ ENDIF
+
+ ;VERIFICA POSIZIONE DI PARTENZA
+ IF(%C36.28) JMPF 390 ;pestone oltre il PCL
+ IF((%C36.27)) JMPF 190 ;pestone oltre il PCV
+
+ ;DISCESA VELOCE
+ ?%C16.2 = 1 ;discesa veloce in corso
+ VA1 = (%C92 + %pargen_due.dwgn27) / 1000 ;Carica quota PCV
+ IF ((VA1 - VA8) < 0.3) VA1 = VA1 + 0.3 ; Limita distanza PCV, PCL a 0.3mm minimo
+ IF(%C36.2) JMPF 100 ;verifica discesa in lento
+ IF(%pstt[0]) G4 F%pstt[0] ;attende tempo rampa pressione discesa veloce
+ IF(%pargen_due.dwgn[25]) G4 F%pargen_due.dwgn[25]/1000
+ IF(%pst[16] == 1) JMPF 50
+ ;DISCESA VELOCE ANELLO APERTO
+ VA0 = %pargen_due.dgn[7]
+ IF(VA0 != 0) _ppconf_ol(0x00,X,Y,%pst[20],VA0,%pst[18],%pst[23],1,0.01)
+ IF(VA0 == 0) _ppconf_ol(0x00,X,Y,%pst[20],%pst[18],%pst[18],%pst[23],1,0.01)
+ _wait_bit( 0,"%C38.11",0); attesa pompe in pressione
+ _ppmove_ol(0x00,X,Y,2,%pst[19],%pst[21],%pst[22],VA1,0)
+ JMPF 200
+N50 ;DISCESA VELOCE ANELLO CHIUSO
+ ;Abilita filtro e limiter su DAC pestone
+ _ppconf_sx(0x00,X,Y,0,0,0xFF00,%pargen_due.dgn[42],%pargen_due.dgn[42],0,0,0,0,%pargen_due.dgn[15],0)
+ IF(%C32.12) JMPF 150
+ ;MAP Imposta guadagno variabile per raggiungimento punto target
+ _ppconf_sx(0x00,X,Y,0,0,0x03,VA26,VA27,0,0,0,0,%pargen_due.dgn[26],0)
+;MAP Abilita Soglie Ins DV
+ IF (VA22 != 0) THEN
+  _insensibilita(0x00,X,3,0,VA22)
+  _insensibilita(0x00,Y,3,0,VA23)
+ ENDIF
+ IF (%pargene.bgn.2) JMPF .TOL_LOW1
+ _tollerap(0x00,X,0x00, 0.5, VA30, 0.5)
+ _tollerap(0x00,Y,0x00, 0.5, VA30, 0.5)
+ JMPF .TOL_HIGH1
+.TOL_LOW1
+  _tollerap(0x00,X,0x00, 0.1, VA30, 0.1)
+  _tollerap(0x00,Y,0x00, 0.1, VA30, 0.1)
+.TOL_HIGH1
+ VL3 = %pst[18] * VL4 / VL45
+ ACC[X]=VL3 ACC[Y]=VL3
+ IF (%C32.27) VL3 = %pargen_due.dgn[20] * VL4 / VL45
+ DEC[X]=VL3 DEC[Y]=VL3
+ IF((!%C32.8) || (!%pargen_due.dwgn[18])) JMPF 60
+ ;Discesa tandem sincronizzata
+ _ppconf_sx(0x00,X,Y,16,17,0x4000,%pst[21],%pst[22],%pargen_due.dwgn[18],0,VL37,0.01,0.01,%C32.23)
+ _wait_bit( 0,"%C38.11",0); attesa pompe in pressione
+ IF(%C38.23) THEN
+  _ppmove_sx(0x01,X,Y,16,17,(VL28|0x600A),0,%pst[19],VA1,VA1,QTA(X),QTA(Y),VA30,0)
+ ELSE
+  _ppmove_sx(0x01,X,Y,16,17,(VL28|0x6008),0,%pst[19],VA1,VA1,QTA(X),QTA(Y),VA30,0)
+ ENDIF
+ JMPF 70
+N60
+ ;Discesa normale
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[21],%pst[22],0,0,VL37,0,0.01,%C32.23)
+ _ppconf_sx(0x00,X,Y,0,0,0xFF01,VL38,VL39,0,0,0,0,0,0)
+ _wait_bit( 0,"%C38.11",0); attesa pompe in pressione
+ IF(%C38.23) THEN
+  _ppmove_sx(0x01,X,Y,0,0,(VL28|0x200A),0,%pst[19],VA1,VA1,0,0,VA30,0)
+ ELSE
+  _ppmove_sx(0x01,X,Y,0,0,(VL28|0x2008),0,%pst[19],VA1,VA1,0,0,VA30,0)
+ ENDIF
+ ;toglie coppia su ibrida
+ IF (%pargen_due.dwgn64.2) _ppmove_ol(0x00,X,Y,0,0,0,0,0,0)
+ ;Disabilita filtro e limiter su DAC pestone
+ _ppconf_sx(0x00,X,Y,0,0,0xFF00,0,0,0,0,0,0,0,0)
+N70
+;MAP Disabilita guadagno variabile
+ _ppconf_sx(0x00,X,Y,0,0,0x01,0,0,0,0,0,0,0,0)
+;MAP Reimposta Soglie da parametri
+ IF (VA22 != 0) THEN
+ _insensibilita(0x00,X,3,%pst[33],%pst[31])
+ _insensibilita(0x00,Y,3,%pst[34],%pst[32])
+ ENDIF
+ JMPF 200
+N100 ;DISCESA CON VELOCITÁ DI SICUREZZA
+ IF(%pstt[1]) G4 F%pstt[1]
+ VL16 = %pst[26] ;carica velocità discesa lenta
+ IF ((%pargen_due.dwgn26) && (VL16 > %pargen_due.dwgn26)) VL16 = %pargen_due.dwgn26
+ IF((%C32.22) && (VL16>750)) VL16 = 750 ;limita la velocità per norme di sicurezza
+ ;Abilita filtro e limiter su DAC pestone
+ _ppconf_sx(0x00,X,Y,0,0,0xFF00,%pargen_due.dgn[12],%pargen_due.dgn[13],0,0,0,0,%pargen_due.dgn[14],0)
+ IF(%C32.12) JMPF 120
+ IF((!%C32.8) || (!%pargen_due.dwgn[18])) JMPF 110
+ ;Discesa tandem sincronizzata
+ _ppconf_sx(0x00,X,Y,16,17,0x4000,%pst[28],%pst[29],%pargene.dwgn[9],0,VL36,0.01,0.01,%C32.23)
+ _ppmove_sx(0x01,X,Y,16,17,(VL12|0x4000),%pst[27],VL16,VA1,VA1,QTA(X),QTA(Y),VA30,0)
+ JMPF 200
+N110
+ ;Discesa normale
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[28],%pst[29],0,0,VL36,0,0.01,%C32.23)
+ _ppmove_sx(0x01,X,Y,0,0,VL12,%pst[27],VL16,VA1,VA1,0,0,VA30,0)
+ JMPF 200
+N120
+ ;Discesa lenta senza sosta sul PCV
+ _tollerap(0x00,X,0x00, %pst[4], %pst[30], %pst[4]); PROGRAMMA TOLLERANZA STANDARD
+ _tollerap(0x00,Y,0x00, %pst[4], %pst[30], %pst[4]);
+ VL3 = %pst[18] * VL4 / VL45
+ ACC[X]=VL3 ACC[Y]=VL3
+ IF (%C32.27) VL3 = %pargen_due.dgn[20] * VL4 / VL45
+ DEC[X]=VL3 DEC[Y]=VL3
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[28],%pst[29],0,0,VL36,0,0.01,%C32.23)
+ _ppmove_sx(0x09,X,Y,0,0,VL12,0,VL16,VA1,VA1,0,0,VA30,0)
+ JMPF 200
+N150 ;DISCESA VELOCE SENZA SOSTA SUL PCV
+ _tollerap(0x00,X,0x00, %pst[4], %pst[30], %pst[4]); PROGRAMMA TOLLERANZA STANDARD
+ _tollerap(0x00,Y,0x00, %pst[4], %pst[30], %pst[4]);
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[21],%pst[22],0,0,VL36,0,0.01,%C32.23)
+ VL3 = %pst[18] * VL4 / VL45
+ ACC[X]=VL3 ACC[Y]=VL3
+ IF (%C32.27) VL3 = %pargen_due.dgn[20] * VL4 / VL45
+ DEC[X]=VL3 DEC[Y]=VL3
+ ;Spezzato in due comandi per garantire che VOUT sia pari alla velocità di lavoro
+ _ppconf_sx(0x00,X,Y,0,0,0xFF01,VL38,VL39,0,0,0,0,0,0)
+ _ppmove_sx(0x09,X,Y,0,0,(VL12),0,%pst[19],VA1+0.1,VA1+0.1,0,0,VA30,0)
+ ?%C16.31 = 1 ;fittizio
+ ?%C16.3 = 1 ;discesa da PCV a PCL in corso
+ VL16 = %prog[%np].velw*1000 ;carica velocitá di lavoro
+ IF ((%pargen_due.dwgn26) && (VL16 > %pargen_due.dwgn26)) VL16 = %pargen_due.dwgn26
+ IF (((VA1 - VA8) < 0.8) && (%C36.5)) VA1 = VA8
+ _ppmove_sx(0x09,X,Y,0,0,(VL12),0,VL16,VA1,VA1,0,0,VA30,0)
+ JMPF 210
+
+N190 ;predispone parametri discesa lenta (nel caso la piega parta tra PCV e PCL)
+ _tollerap(0x00,X,0x00, %pst[4], %pst[30], %pst[4]); RIPROGRAMMA TOLLERANZA
+ _tollerap(0x00,Y,0x00, %pst[4], %pst[30], %pst[4]);
+ ;Abilita filtro e limiter su DAC pestone
+ _ppconf_sx(0x00,X,Y,0,0,0xFF00,%pargen_due.dgn[12],%pargen_due.dgn[13],0,0,0,0,%pargen_due.dgn[14],0)
+ JMPF 210
+N200
+ PAUSE
+N210
+ ;ATTESA CAMBIO VELOCITÁ
+ ?%C16.3 = 1 ;discesa da PCV a PCL in corso
+ VL3 = %pst[18] * VL4 / VL45
+ ACC[X]=VL3 ACC[Y]=VL3
+ IF (%C32.27) VL3 = %pargen_due.dgn[20] * VL4 / VL45
+ DEC[X]=VL3 DEC[Y]=VL3
+ ;IF( %C36.3 ) _wait_bit( 0,"%C36.4",1); attesa sblocco sosta su PCV (tempo cambio vel.)
+ IF( %C36.3 ) AWAIT(%C36.4); attesa sblocco sosta su PCV (tempo cambio vel.) MAP_29_10_2014 Usata Await e non Waitbit per problema asse-fly
+ IF(%progc[%np].pramp && !%C32.12) G4 F%progc[%np].pramp ;attende rampa pressione
+ IF( %C36.3 ) G4 F0.01
+ ;predispone discesa lenta
+ IF((%pargen_due.dwgn19.1) || (%C36.30)) JMPF 220
+ VL16 = %prog[%np].velw*1000 ;carica velocitá di lavoro
+ IF ((%pargen_due.dwgn26) && (VL16 > %pargen_due.dwgn26)) VL16 = %pargen_due.dwgn26
+ VL17 = %prog[%np].coraya;assegna valori guadagni discesa lavoro
+ VL18 = %prog[%np].corayb;assegna valori guadagni discesa lavoro
+ VL19 = %pst[27] / (%pst[26] / VL16) ;calcola tempo accelerazione per velocitá di lavoro
+ JMPF 222
+N220
+ VL16 = %pst[26] ;carica velocità discesa lenta
+ IF ((%pargen_due.dwgn26) && (VL16 > %pargen_due.dwgn26)) VL16 = %pargen_due.dwgn26
+ VL17 = %pst[28] ;guadagni discesa lenta
+ VL18 = %pst[29]
+ VL19 = %pst[27] ;tempo accelerazione
+N222
+ IF((%C32.22) && (VL16>750)) VL16 = 750 ;limita la velocità per norme di sicurezza
+
+ IF(!%C32.12) THEN
+   _tollerap(0x00,X,0x00, %pst[4], %pst[30], %pst[4]); RIPROGRAMMA TOLLERANZA
+   _tollerap(0x00,Y,0x00, %pst[4], %pst[30], %pst[4]);
+ ENDIF
+
+ ;Rilevamento spessore
+ IF (!%C36.30) JMPF 250
+ IF (!%parspec.dwsp20.10) VL20 = ((%C92 + %pargen_due.dwgn27) / 1000) - ((VL16 / 60 ) * %pargen_due.dgn19) - 0.5 ;MAP 23_04_2014 Inizia Campionamento a 2mm dal materiale
+ IF (%parspec.dwsp20.10) VL20 = %PestQ[%np].pcl+2 ;MAP 23_04_2014 Inizia Campionamento a 2mm dal materiale
+ IF ( VL20 < VA8) VL20 = VA8
+ VL21 = %PestQ[%np].pcl-%prog[%np].thick ;quota filo matrice
+ VL22 = %pargen_due.dgn16 ;accelerazione per lett. spessore
+ IF ( VL22 == 0 ) VL22 = 0.2; Evita valore 0 su rampa
+
+N250 ;verifica se abilitato rinculo asse X o Z
+ IF(!%C36.5) JMPF 300
+ ;deve eseguire il rinculo, quindi si ferma al PCL
+ ;provvisorio: forza tolleranza elevata per evitare attesa infinita
+ IF(!%C32.12) THEN
+   _tollerap(0x00,X,0x00, 0.1, %pst[30], 0.1)
+   _tollerap(0x00,Y,0x00, 0.1, %pst[30], 0.1)
+ ENDIF
+ IF(%C32.12) THEN
+  ;Riprogramma solo limite refdac
+  _ppconf_sx(0x00,X,Y,0,0,0xFE00,%pargen_due.dgn[12],%pargen_due.dgn[13],0,0,0,0,%pargen_due.dgn[14],0)
+ ELSE
+  ;Abilita filtro e limiter su DAC pestone
+  _ppconf_sx(0x00,X,Y,0,0,0xFF00,%pargen_due.dgn[12],%pargen_due.dgn[13],0,0,0,0,%pargen_due.dgn[14],0)
+ ENDIF
+ ;MAP Imposta guadagno variabile per raggiungimento punto target
+ _ppconf_sx(0x00,X,Y,0,0,0x03,%pargen_due.dgn[8],%pargen_due.dgn[9],0,0,0,0,%pargen_due.dgn[10],0)
+ IF((!%C32.8) || (!%pargen_due.dwgn[18])) JMPF 255
+ ;Discesa tandem sincronizzata con sosta al PCL
+ _ppconf_sx(0x00,X,Y,16,17,0x4000,VL17,VL18,%pargene.dwgn[9],0,VL36,0.01,0.01,1)
+ _ppmove_sx(0x01,X,Y,16,17,(VL13|0x4000),VL19,VL16,VA8,VA8,VA1,VA1,%pst[30],0)
+ JMPF 280
+N255
+ ;Discesa normale con sosta al PCL
+ _ppconf_sx(0x00,X,Y,0,0,0,VL17,VL18,0,0,VL36,0,0.01,1)
+ IF (%C36.30) JMPF 260
+ IF(%C32.12) JMPF 257
+ SYN
+ VA19 = QTA(X) ;copia quota attuale su target
+ VA20 = QTA(Y) ;copia quota attuale su target
+ IF ((VA19 <= VA8) || (VA20 <= VA8)) JMPF 280
+N257
+ _ppmove_sx(0x01,X,Y,0,0,VL13,VL19,VL16,VA8,VA8,0,0,%pst[30],0)
+ JMPF 280
+N260 ;Ricerca PCL con sensore pressione
+ %C21.20 = 1 ;Richiede sosta a fine rilevamento spessore
+ _ppmove_sx(0x09,X,Y,0,0,VL13,VL22,VL16,VL20,VL20,0,0,%pst[30],0)
+ _ppmove_sx(0x01,X,Y,0,0,(VL13+0x10),VL22,VL16,VL21,VL21,0,0,%pst[30],0)
+ IF (!%C36.31) JSR 128 1 ;Attiva nuova bombatura con eventuale galleggiamento
+N280 PAUSE
+ ?%C16.4 = 1 ;sosta su PCL per rinculo
+ ;MAP Disabilita guadagno variabile
+ _ppconf_sx(0x00,X,Y,0,0,0x01,0,0,0,0,0,0,0,0)
+ ;provvisorio: ripristina tolleranza standard
+ _tollerap(0x00,X,0x00, %pst[4], %pst[30], %pst[4])
+ _tollerap(0x00,Y,0x00, %pst[4], %pst[30], %pst[4])
+ _wait_bit( 0,"%C36.6",1); attesa rinculo eseguito
+ JMPF 400
+N300 ;non deve eseguire il rinculo, quindi se può passa sul PCL senza fermarsi
+ VA15 = %C36.7 || %C34.3 ;condizioni forzamento sosta su PCL
+ IF(%C32.12) THEN
+  ;Riprogramma solo limite refdac
+  _ppconf_sx(0x00,X,Y,0,0,0xFE00,%pargen_due.dgn[12],%pargen_due.dgn[13],0,0,0,0,%pargen_due.dgn[14],0)
+ ELSE
+  ;Abilita filtro e limiter su DAC pestone
+  _ppconf_sx(0x00,X,Y,0,0,0xFF00,%pargen_due.dgn[12],%pargen_due.dgn[13],0,0,0,0,%pargen_due.dgn[14],0)
+ ENDIF
+ IF((!%C32.8) || (!%pargen_due.dwgn[18])) JMPF 320
+ ;Discesa tandem sincronizzata con sosta al PCL
+ _tollerap(0x00,X,0x00, 0.1, %pst[30], 0.1)
+ _tollerap(0x00,Y,0x00, 0.1, %pst[30], 0.1)
+  ;FRS Imposta guadagno variabile per raggiungimento punto target
+  _ppconf_sx(0x00,X,Y,0,0,0x03,%pargen_due.dgn[8],%pargen_due.dgn[9],0,0,0,0,%pargen_due.dgn[10],0)
+ _ppconf_sx(0x00,X,Y,16,17,0x4000,VL17,VL18,%pargene.dwgn[9],0,VL36,0.01,0.01,1)
+ _ppmove_sx(0x01,X,Y,16,17,(VL13|0x4000),VL19,VL16,VA8,VA8,VA1,VA1,%pst[30],0)
+ _tollerap(0x00,X,0x00, %pst[4], %pst[30], %pst[4]); RIPROGRAMMA TOLLERANZA
+ _tollerap(0x00,Y,0x00, %pst[4], %pst[30], %pst[4]);
+ JMPF 400
+N320
+ ;Discesa normale con o senza sosta al PCL
+ _ppconf_sx(0x00,X,Y,0,0,0,VL17,VL18,0,0,VL36,0,0.01,1)
+ IF(%C36.30) JMPF 340
+ IF(VA15) JMPF 330
+ ; Nessuna sosta sul PCL
+ ;MAP Imposta guadagno variabile per raggiungimento punto target
+ _ppconf_sx(0x00,X,Y,0,0,0x03,%pargen_due.dgn[8],%pargen_due.dgn[9],0,0,0,0,%pargen_due.dgn[10],0)
+ _ppconf_sx(0x00,X,Y,0,0,0xFF01,VL42,VL43,0,0,0,0,0,0)
+ _ppmove_sx(0x09,X,Y,0,0,VL13,VL19,VL16,VA8,VA8,0,0,%pst[30],0)
+ ;MAP Disabilita guadagno variabile
+ _ppconf_sx(0x00,X,Y,0,0,0x01,0,0,0,0,0,0,0,0)
+ JMPF 400
+N330
+ ; Sosta sul PCL
+ IF(!%C32.12) THEN
+  _tollerap(0x00,X,0x00, 0.1, %pst[30], 0.1)
+  _tollerap(0x00,Y,0x00, 0.1, %pst[30], 0.1)
+ ENDIF
+ ;MAP Imposta guadagno variabile per raggiungimento punto target
+ _ppconf_sx(0x00,X,Y,0,0,0x03,%pargen_due.dgn[8],%pargen_due.dgn[9],0,0,0,0,%pargen_due.dgn[10],0)
+ _ppmove_sx(0x01,X,Y,0,0,VL13,VL19,VL16,VA8,VA8,0,0,%pst[30],0)
+ IF(!%C32.12) THEN
+  _tollerap(0x00,X,0x00, %pst[4], %pst[30], %pst[4]); RIPROGRAMMA TOLLERANZA
+  _tollerap(0x00,Y,0x00, %pst[4], %pst[30], %pst[4]);
+ ENDIF
+  ;MAP Disabilita guadagno variabile
+ _ppconf_sx(0x00,X,Y,0,0,0x01,0,0,0,0,0,0,0,0)
+JMPF 400
+N340 ;Ricerca PCL con sensore pressione
+ VA15 = (VA15) || (!%C36.31) ;forza sosta su PCL per calcolo se non leggo la larghezza
+ %C21.20 = VA15 ;Richiede sosta a fine rilevamento spessore
+ IF(!VA15) _ppmove_sx(0x09,X,Y,0,0,VL13,VL22,VL16,VL20,VL20,0,0,%pst[30],0)
+ IF(!VA15) _ppmove_sx(0x09,X,Y,0,0,(VL13+0x10),VL22,VL16,VL21,VL21,0,0,%pst[30],0)
+ IF(VA15) _ppmove_sx(0x09,X,Y,0,0,VL13,VL22,VL16,VL20,VL20,0,0,%pst[30],0)
+ IF(VA15) _ppmove_sx(0x01,X,Y,0,0,(VL13+0x10),VL22,VL16,VL21,VL21,0,0,%pst[30],0)
+ IF(!%C36.31) JSR 128 1 ;Attiva nuova bombatura con eventuale galleggiamento
+ JMPF 400
+
+N390 ;predispone discesa lenta (nel caso non l'abbia gia fatto)
+ _tollerap(0x00,X,0x00, %pst[4], %pst[30], %pst[4]); RIPROGRAMMA TOLLERANZA
+ _tollerap(0x00,Y,0x00, %pst[4], %pst[30], %pst[4]);
+ ;Abilita filtro e limiter su DAC pestone
+ _ppconf_sx(0x00,X,Y,0,0,0xFF00,%pargen_due.dgn[12],%pargen_due.dgn[13],0,0,0,0,%pargen_due.dgn[14],0)
+
+N400 ;FASE DI PIEGA
+ ?%C16.5 = 1 ;discesa lavoro
+ IF(%C36.7) _wait_bit(0, "%C36.8", 1) ;attesa sblocco sosta su PCL dopo rinculo
+
+ ;Calcolo quota target PMI
+ VA31 = %prog[%np].DatiIMG.nMetodo
+ IF((%C38.7) && (VA31==4)) THEN
+    ; Se piega con sensore e il metodo e' 4 il primo posizionamento lo faccio al prebend
+    VL1 = %prog[%np].DatiIMG.dPreBendPMI ;copia quota prebend Y1
+    IF(VL1==0) THEN
+        VL1 = %prog[%np].ya ;copia quota target Y1
+        VL2 = %prog[%np].yb ;copia quota target Y2
+    ELSE
+        VL2 = VL1 ;copia quota target Y2
+    ENDIF
+
+ ELSE
+    VL1 = %prog[%np].ya ;copia quota target Y1
+    VL2 = %prog[%np].yb ;copia quota target Y2
+ ENDIF
+
+ IF( %C32.6 ) THEN ;pressa monocilindrica
+ VL2 = VL1 ;copia quota target Y1 in quota Y2
+ ENDIF
+
+ VL27 = ( (%parpres.dForzaImp / %gen[9]) * %parspec.dwsp[10] )
+ IF (VL27 <= (%pst4 * 1000)) VL27 = (VL27 + (%pst4 * 1000) + 20)
+ VL23 = (VL1 + ( VL27 / 1000 )) ;quota target Y1 PrePiega
+ IF ( VL23 > VA8 ) VL23 = VA8
+ VL24 = (VL2 + ( VL27 / 1000 )) ;copia quota target Y2 PrePiega
+ IF ( VL24 > VA8 ) VL24 = VA8
+
+ ;Calcolo velocita di lavoro
+ VL52 = 0 ;default annulla velocita al plc per limitazione
+ VL16 = %prog[%np].velw*1000 ;ricalcola velocitá di lavoro
+ IF ((%pargen_due.dwgn26) && (VL16 > %pargen_due.dwgn26) && (%C36.2)) VL16 = %pargen_due.dwgn26
+ IF (%C19.8) THEN
+  VA17 = %ax[8].pa9
+  IF((%C34.1) && (VA17 < %vaccas)) VA17 = %vaccas
+  IF((%C34.2) && (VA17 < %vaccbs)) VA17 = %vaccbs
+  VL16 = ((%ax[8].pa9 / VA17) * (%prog[%np].velw*1000) -10)
+ ENDIF
+ IF ((%prog[%np].angya == 0) && (%C38.0)) JMPF 402; Se piega Coniata o ribattuta non esegue controllo velocità angolare
+ IF ((%pargen_due.dwgn26) && (VL16 <= %pargen_due.dwgn26)) JMPF 402 ;se vel. < limite di sicurezza non esegue controllo vel. angolare
+ VA18 = VA8 - %prog[%np].ya ;Distanza di piega
+ IF ((VA18 > 0.1) && (VL16 > 750) && (%pargen_due.dgn[34])) THEN
+  VA17 = ((%dap[%np].largc / 2) / VA18)
+  VA16 = ((ATAN(VA17)) / (VA18 / (%prog[%np].velw*1000/60)))
+  IF (VA16 > %pargen_due.dgn[34]) THEN
+   VL16 = (( %pargen_due.dgn[34] / VA16) * (%prog[%np].velw*1000))
+   VL52 = VL16 / 1000 ;passaggio velocita al plc per limitazione
+  ENDIF
+ ENDIF
+N402
+VL17 = %prog[%np].coraya;assegna valori guadagni discesa lavoro
+ VL18 = %prog[%np].corayb;assegna valori guadagni discesa lavoro
+ VL19 = %pst[27] / (%pst[26] / VL16) ;calcola tempo accelerazione per velocitá di lavoro
+ IF((%C32.22) && (VL16>750)) VL16 = 750 ;limita la velocità per norme di sicurezza
+ ;Velocità e accelerazione per fine piega
+ VL26 = %parspec.dwsp[9]
+ IF ( !VL26 ) JMPF 404
+ IF ( VL26 > VL16 ) JMPF 404
+ VL25 = VL19 / ( VL16 / VL26 ) ;calcola tempo accelerazione per velocitá di piega fine
+ JMPF 406
+N404
+ VL26 = VL16 ;velocità normale
+ VL25 = VL19 ;accelerazione normale
+N406
+ IF(%C32.7) JMPF 430
+ IF(%C38.0) JMPF 450
+ IF(%C38.2) JMPF 460
+ IF(%C38.7) JMPF 470
+
+ ;Imposta guadagno variabile per raggiungimento punto target
+ _ppconf_sx(0x00,X,Y,0,0,0x03,%pargen_due.dgn[8],%pargen_due.dgn[9],0,0,0,0,%pargen_due.dgn[10],0)
+ IF(%C32.8) JMPF 420
+ IF((%C36.30) || (%C36.31)) JMPF 410
+
+ ;Ciclo con bombatura attiva meccanica
+ IF(%C38.24) THEN
+   ;Calcola la quota di prebend
+   Angle = %pargen_due.dgn[61] ;angolo di prebend
+   IF(Angle < 1) Angle = 5 ;angolo di default
+   IF(Angle > 10) Angle = 10
+   Index = FIX(Angle)
+   PreBend = %prog[%np].mm_for_degree[Index]
+   IF(Index != 10) THEN
+     PreBend = PreBend + ((%prog[%np].mm_for_degree[Index+1] - PreBend) * (Angle-Index))
+   ENDIF
+   ;Effettua il prebend
+   _ppconf_sx(0x00,X,Y,0,0,0,VL17,VL18,0,0,VL36,0,0.01,1)
+   _ppmove_sx(0x01,X,Y,0,0,VL13,VL25,VL26,(VL1+PreBend),(VL2+PreBend),0,0,%pst[30],0)
+
+   JSR 126 0 ;Se necessario galleggia e corregge la bombatura
+ ENDIF
+
+ ;PIEGA NORMALE
+ _ppconf_sx(0x00,X,Y,0,0,0,VL17,VL18,0,0,VL36,0,0.01,1)
+ _ppconf_sx(0x00,X,Y,0,0,0xFF01,VL42,VL43,0,0,0,0,0,0)
+ IF ( %parspec.dwsp[10] )THEN
+    _ppmove_sx(0x09,X,Y,0,0,VL13,VL19,VL16,VL23,VL24,0,0,%pst[30],0)
+    _ppmove_sx(0x01,X,Y,0,0,VL13,VL25,VL26,VL1,VL2,0,0,%pst[30],0)
+ ELSE
+    _ppmove_sx(0x01,X,Y,0,0,VL13,VL25,VL26,VL1,VL2,0,0,%pst[30],0)
+    ?%C16.31 = 0
+ ENDIF
+ JMPF 500
+N410 ;CICLO CON SENSORE DI PRESSIONE
+ IF (!%C36.31) JMPF 415
+ VL22 = %pargen_due.dgn16 / (%pst[26] / VL16) ;calcola tempo accelerazione per velocitá di lavoro con sensori
+ IF ( VL22 == 0 ) VL22 = 0.2; Evita valore 0 su rampa
+ ;Ricerca la pressione massima
+ _ppconf_sx(0x00,X,Y,0,0,0,VL17,VL18,0,0,VL36,0,0.01,1)
+ _ppmove_sx(0x01,X,Y,0,0,(VL13+0x10),VL22,VL16,VL1,VL2,0,0,%pst[30],0)
+ JSR 128 0 ;Attiva nuova bombatura con eventuale galleggiamento
+N415 ;Finisce la piega
+ _ppconf_sx(0x00,X,Y,0,0,0,VL17,VL18,0,0,VL36,0,0.01,1)
+ _ppmove_sx(0x01,X,Y,0,0,VL13,VL19,VL16,%parpres.dQtaRicYa,%parpres.dQtaRicYb,0,0,%pst[30],0)
+ JMPF 500
+ ;PIEGA NORMALE CON TANDEM SINCRONIZZATA
+N420
+SYN
+ ;Legge la quota target di tutte le macchine
+ Tand1Pos = %Tandem.TnData[5]/1000
+ Tand2Pos = %Tandem.TnData[13]/1000
+ Tand3Pos = %Tandem.TnData[21]/1000
+ Tand4Pos = %Tandem.TnData[29]/1000
+ MinTandPos = VL2
+ ;Prende il target minore tra le macchine in tandem
+ IF ((%M12.15) && (Tand1Pos < MinTandPos)) MinTandPos = Tand1Pos
+ IF ((%M12.16) && (Tand2Pos < MinTandPos)) MinTandPos = Tand2Pos
+ IF ((%M12.17) && (Tand3Pos < MinTandPos)) MinTandPos = Tand3Pos
+ IF ((%M12.18) && (Tand4Pos < MinTandPos)) MinTandPos = Tand4Pos
+ ;Riduce la velocita in modo che quella col percorso maggiore rispetti la velocita programmata
+ TandVel = VL16
+ IF (MinTandPos < VL2) TandVel = (((VA8 - VL2)/(VA8 - MinTandPos))*VL16)
+ ;Effettua movimento in tandem
+ _ppconf_sx(0x00,X,Y,16,17,0x4008,VL17,VL18,%pargene.dwgn[9],0,VL36,0.01,0.01,1)
+ _ppmove_sx(0x01,X,Y,16,17,0x4003,VL19,TandVel,VL1,VL2,VA8,VA8,%pst[30],0)
+ SYN
+ ;FRS Disabilita guadagno variabile
+ _ppconf_sx(0x00,X,Y,0,0,0x01,0,0,0,0,0,0,0,0)
+ JMPF 500
+N430 ;PIEGA HAMMERLE (usa PP_STOP + PP_WTOLL)
+ _ppconf_sx(0x00,X,Y,0,0,0,VL17,VL18,0,0,VL36,0,0.01,1)
+ _ppmove_sx(0x01,X,Y,0,0,VL12|0x11,VL19,VL16,VL1,VL2,0,0,%pst[30],0)
+ JMPF 500
+N450 ;OPERAZIONE DI CONIATURA O RIBATTITURA
+ _ppconf_sx(0x00,X,Y,0,0,0,VL17,VL18,0,0,VL36,0,0.01,1)
+ _ppmove_sx(0x01,X,Y,0,0,VL12|0x2,VL19,VL16,VL1,VL2,0,0,%pst[8],%pst[8])
+ JMPF 500
+N460 ;CICLO CON SENSORE D'ANGOLO SERIALE
+ JSR 129
+ JMPF 500
+N470 ;CICLO CON SENSORE D'ANGOLO DATAM-IRIS
+ ?%C16.27 = 1 ;Piega con misura angolo (o copiata) in corso
+ ;Imposta guadagno variabile per raggiungimento punto target
+ _ppconf_sx(0x00,X,Y,0,0,0x03,%pargen_due.dgn[8],%pargen_due.dgn[9],0,0,0,0,%pargen_due.dgn[10],0)
+
+ ;Piega al prebend come una piega normale
+ IF(%C32.8) THEN
+    ;Macchina in tandem
+    VA9 = (%PestQ[%np].pcl + %pargen_due.dgn[28]);quota target Y tandem = PCL
+    _ppconf_sx(0x00,X,Y,16,17,0x4008,VL17,VL18,%pargene.dwgn[9],0,VL36,0.01,0.01,1)
+    _ppmove_sx(0x01,X,Y,16,17,0x4003,VL25,VL26,VL1,VL2,VA9,VA9,%pst[30],0)
+ ELSE
+    ;Macchina singola
+    _ppconf_sx(0x00,X,Y,0,0,0,VL17,VL18,0,0,VL36,0,0.01,1)
+    _ppmove_sx(0x09,X,Y,0,0,VL13,VL19,VL16,VL23,VL24,0,0,%pst[30],0)
+    _ppmove_sx(0x01,X,Y,0,0,VL13,VL25,VL26,VL1,VL2,0,0,%pst[30],0)
+ ENDIF
+
+ ;Ciclo con bombatura attiva meccanica
+ IF(%C38.24) THEN
+   JSR 126 (VA31!=4) ;Se necessario galleggia, corregge la bombatura e (se metodo != 4) torna alla stessa quota
+ ENDIF
+
+ ;Va al ciclo in base al metodo impostato
+ IF((VA31==1) || (VA31==2) || (VA31==3) || (VA31==5)) JSR 130
+ IF(VA31==4) JSR 134
+ IF(VA31==6) JSR 133
+ IF((VA31==7) || (VA31==8)) JSR 136
+ ?%C10 = 0 ;azzera correzione bombatura da UI
+
+N500 ;FINE PIEGA
+ PAUSE
+ ;toglie coppia su ibrida
+ IF (%pargen_due.dwgn64.2) _ppmove_ol(0x00,X,Y,0,0,0,0,0,0)
+
+ IF(!%C36.11) JMPF 550 ;senza modo risalita inizia subito la risalita
+
+ ?%C16.22 = 1 ;setta modo risalita con pedale di salita
+ VL47 = 0 ;init flag campionamento disallineamento per volantino
+ VL49 = 0 ;azzera quota asse escluso dal movimento
+ VL50 = 0
+
+N510
+ SYN
+ %C18.25=0   ;Sincronismo per movimenti incrementali pestone da PMI
+ AWAIT(%C36.12 || %C36.13 || %C36.14 || %C36.15 || %C32.14)
+ IF ( %C36.12 ) JMPF 550 ;Pedale di salita premuto
+ IF ( %C36.13 ) JMPF 513 ;Tasto + premuto
+ IF ( %C36.14 ) JMPF 516 ;Tasto - premuto
+ IF ( %C36.15 ) JMPF 518 ;Tasto START premuto
+ IF ( %C32.14 ) JMPF 520 ;Comando da volantino
+
+N513 JSR 107 ;Ciclo incrementale positivo
+ JMPB 510
+
+N516 JSR 106 ;Ciclo incrementale negativo
+ JMPB 510
+
+N518 JSR 105 ;Ciclo incrementale centesimale negativo
+ JMPB 510
+
+N520 JSR 114 ;Comando da volantino in modo risalita
+ JMPB 510
+
+N550
+ ?%C16.6 = 1 ;piega terminata
+ IF(%C36.9) _wait_bit(0, "%C36.10", 1) ;attesa sblocco sosta su PMI (se non l'ha fatto nel comando)
+
+ ?%C16.8 = 1 ;sosta terminata
+
+ ;Salva quota PMS prima del cambio passo (che può essere al PMI)
+ VL46 = %PestQ[%np].pmsc
+
+ VL56 = 0 ;Init salita in continuo disabilitata
+
+ ;Disabilita guadagno variabile
+ _ppconf_sx(0x00,X,Y,0,0,0x01,0,0,0,0,0,0,0,0)
+
+ IF( !%C36.16 ) JSR 101 ;decompressione anticipata
+
+ _wait_bit( 0,"%C38.21",1); attesa abil. risalita
+ ?%C21.15 = 1 ;Pestone pronto per avvio risalita
+
+ ;tratto in lento per fare la decompressione a quota
+ ;pargen_due.dwgn19.19 = PAR-PP Abilita decompressione pressa elettrica
+ IF ( !%pargen_due.dwgn19.19 ) JMPF 551
+
+ ;decompressione esclusa se = 0
+  IF( %pargen_due.dgn[33] < 0.001 ) JMPF .Dec0
+ ;decompressione esclusa se la forza è molto bassa
+ IF( %parpres.dForzaImp < %pargen_due.dgn[33] ) JMPF .Dec0
+
+ _ppmove_ol(0x00,X,Y,0,0,0,0,0,0) ;togli coppia prima di riprogrammare limiter, soglie, ecc.
+
+ ;Imposta guadagno variabile per raggiungimento punto target
+ _ppconf_sx(0x00,X,Y,0,0,0x01,VA28,VA29,0,0,0,0,%pargen_due.dgn[26],0)
+ ;Abilita filtro e limiter su DAC pestone
+ _ppconf_sx(0x00,X,Y,0,0,0xFF00,%pargen_due.dgn[43],%pargen_due.dgn[43],0,0,0,0,%pargen_due.dgn[38],0)
+ ;Abilita Soglie Ins SV
+ IF (VA24 != 0) THEN
+  _insensibilita(0x00,X,3,VA24,0)
+  _insensibilita(0x00,Y,3,VA25,0)
+ ENDIF
+ IF (%pargene.bgn.2) JMPF .TOL_LOW2
+ _tollerap(0x00,X,0x00, 1, %pst[44], 1)
+ _tollerap(0x00,Y,0x00, 1, %pst[44], 1)
+ JMPF .TOL_HIGH2
+.TOL_LOW2
+ _tollerap(0x00,X,0x00, 0.1, %pst[44], 0.1)
+ _tollerap(0x00,Y,0x00, 0.1, %pst[44], 0.1)
+.TOL_HIGH2
+ VL3 = %pst[41] * VL4 / %pst[40]
+ ACC[X]=VL3 ACC[Y]=VL3
+ IF (%C32.28) VL3 = %pargen_due.dgn[21] * VL4 / %pst[40]
+ DEC[X]=VL3 DEC[Y]=VL3
+
+ IF(!(%C36.24)) JMPF .Dec0 ;se accompagnamento o accompagnatori, non fa la decompressione a quota
+ SYN
+ ?%C16.20 = 1 ;decompressione in corso
+ VA6 = QTA(X)
+ VA7 = QTA(Y)
+ IF ( VA6 > VA7 ) THEN
+    VA4 = VA6
+ ELSE
+    VA4 = VA7
+ ENDIF
+
+ IF (%prog[%np].dPiegaD == 0) THEN
+  ;Quota decompressione calcolata automaticamente
+  VA3 = %parpres.dForzaImp / %gen9
+  VL30 = VA4 + (((%dap[%np].largc / 16 ) * 0.15 * 5) + ( VA3 * 3 ) + %pargen_due.dgn31)
+ ELSE
+  ;Quota decompressione impostata da operatore
+  VL30 = VA4 + %prog[%np].dPiegaD
+ ENDIF
+; IF (VL30 > (%PestQ[%np].pcl - 0.2)) VL30 = (%PestQ[%np].pcl - 0.2) ;quota PCL come limite risalita
+
+ ;Decompressione a quota (con valvole di salita o di discesa lenta fa la stessa cosa)
+ $Init Decompressione SV
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[42],%pst[43],0,0,0,0,0,%C32.23)
+ _ppconf_sx(0x00,X,Y,0,0,0xFF01,VL40,VL41,0,0,0,0,0,0)
+ _wait_bit( 0,"%C38.12",0); attesa pompe in pressione per salita
+ IF((%pstt[2]+%pst[45]) != 0) THEN
+   ;decompressione senza passaggio in continuo alla salita veloce
+   _ppmove_sx(0x01,X,Y,0,0,(VL28|0x1000),0,%pst[26],VL30,VL30,0,0,%pst[44],0)
+ ELSE
+   ;decompressione con passaggio in continuo alla salita veloce
+   _ppmove_sx(0x09,X,Y,0,0,(VL28|0x1000),0,%pst[26],VL30,VL30,0,0,%pst[44],0)
+
+   ?%C16.21 = 1 ;decompressione terminata
+   ?%C16.23 = 1 ;Avvio discesa accomp. non sincronizzata
+   VL56 = 1 ;Memorizza salita in continuo
+ ENDIF
+ $End Decompressione SV
+
+ ;se passaggio in continuo alla salita veloce, salta tutti i casi intermedi
+ IF (VL56 != 0) JMPF 593
+
+.Dec0
+ _ppmove_ol(0x00,X,Y,0,0,0,0,0,0) ;togli coppia
+ ?%C16.21 = 1 ;decompressione terminata
+ _wait_bit( 0,"%C38.18",0); Blocco ciclo dopo decomp da plc utente
+N551
+
+ IF(!%C36.17) JMPF 555
+ ;risalita in albero elettrico con accompagnatori
+ SYN ; per leggere le quote pestone e accompagnatori aggiornate
+ _albero_e(0x00,0x02,X,X,%parspec.dwsp[18],0.0,0.0) ;0x02 = REG_AE
+ _albero_e(0x00,0x02,Y,Y,%parspec.dwsp[19],0.0,0.0) ;0x02 = REG_AE
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[28],%pst[29],0,0,0,0,0.01,1) ;riprogramma guadagni
+ _tollerap(0x00,X,0x00,%pst[4],%pst[51],%pst[4]) ; disabilita tolleranza
+ _tollerap(0x00,Y,0x00,%pst[4],%pst[51],%pst[4]) ;
+ ;calcolo costanti di inseguimento
+ VA9 = QTA(X) ;quota attuale Y1
+ VA10 = QTA(Y) ;quota attuale Y2
+ IF( %C34.1 ) JMPF 552
+ IF (%pargen_due.dwgn64.19) THEN ;Abil. quote inizio-fine ciclo accompagnatori da programma
+  VA11 = (%ax[9].ra[4] / 1000) - %SpecialProg.SpecialStep[%np].dAHoming[3] ;Corsa discesa A2
+ ELSE
+ VA11 = %ax[9].ra[4] / 1000 ;quota attuale A2
+ ENDIF
+ VA14 = 9
+ JMPF 553
+N552
+ IF (%pargen_due.dwgn64.19) THEN ;Abil. quote inizio-fine ciclo accompagnatori da programma
+  VA11 = (%ax[8].ra[4] / 1000) - %SpecialProg.SpecialStep[%np].dAHoming[2] ;Corsa discesa A1
+ ELSE
+  VA11 = %ax[8].ra[4] / 1000 ;quota attuale A1
+ ENDIF
+ VA14 = 8
+N553
+ VA12 = -((VA8 + %pargen_due.dgn[41] - VA9) / VA11) ;K inseguimento Y1 = spazio Y1 / spazio A1
+ VA13 = -((VA8 + %pargen_due.dgn[41] - VA10) / VA11) ;K inseguimento Y2 = spazio Y2 / spazio A1
+ _albero_e(0x00,0x01,X,VA14,VA12,"%C36.18",1) ;aggancio albero elettrico Y1
+ _albero_e(0x00,0x01,Y,VA14,VA13,"%C36.18",1) ;aggancio albero elettrico Y2
+ PAUSE
+ JMPF 595
+
+ ;RISALITA PESTONE PER CICLO ACCOMPAGNATORI
+N555 IF(!%C36.19) JMPF 570 ;verifica se accompagnatori abilitati
+ VA5 = %parspec.dsp[13]*1000 ;setta velocità di ritorno pestone
+ G4 F%pstt[3] ;attende rampa pressione
+
+ IF( !%C36.22 ) JMPF 558
+ ;salita pestone con accompagnatori con valvole discesa lavoro
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[28],%pst[29],0,0,0,0,0.01,1)
+ _ppmove_sx(0x01,X,Y,0,0,0x1003,%pst[48],VA5,VA8,VA8,0,0,%pst[51],0)
+ JMPF 595
+N558
+ ;salita pestone con accompagnatori con valvole salita
+ ;Imposta guadagno variabile per raggiungimento punto target
+ _ppconf_sx(0x00,X,Y,0,0,0x01,VA28,VA29,0,0,0,0,%pargen_due.dgn[26],0)
+ ;Abilita Soglie Ins SV
+ IF (VA24 != 0) THEN
+  _insensibilita(0x00,X,3,VA24,0)
+  _insensibilita(0x00,Y,3,VA25,0)
+ ENDIF
+ IF (%pargene.bgn.2) JMPF .TOL_LOW3
+ _tollerap(0x00,X,0x00, 1, %pst[44], 1)
+ _tollerap(0x00,Y,0x00, 1, %pst[44], 1)
+ JMPF .TOL_HIGH3
+.TOL_LOW3
+ _tollerap(0x00,X,0x00, 0.1, %pst[44], 0.1)
+ _tollerap(0x00,Y,0x00, 0.1, %pst[44], 0.1)
+.TOL_HIGH3
+ VL3 = %pst[41] * VL4 / VA5
+ ACC[X]=VL3 ACC[Y]=VL3
+ IF (%C32.28) VL3 = %pargen_due.dgn[21] * VL4 / VA5
+ DEC[X]=VL3 DEC[Y]=VL3
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[49],%pst[50],0,0,0,0,0,%C32.23)
+ _ppconf_sx(0x00,X,Y,0,0,0xFF01,VL40,VL41,0,0,0,0,0,0)
+ _wait_bit( 0,"%C38.12",0); attesa pompe in pressione per salita
+ _ppmove_sx(0x01,X,Y,0,0,(VL28|0x1000),0,VA5,VA8,VA8,0,0,%pst[44],0)
+ JMPF 595
+
+N570 IF(!%C36.21) JMPF 590 ;controlla se accomp. abilitato
+ ;ACCOMPAGNAMENTO
+ VA5 = %prog[%np].accomp*1000
+ IF ((%pargen_due.dwgn[96] != 0) && (VA5 > %pargen_due.dwgn[96])) VA5 = %pargen_due.dwgn[96]
+ G4 F%pstt[3]
+ ?%C16.23 = 1 ;Avvio discesa accomp. non sincronizzata
+ IF( !%C36.22 ) JMPF 580
+ ;accompagnamento con valvole discesa lavoro
+ IF(%C32.8) JMPF 575
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[28],%pst[29],0,0,0,0,0.01,1)
+ _ppmove_sx(0x01,X,Y,0,0,0x1000,%pst[48],VA5,VA8,VA8,0,0,%pst[51],0)
+ JMPF 595
+N575 ;accompagnamento in tandem
+ SYN ;per QTA(X)
+ _ppconf_sx(0x00,X,Y,16,17,0x4000,%pst[28],%pst[29],%pargene.dwgn[9],0,VL36,0.01,0.01,1)
+ _ppmove_sx(0x01,X,Y,16,17,0x4000,%pst[48],VA5,VA8,VA8,QTA(X),QTA(Y),%pst[51],0)
+ JMPF 595
+N580
+ ;accompagnamento con valvole salita
+ ;MAP Imposta guadagno variabile per raggiungimento punto target
+ _ppconf_sx(0x00,X,Y,0,0,0x01,VA28,VA29,0,0,0,0,%pargen_due.dgn[26],0)
+;MAP Abilita Soglie Ins SV
+ IF (VA24 != 0) THEN
+  _insensibilita(0x00,X,3,VA24,0)
+  _insensibilita(0x00,Y,3,VA25,0)
+ ENDIF
+ IF (%pargene.bgn.2) JMPF .TOL_LOW4
+ _tollerap(0x00,X,0x00, 1, %pst[44], 1)
+ _tollerap(0x00,Y,0x00, 1, %pst[44], 1)
+ JMPF .TOL_HIGH4
+.TOL_LOW4
+ _tollerap(0x00,X,0x00, 0.1, %pst[44], 0.1)
+ _tollerap(0x00,Y,0x00, 0.1, %pst[44], 0.1)
+.TOL_HIGH4
+ VL3 = %pst[41] * VL4 / VA5
+ ACC[X]=VL3 ACC[Y]=VL3
+ IF (%C32.28) VL3 = %pargen_due.dgn[21] * VL4 / VA5
+ DEC[X]=VL3 DEC[Y]=VL3
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[49],%pst[50],0,0,0,0,0,%C32.23)
+ _ppconf_sx(0x00,X,Y,0,0,0xFF01,VL40,VL41,0,0,0,0,0,0)
+ _wait_bit( 0,"%C38.12",0); attesa pompe in pressione per salita
+ _ppmove_sx(0x01,X,Y,0,0,(VL28|0x1000),0,VA5,VA8,VA8,0,0,%pst[44],0)
+ JMPF 595
+
+N590 ;salita al PCL in veloce
+ G4 F(%pstt[2]+%pst[45]) ;attendi rampa pressione + attesa iniziale salita veloce
+ ?%C16.23 = 1 ;Avvio discesa accomp. non sincronizzata
+ ;MAP Imposta guadagno variabile per raggiungimento punto target
+ _ppconf_sx(0x00,X,Y,0,0,0x01,VA28,VA29,0,0,0,0,%pargen_due.dgn[26],0)
+ ;Abilita filtro e limiter su DAC pestone
+ _ppconf_sx(0x00,X,Y,0,0,0xFF00,%pargen_due.dgn[43],%pargen_due.dgn[43],0,0,0,0,%pargen_due.dgn[38],0)
+;MAP Abilita Soglie Ins SV
+ IF (VA24 != 0) THEN
+  _insensibilita(0x00,X,3,VA24,0)
+  _insensibilita(0x00,Y,3,VA25,0)
+ ENDIF
+ IF (%pargene.bgn.2) JMPF .TOL_LOW5
+ _tollerap(0x00,X,0x00, 1, %pst[44], 1)
+ _tollerap(0x00,Y,0x00, 1, %pst[44], 1)
+ JMPF .TOL_HIGH5
+.TOL_LOW5
+ _tollerap(0x00,X,0x00, 0.1, %pst[44], 0.1)
+ _tollerap(0x00,Y,0x00, 0.1, %pst[44], 0.1)
+.TOL_HIGH5
+ VL3 = %pst[41] * VL4 / %pst[40]
+ ACC[X]=VL3 ACC[Y]=VL3
+ IF (%C32.28) VL3 = %pargen_due.dgn[21] * VL4 / %pst[40]
+ DEC[X]=VL3 DEC[Y]=VL3
+
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[42],%pst[43],0,0,VL44,0,0.01,%C32.23)
+ _ppconf_sx(0x00,X,Y,0,0,0xFF01,VL40,VL41,0,0,0,0,0,0)
+
+N593 ;Salita al PCL
+ IF ( %pargen_due.dwgn19.19 ) JMPF 594
+ SYN
+ VA19 = QTA(X) ;copia quota attuale su target
+ VA20 = QTA(Y) ;copia quota attuale su target
+ IF ((VA19 >= VA8) || (VA20 >= VA8)) JMPF 600
+N594
+ IF (VL56 == 0) _wait_bit( 0,"%C38.12",0); attesa pompe in pressione per salita
+ IF ((VL56 != 0) && (VL30 > (VA8 - 0.1))) JMPF 600 ;salta salita a PCL se gia raggiunto in continuo
+ _ppmove_sx(0x09,X,Y,0,0,(VL28|0x1000),0,%pst[40],VA8,VA8,0,0,%pst[44],0)
+ VL56 = 1 ;Memorizza salita in continuo
+JMPF 600
+
+N595 PAUSE ;salita da PCL a PMS
+ ;MAP Imposta guadagno variabile per raggiungimento punto target
+ _ppconf_sx(0x00,X,Y,0,0,0x01,VA28,VA29,0,0,0,0,%pargen_due.dgn[26],0)
+ ;Abilita filtro e limiter su DAC pestone
+ _ppconf_sx(0x00,X,Y,0,0,0xFF00,%pargen_due.dgn[43],%pargen_due.dgn[43],0,0,0,0,%pargen_due.dgn[38],0)
+;MAP Abilita Soglie Ins SV
+ IF (VA24 != 0) THEN
+  _insensibilita(0x00,X,3,VA24,0)
+  _insensibilita(0x00,Y,3,VA25,0)
+  ENDIF
+N600 IF( %C36.16 ) JSR 101 ;decompressione posticipata
+ ?%C16.9 = 1 ;pestone al PCL in risalita
+ IF(%C38.27) _wait_bit( 0,"%C36.23",1) ;attende sblocco salita al PCL
+ IF(!%C36.24) G4 F(%pstt[2]+%pst[45]) ;attendi rampa pressione + attesa iniziale salita veloce
+ ?%C16.24 = 1 ;salita da PCL avviata
+ IF (%pargen_due.dgn[30] == 0) JMPF 650
+ FWR[X]= 0 ;disabilita errore di inseguimento Y1
+ FWR[Y]= 0 ;disabilita errore di inseguimento Y2
+ %ax0.pa5 = %pargen_due.dgn[30] * 1000
+ %ax1.pa5 = %pargen_due.dgn[30] * 1000
+ FWR[X]= 1 ;abilita errore di inseguimento Y1
+ FWR[Y]= 1 ;abilita errore di inseguimento Y2
+N650
+ VL3 = %pst[41] * VL4 / %pst[40]
+ IF ( (%prog[%np].accomp != 0) || (%M13.17 != 0) || (%C19.1 != 0)) THEN
+   ACC[X]=VL3 ACC[Y]=VL3
+   IF (%C32.28) VL3 = %pargen_due.dgn[21] * VL4 / %pst[40]
+   DEC[X]=VL3 DEC[Y]=VL3
+ ELSE
+   IF (%C32.28) VL3 = %pargen_due.dgn[21] * VL4 / %pst[40]
+ ENDIF
+
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[42],%pst[43],0,0,VL44,0,0.01,%C32.23)
+ _ppconf_sx(0x00,X,Y,0,0,0xFF01,VL40,VL41,0,0,0,0,0,0)
+ IF (VL56 == 0) _wait_bit( 0,"%C38.12",0); attesa pompe in pressione per salita
+ _ppmove_sx(0x01,X,Y,0,0,(VL28|0x1000),0,%pst[40],VL46,VL46,0,0,%pst[44],0) ;salita al PMS
+ ;MAP Disabilita guadagno variabile
+ _ppconf_sx(0x00,X,Y,0,0,0x01,0,0,0,0,0,0,0,0)
+ ;Disabilita filtro e limiter su DAC pestone
+ _ppconf_sx(0x00,X,Y,0,0,0xFF00,0,0,0,0,0,0,0,0)
+ ;MAP Reimposta Soglie da parametri
+ IF (VA24 != 0) THEN
+  _insensibilita(0x00,X,3,%pst[33],%pst[31])
+  _insensibilita(0x00,Y,3,%pst[34],%pst[32])
+ ENDIF
+ IF ((%pargen_due.dgn[29] == 0) || (%pargen_due.dgn[30] == 0)) JMPF 850
+  FWR[X]= 0 ;disabilita errore di inseguimento Y1
+  FWR[Y]= 0 ;disabilita errore di inseguimento Y2
+  %ax0.pa5 = %pargen_due.dgn[29] * 1000
+  %ax1.pa5 = %pargen_due.dgn[29] * 1000
+  FWR[X]= 1 ;abilita errore di inseguimento Y1
+  FWR[Y]= 1 ;abilita errore di inseguimento Y2
+N850
+ ?%C16.10 = 1 ;fine ciclo pestone
+ _wait_bit( 0,"%C36.25",1) ;attende conferma fine ciclo
+N1000 RET

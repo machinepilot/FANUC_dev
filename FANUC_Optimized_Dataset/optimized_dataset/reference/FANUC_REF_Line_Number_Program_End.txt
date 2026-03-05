@@ -1,0 +1,19 @@
+TOPIC: Line Number Program End
+KEYWORDS: line number, program end, END, /END, line numbering, program termination
+CATEGORY: reference
+SOURCE: FANUC Teach Pendant Help System / Operator Manual
+APPLIES_TO: R-30iB Plus, TP Programming
+---
+
+4. LINE NUMBER AND PROGRAM END MARKER 4. LINE NUMBER AND PROGRAM END MARKER PROG
+RAM ELEMENTS 4. LINE NUMBER AND PROGRAM END MARKER A line number is automaticall
+y inserted to each instruction you add to a program. If you remove an instructio
+n or move an instruction to a new position in the program, the program instructi
+ons will be renumbered automatically so that the first line is always line 1, th
+e second line 2, and so forth. You use line numbers to identify which lines to m
+ove, remove, and mark when you modify a program. The program end marker ( [End] 
+) automatically appears after the last instruction in a program. As new instruct
+ions are added, the program end marker moves down on the screen, retaining its p
+osition as the last line in the program. 3. COLLECTIONS 5. MOTION INSTRUCTION
+Metadata:
+{}

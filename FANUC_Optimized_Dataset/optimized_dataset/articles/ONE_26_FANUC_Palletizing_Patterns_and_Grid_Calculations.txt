@@ -1,0 +1,140 @@
+TOPIC: FANUC Palletizing Patterns and Grid Calculations
+KEYWORDS: palletizing, grid, pallet, MOD, DIV, offset calculation, row, column, layer, stacking
+CATEGORY: article
+SOURCE: ONE Robotics Company Blog
+APPLIES_TO: FANUC TP Programming, R-30iB Plus
+---
+
+# FANUC Palletizing Patterns and Grid Calculations
+
+Filed under:FANUCTP ProgrammingLine TrackingVision
+I spent last week helping an end-user with their two-robot visual line
+tracking system. As far as systems like these go, this one’s pretty
+simple: just two robots, one backlit conveyor, one camera and basically
+one product. The entire codebase comes in well under a thousand lines.
+We had issues that were hard to solve despite the simplicity. What
+follows is my process while debugging several common visual tracking
+errors.
+TLDR version: visual line tracking is hard.
+Customer complaint: the robots are missing roughly 1 out of 8 or 9
+products.
+What you mean by “miss?” Is the robot innaccurate or is vision failing
+to identify parts? Could it be a load-balancing or boundary issue?
+Duplicating the issue in the customer’s presence is the best way to save
+a lot of wheel-spinning.
+We watched the system for a few minutes, and sure enough, the robots let
+roughly 1 out of 8 or 9 parts through the system undisturbed. They
+looked pretty accurate otherwise, so it’s probably vision-related.
+The vision runtime showed a problem immediately: we weren’t taking
+pictures often enough. Depending on the product spacing, the system
+might see half a part on the upstream side of the camera’s field of view
+(FOV) and then the trailing half on the downstream side.
+Solution: take more pictures by decreasing the trigger distance.
+Unfortunately decreasing the trigger distance caused us to start getting
+a bunch of vision overruns. These errors occur when the system cannot
+process the current image before it needs to start processing the
+next one.
+By taking pictures twice as often, we consequently cut the amount of
+time vision has to process images by 50%.
+A quick look at the Track Sensor status pageStatus > Type > Track
+Sensorconfirms that the vision processing time was almost always longer
+than the trigger interval.
+Since we can’t slow down our conveyor or increase the trigger interval
+(that would put us right where we started), we have to try to improve
+our vision performance: simplify the vision process. Unfortunately, this
+vision process was about as simple as it gets: one “Blob Tool” with a
+pretty small range of acceptable area values.
+I would expect a vision process like this one to take ~50ms, but this
+one varied greatly: sometimes <100ms, but often over 250ms. This
+indicates an overloaded CPU. Next stop:$idle_cpu_min.
+The main robot has a lot on its plate: vision processing, queue
+management and ethernet encoder master. Even with all that work to do,
+I’d still expect to see some spare cycles available. Instead the
+available CPU was consistently less than 1% while the system was
+running. There must be a programming issue somewhere.
+After a few minutes of sifting through the code, I found a spot where
+the robot is thrown into a tight loop while waiting for parts. By simply
+changing this action to be a one-time thing, we started seeing ~30%
+available CPU. With a few extra cycles to spare for vision processing,
+the vision process started running on the order of 50ms like I’d expect,
+and we eliminated the overruns.
+Don’t celebrate just yet. The vision system is seeing the parts so well
+now that the robots have decided to handle the same parts twice: the
+classic “ghost-pick.”
+Ghost-picking is pretty common and occurs when the same part is snapped
+multiple times by the camera. Luckily there’s a simple fix for this:
+increase the overlap tolerance. Overlap tolerance defines the minimum
+acceptable gap between parts when they are put into the tracking queue.
+If vision tries to throw a part into the queue that will end up right on
+top of an existing part, it’s thrown out as an overlap.
+I encountered a red flag as soon as I went to increase this setting. It
+was already set to 500mm (way too high). With this setting, the
+system should discard any parts that appear within 500mm of each other.
+Then how the heck are the robots picking parts that are essentially
+right on top of each other? Is overlap tolerance broken?
+Before crying wolf to FANUC, I took a few logs from the tracking queue.
+VQLOGs show when parts are put into the queue, allocated, acknowledged,
+overlapped, skipped, etc. These are extremely useful for debugging
+load-balancing and inconsistent picking issues.
+A simple way to test if all parts are getting into the queue is to feed
+a known number of parts and compare it to the VQLOG. I fed 10 parts into
+the system and watched the robots handle them all, sometimes more than
+once. There must be some interesting stuff in the VQLOG.
+The VQLOG indicated that many more parts were actually getting into the
+queue. A little baffled, I remembered a similar issue from a few
+years back where a customer had accidently put the robot’s tracking
+boundaries within the camera’s FOV.  Let’s see if it happened again.
+Sure enough, the upstream robot’s allocation boundary extended into the
+FOV. The VQLOG suddenly makes sense. Here’s what was happening:
+By simply pushing the allocation window out of the FOV, the robots
+stopped picking the same parts twice. Unfortunately we’re now back to
+square one: lots of parts getting through untouched.
+Remember the 500mm overlap tolerance? Now that we’re not stealing parts
+out of the camera’s FOV, overlap tolerance is working as intended, and
+it’s way too high. I set it to something more reasonable (like 50mm) and
+the picking finally started to look good.
+Of course as soon as you fix one issue, the less crucial/annoying things
+need to get fixed. Evidently these robots have run into each other in the
+past. Sounds like we need to look at the boundaries again.
+One of the many problems with tracking very high-speed conveyors is that
+the robot requires a pretty long track window to actually perform its
+tracking operation. Depending on the conveyor speed vs. the performance
+of the robot, it may track for quite a while. This particular system was
+using LR Mate 200iCs: great robots, but ~120ft/min is pretty quick no
+matter what robot you use.
+At this fast conveyor speed, the robot will probably never have to reach
+the upstream boundary. By the time it’s tracked a part, it’s probably
+200 or 300mm downstream, but what if the conveyor stops at just the right
+time?
+Likewise on the downstream side: if you have the discard boundary set
+correctly, the robot shouldn’t hit it and get a “TRAK-005 Track
+destination gone” error. But what if someone lowers the robot speed or
+increases the conveyor speed? What if the robot goes for the next part
+instead of skipping one?
+This system had the upstream robot’s downstream boundary almost right on
+top of the other robot’s upstream boundary. With this condition, if the
+upstream robot tracks out and the downstream robot attempts to pick at
+the very upstream side of its window, they’re going to crash. Moving
+R1’s downstream boundary a bit upstream and R2’s upstream boundary a bit
+downstream left ~300mm between them in the worst-case scenario which
+should be plenty. I also set both robots’ discard boundaries to almost
+the length between upstream and downstream boundaries to ensure that
+they only go for parts at the upstream-side of their work areas.
+This is how I think these issues started:
+Visual tracking applications (and debugging them) is hard. It’s just one
+of those things with so many moving parts (see what I did there?) that a
+small issue in one place can cause other things to go haywire somewhere
+completely different. A pretty straight-forward customer complaint led
+me down the rabbit hole of trigger distance, vision overruns, CPU
+overloading, ghost-picking, overlap tolerance and eventually the line
+tracking boundaries before finally resolving it.
+I’ve beenunfortunate enough to frequent this trail a
+few times in the past. They’re always painful at the time, but once you
+struggle through issues like these, you won’t forget. Keep breaking (and
+fixing) things so you can fix them when they break unintentionally.
+I email(almost)every Tuesday with the latest insights, tools and techniques for programming FANUC robots. Drop your email in the box below, and I'll send new articles straight to your inbox!
+No spam, just robot programming. Unsubscribe any time. No hard feelings!
+©2013-2019 ONE Robotics Company LLC. All rights reserved.
+Privacy•Terms•RSS Feed
+
+URL: https://www.onerobotics.com/posts/2014/visual-line-tracking-is-hard/

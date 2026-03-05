@@ -1,0 +1,11 @@
+CLIENT OUTPUT REGISTERS (PLC → Press Brake),,,,,
+Address,Size,Type,Description,Values,Notes
+0,1,WORD,Operating Mode Selection,"BIT0=Editor, BIT1=Manual, BIT2=Semi, BIT3=Auto",Set bit to request mode
+1,1,WORD,Command Strobe,"BIT0: 1=Execute, 0=Complete",Handshake signal
+2,2,DWORD,Command Opcode,3000-4000 range,See Command Opcodes sheet
+4,1,BYTE,Data (if type BYTE),0-255,Single byte parameter
+5,1,WORD,Data (if type WORD),0-65535,16-bit parameter
+6,1,WORD,Reserved,,Upper word for DWORD
+7,2,DWORD,Data (if type DWORD),0-4294967295,32-bit parameter
+9,4,DOUBLE,Data (if type DOUBLE),IEEE 754,"Angles, dimensions, etc."
+53,40,STRING,Data (if type STRING),ASCII,Max 80 characters

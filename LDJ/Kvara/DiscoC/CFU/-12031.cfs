@@ -1,0 +1,144 @@
+ [A]0 S T : G11031
+
+;// Calcola la cinematica diretta (accompagnatori cart/tele) e ritorna il
+;// risultato in bendaid_z, bendaid_a (definire esternamente).
+;// Utilizzare prima di G4011 T31 e 32 per impostare le quote dei master Z ed A.
+;// A = selezione cinematica
+;// S|T = Slave A1 ed A2 (A1=slitta verticale, A2=telescopico)
+
+DBL sel = VA0
+SYN
+DBL a1 = QCALC(VA18)
+DBL a2 = QCALC(VA19)
+DBL p1, p2, p3, p4, p5, p6, p7, p8, p9
+DBL ty, tz, dAB, dCB, dAC, dAD
+DBL ABy, ABz, ACy, ACz
+DBL argAB, argAC
+DBL Rz, Ry, dRH
+DBL dCBa2
+DBL cs, sn, beta
+
+p1 = %PpgBendingAid[sel].pba_parm[1]
+p2 = %PpgBendingAid[sel].pba_parm[2]
+p3 = %PpgBendingAid[sel].pba_parm[3]
+p4 = %PpgBendingAid[sel].pba_parm[4]
+p5 = %PpgBendingAid[sel].pba_parm[5]
+p6 = %PpgBendingAid[sel].pba_parm[6]
+p7 = %PpgBendingAid[sel].pba_parm[7]
+p8 = %PpgBendingAid[sel].pba_parm[8]
+p9 = %PpgBendingAid[sel].pba_parm[9]
+beta = %PpgBendingAid[sel].pba_parm[10]
+
+IF ((p5 != 0) && (p6 != 0) && (beta == 0)) THEN
+  ;//Dati derivati
+  ABy = p3
+  ABz = p2 - p4
+  dAB = SQRT( ABy * ABy + ABz * ABz )
+  argAB = ATANXY(ABz, ABy)
+  ty = p5 - p3
+  tz = p6 - p4
+  dCB = SQRT( ty * ty + tz * tz )
+  ACy = p5
+  ACz = p2 - p6
+  dAC = SQRT( ACy * ACy + ACz * ACz )
+  argAC = ATANXY(ACz, ACy)
+  Rz = p7 - p9 + p2
+  Ry = p8 - p1
+  dRH = p9 - p2
+
+  ;//Varie singolarità: "Descrittore Utensile Errato"
+  IF( dAC < 0.001 ) ERROR(63)
+  IF( dAB < 0.001 ) ERROR(63)
+  IF( dAC > (dAB + dCB - 0.001) ) ERROR(63)
+  IF( dAC < (ABS(dAB - dCB) + 0.001)) ) ERROR(63)
+
+  dCBa2 = dCB + a2
+  dAD = 0.5 * (dAC + (dAB * dAB - dCBa2 * dCBa2) / (dAC))
+
+  bendaid_a = argAC + ACOS(IFEXP(dAD>dAB,dAB,dAD) / dAB) - argAB
+
+  cs = COS( bendaid_a );
+  sn = SIN( bendaid_a );
+
+  ;//Singolarità, sin(5): "Valore troppo elevato",
+  IF( ABS(cs) < 0.087 ) ERROR(55)
+
+  ty = - sn * dRH + Ry;
+  tz = + cs * dRH + Rz;
+  bendaid_z = a1 - (tz - ty * sn / cs);
+ELSE
+  IF (beta == 0) THEN
+    ;//Cilindri paralleli
+    ABy = p3
+
+    ABz = p4 - p2
+    ACz = a2 - ABz
+
+    IF(p6 == 1.0) ACz = ACz - a1 ;Telescopico non trasportato da verticale
+
+    argAB = ATANXY(ACz, ABy)
+    dAB = SQRT( ACz * ACz + ABy * ABy )
+    Rz = p2 - p9
+    Ry = p1 - p8
+
+    ;//singolarità: "Descrittore Utensile Errato"
+    IF( dAB < 0.001 ) ERROR(63)
+
+
+    bendaid_a = argAB + ASIN(ABz / dAB)
+
+    cs = COS( bendaid_a );
+    sn = SIN( bendaid_a );
+
+    ;//Singolarità, sin(5): "Valore troppo elevato",
+    IF( ABS(cs) < 0.087 ) ERROR(55)
+
+    ty = Ry;
+    tz = Rz * (1 - 1 / cs);
+    bendaid_z = a1 - (ty * sn / cs + tz);
+  ELSE
+    ;Angle slider and angle cylinder
+
+    ;Angolo asse inclinazione A1R
+    ABy = p5-p3
+    ABz = p6-p4
+    argAB = ATANXY(ABz, ABy)
+
+    ;Coefficiente e offset retta scorrimento snodo con accompagnatore orizzontale
+    ty = TAN(beta);
+    tz = p4 + (p3 * ty)
+    ;Distanza tra fulcro e retta scorrimento snodo
+    dAB = ABS(p2 - tz) / SQRT(ty*ty+1)
+
+    ;Distanza XY tra fulcro rotazione accompagnatore e snodo asse inclinazione
+    ACy = p3 - (a2 * COS( argAB ))
+    ACz = p2 - p4 + (a2 * SIN( argAB ))
+
+    ;Distanza e angolo tra fulcro rotazione accompagnatore e snodo asse inclinazione
+    dAC = SQRT((ACy*ACy) + (ACz*ACz))
+    argAC = ATANXY(ACz, ACy)
+
+    ;singolarità: "Descrittore Utensile Errato"
+    IF( dAC < 0.001 ) ERROR(63)
+
+    ;Angolo asse virtuale accompagnatore
+    bendaid_a = argAC + ASIN(dAB / dAC) - beta
+
+    cs = COS( bendaid_a );
+    sn = SIN( bendaid_a );
+
+    ;Singolarità, sin(5): "Valore troppo elevato",
+    IF( ABS(cs) < 0.087 ) ERROR(55)
+
+    Rz = p2 - p9
+    Ry = p1 - p8
+
+    ty = Ry;
+    tz = Rz * (1 - 1 / cs);
+    ;Quota asse virtuale verticale
+    bendaid_z = a1 - (ty * sn / cs + tz);
+  ENDIF
+ENDIF
+
+
+RET

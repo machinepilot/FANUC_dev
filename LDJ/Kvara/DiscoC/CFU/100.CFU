@@ -1,0 +1,51 @@
+Ciclo fisso manuale discesa Ver.012.38 : 100
+ VA1 = %C57 / 1000 ;quota minima pestone in mm
+ VA2 = 0x800 ; Ab. limitazione tensione in uscita
+ IF( %C36.26 ) VA2 = VA2+0x80 ;Abil. arresto rapido con blocco avanzamento
+ IF(%C32.19) JMPF 110 ;se asse pestone non tarato
+ _isocmd(0x0, X, 7);resetta bit asse tarato
+ _isocmd(0x0, Y, 7)
+ VA0 = VA1 - VG1 + VG0 ;calcola limite in modo incrementale
+ ; _paras(0x0, X, 0) ;disabilita limiti SW
+ JMPF 120
+N110 IF(VA1 < VG0) JMPF 1000 ;se oltre il limite, esce
+ VA0 = VG0 ;se asse tarato, il limite è quello minimo
+N120
+ ?%C21.3 = 1 ;discesa manuale in corso
+ G4 F%pstt[1] ;attendi tempo di rampa
+ ;Abilita filtro FIR su DAC pestone
+ _ppconf_sx(0x00,X,Y,0,0,0xFF00,%pargen_due.dgn[12],%pargen_due.dgn[13],0,0,0,0,%pargen_due.dgn[14],0)
+ ;Disabilita guadagno variabile
+ _ppconf_sx(0x00,X,Y,0,0,0x01,0,0,0,0,0,0,0,0)
+ ;Discesa manuale
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[28],%pst[29],0,0,VL36,0,0.01,1)
+ VL16 = %pst[26] ;carica velocità discesa lenta
+ IF(%pargen_due.dwgn[26] != 0) VL16 = %pargen_due.dwgn[26] ;limita la velocità per norme di sicurezza
+ ;JMPF 900
+; IF(!%C32.19) JMPF 900 ;se asse pestone non tarato, non provare ad allinearlo
+ SYN
+ VL1= QTA(X)
+ VL2= QTA(Y)
+ VL3= ABS(VL1 - VL2)
+ IF ((VL3 > %pst6) || (VL3 < %pst5)) JMPF 900 ;Non riallinea se Richiamo > differenza assi > Sbilanciamento
+IF (VL1 > VL2) JMPF 600
+ _ppmove_sx(0x01,X,Y,0,0,VA2,%pst[27],VL16,VL1,VL1,0,0,%pst[30],0)
+ JMPF 900
+N600
+ _ppmove_sx(0x01,X,Y,0,0,VA2,%pst[27],VL16,VL2,VL2,0,0,%pst[30],0)
+N900
+ IF(!%C32.19) JMPF 950 ;se asse pestone non tarato, non parcheggiarlo
+ IF((%C15.6) && (VG0 < (%R30/1000))) VA0 = %R30/1000
+N950
+ IF((%C3.8) && (%Uipl.Page==99)) JMPF 960
+ _ppmove_sx(0x01,X,Y,0,0,(VA2+0x01),%pst[27],VL16,VA0,VA0,0,0,%pst[30],0)
+ JMPF 1000
+N960
+ VL5= (%R31/1000)
+ VL6= ((%R31/1000) + (%R32/1000))
+ IF((VL5 < VA0) || (VL6 < VA0) || (!%C32.19)) JMPF 1000
+ _ppmove_sx(0x01,X,Y,0,0,(VA2+0x03),%pst[27],VL16,VL5,VL6,0,0,%pst[30],0)
+ AWAIT(!%C60.0)
+N1000
+ M0 ;attende reset canale
+ RET

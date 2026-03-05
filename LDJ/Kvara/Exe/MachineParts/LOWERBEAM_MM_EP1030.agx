@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<job>
+    <settings>
+        <version>1</version>
+        <unit>millimeter</unit>
+        <backcolour>0</backcolour>
+    </settings>
+    <entities>
+        <entity id="LOWERBEAM_MM_EP1030" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>LOWERBEAM_MM_EP1030</reference_id>
+            </geometry>
+        </entity>
+    </entities>
+    <states>
+        <state id="default">
+            <visibility>
+                <show type="Unspecified">1</show>
+                <show entity="LOWERBEAM_MM_EP1030">1</show>
+            </visibility>
+            <transformations />
+            <views>
+                <view id="1">
+                    <pos>14000,8000,-14000</pos>
+                    <target>0,0,-0</target>
+                    <near>6000</near>
+                    <far>25000</far>
+                    <width>9050</width>
+                    <height>5615</height>
+                    <perspective>1</perspective>
+                </view>
+            </views>
+        </state>
+        <state order="1" id="LOWERBEAM_MM_EP1030">
+            <visibility />
+            <transformations />
+            <views />
+        </state>
+    </states>
+    <geometries>
+        <geometry id="LOWERBEAM_MM_EP1030">
+            <data encoding="1">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</data>
+            <materials>
+                <material id="1">
+                    <color emissive="36050" />
+                </material>
+            </materials>
+        </geometry>
+    </geometries>
+</job>

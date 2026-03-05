@@ -1,0 +1,9 @@
+{
+  "customer_id": "308-GH",
+  "application": "infeed_sort_cart_placement",
+  "robot": "7-axis with E1 track",
+  "controller": "R-30iB Plus",
+  "program_count": 14,
+  "notes": "Infeed sort to cart (Slot/Bin/Panel/Foam); PROGRAM_REVIEW_2026-02-23 documents known issues",
+  "known_issues": ["Multiple programmers; LBL/fall-through bugs; register pointer errors; see PROGRAM_REVIEW_2026-02-23.md"]
+}

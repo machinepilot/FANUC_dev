@@ -1,0 +1,16 @@
+TOPIC: Multiple Control
+KEYWORDS: multiple control, multi-group, coordinated, dual arm, multiple robot
+CATEGORY: reference
+SOURCE: FANUC Teach Pendant Help System / Operator Manual
+APPLIES_TO: R-30iB Plus, TP Programming
+---
+
+15. MULTIPLE CONTROL INSTRUCTIONS 15. MULTIPLE CONTROL INSTRUCTIONS PROGRAM ELEM
+ENTS 15. MULTIPLE CONTROL INSTRUCTIONS Multiple control instructions are used fo
+r multi-tasking . Multi-tasking allows you to execute more than one task at a ti
+me. RUN program The RUN program instruction causes the selected program to begin
+to execute immediately. The parent program continues to execute. See Figure 72, 
+" RUN program " . Figure 72. RUN program 14. MIXED LOGIC INSTRUCTIONS 16. OFFSET
+/FRAME INSTRUCTIONS
+Metadata:
+{}

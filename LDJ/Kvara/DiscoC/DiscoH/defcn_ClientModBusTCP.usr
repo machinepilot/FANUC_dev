@@ -1,0 +1,8 @@
+SECTION User //********** Sezione User **************************
+
+//Modbus Events
+dword ModbusTCPEvent;
+dword ModbusTCPStat;
+dword ModbusTCPCmd;
+
+ENDSECTION User //*************** Sezione Applicativo ******************

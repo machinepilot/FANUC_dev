@@ -1,0 +1,34 @@
+Ciclo piega con doppio colpo per pieghe di tipo 4 apprese da sensore DATAM-IRIS Ver.012.51 : 134
+SYN
+ %byNumPres = 0
+ G4 F0.5
+
+ VA9 = (%PestQ[%np].pcl + %pargen_due.dgn[28]);quota target Y tandem = PCL
+ VL1 = %prog[%np].ya ;copia quota target Y1
+ VL2 = %prog[%np].yb ;copia quota target Y2
+ IF(VL2==0) VL2 = VL1
+
+ PAUSE
+
+ ;Abilita filtro FIR su DAC pestone
+ _ppconf_sx(0x00,X,Y,0,0,0xFF00,%pargen_due.dgn[12],%pargen_due.dgn[13],0,0,0,0,%pargen_due.dgn[14],0)
+ ;Imposta guadagno variabile per raggiungimento punto target
+ _ppconf_sx(0x00,X,Y,0,0,0x03,%pargen_due.dgn[8],%pargen_due.dgn[9],0,0,0,0,%pargen_due.dgn[10],0)
+
+ ;Effettua piega
+ ; Se macchina in tandem
+ IF(%C32.8) THEN
+    _ppconf_sx(0x00,X,Y,16,17,0x4008,VL17,VL18,%pargene.dwgn[9],0,VL36,0.01,0.01,1)
+    _ppmove_sx(0x01,X,Y,16,17,0x4003,VL25,VL26,VL1,VL2,VA9,VA9,%pst[30],0)
+ ELSE
+    _ppconf_sx(0x00,X,Y,0,0,0,VL17,VL18,0,0,VL36,0,0.01,1)
+    _ppmove_sx(0x01,X,Y,0,0,VL13,VL25,VL26,VL1,VL2,0,0,%pst[30],0)
+ ENDIF
+
+N1000
+ ;Disabilita filtro FIR su DAC pestone
+ _ppconf_sx(0x00,X,Y,0,0,0xFF00,0,0,0,0,0,0,0,0)
+ ;Disabilita guadagno variabile
+ _ppconf_sx(0x00,X,Y,0,0,0x01,0,0,0,0,0,0,0,0)
+ RET
+

@@ -1,0 +1,59 @@
+TOPIC: Initial Check / Pre-Run Validation
+KEYWORDS: initial check, validation, pre-run, startup check, safety check, gripper state, I/O verify
+CATEGORY: program_example
+SOURCE: TWA (The Way Automation) Standard Programs
+APPLIES_TO: R-30iB Plus, CNC Machine Tending, RoboDrill
+DESCRIPTION: Pre-production validation routine checking gripper state, I/O, and system readiness
+---
+
+/PROG  INITIAL_CHECK3
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= "";
+PROG_SIZE	= 705;
+CREATE		= DATE 20-01-21  TIME 13:05:14;
+MODIFIED	= DATE 20-01-21  TIME 13:19:16;
+FILE_NAME	= INITIAL_;
+VERSION		= 0;
+LINE_COUNT	= 24;
+MEMORY_SIZE	= 1113;
+PROTECT		= READ_WRITE;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= *,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+/APPL
+
+AUTO_SINGULARITY_HEADER;
+  ENABLE_SINGULARITY_AVOIDANCE   : TRUE;
+/MN
+   1:  !********************* ;
+   2:  !Program checks initial condition ;
+   3:  !********************* ;
+   4:   ;
+   5:  LBL[100] ;
+   6:   ;
+   7:  !Check the number of drill1 work ;
+   8:  IF R[83]<=0,JMP LBL[20100] ;
+   9:  IF R[84]<=0,JMP LBL[20100] ;
+  10:  IF R[85]<=0,JMP LBL[20100] ;
+  11:  IF (R[85]>R[83]*R[84]),JMP LBL[20100] ;
+  12:  IF R[81]>=R[85],JMP LBL[20100] ;
+  13:  IF R[82]>=R[85],JMP LBL[20100] ;
+  14:  !--------------------- ;
+  15:   ;
+  16:  LBL[9000] ;
+  17:  END ;
+  18:   ;
+  19:  !Abnormal processing ;
+  20:  LBL[20100] ;
+  21:  UALM[4] ;
+  22:  JMP LBL[100] ;
+  23:  !--------------------- ;
+  24:   ;
+/POS
+/END

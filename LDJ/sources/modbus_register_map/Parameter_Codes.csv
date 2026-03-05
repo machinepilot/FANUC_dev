@@ -1,0 +1,38 @@
+BEND PARAMETER MODIFICATION CODES,,,,,
+Note: Use these codes as Command Opcode (Reg 2) to modify parameters,,,,,
+Code,Name,Command,Data Reg,Data Type,Description
+0,HD_PIECEP,0,7,DWORD,Programmed pieces
+1,HD_PIECEM,1,7,DWORD,Pieces made
+14,HD_ACT_BEND,14,5,WORD,Active bend number
+17,HD_NUM_BEND_SEC,17,5,WORD,Bend number in section
+1000,PG_TYPE,1000,5,WORD,Type of step
+1001,PG_ROT,1001,5,WORD,Direction of fold
+1002,PG_RIP,1002,5,WORD,Number of repetitions
+1006,PG_THICK,1006,9,DOUBLE,Sheet thickness (mm)
+1009,PG_ANGY1,1009,9,DOUBLE,Angle Y1 (degrees)
+1010,PG_ANGY2,1010,9,DOUBLE,Angle Y2 (degrees)
+1033,PG_CORAY1,1033,9,DOUBLE,Correction angle Y1
+1034,PG_CORAY2,1034,9,DOUBLE,Correction angle Y2
+1011,PG_X1,1011,9,DOUBLE,X1 position (mm)
+1012,PG_X2,1012,9,DOUBLE,X2 position (mm)
+1013,PG_X3,1013,9,DOUBLE,X3 position (mm)
+1014,PG_X4,1014,9,DOUBLE,X4 position (mm)
+1035,PG_CORX1,1035,9,DOUBLE,Correction X1 (mm)
+1036,PG_CORX2,1036,9,DOUBLE,Correction X2 (mm)
+1015,PG_Y1,1015,9,DOUBLE,Y1 position (mm)
+1016,PG_Y2,1016,9,DOUBLE,Y2 position (mm)
+1039,PG_CORY1,1039,9,DOUBLE,Correction Y1 (mm)
+1040,PG_CORY2,1040,9,DOUBLE,Correction Y2 (mm)
+1017,PG_R1,1017,9,DOUBLE,R1 position (degrees)
+1018,PG_R2,1018,9,DOUBLE,R2 position (degrees)
+1045,PG_VELW,1045,9,DOUBLE,Working speed (mm/s)
+1047,PG_PMS,1047,9,DOUBLE,Top dead center (mm)
+1111,PG_DIE,1111,9,DOUBLE,Die number
+1112,PG_PUNCH,1112,9,DOUBLE,Punch number
+1139,PG_FORCE,1139,9,DOUBLE,Bending force (kN)
+1140,PG_CROWNING,1140,9,DOUBLE,Crowning value (mm)
+1141,PG_MUTEPOINT,1141,9,DOUBLE,Mute point (mm)
+1094,PG_ANGY1_FIN_LC,1094,9,DOUBLE,Final angle Y1 measured
+1095,PG_ANGY2_FIN_LC,1095,9,DOUBLE,Final angle Y2 measured
+1164,PG_CORR_ANG_Y1_LC,1164,9,DOUBLE,Angle correction Y1
+1165,PG_CORR_ANG_Y2_LC,1165,9,DOUBLE,Angle correction Y2

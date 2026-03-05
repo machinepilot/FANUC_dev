@@ -1,0 +1,54 @@
+TOPIC: Advanced Motion Control Settings
+KEYWORDS: advanced motion control, path accuracy, motion smoothing, acceleration, deceleration, jerk, servo, trajectory
+CATEGORY: reference
+APPLIES_TO: R-30iB Plus, Motion Tuning
+---
+
+/PROG ADVANCED_MOTION_CONTROL
+/ATTR
+OWNER       = MNEDITOR;
+COMMENT     = "Advanced Motion";
+CREATE      = DATE 24-03-14  TIME 10:04:00;
+PROTECT     = READ_WRITE;
+DEFAULT_GROUP = 1,*,*,*,*;
+
+/MN
+   1:  ! Advanced Motion Control Module ;
+   2:  ! Implements complex motion patterns ;
+   
+   3:  AUTO_SINGULARITY_HEADER ;
+   4:  ENABLE_SINGULARITY_AVOIDANCE = TRUE ;
+   
+   5:  ! Configure motion parameters ;
+   6:  R[40:PathType]=1 ;
+   7:  R[41:Speed]=100 ;
+   8:  R[42:Acceleration]=50 ;
+   
+   9:  ! Execute optimized motion sequence ;
+  10:  SELECT R[40:PathType]=1,JMP LBL[100] ;
+  11:         =2,JMP LBL[200] ;
+  12:         =3,JMP LBL[300] ;
+  
+  13:LBL[100] ;
+  14:J P[1] R[41]% FINE ACC R[42] ;
+  15:L P[2] 500mm/sec FINE CONSTANT_PATH ;
+  16:C P[3] P[4] 250mm/sec CNT100 ;
+  17:  JMP LBL[999] ;
+  
+  18:LBL[200] ;
+  19:L P[5] 200mm/sec FINE Tool_Offset,PR[1] ;
+  20:  JMP LBL[999] ;
+  
+  21:LBL[300] ;
+  22:  CALL SPLINE_MOTION ;
+  
+  23:LBL[999] ;
+  24:  END ;
+/POS
+P[1]{
+   GP1:
+    UF : 1, UT : 1,	CONFIG : 'N U T, 0, 0, 0',
+    X =   400.0  mm,	Y =   0.0  mm,	Z =   500.0  mm,
+    W =   180.0 deg,	P =   0.0 deg,	R =   180.0 deg
+};
+/END

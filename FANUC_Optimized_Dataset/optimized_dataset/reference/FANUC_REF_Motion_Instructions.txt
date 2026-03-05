@@ -1,0 +1,399 @@
+TOPIC: Motion Instructions
+KEYWORDS: motion instruction, J, L, C, joint motion, linear motion, circular motion, speed, mm/sec, FINE, CNT, termination type, position, P[], PR[], LPOS, JPOS, wrist joint, coordinated motion
+CATEGORY: reference
+SOURCE: FANUC Teach Pendant Help System / Operator Manual
+APPLIES_TO: R-30iB Plus, TP Programming
+---
+
+5. MOTION INSTRUCTION 5. MOTION INSTRUCTION PROGRAM ELEMENTS 5. MOTION INSTRUCTI
+ON 5.1. Overview A motion instruction directs the robot to move in a specified w
+ay to a specific location in the workcell using a specified speed. A motion inst
+ruction includes: Motion type - How the robot moves to the position Position ind
+icator symbol - Indicates that the robot is at the taught position Positional in
+formation - Where the robot moves Termination type - How the robot ends the move
+to the position Speed - How fast the robot moves to a position Motion options - 
+Additional commands that perform specific tasks during robot motion A typical ex
+ample motion instruction is shown in Figure 2, " Typical Motion Instruction Exam
+ple " . Figure 2. Typical Motion Instruction Example Note Wrist Joint (W/JNT) is
+a motion option that allows the robot to move only in Linear or Circular. 5.2. M
+otion Type Motion type defines how the robot will move to the destination positi
+on. There are three motion types: Joint Linear Circular Joint Motion J P[2] 50% 
+FINE Joint motion Causes the robot to move all required axes to the destination 
+position simultaneously. The motion of each axis starts and stops at the same ti
+me. Is programmed at the destination position. Speed is specified as a percentag
+e of the total default speed, or in seconds. The actual speed of the move is dep
+endant on the speed of the slowest axis. Refer to Section 5.7, " Speed " . Figur
+e 3, " Joint Motion Type " shows an example of joint motion. Figure 3. Joint Mot
+ion Type Linear Motion L P[2] 100mm/sec FINE Linear motion Causes the robot to m
+ove the tool center point in a straight line from the start position to the dest
+ination position. Is programmed at the destination position. Speed is specified 
+in millimeters per second, centimeters per second, inches per minute, degrees pe
+r second, or seconds. Refer to Section 5.7, " Speed " . During a linear move, th
+e orientation of the tool changes gradually as the robot moves from the start po
+sition to the destination position, depending on how the destination position is
+programmed. Figure 4, " Linear Motion Type " shows an example of linear motion. 
+Figure 4. Linear Motion Type Linear motion type can also be used to rotate about
+the tool center point while maintaining that position. The speed for this type o
+f motion is in degrees per second. Figure 5, " Linear Motion Type Used to Rotate
+About the Tool Center Point " shows an example of linear motion used for rotatio
+n about the tool center point. Figure 5. Linear Motion Type Used to Rotate About
+the Tool Center Point Circular Motion C P[2] P[3] 100mm/sec FINE Circular motion
+Causes the robot to move the tool center point in an arc from the start position
+through an intermediate to the destination position. Is programmed at the interm
+ediate position. Speed is specified in inches per minute, millimeters per second
+, and centimeters per minute. Refer to Section 5.7, " Speed " . When you add a m
+otion instruction that has circular motion type, the following appears on the sc
+reen: C P[2] P[3] 100 mm/sec FINE The first position, P[2] in the example, is th
+e intermediate position. The intermediate position is automatically recorded as 
+the current robot position when you add the motion instruction. The second posit
+ion, P[3] in the example, is the destination position. You must record the desti
+nation position, after you add the circular motion instruction, using the TOUCHU
+P function key, F5. If you change an existing point to "C", that position become
+s the "via" or intermediate position. To program a complete circle, add two circ
+ular motion instructions, which will generate two intermediate positions and two
+destination positions. The circular motion instructions can be added by: Inserti
+ng a line. Returning to DEFAULT Selecting [INST]. Editing a default instruction 
+to add the circular motion instruction. Teaching a point with the current defaul
+t and then modifying the line to become a circular motion statement. Circular Or
+ientation Control at Intermediate (Via) Point Circular orientation control at th
+e intermediate "via" point ensures that the robot will go through the "via" poin
+t at the taught orientation point. Orientation is smoothly changed between the s
+tart, via, and end points. Figure 6, " Circular Motion Type " shows an example o
+f circular motion. Figure 6. Circular Motion Type Restart of Circular Motion In 
+Figure 7, " Restart of Circular Motion Instruction " a single-step stop occurs a
+t the destination position of a circular motion instruction. You can then jog th
+e robot. Figure 7. Restart of Circular Motion Instruction In Figure 8, " Restart
+of Circular Motion Instruction " when program execution is restarted after a sin
+gle-step stop and jogging, the robot moves, using linear motion to the end point
+of the previous circular motion. Figure 8. Restart of Circular Motion Instructio
+n 5.3. Positional Information Positional information describes the location, ori
+entation, and configuration of the tool center point when a motion instruction i
+s added to a program. Positional information is recorded when the motion instruc
+tion is added to the program. Refer to the “Planning and Creating a Program” cha
+pter in the Setup and Operations Manual for more information on adding motion in
+structions. Positional information is made of seven components, as shown in Figu
+re 9, " Positional Information " . These components are represented by the posit
+ion command , P[n]. Figure 9. Positional Information Location components, (x,y,z
+), describe the three-dimensional location of the position. Orientation componen
+ts, (w,p,r), describe rotation about x, rotation about y, and rotation about z. 
+The configuration component describes the condition of the axes when the robot a
+rrives at the destination position. Orientation of the wrist axes at the destina
+tion position remains the same, but the orientation of the other axes might chan
+ge. In the motion instruction, positional information is represented as a positi
+on command, P[n], or position register , PR[x]. The n is the position number . T
+he x is the position register number. A position command stores positional infor
+mation with the motion instruction in the program. A position register stores po
+sitional information in a storage location separate from the motion instruction.
+Refer to Section 19, " POSITION REGISTER INSTRUCTIONS " . The position number id
+entifies the position. Position numbers are automatically assigned when a motion
+instruction is added to a program. The first number assigned is [1], the second 
+[2], and so forth. If you add a position before an already existing position, th
+e position number is incremented from the last numbered position regardless of i
+ts place in the program. You can request that positions be renumbered so that th
+e position numbers are sequential in your program. When you delete positions, al
+l other taught positions keep their current numbers unless you request that they
+be renumbered. Positions can also have comments of one to 16 characters. You spe
+cify these when you add or modify positional information. Refer to the “Planning
+and Creating a Program” chapter in the Setup and Operations Manual for more info
+rmation on modifying the positions in your program. 5.4. Position Confirmation P
+osition Confirmation provides a visual indicator (an @ symbol) on a motion line 
+when the robot is near the position. To configure the Position Confirmation feat
+ure, set the system variable $MNDSP_POSCF using a setting in Table 3, " $MNDSP_P
+OSCF Configuration Settings " . Table 3. $MNDSP_POSCF Configuration Settings $MN
+DSP_POSCF Description Example Program 0 (Disabled) The “@” symbol is not display
+ed in the editor. 1:J P[1] 100% FINE 2:J P[2] 40% FINE : Arc Start E1[1] 3:L P[3
+] WELD_SPEED FINE : Arc End E1[3] 4:J P[1] 100% FINE 1 (Multiple @) The "@" symb
+ol is displayed to all positions if the robot is currently near those positions.
+1:J @P[1] 100% FINE 2:J P[2] 40% FINE : Arc Start E1[1] 3:L P[3] WELD_SPEED FINE
+: Arc End E1[3] :J @P[1] 100% FINE 2 (Single @) The "@" symbol is displayed to t
+he position of the current line if the robot is near that position. 1:J @P[1] 10
+0% FINE 2:J P[2] 40% FINE Arc Start E1[1] 3: P[3] WELD_SPEED FINE : Arc End E1[3
+] 4:J P[1] 100% FINE 5.5. Motion Status Display The teach pendant editor can dis
+play motion status information on each motion line. The example program shown in
+Figure 10, " An Example Program in Display Mode 1 " displays the distances from 
+all the positions in the program to the current tool center point (TCP) in milli
+meters. Figure 10. An Example Program in Display Mode 1 The distances are update
+d continuously as the robot moves. This feature can be helpful while teaching or
+testing programs. This is display mode number 1. In this mode, the distance from
+the position to the TCP is displayed on multiple lines. Other display modes are 
+available. The other modes display data only on the current motion line. This fe
+ature is enabled and configured by setting the system variable $MNDSP_MST. After
+the feature is enabled and configured, it can easily be toggled ON or OFF by sel
+ecting the “Motion info” entry in the list of EDCMD commands. See Figure 11, " M
+otion Info is Toggled ON and OFF with EDCMD " . Figure 11. Motion Info is Toggle
+d ON and OFF with EDCMD TEST JOINT 10 % 1/5 1:J @P[1] 100% FINE_________________
+_ 2:J P[2] 40% FINE | 1 Insert | : Arc Start[1] | 2 Delete | 3:L P[3] WELD_SPEE|
+3 Copy | : Arc End[1] | 4 Find | 4:J @P[1] 100% FINE| 5 Replace | [End] | 6 Renu
+mber | | 7 Comment | | 8 Undo | | 9 Motion info | ----------+ +- Setup The behav
+ior of the motion status display feature can be adjusted using the following fie
+lds in the system variable $MNDSP_MST. Refer to the System Reference Manual for 
+more information about $MNDSP_MST. $disp_enable turns the motion status display 
+ON or OFF in the Editor. It is toggled by the motion status element in the EDCMD
+menu. $disp_edcmd enables the display of the motion status menu choice in the ED
+CMD pullup menu. $disp_inauto enables the motion status display during AUTO mode
+. $disp_enable must also be TRUE. $disp_is_on indicates the motion status is dis
+played in the editor. $disp_rsmdis enables display of the resume distance in the
+editor. $mode_grp[1..7] is the display mode for each group. Valid modes are list
+ed in Table 4, " Display Modes " . See Table 5, " Display Mode Examples " for an
+example program display for each mode. Table 4. Display Modes Mode Description H
+eader 1 Distance on ONE line P[mm to TCP G1] 2 Distance on Multiple lines P[mm t
+o TCP G1] 3 COMMAND PERCENT P[Cmnd % G1] 4 COMMAND TIME P[Cmnd Time G1] 5 COMMAN
+D DISTANCE P[Cmnd Dist G1] 6 COMMAND DISTANCE P[Cmnd D G1] 7 COMMAND DISTANCE DO
+WN P[Cmnd D DN G1] 8 COMMAND PROGRESS P[Cmnd PBar G1] 9 COMMAND PERCENT AND DIST
+ANCE P[Cmnd % G1] 10 COMMAND PERCENT AND DISTANCE DOWN P[Cmnd % DN G1] 11 COMMAN
+D PERCENT AND TIME P[Cmnd % T G1] 19 Travel Angle in degrees P[Travel dg G1] 20 
+Work Angle in degrees P[WorkXZ dg G1] 21 Current X location in world frame P[X (
+1) mm G1] 22 Current Y location in world frame P[Y (2) mm G1] 23 Current Z locat
+ion in world frame P[Z (3) mm G1] 24 Current W orientation in world frame P[W (4
+) deg G1] 25 Current P orientation in world frame P[P (5) deg G1] 26 Current R o
+rientation in world frame P[R (6) deg G1] Comments Positions can have comments t
+o 16 characters in length. When the motion status is displayed, only the first 1
+0 characters of the comments will be visible. Multiple Groups When a system has 
+multiple groups, the motion status display can display information for any of th
+e groups. The group number is displayed in the header with a short description o
+f the display mode. To change the selected group number, use the FCTN menu entry
+CHANGE GROUP. If the selected group is not in the program group mask, the lowest
+group number in the mask is selected for display. Each group can display data in
+a different mode. You can set the mode for each group using the array $mndsp_mst
+.$mode_grp[1..6]. Resume Distance When a running program pauses the robot stops 
+and the position of the robot is recorded. If the robot is moved from the record
+ed stop position it may return to this position when the program is resumed, dep
+ending on what options are installed. The distance the robot has moved from the 
+stop position can be displayed in the upper left corner of the editor if the var
+iable $mndsp_mst.$disp_rsmdis = TRUE. Figure 12. Resume Distance Display Distanc
+e Modes Modes 1 and 2 display the distance between the program positions and the
+robot tool center point. The distance is along a straight line, not along the pr
+ogrammed path. The actual distance traveled by the robot could be greater if it 
+involves Joint or Circular motion. Motion Command Modes The motion command modes
+3 – 11 display the output from the motion system as it executes the current line
+. The timing of this data slightly precedes the actual robot position. The times
+and distances displayed reflect the motion command, not the real time feedback d
+ata from the motor encoder. When a motion is paused the data will remain display
+ed. When a motion is resumed the data displayed will reflect the motion from the
+stop position to the destination position. Note Modes 3 - 11 only display distan
+ce information for L, C, and A motion types. In modes 3 - 11, Joint motions will
+display an increasing percentage and total time like Mode 11. Table 5. Display M
+ode Examples Mode Example Description 0 P[Inv. Mode G1] \\\1:J @P[1: ] 100% FINE
+2: P[2: ] 40% FINE : Arc Start[1] 3:L P[3: ] WELD_SPEED FINE : Arc End[1] 4:J @P
+[1: ] 100% FINE No motion status displayed. This is an invalid mode for this gro
+up. In this example, group 1 is selected for display. The display mode for group
+1 is specified in $MNDSP_MST.$MODE_GRP[1]. If the mode is 0, or some other mode 
+not listed in this table, the header will indicate "Invalid Mode," and data will
+not be displayed in the motion lines. 1 P[mm to TCP G1] \\\1:J @P[1: .000] 100% 
+FINE 2:J P[2: ] 40% FINE : Arc Start[1] 3:L P[3: ] WELD_SPEED FINE : Arc End[1] 
+4:J @P[1: ] 100% FINE The distance of this position from the TCP is displayed, f
+or this line only. In this example, $MNDSP_MST.$MODE_GRP[1] = 1. The cursor is o
+n line 1 and the robot is at P[1]. The distance from P[1] to the robot Tool Cent
+er Point (TCP) in millimeters is displayed as 0.000. If you jog the robot away f
+rom P[1], the distance to the tool will be displayed dynamically. 2 P[mm to TCP 
+G1] \\\1:J @P[1: .000] 100% FINE 2:J P[2: 26.795] 40% FINE : Arc Start[1] 3:L P[
+3: 11.520] WELD_SPEED FINE : Arc End[1] 4:J @P[1: .000] 100% FINE Distance on MU
+LTIPLE lines. Mode 2 is similar to mode 1. In mode 2 a distance is displayed in 
+all the motion lines, not just the cursor line. The distance is from the recorde
+d position to the current tool center point. 3 P[Cmnd % G1] \\\3:L P[3: 28% ] WE
+LD_SPEED FINE : Arc End[1] COMMAND PERCENT Mode 3 displays the percentage of the
+motion completed while the move progresses. It is updated dynamically. If you pa
+use execution before reaching the position and continue, the percentage will be 
+reset to 0 and then increase to reflect the remaining motion. 4 P[Cmnd Time G1] 
+\\\3:L P[3: 2.9s] WELD_SPEED FINE : Arc End[1] COMMAND TIME Mode 4 displays the 
+total time required for the motion to complete. If does not change dynamically, 
+unless the speed override is changed. If the speed override is changed, the time
+is updated to reflect the total time for the entire motion at the new override, 
+not the remaining time. 5 P[Cmnd Dist G1] \\\3:L P[3: 24.19] WELD_SPEED FINE : A
+rc End[1] COMMAND DISTANCE Mode 5 displays the total move distance. It does not 
+change during the motion. If you pause execution and then resume the display wil
+l change to show the distance to P[3] from the pause position. 6 P[Cmnd D G1] \\
+\3:L P[3: 6.758] WELD_SPEED FINE : Arc End[1] COMMAND DISTANCE Mode 6 is similar
+to mode 3. It is dynamic. It shows the distance increasing () while moving to P[
+3]. If you pause and resume, the distance is reset to zero. If single step is ac
+tive, stepping through the entire motion on line 3 to P[3], without stopping, wi
+ll result in the total move distance displayed when the robot reaches P[3]. 7 P[
+Cmnd D DN G1] \\\3:L P[3: 17.43] WELD_SPEED FINE : Arc End[1] COMMAND DISTANCE D
+OWN Mode 7 is just like mode 6 except the distance is shown decreasing (DN - dow
+n) to zero. 8 P[Cmnd PBar G1] \\\3:L P[3:-- ] WELD_SPEED FINE : Arc End[1] COMMA
+ND PROGRESS Mode 8 displays a progress bar. It behaves just like the percentage 
+of Mode 3, only graphically. 9 P[Cmnd % G1] \\\3:L P[3: 28% 6.758] WELD_SPEED FI
+NE : Arc End[1] COMMAND PERCENT and DISTANCE Mode 9 displays both the increasing
+percentage of Mode 3 and the increasing distance of Mode 6. 10 P[Cmnd % DN G1] \
+\\3:L P[3: 28% 17.43] WELD_SPEED FINE : Arc End[1] COMMAND PERCENT and DISTANCE 
+DOWN Mode 10 displays both the increasing percentage of Mode 3 and the decreasin
+g distance of Mode 7. 11 P[Cmnd % T G1] \\\3:L P[3: 28% 2.9s] WELD_SPEED FINE : 
+Arc End[1] COMMAND PERCENT and TIME Mode 11 displays both the increasing percent
+age of Mode 3 and the total time of Mode 4. 19 P[Travel dg G1] \\\1:J @P[1: —10.
+277] 100% FINE Travel Angle in degrees A negative number indicates a push angle.
+A positive number indicates a drag angle. 20 P[WorkXZ dg G1] \\\1:J @P[1: 36.832
+R] 100% FINE Work Angle in degrees The header WorkXZ indicates the work angle is
+relative to the XZ plane. WorkXY means relative to the XY plane. The letter L or
+R after the angle indicates the torch is to the left or right of vertical. 21 P[
+X (1) mm G1] \\\1:J @P[1: 2070.261] 100% FINE Current X location in world frame 
+22 P[Y (2) mm G1] \\\1:J @P[1: 25.242] 100% FINE Current Y location in world fra
+me 23 P[Z (3) mm G1] \\\1:J @P[1: 1226.707] 100% FINE Current Z location in worl
+d frame 24 P[W (4) deg G1] \\\1:J @P[1: -2.027] 100% FINE Current W orientation 
+in world frame 25 P[P (5) deg G1] \\\1:J @P[1: 19.972] 100% FINE Current P orien
+tation in world frame 26 P[R (6) deg G1] \\\1:J @P[1: 2.375] 100% FINE Current R
+orientation in world frame Limitations Joint motions do not display distances fo
+r the Command Distance modes. Percentage and time are displayed instead. Command
+times and distances are approximate. Incremental motions do not display distance
+properly for modes 1 and 2. Not all motion options and formats are supported. Th
+e units for distance are always mm and cannot be changed. Extended axes are not 
+supported. 5.6. Frame Number of Positional Data The User Frame (UF) and User Too
+l frame number (UT) are displayed at the top of the Position Detail screen. See 
+the following screen for an example. P[1] UF:0 UT:1 CONF: N 00 X 100.000 mm W 12
+.555 deg Y 100.000 mm P 3.123 deg Z 100.000 mm R .014 deg These fields indicate 
+the current frame number. UF: User Frame number 0 = world coordinate 1-10 = norm
+al UFRAME number F = current $MNUFRAMENUM UT: User Tool frame number 0 = not val
+id 1-10 = normal UTOOL number F = current $MNUTOOLNUM Note These values cannot b
+e modified directly from the teach pendant. Note The position register screen ha
+s UF and UT in the same area, and this value is always "F" for both. 5.7. Speed 
+Speed defines how fast the robot moves to a position. The motion type used deter
+mines the units of speed. Depending on the motion type you want, you can specify
+speed in millimeters per second, centimeters per minute, inches per minute, rota
+tional degrees per second, or seconds. When a program is running, you can change
+the speed override using the +% and -% keys on the teach pendant. The value rang
+es from .01% (very fine) to 100 percent of the programmed speed . Programmed spe
+ed is the speed specified in the program. Note The programmed speed cannot excee
+d the capability of the robot. If programmed speed cannot be met, an error will 
+occur. Joint motion uses A percentage (%) of the total default speed. Joint moti
+on speed can have a value of 1% to 100% of the maximum joint speed limit. J P[1]
+50% FINE Seconds (sec), the length of time the motion lasts. Seconds can have a 
+value of .1 to 3200. This is used for motion that requires an exact time span. I
+f a program is paused and then resumed during execution of motion that uses seco
+nds, the controller will be held in a busy and running state until the portion o
+f time that had been executed elapses again. Then, the robot will complete the m
+otion using the remaining amount of time. See Figure 13, " Example of the Sec Sp
+eed Feature " . J P[1] 2 sec FINE L P[2] 2 sec FINE Figure 13. Example of the Se
+c Speed Feature Linear and circular motions use Millimeters per second (mm/sec),
+with a range of values from 1 to 2000 millimeters per second. Centimeters per mi
+nute (cm/min), with a range of values from 1 to 12000 centimeters per minute. In
+ches per minute (inch/min), with a range of values from 0.1 to 4724.41 inches pe
+r minute. Seconds (sec), the length of time the motion lasts. This is used for m
+otion that requires an exact time span. If a program is paused and then resumed 
+during execution of motion that uses seconds, the controller will be held in a b
+usy and running state until the portion of time that had been executed elapses a
+gain. The robot will then complete the motion using the remaining amount of time
+. See Figure 13, " Example of the Sec Speed Feature " . L P[1] 100mm/sec FINE or
+C P[1] 100mm/sec FINE Warning If you change the motion type of a positional inst
+ruction from linear to joint, the speed value can change from mm/sec to a defaul
+t value as high as 100%. Be sure to check the speed value before you execute the
+instruction; otherwise, you could injure personnel or damage equipment. Note Whe
+n the speed is specified in mm/sec, cm/min, or inch/min, then the value entered 
+will represent the speed at the tool center point. Rotational control of axes ar
+ound the tool centerpoint uses rotational degrees per second (deg/sec), with a d
+efault range of values from 1 to 500 degrees per second. L P[1] 90 deg/sec FINE 
+Variable Motion Speed You can specify motion speed by using a register in a moti
+on instruction. The value of the specified register defines motion speed. This i
+s called variable motion speed . Warning Before you run a program, make sure you
+are aware of any register values used to set speed in a motion instruction. Othe
+rwise, unexpected motion could occur that could injure personnel or damage equip
+ment. Note A program will stop pre-execution of subsequent instructions when it 
+reaches a motion instruction with the register speed type. This ensures the moti
+on instruction uses the register speed type value. See Figure 14, " Variable Mot
+ion Speed Program Execution Example " . Figure 14. Variable Motion Speed Program
+Execution Example This feature is enabled when the system variable $RGSPD_PREXE 
+= FALSE. You can disable this feature by setting $RGSPD_PREXE = TRUE. However, t
+he robot will not be able to move at the speed specified by the register value. 
+The following examples show various motion type instructions that take their spe
+ed value from a register (R[ ]). Joint motion type J P[2] R[1]% CNT100 Linear mo
+tion type L P[1] R[2]mm/sec FINE Circular motion type C P[2] P[3] R[3]cm/min FIN
+E Palletizing PALLETIZING-B_1 L PAL_1[A_1] R[4]mm/sec CNT100 L PAL_1[BTM] R[4]mm
+/sec FINE L PAL_1[R_1] R[4]mm/sec CNT100 The following features are changed to a
+ccommodate variable motion speed: Default motion instructions include an instruc
+tion that uses variable motion speed. The Motion Modify screen, displayed when y
+ou select REPLACE for a motion instruction on the [EDCMD] menu, includes items f
+or specifying variable motion speed. Specific motion speed values are valid for 
+variable motion speed. Refer to Table 6, " Range of Register Values to Specify a
+Variable Motion Speed " for valid variable motion speed values. If the specified
+register value is not a valid speed value (exceeds the speed limit or is out-of-
+range), an error will occur during the execution of the motion instruction. Tabl
+e 6. Range of Register Values to Specify a Variable Motion Speed Unit Range of R
+egister Values % 1 to 100 Integer type sec 0.1 to 3200.0 Float type (*1) mm/sec 
+1 to 2000 Integer type (*2) cm/min 1 to 12000 Integer type (*2) inch/min 0.1 to 
+4724.41 Float type (*3) deg/sec 1 to 500 Integer type (*4) *1 : Valid one decima
+l point. *2 : The speed limit is the value of $MRR_GRP.$SPEEDLIM. *3 : Valid one
+decimal point. The limit is the value of $MRR_GRP.$SPEEDLIM/25.4 * 60. *4 : The 
+limit is the value of $MRR_GRP.$ROTSPEEDLIM * 180/3.141. See Figure 15, " Syntax
+for Changing the Motion Speed " for the syntax for changing the motion speed fro
+m a specific motion speed value to a variable (register) speed value or for chan
+ging the motion speed from a variable (register) speed value to a specific motio
+n speed value. Figure 15. Syntax for Changing the Motion Speed Use Replacing Spe
+ed Values (using Motion Modify in [EDCMD] REPLACE) to replace speed values using
+the Motion Modify screen in [EDCMD] REPLACE. Procedure 1. Replacing Speed Values
+(using Motion Modify in [EDCMD] REPLACE) Conditions You are currently editing a 
+teach pendant program that contains motion instructions. Steps Move the cursor t
+o the line number of the instruction in which you want to replace speed values a
+nd press F5, [EDCMD]. Select Replace. Select Replace menu 1 Register 5 Motion mo
+dify 2 Call 6 3 I/O 7 4 JMP/LBL 8 Select Motion modify. See the following screen
+for an example. Modify motion menu 1 Replace speed 5 2 Replace term 6 3 Insert o
+ption 7 4 Remove option 8 Select Replace speed. See the following screen for an 
+example. Select interpolate 1 Unspecified type 5 2 J 6 3 L 7 4 C 8 RSR0001 10% 1
+: L P[1] 20.0sec FINE 2: L P[2] 500mm sec FINE 3: L P[3] R[1]mm sec FINE Select 
+source type Specify the interpolation type (motion type) of the motion instructi
+on for which you want to search: Unspecified type - searches for joint, linear, 
+and circular motion instructions Joint - searches for joint motion instructions 
+only Linear - searches for linear motion instructions only Circular - searches f
+or circular motion instructions only Specify the speed type of the motion instru
+ction you want to search for: All type - searches for motion instructions that u
+se a speed value, a variable (register) value, or an indirect variable (register
+) speed value. Speed value - searches only for motion instructions that use a sp
+eed value. R[ ] - searches only for motion instructions that use a variable (reg
+ister) speed value. R[R[ ]] - searches only for motion instructions that use an 
+indirect variable (register) speed value. See the following screen for an exampl
+e. Speed type menu 1 All type 5 2 Speed value 6 3 R[ ] 7 4 R[R[ ]] 8 Specify the
+units of the replacement motion instruction. See the following screen for an exa
+mple. Select motion item 1 % 5 deg/sec 2 mm/sec 6 sec 3 cm/min 7 4 inch/min 8 Se
+lect the speed type of the replacement motion instruction: Speed value - changes
+the speed of the found (searched) motion instruction to a speed value. R[ ] - ch
+anges the speed of the found (searched) motion instruction to a variable (regist
+er) speed value. R[R[ ]] - changes the speed of the found (searched) motion inst
+ruction to an indirect variable (register) speed value. See the following screen
+for an example. Select motion item 1 Speed value 5 2 R[ ] 6 3 R[R[ ]] 7 4 8 If y
+ou selected R[ ] or R[R[ ]], type a register number. Select how you want the fou
+nd motion instruction to be replaced: F2, ALL - changes all found motion instruc
+tions below the current line to the specified speed type and value. F3, YES - ch
+anges only the found motion instruction on the current line to the specified spe
+ed type and value. F4, - skips the found motion instruction on the current line 
+and searches the motion instruction. F5, EXIT - ends the motion modify operation
+. See the following screen for an example. RSR0001 Modify OK ? Continue the sear
+ch and replace operations as desired. When you are finished with all search and 
+replace operations, press F5, EXIT. LP[1] WELD_SPEED CNT100 Motion instructions 
+used during welding use the WELD_SPEED parameter. WELD_SPEED is defined in the w
+eld schedule specified by an ArcStart instruction. You can use WELD_SPEED only f
+or linear or circular motion. If you change the motion type of an instruction th
+at uses WELD_SPEED from circular or linear to joint, the speed will change to 10
+0%. When a motion instruction that contains WELD_SPEED is executed, the speed us
+ed depends on certain conditions: If the Arc START instruction is executed befor
+e executing the WELD_SPEED motion instruction, the weld speed defined in the cor
+responding weld schedule is used. If the Arc Start instruction is not executed b
+efore executing the WELD_SPEED motion instruction, the default weld speed is use
+d as the value of WELD_SPEED. The default weld speed is defined on the SETUP Wel
+d System screen. If the program is resumed from a WELD_SPEED motion instruction,
+the WELD_SPEED in effect when the program was paused is used. If the following s
+equence is executed while the program is paused and then the program is restarte
+d, the default weld speed is used: You step the program backward through some in
+structions. You move the cursor to another line in the program. You abort the pr
+ogram. 5.8. Termination Type Termination type defines how the robot ends the mov
+e in the motion instruction. The following termination types are available: Fine
+Continuous Corner Region — available only if you have the constant path motion o
+ption and corner region option Corner Distance — available only if you have the 
+constant path motion option and corner distance control option The fine and cont
+inuous termination types are described in this section. Refer to Section 6.2, " 
+Advanced Constant Path " for information on the corner region termination type. 
+Refer to Section 6.6, "Corner Distance Control Option" for information on the co
+rner distance termination type. Fine Termination Type J P[1] 50% FINE Fine termi
+nation type causes the robot to stop at the destination position before moving t
+o the position. Figure 16, " Robot Motion with Fine Termination Type " shows how
+the robot will move when you specify the fine termination type. Figure 16. Robot
+Motion with Fine Termination Type Continuous Termination Type J P[1] 50% CNT50 C
+ontinuous termination type allows the robot to decelerate as it approaches the d
+estination position but does not stop at it before it accelerates toward the pos
+ition. A value from 0 to 100 defines how close the robot comes to the destinatio
+n position. At CNT0 the robot is closest, with maximum deceleration. At CNT100 t
+he robot is farthest, with minimum deceleration. Note Programming certain instru
+ctions, such as WAIT, causes the robot to stop at the destination position and e
+xecute the instruction before it executes the instruction. Figure 17, " Robot Mo
+tion with Continuous Termination Type " shows how the robot will move with diffe
+rent continuous termination type values. Figure 17. Robot Motion with Continuous
+Termination Type 4. LINE NUMBER AND PROGRAM END MARKER 6. MOTION OPTIONS INSTRUC
+TION
+Metadata:
+{}

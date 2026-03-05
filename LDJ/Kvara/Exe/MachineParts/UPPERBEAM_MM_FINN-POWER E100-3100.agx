@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<job>
+    <settings>
+        <version>1</version>
+        <unit>millimeter</unit>
+        <backcolour>0</backcolour>
+    </settings>
+    <entities>
+        <entity id="UPPERBEAM_MM_FINN-POWER E100-3100" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>UPPERBEAM_MM_FINN-POWER E100-3100</reference_id>
+            </geometry>
+        </entity>
+    </entities>
+    <states>
+        <state id="default">
+            <visibility>
+                <show type="Unspecified">1</show>
+                <show entity="UPPERBEAM_MM_FINN-POWER E100-3100">1</show>
+            </visibility>
+            <transformations />
+            <views>
+                <view id="1">
+                    <pos>14000,8000,-14000</pos>
+                    <target>0,0,-0</target>
+                    <near>6000</near>
+                    <far>25000</far>
+                    <width>9050</width>
+                    <height>5615</height>
+                    <perspective>1</perspective>
+                </view>
+            </views>
+        </state>
+        <state order="1" id="UPPERBEAM_MM_FINN-POWER E100-3100">
+            <visibility />
+            <transformations />
+            <views />
+        </state>
+    </states>
+    <geometries>
+        <geometry id="UPPERBEAM_MM_FINN-POWER E100-3100">
+            <data encoding="1">UEsDBBQAAgAIAK6BsD7e/jBorQMAAEUKAAALABEAY29sbGFkYS54bWxVVA0ABzNN0U0zTdFNM03RTc1WbW/bNhD+KwT7WRJJvVmBpCLLuqFAVgdpNrT5YrAybQuQKE+imvrf70iRjmxnbVDsw2ycdC8P73i640v+9lvboK+iH+pOFpj6BCMhq25dy22BR7XxFvhtmd8sb2+vf71GAJZDgXdK7a+C4Onpya+6puFr7nf9NmCExAGlgUV/rHai5XjuPfIpLnM+DEKVedVJ1ddfRtX1oBvVDt7XIN0tb/PAygBqWyHVUObBCTsbWvWCK7EuGaHEI5lHFg+UXkXsKs4eAWqteQtJbep/xR3N+ShrhVqhRF9g4hMWRxhJ3ooC17La4QAQ+xX/Vg/l4+rPuzxwEkx6Sqypv/S8P6y4rFuuIHVte0npdE293ak5yCmcDEO2Yg5wCieDS9HXvJljZjqnEpuNqE4iHTVOsRUd5N7X2rvlD6heF9iWxgEO7qP8dnMDNW3FsCvzoRv7SrwI9/bdUJu8Ab1pOq5WvO/54Qdgz4AwqrpRqgJHC1x6NE5j5IVQG0IoisIFOlNlRxXL/Ax+M5DTWExMnodRn4bJIhUeoezcFh3hzoHH/EXEqIGHZzaNPh3vRT4jSUQn55e+T13HfsLSeIY9dXye/mX2F8lf5J4HsyKUuRLVTtZ/j2Kll1knYUVWlRiGrkdTUQv85tVVoglGA/TQGkaFUO4973lr2+UTRuqwB8aE16tpbv38XevjhTVwswT2MoVgmvr3+1J2fQuL5DVdaaHn2ZqehA7wQ2LagWWI+SRNItMbMYJS6+ZKwywOBZTJ9A7YM2v3Qj/NIpaBFMUam/iMkogJj9IMhT6BgcJjWYIo+DKRGIsS00vJJNMkjiKQ09D6drH/izK/nPb/rcZwzKgagKZ0WtAlreV+VGiAc0iCscB3y4/vH94vP+DXdLUJ7tzCt4PNVG4biGC/AFtg5DbZAt///ssqTMiCvBD2r3f3D+8+zYJO80PdZgMnBhwzOtT5oA/L+z+ub/GPC/Psh5qvWULdI0Rhb0ChJSOkVtBvppUGFjnz9CAWkDohAYKtAzqPgXIizes/1SZwAw92fBgx1A+IBszz3whg1y9i3FBLmtd/iBjricRoYckI2cSYgAykiYxAmcmFwTwZDJhI85QYg3ZIQDGR5lMg2BDBhUnYkOb1hPV+q6c5aTInUCdYWGx5Pfk82OvGdM0B/HQWBq5Ms9N2frg6nbnLwC0Kbkkz5In2J6Bf62HkzWqohDy5OJzpzVu33qC4rMSJGY09tPWbUeqFuZ50ZknYQe6eV/4DUEsBAhcLFAACAAgAroGwPt7+MGitAwAARQoAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAczTdFNUEsFBgAAAAABAAEAQgAAAOcDAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="36080" />
+                </material>
+            </materials>
+        </geometry>
+    </geometries>
+</job>

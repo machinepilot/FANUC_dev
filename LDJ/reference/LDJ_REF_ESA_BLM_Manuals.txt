@@ -1,0 +1,208 @@
+TOPIC: ESA and BLM Manual Integration Summary
+KEYWORDS: ESA, BLM, Kvara, modes, Manual, Semiautomatic, Automatic, ram sizing, programme structure, robotic interface, backgauge, Lazer-safe, UDP
+CATEGORY: reference
+SOURCE: sources/Esa_Manual_P0122.docx, sources/BLM_MANUAL.docx
+APPLIES_TO: BLM SERIES 420-200, ESA/Kvara, FANUC + PLC integration
+---
+
+============================================================
+1 DOCUMENT MAP (Chapter / Page Reference)
+============================================================
+
+## ESA Manual (Esa_Manual_P0122.docx) — Key Sections
+
+| Section | Page | Integration Relevance |
+|---------|------|------------------------|
+| NC Powering, Home mask | 1-12 | Startup sequence |
+| Machine Setup, Ram sizing | 13 | Required before auto |
+| Sizing the stop axes | 13 | Optional; backgauge calibration |
+| Punches and Dies Setup | 14-35 | Tool setup |
+| Programming, List of programmes | 37-41 | Modbus Load Program |
+| Entering numeric/graphic programme | 42-66 | Programme structure |
+| Execution in automatic mode | 73-79 | Cycle execution |
+| Remote selection of the programmes | 125 | Modbus programme selection |
+| Bend Summary mask, User parameters | 100-105 | Programme data |
+| General Data, Axis/angle data, Work data | 114-164 | Programme structure |
+| Managing data in NC memory | 136-148 | Save/upload |
+
+## BLM Manual (BLM_MANUAL.docx) — Key Sections
+
+| Chapter | Section | Page | Integration Relevance |
+|---------|---------|------|------------------------|
+| 01 | General characteristics | 01-1 | Machine identity, UDP, speed params |
+| 01 | Backgauge | 01-14 | Robotised cell design |
+| 01 | Adjusting upper dead point (UDP) | 01-19 | Cycle time optimisation |
+| 01 | Speed adjustment | 01-18 | Approach, working, return speed |
+| 02 | Connecting control console to distribution board | 02-14 | Wiring |
+| 02 | Checking press brake before starting up | 02-14 | Pre-start checklist |
+| 02 | Backgauge check | 02-15 | Calibration |
+| 03 | Robotic interface | 03-19 | Robot integration option |
+| 03 | Various types of backgauges | 03-14 | Backgauge models |
+| 04 | Safety | 04-1 | Lazer-safe, E-stop, guards |
+| 05 | Backgauges | 05-11 | Movement, calibration |
+| 06 | Wiring diagram | 06-16 | Electrical |
+| 06 | Pneumatic diagram | 06-17 | Pneumatic |
+| 06 | Oil hydraulic diagram | 06-18 | Hydraulic |
+
+============================================================
+2 ESA MANUAL (Esa_Manual_P0122.docx) — Integration Summary
+============================================================
+
+## Operating Modes
+
+The ESA/Kvara controller has three main modes accessible from the Home mask:
+
+- **Manual** — Operator-controlled movement; ram sizing; tool setup
+- **Semiautomatic** — Single-bend execution with operator confirmation
+- **Automatic** — Full program execution; cycle runs without operator intervention
+
+Mode selection is required before certain commands. For Modbus integration: Load Program requires EDITOR mode; Start Cycle requires AUTOMATIC mode.
+
+## Ram Sizing (Required Before Auto) — p.13
+
+It is obligatory to size the ram in order to access the automatic phase and execute work programmes. The ram must be at top position; then:
+
+1. Press down pedal to move below zero marks
+2. Press up pedal — manual re-ascent activates; ram moves until both zero marks of the optic lines align
+3. Size complete; programmes can now run in automatic mode
+
+Sizing the stop axes is optional but advisable if axis targets may be incorrect (e.g., axis moved manually when NC was off).
+
+## Programme Structure — p.149-164
+
+Programme data is organized into sections:
+
+- **Header section** — Programme identification
+- **General data section** — Piece info, material, dimensions
+- **Axis and angle data section** — Bend angles, positions (X1, X2, Y1, Y2, R1, R2)
+- **Work data section** — PMS, PCV, PCL, bending parameters
+
+## Remote Selection of Programmes — p.125
+
+The manual references "Remote selection of the programmes". This supports external selection of programmes via Modbus or other interfaces.
+
+## DirectAuto
+
+DirectAuto allows direct execution from the programme list without entering the editor mask. When enabled, selecting a programme from the list goes directly into Automatic mode.
+
+## Kvara 560/660W Touch Interface
+
+The ESA touch control uses Kvara 560/660W with interactive graphics. Soft Keyboard, touch input, and menu structure: Settings, Manual, Semiautomatic, Automatic, Parameter, Axes, Configure, Diagnostics, User Parameter.
+
+## Menu Structure
+
+Main menu: Settings, List Programme, Punches and Dies List, New programme of bend, Manual, Automatic, Semiautomatic, Corrections, Save, Turn Off, etc.
+
+============================================================
+3 BLM MANUAL (BLM_MANUAL.docx) — Integration Summary
+============================================================
+
+## Machine Identity
+
+- **Model:** E SERIES 420-200 (Vers. 4.20)
+- **Manufacturer:** STR s.r.l., Italy
+- **Type:** Electric press brake
+- **Manual:** Use and Maintenance Manual (translation)
+
+## Robotic Interface (Optional) — Ch 03-19
+
+**Full extract from BLM Manual:**
+
+"The press brake can also be inserted in a work cell where an electromechanical robot loads and unloads sheets of metal. In this case, the system must be set up in compliance with the current safety regulations and a series of protective devices are required that are different from standard ones."
+
+**BLM ver. 4.0 robot interface:** Uses XC2F/XC3M/XC4M connectors (Weidmüller). See **robot_interface_reference.md** for full signal set, cycle timing (PHASE 0-6), and interlock rules. Robot commands beam via A20.1 (Beam Down), A21.2 (Reset End Bend), etc.; monitors status via E20.x, E21.x, E22.x.
+
+**Integration note:** If XC2F/XC3M/XC4M connectors are present on the press, use robot_interface_reference.md (primary). If not installed, use Modbus + foot pedal sim (M1-167/168) per press_brake_reference.md Section 13.
+
+**ROBOT button (control panel):** Allows machine to operate in Robot mode. If deactivated (position 0) the machine works according to current legislation. If set to position I the press works according to specific procedures required for operation in a robot cell (STARMATIK customer-specific).
+
+## Backgauge for Robotised Cell — Ch 01-14, 03-8
+
+The backgauge supports and positions sheet metal. Key features for robotised cells:
+
+- **Quickly moving axes** — "owing to the use of very reactive motors that allow for quick upper positioning, in particular when the press brake is inserted in a robotised cell"
+- **Continuous programming** — axes X and R with reliability and regular positions; large lots of complex pieces without significant time waste
+- **Automation** — "the possibility of automating the press brake's work cycle... the press brake can be inserted in a workcell due to the high and flexible positioning speeds"
+- **Structure** — stable and able to give structural stability to the entire movement system
+
+Backgauges can have 1–6 axes, variable bar lengths and strokes. See Ch 03-14 for various types.
+
+## Upper Dead Point (UDP) — Ch 01-19
+
+**Full extract:** "The upper dead point is where the ram, having finished the bending cycle, returns upward and then stops. The distance from its bending point can be programmed to reduce wasted time significantly in a bending sequence. Therefore, according to bending needs, the UDP point can be programmed in a lower point to save time."
+
+**Robot tending:** Lower UDP reduces cycle time; coordinate with robot load/unload timing.
+
+## Speed Parameters — Ch 01-18
+
+| Parameter | Description |
+|-----------|-------------|
+| APPROACH SPEED | Speed with which top beam moves until speed change point |
+| POINT OF SPEED CHANGE / SAFETY | Point where speed changes from approach to working (0–10 mm/sec); calculated per sheet thickness for work area safety |
+| WORKING SPEED | Bending speed; 0–10 mm/sec per machinery directive |
+| RETURN SPEED | Speed with which top beam returns to UDP after bend completed |
+
+Working speed ≤10 mm/sec is mandated for safety in the tool area.
+
+## Safety (Lazer-safe PCSS)
+
+- Lazer-safe guards (PCSS) for tool area protection; type 4 ESPE
+- Emergency stop buttons (dual-channel)
+- Descent pedal (three-way, panic position)
+- Side and rear guards
+- Front photocell / laser barriers
+- **Robot cell:** "if the machine is loaded by a robot, to protect the work area according to the safety regulations in force... the work area is further protected from possible external access and near part outfeed"
+
+## Wiring and Diagram References
+
+| Diagram | Chapter | Use |
+|---------|---------|-----|
+| Wiring diagram | 06-16 | Electrical connections |
+| Pneumatic diagram | 06-17 | Pneumatic circuit |
+| Oil hydraulic diagram | 06-18 | Hydraulic circuit |
+
+## Control Console Connection — Ch 02-14
+
+The control console connects to the distribution board. Connection instructions are in Chapter 02-14. Pre-start checks at 02-14 also include: efficiency of safety devices, pneumatic circuit (optional), laser guard check, backgauge check, check on any optionals.
+
+============================================================
+4 CROSS-REFERENCE (Manual Chapters → LDJ Files)
+============================================================
+
+| Manual Reference | LDJ File | Section / Use |
+|------------------|----------|---------------|
+| BLM Ch 03-19 Robotic interface | robot_interface_reference.md | XC2F/XC3M/XC4M, PHASE 0-6 cycle, interlock rules |
+| BLM Ch 03-19 Robotic interface (alt) | press_brake_reference.md | Sec 13 — Foot pedal sim, ESA QW/IW |
+| BLM Ch 06-16 Wiring | press_brake_reference.md | Full 34-page electrical diagram |
+| ESA modes, ram sizing | LDJ_REF_ESA_Modbus.txt | Mode register, Load/Start commands |
+| Physical I/O terminals | LDJ_REF_Physical_IO_Terminal_Map.txt | M1/M2, QW/IW mapping |
+| Physical I/O wiring | LDJ_REF_Physical_IO_Wiring_Spec.txt | XC2F/XC3M/XC4M, foot pedal sim, 24V rail |
+| Vendor discrepancies | VENDOR_DISCREPANCIES.md | ESA vs this BLM machine |
+
+Raw extracts: sources/archive/Esa_Manual_extracted.txt, sources/archive/BLM_MANUAL_extracted.txt
+
+============================================================
+5 INTEGRATION IMPLICATIONS
+============================================================
+
+1. **Mode requirements:** Ensure press is in correct mode (Editor for Load/Modify, Auto for Start) before Modbus commands.
+
+2. **Ram sizing:** After power-up, ram must be sized before automatic execution.
+
+3. **Robotic interface:** If XC2F/XC3M/XC4M present, use robot_interface_reference.md; otherwise use Modbus + physical I/O from press_brake_reference.md Section 13.
+
+4. **Backgauge:** Designed for rapid repositioning in robotised cells; coordinate with robot load/unload timing. Continuous programming of X/R axes reduces setup time.
+
+5. **UDP:** Programmable; lower UDP can reduce cycle time for robot tending.
+
+6. **ROBOT button:** If present, set to Robot mode (position I) for robot cell operation per customer/STARMATIK procedures.
+
+---
+
+## Verify Robotic Interface Option — Checklist
+
+[ ] Check machine options list (Ch 03) for "Robotic interface"
+[ ] If XC2F/XC3M/XC4M present: use robot_interface_reference.md (primary) — beam-level control
+[ ] If not installed: use Modbus TCP + physical I/O (foot pedal sim M1-167/168, CNC OK, Ram UP, etc.) per press_brake_reference.md Sec 13
+[ ] Locate dedicated robot interface terminals per wiring diagram (Ch 06-16)
+[ ] Document actual configuration in VENDOR_DISCREPANCIES.md

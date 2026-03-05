@@ -1,0 +1,274 @@
+TOPIC: Vision Check / Pass-Fail Validation
+KEYWORDS: vision, check, pass, fail, validation, quality, inspect, VISION GET_PASSFAIL
+CATEGORY: program_example
+SOURCE: TWA (The Way Automation) Standard Programs
+APPLIES_TO: R-30iB Plus, CNC Machine Tending, RoboDrill
+DESCRIPTION: Vision-based pass/fail inspection routine
+---
+
+/PROG  VISION_CHECK
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= "";
+PROG_SIZE	= 3918;
+CREATE		= DATE 20-02-15  TIME 01:12:14;
+MODIFIED	= DATE 20-02-18  TIME 09:02:22;
+FILE_NAME	= VISION_C;
+VERSION		= 0;
+LINE_COUNT	= 206;
+MEMORY_SIZE	= 4522;
+PROTECT		= READ_WRITE;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= 1,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+/APPL
+/MN
+   1:  UFRAME_NUM=0 ;
+   2:  UTOOL_NUM=1 ;
+   3:   ;
+   4:  IF R[1]>0,JMP LBL[200] ;
+   5:   ;
+   6:J PR[2] 10% FINE    ;
+   7:J P[1:Relay point] 100% CNT100    ;
+   8:J P[2:Work pos] 100% CNT100    ;
+   9:   ;
+  10:  LBL[200] ;
+  11:   ;
+  12:  VISION OVERRIDE 'EXPO' R[22] ;
+  13:  R[21]=0    ;
+  14:   ;
+  15:   ;
+  16:  LBL[1000] ;
+  17:  R[28]=1    ;
+  18:J P[3:DETEC. POS1] 50% FINE ACC50    ;
+  19:  WAIT    .50(sec) ;
+  20:  VISION RUN_FIND 'VP1'    ;
+  21:  VISION GET_OFFSET 'VP1' VR[1] JMP LBL[11000] ;
+  22:  PR[9]=VR[1].FOUND_POS[1] ;
+  23:  VISION OVERRIDE 'EXPO' R[22] ;
+  24:  R[21]=0    ;
+  25:   ;
+  26:   ;
+  27:  LBL[1100] ;
+  28:  R[28]=2    ;
+  29:   ;
+  30:  IF R[1]=0,JMP LBL[1110] ;
+  31:  IF R[1]=1,JMP LBL[1120] ;
+  32:  IF R[1]=2,JMP LBL[1130] ;
+  33:   ;
+  34:  LBL[1110] ;
+  35:J P[4] 50% FINE ACC50    ;
+  36:  JMP LBL[1200] ;
+  37:   ;
+  38:  LBL[1120] ;
+  39:J P[5] 50% FINE ACC50    ;
+  40:  JMP LBL[1200] ;
+  41:   ;
+  42:  LBL[1130] ;
+  43:J P[6] 50% FINE ACC50    ;
+  44:  JMP LBL[1200] ;
+  45:   ;
+  46:  LBL[1200] ;
+  47:  WAIT    .50(sec) ;
+  48:  VISION RUN_FIND 'VP1'    ;
+  49:  VISION GET_OFFSET 'VP1' VR[1] JMP LBL[11100] ;
+  50:  PR[10]=VR[1].FOUND_POS[1] ;
+  51:  VISION OVERRIDE 'EXPO' R[22] ;
+  52:  R[21]=0    ;
+  53:   ;
+  54:   ;
+  55:   ;
+  56:  !Plane calculation ;
+  57:  LBL[4000] ;
+  58:   ;
+  59:  IF R[1]=0,JMP LBL[4100] ;
+  60:  IF R[1]=1,JMP LBL[4200] ;
+  61:  IF R[1]=2,JMP LBL[4300] ;
+  62:   ;
+  63:  LBL[4100] ;
+  64:  CALL STVS1(9,10,12,15,11) ;
+  65:  IF R[11]>0,JMP LBL[24000] ;
+  66:   ;
+  67:  R[1]=R[1]+1    ;
+  68:   ;
+  69:   ;
+  70:  END ;
+  71:   ;
+  72:  LBL[4200] ;
+  73:  CALL STVS1(9,10,12,16,11) ;
+  74:  IF R[11]>0,JMP LBL[24000] ;
+  75:   ;
+  76:  R[1]=R[1]+1    ;
+  77:   ;
+  78:  END ;
+  79:   ;
+  80:  LBL[4300] ;
+  81:  CALL STVS1(9,10,12,17,11) ;
+  82:  IF R[11]>0,JMP LBL[24000] ;
+  83:  !------------------------------ ;
+  84:   ;
+  85:   ;
+  86:  !Compensation amount calculation ;
+  87:  IF R[2]=0,JMP LBL[5000] ;
+  88:  IF R[2]=1,JMP LBL[5100] ;
+  89:   ;
+  90:  LBL[5000] ;
+  91:   ;
+  92:  R[13]=1    ;
+  93:  CALL MERGE3D2(15,16,17,0,18) ;
+  94:  CALL OFS_RJ3(13,18,0,19,0,20,0,11) ;
+  95:  IF R[11]<>0,JMP LBL[25000] ;
+  96:   ;
+  97:  UFRAME[2:Machine 2]=PR[20] ;
+  98:  PR[20]=UFRAME[2:Machine 2] ;
+  99:   ;
+ 100:  R[1]=0    ;
+ 101:  R[2]=1    ;
+ 102:  JMP LBL[6000] ;
+ 103:   ;
+ 104:  LBL[5100] ;
+ 105:   ;
+ 106:  R[13]=0    ;
+ 107:  CALL MERGE3D2(15,16,17,0,18) ;
+ 108:  CALL OFS_RJ3(13,18,0,19,0,20,0,11) ;
+ 109:  IF R[11]<>0,JMP LBL[25000] ;
+ 110:   ;
+ 111:  UFRAME[2:Machine 2]=PR[20] ;
+ 112:  PR[20]=UFRAME[2:Machine 2] ;
+ 113:   ;
+ 114:  R[1]=0    ;
+ 115:  R[2]=0    ;
+ 116:  R[13]=1    ;
+ 117:   ;
+ 118:  R[32]=PR[20,10]*PR[20,10]    ;
+ 119:  R[33]=PR[20,11]*PR[20,11]    ;
+ 120:  R[34]=PR[20,12]*PR[20,12]    ;
+ 121:  R[28]=R[32]+R[33]+R[34]    ;
+ 122:   ;
+ 123:  R[32]=0    ;
+ 124:  R[33]=0    ;
+ 125:  R[34]=0    ;
+ 126:   ;
+ 127:  !------------------------------ ;
+ 128:   ;
+ 129:  LBL[6000] ;
+ 130:  UFRAME_NUM=0 ;
+ 131:   ;
+ 132:J P[1:Relay point] 100% CNT100    ;
+ 133:   ;
+ 134:J PR[2] 10% CNT100    ;
+ 135:J PR[1] 100% FINE    ;
+ 136:   ;
+ 137:  END ;
+ 138:   ;
+ 139:  !Vision detection retry ;
+ 140:  LBL[11000] ;
+ 141:  LBL[11100] ;
+ 142:   ;
+ 143:  R[21]=R[21]+1    ;
+ 144:   ;
+ 145:  IF R[21]>100 AND R[28]=1,JMP LBL[21000] ;
+ 146:  IF R[21]>100 AND R[28]=2,JMP LBL[21100] ;
+ 147:   ;
+ 148:  R[23]=R[21] MOD 2    ;
+ 149:  R[24]=R[21] DIV 2    ;
+ 150:  R[25]=R[23]+R[24]    ;
+ 151:   ;
+ 152:  IF R[23]=0,JMP LBL[14000] ;
+ 153:  JMP LBL[14100] ;
+ 154:   ;
+ 155:  LBL[14000] ;
+ 156:  R[21]=R[21]*(-1)    ;
+ 157:   ;
+ 158:  LBL[14100] ;
+ 159:  R[26]=R[25]*1    ;
+ 160:  R[27]=R[26]+R[22]    ;
+ 161:   ;
+ 162:  IF R[27]>250,JMP LBL[14200] ;
+ 163:  IF R[27]<.04,JMP LBL[14300] ;
+ 164:  JMP LBL[14400] ;
+ 165:   ;
+ 166:  LBL[14200] ;
+ 167:  R[27]=250    ;
+ 168:  JMP LBL[14400] ;
+ 169:   ;
+ 170:  LBL[14300] ;
+ 171:  R[27]=.04    ;
+ 172:   ;
+ 173:  LBL[14400] ;
+ 174:  VISION OVERRIDE 'EXPO' R[27] ;
+ 175:   ;
+ 176:  IF R[28]=1,JMP LBL[1000] ;
+ 177:  IF R[28]=2,JMP LBL[1100] ;
+ 178:   ;
+ 179:   ;
+ 180:  LBL[21000] ;
+ 181:  UALM[9] ;
+ 182:  JMP LBL[1000] ;
+ 183:   ;
+ 184:  LBL[21100] ;
+ 185:  UALM[10] ;
+ 186:  JMP LBL[1100] ;
+ 187:   ;
+ 188:  LBL[22000] ;
+ 189:  UALM[11] ;
+ 190:  JMP LBL[6000] ;
+ 191:   ;
+ 192:  LBL[22100] ;
+ 193:  UALM[12] ;
+ 194:  JMP LBL[6100] ;
+ 195:   ;
+ 196:  LBL[24000] ;
+ 197:  UALM[15] ;
+ 198:  END ;
+ 199:   ;
+ 200:  LBL[25000] ;
+ 201:  UALM[18] ;
+ 202:  END ;
+ 203:  !----------------------------- ;
+ 204:   ;
+ 205:   ;
+ 206:  END ;
+/POS
+P[1:"Relay point"]{
+   GP1:
+	UF : 0, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =    -2.295  mm,	Y =  -353.644  mm,	Z =   266.048  mm,
+	W =     -.000 deg,	P =     -.287 deg,	R =   -90.088 deg
+};
+P[2:"Work pos"]{
+   GP1:
+	UF : 0, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =    -2.308  mm,	Y =  -815.601  mm,	Z =   -43.279  mm,
+	W =      .000 deg,	P =     -.286 deg,	R =   -90.088 deg
+};
+P[3:"DETEC. POS1"]{
+   GP1:
+	UF : 0, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   131.608  mm,	Y =  -773.268  mm,	Z =   382.855  mm,
+	W =    93.082 deg,	P =    -4.511 deg,	R =   -96.575 deg
+};
+P[4]{
+   GP1:
+	UF : 0, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =     5.737  mm,	Y =  -773.864  mm,	Z =   404.607  mm,
+	W =   110.749 deg,	P =      .487 deg,	R =  -105.514 deg
+};
+P[5]{
+   GP1:
+	UF : 0, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   -13.043  mm,	Y =  -772.472  mm,	Z =   410.104  mm,
+	W =   108.370 deg,	P =    -1.155 deg,	R =  -107.069 deg
+};
+P[6]{
+   GP1:
+	UF : 0, UT : 1,		CONFIG : 'N U T, 0, 0, 0',
+	X =   -13.043  mm,	Y =  -772.472  mm,	Z =   410.104  mm,
+	W =   108.370 deg,	P =    -1.155 deg,	R =  -107.069 deg
+};
+/END
