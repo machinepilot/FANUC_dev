@@ -1,0 +1,32 @@
+---
+description: Physical AI context - reference when ROS 2, NVIDIA Isaac, or AI-driven robot topics arise
+globs: 
+  - physical_ai/**/*
+  - "**/*ros*"
+  - "**/*isaac*"
+  - "**/*jetson*"
+  - "**/*e_cam*"
+  - "**/*ecam*"
+---
+
+# Physical AI Development Context
+
+When Physical AI, ROS 2, NVIDIA Isaac, Jetson, or AI-driven robot control is discussed:
+
+1. **Use the index** — `physical_ai/PHYSICAL_AI_INDEX.md` maps topics to reference files.
+
+2. **Conference notes** — `physical_ai/conference_notes/ASI_2025_*.md` for strategic context from FANUC ASI 2025.
+
+3. **References** — `physical_ai/references/` for FANUC ROS 2 driver, NVIDIA Isaac, three-computers architecture, and Physical AI concepts.
+
+4. **Learning path** — `physical_ai/learning_path/` for ROS 2, Jetson Orin Nano, and Isaac Sim guides.
+
+5. **POC plans** — `physical_ai/poc/` for camera perception, FANUC ROS2 mock, and digital twin proof-of-concept plans.
+
+6. **e-CAM121 Camera (CAM1)** — `physical_ai/hardware/e_cam121/` for e-CAM121_CUONX setup, docs, and software package.
+
+7. **FANUC ROS 2 Driver** — [Docs](https://fanuc-corporation.github.io/fanuc_driver_doc/main/index.html) | [GitHub](https://github.com/FANUC-CORPORATION/fanuc_driver)
+
+8. **FANUC ROS 2 (workspace)** — `physical_ai/ros2/FANUC_ROS2_INDEX.md` for index; `.cursor/rules/fanuc-ros2-driver.mdc` rule auto-applies when editing ROS 2 or launch files; skills: `fanuc-ros2-build`, `fanuc-ros2-launch`, `fanuc-ros2-troubleshoot`.
+
+9. **NVIDIA Isaac** — Isaac Sim (simulation), Isaac ROS (edge on Jetson)

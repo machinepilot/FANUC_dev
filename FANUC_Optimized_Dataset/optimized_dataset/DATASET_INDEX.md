@@ -10,7 +10,7 @@ Use this index to rapidly find relevant dataset files when answering FANUC TP qu
 |-------|--------------|---------------|
 | **Motion (J, L, C)** | reference/FANUC_REF_Motion_Instructions.txt | reference/FANUC_REF_Motion_Options.txt, articles/ONE_16_FANUC_FINE_vs_CNT_Termination.txt, articles/ONE_33_FANUC_Motion_Speed_and_Acceleration_Tuning.txt |
 | **I/O (DI, DO, WAIT, PULSE)** | reference/FANUC_REF_IO_Instructions.txt | articles/ONE_10_FANUC_I_O_Configuration_and_Mapping.txt, articles/ONE_22_FANUC_Digital_I_O_Pulse_Instructions.txt |
-| **Vision (iRVision, RUN_FIND)** | reference/FANUC_REF_Vision_Instructions.txt | articles/ONE_14_FANUC_Vision_System_Setup_and_iRVision.txt, articles/ONE_20_FANUC_Vision_Line_Tracking_Setup.txt, examples/EG_Vision_3Point.txt, examples/EG_Vision_Wait.txt, examples/EG_Vision_Check.txt |
+| **Vision (iRVision, RUN_FIND)** | reference/FANUC_REF_Vision_Instructions.txt | articles/ONE_14_FANUC_Vision_System_Setup_and_iRVision.txt, articles/ONE_20_FANUC_Vision_Line_Tracking_Setup.txt, examples/EG_Vision_3Point.txt, examples/EG_Vision_Wait.txt, examples/EG_Vision_Check.txt. For AI/ROS 2 perception: `physical_ai/poc/POC_01_Camera_Perception.md`, `physical_ai/references/Physical_AI_Concepts.md` |
 | **Branching (IF, SELECT, JMP, LBL)** | reference/FANUC_REF_Branching_Instructions.txt | articles/ONE_35_FANUC_Program_Branching_and_Flow_Control.txt |
 | **Registers (R[], PR[])** | reference/FANUC_REF_Register_Instructions.txt | reference/FANUC_REF_Position_Registers.txt, reference/FANUC_REF_String_Registers.txt, articles/ONE_13_FANUC_Register_Types_and_Usage.txt, articles/ONE_07_Position_Register_Math_and_Offset_Calculations.txt |
 | **Macros & CALL** | reference/FANUC_REF_Macro_Instruction.txt | reference/FANUC_REF_Parameters_Call_Macro.txt, articles/ONE_15_FANUC_Macro_Programs.txt |
@@ -23,8 +23,8 @@ Use this index to rapidly find relevant dataset files when answering FANUC TP qu
 | **Frames (UFRAME, UTOOL)** | reference/FANUC_REF_Offset_Frame.txt | articles/ONE_08_FANUC_User_Frames_and_Tool_Frames.txt, articles/ONE_24_FANUC_Tool_Center_Point_TCP.txt |
 | **Error Recovery** | articles/ONE_28_FANUC_Error_Recovery_Programming.txt | examples/EG_C_Recovery_Macro.txt, examples/EG_DQ_C_Recovery.txt |
 | **Alarms / Diagnosis** | articles/ONE_04_Diagnosing_FANUC_Alarm_Codes.txt | reference/FANUC_REF_Miscellaneous_Instructions.txt (UALM) |
-| **KAREL** | reference/FANUC_KAREL_Reference.txt | articles/ONE_39_FANUC_KAREL_Programming_Fundamentals.txt, articles/ONE_11_KAREL_Position_Logging_to_File.txt |
-| **Modbus / OPC UA** | protocols/FANUC_Modbus_Reference.txt | protocols/FANUC_OPCUA_Reference.txt |
+| **KAREL** | reference/FANUC_KAREL_Reference.txt | articles/ONE_39_FANUC_KAREL_Programming_Fundamentals.txt, articles/ONE_11_KAREL_Position_Logging_to_File.txt. For external control via ROS 2: `physical_ai/references/FANUC_ROS2_Driver_Reference.md` |
+| **Modbus / OPC UA** | protocols/FANUC_Modbus_Reference.txt | protocols/FANUC_OPCUA_Reference.txt. For ROS 2 / streaming motion: `physical_ai/references/FANUC_ROS2_Driver_Reference.md` |
 | **Modbus / Press Brake** | LDJ/robot_interface_reference.md + protocols/FANUC_Modbus_Reference.txt + LDJ/reference/ | examples/EG_Press_Brake_Modbus_Handshake.txt (E20.x/A20.x, XC2F/XC3M/XC4M patterns) |
 | **PNS / Job Scheduling** | examples/EG_PNS_Programs.txt | examples/EG_Collection_Programs.txt, reference/FANUC_REF_Collections.txt |
 | **Signal Handshake** | examples/EG_Signal_Programs.txt | examples/EG_JOB_A_CRDrill_SingleHand.txt |
