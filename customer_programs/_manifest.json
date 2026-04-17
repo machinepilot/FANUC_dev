@@ -19,6 +19,18 @@
       "name": "JD Tube",
       "path": "313-JD",
       "systems": ["tube_bending"]
+    },
+    {
+      "id": "LDJ-BLM",
+      "name": "LDJ (BLM press brake)",
+      "path": "LDJ-BLM Robot",
+      "systems": ["press_brake_tending"]
+    },
+    {
+      "id": "LDJ-BLM-041626BKUP",
+      "name": "LDJ (BLM) LS snapshot",
+      "path": "041626BKUP",
+      "systems": ["press_brake_tending"]
     }
   ],
   "application_types": {

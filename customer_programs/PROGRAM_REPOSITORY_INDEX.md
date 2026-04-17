@@ -21,6 +21,7 @@
 | PJ Trailers | 345-PJ | Press brake tending | M950iA/500 | [345-PJ/press_brake_tending/](345-PJ/press_brake_tending/) | Tandem press brake; rev_22526 |
 | Greenheck Fan | 308-GH | Infeed sort / cart placement | R-30iB Plus, 7-axis E1 | [308-GH/infeed_sort_cart_placement/](308-GH/infeed_sort_cart_placement/) | Slot/Bin/Panel/Foam |
 | JD Tube | 313-JD | Tube bending | Tube bending cell | [313-JD/tube_bending/](313-JD/tube_bending/) | Infeed → bender → outfeed |
+| LDJ (BLM) | LDJ-BLM | Press brake tending | FANUC (cell backup) | [LDJ-BLM Robot/](LDJ-BLM%20Robot/) | BLM press brake; nested `41526_LSfiles backup/`; flat snapshot also in [041626BKUP/](041626BKUP/) |
 
 ---
 
@@ -31,6 +32,7 @@
 | 345-PJ | [manifest.json](345-PJ/manifest.json) | [rev_22526/](345-PJ/press_brake_tending/rev_22526/) |
 | 308-GH | [manifest.json](308-GH/manifest.json) | [programs/](308-GH/infeed_sort_cart_placement/programs/) |
 | 313-JD | [manifest.json](313-JD/manifest.json) | [programs/](313-JD/tube_bending/programs/) |
+| LDJ-BLM | [_manifest.json](_manifest.json) | [LDJ-BLM Robot/](LDJ-BLM%20Robot/), [041626BKUP/](041626BKUP/) |
 
 ---
 

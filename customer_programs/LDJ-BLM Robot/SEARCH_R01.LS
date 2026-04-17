@@ -1,0 +1,49 @@
+/PROG  SEARCH_R01
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= "FIND FIRST PART";
+PROG_SIZE	= 426;
+CREATE		= DATE 08-10-16  TIME 19:55:50;
+MODIFIED	= DATE 26-04-15  TIME 12:00:00;
+FILE_NAME	= ;
+VERSION		= 0;
+LINE_COUNT	= 25;
+MEMORY_SIZE	= 826;
+PROTECT		= READ_WRITE;
+STORAGE		= SHADOW;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= 1,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+/MN
+   1:  !FIND FIRST PART ;
+   2:  R[14:SEARCH CNT]=0    ;
+   3:   ;
+   4:  LBL[1] ;
+   5:   ;
+   6:  PR[10]=LPOS    ;
+   7:  PR[10,3]=PR[10,3]+30    ;
+   8:L PR[10] 100mm/sec FINE    ;
+   9:   ;
+  10:  R[14:SEARCH CNT]=R[14:SEARCH CNT]+1    ;
+  11:   ;
+  12:  IF (DI[30]=ON),JMP LBL[2] ;
+  13:   ;
+  14:  !MAX ITERATIONS GUARD ;
+  15:  IF R[14:SEARCH CNT]>=50,JMP LBL[3] ;
+  16:  JMP LBL[1] ;
+  17:   ;
+  18:  !--- SEARCH TIMEOUT --- ;
+  19:  LBL[3] ;
+  20:  UALM[9] ;
+  21:  PAUSE ;
+  22:   ;
+  23:  !--- PART FOUND --- ;
+  24:  LBL[2] ;
+  25:  PR[10]=LPOS    ;
+/POS
+/END

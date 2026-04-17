@@ -62,6 +62,7 @@ Full signal set: [robot_interface_reference.md](robot_interface_reference.md).
 | Vendor discrepancies | reference/VENDOR_DISCREPANCIES.md | — |
 | Electrical diagram | press_brake_reference.md | 34-page diagram |
 | Signal flow | INTEGRATION_FLOW.md | — |
+| Customer FANUC TP backups (LDJ BLM cell) | [../customer_programs/LDJ-BLM Robot/](../customer_programs/LDJ-BLM%20Robot/) | Robot `.LS` exports and nested LS backup folder |
 
 ---
 
