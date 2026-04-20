@@ -1,0 +1,59 @@
+/PROG  VAC_CONFIG_R01
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= "Vacuum Zone Config";
+PROG_SIZE	= 0;
+CREATE		= DATE 26-04-15  TIME 12:00:00;
+MODIFIED	= DATE 26-04-20  TIME 12:00:00;
+FILE_NAME	= ;
+VERSION		= 0;
+LINE_COUNT	= 35;
+MEMORY_SIZE	= 0;
+PROTECT		= READ_WRITE;
+STORAGE		= SHADOW;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= *,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+/MN
+   1:  !VACUUM ZONE CONFIGURATION ;
+   2:  !AR[1]: 1=ALL, 2=ZONE 1+2, ;
+   3:  !  3=ZONE 3+4 ;
+   4:  R[15:VAC CONFIG]=AR[1]    ;
+   5:   ;
+   6:  CALL ALL_VAC_OFF_R01    ;
+   7:   ;
+   8:  SELECT R[15:VAC CONFIG]=1,JMP LBL[1] ;
+   9:         =2,JMP LBL[2] ;
+  10:         =3,JMP LBL[3] ;
+  11:         ELSE,JMP LBL[99] ;
+  12:   ;
+  13:  !CONFIG 1: ALL ZONES ;
+  14:  LBL[1] ;
+  15:  CALL ALL_VAC_ON_R01    ;
+  16:  JMP LBL[10] ;
+  17:   ;
+  18:  !CONFIG 2: ZONES 1+2 ;
+  19:  LBL[2] ;
+  20:  DO[22:VACUUM_1]=ON ;
+  21:  DO[23:VACUUM_2]=ON ;
+  22:  JMP LBL[10] ;
+  23:   ;
+  24:  !CONFIG 3: ZONES 3+4 ;
+  25:  LBL[3] ;
+  26:  DO[24:VACUUM_3]=ON ;
+  27:  DO[25:VACUUM_4]=ON ;
+  28:  JMP LBL[10] ;
+  29:   ;
+  30:  !INVALID AR[1] ;
+  31:  LBL[99] ;
+  32:  UALM[6] ;
+  33:  PAUSE ;
+  34:   ;
+  35:  LBL[10] ;
+/POS
+/END

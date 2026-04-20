@@ -2,6 +2,29 @@
 
 This project develops FANUC TP programs for The Way Automation LLC (TWA).
 
+## Tool Roles (Cowork + Cursor)
+
+This workspace is operated by two AI tools with distinct responsibilities:
+
+**Cowork (Claude Desktop) — Orchestration**
+- Plans program architecture and register allocation
+- Runs code reviews / QA audits against dataset conventions
+- Generates documentation, integration guides, and handoff docs
+- Manages workspace configuration (this file, `.cursor/rules/*.mdc`, index files)
+- Coordinates multi-program refactoring campaigns
+
+**Cursor IDE — In-File Editing**
+- Writes and edits `.LS`, `.kl`, `.launch.py`, and other code files
+- Applies `.cursor/rules/*.mdc` context automatically via glob matching
+- Executes `.cursor/skills/*.md` for ROS 2 build/launch/troubleshoot
+- Consumes handoff documents produced by Cowork
+
+**Handoff Protocol:** When Cowork plans work that requires code editing, it creates `HANDOFF_<task>_<date>.md` in the relevant project directory with target files, applicable Cursor rules, dataset references, edit instructions, and acceptance criteria. See `cowork/templates/HANDOFF_TEMPLATE.md` for the standard format.
+
+**Agent Workflows:**
+- TP Program Generator: Spec intake → architecture → register allocation → `PROGRAM_SPEC.md` → Cursor generates `.LS` → Cowork QA. Template: `cowork/templates/PROGRAM_SPEC_TEMPLATE.md`
+- Code Review / QA: Load context → audit 10 TWA conventions → compare to dataset → `REVIEW.md` → hand off fixes. Template: `cowork/templates/QA_REVIEW_TEMPLATE.md`
+
 ## Customer Program Repository
 
 Customer programs are production backups organized by customer and robot system in `customer_programs/`.
