@@ -1,0 +1,89 @@
+<?xml version="1.0" ?>
+<configuration>
+    <graphicSettings>
+        <shadowtype>0</shadowtype>
+	<transparency>95</transparency>
+        <fullscreen>0</fullscreen>
+        <antialias>0</antialias>
+        <colorBuffer>16</colorBuffer>
+        <depthBuffer>16</depthBuffer>
+        <textures>1</textures>
+        <driver>1</driver>
+        <shadows>0</shadows>
+        <windowsize>1481,919</windowsize>
+    </graphicSettings>
+    <generalSettings>
+        <logging>1</logging>
+        <fingerautosave>0</fingerautosave>
+        <viewautosave>1</viewautosave>
+    </generalSettings>
+    <userinterface>
+        <groups>
+            <group id="viewnavigation" enabled="1" visible="1">
+                <orientation>0</orientation>
+            </group>
+        </groups>
+        <buttons>
+            <button id="bend" enabled="0" visible="0" />
+            <button id="fingers" enabled="1" visible="0" />
+            <button id="display" enabled="1" visible="1" />
+            <button id="saveview" enabled="1" visible="1" />
+            <button id="lights" enabled="1" visible="1" />
+        </buttons>
+    </userinterface>
+    <lights>
+        <light shadowtype="0" lighttype="1" enabled="1">
+            <color>6,6,6,255</color>
+        </light>
+        <light shadowtype="0" lighttype="2" enabled="1">
+            <position>-1000,700,-2000</position>
+            <color>8,8,8,255</color>
+        </light>
+        <light shadowtype="1" lighttype="1" enabled="1">
+            <color>61,61,61,255</color>
+        </light>
+        <light shadowtype="1" lighttype="2" enabled="1">
+            <position>-561,4834,-5365</position>
+            <color>25,25,25,255</color>
+        </light>
+        <light shadowtype="2" lighttype="1" enabled="1" />
+        <light shadowtype="2" lighttype="3" enabled="1">
+            <position>2000.0,2000.0,-2000.0</position>
+            <color>255,255,255,255</color>
+        </light>
+        <light shadowtype="3" lighttype="1" enabled="1">
+            <color>67,67,67,255</color>
+        </light>
+        <light shadowtype="3" lighttype="3" enabled="1">
+            <color>208,208,208,255</color>
+            <attenuation />
+            <position>3208,6143,-2774</position>
+            <target>74,0,45</target>
+            <fieldofview>38.48</fieldofview>
+        </light>
+        <light shadowtype="3" lighttype="6" enabled="1">
+            <intensity>92.7778</intensity>
+        </light>
+        <light shadowtype="3" lighttype="5" enabled="1">
+            <intensity>92.5</intensity>
+        </light>
+        <light shadowtype="1" lighttype="6">
+            <intensity>59.4444</intensity>
+        </light>
+        <light shadowtype="1" lighttype="5">
+            <intensity>81.25</intensity>
+        </light>
+        <light shadowtype="0" lighttype="6">
+            <intensity>69.4444</intensity>
+        </light>
+        <light shadowtype="0" lighttype="5">
+            <intensity>100</intensity>
+        </light>
+        <light shadowtype="2" lighttype="6">
+            <intensity>100</intensity>
+        </light>
+        <light shadowtype="2" lighttype="5">
+            <intensity>100</intensity>
+        </light>
+    </lights>
+</configuration>

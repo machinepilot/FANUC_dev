@@ -1,0 +1,9 @@
+Ciclo fisso taratura diretta accompagnatori Ver.012.38 : 302
+ ;presetta l'asse selezionato alla quota impostata dall'operatore
+ VA0 = %C90 / 1000
+ IF( %selasse == 8 ) PRS[X] = VA0
+ IF( %selasse == 9 ) PRS[Y] = VA0
+ ?%C18.10 = 1 ;sincronismo taratura eseguita a u.i.
+ _wait_bit( 0,"%C33.23",1) ;attende sincronismo di ritorno da u.i.
+ ?%C18.10 = 0 ;sincronismo taratura eseguita a u.i.
+ RET

@@ -1,0 +1,63 @@
+Ciclo fisso salita per taratura Ver.012.39 : 104
+ ?%C21.5 = 1 ;taratura in corso
+
+ IF( %C37.9 ) JMPF 160
+ IF( %C37.10 ) JMPF 170
+ _ppconf_ol(0x00,X,Y,%pst[20],%pst[18],%pst[18],%pst[23],1,0.01)
+ _ppmove_ol(0x00,X,Y,0x00,0,0,0,0,0) ;Togli dalla Coppia
+ ;simulazione sensore GPS
+ IF(%C37.7 && %C37.6) _ppconf_sx(0x00,X,Y,16,17,0xC4,0,0,%ap[16].pt[11],1,VL36,0,0.01,1)
+ ;Imposta guadagni salita lenta
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[49],%pst[50],0,0,0,0,0,0)
+ ;Disabilita filtro FIR su DAC pestone
+ _ppconf_sx(0x00,X,Y,0,0,0xFF00,0,0,0,0,0,0,0,0)
+ ;Disabilita guadagno variabile
+ _ppconf_sx(0x00,X,Y,0,0,0x01,0,0,0,0,0,0,0,0)
+ G4 F%pstt[3] ;attende rampa pressione
+ VEL[X] = %pst[47] ;Imposta velocitá limite perché TARAPEST non lo fa
+ VEL[Y] = %pst[47]
+ ACC[X] = %pst[48] ;riprogramma accelerazioni
+ DEC[X] = %pst[48]
+ ACC[Y] = %pst[48]
+ DEC[Y] = %pst[48]
+ IF( %pst54 == 0 ) JMPF 100
+ FWR[X]= 0;abilita errore di inseguimento Y1
+ FWR[Y]= 0 ;abilita errore di inseguimento Y2
+ %ax0.pa5 = %pst54 * 1000
+ %ax1.pa5 = %pst54 * 1000
+ FWR[X]= 1 ;abilita errore di inseguimento Y1
+ FWR[Y]= 1 ;abilita errore di inseguimento Y2
+N100
+ _tollerap(0x00,X,0x00,%pst[4],%pst[51],%pst[4]) ;riprogramma tolleranze
+ _tollerap(0x00,Y,0x00,%pst[4],%pst[51],%pst[4])
+ _isocmd(0x0, X, 7) ;resetta bit asse tarato
+ _isocmd(0x0, Y, 7)
+ _paras(0x0, X, 0) ;disabilita limiti SW
+ _paras(0x0, Y, 0)
+ IF( %C37.8 ) JMPF 150
+ _tarapest(0x19,X,Y,1,%pst[47],0,%pst[2],%pst[3],1) ;ricerca tacche
+ JMPF 170
+N150
+ VA0 = %pst[47] / 1000
+ _ppconf_ol(0x00,X,Y,%pst[20],%pst[48],%pst[48],%pst[23],1,0.01)
+; _ppmove_ol(0x00,X,Y,0x04,10,VA0,VA0,10000,10000) ;dai tensione
+ _ppmove_ol(0x00,X,Y,0x02,VA0,5,5,10000,10000) ;salita lenta ad anello aperto
+ _wait_bit( 0, "%C37.8", 0) ;attende all'infinito
+N160
+ _paras(0x0, X, 0) ;disabilita limiti SW
+ _paras(0x0, Y, 0)
+ PRS[X] = %pst[2] ;taratura immediata asse Y1
+ PRS[Y] = %pst[3] ;taratura immediata asse Y2
+N170
+ _isocmd(0x0, X, 6) ;setta bit asse tarato
+ _isocmd(0x0, Y, 6)
+_paras(0x0, X, 3, %pst[0], %pst[1]) ;riabilita limiti SW
+ _paras(0x0, Y, 3, %pst[0], %pst[1])
+
+ IF( %pst54 == 0 ) JMPF 200
+ FWR[X]= 0 ;disabilita errore di inseguimento Y1
+ FWR[Y]= 0 ;disabilita errore di inseguimento Y2
+N200
+ ?%C21.12=1 ;fine taratura
+ _wait_bit( 0,"%C32.2",1) ;attende conferma fine ciclo
+ RET

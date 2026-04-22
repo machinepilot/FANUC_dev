@@ -1,0 +1,45 @@
+ [A] [B] [C] [D] [E] [F] [G] [H] [I] [J] [K] [L] [M] [N] [O] [P] S : G4025
+;//Azioni asincrone: impostazione parametri e comandi
+;A=VA0 : parametro floating point 1
+;B=VA1 : parametro floating point 2
+;C=VA2 : parametro floating point 3
+;D=VA3 : parametro floating point 4
+;E=VA4 : parametro floating point 5
+;F=VA5 : parametro floating point 6
+;G=VA6 : parametro floating point 7
+;H=VA7 : parametro floating point 8
+;I=VA8 : parametro integer 1
+;J=VA9 : parametro integer 2
+;K=VA10: parametro integer 3
+;L=VA11: parametro integer 4
+;M=VA12: parametro integer 5
+;N=VA13: parametro integer 6
+;O=VA14: parametro integer 7
+;P=VA15: parametro integer 8
+;Q=VA16: riservato
+;R=VA17: riservato
+;S=VA18: system wide asse slave
+
+SPC 30099,1
+;//questi sono inizializzati a 0 nella G4011
+IF(!ISQNAN(VA0 )) ?%ax[VA18].rgdau0 = VA0  ;floating point 1
+IF(!ISQNAN(VA1 )) ?%ax[VA18].rgdau1 = VA1  ;floating point 2
+IF(!ISQNAN(VA2 )) ?%ax[VA18].rgdau2 = VA2  ;floating point 3
+IF(!ISQNAN(VA3 )) ?%ax[VA18].rgdau3 = VA3  ;floating point 4
+IF(!ISQNAN(VA4 )) ?%ax[VA18].rgdau4 = VA4  ;floating point 5
+IF(!ISQNAN(VA5 )) ?%ax[VA18].rgdau5 = VA5  ;floating point 6
+IF(!ISQNAN(VA6 )) ?%ax[VA18].rgdau6 = VA6  ;floating point 7
+IF(!ISQNAN(VA7 )) ?%ax[VA18].rgdau7 = VA7  ;floating point 8
+IF(!ISQNAN(VA8 )) ?%ax[VA18].rgau0  = VA8  ;integer 1
+IF(!ISQNAN(VA9 )) ?%ax[VA18].rgau1  = VA9  ;integer 2
+IF(!ISQNAN(VA10)) ?%ax[VA18].rgau2  = VA10 ;integer 3
+IF(!ISQNAN(VA11)) ?%ax[VA18].rgau3  = VA11 ;integer 4
+IF(!ISQNAN(VA12)) ?%ax[VA18].rgau4  = VA12 ;integer 5
+IF(!ISQNAN(VA13)) ?%ax[VA18].rgau5  = VA13 ;integer 6
+IF(!ISQNAN(VA14)) ?%ax[VA18].rgau6  = VA14 ;integer 7
+IF(!ISQNAN(VA15)) ?%ax[VA18].rgau7  = VA15 ;integer 8
+;//rgau8 reserved as output status register
+;//rgau9 reserved as output status register
+SPC 30099,1
+
+RET

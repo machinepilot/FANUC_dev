@@ -1,0 +1,100 @@
+﻿---
+id: ONE_18_FANUC_TIMER_INSTRUCTIONS
+title: "FANUC Timer Instructions"
+topic: anti_pattern
+fanuc_controller: [R-30iB, R-30iB Plus]
+system_sw_version: [V9.x]
+language: TP
+source:
+  type: third_party_integrator
+  title: "ONE Robotics Company Blog"
+  tier: T3
+license: reference-only
+revision_date: "2026-04-22"
+related: []
+difficulty: intermediate
+status: draft
+supersedes: null
+---
+
+# FANUC Timer Instructions
+
+## Summary
+
+Migrated from `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/articles/ONE_18_FANUC_Timer_Instructions.txt` as part of the TeachPendant migration. Original source: ONE Robotics Company Blog. Review and update `related:` with neighbor entry IDs.
+
+## Body
+
+
+# FANUC Timer Instructions
+
+Filed under:FANUCTP ProgrammingWorkflow
+FANUC’s TP programming environment is great for creating simple programs
+quickly. From the comfort of your teach pendant, you can record a few
+points, turn a few bits on and off and have a fully functional demo
+within a few minutes. However, as soon as you have to add some real
+intelligence to your robot, you’ll quickly find the editor to be
+cumbersome and slow.
+I’ve already written abouthow I write my TP programs by
+hand, but
+here’s a quick trick I’ve been using to make my development faster and
+my programs a little easier to understand: tiny programs. I’m talking
+really small, like one or two lines.
+Here’s a quick example of a rudimentary “move home” program:
+Five lines of code… probably can’t get much shorter, right? But maybe
+we can make it a bit more readable. Try this:
+I know, that’s a lot ofCALLstatements for a 5-line program, but it
+couldn’t be more clear. You’ll thank yourself when you come back to this
+program in a year and don’t remember thatUTOOL[1]is for end caps,
+turningRO[1]=ONopens the end cap gripper andPAYLOAD[1]is for an
+empty EOAT.
+Considering the fact that program names are pretty much the only unique
+identifiers we get in this environment, shouldn’t we use them to our
+advantage?
+I’ve been using tiny 1-line programs for things likeUFRAMEs,UTOOLs,PAYLOADs,WAITstatements and part-presence checking. It’s a little bit
+more work on the front-end, but it makes your programs much more descriptive
+and readable, and I find that I write subroutines much quicker when I
+don’t have to remember which array index constant goes with which
+gripper, payload, etc.
+Here’s how I would have programmed a pick routine before using this
+method:
+Let’s replace a few items:
+Let’s pull out the gripper and part-presence checking too:
+Let’s go a bit further, probably overkill:
+To be clear, I don’t advocate extracting every single motion statement
+into its own subroutine, but where do you draw the line?
+Our goal is to program robots that work 100% of the time. They should be
+able to handle common error cases (and uncommon, if you have
+time!). They should just work.
+I’ve found that it’s much easier to get things to work when I’ve done a
+good job encapsulating tasks and hiding information that’s not
+necessary. This keeps our code clean, readable and less prone to error.
+TP’s syntax and environment may be robot-friendly, but it’s not very
+programmer-friendly. We can do the other programmers that work with our
+code (and our future selves) a favor by using well-named small
+programs that make our programs easier to read and understand.
+For more on this topic, there’s a great article by Edward V. Berard on the similarities and
+differences betweenAbstraction, Encapsulation, and Information
+Hiding.
+I email(almost)every Tuesday with the latest insights, tools and techniques for programming FANUC robots. Drop your email in the box below, and I'll send new articles straight to your inbox!
+No spam, just robot programming. Unsubscribe any time. No hard feelings!
+©2013-2019 ONE Robotics Company LLC. All rights reserved.
+Privacy•Terms•RSS Feed
+
+URL: https://www.onerobotics.com/posts/2015/small-programs/
+
+## Citations
+
+- Primary: ONE Robotics Company Blog (keywords: timer, TIMER, timing, cycle time measurement, elapsed time, performance).
+- Applicability: FANUC TP Programming, R-30iB Plus.
+
+## Discrepancies
+
+None documented in the legacy source. Re-verify against a T1 vendor manual before promoting `status` from `draft` to `approved`.
+
+## Provenance
+
+- Migrated by: inline migration on 2026-04-22.
+- Source file: `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/articles/ONE_18_FANUC_Timer_Instructions.txt`.
+- Classification: articles / topic=anti_pattern.
+

@@ -1,0 +1,155 @@
+﻿---
+id: FANUC_REF_MATH_FUNCTIONS
+title: "Math Functions"
+topic: anti_pattern
+fanuc_controller: [R-30iB, R-30iB Plus]
+system_sw_version: [V9.x]
+language: TP
+source:
+  type: generated
+  title: "FANUC Teach Pendant Help System / Operator Manual"
+  tier: generated
+license: reference-only
+revision_date: "2026-04-22"
+related: []
+difficulty: intermediate
+status: draft
+supersedes: null
+---
+
+# Math Functions
+
+## Summary
+
+Migrated from `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/reference/FANUC_REF_Math_Functions.txt` as part of the TeachPendant migration. Original source: FANUC Teach Pendant Help System / Operator Manual. Review and update `related:` with neighbor entry IDs.
+
+## Body
+
+
+12. MATH FUNCTION INSTRUCTIONS 12. MATH FUNCTION INSTRUCTIONS PROGRAM ELEMENTS 1
+2. MATH FUNCTION INSTRUCTIONS The Math function option (J593) allows you to calc
+ulate math functions (ex: SIN COS and so on) in the TP program. The Math functio
+n instruction can be used in an assignment statement, conditional statement and 
+wait command. 12.1. Type of Math Functions Usable instructions of math functions
+are as follows. Table 7. Usable instruction of math function Function Explanatio
+n Restriction of Argument SQRT[x] Square root 0 <= x SIN[x] Trigonometric Functi
+on Units are Degrees None COS[x] None TAN[x] Except 90,270±360ｎ ASIN[x] -1 <= x 
+<= 1 ACOS[x] -1 <= x <= 1 ATAN[x] None ATAN2[x,y] Except x=0,y=0 LN[x] Natural L
+ogarithm 0 < x EXP[x] Exponent None ABS[x] Absolute None TRUNC[x] Truncate -2.1*
+10^9 <= x <=2.1*10^9 ROUND[x] Round off -2.1*10^9 <= x <=2.1*10^9 Units of afore
+mentioned functions are degrees. Conversion functions are not supported because 
+the user can achieve them by multiplying a constant value(57.29579 or 0.017453 b
+ased on requirement). 12.2. Instruction Format of Math Function Instruction type
+of math functions is explained in the following example. 12.2.1. Instruction For
+mat of Assignment Statements The function which only has one argument（Except of 
+ATAN2[ ]） The function which has two arguments（ATAN2[ ]） The argument of math fu
+nctions is “Register “ and “Argument Register.” Constant is not used directly. 1
+2.2.2. Instruction Format of Relational Statements A mixed logic instruction exp
+ression can be used in the conditional statement of a conditional branch command
+. If the result of a conditional statement is ON, the executable statement of th
+e conditional branch command is executed. The argument of math functions is “Reg
+ister “ and “Argument Register.” A Constant is not used directly. 12.2.3. Instru
+ction Format of Wait Command Statements A mixed logic expression can be specifie
+d in the conditional statement of a wait command. Wait until the specified condi
+tion is satisfied. The argument of math functions is “Register “ and “Argument R
+egister.” A Constant is not used directly. 12.3. Function Specification of Math 
+Functions 12.3.1. Square Root (SQRT) Function name: SQRT[X] Argument: A positive
+integer or a positive real value to calculate square root. This function calcula
+tes the positive square root of the argument. Example: Execute this TP program t
+hen, If the argument is minus value, then the following error occurs. 12.3.2. Tr
+igonometric Function (SIN) Function name: SIN[X] Argument: An angle to calculate
+SIN (in degree). An integer or a real value. This function calculates sine of th
+e argument. Example: Execute this TP program then, 12.3.3. Trigonometric Functio
+n (COS) Function name: COS[X] Argument: An angle to calculate COS (in degree). A
+n integer or a real value. This function calculates cosine of the argument. Exam
+ple: Execute this TP program then, 12.3.4. Trigonometric Function (TAN) Function
+name: TAN[X] Argument: An angle to calculate TAN (in degree). An integer or a re
+al value. This function calculates tangent of the arguments. Example: Execute th
+is TP program then, If the argument equals to 180*n+90 and execute, then the fol
+lowing Error will be posted. 12.3.5. Inverse Trigonometric Function (ASIN) Funct
+ion name: ASIN[x] Argument: An integer or a real value to calculate ASIN. (Retur
+n value is degree.) This function calculates arc sine of the argument. Example: 
+Execute this TP program then, If the argument ranges are x>1 or x<-1 and execute
+program, then the following Error will be posted. 12.3.6. Inverse Trigonometric 
+Function (ACOS) Function name: ACOS[x] Argument: An integer or a real value to c
+alculate ACOS. (Return value is degree.) This function calculates arc cosine of 
+the argument. Example: Execute this TP program then, If the argument ranges are 
+x>1 or x<-1 and execute program, then the following Error will be posted. 12.3.7
+. Inverse Trigonometric Function (ATAN2) Function name: ATAN2[x,y] 1st argument:
+x coordinates of the point to calculate ATAN2. An integer or a real value. 2nd a
+rgument: y coordinates of the point to calculate ATAN2. An integer or a real val
+ue. This function calculates arc tangent of the 1st and 2nd arguments. (Return v
+alue is degree.) Example: Execute this TP program then, 12.3.8. Inverse Trigonom
+etric Function (ATAN) Function name: ATAN [x] Argument: An integer or a real val
+ue to calculate ATAN. Example: Execute this TP program then, 12.3.9. Exponent Fu
+nction name: EXP[x] Argument: An integer or a real value to calculate EXP. This 
+function calculates a value equal to e (approximately 2.71828) raised to the pow
+er specified by the argument. Example: Execute this TP program then, 12.3.10. Na
+tural Logarithm Function name: LN[x] Argument: An integer or a real value to cal
+culate LN. This function calculates the natural logarithm of the argument. Examp
+le: Execute this TP program then, If the argument is x <= 0 and the program exec
+ute, then the following Error will be posted. 12.3.11. Absolute (ABS) Function n
+ame: ABS[x] Argument: An integer or a real value to calculate ABS. This function
+calculates the absolute value of the argument. Example: Execute this TP program 
+then, 12.3.12. Truncate (TRUNC) Function name: TRUNC[x] Argument: A real value t
+o calculate TRUNC. This function converts the real argument to an integer by rem
+oving fractional part of the real value. Example: Execute this TP program then, 
+12.3.13. Round Off (ROUND) 12.4. Background Operation of Math Function Math func
+tion instructions are part of the mixed logic instruction. Then Math function in
+struction can be used in background operation. Table 8. Background operation of 
+math function Mode Maximum Allowable Number of Items Scanning Time Available Dat
+a Available Operators Standard mode No restriction (Number of items in standard 
+mode / 300-Number of items in high-level mode)*ITP The number of items as used h
+ere refers to the total number of items in each mode background operation progra
+ms. One ITP is usually eight milliseconds. SIN, COS, TAN, ASIN, ACOS, ATAN, ATAN
+2, SQRT, LN, EXP, ABS, TRUNC, ROUND (,), =, <>, <, <=, >, >=, +, -, *, /, DIV, M
+OD High-level mode 270 Eight milliseconds. The scanning time of Math function is
+2 or 3 times of normal items, because Math function instruction needs more time 
+to calculate. The scanning time of ATAN2 instruction is 3 times of normal items.
+The other math function instructions of scanning time are 2 times of normal item
+s. 12.5. Teach Math Function Instruction Math function can be used in mixed logi
+c instruction. As an example, the teaching process of following statement is as 
+follows. Procedure 8. Examples of Teaching Math Function Press F1 key(INST). Sel
+ect Register. Select mixed logic instructions “…=(…)”. Select register “R[ ]”. T
+hen the cursor moves in the square bracket. Input index 1. Then the cursor moves
+to the right side of equal sign. Select “SIN[ ]”. Then the cursor moves in the s
+quare bracket. And the default value R[…] is selected. Arguments are “Register “
+and “Argument Register”. (Not Constant) The “Register” is default value of argum
+ent. So to use “Argument Register”, press F3(CHOICE) then select “Argument Regis
+ter”. For example Register[2] is used here. Input value 2 then the cursor moves 
+to the right parentheses. Move cursor to finish teaching. Teaching of SIN[R[2]] 
+function completed. 12.6. Restriction of Teaching Math Function The argument of 
+math functions is “Register “ and “Argument Register”. Constant is not used dire
+ctly. If the user wants to use constant, input constant to a register, and use t
+he register. You can put multiple math functions in a single line. You cannot pu
+t math functions in a math function. The following statements are supported. The
+following statements are not supported. Math function might have a negligible ca
+lculation error of 10-7 due to internal calculation error because math function 
+follows the same specification of KAREL Built-Ins. For example the result of COS
+[R[1]] (when R[1]=90), may be 10-8 that is not exactly zero. This behavior can b
+e avoided by rounding off the result using ROUND function. 12.7. Exceptions and 
+Restriction Math function instruction posts the alarm in the following condition
+s. ・ When the argument exceeds the domain of function definition. Example :LN[R[
+1]]	(R[1] = -1) :ASIN[R[2]]	(R[2] = 10) :SQRT[R[3]] (R[3] = -4) :TAN[R[4]]	(R[4]
+= 90) The value overflows when executed. Example :EXP[R[1]]	(R[1] = 100) If the 
+variables are divided by zero then, the following error will be occurred. Exampl
+e	:R[1] / SIN[R[2]]	(R[2] = 0) :10/COS[R[3]]	(R[3] = 90) 11. MACRO COMMAND INSTR
+UCTION 13. MISCELLANEOUS INSTRUCTIONS
+Metadata:
+{}
+
+## Citations
+
+- Primary: FANUC Teach Pendant Help System / Operator Manual (keywords: math, SQRT, SIN, COS, TAN, ASIN, ACOS, ATAN2, LN, EXP, ABS, MOD, DIV, J593, trigonometry, calculation).
+- Applicability: R-30iB Plus, TP Programming.
+
+## Discrepancies
+
+None documented in the legacy source. Re-verify against a T1 vendor manual before promoting `status` from `draft` to `approved`.
+
+## Provenance
+
+- Migrated by: inline migration on 2026-04-22.
+- Source file: `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/reference/FANUC_REF_Math_Functions.txt`.
+- Classification: reference / topic=anti_pattern.
+

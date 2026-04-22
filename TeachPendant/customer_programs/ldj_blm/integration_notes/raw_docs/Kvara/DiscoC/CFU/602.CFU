@@ -1,0 +1,13 @@
+Ciclo fisso taratura diretta assi riscontri 3-4 Ver.012.38 : 602
+ ;presetta l'asse selezionato alla quota impostata dall'operatore
+ VA0 = %C90 / 1000
+ IF( %selasse == 22 ) PRS[X] = VA0
+ IF( %selasse == 23 ) PRS[Y] = VA0
+ IF( %selasse == 24) PRS[Z] = VA0
+ IF( %selasse == 25) PRS[U] = VA0
+ IF( %selasse == 26) PRS[V] = VA0
+ IF( %selasse == 27) PRS[W] = VA0
+ ?%C18.10 = 1 ;sincronismo taratura eseguita a u.i.
+ _wait_bit( 0,"%C33.23",1) ;attende sincronismo di ritorno da u.i.
+ ?%C18.10 = 0 ;sincronismo taratura eseguita a u.i.
+ RET

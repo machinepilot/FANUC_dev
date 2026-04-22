@@ -1,0 +1,5 @@
+Ciclo fisso reset lavorazione Ver.012.38 : 204
+ ?%np = 0 ;azzera numero passo
+ ?%C17.25 = 1 ;segnala numero passo cambiato al PLC
+ _wait_bit( 0,"%C2.0",1) ;attende sincronismo cambio passo acquisito da UI
+ RET

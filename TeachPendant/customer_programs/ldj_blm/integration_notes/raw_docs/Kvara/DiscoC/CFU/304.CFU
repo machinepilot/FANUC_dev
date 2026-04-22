@@ -1,0 +1,16 @@
+Ciclo fisso parcheggio assi accompagnatori Ver.012.41 : 304
+ ?%C19.16 = 1 ;ciclo parcheggio in corso
+ VA1 = 0
+ VA2 = 0
+ IF (%pargen_due.dwgn64.19) THEN ;Abil. quote inizio-fine ciclo accompagnatori da programma
+  VA1 = %SpecialProg.SpecialStep[%np].dAHoming0 ;Pos. inizio ciclo A1
+  VA2 = %SpecialProg.SpecialStep[%np].dAHoming1 ;Pos. inizio ciclo A2
+ ENDIF
+ IF( !%C34.1 ) VA1 = QNAN() ;verifica selettore accompagnatore 1
+ IF( !%C34.2 ) VA2 = QNAN() ;verifica selettore accompagnatore 2
+ FA[X]=%parspec.dsp[14]*1000 ;setta velocita`di ritorno accompagnatore 1
+ FA[Y]=%parspec.dsp[14]*1000 ;setta velocita`di ritorno accompagnatore 2
+ POS[X]=VA1 POS[Y]=VA2 ;posizionamento in quota di parcheggio
+ ?%C19.17 = 1 ;accompagnatori in posizione di parcheggio
+ _wait_bit( 0,"%C34.17",1) ;attende conferma da PLC
+ RET

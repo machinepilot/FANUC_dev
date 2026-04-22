@@ -1,0 +1,82 @@
+Ciclo fisso decompressione Ver.012.57 : 101
+ DBL Overdistance, DecompSpeed, MaxDac, DecompGain
+
+ SYN
+ IF ( %pargen_due.dwgn19.19 ) JMPF 1200
+ IF ( %C32.24 ) JMPF 900 ;decompressione esclusa
+
+ IF (%C38.19) JMPF 200 ;decompressione da plc utente
+
+ ;Verifica decompressione standard a tempo
+ IF ((%prog[%np].dPiegaD == 0) || (!%C36.29)) JMPF 50
+
+ ;Decompressione a quota
+ VA6 = QTA(X)
+ VA7 = QTA(Y)
+ IF ( VA6 > VA7 ) THEN
+    VA4 = VA6
+ ELSE
+    VA4 = VA7
+ ENDIF
+ VL53 = VA4 + %prog[%np].dPiegaD ;target for PLC to clear the pressure
+
+ DecompSpeed = %prog[%np].accomp * 1000 ;velocita decompressione (mm/min) da vel. accompagnamento
+ IF (DecompSpeed == 0) DecompSpeed = %pargen_due.dgn[48] * 1000 ;se zero, velocita decompressione (mm/min) da parametro
+ IF (DecompSpeed == 0) DecompSpeed = %pst[26] ;default pari a velocita discesa lenta
+ Overdistance = (DecompSpeed / 60) * %pargen_due.dgn[49] + 0.1
+ VL30 = VL53 + Overdistance ;target for the rising command
+ ?%C16.20 = 1 ;decompressione in corso
+ G4 F%progc[%np].tdisc ;attendi tempo discesa pressione di lavoro
+
+ MaxDac = %pargen_due.dgn[50] ;Max DAC (V)
+ IF (MaxDac == 0) MaxDac = %pargen_due.dgn[14] ;default pari a max DAC discesa lenta
+ IF (MaxDac == 0) MaxDac = 9.5 ;default pari a fondo scala
+ DecompGain = %pargen_due.dgn[51] ;Guadagno decompressione
+ IF (DecompGain == 0) DecompGain = %pst[28] ;default pari a guadagno discesa lenta
+ ;Abilita filtro FIR su DAC pestone e tensione limite decompressione
+ _ppconf_sx(0x00,X,Y,0,0,0xFF00,%pargen_due.dgn[12],%pargen_due.dgn[13],0,0,0,0,MaxDac,0)
+ _ppconf_sx(0x00,X,Y,0,0,0,(DecompGain),(DecompGain),0,0,VL36,0,0.01,%C32.23)
+ _tollerap(0x00,X,0x00, Overdistance, 4, Overdistance); RIPROGRAMMA TOLLERANZA (timeout a 4 s)
+ _tollerap(0x00,Y,0x00, Overdistance, 4, Overdistance);
+ ;Salita per decompressione a quota
+ _ppmove_sx(0x01,X,Y,0,0,(0x1802),0,(DecompSpeed),VL30,VL30,0,0,%pst[30],0)
+ ?%C16.11 = 1 ;fine comando decompressione a quota
+ _wait_bit( 0,"%C38.13",1); attesa fine tempo decompressione da plc
+ JMPF 900
+
+ ;Decompressione standard a tempo
+N50
+ ?%C16.20 = 1 ;decompressione in corso
+ ;Disabilita filtro FIR su DAC pestone
+ _ppconf_sx(0x00,X,Y,0,0,0xFF00,0,0,0,0,0,0,0,0)
+ _ppconf_ol(0x00,X,Y,%pst[20],%pst[18],%pst[18],%pst[23],1,0.01)
+ VA0 = %pargen_due.dgn11 ;Carica tempo Vcost per decompressione a trapezio
+ IF(VA0 != 0) VA1 = 8 ;Flag decompressione con rampa
+ IF(VA0 == 0) VA1 = 4 ;Flag decompressione standard
+ IF( !%C36.29 ) JMPF 100 ;seleziona scarico pressione di lavoro o massima
+ G4 F%progc[%np].tdisc ;attendi tempo discesa pressione di lavoro
+ VL54 = (%pst[38]*(%prog[%np].force / %gen[9])) + %pargen_due.dgn[62] ;tempo decompressione
+ _ppmove_ol(0x00,X,Y,VA1,10,%pst[35],%pst[36],VA0,VL54) ;dai tensione
+ JMPF 900
+N100
+ VA2 = %pst[37] * %pst[25] / 100 ;tempo discesa pressione manuale
+ G4 FVA2 ;attendi tempo discesa pressione manuale
+ VA3 = %pst[38] * %pst[25] / 100 ;tempo decompressione manuale
+ _ppmove_ol(0x00,X,Y,VA1,10,%pst[35],%pst[36],VA0,VA3) ;dai tensione
+ JMPF 900
+N200
+ ;Decompressione da plc utente
+ _ppmove_ol(0x00,X,Y,0,0,0,0,0,0) ;togli coppia
+ ?%C16.20 = 1 ;decompressione in corso
+ _wait_bit( 0,"%C38.20",1); attesa fine decompressione da plc utente
+ JMPF 1000
+N900
+ _ppmove_ol(0x00,X,Y,0,0,0,0,0,0) ;togli coppia
+N1000
+ ?%C16.21 = 1 ;decompressione terminata
+ ;Attesa ripristino valvole discesa lenta prima di dare pressione salita
+ IF( %parspec.dwsp[14] != 0 ) G4 F(%parspec.dwsp[14] / 1000)
+ _wait_bit( 0,"%C38.18",0); Blocco ciclo dopo decomp da plc utente
+N1200
+ RET
+

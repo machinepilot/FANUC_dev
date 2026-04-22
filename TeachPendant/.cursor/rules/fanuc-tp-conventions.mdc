@@ -1,0 +1,130 @@
+---
+description: FANUC TP / LS authoring conventions for R-30iB controllers.
+globs: ["**/*.LS", "**/*.ls", "**/*.TP", "**/*.tp"]
+alwaysApply: false
+---
+
+# FANUC TP/LS Conventions
+
+These conventions apply when authoring or reviewing `.LS` (ASCII source) and `.TP` (binary) programs for FANUC R-30iB-family controllers running V9.x.
+
+## Header discipline
+
+Every `.LS` program starts with a header block containing at minimum:
+
+```
+/PROG  <PROGRAM_NAME>
+/ATTR
+OWNER           = MNEDITOR;
+COMMENT         = "<short description>";
+PROG_SIZE       = <>;
+CREATE          = <date/time>;
+MODIFIED        = <date/time>;
+FILE_NAME       = ;
+VERSION         = 0;
+LINE_COUNT      = <>;
+MEMORY_SIZE     = <>;
+PROTECT         = READ_WRITE;
+TCD:  STACK_SIZE   = 0,
+      TASK_PRIORITY = 50,
+      TIME_SLICE    = 0,
+      BUSY_LAMP_OFF = 0,
+      ABORT_REQUEST = 0,
+      PAUSE_REQUEST = 0;
+DEFAULT_GROUP = 1,*,*,*,*;
+CONTROL_CODE  = 00000000 00000000;
+```
+
+Program name uppercase, <=36 chars, no leading digits.
+
+## Motion instructions
+
+- Use `J`, `L`, `C`, `A` for joint / linear / circular / arc.
+- Always name the speed: `100%`, `500mm/sec`, `WELD_SPEED`.
+- Termination: `FINE` for precise stops, `CNT0..CNT100` for blending. Default to `CNT100` for rapid traverse moves and `FINE` for approach/retract and work points.
+- Never use `P[n]` (program-local position) for anything that might be retaught by a customer. Prefer `PR[n:COMMENT]` (position register) whenever the point is shared, taught at install, or tuned at runtime.
+
+Examples:
+
+```
+ 1:J P[1] 100% FINE    ;
+ 2:L P[2] 500mm/sec CNT50    ;
+ 3:L PR[5:PICK_APPROACH] 300mm/sec FINE    ;
+```
+
+## UTool / UFrame
+
+Set both at the top of any motion-containing program, before the first motion line:
+
+```
+ 1: UTOOL_NUM=1 ;
+ 2: UFRAME_NUM=2 ;
+```
+
+Never assume. Never modify them mid-program unless the program is explicitly a tool-change routine.
+
+## I/O discipline
+
+- Never use raw indices (`DI[123]`, `DO[45]`) in program bodies. Always use aliased names via signal Comments: `DI[123:PB_START]`, `DO[45:GRIPPER_CLOSE]`.
+- If a signal lacks a comment in the controller configuration, stop and add one before coding.
+- Group signals (`GI[]`, `GO[]`) carry part IDs, style codes, error codes. Document the bit-ordering in the `INTEGRATION_SPEC`.
+
+## WAIT with timeout
+
+Every `WAIT DI[]=ON` MUST have a `TIMEOUT,LBL[n]` branch that routes to a fault recovery:
+
+```
+ 12: WAIT DI[123:PB_START]=ON TIMEOUT,LBL[99] ;
+ ...
+ 99:LBL[99:WAIT_PB_START_TIMEOUT] ;
+ 100: UALM[3:PB_START_TIMEOUT] ;
+```
+
+Unbounded WAITs are a FANUC-SAFETY-LINT rule `FANUC-WAIT-001` violation.
+
+## Skip and Condition
+
+- `SKIP CONDITION DI[n]=ON` must be paired with a `LBL[]` receiver before any subsequent motion.
+- `MONITOR <cond_prog>` must be closed with `MONITOR END <cond_prog>` in the same logical scope.
+
+## Flow control
+
+- Labels `LBL[n:NAME]` - always name them in the comment for readability.
+- Jumps `JMP LBL[n]` - avoid into the middle of motion blocks.
+- Error recovery: use `UALM[n]` to raise named alarms, not bare aborts.
+
+## Register conventions
+
+- `R[n:NAME]` for scalars. Typical buckets:
+  - `R[1..10]`: part flags / part IDs.
+  - `R[11..30]`: counters (cycle, reject, good).
+  - `R[31..50]`: timers.
+  - `R[51..70]`: error state / status codes.
+  - `R[90..100]`: customer convention varies; confirm in customer spec before use.
+- `PR[n:NAME]` for positions, with comment naming. Group-scoped when using multi-group.
+- Always initialize registers explicitly; never rely on power-on defaults.
+
+## Program kinds
+
+- `PNS<NNNN>.LS` - selected by PNS handshake (UOP). Thin; usually calls a style-specific program.
+- `PNS<NNNN>_R01.LS` - revision copy; keep under `customer_programs/<c>/backups/`.
+- `MAIN.LS` / `HOME.LS` / `GO_*.LS` - utility programs, no teach positions if avoidable.
+- `BG_LOGIC.LS` - Background Logic program. Must not call motion. Must not modify registers used by foreground motion programs.
+- `*_HOME.LS` - always use `PR[1:HOME]`, never `P[1]`.
+
+## Comments
+
+Short, uppercase-first, no trailing punctuation. Align within blocks where it aids scanning.
+
+## Anti-patterns (fail review)
+
+- `OVERRIDE` modification from TP (`$MCR_GRP[].$PRGOVERRIDE`).
+- Hardcoded `P[n]` for runtime-tuned points.
+- `WAIT DI[n]=ON` without `TIMEOUT`.
+- `SKIP CONDITION` without `LBL[]` receiver.
+- Raw `DI[]/DO[]` in body.
+- Motion before `UTOOL_NUM` / `UFRAME_NUM` set.
+- Background Logic program issuing motion (`J`, `L`, `C`, `A`, `PALLETIZING_*`).
+- Mixed CR (collaborative) + non-collaborative groups without DCS validation.
+
+Canon reference: `fanuc_dataset/normalized/reference/FANUC_REF_TP_*`. Cite by ID.

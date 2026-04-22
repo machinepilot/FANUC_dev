@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://theway.automation/teachpendant/schemas/dataset_manifest.schema.json",
+  "title": "DatasetManifest",
+  "type": "object",
+  "required": ["version", "entries"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "type": "integer", "minimum": 1 },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "path", "topic", "tier", "fanuc_controller", "language", "revision_date"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^(FANUC_REF|ONE|EG)_[A-Z0-9_]+$" },
+          "path": { "type": "string" },
+          "topic": { "type": "string" },
+          "tier": { "type": "string", "enum": ["T1", "T2", "T3", "T4", "generated"] },
+          "fanuc_controller": { "type": "array", "items": { "type": "string" } },
+          "system_sw_version": { "type": "array", "items": { "type": "string" } },
+          "language": { "type": "string", "enum": ["TP", "KAREL", "mixed", "na"] },
+          "revision_date": { "type": "string" },
+          "tags": { "type": "array", "items": { "type": "string" } },
+          "superseded_by": { "type": ["string", "null"] }
+        }
+      }
+    }
+  }
+}

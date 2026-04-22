@@ -1,0 +1,93 @@
+[I]0 M S : -5010
+;Collega un asse slave ad un asse master
+;Va chiamato dal canale che gestisce l'asse master
+;I=VA8: 1=carica quota asse slave
+;M=VA12: system wide asse master
+;S=VA18: system wide asse slave
+
+DBL ChNum = WHO()
+DBL sav_G70=XGET("@G70")
+G71
+
+?%rg17.1 = 1 ;test tempo ciclo completo
+
+IF(VA8!=1) JMPF 1000
+
+  SYN
+  DBL QtaSlave = %ax[VA18].ra[24] / 1000
+  DBL MinSlave = %ax[VA18].pa[21] / 1000
+  DBL MaxSlave = %ax[VA18].pa[22] / 1000
+
+  ;Carica quota e limiti asse reale se X
+  IF(VA12!=%cn[ChNum].cc2) JMPF 100
+    _paras( 0x00, X, 3, MinSlave, MaxSlave )
+    PRS[X] = QtaSlave
+    G10 G0 X(QtaSlave)
+    JMPF 1000
+N100
+  ;Carica quota e limiti asse reale se Y
+  IF(VA12!=%cn[ChNum].cc3) JMPF 200
+    _paras( 0x00, Y, 3, MinSlave, MaxSlave )
+    PRS[Y] = QtaSlave
+    G10 G0 Y(QtaSlave)
+    JMPF 1000
+N200
+  ;Carica quota e limiti asse reale se Z
+  IF(VA12!=%cn[ChNum].cc4) JMPF 300
+    _paras( 0x00, Z, 3, MinSlave, MaxSlave )
+    PRS[Z] = QtaSlave
+    G10 G0 Z(QtaSlave)
+    JMPF 1000
+N300
+  ;Carica quota e limiti asse reale se U
+  IF(VA12!=%cn[ChNum].cc5) JMPF 400
+    _paras( 0x00, U, 3, MinSlave, MaxSlave )
+    PRS[U] = QtaSlave
+    G10 G0 U(QtaSlave)
+    JMPF 1000
+N400
+  ;Carica quota e limiti asse reale se V
+  IF(VA12!=%cn[ChNum].cc6) JMPF 500
+    _paras( 0x00, V, 3, MinSlave, MaxSlave )
+    PRS[V] = QtaSlave
+    G10 G0 V(QtaSlave)
+    JMPF 1000
+N500
+  ;Carica quota e limiti asse reale se W
+  IF(VA12!=%cn[ChNum].cc7) JMPF 600
+    _paras( 0x00, W, 3, MinSlave, MaxSlave )
+    PRS[W] = QtaSlave
+    G10 G0 W(QtaSlave)
+    JMPF 1000
+N600
+  ;Carica quota e limiti asse reale se A
+  IF(VA12!=%cn[ChNum].cc8) JMPF 700
+    _paras( 0x00, A, 3, MinSlave, MaxSlave )
+    PRS[A] = QtaSlave
+    G10 G0 A(QtaSlave)
+    JMPF 1000
+N700
+  ;Carica quota e limiti asse reale se B
+  IF(VA12!=%cn[ChNum].cc9) JMPF 800
+    _paras( 0x00, B, 3, MinSlave, MaxSlave )
+    PRS[B] = QtaSlave
+    G10 G0 B(QtaSlave)
+    JMPF 1000
+N800
+  ;Carica quota e limiti asse reale se C
+  IF(VA12!=%cn[ChNum].cc10) JMPF 900
+    _paras( 0x00, C, 3, MinSlave, MaxSlave )
+    PRS[C] = QtaSlave
+    G10 G0 C(QtaSlave)
+    JMPF 1000
+N900
+  ;L'asse master non è presente nel canale
+  ERROR(3)    ;Funzione non disponibile
+
+N1000
+?%ax[VA18].rga1 = VA12 ;numero asse master
+?%ax[VA18].rga0.0 = 1 ;richiedi connessione slave
+?%rg17.0 = 1 ;busy
+
+G(sav_G70)
+RET

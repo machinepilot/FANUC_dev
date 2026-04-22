@@ -1,0 +1,89 @@
+---
+description: FANUC KAREL authoring conventions for R-30iB controllers.
+globs: ["**/*.KL", "**/*.kl", "**/*.PC", "**/*.pc"]
+alwaysApply: false
+---
+
+# FANUC KAREL Conventions
+
+Apply when authoring or reviewing `.KL` (KAREL source) and `.PC` (compiled) programs.
+
+## Program structure
+
+```
+PROGRAM <program_name>
+%ALPHABETIZE
+%COMMENT = '<short description>'
+%NOLOCKGROUP
+%STACKSIZE = 2000
+
+VAR
+    <declarations>
+
+ROUTINE <name>(...)
+    ...
+END <name>
+
+BEGIN
+    ...
+END <program_name>
+```
+
+Program name uppercase, <=36 chars, no leading digit.
+
+## Directives
+
+- `%ALPHABETIZE` - keep symbol lists sorted.
+- `%COMMENT = '...'` - short, shown on pendant.
+- `%NOLOCKGROUP` - required when the program must run without owning motion groups (common for socket / background KAREL).
+- `%STACKSIZE` - set explicitly; default is usually too small for any non-trivial program.
+- `%ENVIRONMENT SYSTEM, MEMO, PATHOP, IOSETUP` (and friends) - include only the environments you need; unnecessary envs bloat the binary.
+
+## Variables
+
+- Globals in `VAR` section at top, one per line, named with purpose and type suffix:
+  - `n_style  : INTEGER`
+  - `pr_pick  : XYZWPR`
+  - `status   : INTEGER`
+- Avoid single-letter names outside loop indices.
+- Use `CONST` for magic numbers.
+
+## Routines
+
+- `ROUTINE` names verb-first: `get_style`, `open_socket`, `compute_approach`.
+- Return via `RETURN(value)` at the end of a function, never mid-branch.
+- Parameters by name and type; no positional tricks.
+
+## Error handling
+
+- Use `CONDITION` and `HANDLER` blocks for async faults.
+- Synchronous errors: check `status` after every system call that can fail (`SET_VAR`, `GET_VAR`, socket calls, file I/O).
+- Abort gracefully: close sockets, files, pipes. Never leave a socket in `SERVER_START` without a matching `SERVER_STOP`.
+
+## Socket messaging (Ricochet / PC SDK interop)
+
+- Use `MSG_CONNECT` + `MSG_DISCO` pairs. Every open has a close.
+- Read into fixed-size buffers; bounds-check before parsing.
+- Idle timeout is mandatory; reconnect policy must be documented.
+- Protocol framed with length prefix or newline delimiter. Never "just read" and assume the whole message arrived.
+
+## Motion control KAREL
+
+- If the program owns motion (not `%NOLOCKGROUP`), follow all the TP motion hygiene rules.
+- Use `MOVE_AXS`, `MOVE_TO` with explicit termination and speed.
+- Do not mix KAREL motion with concurrent TP motion on the same group unless the design is explicitly multi-group coordinated.
+
+## Stream Motion
+
+- Stream Motion (`SM`) programs have strict cycle timing (typically 8 ms). Every cycle must produce a command or skip cleanly.
+- Degraded-mode behavior (sensor failure, network loss, data stale) must be specified up front, not left implicit.
+
+## Anti-patterns
+
+- Unbounded reads from sockets.
+- `ABORT` or `FORCE STOP` without prior cleanup.
+- Modifying system variables without a written justification (`$MCR`, `$MOR`, `$SCR`, etc.).
+- KAREL programs that silently swallow errors (`status := 0` after an error).
+- Shared globals modified from multiple KAREL programs without mutex.
+
+Canon reference: `fanuc_dataset/normalized/reference/FANUC_REF_KAREL_*`. Cite by ID.

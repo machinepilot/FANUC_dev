@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://theway.automation/teachpendant/schemas/safety_review.schema.json",
+  "title": "SafetyReview",
+  "description": "Safety agent review against ISO 10218, ISO/TS 15066, and FANUC DCS.",
+  "type": "object",
+  "required": ["task_id", "program_name", "fanuc_controller", "standards_applied", "reviewer", "reviewed_at", "verdict", "highest_severity"],
+  "additionalProperties": true,
+  "properties": {
+    "schema": { "type": "string", "const": "safety_review" },
+    "task_id": { "type": "string", "format": "uuid" },
+    "customer_id": { "type": "string" },
+    "program_name": { "type": "string" },
+    "fanuc_controller": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["R-30iB", "R-30iB Plus", "R-30iB Mate", "R-30iB Compact Plus", "R-30iA"]
+      },
+      "minItems": 1
+    },
+    "system_sw_version": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "collaborative": { "type": "boolean" },
+    "standards_applied": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["iso_10218_1", "iso_10218_2", "iso_ts_15066", "ansi_ria_r1506", "fanuc_dcs_manual", "iec_61131_3"]
+      },
+      "minItems": 1
+    },
+    "reviewer": { "type": "string", "const": "safety" },
+    "reviewed_at": { "type": "string", "format": "date-time" },
+    "verdict": {
+      "type": "string",
+      "enum": ["pass", "pass_with_conditions", "fail", "informational"]
+    },
+    "highest_severity": {
+      "type": "string",
+      "enum": ["none", "info", "low", "medium", "high", "critical"]
+    },
+    "signoff": {
+      "type": "object",
+      "properties": {
+        "required": { "type": "boolean" },
+        "by": { "type": ["string", "null"] },
+        "at": { "type": ["string", "null"], "format": "date-time" }
+      }
+    },
+    "dcs_spec": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type"],
+        "properties": {
+          "id": { "type": "string" },
+          "type": {
+            "type": "string",
+            "enum": ["joint_position_check", "joint_speed_check", "cartesian_position_check", "cartesian_speed_check", "tool_frame", "user_frame", "safe_io"]
+          },
+          "purpose": { "type": "string" },
+          "limits": { "type": "string" },
+          "stop_category": { "type": "string", "enum": ["cat_0", "cat_1", "cat_2"] },
+          "tested": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "severity", "description", "normative_ref"],
+        "properties": {
+          "id": { "type": "string" },
+          "severity": {
+            "type": "string",
+            "enum": ["critical", "high", "medium", "low", "info"]
+          },
+          "description": { "type": "string" },
+          "location": { "type": "string" },
+          "normative_ref": { "type": "string" },
+          "proposed_fix": { "type": "string" }
+        }
+      }
+    }
+  }
+}

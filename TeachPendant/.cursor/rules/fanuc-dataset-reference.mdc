@@ -1,0 +1,70 @@
+---
+description: How to cite and consume the normalized FANUC dataset.
+globs: ["**/*.md", "**/*.LS", "**/*.KL", "**/PROGRAM_SPEC_*.md", "**/INTEGRATION_SPEC_*.md"]
+alwaysApply: false
+---
+
+# FANUC Dataset Reference Rule
+
+The dataset at `fanuc_dataset/normalized/` is canon. These guidelines apply whenever you are drafting a spec, a review, an ingestion entry, or a normalized file.
+
+## Find
+
+Prefer `fanuc_knowledge.search` over filesystem grep. It handles synonyms, topic tags, and respects the frontmatter.
+
+- Keyword lookup: `fanuc_knowledge.search(query="PNS handshake")`.
+- Topic lookup: `fanuc_knowledge.list_by_tag(tag="motion")`.
+- Neighbor lookup: `fanuc_knowledge.related(id="FANUC_REF_J_Motion")`.
+
+When offline or MCP is unavailable: search `fanuc_dataset/DATASET_INDEX.md`, then the appropriate subdirectory.
+
+## Cite
+
+Every non-trivial claim in a spec or review cites the entry by `id`:
+
+```markdown
+Speed override is applied at program entry via `R[90:OVERRIDE]` (source: `FANUC_REF_Override_Register`).
+```
+
+Multiple citations: comma-separated list, in source-tier order (T1 vendor manual first, T3 community last). If two entries conflict, document under `## Discrepancies` in your output.
+
+## Compose
+
+- Reference entries first, examples second, articles last. Reference tells you the truth; examples show a shape; articles give context.
+- Protocol entries (`protocols/`) are the authoritative fieldbus / integration patterns. Always consult before specifying I/O tables.
+- Safety entries (`safety/`) are the ONLY source for ISO 10218, ISO/TS 15066, and DCS rules. Never rely on examples or articles for a safety claim.
+
+## Do NOT
+
+- Paraphrase long passages from vendor manuals. Cite and summarize. Short literal quotes (<=30 words) are acceptable for precision.
+- Promote a `customer_programs/**/integration_notes/` note into a spec claim. Those are customer-scoped context.
+- Create new normalized entries by hand. Use the `ingest-pdf-to-normalized` or research workflows so the QA agent validates frontmatter.
+
+## Entry navigation
+
+Each normalized file has YAML frontmatter:
+
+```yaml
+id: FANUC_REF_J_Motion
+title: TP Joint Motion Instruction
+topic: motion
+fanuc_controller: [R-30iB, R-30iB Plus]
+system_sw_version: [V9.30, V9.40]
+language: TP
+source:
+  type: vendor_manual
+  title: "FANUC R-30iB V9 Operator's Manual"
+  pages: [180, 195]
+  tier: T1
+license: reference-only
+revision_date: 2026-04-21
+related: [FANUC_REF_L_Motion, FANUC_REF_Termination_Types]
+difficulty: intermediate
+---
+```
+
+The `id` is what you cite. `related:` points to neighbors. `tier:` tells you how much weight to give the claim.
+
+## Dataset update request
+
+If research uncovers a gap, open a dataset-entry ticket via the knowledge-ingestion workflow rather than fabricating an answer. Missing entries are tracked in `research/RESEARCH_TRACKING.md`.

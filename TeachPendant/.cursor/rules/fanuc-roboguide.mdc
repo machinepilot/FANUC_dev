@@ -1,0 +1,47 @@
+---
+description: Roboguide offline-programming conventions.
+globs: ["**/*.md", "**/ROBOGUIDE_*.md", "**/roboguide/**"]
+alwaysApply: false
+---
+
+# Roboguide Rule
+
+Apply when specifying, reviewing, or authoring Roboguide workcells and offline programs.
+
+## Products
+
+- Roboguide (base) - generic offline simulator.
+- HandlingPRO - pick-and-place cells.
+- PalletPRO - palletizing.
+- WeldPRO - arc welding.
+- iRPickTool - high-speed picking with vision.
+- PaintPRO - paint application (less common in our practice).
+
+## Layout
+
+- Workcells live in `tools/roboguide/workcells/<customer_or_project>/`. LFS-tracked and `.cursorignored`.
+- Export directories (generated) live in `tools/roboguide/exports/` and are gitignored.
+- Per-cell README documents: robot model + payload, reach, tool, frames, fixtures, controller version simulated.
+
+## Simulation vs reality
+
+- The virtual controller matches the real controller's major version. Note any diffs.
+- TP programs exported from Roboguide land in `customer_programs/<c>/current/` after QA review, NOT directly in a Roboguide folder.
+- Positions taught offline must be validated on hardware; mark them `UNTESTED` in comments until verified.
+
+## Cycle-time estimates
+
+- Cite Roboguide's cycle-time reporter output in spec documents, but always note the simulation-vs-real delta observed historically for that cell.
+
+## Anti-patterns
+
+- Treating Roboguide-generated positions as production-ready without on-robot touch-up.
+- Committing binary workcell files (`.fpc`, `.sit`, `.wsp`) outside LFS.
+- Using Roboguide as the source of truth for fieldbus timing (it is not).
+
+## PC SDK interop
+
+- PC SDK applications (Windows .NET) live under `tools/pcsdk/` (not pre-scaffolded).
+- Always version the PC SDK runtime used; older PC SDK installs lose behavior on newer V9.x controllers.
+
+Canon reference for offline patterns: `fanuc_dataset/normalized/articles/ONE_offline_programming_workflow.md`.

@@ -11,3 +11,9 @@ fanuc_postprocessor_EXP/
 Configs/
 Assets/
 almacam_files_archive/
+
+# KUKA agentic workspace template (standalone; copied out to its own repo)
+KUKA_Agentic_Workspace_Template/
+
+# TeachPendant agentic workspace (standalone; copied out to its own repo)
+TeachPendant/

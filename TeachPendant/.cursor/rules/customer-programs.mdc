@@ -1,0 +1,82 @@
+---
+description: Rules for working with customer programs and integration notes.
+globs: ["**/customer_programs/**"]
+alwaysApply: false
+---
+
+# Customer Programs Rule
+
+This rule governs anything under `customer_programs/`. The most important point:
+
+**Customer programs and integration notes are CONTEXT, not CANON.** The canonical references for TP conventions, KAREL syntax, DCS rules, and fieldbus handshakes live in `fanuc_dataset/normalized/`. When customer context contradicts canon, canon wins; raise a conflict in `task_state.conflicts[]`.
+
+## Directory shape
+
+Each customer lives under `customer_programs/<customer_id>/` with a stable shape:
+
+```
+<customer_id>/
+  README.md                       # status, controller, fieldbus, DCS summary, open work
+  backups/<YYYYMMDD>/             # dated bytes-preserved snapshots
+  current/                        # live working copy; the next snapshot lands in backups/
+  integration_notes/              # customer-scoped markdown notes
+    raw_docs/                     # PDFs, drawings, vendor docs (LFS, .cursorignored)
+  lint_baseline.md                # baseline findings from fanuc_safety_lint
+```
+
+## Backup discipline
+
+- Before editing anything in `current/`, snapshot to `backups/<YYYYMMDD>/` (use the date of the source snapshot, not the edit date).
+- Never edit files in `backups/`. They are historical evidence.
+- `.LS`, `.TP`, `.KL`, `.PC` stay CRLF per `.gitattributes`. Don't normalize line endings.
+
+## Integration notes
+
+Every markdown file in `integration_notes/` has frontmatter:
+
+```yaml
+---
+scope: customer_specific
+customer: <customer_id>
+canonical: false
+status: evolving  # or: stable | deprecated
+supersedes: <optional path to prior source>
+source:
+  type: customer_supplied | onsite_notes | vendor_handoff
+  acquired_from: <person or org>
+  acquired_date: <YYYY-MM-DD>
+---
+```
+
+Never elevate an integration note to canon without:
+
+1. Scrubbing customer identifiers (customer name, site address, PO numbers, named individuals).
+2. Re-validating the claim against a T1/T2 source.
+3. Emitting as a new `fanuc_dataset/normalized/` entry through the knowledge-ingestion workflow.
+
+## Program naming
+
+Customer programs follow the customer's convention, which may differ from the canonical TP conventions. Document the deviation in `README.md` rather than silently matching. Examples from LDJ-BLM: `PNS0001.LS` is the style-1 main; `BG_LOGIC.LS` handles press-brake signalling; `-BCKED*-.LS` are backup markers.
+
+## Revision tags
+
+- `*_R01`, `*_R02` ... - customer-generated revision markers. Preserve in backup filenames.
+- `*.LS` vs `*.TP` - both may exist from a backup dump. Prefer `.LS` (ASCII) for diff; `.TP` is the binary.
+
+## When the customer convention conflicts with ours
+
+- Log the deviation in `README.md` under "Local conventions".
+- Agents follow the customer convention inside `customer_programs/<c>/`.
+- Agents follow the canonical convention everywhere else.
+- Do not "fix" customer conventions without a safety or correctness justification signed off by the human.
+
+## MCP access
+
+- `program_repository.get_program(customer, name, revision=latest)` - read a program.
+- `program_repository.get_integration_notes(customer)` - list integration notes with their scope/status.
+- `program_repository.search(customer, pattern)` - regex over TP/KAREL.
+- `program_repository.diff(customer, name, rev_a, rev_b)` - structural diff.
+
+## LDJ-BLM specifics
+
+LDJ-BLM is the flagship active customer. Its plan is still evolving. The `LDJ/` top-level folder from `FANUC_dev` was **relocated** here under `customer_programs/ldj_blm/integration_notes/` and marked `canonical: false`. Generalizable portions of those notes were promoted into `fanuc_dataset/normalized/protocols/` only after customer-identifier scrubbing.

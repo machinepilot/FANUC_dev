@@ -1,0 +1,49 @@
+Ciclo fisso taratura assi sensori con potenziometro Ver.012.38 : 503
+ VA0 = %selasse
+ VA1 = %ax[VA0].pa11 / 1000 ; gradini fondo scala
+
+;/* Type del comando TARAPOT */
+;#define CALIBRA 0x80    // Calibrazione in OR con TIMMQTA o TIMMQTB
+;#define TIMMQTA 10      // Immediato quota A
+;#define TIMMQTB 11      // Immediato quota B
+;#define GETDATA 12      // Copia dati da defcn
+;#define PUTDATA 13      // Salva dati in defcn
+;#define RESDATA 14      // Reset calibrazione
+
+ IF( %cax[VA0].dt27 == 3 ) JMPF 500
+
+ ;taratura punto A, al valore attuale
+ _tarapot( 0x00, VA0, 14, 0.000) ;reset parametri taratura
+ _tarapot( 0x00, VA0, 10, %tara) ;campiona prima quota
+ _tarapot( 0x00, VA0, 13, 0.000) ;scrive parametri in defcn
+ SYN
+
+ VA2 = %ax[VA0].pa5 / 10 ; corsa totale in micron
+ ; rilegge i dati del punto A dalla shared
+ VA3 = %ax[VA0].cal[0] ;gradini Pto A
+ VA4 = %ax[VA0].cal[2] ;quota   Pto A
+
+ ;impostazione dati punto B sul fondo scala
+ %ax[VA0].cal[1] = VA1  ;gradini Pto B
+ %ax[VA0].cal[3] = VA4 + VA2 * (1 - VA3 / VA1) ;quota   Pto B
+
+ _tarapot( 0x0, VA0, 12, 0.000 ) ; carica i dati dalla defcn
+
+ JMPF 1000
+
+ ; Per i sensori pressione azzera la calibrazione,
+ ; quindi la lettura è sempre in punti.
+N500
+ %ax[VA0].cal[0] = 0  ;gradini Pto A
+ %ax[VA0].cal[1] = VA1  ;gradini Pto B
+ %ax[VA0].cal[2] = 0  ;quota   Pto A
+ %ax[VA0].cal[3] = VA1  ;quota   Pto B
+
+ _tarapot( 0x0, VA0, 12, 0.000 ) ; carica i dati dalla defcn
+
+N1000
+ ?%C18.12 = 1 ;sincronismo taratura eseguita a u.i.
+ _wait_bit( 0, "%C0.9", 0) ;attende conferma
+ ?%C18.12 = 0 ;sincronismo taratura eseguita a u.i.
+
+ RET

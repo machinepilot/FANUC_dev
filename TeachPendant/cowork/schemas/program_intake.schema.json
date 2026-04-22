@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://theway.automation/teachpendant/schemas/program_intake.schema.json",
+  "title": "ProgramIntake",
+  "description": "Structured capture of a user request, produced by the Intake agent.",
+  "type": "object",
+  "required": ["task_id", "customer_id", "task_type", "title", "description", "constraints"],
+  "additionalProperties": false,
+  "properties": {
+    "task_id": { "type": "string", "format": "uuid" },
+    "customer_id": { "type": "string" },
+    "system": { "type": "string" },
+    "task_type": {
+      "type": "string",
+      "enum": ["new_program", "code_review", "modification", "safety_audit", "customer_onboarding", "knowledge_ingestion"]
+    },
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "acceptance_criteria": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "controller": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["R-30iB", "R-30iB Plus", "R-30iB Mate", "R-30iB Compact Plus", "R-30iA", "unknown"]
+          }
+        },
+        "system_sw_version": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "language": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["TP", "KAREL", "mixed", "na"]
+          }
+        },
+        "fieldbus": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["profinet", "ethernet_ip", "devicenet", "modbus_tcp", "ethercat", "none", "unknown"]
+          }
+        },
+        "dcs_required": { "type": "boolean" },
+        "collaborative": { "type": "boolean" },
+        "groups": { "type": "array", "items": { "type": "integer", "minimum": 1, "maximum": 8 } }
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "properties": {
+        "existing_programs": { "type": "array", "items": { "type": "string" } },
+        "integration_notes": { "type": "array", "items": { "type": "string" } },
+        "standards": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "unknowns": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "created_by": { "type": "string" }
+  }
+}

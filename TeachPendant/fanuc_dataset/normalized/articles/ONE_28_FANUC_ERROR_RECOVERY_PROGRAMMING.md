@@ -1,0 +1,94 @@
+﻿---
+id: ONE_28_FANUC_ERROR_RECOVERY_PROGRAMMING
+title: "FANUC Error Recovery Programming"
+topic: anti_pattern
+fanuc_controller: [R-30iB, R-30iB Plus]
+system_sw_version: [V9.x]
+language: TP
+source:
+  type: third_party_integrator
+  title: "ONE Robotics Company Blog"
+  tier: T3
+license: reference-only
+revision_date: "2026-04-22"
+related: []
+difficulty: intermediate
+status: draft
+supersedes: null
+---
+
+# FANUC Error Recovery Programming
+
+## Summary
+
+Migrated from `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/articles/ONE_28_FANUC_Error_Recovery_Programming.txt` as part of the TeachPendant migration. Original source: ONE Robotics Company Blog. Review and update `related:` with neighbor entry IDs.
+
+## Body
+
+
+# FANUC Error Recovery Programming
+
+Filed under:FANUCTP ProgrammingTesting
+I’vewritten about testing before, but I still can’t
+get over the fact that the state of the art method for testing
+multi-million dollar industrial robot cells is trial and error. That’s
+why I’ve started working on an environment for reliably testing FANUC
+TP code.
+I’ve basically written aRubygemto correctly parse, interpret
+and execute TP programs within a simulated runtime. With this
+environment I can use any of Ruby’s great testing tools to make sure the
+robot does what it’s supposed to do.
+Here’s a simple example that usesminitestto test the operation of
+some gripper macros:
+If you’re not familiar with Ruby, here’s a quick summary of what’s
+happening:
+When I run the test, I see this in my console:
+If any of these had failed, I can go back and fix the TP code (or the
+test itself if it’s incorrect) and run my tests again to know that I’ve
+fixed it without unintentionally breaking something else.
+Here’s the simple TP code:
+Testing can also help us communicate and document scope with the client.Cucumberis a behavior driven development (BDD) framework for Ruby
+that lets you describe how you want the program to behave in plain
+english, then test that behavior.
+Here’s an example of how you might write a Cucumber feature for a
+machine-tending application:
+Cucumber works by linking each line of these behaviors with some code
+that exercises the robot. The tests are to be written in such a way that
+the client can read and sign off that they correctly express the
+acceptance criteria for the machine. If the tests pass, you have an
+acceptable machine.
+If a bug pops up, you can write a test to duplicate the issue. Once you
+fix it, you then have a test to make sure it never pops up again. If you
+have a comprehensive suite of tests, you can make changes without
+worrying about breaking things.
+I still have some development work to do, but please send me a message
+if this looks interesting to you. I’m not sure how or if I will release
+this tool for public consumption, but I’m wondering if anyone
+else out there feels the same way I do about testing.
+The other cool thing about having a working TP parser and interpreter is that
+I can hook it into all sorts of different things: anArduinorobot
+that runs valid TP code, a simulation tool built inUnity,
+or an iPhone app for writing programs on the go. Look out for future
+posts on this subject.
+I email(almost)every Tuesday with the latest insights, tools and techniques for programming FANUC robots. Drop your email in the box below, and I'll send new articles straight to your inbox!
+No spam, just robot programming. Unsubscribe any time. No hard feelings!
+©2013-2019 ONE Robotics Company LLC. All rights reserved.
+Privacy•Terms•RSS Feed
+
+URL: https://www.onerobotics.com/posts/2014/testing-fanuc-tp-programs-with-ruby/
+
+## Citations
+
+- Primary: ONE Robotics Company Blog (keywords: error recovery, alarm, fault, UALM, error handling, recovery routine, retry).
+- Applicability: FANUC TP Programming, R-30iB Plus.
+
+## Discrepancies
+
+None documented in the legacy source. Re-verify against a T1 vendor manual before promoting `status` from `draft` to `approved`.
+
+## Provenance
+
+- Migrated by: inline migration on 2026-04-22.
+- Source file: `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/articles/ONE_28_FANUC_Error_Recovery_Programming.txt`.
+- Classification: articles / topic=anti_pattern.
+

@@ -1,0 +1,33 @@
+﻿# Keep Cursor indexing focused; exclude large/binary/cache content.
+
+# Raw, un-normalized source material
+fanuc_dataset/raw_sources/
+
+# Customer integration raw docs (big PDFs, diagrams)
+customer_programs/**/integration_notes/raw_docs/
+
+# ROS 2 build output
+ros2/build/
+ros2/install/
+ros2/log/
+
+# Roboguide binaries
+tools/roboguide/workcells/
+
+# Local caches
+.cache/
+.venv/
+venv/
+__pycache__/
+
+# Eval runtime output
+evals/results/
+evals/runs/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+
+# Secrets and local MCP overrides
+.env
+mcp.local.json

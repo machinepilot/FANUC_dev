@@ -1,0 +1,181 @@
+﻿---
+id: FANUC_REF_MISCELLANEOUS_INSTRUCTIONS
+title: "Miscellaneous Instructions"
+topic: motion
+fanuc_controller: [R-30iB, R-30iB Plus]
+system_sw_version: [V9.x]
+language: TP
+source:
+  type: generated
+  title: "FANUC Teach Pendant Help System / Operator Manual"
+  tier: generated
+license: reference-only
+revision_date: "2026-04-22"
+related: []
+difficulty: intermediate
+status: draft
+supersedes: null
+---
+
+# Miscellaneous Instructions
+
+## Summary
+
+Migrated from `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/reference/FANUC_REF_Miscellaneous_Instructions.txt` as part of the TeachPendant migration. Original source: FANUC Teach Pendant Help System / Operator Manual. Review and update `related:` with neighbor entry IDs.
+
+## Body
+
+
+13. MISCELLANEOUS INSTRUCTIONS 13. MISCELLANEOUS INSTRUCTIONS PROGRAM ELEMENTS 1
+3. MISCELLANEOUS INSTRUCTIONS 13.1. Overview There are miscellaneous instruction
+s for production control, user alarms, timer setting, speed override, program re
+marks, message handling, and parameter setting. 13.2. RSR Enable/Disable Instruc
+tion RSR[x] = [action] The RSR enable/disable instruction enables and disables t
+he queueing process of the specified RSR. When an RSR signal is set to disable, 
+the RSR signal will be ignored. See Figure 61, " RSR Enable/Disable " . Figure 6
+1. RSR Enable/Disable 13.3. User Alarm Instruction The user alarm instruction pu
+ts the program in an alarm condition, pauses the program, and causes a message t
+o be displayed on the error message line as follows: UALM[x] INTP 213 UALM[x] Me
+ssage (prog_name, line_num) For example: INTP 213 UALM[1] Check feeder (RSR001, 
+47) If the program is resumed, program execution will continue from the program 
+line. The user alarm instruction specifies the alarm message to be displayed. Re
+fer to the “General Setup” chapter of the Setup and Operations Manual for inform
+ation on how to define the contents of a user alarm. See Figure 62, " User Alarm
+" . Figure 62. User Alarm 13.4. Timer Instruction Timer instructions allow you t
+o start, stop, and reset to 20 different timers in a program. Timers allow you t
+o determine how long a routine takes to execute, or how long your entire product
+ion program takes to execute. Timers can be started in one program and then stop
+ped in another. The status of each timer is displayed in the $TIMER[n] system va
+riable, where n is the number of the timer. See Figure 63, " Timer " . TIMER[x] 
+= [action] You can display the status of program timers on the STATUS Prg Timer 
+screen. Figure 63. Timer 13.5. OVERRIDE Instruction The OVERRIDE instruction set
+s the speed override to a percentage value of the programmed speed. See Figure 6
+4, " OVERRIDE " . OVERRIDE = x % Figure 64. OVERRIDE 13.6. Remark Instruction Th
+e remark instruction allows you to annotate the program. Remark information does
+not affect the execution of the program. When you add a remark instruction, you 
+enter the message to display within the program. The remark instruction can be f
+rom 1 to 32 alphabetic, numeric, punctuation, and blank space characters. The fi
+rst character of a remark instruction is an exclamation point (!). The remark in
+structions can be displayed with a yellow background color to help clarify the p
+rogram content. The use of color text in the editor can be turned On or Off usin
+g the Color command available under the EDCMD function key. 13.7. Multi-lng Rema
+rk Instruction The multi-lng remark instruction allows you to annotate the progr
+am. There are 2 reasons you may wish to use this instead of the original remark 
+instruction: You support multiple languages and you wish the remarks to be local
+ized for each language. Or you wish to add remarks that are longer than 32 chara
+cters. The multi-lng remark information does not affect the execution of the pro
+gram. When you add a multi-lng remark instruction, you enter the message to disp
+lay within the program. The multi-lng remark instruction can be alphabetic, nume
+ric, punctuation, and blank space characters. The first two characters are two h
+yphens (––). The multi-lng remark has the following characteristics: Each remark
+can be 242 characters although the total for all languages cannot exceed the max
+imum line length which is also 242 characters. The remark will automatically be 
+split among multiple lines in the editor based on the window width. It uses spac
+e to split the line so if the remark has no spaces the display will be truncated
+instead. When a new remark is entered it is based on the current language. To en
+ter or display a remark for a different language, you must change the language i
+n the General Setup menu. When the language is changed, the remark will only dis
+play the two hyphens until you enter a new remark for that language. When a prog
+ram is loaded, it may contain a remark in a language that does not exist on the 
+controller. The language is not created. The remarks will be created but hidden 
+from the editor. The .LS file will display all remarks for all languages, even i
+f the language does not exist on the controller. In the editor, the remark will 
+look as follows: 1: --This program opens the raw part : gripper In the .LS file,
+the remark will look as follows: 1: --eg:This program opens the raw part gripper
+: --kn:This is KANJI version of remark : --sp:This is Spanish version of remark 
+: --jp:Japanese : --fr:French : --gr:German : --ch:Chinese : --tw:Taiwanese : --
+ot:Other ; It is useful to add remarks for multiple languages in the .LS file an
+d use "Ascii Upload" option to create the program. The suffix must be in lower c
+ase. The last suffix must contain the ; to end the remark. The remark can be dis
+played with a yellow background color to help clarify the program content. The u
+se of color text in the editor can be turned On or Off using the Color command a
+vailable under the EDCMD function key. 13.8. Line Remark (Comment out) Instructi
+on The Line Remark instruction allows you to disable the execution and editing o
+f an line (comment out). Any instruction can be remarked. The Line Remark has th
+e following characteristics: The Line Remark instruction will prefix the line wi
+th // and then display the line as normal. When the language is changed, the Lin
+e Remark instruction is localized. You cannot create a line with //. A line is c
+reated in the normal way. You press [EDCMD] Remark to convert a line to a Line R
+emark. [EDCMD] Remark will allow multiple lines to be selected and F4 REMARK or 
+F5 UNREMARK will remark or unremark all the selected lines. You cannot use // to
+comment out just a portion of a line. You cannot edit a line with //. Right arro
+w in the TP Editor will not move the cursor off the line number. TOUCHUP on a mo
+tion line is ignored. You can only remove the // using [EDCMD] Remark and select
+ing unremark. The line is still valid even though it is commented out. In other 
+words, a position still exists for the motion lines and a label still exists for
+the label lines. In the case of a label, the label will be commented out so it i
+s no longer valid to jump to. When a label is unremarked, then the label will be
+uncommented out unless another label has been added with the same number. You ca
+n perform other modifications on the line such as delete, copy and paste, find a
+nd replace, and renumber. Line Remark instructions must be valid instructions in
+order to successfully load a TP program or to perform Ascii Upload. You can use 
+the Multi-lng Remark Instruction if you need to comment out an invalid instructi
+on for Ascii Upload. The toolbars in the icon editor have a Line Remark Toggle b
+utton. When pressed, the current line is toggled as a remark/unremark. 13.9. Mes
+sage Instruction The MESSAGE instruction displays the specified message on the U
+SER screen. The message can be from 1 to 23 alphabetic, numeric, punctuation, an
+d blank space characters. If you want a blank line between messages, leave the m
+essage content empty. See Figure 65, " Message Instruction " . When the MESSAGE 
+[message content] instruction is executed, the user screen is displayed automati
+cally. MESSAGE [message content] Figure 65. Message Instruction 13.10. Parameter
+Name Instruction You can display and change the value of a system variable throu
+gh the parameter name instruction, by using teach pendant read and write operati
+ons. Refer to the “Status Displays and Indicators” chapter in the Setup and Oper
+ations Manual for more information on system variables. Note Some system variabl
+es only allow you to display their value. Therefore, you might not be able to ch
+ange the value of some system variables using the parameter name instruction. Th
+ere are two kinds of data types for a system variable: Numeric data type, which 
+can be stored in a register. Position data type, which can be stored in a positi
+on register. The following data types are possible: Cartesian (xyzwpr) Joint (ax
+es J1 through J6) When a position data type system variable is stored in a posit
+ion register, the position register takes on the data type of the system variabl
+e. Note If the system variable you are setting requires a BOOLEAN value (true or
+false), use 1 for TRUE and 0 for FALSE. Caution Do not try to store a numeric sy
+stem variable in a position register or a position system variable in a numeric 
+register; otherwise, you will cause an error message to be displayed. Warning Sy
+stem variables control how the robot and controller operate. Do not set system v
+ariables unless you are certain of their effect; otherwise, you could injure per
+sonnel, damage equipment, or disrupt the normal operation of the robot and contr
+oller. $[parameter name] = [value] The $[parameter name]=[value] instruction all
+ows you to change (write) the value of a system variable. See Figure 66, " Param
+eter Name Write Instruction " . Figure 66. Parameter Name Write Instruction R[ ]
+/ PR[ ] = $[parameter name] The [value] = $[parameter name] instruction allows y
+ou to display (read) the value of a system variable. See Figure 67, " Parameter 
+Name Read Instruction " . Figure 67. Parameter Name Read Instruction 13.11. Maxi
+mum Speed Instruction The maximum speed instructions set the maximum speed of jo
+int motion and linear or circular motion in the program. If the motion speed exc
+eeds the value designated by this instruction, the motion speed is limited by th
+e designated value. If you use a maximum speed instruction and If a macro progra
+m is called, the maximum speed value is set back to the default value. If a call
+ed macro program sets the maximum speed, the maximum speed value is set back to 
+the default value when returning to the calling program. Figure 68, " JOINT_MAX_
+SPEED Instruction - Multiple Motion Group Syntax " and Figure 69, " LINEAR_MAX_S
+PEED Instruction - Multiple Motion Group Syntax " show the maximum speed instruc
+tions used in a multiple motion group system. JOINT_MAX_SPEED[...] = ... Figure 
+68. JOINT_MAX_SPEED Instruction - Multiple Motion Group Syntax LINEAR_MAX_SPEED[
+...] = ... Figure 69. LINEAR_MAX_SPEED Instruction - Multiple Motion Group Synta
+x The maximum speed instructions have been shown as they would be used in a mult
+iple motion group system. The syntax for the commands is shown in Figure 70, " J
+OINT_MAX_SPEED Instruction - Single Motion Group Syntax " and Figure 71, " LINEA
+R_MAX_SPEED Instruction - Single Motion Group Syntax " when they are used in a s
+ingle motion group system. Figure 70. JOINT_MAX_SPEED Instruction - Single Motio
+n Group Syntax Figure 71. LINEAR_MAX_SPEED Instruction - Single Motion Group Syn
+tax 12. MATH FUNCTION INSTRUCTIONS 14. MIXED LOGIC INSTRUCTIONS
+Metadata:
+{}
+
+## Citations
+
+- Primary: FANUC Teach Pendant Help System / Operator Manual (keywords: miscellaneous, MESSAGE, UALM, user alarm, PAYLOAD, UFRAME_NUM, UTOOL_NUM, TIMER, OVERRIDE, RSR, RESUME, ABORT, PAUSE, CONTINUE, LOCK, UNLOCK, ENABLE, DISABLE, comment, remark).
+- Applicability: R-30iB Plus, TP Programming.
+
+## Discrepancies
+
+None documented in the legacy source. Re-verify against a T1 vendor manual before promoting `status` from `draft` to `approved`.
+
+## Provenance
+
+- Migrated by: inline migration on 2026-04-22.
+- Source file: `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/reference/FANUC_REF_Miscellaneous_Instructions.txt`.
+- Classification: reference / topic=motion.
+

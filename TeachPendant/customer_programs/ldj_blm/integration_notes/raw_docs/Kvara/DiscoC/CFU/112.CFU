@@ -1,0 +1,37 @@
+Ciclo fisso automatico pressa tradizionale Ver.012.38 : 112
+N10 ?%C21.0 = 1 ;Ciclo pos. chiocciole attivo
+ IF(!%C32.4) JMPF 150 ; se chiocciole presenti le posiziona
+ SYN ;attende np aggiornato e istante per controllo tolleranza
+ IF( %pargene.bgn.14 == 0 ) JMPF 100 ; controllo tolleranza abilitato
+ ;Controllo asse in tolleranza
+ VA2 = QTA(X)
+ VA3 = ABS(VA2-%prog[%np].ya)
+ IF( VA3 < %ap[0].pt[4] ) JMPF 150
+N100
+ ;Se pestone NVEL o sola lettura, controlla la corsa delle chiocciole
+ IF( !%C32.5 ) JMPF 140
+ CON[Y] = 0 ;esclude Y2 dalla interpolazione
+ IF( %C32.25 ) JMPF 140 ;esclude controllo corsa chiocciole
+ ;Controlla la corsa delle chiocciole
+ IF( ((%prog[%np].ya) + %pst6) <= (%C56/1000) ) JMPF 140
+ %C21.2 = 1 ;Segnala posizionamento chiocciole non possibile
+ _wait_bit( 0, "%C21.0", 0) ;attende all'infinito
+N140
+ ;Posiziona chiocciole
+ G0 X%prog[%np].ya
+
+N150
+ ?%C21.1 = 1 ;setta assi in posizione
+ IF(!%C32.15) JMPF 300 ;senza volantino attende solo il cambio passo
+ AWAIT(%C36.12 || %C32.14 || %C32.10)
+ IF ( %C32.14 ) JMPF 200 ;Comando da volantino
+ JMPF 300
+N200 JSR 113 ;Comando da volantino
+ JMPB 150
+
+N300
+ _wait_bit( 0,"%C32.10",1) ;attende cambio passo
+ ?%C21 = 0 ;mantiene attivo C16.0
+ _wait_bit(0, "%C32.11", 1) ;attende conferma fine ciclo + fine timer PMS
+ JMPB 10
+

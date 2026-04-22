@@ -1,0 +1,209 @@
+Attenzione=
+Errore=
+
+# dialog
+OK=
+Ok=
+Annulla=
+Imposta Trigger=
+TRIGGER=
+Auto=
+Singolo=
+VISUALIZZA=
+Traccia=
+Traccia A=
+Traccia B=
+Traccia C=
+Traccia D=
+Traccia E=
+Traccia F=
+Traccia G=
+Traccia H=
+
+TEMPO BASE=
+Tempo Base (ms)=
+OFFLine=
+ONLIne=
+RUN=
+STOP=
+START=
+
+Informazioni su TKSScope=
+TKSScope versione=
+IMPOSTAZIONI=
+ERRORE=
+Coord. Centro=
+CCW=
+CW=
+Delta=
+Durata Campionam. (sec)=
+Tempo Trascorso=
+
+Seleziona lingua=
+Riavviare applicazione per caricare la nuova lingua=
+
+Parametri test=
+Raggio Nominale:=
+Centro=
+Feed:=
+Piano=
+Dir=
+
+Raggio Medio:=
+Deviazione Radiale Min:=
+Deviazione Radiale Max:=
+
+Segnale=
+Risorsa=
+Registro=
+Unsigned=
+Val. Max.=
+Val. Min.=
+Cursori=
+
+
+
+
+File=
+Salva Campioni=
+Apri File Configurazione=
+Salva Nuova Configurazione=
+Salva come BMP=
+Apri File Dati=
+Apri File di Test=
+Lingua=
+Esci=
+
+Visualizza=
+Cursori=
+Verticali=
+Orizzontali=
+Cursori OFFLINE=
+AB=
+CD=
+Polare=
+Statistiche=
+Zoom=
+Zoom +=
+Primo piano=
+Pulisci=
+
+Tempo Base=
+Trigger=
+Imposta=
+Personalizza=
+Barra di stato=
+Griglia=
+Run=
+Stop=
+Modo=
+
+
+?=
+Informazioni su tronix=
+
+
+
+Pronto=
+Salva i dati campionati e il file di configurazione=
+Apre un file di configurazione dei segnali=
+Salva la configurazione dei segnali su file=
+Salva il grafico come immagine bitmap=
+Apre in modalità OFFLINE un file di dati=
+Apre in modalità OFFLINE un file di test=
+Seleziona la lingua per l'applicazione=
+Esce dall'applicazione e chiede di salvare i documenti=
+
+Mostra o Nasconde Traccia A=
+Mostra o Nasconde Traccia B=
+Mostra o Nasconde Traccia C=
+Mostra o Nasconde Traccia D=
+Mostra o Nasconde Traccia E=
+Mostra o Nasconde Traccia F=
+Mostra o Nasconde Traccia G=
+Mostra o Nasconde Traccia H=
+Mostra o nasconde i cursori verticali=
+Mostra o nasconde i cursori orizzontali=
+Visualizza/nasconde la finestra di statistiche in modo test=
+Mostra la finestra sempre in primo piano=
+Pulisce schermo oscilloscopio=
+Imposta il tempo per divisione a 50 ms=
+Imposta il tempo per divisione a 100 ms=
+Imposta il tempo per divisione a 250 ms=
+Imposta il tempo per divisione a 500 ms=
+Imposta il tempo per divisione a 1 s=
+Imposta il tempo per divisione a 2,5 s=
+Imposta il tempo per divisione a 5 s=
+Imposta il tempo per divisione a 10 s=
+Imposta il tempo per divisione a 25 s=
+Imposta il tempo per divisione a 50 s=
+Imposta il tempo per divisione a 100 s=
+Imposta il tempo per divisione a 250 s=
+Imposta il tempo per divisione a 500 s=
+
+Dialog per le impostazioni del Trigger=
+Mostra o nasconde la barra di stato=
+Mostra o nasconde la griglia=
+Attiva o Disattiva il Campionamento=
+Visualizzazione X-Y=
+
+Visualizza le informazioni sul programma, il numero di versione e le informazioni di copyright=
+Modifica le dimensioni della finestra=
+Modifica la posizione della finestra=
+Riduce la finestra ad icona=
+Allarga la finestra a tutto schermo=
+Chiude la finestra attiva e chiede di salvare i documenti=
+Ripristina la finestra alle dimensioni normali=
+
+
+
+
+Memorizzazione Dati=
+Comando Hold fallito!=
+Selezionare il file=
+Errore di Link: impossibile salvare il file!=
+Trigger Attivo: impossibile memorizzare!=
+Selezionare Durata campionamento > 0 !=
+KENV: Installazione Fallita!=
+Chiave DEFCN o LINK non trovata in Kvara.ini!=
+Installazione Comunicazione fallita!=
+Inizializzazione VShared.dll fallita!=
+Oscilloscopio non connesso!=
+Verificare che KVARA.INI contenga in [CHA.PATH] la chiave SLAOSC=
+Verificare che sia presente sul CN la SlaOsc.DLL=
+Installazione client oscilloscopio fallita!=
+Impossibile Salvare il file CFG!=
+Impossibile Salvare il file DATI!=
+Impossibile Aprire il file=
+SetTime fallita!=
+SetTrack%d fallita!=
+Selezionare almeno una traccia da Visualizzare!=
+Campionamento in Corso=
+POSSIBILE PERDITA DI DATI=
+Stop Campionamento: Nessuna Traccia da Visualizzare!=
+Campionamento in Arresto=
+Cursore Polare=
+Manca il file .test=
+Statistiche=
+File di configurazione=
+Tutti i file=
+Salva file di configurazione=
+Seleziona file di configurazione=
+File di dati=
+Seleziona file di dati=
+File bitmap=
+Salva file bitmap=
+Errore: Registro di tipo Stringa=
+
+
+
+
+
+
+
+
+
+
+
+
+

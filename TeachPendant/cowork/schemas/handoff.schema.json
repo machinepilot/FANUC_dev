@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://theway.automation/teachpendant/schemas/handoff.schema.json",
+  "title": "Handoff",
+  "description": "One agent's structured handoff to the next.",
+  "type": "object",
+  "required": ["task_id", "from_agent", "to_agent", "at", "envelope_path", "envelope_schema"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": { "type": "string", "const": "handoff" },
+    "task_id": { "type": "string", "format": "uuid" },
+    "from_agent": {
+      "type": "string",
+      "enum": ["orchestrator", "intake", "architect", "motion-synthesis", "integration", "safety", "qa", "documentation", "research"]
+    },
+    "to_agent": {
+      "type": "string",
+      "enum": ["orchestrator", "intake", "architect", "motion-synthesis", "integration", "safety", "qa", "documentation", "research", "human"]
+    },
+    "at": { "type": "string", "format": "date-time" },
+    "envelope_path": { "type": "string" },
+    "envelope_schema": { "type": "string" },
+    "summary": { "type": "string" },
+    "open_questions": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

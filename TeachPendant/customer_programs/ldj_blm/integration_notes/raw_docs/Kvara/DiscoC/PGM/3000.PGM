@@ -1,0 +1,51 @@
+Loop principale canale 2 accompagnatori Ver.012.62 %3000
+DBL bendaid_z, bendaid_a
+DBL i
+
+ G71
+ %C19 = 0 ;resetta sincronismi canale 2
+ FWR[X]= 1 ;abilita errore di inseguimento A1
+ IF( %cn2.cc1.1 ) FWR[Y]= 1 ;abilita errore di inseguimento A2 se esiste
+ %C116 = %parspec.dsp[19] ;imposta filtro per slave
+
+IF (%cg0 > 7) THEN
+ ;//Inizializzazione parametri per trasformazione cinematica
+ FOR i = 0 TO 1
+    %PpgBendingAid[i].pba_parm[7] = 0                      ;(P7) altezza della matrice
+    %PpgBendingAid[i].pba_parm[8] = %dap[%np].largc/2      ;(P8) larghezza della cava/2
+    %PpgBendingAid[i].pba_parm[9] = %dap[%np].raggioc      ;(P9) raggio della cava
+ ENDFOR
+
+ ;//attiva trasformazione cinematica 1
+ IF ((%cn7.cc1.0) && (%cn7.cc1.1)) THEN
+  G11031 A(0) S(AXIDX(7,X)) T(AXIDX(7,Y)) ;
+ 
+  _taraim(0x00, 13, bendaid_z) ; sys wide A6 = 13
+  _taraim(0x00,  8, bendaid_a) ; sys wide A1 = 8
+ 
+  G4011 T31 A(0) M(AXIDX(3,W)) N(AXIDX(2,X)) S(AXIDX(7,X))
+  G4011 T32 A(0) M(AXIDX(3,W)) N(AXIDX(2,X)) S(AXIDX(7,Y))
+  G4099
+ ENDIF
+ 
+ ;//attiva trasformazione cinematica 2
+ IF ((%cn7.cc1.2) && (%cn7.cc1.3)) THEN
+  G11031 A(1) S(AXIDX(7,Z)) T(AXIDX(7,U)) ;
+ 
+  _taraim(0x00, 14, bendaid_z) ; sys wide A7 = 14
+  _taraim(0x00,  9, bendaid_a) ; sys wide A2 = 9
+ 
+  G4011 T31 A(1) M(AXIDX(3,A)) N(AXIDX(2,Y)) S(AXIDX(7,Z))
+  G4011 T32 A(1) M(AXIDX(3,A)) N(AXIDX(2,Y)) S(AXIDX(7,U))
+  G4099
+ ENDIF
+ENDIF
+
+
+N10
+ AWAIT(!%C52 && %C34.0)
+ %C19.0=1
+ AWAIT(%C52)
+ JSR %C52
+ ?%C19 = 0 ;resetta sincronismi canale 2
+ JMPB 10

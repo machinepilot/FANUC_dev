@@ -1,0 +1,48 @@
+{
+  "folders": [
+    { "path": ".", "name": "TeachPendant" }
+  ],
+  "settings": {
+    "files.eol": "\r\n",
+    "[markdown]":  { "files.eol": "\n" },
+    "[python]":    { "files.eol": "\n" },
+    "[json]":      { "files.eol": "\n" },
+    "[jsonc]":     { "files.eol": "\n" },
+    "[yaml]":      { "files.eol": "\n" },
+    "[toml]":      { "files.eol": "\n" },
+    "files.associations": {
+      "*.LS": "fanuc-ls",
+      "*.ls": "fanuc-ls",
+      "*.KL": "karel",
+      "*.kl": "karel",
+      "*.DF": "plaintext",
+      "*.VA": "plaintext",
+      "*.XML": "xml"
+    },
+    "search.exclude": {
+      "**/fanuc_dataset/raw_sources": true,
+      "**/customer_programs/**/integration_notes/raw_docs": true,
+      "**/ros2/build": true,
+      "**/ros2/install": true,
+      "**/ros2/log": true,
+      "**/tools/roboguide/workcells": true,
+      "**/.cache": true,
+      "**/__pycache__": true,
+      "**/*.egg-info": true
+    },
+    "files.watcherExclude": {
+      "**/fanuc_dataset/raw_sources/**": true,
+      "**/customer_programs/**/integration_notes/raw_docs/**": true,
+      "**/ros2/build/**": true,
+      "**/ros2/install/**": true,
+      "**/.cache/**": true
+    }
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-python.python",
+      "redhat.vscode-yaml",
+      "yzhang.markdown-all-in-one"
+    ]
+  }
+}

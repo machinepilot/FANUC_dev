@@ -1,0 +1,248 @@
+﻿---
+id: FANUC_REF_PROGRAM_HEADER
+title: "Program Header"
+topic: anti_pattern
+fanuc_controller: [R-30iB, R-30iB Plus]
+system_sw_version: [V9.x]
+language: TP
+source:
+  type: generated
+  title: "FANUC Teach Pendant Help System / Operator Manual"
+  tier: generated
+license: reference-only
+revision_date: "2026-04-22"
+related: []
+difficulty: intermediate
+status: draft
+supersedes: null
+---
+
+# Program Header
+
+## Summary
+
+Migrated from `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/reference/FANUC_REF_Program_Header.txt` as part of the TeachPendant migration. Original source: FANUC Teach Pendant Help System / Operator Manual. Review and update `related:` with neighbor entry IDs.
+
+## Body
+
+
+2. PROGRAM HEADER INFORMATION 2. PROGRAM HEADER INFORMATION PROGRAM ELEMENTS 2. 
+PROGRAM HEADER INFORMATION 2.1. Overview Program header information is specific 
+information that identifies and classifies the program. Table 1, " Select Screen
+Items and Operations " lists SELECT screen items and operations. Table 2, " Prog
+ram DETAIL Screen Items and Operations " lists the SELECT DETAIL screen items an
+d operations. The items displayed on your screen will vary. Table 1. Select Scre
+en Items and Operations ITEM DESCRIPTION No. This item is the line number. Progr
+am name This item is the name of the program. Attribute field This item is a des
+criptive field for each program. This field can be any of the following: Comment
+, Protection, Last Modified, Size, or Copy Source. CREATE Press this key to disp
+lay the Create Teach Pendant Program screen from which you can create a new prog
+ram listing. When you create a new program, it will be added to the Program name
+listing. DELETE Press this key to delete a program. MONITOR Press this key to mo
+nitor a program that is currently running. ATTR Press this key to select the app
+ropriate attribute to display. COPY Press this key to display the Copy Teach Pen
+dant Program screen from which you can copy one file to another. DETAIL Press th
+is key to key to display the Program DETAIL screen. LOAD Press this key to displ
+ay the Load Teach Pendant Program screen from which you can load the selected pr
+ogram. SAVE AS Press this key to save the selected program. You can specify the 
+device to which the program is saved. You can also specify a new name if you wan
+t to save the file with a different name. PRINT Press this key to display the Pr
+int Teach Pendant Program screen from which you can select a program to print to
+the selected device. Table 2. Program DETAIL Screen Items and Operations ITEM DE
+SCRIPTION AVAILABLE IN JOB OR PROCESS PROGRAMS ONLY AVAILABLE IN JOB PROGRAMS ON
+LY AVAILABLE IN PROCESS PROGRAMS ONLY Creation Date This item is the date on whi
+ch the program name was created. Yes Modification Date This item is the date whe
+n the file was last displayed in the editor. Yes Copy Source This item is the na
+me of the file from which the file was copied. Yes Positions This item indicates
+whether the program contains recorded robot positions. Yes Size This item is the
+size of the program in bytes. Yes Program name This item is the name of the prog
+ram. Yes Sub Type This item is the kind of program you want to write. This value
+can be one of the following: None, Macro, or Cond (Condition Handler). Yes Comme
+nt This item is a description field for the selected program. Yes Group Mask Thi
+s item identifies the group of axes, or motion group, that the program controls.
+Yes Write protect This item identifies whether the program can be modified. Yes 
+Ignore pause This item indicates whether the program will continue to run when a
+n error occurs, a command is issued, or the teach pendant is enabled. Yes Stack 
+Size When a program is executed, a stack of 500 long words (1200 bytes) is alloc
+ated unless you specify a stack size. The stack is allocated from available user
+RAM. The minimum and default stack size is 500. The maximum stack size is 4000. 
+Yes Collection If the program sub type is not a collection, then this field allo
+ws you to add the program to a collection or to multiple collections if $COLLECT
+_CFG.$MULTI_PROG is TRUE. Pressing ENTER will bring a collection list so you can
+select one or more collections. If the program sub type is a collection, then pr
+essing ENTER will bring the collection editor so you can add and remove other pr
+ograms to the collection. All program types can be added to a collection except 
+collections themselves. No nesting is allowed. Refer to Section 3, "COLLECTIONS"
+. Yes (for Process programs if $COLLECT_CFG.$MULTI_PROG is TRUE) NoDisp SubProg 
+This item allows you to make a teach pendant screen not show the contents of the
+program while the program is CALLED as a sub-program or as a macro. Cycle Time T
+his item displays the cycle time for the most recent execution of the currently 
+selected job or process. *** Last Cycle Time This item displays the cycle time f
+or the second most recent execution of the currently selected job or process. * 
+Gun On Time This item displays the total amount of time the gun was on for the m
+ost recent execution of the currently selected job or process. *, ** Last Gun On
+Time This item displays the total amount of time the gun was on for the second m
+ost recent execution of the currently selected job or process. * Material Volume
+This item displays the volume of the material dispensed in the most recent execu
+tion of the currently selected job or process. * Last Material Volume This item 
+displays the volume of the material dispensed in the second most recent executio
+n of the currently selected job or process. * Default User Frame This item displ
+ays the name of the user frame to be used by the process program. *, ** Default 
+Tool Frame This item displays the name of the tool frame to be used by the proce
+ss program. *, ** Part ID This item displays the number of the job being execute
+d. Yes Equipment Number This item allows you to specify to two homogeneous dispe
+nsing equipments controlled by one robot controller. * Line Track Schedule Numbe
+r This item displays the current line tracking schedule. **** Line Track Boundar
+y Number This item displays the current line tracking boundary set. **** Applica
+tion Mask This item displays the currently set application in systems with more 
+than one application available. *** Program Type The program type indicates the 
+kind of Multi-Arm program being used. This should always be set to Normal Progra
+m. Multi-Arm Main This item indicates the status of the Multi-Arm program in the
+Family. It can be set to No, independent program, if it is not the main program 
+of the Multi- arm family, Yes, Head of Family if it is the head of a family prog
+ram, or Yes, Family Member if it is the main program of a family program. Head o
+f Family This item indicates which robot is the head of the family for this job 
+in a Multi-Arm application. Family Members This item indicates which robots are 
+included as family members in a Multi-Arm application. END Press this key when y
+ou are finished viewing program information to return to the Select screen. N/A 
+N/A N/A Press this key to return to the previous screen. N/A N/A N/A Press this 
+key to display application-specific program detail information. N/A N/A N/A 1 Pr
+ess this key to add a motion group to your program. N/A N/A N/A * Press this key
+to disable a motion group for your program. N/A N/A N/A ON/OFF Press these keys 
+to set the appropriate items to ON or OFF. N/A N/A N/A *These items are shown on
+ly for Dispensing systems with multiple equipment, to allow you to set the equip
+ment number for your program. ** For PaintTool, this applies to process programs
+only. *** This applies to DispenseTool and SpotTool+ only. **** This applies to 
+DispenseTool and PaintTool only. Program header information is displayed only th
+e first time you create a program. If you want to view this information again, y
+ou must display it by choosing the SELECT menu and pressing the DETAIL key. See 
+the following screen for an example. Figure 1. Program Header Information Progra
+m detail Creation Date: 03-FEB-xxxx Modification Date: 03-FEB-xxxx Copy Source: 
+Positions: FALSE Size 17 Byte Program name: 1 PROG742 2 Sub Type: [None ] 3 Comm
+ent: [ ] 4 Group Mask: [1,*,*,*,* ] 5 Write protect: [OFF ] 6 Ignore pause: [OFF
+] 7 Stack size: [ 300] 8 Collection: [ ] 9 NoDisp SubProg: [OFF\\\\\\\\\\\] The 
+following sections contain details on each kind of program header information. 2
+.2. Creation Date Creation date is the date on which the program name was create
+d. 2.3. Modification Date Modification date is the date, according to the calend
+ar in the controller, when the file was last displayed in the editor. This infor
+mation can be displayed using the [ATTR] function key on the SELECT menu. 2.4. C
+opy Source Copy source is the name of the file from which the file was copied. T
+his field is empty if the file is an original file. This information can be disp
+layed using the [ATTR] function key on the SELECT menu. 2.5. Positions and Progr
+am Size The positions item indicates whether the program contains recorded robot
+positions. When you first create a program, positions is always set to FALSE. Pr
+ogram size is the size of the program in bytes. The program size can be displaye
+d using the [ATTR] function key on the SELECT menu. 2.6. Sub Type Sub type ident
+ifies the kind of program you want to write. These are: None Macro Cond Collecti
+on - see Section 3, "COLLECTIONS" None If you select none , the program will be 
+created as a .TP program, which can include any instructions in your teach penda
+nt program. Macro A macro program created as a .MR program can contain any instr
+uction and function as a normal .TP program. However, only macro programs can be
+set to be executed in a variety of ways including from operator panel buttons, t
+each pendant keys, and the Manual Functions menu. They can also be assigned a na
+me in the macro table and be called with this name in a macro program. Macro pro
+grams can also be called by a program when the MACRO instruction is used. Refer 
+to the "Program Elements" chapter of this manual for more information. Cond A "c
+h" program has a Cond (Condition Handler) sub type. Refer to the "Advanced Funct
+ions" chapter of this manual for more information on the condition monitor funct
+ion. Job A job is a program that includes one or more processes. When you run pr
+oduction, you run the job that corresponds to the task you want to perform. This
+job contains program calls to each of the processes that will be performed durin
+g production. Process A process is a program that directs the robot to perform a
+specific task. These programs are created for you so that you can move to the po
+sitions you define in these programs using the Move Menu. Refer to the “Planning
+and Creating a Program” chapter for details on how to define and use predefined 
+positions. 2.7. Program Comment When you create a new program, you can also add 
+a program comment to the name. A program comment includes additional information
+that you want to further identify the program. This information can be displayed
+using the [ATTR] function key on the SELECT menu, and also from the DETAIL funct
+ion key. Length One to 16 characters Available Characters Letters : a through z 
+and A through Z Numbers : 0 through 9 Symbols : _ (underscore), @ (at), * (aster
+isk) Blank spaces Punctuation: ; (semicolon), : (colon), " (quotation marks), ( 
+) (left and right parentheses), . (period) Content Should be descriptive and pro
+vide additional information, if necessary. 2.8. Group Mask When you create a pro
+gram, you define the group mask that identifies the group of axes, or motion gro
+up , that the program will control. Motion groups define different groups of axe
+s that can be used for independent pieces of equipment, positioning tables, open
+ing devices, and other axes. There are eight motion groups available. The contro
+ller can operate a maximum of 40 axes, however, only nine axes can belong to a s
+ingle motion group. Note In HandlingTool and ArcTool, multiple motion groups mus
+t be set before they can be used. Refer to the Software Installation Manual . If
+a system has only one motion group, the default motion group is 1. An asterisk i
+ndicates the group is not used. You can specify a program to use all eight motio
+n groups, but only two motion groups can perform Cartesian interpolated motion w
+ithin a single program. If you disable all groups, you cannot add motion instruc
+tions to your program. Note In HandlingTool and SpotTool+, when you add a motion
+instruction that has a motion type, the following appears on the screen: Group m
+ask: 1, *, *, *, *, *, *, * You cannot change the group mask after you have adde
+d motion instructions to your program. You will not be able to select group mask
+in the program DETAIL screen. Note When using DispenseTool and multi-group motio
+n all programs that use motion while dispensing are required to use group mask [
+1,*,*,*,*,*,*,*]. Note For system level macro programs, the group mask cannot be
+changed. 2.9. Write Protection Write protection allows you to specify whether th
+e program can be modified. When write protection is set to ON, you cannot add or
+modify any element in the program. When you have finished creating a program and
+are satisfied with how it works, you should set write protection to ON so that y
+ou or someone else does not modify it. When write protection is set to OFF, you 
+can create the program and add or modify any element in the program. By default,
+write protection is set to OFF. This information can be displayed using the [ATT
+R] function key on the SELECT menu. Caution When write protection is set to ON, 
+you cannot modify any program header information (program name, sub type, progra
+m comment, group mask, ignore pause) except write protection. 2.10. Ignore Pause
+If the program type has been set to NONE, you can use ignore pause to specify wh
+ether the program will continue to run even when an error occurs, a command is i
+ssued (such as pushing EMERGENCY STOP or HOLD), or the teach pendant is enabled.
+Ignore pause is allowed only in programs that do not have motion groups specifie
+d such as an I/O monitoring program. This means that programs that use ignore pa
+use cannot contain any motion instructions. Warning If ignore pause is set to ON
+, the program MUST NOT issue any motion instructions; otherwise, you could injur
+e personnel or damage equipment. When ignore pause is set to ON , the program co
+ntinues to run even when an error occurs, a command is issued, or the teach pend
+ant is enabled. This allows the program to continue any monitoring function, suc
+h as monitoring I/O. When ignore pause is set to OFF , the program pauses when a
+n error occurs, a command is issued, or the teach pendant is enabled. 2.11. Stac
+k Size When a program is executed, a stack of 500 long words (1200 bytes) is all
+ocated unless you specify a stack size. The stack is allocated from available us
+er RAM. If a stack overflow alarm occurs, the program needs more stack. Options 
+such as TCPMate and Cell Finder require that teach pendant programs have increas
+ed stack size. The minimum and default stack size is 500. The maximum stack size
+is 4000. 2.12. Collection Collections are used to collect programs together to s
+implify program maintenance. Collections are shown as a [TYPE] in the Select Men
+u. They are created as a new TP program type, CO. Collection names must be uniqu
+e among all programs. Use the SYSTEM Configuration menu to setup collection name
+s for CREATE. Refer to Section 3, "COLLECTIONS" . 2.13. No-Disp Sub-Program The 
+feature allows you to make a teach pendant program not to display while the prog
+ram is CALLED as a sub-program or as a macro. While running the program, the tea
+ch pendant display will not display the contents of the sub-program with the “No
+-Display” attribute set. When you press the ENTER key while the cursor is at the
+CALL statement, or when the program is paused (e.g. HOLD key is pressed), you ca
+n see the contents of the sub-program where the program is currently executing. 
+You can press the key to return to “No Display” mode. The system also goes back 
+to “No Display” mode when the sub-program returns. 2.14. Program Type The progra
+m type indicates the kind of Multi-Arm program being used. This should always be
+set to Normal Program. 2.15. Multi-Arm Main This item indicates the status of th
+e Multi-Arm program in the Family. It can be set to No, independent program, if 
+it is not the main program of the Multi-arm family, Yes, Head of Family if it is
+the head of a family program, or Yes, Family Member if it is the main program of
+a family program. 2.16. Head of Family This item indicates which robot is the he
+ad of the family for this job in a Multi-Arm application. 2.17. Family Members T
+his item indicates which robots are included as family members in a Multi-Arm ap
+plication. 1. OVERVIEW 3. COLLECTIONS
+Metadata:
+{}
+
+## Citations
+
+- Primary: FANUC Teach Pendant Help System / Operator Manual (keywords: program header, /PROG, /ATTR, OWNER, COMMENT, PROG_SIZE, CREATE, MODIFIED, FILE_NAME, VERSION, LINE_COUNT, MEMORY_SIZE, PROTECT, TCD, STACK_SIZE, TASK_PRIORITY, TIME_SLICE, DEFAULT_GROUP, CONTROL_CODE, group mask, /MN, /POS, /END).
+- Applicability: R-30iB Plus, TP Programming.
+
+## Discrepancies
+
+None documented in the legacy source. Re-verify against a T1 vendor manual before promoting `status` from `draft` to `approved`.
+
+## Provenance
+
+- Migrated by: inline migration on 2026-04-22.
+- Source file: `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/reference/FANUC_REF_Program_Header.txt`.
+- Classification: reference / topic=anti_pattern.
+

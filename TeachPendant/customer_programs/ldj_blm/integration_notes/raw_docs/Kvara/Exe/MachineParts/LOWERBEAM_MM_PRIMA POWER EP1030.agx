@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" ?>
+<job>
+    <settings>
+        <version>1</version>
+        <unit>millimeter</unit>
+        <backcolour>0</backcolour>
+    </settings>
+    <entities>
+        <entity id="LOWERBEAM_MM_PRIMA POWER EP1030" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>LOWERBEAM_MM_PRIMA POWER EP1030</reference_id>
+            </geometry>
+        </entity>
+    </entities>
+    <states>
+        <state id="default">
+            <visibility>
+                <show type="Unspecified">1</show>
+                <show entity="LOWERBEAM_MM_PRIMA POWER EP1030">1</show>
+            </visibility>
+            <transformations />
+            <views>
+                <view id="1">
+                    <pos>14000,8000,-14000</pos>
+                    <target>0,0,-0</target>
+                    <near>6000</near>
+                    <far>25000</far>
+                    <width>9050</width>
+                    <height>5615</height>
+                    <perspective>1</perspective>
+                </view>
+            </views>
+        </state>
+        <state order="1" id="LOWERBEAM_MM_PRIMA POWER EP1030">
+            <visibility />
+            <transformations />
+            <views />
+        </state>
+    </states>
+    <geometries>
+        <geometry id="LOWERBEAM_MM_PRIMA POWER EP1030">
+            <data encoding="1">UEsDBBQAAgAIABZVbUVjmVd1zAYAAO8YAAALABEAY29sbGFkYS54bWxVVA0AB4uKZFSLimRUi4pkVM1ZbW/bNhD+K4L22TJJ8UUqbA9d94IB3VJ03bD1S6A5SiLAljNZXpd/P/KOFE+01hbDPgxIntw9PB55R/IoKZsv/zoesj/b4dyd+m3OC5Znbb8/3XX9wza/jPerKv9yt3l18/r1y69fZta4P2/zx3F8erFef/jwodifDofmrilOw8NaMKbWnK+99U/7x/bY5NS7LHi+2zTnczvuNvtTPw7d75fxNFjuMj7avy+t9ubm9WbtdWt0PLb9eN5t1jORdN0PbTO2dzvBOFuxesWqd5y/kOKFqt9bU9+6Odqg7rt/tJuaN5e+G7NjO7bDNmcFE0rmWd8c223e9fvHfG0tnm6bv7rz7v3tz28266DZSWNgh+73oRmeb5u+OzajDd21LZGBO3QPjyM1CkTQbZeHlhoEIujWZTt0zYHaEC5Q7f19u5+NNDGBeGhPNvahc969/Jx1d9vcL00weA5J+fbVK7umx/b8uNucT5dh3y6ar55O5w7ittb3h1Mz3jbD0Dx/wngFRnm2P136cZsLyfLdiuvaFCpblSxbcWYFSkQ1bZ5ajQjGtWBzgqtokRqQdm2SDjqdkDYLPWh7WWgRXMhCVnXKMlUoziO7aJpasuBSFHU9Y5gpWLC5MplbKF24MdCKFZqZlGV1UdZlZBdNU0tpZ+n7S0jXnOOCcgtmc6sSJotmZVFVImW5LjivIrtomlrGjSBZQohIpAaxXZVV3IZBsbOXRpp2xXjpaWqSWlAnyz6Ii2UPSSBpHEkYSRSLyV3M7VJqlzK7sPgLa3+99Ncrv7g5F/fm0tZc2plXh+bqzKRHJj0xi4d58SwvHeWlk5wWmLS+JOUlqS5pgUvrW1LekuqWFtd5bU1K66yybtakru82Y7t/7Ls/Lu2tu7lPvb3k9/v2fD4NGd4T2/yLzy78lX0wOdtr6c72Ku0N8tQMzdHfQL/m2fj8ZAUY3l3QtPW3j7a+v2pdh1la8TqENU7941ddfxqO9t79nIvOmybRmsrdcpk9PKIUpTvTtqzaHLOi1qoWOgNZqKri9YylZGW3qVBoqmaE1w0zdgejgZcpS0nvxnvwBNX9sHSOlI3kPCbuwuKFEFIrR1kDU8i6qqxSuloJHrMkFZxGOkvLwojp5JO5L6ZhKQtpQpN8Li7N0srwJAc2esNLDP6/OEHLO0ro/9n5sW8FY2cN4Vg4xR2Xrn+6jNnZvjb0tnGbv7n56ft339/8mH9OxYDBg1ubPPvs2z8c7Ag+BVzZHISH4m3+9ruvbkvNFFsY95dv3r775lcyKk4wO93f2yd8+1rgxko7/Xjz9oeXr/NPL030wyGdO2lvoTIra4eSR0SmNAHtRagdutaAnmEOawfu+rcYAXUTCeIJERlB/KFsN3foFP0jKerUiWdKwqMsIorqqhcwQhIG5AioCxYJELkmKOZdUK8mHSRFshVTJqNfIyKBsiLoGehvIDBdRR4RGU28oaxZRO+BeJbV1XSQodNEWRGsr3oBo8rIoKxMRM3TXsgY0qpVZDwPjK4JgzLGUrk9YWpATRAZAyjcokgHhiCAdiCsW5mJ0qF9oJ0QGVc2A+PlCVDnKhIgum0g4QTJTIrULTI6EiAKgigK4qSMHQ041zBnU0dERpeEIb38oMAoMjGUlSLeqjgK8oqnfjxjCI+yjqjYVS9glCQMyIYgMqoiDOZIENRpL88wwqOsiA1JISwSm1gddR5t/U8VUYhkuUqWLq5nJGFQVgT5VS9gcB/i5hHTlpJQ9uyBcVgSREZ42ZZaA8XahRgQGQOl3D1QuIcB5X+dLF1txb4OqglAVVD7hbUpnaEtlwIBVBtpUEHS1huagCQnANUdNVRBYhPAGazsqKCCZAtrAFAFzBFEXCZBEBmIwTNsiqJUYe72OggAqguq9rWaQ6pqD6irSQepxoQEyUzgVAGZMkESfAJQ7RuKl0xWehXAqW7hUUWpDgAqzB9VFeYv4qzZBKjXvri5mqd85YuIDAxuwNxAanUdERkDRVFC7bQH3c5dQl9Ez9QQE8gKwkXG85iAkiAykDGPyNSEAdmVKOMZlDUniIxx6+IZlBVBZDAukDFeZCTcDxidlARNjNHAFnJFRcO9WgZERhJEBranR2QEYUBWuMNZlJUmiAwcD8+gLAgiw9w58gzI9sae0DMQkZd1jNHAicboTEmQxRhLVxdKVyxsaQoAqnuz4d7EYQTUoTsDI7dN8dfJjt2sn9wzeXgutjJ+tV2HB1TyXZh+Bg4cfHU/HQ7tQL8gz9h/Yfpnd740h9vzvu1nn7gTHv66h+7z2PT7dtacXQb7QP/FpXfvJHfIwduA7xT+I7H7G1BLAQIXCxQAAgAIABZVbUVjmVd1zAYAAO8YAAALAAkAAAAAAAAAAAAAgAAAAABjb2xsYWRhLnhtbFVUBQAHi4pkVFBLBQYAAAAAAQABAEIAAAAGBwAAAAA=</data>
+            <materials>
+                <material id="1">
+                    <color emissive="36050" />
+                </material>
+            </materials>
+        </geometry>
+    </geometries>
+</job>

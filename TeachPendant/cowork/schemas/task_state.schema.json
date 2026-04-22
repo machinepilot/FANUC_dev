@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://theway.automation/teachpendant/schemas/task_state.schema.json",
+  "title": "TaskState",
+  "description": "Shared blackboard file for a TeachPendant agent task. Orchestrator owns top-level writes; specialists append under their named key.",
+  "type": "object",
+  "required": ["task_id", "created_at", "updated_at", "customer_id", "system", "task_type", "status"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "task_id": { "type": "string", "format": "uuid" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "updated_at": { "type": "string", "format": "date-time" },
+    "customer_id": { "type": "string", "minLength": 1 },
+    "system": { "type": "string" },
+    "task_type": {
+      "type": "string",
+      "enum": ["new_program", "code_review", "modification", "safety_audit", "customer_onboarding", "knowledge_ingestion"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["intake", "architect", "parallel_design", "motion", "qa", "documentation", "blocked", "done"]
+    },
+    "intake": { "type": ["object", "null"] },
+    "architect": { "type": ["object", "null"] },
+    "integration": { "type": ["object", "null"] },
+    "safety": { "type": ["object", "null"] },
+    "motion": { "type": ["object", "null"] },
+    "qa": { "type": ["object", "null"] },
+    "documentation": { "type": ["object", "null"] },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "raised_by", "about"],
+        "properties": {
+          "id": { "type": "string" },
+          "raised_by": { "type": "string" },
+          "about": { "type": "string" },
+          "position_a": { "type": "string" },
+          "position_b": { "type": "string" },
+          "citations": { "type": "array", "items": { "type": "string" } },
+          "resolution": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "retries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["stage", "at", "reason"],
+        "properties": {
+          "stage": { "type": "string" },
+          "at": { "type": "string", "format": "date-time" },
+          "reason": { "type": "string" }
+        }
+      }
+    },
+    "handoffs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "envelope", "schema", "at"],
+        "properties": {
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "envelope": { "type": "string" },
+          "schema": { "type": "string" },
+          "at": { "type": "string", "format": "date-time" }
+        }
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "kind"],
+        "properties": {
+          "path": { "type": "string" },
+          "kind": { "type": "string" },
+          "produced_by": { "type": "string" },
+          "produced_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}

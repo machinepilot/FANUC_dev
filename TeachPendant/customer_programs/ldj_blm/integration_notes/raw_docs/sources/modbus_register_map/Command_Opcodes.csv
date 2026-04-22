@@ -1,0 +1,30 @@
+COMMAND OPCODES,,,,
+Opcode,Command Name,Data Reg,Data Type,Description
+3001,COMMAND_WORK_DIR,53,STRING,Set working directory
+3003,COMMAND_SAVE_PROG,-,-,Save current program
+3009,COMMAND_LOAD_WORK_LIST,-,-,Load work list
+3010,COMMAND_DELETE_PROG,53,STRING,Delete program
+3011,COMMAND_COPY_PROG,53,STRING,Copy program
+3015,COMMAND_NEW_PROG_NUM,7,DWORD,Create new program
+3021,COMMAND_UPDATE_PROG,-,-,Update program
+3025,COMMAND_SAVE_AS_PROG,53,STRING,Save program as...
+3030,COMMAND_LOAD_PROG,53,STRING,Load program
+3033,COMMAND_CHANGE_PROGRAM,53,STRING,Change to program
+3007,COMMAND_STOP,-,-,Stop operation
+3008,COMMAND_START,-,-,Start cycle
+3012,SHUT_DOWN,-,-,Shutdown system
+3013,COMMAND_NEXT,-,-,Next bend
+3014,COMMAND_PREV,-,-,Previous bend
+3018,COMMAND_CHANGE_SECTION,5,WORD,Jump to section
+3027,COMMAND_DEL_BEND,5,WORD,Delete bend
+3029,COMMAND_NUM_BEND_SEC,5,WORD,Select bend number
+3031,COMMAND_LEARN_Y,-,-,Learn Y-axis position
+3032,COMMAND_LEARN_Z,-,-,Learn Z-axis position
+3040,COMMAND_LEARN_BEND_SENS_ANG,-,-,Learn angle from sensor
+3045,COMMAND_RUN_LASERCHECK,-,-,Run LaserCheck measurement
+3046,COMMAND_INIT_COMM_LASERCHECK,-,-,Initialize LaserCheck
+3049,COMMAND_SCAN_ANGLES,-,-,Scan angles
+3002,COMMAND_RESET_WIN_POPUP_ERR,-,-,Reset popup error
+3035,COMMAND_CORR_BY_SEC,varies,varies,Correct by section
+3036,COMMAND_CORR_BY_PIECE,varies,varies,Correct by piece
+3042,COMMAND_CHANGE_OFFSET_POS_PEZZO,9,DOUBLE,Change part offset

@@ -1,0 +1,110 @@
+﻿---
+id: FANUC_REF_STRING_REGISTERS
+title: "String Registers"
+topic: registers
+fanuc_controller: [R-30iB, R-30iB Plus]
+system_sw_version: [V9.x]
+language: TP
+source:
+  type: generated
+  title: "FANUC Teach Pendant Help System / Operator Manual"
+  tier: generated
+license: reference-only
+revision_date: "2026-04-22"
+related: []
+difficulty: intermediate
+status: draft
+supersedes: null
+---
+
+# String Registers
+
+## Summary
+
+Migrated from `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/reference/FANUC_REF_String_Registers.txt` as part of the TeachPendant migration. Original source: FANUC Teach Pendant Help System / Operator Manual. Review and update `related:` with neighbor entry IDs.
+
+## Body
+
+
+24. STRING REGISTER INSTRUCTIONS 24. STRING REGISTER INSTRUCTIONS PROGRAM ELEMEN
+TS 24. STRING REGISTER INSTRUCTIONS 24.1. Overview A string register stores alph
+anumeric character strings. Each string register can hold a maximum of 254 chara
+cters. The default number of string registers is 25. You can increase the number
+of string register at controlled start. Refer to the “System Operations” appendi
+x of the Setup and Operations Manual for information on performing a controlled 
+start. There are several kinds of string register instructions: String register 
+assignment, SR[x]= String register concatenation, SR[x]+ String register compari
+son, SR[x]<, >, =, <>, <=, >= String register length, R[y]=STRLEN SR[x] String r
+egister substring search, R[y]=FINDSTR SR[x], SR[z] String register substring cu
+t, SR[x]=SUBSTR SR[n],R[y],R[z] String registers can be addressed using direct a
+nd indirect techniques. Please see Figure 6.46 in the Register Instructions sect
+ion for more information. 24.2. String Register Assignment and Concatenation SR[
+x] string register instructions manipulate the string register. The string regis
+ter supports assignment and concatenation. Figure 113. String Register Assignmen
+t Examples of string register assignment instructions: SR[x]=SR[y] SR[x]=AR[y] S
+R[x]=R[y] R[x]=SR[y] Figure 114. String Register Concatenation Examples of strin
+g register concatenation instructions: SR[x]=SR[y]+SR[z] SR[x]=SR[y]+R[z] SR[x]=
+AR[y]+SR[z]+R[n] String register instructions automatically convert numeric data
+types. This automatic conversion is explained in section Section 24.3, "String C
+onversion and Precedence" . 24.3. String Conversion and Precedence String and nu
+meric data are automatically converted when using any register instruction. Conv
+ersion from either integer or floating point numeric data is allowed. Floating p
+oint data will be rounded to 6 decimal places. Examples of conversions from nume
+ric to string data: Table 26. SR[x]=R[y] R[y] Value SR[x] Result R[y]=1234 SR[x]
+=’1234’ R[y]=12.34 SR[x]=’12.34’ R[y]=5.123456789 SR[x]=’5.123457’ Conversion fr
+om strings to numeric data is allowed. An overflow alarm can occur if the maximu
+m value for a floating point number is exceeded in the string representation. Co
+nversion from string to numeric data will stop when the first alpha character is
+found. Examples of conversions from string to numeric data: Table 27. R[x]=SR[y]
+SR[y] Value R[x] Result SR[y]=’1234’ R[x] = 1234 SR[y]=’12.34’ R[x]=12.34 SR[y]=
+’765abc’ R[x]=765 SR[y]=’fgh’ R[x]=0 There is data type conversion precedence wh
+en multiple conversions occur within an instruction. The data is converted to th
+e data type of the left instruction for each operation. Examples of conversion p
+recedence: Table 28. SR[x]=R[y]+SR[z] R[y]=123.456 + SR[z]=’345.678’ SR[x]=’456.
+134’ R[y]=456 + SR[z]='1abc2' SR[x]='457' Table 29. SR[x]=SR[y]+R[z] SR[y]=’123.
+’ + R[z]=345 SR[x]=’123.345’ SR[y]=’xyz’ + R[z]=81573 SR[x]=’xyz81573’ 24.4. STR
+LEN Instruction The STRLEN instruction will return the length of string stored i
+n the specified register. R[x]=STRLEN SR[y] Figure 115. STRLEN Instruction Examp
+le STRLEN usage: Table 30. R[x]=STRLEN SR[y]: SR[y] Value R[x] Result SR[y]=’abc
+defghij’ R[x]=10 SR[y]=’zyx1,2,3,4,5,6,lm’ R[x]=17 SR[y]=’’ R[x]=0 If STRLEN is 
+used with an argument register, AR[x], whose data type is not a string a type mi
+smatch alarm will occur. 24.5. FINDSTR Instruction The FINDSTR instruction will 
+search the target string for the search string and returns the index within the 
+target string. All string comparisons are case insensitive. If the search string
+is not found within the target string an index of zero, 0, is returned. R[x]=FIN
+DSTR SR[y],SR[z] Figure 116. FINDSTR Instruction Example of FINDSTR usage: Table
+31. R[x]=FINDSTR SR[y],SR[z] SR[z] Value with SR[y]=’We are searching for a stri
+ng in this string’ R[x] Result SR[z]=’we’ R[x]=1 SR[z]=’string’ R[x]=24 SR[z]=’o
+ther’ R[x]=0 SR[z]=’’ R[x]=0 If FINDSTR is used with an argument register, AR[x]
+, whose data type is not a string a type mismatch alarm will occur. 24.6. SUBSTR
+Instruction The SUBSTR instruction will return a substring from the target strin
+g based on the start point and length specified. SR[n]=SUBSTR SR[x],R[y],R[z] Fi
+gure 117. SUBSTR Instruction Example of SUBSTR usage: Table 32. SR[n]=SUBSTR SR[
+x],R[y],R[z] R[y] and R[z] Values with SR[x]=’This string will be broken apart.’
+SR[x] Result R[y]=1,R[z]=4 SR[x]=’This’ R[y]=28,R[z]=5 SR[x]=’apart’ R[y]=8,R[z]
+=0 SR[x]=’’ An overflow alarm will occur in any of the following conditions: Sta
+rting point is less than or equal to zero Length is less than zero Starting poin
+t is greater than the target string length Starting point plus length is greater
+than the target string length If an argument register, AR[x], is used as the tar
+get string and whose data type is not a string, a type mismatch alarm will occur
+. If an argument register, AR[x], is used as the starting point or length and wh
+ose data type is not a numeric type mismatch alarm will occur. 23. SKIP INSTRUCT
+ION 25. VISION INSTRUCTIONS
+Metadata:
+{}
+
+## Citations
+
+- Primary: FANUC Teach Pendant Help System / Operator Manual (keywords: string register, SR[], string, text, STRLEN, SUBSTR, FINDSTR, concatenation, string operation, string manipulation).
+- Applicability: R-30iB Plus, TP Programming.
+
+## Discrepancies
+
+None documented in the legacy source. Re-verify against a T1 vendor manual before promoting `status` from `draft` to `approved`.
+
+## Provenance
+
+- Migrated by: inline migration on 2026-04-22.
+- Source file: `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/reference/FANUC_REF_String_Registers.txt`.
+- Classification: reference / topic=registers.
+

@@ -1,0 +1,5 @@
+-v
+-e..\Plc\Err.err
+-cC:\Kvara\DiscoC\discoh\Defcn
+-iC:\Kvara\DiscoC\discoh\Ioredir
+-f..\Plc\obj\lnkfast.cmd

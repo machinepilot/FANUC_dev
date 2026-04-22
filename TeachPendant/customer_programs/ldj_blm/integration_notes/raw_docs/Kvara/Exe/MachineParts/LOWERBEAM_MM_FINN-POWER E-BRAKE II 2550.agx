@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<job>
+    <settings>
+        <version>1</version>
+        <unit>millimeter</unit>
+        <backcolour>0</backcolour>
+    </settings>
+    <entities>
+        <entity id="LOWERBEAM_MM_FINN-POWER E-BRAKE II 2550" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>LOWERBEAM_MM_FINN-POWER E-BRAKE II 2550</reference_id>
+            </geometry>
+        </entity>
+    </entities>
+    <states>
+        <state id="default">
+            <visibility>
+                <show type="Unspecified">1</show>
+                <show entity="LOWERBEAM_MM_FINN-POWER E-BRAKE II 2550">1</show>
+            </visibility>
+            <transformations />
+            <views>
+                <view id="1">
+                    <pos>14000,8000,-14000</pos>
+                    <target>0,0,-0</target>
+                    <near>6000</near>
+                    <far>25000</far>
+                    <width>9050</width>
+                    <height>5615</height>
+                    <perspective>1</perspective>
+                </view>
+            </views>
+        </state>
+        <state order="1" id="LOWERBEAM_MM_FINN-POWER E-BRAKE II 2550">
+            <visibility />
+            <transformations />
+            <views />
+        </state>
+    </states>
+    <geometries>
+        <geometry id="LOWERBEAM_MM_FINN-POWER E-BRAKE II 2550">
+            <data encoding="1">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</data>
+            <materials>
+                <material id="1">
+                    <color emissive="36080" />
+                </material>
+                <material id="2">
+                    <color emissive="12632256" />
+                </material>
+            </materials>
+        </geometry>
+    </geometries>
+</job>

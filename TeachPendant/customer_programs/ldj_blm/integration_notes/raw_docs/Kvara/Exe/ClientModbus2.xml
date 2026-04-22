@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--Generic Client version: 1.0 licensed to ESAutomotion-->
+<!--Copyright (c) 2012-2013 Esautomotion. All rights reserved.-->
+<ClientModbus>
+	<Client>
+		<IPAddr>10.10.51.102</IPAddr>
+		<Port>502</Port>
+		<NodeAddr>1</NodeAddr>
+        <HoldingRegister Size="2048">
+            <InputArea> 
+			<Field Priority="0" Size="2">
+                    <Comment><![CDATA[C11]]></Comment>
+					<ShAddr>C12</ShAddr>
+					<MbAddr>102</MbAddr>
+				</Field>            
+            </InputArea>
+            <OutputArea>
+			<Field Priority="0" Size="2">
+                    <Comment><![CDATA[C1]]></Comment>
+					<ShAddr>C2</ShAddr>
+					<MbAddr>2</MbAddr>
+				</Field>
+            </OutputArea>
+        </HoldingRegister>
+	</Client>
+</ClientModbus>
+			
+			
+			
+			

@@ -1,0 +1,75 @@
+---
+description: FANUC safety discipline (DCS + ISO 10218 + ISO/TS 15066).
+globs: ["**/*.LS", "**/*.KL", "**/SAFETY_*.md", "**/DCS_*.md", "**/SAFETY_REVIEW_*.md"]
+alwaysApply: false
+---
+
+# FANUC Safety Rule
+
+Every motion-touching artifact is a safety artifact. This rule applies whenever you are authoring a TP/KAREL program, a safety review, or a DCS configuration document.
+
+## Standards baseline
+
+- ISO 10218-1:2011 - manufacturer requirements for industrial robots.
+- ISO 10218-2:2011 - integrator / system requirements.
+- ISO/TS 15066:2016 - collaborative operations; body-region power/force limits.
+- ANSI/RIA R15.06-2012 - US harmonization.
+- FANUC DCS Operator's Manual - controller-specific safe functions.
+
+Canon entries: `fanuc_dataset/normalized/safety/ONE_iso10218_overview.md`, `ONE_iso_ts_15066_basics.md`, `FANUC_SAFE_DCS_*.md`. Cite by ID.
+
+## FANUC DCS coverage
+
+When specifying or reviewing a FANUC installation, DCS is non-optional if any of the following are true:
+
+- Operator can reach into the workcell envelope during production.
+- Collaborative (CR/CRX) variant.
+- Multi-robot cell where one robot can reach another's envelope.
+- Reduced-speed zones for teach vs auto.
+
+Functions to specify explicitly:
+
+- Joint Position Check (JPC) - per-axis limits.
+- Joint Speed Check (JSC) - per-axis speed limits.
+- Cartesian Position Check (CPC) - TCP-in-zone check.
+- Cartesian Speed Check (CSC) - TCP speed limit.
+- Tool Frame (TF) - DCS-validated tool geometry.
+- User Frame (UF) - DCS-validated base.
+- Safe I/O - Category-rated inputs/outputs (SI/SO).
+
+Every zone and limit gets an entry in the safety review:
+
+```markdown
+| ID | Type | Purpose | Coordinates / limit | Stop category | Tested |
+|----|------|---------|---------------------|---------------|--------|
+| CPC1 | Cartesian Position Check | Exclude operator station | XYZ box [...] | Cat. 1 | YYYY-MM-DD |
+```
+
+## Collaborative (CR / CRX) additional discipline
+
+- Identify the collaborative mode(s): Safety-rated monitored stop (SRMS), hand-guide (HG), speed/separation monitoring (SSM), power/force limiting (PFL).
+- PFL analyses cite ISO/TS 15066 body region tables; compute transient and quasi-static limits.
+- Document cycle-time penalty so the customer isn't surprised.
+
+## E-stop and fault recovery
+
+- E-stop is category 1 by default on R-30iB; confirm for the specific controller.
+- Software interrupts (`MONITOR`) are NOT safety functions. They do not substitute for DCS.
+- Fault recovery path is specified; "press FAULT_RESET" is not a recovery plan.
+
+## Motion that fails review
+
+- Unbounded WAIT without fault escalation.
+- Speed > DCS cartesian speed limit.
+- Motion that enters a Safe Position Check zone without an explicit justification + override analysis.
+- CR/CRX motion without PFL analysis cited.
+- Programmatic `$OVERRIDE` modification.
+- Tool frames set at runtime from uncontrolled sources.
+
+## What the Safety agent produces
+
+`SAFETY_REVIEW_*.md` using `cowork/templates/SAFETY_REVIEW_TEMPLATE.md` and validated against `cowork/schemas/safety_review.schema.json`. Record goes under `task_state.safety`.
+
+## Escalation
+
+Any finding graded `severity: critical` halts the workflow until the human sign off is recorded in `task_state.safety.signoff`. No exceptions.

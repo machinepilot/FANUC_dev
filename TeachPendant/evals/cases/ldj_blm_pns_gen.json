@@ -1,0 +1,17 @@
+{
+  "case_id": "ldj_blm_pns_gen",
+  "agent": "motion-synthesis",
+  "mode": "schema-only",
+  "input": {
+    "task_id": "00000000-0000-0000-0000-000000000001",
+    "from_agent": "motion-synthesis",
+    "to_agent": "qa",
+    "at": "2026-04-21T12:00:00Z",
+    "envelope_path": "customer_programs/ldj_blm/current/PNS0001.LS",
+    "envelope_schema": "cowork/schemas/handoff.schema.json",
+    "summary": "Generated PNS0001 for LDJ-BLM style-1 parts; passes fanuc_safety_lint with zero high+",
+    "open_questions": ["PR[5:PICK_APPROACH] coordinates pending hardware touch-up"]
+  },
+  "expected_schema": "cowork/schemas/handoff.schema.json",
+  "golden_path": "evals/golden/ldj_blm_pns_gen.json"
+}

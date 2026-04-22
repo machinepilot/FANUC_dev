@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<job>
+    <settings>
+        <version>1</version>
+        <unit>millimeter</unit>
+        <backcolour>0</backcolour>
+    </settings>
+    <entities>
+        <entity id="UPPERBEAM_MM_DURMA AD-S 30175" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>UPPERBEAM_MM_DURMA AD-S 30175</reference_id>
+            </geometry>
+        </entity>
+    </entities>
+    <states>
+        <state id="default">
+            <visibility>
+                <show type="Unspecified">1</show>
+                <show entity="UPPERBEAM_MM_DURMA AD-S 30175">1</show>
+            </visibility>
+            <transformations />
+            <views>
+                <view id="1">
+                    <pos>14000,8000,-14000</pos>
+                    <target>0,0,-0</target>
+                    <near>6000</near>
+                    <far>25000</far>
+                    <width>9050</width>
+                    <height>5615</height>
+                    <perspective>1</perspective>
+                </view>
+            </views>
+        </state>
+        <state order="1" id="UPPERBEAM_MM_DURMA AD-S 30175">
+            <visibility />
+            <transformations />
+            <views />
+        </state>
+    </states>
+    <geometries>
+        <geometry id="UPPERBEAM_MM_DURMA AD-S 30175">
+            <data encoding="1">UEsDBBQAAgAIAD5tjj0im+iibQgAAEseAAALABEAY29sbGFkYS54bWxVVA0AB/tzB037cwdN+3MHTd2ZX4/bNhLAv4qgPlvmf1KB7SKX9g4Fct0gyR16eVmoXu2uAVv22XLT/fYdzlDWUOtuF0Vf7hAEFH8czpDD0XC0Xnz7625b/NIeT5t9tyxlJcqi7db7u033sCzP/f0slN+uFu9u3r9/+93bAoS707J87PvDm/n869ev1Xq/3TZ3TbU/PsyVEHYu5TxJf1o/trum5NpNJcvVojmd2n61WO+7/rj5+dzvj8DO/SO0b6H34eb9Yp76ILTbtV1/Wi3m2SObuj62Td/erZSQYibqmQifpXxj1BtbfwHRNLrYwabuN78rdxlenLtNX+zavj0uS1EJZU1ZdM2uXZabbv1YzkHicNv8ujmtvtz+68NiPvRg0bSx7ebnY3N8um26za7pYetx7Boc2Hbz8NhzoQEMfZjy0HKBAQx9UNkeN82WyzA2oPb+vl1nli5kAA/tHvZ+3ETt6fmp2Nwty3Q0g8DT4JS/v3sHZ7prT4+rxWl/Pq7bq+Kzw/60wX2D9P123/S3zfHYPP2B8AyFymK9P3f9slQ2lKuZtMoWM20LJUMx9jz8Tz0lChkE6ynph54vpBWsc5GD6ePIqE9osqWrmvetyvvSGy4dW+qpUAkPC3WGTRigkiOylQy2cFyKkLT+QiQY8pWrGVBiHBYTM+AHqytZM5CLswVIV4WJeEKXCfAAr4Qdu3y14EttK201A+TP1OELzzX5wtSjJljWpDsqxuO6HM7QC0qkXjY0jkjL5VJP6jqZiSQb5qNB1ZVLM4wRFzD0p+OT4cz4M9vc9NRyttlsr3yrfKeTaJ0EaxarWahei9Tngfo8Tp+F6TRKsyCdxOg0RLMIzQL0eXxOwjOPziw4p7HJQ3MSmVlgZnGZh+U0KrN8lKWjLBtlyYjnIp6KeCbiiWgxZ0lztejb9WO3+e+5vY3X4r6DG3S9bk+n/bGgJLwsv3l1Vg2uLE6Q8+9glob0fGiOzS6l95/Kon86wAOaj7cfH/3Pi6Nfno3Oh1XC4/MtzGnpL98j3f64g0vtNbdIEp3sVut4hcARVUrVWrczoVUhK2mEttCRLgYAvIJCxKdCVHUtVK0gmrxzxoCIibdOYSrjla+H+d5aFZVJDKDgnIiHKiqIisoYEL3oTmNxaKYqpaWVlzHhnI3pN1r1PpCEq4fJqgJYe7IJa+CDEpKOU3ELAqIQRisrVUhjsHpdB+XiTF1c3Z8sMo/MMpf8FeF3/Tik/B8Kvl1zmK0fm65rt/I1EcjlJ/uuyxUcQwwDeLvjMZj47Oi5js8+Pv8Vjn9hFfr3nf/pRfd+fnH0w591Pnws9BsQRHfGTnzRN93h3Bcn+JroYBC033z64fMPNz+Wr8l1aHxQCw6Ekrh72IKFS/xBfT/Uysvy4z/+djuTV4z++/uPn7//iZmk1RX7+3uo+uFTIRqaTvrx5uM/374v//ilGPXIa3rA8rubm4/fla885VGdgikXtYeVhvIEogpCK+YIVUOjqLlAqA0i1JAzInRFTB8wz0UoOIQJCBVN9zgd5qXpDMKECKVH6BRCmaDj0NF0qQtTxDoHGlnYAI2iZoQOIfRUhCI+R6iipMugRQg9HSHcqQR1lLQcOoFQadymC7hNSdvE5gIdOURpNKRQfxyLD9iM0COEno+GamgQRozNCA1C6OHiA003pNNkUNOOSKf1OB3GcHrg0GmCCl1Xk+c8udNzZpCRaTJiybI1nJHhQE4z5ElNntQZrMmT5DQvyJOGPGk4BElHkug0PNM4Fu1gc4GuJk/WNN3gdEU6leHQJZ0OXeElukIrdIVWHHo6CEmSjqAiT6rAoSdPKnoFnKUdedqR5xBCOS1JxMXHNI7vmqDFM6jxmZoLlAEhNiM0HGJPxlMVdLgMBs4CIjItk2l1zQpB5TLori0yQcWhpunw0gtyO9fpCfoM6gxqgrQkFTiUtCTs4XvKoHQZFBkUBGlJ2MSK/dr0BGmdkgwpmUHPoRKDJL5ogWJGUnhIDp2j17ym5cTPLkHRjanJiwm3E26Jw0uMnNqReznhMsn7xH3OvZpwleRD4iHnXk+4TvLJLqR14n6yfjvhwzoTdy7pGdajcm5Dzqk/2nUy59ZN+KAnrccOdsV1PRcecv84k/t/OBeX/GDrpL+ecJ9zm/xgkx6rJ9wk/entdXRpKky6XnGoPELKySolZcrTHHnNGHZAdcrdOoOYUQd9mApJhyIJDAYmSPk8aMq9lOc4CnQvBkrczpLCy78RCcYU3dO0Ps2RkpxJugbIaDIREiQnOJvBJEklguZMF5bkIDTiSaAEQz4go1uFyh1FuV55xoLhLNDt48kvXnEYCC7mh1gBD1XolYLUhmk9apzUyoj/26KUjifFQAoCzZipOcMeCFJZhc0FGptBCjVDKo3OoBtiL4Z44HZMzaHPoBXczqBSXltRgoFDbfgmQ0pvIaWZkNJD0BNuJzyl/5DSWJA593XOqY8xncuL3K6pqTKiatTShWYlh2ACYUqEJmm2KZFbNeFphcbSrShQiaGay3gOLVVnJl0pJu3FpDWbMOEpxcIRxLIGptWRGqxgsRlhIEgbMZrWkMypDFIBrgPmBJgQ/xm88qkZIaU1TXWBpjJLU52law5Nqp4MGtJUlWuqC7TLYE2QChBN1Rz+cUBRM8JUv9BsWjv51HOk6bDoRaIih7RZRjwj+C1SuPRWUAGF9mgNjNAsqp8M00wfeJq+JOn7znFkJWPYwRwaGTYjtPQZmWbX9G2ZoOUwqTRU7Br6jNT0ZatrDo3JoCGYLlSfwYDQKr6kXDLBZOhZWp/TL2LzIROy39z4T2wDw18099tte+S/zmX0T4j+sjmdm+3tad122c+HE45tzO+nvunWbTZcnI9wC31z7uIfdu6I4Z9U0qTh197Vb1BLAQIXCxQAAgAIAD5tjj0im+iibQgAAEseAAALAAkAAAAAAAAAAAAAgAAAAABjb2xsYWRhLnhtbFVUBQAH+3MHTVBLBQYAAAAAAQABAEIAAACnCAAAAAA=</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+                <material id="2">
+                    <color emissive="4613240" />
+                </material>
+            </materials>
+        </geometry>
+    </geometries>
+</job>

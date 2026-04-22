@@ -1,0 +1,241 @@
+﻿---
+id: EG_JOB_B_CRDRILL_DUALHAND
+title: "Main Job Program - Single RoboDrill, Dual Hand"
+topic: anti_pattern
+fanuc_controller: [R-30iB, R-30iB Plus]
+system_sw_version: [V9.x]
+language: TP
+source:
+  type: generated
+  title: "TWA (The Way Automation) Standard Programs"
+  tier: generated
+license: reference-only
+revision_date: "2026-04-22"
+related: []
+difficulty: intermediate
+status: draft
+supersedes: null
+---
+
+# Main Job Program - Single RoboDrill, Dual Hand
+
+## Summary
+
+Migrated from `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/examples/EG_JOB_B_CRDrill_DualHand.txt` as part of the TeachPendant migration. Original source: TWA (The Way Automation) Standard Programs. Review and update `related:` with neighbor entry IDs.
+
+## Body
+
+
+/PROG  JOB_B3
+/ATTR
+OWNER		= MNEDITOR;
+COMMENT		= "";
+PROG_SIZE	= 3935;
+CREATE		= DATE 20-01-21  TIME 13:05:54;
+MODIFIED	= DATE 20-01-29  TIME 11:35:12;
+FILE_NAME	= JOB_B2;
+VERSION		= 0;
+LINE_COUNT	= 169;
+MEMORY_SIZE	= 4599;
+PROTECT		= READ_WRITE;
+TCD:  STACK_SIZE	= 0,
+      TASK_PRIORITY	= 50,
+      TIME_SLICE	= 0,
+      BUSY_LAMP_OFF	= 0,
+      ABORT_REQUEST	= 0,
+      PAUSE_REQUEST	= 0;
+DEFAULT_GROUP	= 1,*,*,*,*;
+CONTROL_CODE	= 00000000 00000000;
+/APPL
+
+AUTO_SINGULARITY_HEADER;
+  ENABLE_SINGULARITY_AVOIDANCE   : TRUE;
+/MN
+   1:  !********************* ;
+   2:  !Main program ;
+   3:  !Hand type:dual hand ;
+   4:  !********************* ;
+   5:   ;
+   6:  !Various set and move to wait pos ;
+   7:  UFRAME_NUM=0 ;
+   8:  UTOOL_NUM=5 ;
+   9:  PAYLOAD[1] ;
+  10:   ;
+  11:J PR[22] 100% FINE    ;
+  12:  !--------------------- ;
+  13:   ;
+  14:  !Detect request from robodrill ;
+  15:  !Normally notice of M30/M02 ;
+  16:  LBL[100] ;
+  17:  WAIT DI[1]=ON OR DI[2]=ON OR DI[3]=ON OR DI[4]=ON    ;
+  18:  !--------------------- ;
+  19:   ;
+  20:  !3-point correction if there is a ;
+  21:  !displacement of the cart ;
+  22:  CALL VISION_WAIT3    ;
+  23:  IF R[100:Num Grippers]=1,CALL VISION_3POINT3 ;
+  24:  IF R[100:Num Grippers]=1,CALL VISION_WAIT3 ;
+  25:  R[100:Num Grippers]=0    ;
+  26:  !--------------------- ;
+  27:   ;
+  28:  !Job of exchanging the work ;
+  29:  LBL[1000] ;
+  30:  !Judge the stop and start request ;
+  31:  IF ((DI[5]=ON OR R[81]>=R[85]) AND DI[2]=OFF),R[6]=(1) ;
+  32:  IF (DI[6]=ON AND DI[2]=OFF),R[6]=(2) ;
+  33:  IF (DI[2]=ON),R[7]=(1) ;
+  34:  !--------------------- ;
+  35:   ;
+  36:  !Pick an unmachined work ;
+  37:  !Skip when finished ;
+  38:  IF R[6]>0,JMP LBL[1100] ;
+  39:  CALL PICK_D_M3    ;
+  40:  !--------------------- ;
+  41:   ;
+  42:  LBL[1100] ;
+  43:  !Wait until M60 execution ;
+  44:  WAIT DI[1]=ON OR DI[2]=ON OR DI[3]=ON    ;
+  45:  !--------------------- ;
+  46:   ;
+  47:  !Check the door opening ;
+  48:  !and the work exchange position ;
+  49:  WAIT DI[10]=ON TIMEOUT,LBL[21100] ;
+  50:  WAIT DI[9]=ON TIMEOUT,LBL[21110] ;
+  51:  !--------------------- ;
+  52:   ;
+  53:  !Start signal processing ;
+  54:  CALL SIGNAL_INT    ;
+  55:  !--------------------- ;
+  56:   ;
+  57:  !Vision correction processing ;
+  58:  !at wait pos ;
+  59:  LBL[1110] ;
+  60:  CALL VISION_WAIT3    ;
+  61:  IF R[100:Num Grippers]=1,JMP LBL[1120] ;
+  62:  R[100:Num Grippers]=0    ;
+  63:  JMP LBL[1130] ;
+  64:   ;
+  65:  LBL[1120] ;
+  66:  IF R[6]<>1,CALL RETURN_M3 ;
+  67:  CALL VISION_3POINT3    ;
+  68:  CALL VISION_WAIT3    ;
+  69:  IF R[6]<>1,CALL PICK_D_M3 ;
+  70:  JMP LBL[1110] ;
+  71:   ;
+  72:  !Remove machined work ;
+  73:  !and mount unmachined work ;
+  74:  LBL[1130] ;
+  75:  CALL OUTSET_D3    ;
+  76:  !--------------------- ;
+  77:   ;
+  78:  LBL[1200] ;
+  79:  !Signal processing at completion ;
+  80:  CALL SIGNAL_END    ;
+  81:  !--------------------- ;
+  82:   ;
+  83:  !Check the door closing ;
+  84:  IF R[6]>0,JMP LBL[1300] ;
+  85:  WAIT DI[10]=OFF TIMEOUT,LBL[21200] ;
+  86:  !--------------------- ;
+  87:   ;
+  88:  !Processing of workpiece ;
+  89:  !pacement operation ;
+  90:  !skip when starting ;
+  91:  LBL[1300] ;
+  92:  IF R[7]>0,JMP LBL[1400] ;
+  93:  CALL PUT_D_M3    ;
+  94:  !--------------------- ;
+  95:   ;
+  96:  LBL[1400] ;
+  97:  R[7]=0    ;
+  98:  !End mode transition determine ;
+  99:  IF R[6]>0 OR R[82]>=R[85],JMP LBL[3000] ;
+ 100:  !--------------------- ;
+ 101:   ;
+ 102:  !Back to the top ;
+ 103:  JMP LBL[100] ;
+ 104:  !--------------------- ;
+ 105:   ;
+ 106:  !End mode ;
+ 107:  LBL[3000:ROBOT STOP   ] ;
+ 108:  !Decide processing according to ;
+ 109:  !the value of the end flag ;
+ 110:  IF R[6]=2,JMP LBL[3200] ;
+ 111:  IF R[6]=1,JMP LBL[3100] ;
+ 112:  JMP LBL[9000] ;
+ 113:  !--------------------- ;
+ 114:   ;
+ 115:  LBL[3100] ;
+ 116:  !Cycle stop request ;
+ 117:  !or 0 unprocessed work ;
+ 118:  !Send cycle stop req from robot ;
+ 119:  IF DI[5]=ON,JMP LBL[3150] ;
+ 120:  DO[15]=PULSE,0.2sec ;
+ 121:  WAIT DO[15]=OFF    ;
+ 122:  LBL[3150] ;
+ 123:  DO[3]=PULSE,0.3sec ;
+ 124:  WAIT DI[5]=OFF    ;
+ 125:  !--------------------- ;
+ 126:   ;
+ 127:  !Reset the end flag ;
+ 128:  R[6]=0    ;
+ 129:  !--------------------- ;
+ 130:   ;
+ 131:  !If unprocessed work remains, ;
+ 132:  !start cueing ;
+ 133:  IF R[81]<R[85],JMP LBL[100] ;
+ 134:  !--------------------- ;
+ 135:   ;
+ 136:  !When there is no unmachined work ;
+ 137:  !Reset count and go to LBL[9000] ;
+ 138:  R[81]=0    ;
+ 139:  R[82]=0    ;
+ 140:  JMP LBL[9000] ;
+ 141:  !--------------------- ;
+ 142:   ;
+ 143:  !System stop processing ;
+ 144:  LBL[3200] ;
+ 145:  DO[4]=PULSE,0.3sec ;
+ 146:  WAIT DI[6]=OFF    ;
+ 147:  !--------------------- ;
+ 148:   ;
+ 149:  !move to home pos and end program ;
+ 150:  LBL[9000] ;
+ 151:J PR[1] 100% FINE    ;
+ 152:  WAIT DO[3]=OFF AND DO[4]=OFF    ;
+ 153:  END ;
+ 154:  !--------------------- ;
+ 155:   ;
+ 156:  !Abnormal processing ;
+ 157:  LBL[21100] ;
+ 158:  UALM[1] ;
+ 159:  JMP LBL[1000] ;
+ 160:   ;
+ 161:  LBL[21110] ;
+ 162:  UALM[8] ;
+ 163:  JMP LBL[1000] ;
+ 164:   ;
+ 165:  LBL[21200] ;
+ 166:  UALM[2] ;
+ 167:  JMP LBL[1200] ;
+ 168:  !--------------------- ;
+ 169:   ;
+/POS
+/END
+
+
+## Citations
+
+- Primary: TWA (The Way Automation) Standard Programs (keywords: JOB, main program, CNC tending, RoboDrill, dual hand, machine tending, service request, left right).
+- Applicability: R-30iB Plus, CNC Machine Tending, RoboDrill.
+
+## Discrepancies
+
+None documented in the legacy source. Re-verify against a T1 vendor manual before promoting `status` from `draft` to `approved`.
+
+## Provenance
+
+- Migrated by: inline migration on 2026-04-22.
+- Source file: `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/examples/EG_JOB_B_CRDrill_DualHand.txt`.
+- Classification: examples / topic=anti_pattern.
+

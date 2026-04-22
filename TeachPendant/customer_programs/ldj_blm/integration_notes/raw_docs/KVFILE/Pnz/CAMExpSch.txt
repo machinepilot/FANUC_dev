@@ -1,0 +1,13 @@
+[VIEW]
+WorkDir=1
+ProfileOrder=0
+AxisGrid=1
+LineSmooth=0
+BackGroundBlack=1
+PixelSel=5
+[CONVERSION]
+UseG2-G3=0
+NumDivArc=-1
+MaxChordErr=0.01
+JointTol=0.001
+Export2D=0

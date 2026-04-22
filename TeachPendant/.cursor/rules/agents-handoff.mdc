@@ -1,0 +1,117 @@
+---
+description: How to read and emit schema-validated agent handoffs.
+globs: ["**/task_state.json", "**/HANDOFF_*.md", "**/PROGRAM_SPEC_*.md", "**/INTEGRATION_SPEC_*.md", "**/SAFETY_REVIEW_*.md", "**/QA_REVIEW_*.md", "**/INGESTION_ENTRY_*.md"]
+alwaysApply: false
+---
+
+# Agents Handoff Rule
+
+Applies to any document that passes between agents. These documents are validated against schemas in `cowork/schemas/` and are the interchange format of the agent cell.
+
+## The envelopes
+
+| Schema | Template | Produced by | Consumed by |
+|--------|----------|-------------|-------------|
+| `program_intake.schema.json` | (inlined in `task_state.intake`) | Intake | Architect |
+| `program_spec.schema.json` | `PROGRAM_SPEC_TEMPLATE.md` | Architect | Motion, Integration, Safety, QA |
+| `handoff.schema.json` | `HANDOFF_TEMPLATE.md` | Any | Next agent + Orchestrator |
+| `review.schema.json` | `QA_REVIEW_TEMPLATE.md` | QA | Orchestrator, Docs |
+| `safety_review.schema.json` | `SAFETY_REVIEW_TEMPLATE.md` | Safety | Orchestrator, Docs |
+| `dataset_entry.schema.json` | `INGESTION_ENTRY_TEMPLATE.md` | Ingestion pipeline / Research | QA |
+| `task_state.schema.json` | `task_state.template.json` | Orchestrator | All |
+
+## Pre-flight
+
+Before acting on an incoming envelope, validate:
+
+1. It conforms to its `schema_in`.
+2. All `source:` citations resolve (either to a `fanuc_dataset/` entry by `id`, or to an in-scope `customer_programs/<c>/...` file path with the `canonical: false` acknowledged).
+3. `created_at` and `created_by` are populated.
+4. Required fields are not empty or placeholder-only.
+
+If any pre-flight check fails, refuse the handoff; log a `conflict` in `task_state.conflicts[]` and kick back to the Orchestrator.
+
+## Body structure
+
+Every handoff document follows:
+
+```
+---
+<schema-valid frontmatter>
+---
+
+# <Title>
+
+## Summary
+
+## Inputs
+- Source envelope reference
+- Dataset citations
+
+## Findings / Proposal
+
+## Decisions
+- Decision + rationale + citation
+
+## Open Questions
+
+## Next Agent
+- name:
+- input: path to envelope they'll read
+- schema_in: which schema they validate against
+```
+
+## Citations
+
+Every claim in `Findings / Proposal` has a citation:
+
+- `source: [FANUC_REF_J_Motion]` - dataset entry.
+- `source: [customer_programs/ldj_blm/integration_notes/BLM_press_brake.md#modbus-map]` - customer-scoped, flagged as context.
+- `source: [external: "FANUC R-30iB V9 Operator's Manual", pages: 412-418, accessed: 2026-04-21]` - external but not yet normalized. Raises a gap ticket.
+
+No citation = no claim. If you cannot cite, mark the point as `speculative: true` and kick to research.
+
+## task_state.json mechanics
+
+- One `task_state.json` per task directory.
+- Orchestrator owns writes to top-level fields (`status`, `updated_at`, `conflicts`, `handoffs`, `artifacts`).
+- Specialist agents append under their namespaced key (`intake`, `architect`, `motion`, `integration`, `safety`, `qa`, `documentation`).
+- Never overwrite another agent's key. If you need to amend, add a revision entry with `supersedes: <prev_revision>`.
+
+## Conflict handling
+
+If two agents disagree:
+
+```json
+{
+  "conflicts": [
+    {
+      "id": "conflict-001",
+      "raised_by": "safety",
+      "about": "architect.motion.speed",
+      "position_a": "Architect proposes 1500 mm/s",
+      "position_b": "Safety: DCS CSC1 limit is 1000 mm/s",
+      "citations": ["FANUC_SAFE_DCS_Cartesian_Speed_Check", "customer_programs/ldj_blm/integration_notes/dcs_config.md"],
+      "resolution": null
+    }
+  ]
+}
+```
+
+The Orchestrator resolves per `cowork/workflows/*.md`. If canon resolves it, defer. If canon is silent, escalate.
+
+## Close the loop
+
+When a handoff is produced, append to `task_state.handoffs[]`:
+
+```json
+{
+  "from": "architect",
+  "to": "motion-synthesis",
+  "envelope": "PROGRAM_SPEC_PNS0001.md",
+  "schema": "program_spec.schema.json",
+  "at": "2026-04-21T10:15:00Z"
+}
+```
+
+And update `task_state.status` as appropriate (`in_architect`, `in_motion`, `in_safety`, ...).

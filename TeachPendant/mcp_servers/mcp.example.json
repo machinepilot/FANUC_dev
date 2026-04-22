@@ -1,0 +1,29 @@
+{
+  "mcpServers": {
+    "fanuc-knowledge": {
+      "command": "python",
+      "args": ["-m", "fanuc_knowledge.server"],
+      "cwd": "{WORKSPACE_PATH}/mcp_servers/fanuc_knowledge",
+      "env": {
+        "DATASET_ROOT": "{WORKSPACE_PATH}/fanuc_dataset/normalized",
+        "EMBEDDING_BACKEND": "none",
+        "OLLAMA_MODEL": "nomic-embed-text",
+        "OLLAMA_HOST": "http://localhost:11434"
+      }
+    },
+    "program-repository": {
+      "command": "python",
+      "args": ["-m", "program_repository.server"],
+      "cwd": "{WORKSPACE_PATH}/mcp_servers/program_repository",
+      "env": {
+        "CUSTOMERS_ROOT": "{WORKSPACE_PATH}/customer_programs"
+      }
+    },
+    "fanuc-safety-lint": {
+      "command": "python",
+      "args": ["-m", "fanuc_safety_lint.server"],
+      "cwd": "{WORKSPACE_PATH}/mcp_servers/fanuc_safety_lint",
+      "env": {}
+    }
+  }
+}

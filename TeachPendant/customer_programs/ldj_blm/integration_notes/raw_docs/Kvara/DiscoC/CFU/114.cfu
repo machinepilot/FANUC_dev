@@ -1,0 +1,59 @@
+Ciclo fisso movim. pestone con volantino Ver.012.61 : 114
+ IF( %C33.13 ) JMPF 100
+ VA0 = %C91 / 1000 ;quota da PLC
+ IF( (VA0 > VG1) || (VA0 < VG0) ) JMPF 1000
+ JMPF 300
+N100
+ VL48 = 0 ;esclude gestione offset Y1-Y2 se JOG su limite SW
+ VL47 = 1
+ IF( %C33.14 ) JMPF 200
+ VA0 = VG1
+ JMPF 300
+N200
+ VA0 = VG0
+N300
+ ;se gli assi sono sincronizzati, la quota è quella di Y1, e Y2 mantiene l'offset
+ IF( %C33.15 ) JMPF 400
+ ;Campionamento disallineamento per volantino
+ IF(VL47 == 0) THEN
+  VL48 = QTA(Y) - QTA(X)
+  VL47 = 1
+  VL49 = 0 ;azzera quota asse escluso dal movimento
+  VL50 = 0
+ ENDIF
+ VA1 = VA0
+ VA2 = VA0 + VL48
+ JMPF 500
+N400
+ ;se gli assi sono indipendenti, muovo solo quello selezionato
+ VL47 = 0 ;forza ricampionamento offset
+ IF( %selasse == 1 ) JMPF 450
+ IF( VL50 == 0 ) VL50 = QTA(Y)
+ VL49 = 0
+ VA1 = VA0
+ VA2 = VL50
+ JMPF 500
+N450
+ IF( VL49 == 0 ) VL49 = QTA(X)
+ VL50 = 0
+ VA1 = VL49
+ VA2 = VA0
+
+N500
+ IF( VA0 < (%ax[%selasse].ra4 / 1000) ) JMPF 600
+ ;salita
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[49],%pst[50],0,0,0,0,0.01,1)
+ _ppmove_sx(0x01,X,Y,0,0,0x02,%pst[27],%pst[26],VA1,VA2,0,0,%pst[30],0)
+ JMPF 1000
+N600
+ ;discesa
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[28],%pst[29],0,0,VL36,0,0.01,1)
+ VL16 = %pst[26] ;carica velocità discesa lenta
+ IF(VL16>600) VL16 = 600 ;limita la velocità per norme di sicurezza
+ _ppmove_sx(0x01,X,Y,0,0,0x02,%pst[27],VL16,VA1,VA2,0,0,%pst[30],0)
+
+N1000
+ ?%C18.15 = 1 ;sincronismo ciclo eseguito a PLC
+ _wait_bit( 0,"%C33.25",1) ;attende sincronismo di ritorno da PLC
+ ?%C18.15 = 0
+ RET

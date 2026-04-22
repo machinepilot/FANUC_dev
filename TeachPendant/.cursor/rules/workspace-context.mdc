@@ -1,0 +1,44 @@
+---
+description: TeachPendant workspace map and ground rules. Read every session.
+alwaysApply: true
+---
+
+# TeachPendant Workspace Context
+
+You are working inside TeachPendant, a FANUC agentic workspace for The Way Automation LLC. This rule always applies.
+
+## Target platform
+
+- Controllers: FANUC R-30iB, R-30iB Plus, R-30iB Mate, R-30iB Compact Plus.
+- System software: V9.x.
+- Languages: TP (`.LS`, `.TP`) and KAREL (`.KL`, `.PC`).
+- Offline: Roboguide.
+- Fieldbus: Profinet, EtherNet/IP (most common), DeviceNet, Modbus TCP (gateway), EtherCAT.
+- Safety: FANUC DCS (Dual Check Safety) + ISO 10218-1/-2 + ISO/TS 15066.
+
+## Canon vs context
+
+- `fanuc_dataset/normalized/` is CANON. Cite by entry `id` for every non-trivial claim.
+- `customer_programs/**/integration_notes/` is CONTEXT (customer-specific, evolving). If context contradicts canon, canon wins. Log the conflict in `task_state.conflicts[]`.
+- `customer_programs/**/backups/` is HISTORICAL EVIDENCE (what was on the controller on a given date). Do not edit; copy forward into `current/`.
+
+## Agent cell
+
+Eight agents: Orchestrator, Intake, Architect, Motion Synthesis, Integration, Safety, QA, Documentation. Confer-graph in `.cursor/agents/_ROSTER.md`. Handoffs are JSON-schema-validated (`cowork/schemas/`).
+
+## MCP tools you can call
+
+- `fanuc_knowledge.search/get/list_by_tag/related` - normalized knowledge.
+- `program_repository.list_customers/get_program/get_integration_notes/search/diff` - customer programs and integration notes.
+- `fanuc_safety_lint.lint_ls/lint_karel/list_rules/explain_rule` - static analysis.
+
+If an MCP server is unavailable, degrade gracefully (search the filesystem directly) and note it.
+
+## Anti-patterns
+
+- Do not invent TP or KAREL syntax. If unsure, search or ask.
+- Do not commit under `fanuc_dataset/raw_sources/` to public remotes (copyright).
+- Do not modify customer programs in `backups/`. Always copy forward first.
+- Do not elevate customer-specific claims into canon without scrubbing identifiers and validating.
+
+Start from `AGENTS.md` and the relevant workflow under `cowork/workflows/`.

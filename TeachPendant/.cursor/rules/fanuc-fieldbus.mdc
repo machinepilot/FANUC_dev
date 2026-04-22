@@ -1,0 +1,86 @@
+---
+description: FANUC fieldbus and UOP/PNS handshake conventions.
+globs: ["**/INTEGRATION_SPEC_*.md", "**/IO_MAP_*.md", "**/*.LS", "**/*.KL", "**/PMC_*.md"]
+alwaysApply: false
+---
+
+# FANUC Fieldbus Rule
+
+Apply when specifying I/O maps, UOP wiring, PNS selection, or writing code that handshakes with an external PLC / HMI / press brake.
+
+## Handshake flavors
+
+FANUC supports several program-select patterns. Pick one, document it, don't mix.
+
+### PNS (Program Number Select)
+
+- External selects a program via `UI[9..16]` as a binary number.
+- Strobe pulse on `UI[17] PNSTROBE`.
+- Robot ACKs via `UO[11..18] PNS_ACK1..8` and `UO[10] SNACK`.
+- Robot starts on `UI[18] PROD_START` (edge, not level).
+
+### Style Select (SDI)
+
+- Uses Style inputs configured via System / UOP / Style menu.
+- Looks up style via Style Table to a program.
+
+### RSR (Robot Service Request)
+
+- Legacy; avoid on new integrations.
+
+## UOP signal baseline (R-30iB)
+
+| Signal | Index | Direction | Meaning |
+|--------|-------|-----------|---------|
+| IMSTP | UI[1] | In | Immediate stop (Cat 0 / Cat 1 per config) |
+| HOLD | UI[2] | In | Pause (Cat 2) |
+| SFSPD | UI[3] | In | Safety speed (teach limit) |
+| CSTOPI | UI[4] | In | Cycle stop |
+| FAULT_RESET | UI[5] | In | Clear active alarm |
+| START | UI[6] | In | Continue / start from paused |
+| HOME | UI[7] | In | Custom per integration (not standard) |
+| ENBL | UI[8] | In | Robot enabled; must be ON for motion |
+| RSR1..8 / PNS1..8 | UI[9..16] | In | Program number select bits |
+| PNSTROBE | UI[17] | In | Strobe PNS bits |
+| PROD_START | UI[18] | In | Start selected program |
+| CMDENBL | UO[1] | Out | Command enable |
+| SYSRDY | UO[2] | Out | System ready |
+| PROGRUN | UO[3] | Out | Program running |
+| PAUSED | UO[4] | Out | Program paused |
+| HELD | UO[5] | Out | Held |
+| FAULT | UO[6] | Out | Fault active |
+| ATPERCH | UO[7] | Out | At perch (home) |
+| TPENBL | UO[8] | Out | Teach pendant enabled |
+| BATALM | UO[9] | Out | Battery alarm |
+| BUSY | UO[10] | Out | Busy |
+| ACK1..8 / SNO1..8 | UO[11..18] | Out | PNS ack |
+
+Always confirm indices against the specific integration's controller config; some OEM builds shift the mapping.
+
+## PLC side (EtherNet/IP or Profinet master)
+
+- Always hold `IMSTP`, `HOLD`, `SFSPD`, `ENBL` high at steady state.
+- Pulse `FAULT_RESET` (rising edge) to clear faults. Do not hold high.
+- Wait for `CMDENBL` and `SYSRDY` before asserting `PROD_START`.
+- Verify `PROGRUN` transitions to ON after `PROD_START`, or treat as a start failure.
+
+## Group signals
+
+- `GI[]` / `GO[]`: bitfields mapped from DI/DO ranges. Used for part IDs, style codes, error codes.
+- Document bit ordering (MSB vs LSB, which DI carries bit 0) in `INTEGRATION_SPEC_*.md`.
+
+## Anti-patterns
+
+- Asserting `PROD_START` as a level instead of an edge.
+- Asserting multiple `PNS` bits without a strobe.
+- Polling `PROGRUN` without a timeout.
+- Mapping fault recovery to a single `FAULT_RESET` without a supervisor inspection checklist.
+- Using `DI[]/DO[]` for program-select when PNS is available.
+
+## Modbus TCP (press-brake and third-party integrations)
+
+Handled via a KAREL or PC SDK bridge (see `tools/mqtt_bridge/` or a customer-specific KAREL). Canon: `fanuc_dataset/normalized/protocols/ONE_press_brake_modbus_integration.md`.
+
+## Documentation
+
+Fieldbus specifications live in `INTEGRATION_SPEC_*.md` using `cowork/templates/INTEGRATION_SPEC_TEMPLATE.md`. The I/O table is machine-parseable (markdown table with fixed columns).

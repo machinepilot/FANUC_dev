@@ -1,0 +1,34 @@
+SECTION User //********** Sezione User **************************
+
+//-------------------------------------------------------------------
+//  Struttura per la gestione della barra LED WILA via UDP
+
+typedef struct {
+    word WilaObjLength;
+    byte WilaObjType;           // 0=OFF 1=ON 2=FRONT 3=BACK  4=BLINKING 5=NUMBER
+    byte WilaObjParam;          // not used
+} S_WILAOBJECT;
+
+typedef struct {
+    byte WilaGrpObjNumber;      // 1-32
+    word WilaGrpStartPos;       // Start Position
+} S_WILAGROUP;
+
+typedef struct {
+    byte    WilaReqState;           // State required from PLC
+    byte    WilaAckState;           // Actual state
+    byte    WilaNMaxGroup;          // Number of programmed group
+    byte    WilaNMaxObject;         // Number of programmed object
+    dword   WilaError;              // Mask error
+
+    S_WILAOBJECT  WilaObjectList[32];
+    S_WILAGROUP   WilaGroupListA[64];   // Group List 1
+    S_WILAGROUP   WilaGroupListB[64];   // Group List 2
+} S_WILABAR;
+
+RETAIN byte  WilaBrightness;    // Brightness %0-100
+RETAIN dword WilaNMaxBoard;     // NMax LEDs board
+
+S_WILABAR  WilaBar[2];          // Wila bars
+
+ENDSECTION User //*************** Sezione Applicativo ******************

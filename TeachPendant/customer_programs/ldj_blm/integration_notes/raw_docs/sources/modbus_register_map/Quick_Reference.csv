@@ -1,0 +1,28 @@
+ESABEND MODBUS - QUICK REFERENCE,,,,,
+MOST COMMONLY USED REGISTERS,,,,,
+Address,Size,Type,R/W,Description,Notes
+0,1,WORD,W,Mode Selection,"BIT0=Editor, BIT1=Manual, BIT2=Semi, BIT3=Auto"
+1,1,WORD,W,Command Strobe,"BIT0: 1=Execute, 0=Complete"
+2,2,DWORD,W,Command Opcode,See Command Opcodes sheet
+9,4,DOUBLE,W,Data (DOUBLE),"For angles, dimensions, etc."
+53,40,STRING,W,Data (STRING),Program names (80 chars max)
+1024,2,DWORD,R,Error Code,"0=Success, Non-zero=Error"
+1026,100,STRING,R,Error Header,200 characters
+1126,100,STRING,R,Error Description,200 characters
+1226,1,WORD,R,Mode Acknowledgment,Mirrors mode selection bits
+1227,1,WORD,R,Active Mode,Current operating mode
+1231,1,WORD,R,Command Ack,BIT0: Command acknowledgment
+1232,1,WORD,R,Bend Type,Current bend type
+1242,4,DOUBLE,R,Thickness,Current material thickness (mm)
+1253,4,DOUBLE,R,Angle Y1,Current bending angle Y1 (degrees)
+1257,4,DOUBLE,R,Angle Y2,Current bending angle Y2 (degrees)
+1965,82,STRING,R,Program Name,Current program name (164 chars)
+KEY COMMAND OPCODES,,,,,
+Opcode,Command,Data Reg,Description,,
+3030,LOAD_PROG,53,Load program by name,,
+3008,START,-,Start cycle,,
+3007,STOP,-,Stop cycle,,
+3013,NEXT,-,Move to next bend,,
+1009,CHANGE_ANGLE_Y1,9,Modify angle Y1 (degrees),,
+1006,CHANGE_THICKNESS,9,Modify thickness (mm),,
+0,CHANGE_PIECES,7,Set programmed pieces,,

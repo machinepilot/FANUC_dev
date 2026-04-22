@@ -1,0 +1,31 @@
+Ciclo fisso utente riscontri X3-Z3 prima della anticoll Ver.012.40 : 611
+
+ _wait_bit( 0,"%C39.28",1) ;attende avvio primo step da CH1
+ SYN ;legge le quote solo quando sono pronte (non in anticipo)
+
+ ;se X3 si deve muovere
+ IF (!(ISQNAN(VG2))) THEN
+  ;se target sicuro diverso da target finale
+  IF(VG2 != VG4) THEN
+   RCG[X]=0 ;disabilita recupero giochi
+   G0 XVG2 ;muove X3
+   RCG[X]=1 ;ripristina il recupero giochi
+  ;se target sicuro uguale a target finale
+  ELSE
+   G0 XVG2 ;muove X3
+  ENDIF
+ ENDIF
+
+ ?%C22.28 = 1 ;segnala primo step terminato a CH1
+
+ _wait_bit( 0,"%C39.29",1) ;attende avvio secondo step da CH1
+
+ IF (!(ISQNAN(VG5))) THEN
+  JSR 612 ;gestione zeta passivo con Z3
+ ELSE
+  G0 VVG3 ;muove Z3
+ ENDIF
+
+ ?%C22.29 = 1 ;segnala secondo step terminato a CH1
+
+RET

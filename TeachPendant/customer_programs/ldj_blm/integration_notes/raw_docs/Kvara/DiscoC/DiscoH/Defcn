@@ -1,0 +1,1586 @@
+#include <defcn.h>
+SECTION SysInfo   //********** Sezione di Informazioni di Sistema *************
+typedef struct{
+    string Model[30];
+    string TechnicalReferent[30];
+    dword  SerialNumber;
+    dword  WriteCount;
+    dword  LastWriteDate;
+    dword  GenInfo[16];        //CAN IRQ, etc.
+} SYS_INFO;
+
+typedef struct{
+    dword   MaxAxis;
+    dword   UserOptions;
+    dword   UserOptionsExt;
+} CN_INFO;
+
+typedef struct{
+    dword   TLtime;
+    dword   TLset;
+    dword   TLCustomerCode;
+} TL_INFO;
+
+typedef struct{
+    dword   TEtime;
+    dword   TEset;
+} TE_INFO;
+
+SYS_INFO    SystemInfo;
+CN_INFO     CNInfo;
+TL_INFO     TLInfo;
+TE_INFO     TEInfo;
+ENDSECTION SysInfo//********** Sezione di Informazioni di Sistema *************
+
+SECTION System //************ Sezione di Sistema ******************************
+typedef struct {
+    double  va[NUM_VA];
+}VA;
+
+typedef struct {
+    CHKSUM  dword du[16];          // Parametri Dati-Geometria Utensile
+    RETAIN  string desc[32];       // Descrittore utensili
+}DU;
+
+typedef struct {
+    PERSIST dword do[4];           // Parametri Dati Origini
+}SR;
+
+//---------------- STRUTTURA PER WARP ENGINE ------------------
+typedef struct{
+    byte    dlenab;          //deceleration look ahead ENABLE
+    byte    dlsight;         //deceleration Look ahead sight
+    byte    dlmode;          //deceleration Look ahead MODE
+    double  arc;             //arc tolerance for automatic feed limitation
+    byte    fdcenab;         //feed control enable
+    double  fca;             //feed characteristics 0
+    double  fcb;             //feed characteristics 1
+    double  fcc;             //feed characteristics 2
+    double  fcd;             //feed characteristics 3
+    byte    tcenab;          //Transient control enab
+    double  tca;             //transient characteristics 0
+    double  tcb;             //transient characteristics 1
+    double  tcc;             //transient characteristics 2
+    double  tcd;             //transient characteristics 3
+}FDC;
+
+typedef struct {
+      string  filename[128];       // Nome file livello n
+      dword   curline;             // Linea corrente livello n
+      dword   curptr;              // Puntatore corrente livello n
+}SUBLEV;
+
+//JOG_EXT subsystem
+typedef struct {
+    dword   rcAxSequence;
+
+    dword   rcSgnRot;
+    dword   rcAngRot;
+
+    dword   rcTransMode;
+    dword   rcX;
+    dword   rcY;
+    dword   rcZ;
+
+} Nf_ROTAcD_CFG;
+
+typedef struct {
+    dword   scSgnSldX;
+    dword   scSgnSldY;
+    dword   scSgnSldZ;
+
+    dword   scX;
+    dword   scY;
+    dword   scZ;
+
+} Nf_SLcD_CFG;
+
+typedef struct {
+    double  ccSiCoApRa;
+
+} Nf_CEcD_CFG;
+
+typedef struct {
+    dword   ncRotMode;
+
+    dword   ncSgnRota;
+    dword   ncAngRota;
+
+    dword   ncTransModea;
+    dword   ncXa;
+    dword   ncYa;
+    dword   ncZa;
+
+    dword   ncNutatingAngb;
+
+    dword   ncSgnRotb;
+    dword   ncAngRotb;
+
+    dword   ncTransModeb;
+    dword   ncXb;
+    dword   ncYb;
+    dword   ncZb;
+
+    dword   ncSgnRotc;
+    dword   ncAngRotc;
+
+    dword   ncTransModec;
+    dword   ncXc;
+    dword   ncYc;
+    dword   ncZc;
+
+} Nf_NUTAc_CFG;
+
+typedef struct {
+    Nf_SLcD_CFG     nfJoCartesian;
+    Nf_CEcD_CFG     nfJoCutEdge;
+    Nf_NUTAc_CFG    nfSeFrame;
+    Nf_NUTAc_CFG    nfSeTwistHead;
+    Nf_NUTAc_CFG    nfSeToolHolder;
+    Nf_ROTAcD_CFG   nfJoTool;
+
+} NUTAf_HEAD_CFG;
+
+typedef struct {
+    Nf_SLcD_CFG     nfJoCartesiana;
+    Nf_NUTAc_CFG    nfSeFramea;
+    Nf_NUTAc_CFG    nfSeTwistHead;
+    Nf_NUTAc_CFG    nfSeFrameb;
+    Nf_SLcD_CFG     nfJoCartesianb;
+
+} NUTAf_TABLE_CFG;
+
+typedef struct {
+    dword           mkInvKineMode;
+    NUTAf_HEAD_CFG  mkNutatorfHead;
+    NUTAf_TABLE_CFG mkNutatorfTable;
+    dword           mkSpcKineType;
+    dword           mkCartA;    //CYL:off0      MIT:off0
+    dword           mkCartB;    //              MIT:off1
+    dword           mkCartC;    //CYL:r
+    dword           mkPolA;     //CYL:phi       MIT:phi
+    dword           mkPolB;     //
+    dword           mkPolC;     //
+    dword           mkFlags;    //see above
+
+    dword           mk_dwSpare[16];
+    double          mk_dSpare[16];
+
+} MX_KINE;
+//JOG_EXT subsystem
+
+typedef struct {
+      byte    sts[13];             // bMOD ( Ax, Ay, Az, Aa, Ab, Ac )
+      double  a[12];               // [ a11 a12 a13 a14 ]
+                                   // [ a21 a22 a23 a24 ]
+                                   // [ a31 a32 a33 a34 ]
+      word    MatCount;
+
+    //JOG_EXT subsystem
+    MX_KINE mxKine;
+
+    double  Mat_tCoff;           // offset C per gui
+    double  Mat_tBoff;           // offset B per gui
+
+}MAT;
+
+typedef struct {
+//input
+        string PrgSearch[256];
+        dword  Numline;
+        dword  NumIt;
+        dword  VelAt;
+        byte   AuxCmd;
+        dword  Option;  //
+                        // bit_0: 0: Overstore + AuxCmd 1: AuxCmd + Overstore
+                        // bit_1: 0: Funz M sequenziali 1: Funz M compattate
+                        // bit_2: 0: AuxCmd G0_INTERP   1: AuxCmd G1
+                        // bit_3: 0: Funz T sequenziali 1: Funz T compattate
+                        // bit_4: 0: Funz D sequenziali 1: Funz D compattate
+                        // bit_5: 0: AuxCmd  Pf         1: AuxCmd Pi
+                        // bit_6: 0: Vedi bit_5         1: AuxCmd interno al
+                        //                                 blocco (vedi bit_7)
+                        // bit_7: 0: usa parametro 0..1 1: usa coordinate XYZ
+                        // bit_8: 1: AuxCmd preceduto da GRP[]=0 M25037 GRP[]=1
+                        // bit_9: 1: AuxCmd G0_INDIP   1: vedi bit_2
+
+        dword   MskMoveA;       //Maschera assi primo movimento
+        //Ricerca interna al blocco
+        dword   siPrIn;         //Parametro [0..1] (x1000000)
+        dword   siPosX;         //Coordinate XYZ   (x1000)
+        dword   siPosY;
+        dword   siPosZ;
+//output
+    byte   Validate;//convalida i dati trascritti sotto
+        dword  fnM[50];
+        dword  fnT[5];
+        dword  fnD[5];
+        dword  fnS[12];
+        dword  fnF;
+        MAT    Matrice;
+
+        //Ricerca interna al blocco
+        dword   siPrOut;        //Parametro [0..1]  (x1000000)
+        dword   siPointPosX;    //Coordinate XYZ    (x1000)
+        dword   siPointPosY;
+        dword   siPointPosZ;
+//output aux
+    SUBLEV levinfo[8];
+    dword  level;
+}SEARCH_INFO;
+
+typedef struct {
+    //flags:
+    //0x00000001    //CL_LINK_ENABLE
+    dword           clFlags;
+    dword           clChannel;
+
+}CH_LINKAGE;
+
+typedef struct {
+    //flags:
+    //0x00000001    //AL_LINK_ENABLE
+    dword           alFlags;
+    dword           alSystemWide;
+
+}AX_LINKAGE;
+
+// Gestione ANTISLITTAMENTO (rif. TAURING)
+typedef struct{
+    CHKSUM byte     byMaster;       // =1 indica asse master
+    CHKSUM dword    dwVelMaxRPM;    // Vel. massima ruota trascinam. (rpm)
+    CHKSUM dword    dwVelMinRPM;    // Vel. di mantenimento ruota (rpm)
+    CHKSUM dword    dwLimiteMin;    // Limite minimo antislittamento
+    CHKSUM dword    dwLimiteMax;    // Limite massimo antislittamento
+    CHKSUM dword    dwParC[10];     // Per futuri utilizzi
+           dword    dwCmd;          // Registro comandi a bit
+           dword    dwStatus;       // Registro status a bit
+           dword    dwPar[10];      // Per futuri utilizzi
+} ANTSLT;
+
+typedef struct {
+    CHKSUM dword   cc[64];         // Parametri configurazione canali.
+    CHKSUM dword   pc[64];         // Parametri canali.
+    CHKSUM dword   gc[24];         // Geometria canali.
+    SR             sr[NUM_ORIG];   // Dati Origini
+    dword          rc[128];        // Registro di comando e stato canali.
+    RETAIN double  vl[NUM_VL];     // Variabili locali.
+    VA             lv[NUM_NEST];   // Livello di nesting variabili automatiche.
+    string         ms[64];         // Buffer stringa messaggi da Part Program.
+    CHKSUM string  nm[8];          // Buffer stringa nome canale.
+    CHKSUM FDC     fdc;            // Struttura Dati Warp Engine
+    PERSIST string StrPgm[128];    // Stringa contenente il nome del PP usata se il registro  CI_NUMPRG==-1
+    SUBLEV         lev[8];         // Struttura Dati Refresh Sincrono
+    RETAIN dword   CurrLev;        // Necessario per il ripristino
+    dword          lockrfsh[2];    // Meccanismo Lock/Unlock ( in preparaz. )
+    SEARCH_INFO    BlkSearch;      // input/output  ricerca blocco
+    RETAIN MAT     mat;            // Struttura Dati Refresh Matrici
+    MAT            frame;          // Struttura Dati Frame jogging
+    dword          rgc[10];        // Registri FB PLC specifici per canale
+    dword          cnfb[32];       // Array Interfaccia Function Block
+    dword          cyc[16];        // Array Interfaccia Iso/PLC cicli di tastatura
+
+    CHKSUM word    wScaling;       // Fattore di scala (risoluzione in um)
+    dword          dyncc[16];      // Gestione SysWide Dinamici ( Tecnotransfer ).
+	dword          FnzM[8];
+    PERSIST dword  DisabVisAX;     // Maschera per disabilitare visualizzazione assi in Monitor Canale
+
+    RETAIN double  shpPointA[3];   // vertice A comando SHP
+    RETAIN double  shpPointB[3];   // vertice B comando SHP
+    RETAIN dword   shpFlags;       // flags (0x01 = dati validi)
+
+    AX_LINKAGE     cFirstAxis;
+}CN;
+
+typedef struct {
+    CHKSUM dword   pa[128];        // Parametri assi e mandrini.
+
+    //Dati assi simbolici (attualmente non fanno uso di union)
+    //
+    CHKSUM double  dDacRef;        // Tensione con massima vel. [V] (soli assi DC)  (PV >= 1)
+    CHKSUM double  dQFattConv;     // N.ro impulsi encoder per mm (num)             (PV >= 1)
+    CHKSUM double  dQFattConvDiv;  // N.ro impulsi encoder per mm (denom)           (PV >= 1)
+
+    CHKSUM double  dQFcReduction;     // Corsa del carico in mm (num)
+    CHKSUM double  dQFcDivReduction;  // Riduzione in impulsi (denom)
+    //
+    //Dati assi simbolici (attualmente non fanno uso di union)
+
+    CHKSUM word    wScaling;       // Fattore di scala (risoluzione in um)
+
+    CHKSUM dword   nvel[20];       // Byte Out NVEL.
+    CHKSUM dword   nbit[20];       // Bit Out NVEL
+           dword   fb[24];         // Array Interfaccia Function Block
+           dword   canopen[16];    // Array Interfaccia CNC->PLC per Motion Control CanOpen
+
+           dword   ra[128];        // Registro di comando e stato assi/mandrini.
+    CHKSUM dword   cal[4];         // Array salvataggio calibrazione assi da Potenziometro
+    CHKSUM string  nam[8];         // Stringa nome asse.
+    PERSIST dword  dwMeasure;      // Quota Misurata non volatile
+
+    CHKSUM double  dAbsEncOffs;    // Offset encoder assoluto
+    RETAIN byte    byHwType;       // Tipo di dispositivo con interfaccia
+    CHKSUM dword   dwTimMaxErr;    // Tempo massimo sequenza errori
+    CHKSUM dword   dwSpaceMaxErr;  // Spazio massimo sequenza errori
+
+    //Statistica errori encoder assoluti
+           dword   num_err_tot;    // Numero totale errori
+           dword   tim_err_tot;    // Tempo per numero totale errori
+           dword   num_err_seq;    // Sequenza massima di errori consecutivi
+           dword   tim_err_seq;    // Tempo per sequenza massima di errori consecutivi
+           dword   qta_err_seq;    // Quota di inizio sequenza massima di errori consecutivi
+           word    in_dummy_cmd;   // bit 0=reset contatori qui sopra
+                                   // bit 1=acquisisce parametri corr errori e abil.
+           word    out_dummy_cmd;  // stb del suddetto registro
+    CHKSUM byte    bEnableTpb;     // Abilita correzione errori
+
+    CHKSUM byte     bEnableTrasloMode;
+    //Traiettoria
+    CHKSUM double   TRA_IIR_T_S;
+    //Regolazione
+    CHKSUM double   TRA_Max_ess;
+    CHKSUM double   TRA_IIR_T_ess;
+    CHKSUM double   TRA_dband_pos;
+    CHKSUM double   TRA_dband_neg;
+    CHKSUM double   TRA_vo_offset;
+    CHKSUM double   TRA_estop_jrk;
+    //Monitor
+           dword    TRA_Cur_l_vf;
+           dword    TRA_Cur_l_af;
+           byte     TRA_Cur_bZeroClamp;
+    //Troubleshoot
+    CHKSUM double   TRA_AuxA;
+    CHKSUM double   TRA_AuxB;
+    CHKSUM double   TRA_AuxC;
+    CHKSUM double   TRA_AuxD;
+    //Scheduling
+    CHKSUM double   TRA_IIR_T_a;
+    CHKSUM double   TRA_IIR_T_j;
+    CHKSUM double   TRA_S_Creep_Coarse;
+    CHKSUM double   TRA_S_Creep_Fine;
+    CHKSUM double   TRA_S_Standstill;
+    CHKSUM double   TRA_S_Hysteresis;
+    CHKSUM double   TRA_V_LockWindow;
+    CHKSUM double   TRA_V_Creep_Coarse;
+    CHKSUM double   TRA_V_Creep_Fine;
+    CHKSUM double   TRA_V_StandingStill;
+    //Simulazione
+    CHKSUM byte     TRA_bEnableKineSim;
+    CHKSUM dword    TRA_ProbeLocation;
+    CHKSUM double   TRA_ProbeKp;
+    CHKSUM double   TRA_ProbeKvff;
+    CHKSUM double   TRA_gearbox_lag;
+    CHKSUM double   TRA_cA;
+    CHKSUM double   TRA_kA;
+    CHKSUM double   TRA_mA;
+    CHKSUM double   TRA_ccA;
+    CHKSUM double   TRA_cB;
+    CHKSUM double   TRA_kB;
+    CHKSUM double   TRA_mB;
+    CHKSUM double   TRA_ccB;
+    CHKSUM dword    TRA_EncLocation;
+    CHKSUM double   TRA_signal_decay;
+    //Troubleshoot
+    CHKSUM double   TRA_AuxE;
+    CHKSUM double   TRA_AuxF;
+    CHKSUM double   TRA_AuxG;
+    CHKSUM double   TRA_AuxH;
+    //Trasduttore
+    CHKSUM double   TRA_Tpb_Tsample;
+    CHKSUM double   TRA_Tpb_IIR_T_v;
+    CHKSUM double   TRA_Tpb_Delay;
+    CHKSUM double   TRA_Tpb_IIR_T_DC;
+    CHKSUM double   TRA_Tpb_MaxA;
+    //Simulazione trasduttore
+    CHKSUM byte     TRA_TpbS_bEnable;
+    CHKSUM double   TRA_TpbS_Delay;
+    CHKSUM double   TRA_TpbS_Reso;
+    CHKSUM double   TRA_TpbS_DropoutHz;
+    CHKSUM double   TRA_TpbS_DropoutT;
+    CHKSUM double   TRA_TpbS_NoiseHz;
+    CHKSUM double   TRA_TpbS_NoiseT;
+    CHKSUM double   TRA_TpbS_Tsample;
+    CHKSUM double   TRA_TpbS_NoiseAmp;
+    //Troubleshoot
+    CHKSUM double   TRA_AuxI;
+    CHKSUM double   TRA_AuxJ;
+    CHKSUM double   TRA_AuxK;
+    CHKSUM double   TRA_AuxL;
+    CHKSUM double   TRA_AuxM;
+    CHKSUM double   TRA_AuxN;
+    CHKSUM double   TRA_AuxO;
+    CHKSUM double   TRA_AuxP;
+
+           ANTSLT antslt;       // Parametri per gestione antislittamento (rif. TAURING)
+
+            //To be Removed
+           dword    TRA_l_SpareA;
+           dword    TRA_l_SpareB;
+           dword    TRA_l_SpareC;
+           dword    TRA_l_SpareD;
+           dword    TRA_l_SpareE;
+           dword    TRA_l_SpareF;
+           dword    TRA_l_SpareG;
+           dword    TRA_l_SpareH;
+            //To be Removed
+
+    dword AxUserData[NUM_AX_USER_DATA];
+
+    // D.ELECTRON
+    dword DE_tmp[10];
+
+    dword   rga[16]; // Registri per PLC (aggancio asse, usati solo da FB)
+    double  rgda[8]; // Registri per SlaCOUP (fase di aggancio asse)
+
+    dword   rgau[10]; // Registri per SlaCOUP (run-time con asse agganciato)
+    double  rgdau[8]; // Registri per SlaCOUP (run-time con asse agganciato)
+
+    AX_LINKAGE      aMaster;
+    AX_LINKAGE      aFirstSlave;
+    AX_LINKAGE      aNextPeer;
+
+    CH_LINKAGE      aChannel;
+}AX;
+
+typedef struct{
+    CHKSUM string  descr[80];
+    CHKSUM dword   czspecial;
+    CHKSUM dword   czhires;
+    CHKSUM double  fattscale;
+
+    CHKSUM dword   nzone[3];
+    CHKSUM dword   qtamin[3];
+    CHKSUM dword   qtamax[3];
+    CHKSUM dword   cziptype[3];
+
+    CHKSUM dword   cztabsiz;
+    CHKSUM dword   sam[NUM_CZONE_ENTRIES];
+
+}CZONE;
+
+typedef struct {
+    CHKSUM dword prv[64];   // Parametri Revolver
+}RV;
+
+
+//  Struttura Dati associazione Tool - Pocket
+//  Tipo Dinamica
+typedef struct {
+    CHKSUM byte map[12];    // numero pocket associata al tool
+    CHKSUM byte dyn[12];    // tipo dinamica associata al tool
+}TPMAP;
+
+
+//  Struttura Dati Cinematici ( indicizzata sul Pocket selezionato )
+//  Compensazione Meccanica Revolver
+typedef struct {
+    CHKSUM dword pk[3];   // Parametri
+}KINPOCKET;
+
+
+//  Struttura Dati Dinamici ( indicizzata sul Pocket selezionato )
+//  Dinamica del mandrino in funzione dell'utensile selezionato
+typedef struct {
+    CHKSUM dword dy[10];     // Parametri Dinamici del mandrino ( Tool )
+}DYNTOOL;
+
+
+typedef struct {
+    RV        rv;       // Dati revolver: tecnologici-dinamici
+    TPMAP     tp;       // Associazione tool-pocket
+    KINPOCKET dkin[12]; // Dati cinematici: comp. meccaniche revolver
+    DYNTOOL   tdyn[12]; // Dati spindle: dinamici in base massa tool holder
+}MAG;
+
+typedef struct {
+    CHKSUM  byte    iax;       // Nro asse system wide
+    CHKSUM  byte    adx;       // Indirizzo (switch)
+            byte    almcode;   // Alarm Code
+    CHKSUM  byte    pcmode;    // Position control mode
+    CHKSUM  dword   feedc;     // feed constant per revolution
+
+    RETAIN  word    wERRA;     // Class 1 diagnostics (S-0-0011)
+    RETAIN  word    wERRB;     // Class 2 diagnostics (S-0-0012)
+    RETAIN  word    wERRC;     // Manufacturer specific error (S-0-0129)
+    RETAIN  string  nmsrv[20]; // SERVOPACK  : SGDH-112E5550 Ver.
+    RETAIN  string  nmenc[20]; // ENCODER    : Ver.
+    RETAIN  string  nmmot[20]; // MOTORE     : SGM3H-11240
+    RETAIN  string  nmopt[20]; // OPTION UNIT: JUSP-NS1005550
+    RETAIN  string  sERRD[48]; // Diagnostic message (S-0-0095)
+
+    RETAIN  dword   dwDrvPar[20]; // Parametri drive
+
+    //Yaskawa SGDH/SGDM Drive Specifics Mechatrolink features and diagnostics
+
+    CHKSUM  byte    RDD_yIOrfsh;    //I/O rfsh mode: 0=OFF 1=Tc 2=Tr
+    CHKSUM  word    RDD_wIOindex;   //Mirror on IWn index (65535 = disable)
+
+    string  RDD_szServoPack[17];    //OUT: Bootup sampled Device data
+    word    RDD_wServoPackVer;
+    word    RDD_wEncoderVer;
+    string  RDD_szMotor[17];
+    string  RDD_szOptionUnit[17];
+    word    RDD_wOptionUnitVer;
+
+    byte    RDD_yMonSel;            //IN : Monitor Data Select
+    byte    RDD_yMonSelOut;         //OUT: Echoed back Monitor Data Select
+    dword   RDD_lMonVal;            //OUT: Monitor Data Value
+
+    word    RDD_wAsyCmd;            //IN : Asynchronous Command
+    word    RDD_wAsyCmdStatus;      //OUT: Asynchronous Command Status
+    word    RDD_wParameter;         //IN : Parameter to Read or Write
+    dword   RDD_lValueToWrite;      //IN : Value to Write
+    dword   RDD_lReadValue;         //OUT: Read Value
+    byte    RDD_yAlarmArray[10];    //OUT: Read Alarm Array
+    word    RDD_wLatchSignal;       //IN : Latch input: 0=C-Phase 1=EXT1 2=EXT2 3=EXT3)
+    word    RDD_wLatchStatus;       //OUT: Latch status
+    dword   RDD_lLatchVal;          //OUT: Latched measure
+
+    byte    RDD_yAlarm;             //OUT: Current Alarm Code
+    word    RDD_wStatus;            //OUT: Current Status
+    word    RDD_wIOs;               //OUT: Current I/O Status
+
+} DRV;
+
+typedef struct {
+    dword Pn[1000];
+} DRVDATA;
+
+typedef struct {
+    RETAIN  byte    fase;      // Ring phase
+    CHKSUM  byte    rtype;     // Ring type
+    CHKSUM  byte    brate;     // Ring baud rate
+    CHKSUM  byte    tcyc;      // Ring cycle time
+    CHKSUM  byte    flen;      // Optical fibre length
+    CHKSUM  byte    axes;      // Nro assi sul ring
+    DRV             drv[NUM_DRV];    // dati drivers
+    CHKSUM  DRVDATA data[NUM_DRV];   //
+} RING;
+
+
+//-----------------------------------------------------------
+//      DATI PROTOCOLLO D.ELECTRON
+//-----------------------------------------------------------
+//
+typedef struct {
+    RETAIN  string  Dstr_a[20];
+    RETAIN  string  Dstr_b[20];
+    RETAIN  string  Dstr_c[20];
+    RETAIN  string  Dstr_d[20];
+    RETAIN  dword   DPnR[200];
+    CHKSUM  dword   DPnC[200];
+            dword   DPn[200];
+    CHKSUM  double  PnUT[50];
+} DEDRV;
+
+// Ring
+typedef struct {
+    RETAIN  dword   DRnR[50];
+    CHKSUM  dword   DRnC[50];
+            dword   DRn[50];
+            DEDRV   DeDrv[DE_NUM_DRV];
+} DERING;
+
+typedef struct {
+    RETAIN  dword   DGnR[50];
+    CHKSUM  dword   DGnC[50];
+            dword   DGn[200];
+} DEGEN;
+//
+//-----------------------------------------------------------
+
+typedef struct {
+    string         text[80];
+    word           err;
+    byte           task;
+    byte           flag;
+}CNERR;
+
+//-------------------------------------------------------------------
+//              DESCRIZIONE CINEMATISMI, PORTAUTENSILI ED UTENSILI
+//              (Vedi Compensazione utensile tridimensionale .Doc)
+
+typedef struct {
+        double dX;      //coordinata X primo  pivot
+        double dY;      //coordinata Y primo  pivot
+        double dZ;      //coordinata Z primo  pivot
+        byte   yOrient; //orientamento asse Z testa
+        double dFrameC; //rotazione rispetto frame riferimento Z (Y)
+        double dFrameB; //rotazione rispetto frame riferimento Y (P)
+        double dFrameA; //rotazione rispetto frame riferimento X (R)
+        double dEC;     //Rotazione intorno all'asse Z
+        byte   bECRev;  //inversione  verso attuatore rotazione
+        byte   yECAx;   //Attuatore rotazione intorno all'asse Z
+}RH;
+
+typedef struct {
+        double dX;      //coordinata X primo  pivot
+        double dY;      //coordinata Y primo  pivot
+        double dZ;      //coordinata Z primo  pivot
+        byte   yOrient; //orientamento asse Z testa
+        double dFrameC; //rotazione rispetto frame riferimento Z (Y)
+        double dFrameB; //rotazione rispetto frame riferimento Y (P)
+        double dFrameA; //rotazione rispetto frame riferimento X (R)
+        double dEC;     //Rotazione intorno all'asse Z
+        byte   bECRev;  //inversione  verso attuatore rotazione
+        byte   yECAx;   //Attuatore rotazione intorno all'asse Z
+        double dXx;     //coordinata X secondo pivot
+        double dYy;     //coordinata Y secondo pivot
+        double dEB;     //Rotazione intorno all'asse Y
+        byte   bEBRev;  //inversione  verso attuatore rotazione
+        byte   yEBAx;   //Attuatore rotazione intorno all'asse Y
+        double dXX;     //coordinata X portautensile
+        double dZZ;     //coordinata Z portautensile
+}FRH;
+
+typedef struct {
+        double dX;      //coordinata X primo  pivot
+        double dY;      //coordinata Y primo  pivot
+        double dZ;      //coordinata Z primo  pivot
+        byte   yOrient; //orientamento asse Z testa
+        double dFrameC; //rotazione rispetto frame riferimento Z (Y)
+        double dFrameB; //rotazione rispetto frame riferimento Y (P)
+        double dFrameA; //rotazione rispetto frame riferimento X (R)
+        double dEC;     //Rotazione intorno all'asse Z
+        byte   bECRev;  //inversione  verso attuatore rotazione
+        byte   yECAx;   //Attuatore rotazione intorno all'asse Z
+        double dXx;     //coordinata X secondo pivot
+        double dYy;     //coordinata Y secondo pivot
+        double dTilt;	//Angolo di basculamento
+        double dEB;     //Rotazione intorno all'asse Y
+        byte   bEBRev;  //inversione  verso attuatore rotazione
+        byte   yEBAx;   //Attuatore rotazione intorno all'asse Y
+        double dXX;     //coordinata X portautensile
+        double dYY;     //coordinata Y portautensile
+        double dZZ;     //coordinata Z portautensile
+}OARH;
+
+typedef struct {
+     double dX;     //coordinata X primo  pivot
+//da inserire
+}RTATH;
+
+typedef struct {
+     double dX;     //coordinata X primo  pivot
+//da inserire
+}FT;
+
+typedef struct {
+   byte        yKine;   //tipo di cinematismo
+
+   union {
+      RH    rh;         //rotary head
+      FRH   frh;        //fork rotary head
+      OARH  oarh;       //nutating head
+      FT    ft;         //fork table
+   }htwi;
+
+   dword dwMinRPM;      //numero minimo di giri/minuto
+   dword dwMaxRPM;      //numero massimo di giri/minuto
+   byte  yCCW;          //verso normale sinistrorso
+
+}TWI;
+
+
+typedef struct {
+     // ------------  DESCRIZIONE GEOMETRICA ---------------
+     double dZzero;     //coordinata pivot che si somma  a Z''
+     double dC;         //rotazione intorno all'asse Z
+     byte   yFlg;       //flag tipo di trasformazione
+     double dTXx;       //coordinata X' del pivot
+     double dTYy;       //coordinata Y' del pivot
+     double dB;         //rotazione intorno all'asse Y
+     double dTXX;       //coordinata X'' della base utensile
+     double dTZZ;       //coordinata Z'' della base utensile;
+
+     // --------------  DATI TECNOLOGICI  ------------------
+
+     dword dwTMaxRPM;    //Numero massimo di giri al minuto
+     byte  yRev;        //trasmissione con inversione senso di rotazione
+
+     // --------------- LOGICA DI GESTIONE -----------------
+
+     word  wToolIdx;    //indice descrittore utensile
+     dword dwCone;      //identificatore cono di aggancio per cambio utensile
+}THD;
+
+
+typedef struct {
+     // --------------- DESCRIZIONE GEOMETRICA --------------
+
+     double dRad;       //raggio utensile
+     double dTRad;      //Raggio raccordo per fresa Torica;
+     double dLenZ;      //Lunghezza  utensile da foratura/fresatura;
+     double dThick;     //Spessore/Distanza tra taglienti intercambiabili;
+     double dLenX;      //Lunghezza Ausiliaria per utensili da tornitura;
+     double dLenY;      //Lunghezza Ausiliaria per utensili da tornitura
+     double dLatheAngA; //Angolo di spoglia inferiore per tornitura
+     double dLatheAngB; //Angolo di spoglia superiore per tornitura
+     string ced_dsc[32];//Descrittore utensile
+
+     word   wWeaIdx;    //Indice estensione dati utensile per gestione usura
+
+     // --------------- ALTRI DATI TECNOLOGICI ---------------
+
+     dword  dwCMinRPM;   //Numero Minimo di giri/minuto
+     dword  dwCMaxRPM;   //Numero Massimo di giri/minuto
+     dword  dwStdRPM;   //Numero di giri/minuto
+     byte   bCCW;       //Utensile sinistrorso
+     double dMaxFeed;   //velocita'max avanzamento lineare
+     double dStdFeed;   //Velocita'avanz. lineare di default
+     byte   bDir;       //Abilita controllo verso taglio
+     byte   yTg;        //Tipo di avanzamento ammesso
+     double dTgThre;    //Max. angolo scostamento ammesso rispetto al percorso
+     word   wTStat;     //Eventi che possono condizionare l'utilizzo dell'utensile
+     dword  dwCMaxAcc;  //Massima accelerazione [rev/s²]
+     dword  dwCMaxDec;  //Massima decelerazione [rev/s²]
+
+} CED;
+
+typedef struct {
+        double t_dX;      //coordinata X primo  pivot
+        double t_dY;      //coordinata Y primo  pivot
+        double t_dZ;      //coordinata Z primo  pivot
+        byte   t_yOrient; //orientamento asse Z tavola
+        double t_dFrameC; //rotazione rispetto frame riferimento Z (Y)
+        double t_dFrameB; //rotazione rispetto frame riferimento Y (P)
+        double t_dFrameA; //rotazione rispetto frame riferimento X (R)
+        double t_dEC;     //Rotazione intorno all'asse Z
+        byte   t_bECRev;  //inversione  verso attuatore rotazione
+        byte   t_yECAx;   //Attuatore rotazione intorno all'asse Z
+        double t_dXx;     //coordinata X secondo pivot
+        double t_dYy;     //coordinata Y secondo pivot
+        double t_dTilt;	//Angolo di basculamento
+        double t_dEB;     //Rotazione intorno all'asse Y
+        byte   t_bEBRev;  //inversione  verso attuatore rotazione
+        byte   t_yEBAx;   //Attuatore rotazione intorno all'asse Y
+        double t_dXX;     //coordinata X pezzo
+        double t_dYY;     //coordinata Y pezzo
+        double t_dZZ;     //coordinata Z pezzo
+        double t_dFramebC; //rotazione pezzo rispetto frame riferimento Z (Y)
+        double t_dFramebB; //rotazione pezzo rispetto frame riferimento Y (P)
+        double t_dFramebA; //rotazione pezzo rispetto frame riferimento X (R)
+}OART;
+
+typedef struct {
+   byte        t_yKine;   //tipo di cinematismo
+
+   union {
+      OART  t_oart;       //nutating table
+   } t_ttab;
+
+}TAB;
+
+
+typedef struct {
+    double  orAxisOrigin[12];
+
+} GORG;
+
+//Struttura che contiene le informazioni di look-ahead
+//Gestione cambio utensile
+//
+
+
+//***LATCh***
+//Struttura che contiene le informazioni di look-ahead
+typedef struct {
+    byte    bOEnable;
+    word    wOAhead;
+    dword   dwOUsrInfo;
+    byte    bIEnable;
+    word    wIAhead;
+    dword   dwIUsrInfo;
+
+}LATCH_SPINDLE;
+
+typedef struct {
+    LATCH_SPINDLE   LASpindle[8];
+    dword           ulCIn;
+    dword           ulCOut;
+
+}LATCH_GATE;
+
+typedef struct {
+    CHKSUM dword   PlcCycle;
+    CHKSUM dword   PlcTimeout;
+}DEF_PLC;
+
+//BIG_CHECK_IN
+typedef struct {
+     word   dWeaMode;   //Criterio calcolo usura utensile
+
+     // ---------- Parametri conteggio vita utensile ---------
+
+     dword  dwElaCyc;
+     dword  dwElaTim;
+     dword  dwElaSpc;
+
+     // ---------- Parametri verifica vita utensile ----------
+
+     dword  dwMaxCyc;
+     dword  dMaxTim;
+     dword  dMaxSpc;
+
+     // ---------- Coefficiente usura utensile ---------------
+
+     double dWeaRad;
+     double dWeaLenZ;
+     double dWeaLenX;
+     double dWeaLenY;
+
+     // ---------- Parametri conteggio usura utensile ---------
+
+     double dActRad;
+     double dActLenZ;
+     double dActLenX;
+     double dActLenY;
+
+     // ---------- Parametri verifica usura utensile ----------
+
+     double dMaxRad;
+     double dMaxLenZ;
+     double dMaxLenX;
+     double dMaxLenY;
+
+} WEAR;
+
+//BIG_CHECK_IN
+typedef struct {
+     dword  ram[20]; // StkAux, StkCn, StkExe;
+} CNRAM;
+
+typedef struct {
+     dword  stk[3]; // StkAux, StkCn, StkExe;
+} CNSTK;
+
+typedef struct {
+    byte   bDllEnable;   // Abilitazione caricamento DLL
+    word   wComPort;  // Port seriale o TCP utilizzato (0=nessuno)
+} USRDLL;
+
+typedef struct {
+             //------- Variabili Per PilzSrv.Dll -------------------
+RETAIN  byte UserDllPrio;
+        word PilzIn;
+        word PilzOut;
+        word PilzErrCodes[3];
+PERSIST word PilzCommand;
+        word PilzStatus;
+             //------- Variabili Per diagnostica interna PilzSrv.Dll -------------------
+        byte RxTelegram[16];
+        byte TxTelegram[16];
+} PILZDLL;
+
+typedef struct {
+        dword Row;      // Riga con focus in pagina UIPL per costrutto "row"
+        dword InputRow; // Indice prima riga visualizzata in pagina UIPL per costrutto "row" scritto da PLC
+        dword Field;    // Campo con focus in pagina UIPL
+        dword Page;     // Pagina UIPL attiva
+        dword NumArray; // Indice di array di pagina
+        dword InputNumArray; // Indice di array di pagina scritto da PLC
+        union {
+            byte byVal;
+            word wVal;
+            dword dwVal;
+            double dVal;
+            string szVal[200];
+            } CurVal; // Valore del campo corrente
+        byte CurType; // Tipo del campo corrente
+        byte CurPsw;  // Livello di password corrente
+} UIPL;
+
+typedef struct {
+    string ErHlText[200];
+} ERHLERR;
+
+typedef struct {    // ---------- System performance measure ---------------------------
+    string sText[80];
+} THTIME;
+
+// Informazioni da Exception monitor
+typedef struct {
+    RETAIN string emText[40];
+} EXCMON;
+
+// Parametri Descrittore Probe
+typedef struct {
+
+    CHKSUM dword Prb[16];
+                        //   [0]=Massima Deflessione
+                        //   [1]=Massima Compressione
+                        //   [2]=Modo
+                        //   [3]=Velocita` avvicinamento
+                        //   [4]=Velocita` tastatura
+                        //   [5]=Velocita` rilascio
+                        //   [6]=Soglia Errore Inseguimento contatto Probe
+                        //   [7]=Soglia Coppia contatto Probe
+                        //   [8]=Ingresso Analogico Coppia Azionamento
+                        //   [9]=Riservato
+                        //  [10]=Riservato
+                        //  [11]=Livello
+                        //  [12]=Soglia avvicinamento
+                        //  [13]=Riservato
+                        //  [14]=Riservato
+                        //  [15]=Livello 0: Low 1: High
+    CHKSUM string PrbIn[16]; //  Ingresso Probe Tastatura
+    CHKSUM string PrbAv[16]; //  Ingresso Sensore Avvicinamento
+
+} TS_PROBE;
+
+// PARAMETRI PER TORCIA AL PLASMA
+typedef struct {
+    // Stadio di ingresso tensione arco
+    CHKSUM string Regin[16];
+                        // Registro di input
+    CHKSUM dword Tdat[16];
+                        // [0] =Tensione nominale
+                        // [1] =Variazione massima (+/-)
+                        // [2] =Derivata massima (+/-)
+                        // [3] =Divisioni di zero
+                        // [4] =Fattore scala Volt
+                        // [5] =Fattore scala Divisioni
+                        // [6] =Freq. taglio FIR1
+                        // [7] =Regolazione massima (+)
+                        // [8] =Regolazione massima (-)
+                        // [9] =Velocità min. regolazione
+                        // [10]=Freq. taglio FIR2
+                        // [11]=a0 regolatore (y = a0 + a1 * x)
+                        // [12]=a1 regolatore
+
+    dword Tsts;         //      Stato regolatore torcia
+    dword Tdbg[10];     // [0]=Lettura attuale
+                        // [1]=Lettura attuale filtrata
+                        // [2]=Derivata di lVarc (volt/sec)
+                        // [3]=Quota regolazione
+                        // [4]=Uscita prop a velocità
+                        // [5]=Velocita' di compensazione in [Hz]
+} TS_TORCIA;
+
+// PARAMETRI PER REGOLATORE ASSI GANTRY
+typedef struct {
+
+    CHKSUM dword Gdat[8];
+                        // [0] =SysWide Slave
+                        // [1] =Tolleranza Warning
+                        // [2] =Tolleranza Allarme
+                        // [3] =Tolleranza Allarme REF
+                        // [4] =Guadagno Bilanciamento
+                        // [5] =Frequenza Taglio
+                        // [6] =Tipo Gantry
+                        // [7] =Valore iniziale tolleranza allarme REF
+
+    dword Gsts;         //      ( not used )
+    dword Gdbg[5];      // [0]=Errore Sincronismo
+                        // [1]=
+
+} TS_GANTRY;
+
+
+// Camme elettroniche
+typedef struct {
+    //input
+    dword cdLoadFlag;
+    dword cdCamGroup;
+    dword cdCamId;
+    dword cdCamType;
+    dword cdCamFile;
+    //output
+    dword cdStatus;
+
+}CAMDAE;
+
+
+// Esecuzione passante
+typedef struct {
+    byte bUiStart;     // Avvio/Arresto invio blocchi (CNC->GUI)
+    byte bUiRun;       // Stato invio blocchi interfaccia (GUI->CNC)
+}CNTHRU;
+
+// Gestione ingressi a interrupt
+typedef struct {
+    CHKSUM  byte    isr_edge;       // Edge: 0-disab,1-rise,2-fall,3-both
+    CHKSUM  byte    isr_axis;       // Asse associato
+    CHKSUM  byte    isr_inpnum;     // Numero dell'input interno al drive
+    CHKSUM  byte    isr_nooverwrite; // Selezione 0-overwrite 1-no overwrite quota
+    CHKSUM  dword   isr_delay;      // Ritardo input (us)
+            byte    isr_flags;      // Flags segnalaz. fronti (bit0 salita, bit1 discesa)
+            byte    isr_enab;       // Abilita interrupt da PLC
+            dword   isr_quotp;      // Quota su fronte di salita
+            dword   isr_quotn;      // Quota su fronte di discesa
+} ISRSTR;
+
+typedef struct {
+    byte    isq_inpnum;
+    byte    isq_edge;
+    dword   isq_quote;
+    dword   isq_vel;
+    dword   isq_tick;
+} ISQUEUE;
+
+
+// Esecuzione Liste di programmi
+typedef struct {
+    PERSIST byte   bUiSel;           // Selezione esecuzione da lista (GUI->CNC)
+    PERSIST byte   bUiRdy;           // Programma pronto              (GUI->CNC)
+            byte   bUiExOK;          // Programma terminato OK        (CNC->GUI)
+            dword  dwParPGM[6];
+            double dParPGM[6];
+            dword  dwPgmDone;
+            dword  dwPgmTot;
+            dword  dwNumDel;
+    PERSIST dword  dwListCounter;
+    PERSIST string dwListName[128];
+}CNLIST;
+
+// Configurazione per redirezione input/output
+typedef struct {
+    CHKSUM  byte   xNc;         // Livello Attivo (0=NO, 1=NC)
+    CHKSUM  byte   xEnab;       // Abilitazione I/O
+    CHKSUM  byte   xBit;        // Bit all'interno del registro
+    CHKSUM  word   xReg;        // Numero registro I/O
+} IOXCFG;
+
+//
+// Estensioni utente utilizzate da NCMON.EXE
+//
+
+//
+// Proprieta' di ogni canale <ncmon>
+//
+
+typedef struct {
+    word    CmGraphRefTwi;      //twi utensile di riferimento
+    word    CmGraphRefThd;      //thd utensile di riferimento
+    word    CmGraphRefCed;      //ced utensile di riferimento
+    double  CmGraphRefSvl;      //svl utensile di riferimento
+    word    CmGraphRefTab;      //tab tavola di riferimento
+    word    CmGraphCmd;         //IN:   Graphics Command:
+                                //
+                                //CMGC_KINE_SET       0x1
+                                //CMGC_SPINDLE_RUN    0x2
+                                //CMGC_USE_DEFAULT    0x4
+                                //
+                                //CMGC_UBIND_PLUS     0x0100
+                                //CMGC_VBIND_PLUS     0x0200
+                                //CMGC_WBIND_PLUS     0x0400
+                                //CMGC_UBIND_MINUS    0x1000
+                                //CMGC_VBIND_MINUS    0x2000
+                                //CMGC_WBIND_MINUS    0x4000
+
+    word    CmGraphCmdStatus;   //OUT:  Graphics Command Status:
+                                //
+                                //CMGS_KINE_SET       0x1
+                                //CMGS_SPINDLE_RUN    0x2
+                                //
+} CHANMON;
+
+
+typedef struct {
+    word    SyncCnt;    // Chan pending
+    dword   SyncObj;    // Mask, Bit0=cn0....bit31=cn31
+} CNSYNC;
+
+typedef struct {
+    CHKSUM dword  SysDllData[4];
+    RETAIN string SysDllFName[64];
+} SYSDLLS;
+
+
+//
+// Tabelle compensazione vettoriale real-time
+//
+
+typedef struct {
+    RETAIN  string  VrtszDescription[8];
+    RETAIN  dword   VrtInMin;
+    RETAIN  dword   VrtInMax;
+    RETAIN  dword   VrtPoints;
+    RETAIN  dword   VrtOut[NUM_VRTC_TRANS_PTS];
+
+} VRTC_TRANS;
+
+typedef struct {
+    RETAIN  string  VrszDescription[8];
+
+    RETAIN  string  VrszSensorReso[8];
+
+    //IN data
+    //=======
+    dword   VrSensorInput;
+    dword   VrU_Setpoint;
+    dword   VrdwCtrlRegister[2];
+
+    RETAIN  dword   VrSensorOffset;
+    RETAIN  dword   VrSensorGain;
+    RETAIN  dword   VrSensorTransPtr;
+    RETAIN  dword   VrSensorTransMul;
+
+    RETAIN  dword   VrErrFadingTime;
+
+    RETAIN  dword   VrU_DbPos;
+    RETAIN  dword   VrU_DbNeg;
+    RETAIN  dword   VrKpGain;
+    RETAIN  dword   VrKpTransPtr;
+    RETAIN  dword   VrKpTransMul;
+
+    RETAIN  dword   VrFilter_FreqHz;
+    RETAIN  dword   VrFilter_DampingC;
+
+    RETAIN  dword   VrLimM_Q_U;
+    RETAIN  dword   VrLimM_Q_L;
+    RETAIN  dword   VrLimM_Q_D_U;
+    RETAIN  dword   VrLimM_Q_D_D;
+
+    RETAIN  dword   VrLimL_Flt_Q_D_U;
+    RETAIN  dword   VrLimL_Flt_Q_D_D;
+    RETAIN  dword   VrLimL_Flt_Q_DD;
+
+    RETAIN  dword   VrLimW_Flt_Q_U;
+    RETAIN  dword   VrLimW_Flt_Q_L;
+    RETAIN  dword   VrLimW_Flt_Q_D_U;
+    RETAIN  dword   VrLimW_Flt_Q_D_D;
+    RETAIN  dword   VrLimW_Flt_Q_DD;
+
+    RETAIN  dword   VrLimA_Flt_Q_U;
+    RETAIN  dword   VrLimA_Flt_Q_L;
+    RETAIN  dword   VrLimA_Flt_Q_D_U;
+    RETAIN  dword   VrLimA_Flt_Q_D_D;
+    RETAIN  dword   VrLimA_Flt_Q_DD;
+
+    RETAIN  dword   VrOutputScaleVff;
+    RETAIN  dword   VrOutputScaleAff;
+
+    RETAIN  dword   VrSim_Q_OffsetSet;
+    RETAIN  dword   VrSimGain;
+
+    RETAIN  dword   VrSimFadingTime;
+
+    //Spare
+    RETAIN  dword   VrInSpareDwords[16];
+    RETAIN  double  VrInSpareFloats[16];
+
+    //OUT data
+    //========
+    dword   VrdwStatRegister[2];
+    dword   VrdwAckRegister[2];
+    dword   VrEq_Q_OffsetCur;
+
+    //MON data
+    //========
+    dword   VrMon_U_Feedback;
+    dword   VrMon_Q_Flt_Q;
+
+    //Spare
+    dword   VrOutSpareDwords[16];
+    double  VrOutSpareFloats[16];
+
+} VRTC;
+
+//
+// Tabelle linearizzazione analogica
+//
+typedef struct {
+            byte    linDacCmd;
+            byte    linDacAck;
+    RETAIN  dword   linDacAxis;
+    RETAIN  string  linDacszDescription[8];
+    RETAIN  dword   linDacInMin;
+    RETAIN  dword   linDacInMax;
+    RETAIN  dword   linDacPoints;
+    RETAIN  dword   linDacOut[NUM_LNDC_TRANS_PTS];
+} LINDAC_TRANS;
+
+typedef struct{
+    byte    byHour;                // Ora atttuale
+    byte    byMinutes;             // Minuti attuali
+    byte    byDay;                 // Giorno attuale
+    byte    byMonth;               // Mese attuale
+    dword   dwYear;                // Anno attuale
+    byte    byDayOfWeek;           // Giorno della settimana attuale
+} INFO_TIME;
+
+typedef struct{
+	word   wUpmCodeCmd;
+    dword  dwUpmCmd;
+    dword  dwUpmAnswer;
+    string  sUpmParA[80];
+    string  sUpmParB[80];
+    string  sUpmParC[80];
+
+    string  sUpmUsrParA[80];
+    string  sUpmUsrParB[80];
+    string  sUpmUsrParC[80];
+
+} CMD_UIPL_PLC_MNG;
+
+// Allocazione della memoria di sistema
+byte   bWTime;
+THTIME ThTime[75];
+
+CHKSUM dword    cg[32];            // Parametri configurazione generale CN.
+CHKSUM dword    ISO_OPTS;          // Opzioni Debug Canale ISO
+CN              cn[NUM_CANALI];    // Parametri e registri canali.
+AX              ax[NUM_ASSI];      // Parametri e registri assi.
+CZONE           czone[NUM_CZONE];  // Struttura Correzione Zone.
+MAG             mag[NUM_MAG];      // Struttura Magazzino Tools ( Revolver )
+WEAR            wear[NUM_WEAR];    // Struttura Usura e Vita Utensile.
+CNRAM           cnram[1];          // Size Ram modulo ISO
+CNSTK           cnstk[32];         // Size Stack modulo ISO
+DU              nc[NUM_NC];        // Dati Utensili (non utilizzare).
+CHKSUM USRDLL   UsrDll[8];         // Dati DLL utente
+PILZDLL         PilzSrv;           // Dati Pilz
+
+RING            ring[NUM_RINGS];   // Dati rings Sercos/Mechatrolink
+
+SYSDLLS         SysDll[8];        // Caricamento dll di sistema
+
+//-----------------------------------------------------------
+//      DATI PROTOCOLLO D.ELECTRON
+//-----------------------------------------------------------
+DEGEN           DeGen;
+DERING          DeRing[DE_NUM_RINGS];
+//-----------------------------------------------------------
+
+
+TS_PROBE        probe[NUM_PROBE];               // Descrittore Probe
+TS_TORCIA       torcia[NUM_TORCIA];             // Dati regolatore torcia
+TS_GANTRY       gantry[NUM_GANTRY];             // Dati regolatore gantry
+
+CAMDAE          CamDae;
+
+//-------------------------------------------------------------------
+//              DESCRIZIONE CINEMATISMI, PORTAUTENSILI ED UTENSILI
+
+CHKSUM TWI      twi[NUM_TWI];
+CHKSUM THD      thd[NUM_THD];
+PERSIST CED     ced[NUM_CED];
+CHKSUM TAB      tab[NUM_TAB];
+
+CHKSUM GORG     gorg[NUM_GORG];
+
+//Struttura che contiene le informazioni di look-ahead (1 se non usato)
+LATCH_GATE      LATCh[1];
+
+dword           ui[64];            // Registri interfaccia UI-PLC (menu fissi)
+dword           rg[32];            // Registri FB PLC generali
+dword           C[NUM_C];          // Interfaccia ISO-PLC (max 256)
+double          vg[NUM_VG];        // Variabili globali ISO
+dword           ia[24];            // Ingressi analogici
+dword           ua[8];             // Uscite analogiche
+DEF_PLC         plc[2];            // Informazioni sul plc
+dword           CNSTATUS;          // Stato CN e PLC
+word            IOGENERR;          // Errore generale nel ring di I/O
+word            IOERRADDR;         // Indirizzo della scheda di I/O che
+                                   // ha causato l'errore
+word            IOERROFFS;         // Indirizzo dell'offset di I/O che
+                                   // ha causato l'errore
+dword           PLCFLAGS;          // Special flags del PLC
+PERSIST dword   R[NUM_R];          // Variabili retentive globali per il PLC.
+dword           M[NUM_M];          // Variabili globali per il PLC.
+RETAIN dword    COUNTER[NUM_COUNTER]; // Counter del PLC
+dword           PLCerr[NUM_PLCERR];   // Bit Array per allarmi PLC
+dword           PLCmsg[NUM_PLCMSG];   // Bit Array per messaggi PLC
+dword           APPerr;            // Codice di allarme APPLICATIVO
+dword           LineErr;           // Linea di programma che ha generato allarme
+// Area tastiera ***************************
+byte            ENABFBTN;           // abilitazioni da PLC
+byte            FUNCBTN;            // Pulsanti START-STOP-PIU-MENO-RESET-ENTER1-ENTER2-KEYDRIVEROK
+byte            ARROWBTN;           // Pulsanti INS-UP-PGUP-RIGHT-LEFT-CANC-DOWN-PGDOWN
+byte            CTRLBTN;            // Pulsanti TAB-SHIFT-CTRL
+word            EXTIN;              // Pulsanti estensione ISO
+word            EXTBTN[16];         // matrice tastiera
+word            EncAPos;            // Posizione volantino con encoder1
+word            EncBPos;            // Posizione volantino con encoder2
+byte            PotAPos;            // Posizione volantino con potenziometro 1
+byte            PotBPos;            // Posizione volantino con potenziometro 2
+// Fine area tastiera ***************************
+byte            FASTINPUTS;        // Stato ingressi veloci
+double          MFB_VANALOGP;      // Tensione +12
+double          MFB_VANALOGM;      // Tensione -12
+double          MFB_VE;            // Tensione encoder
+double          MFB_VB;            // Tensione batteria
+double          MFB_TEMP;          // Temperatura MFB
+byte            MFB_VNOK[4];       // Flags controllo tensioni
+byte            MFB_ErrExp;        // Errore su espansione I/O kvara 6
+byte            MFB_CNC_OK;        // Output relé CNC OK
+byte            TksSync;           // Sicronismo da TksKey
+word            IO[2048];          // IO digitali mappati in ioredir
+CNERR           cnerr[50];         // Buffer errori CN
+dword           KVARA_VERSION;     // Codice versione software
+dword           KVARA_DATE;        // Data del rilascio
+dword           DRWGUI[64];        // Batteria di variabili scambio GUI in DRW
+dword           TASK_METER_MASK;   // Maschera abil. campionamento in taskmeter
+word            PlcTBase;          // Base tempi per log PLC
+dword           QEventPlc[NUM_EVPLC]; // Buffer log eventi PLC
+dword           QAxisQuote[NUM_AXQTE]; // Buffer log quote assi da PLC
+dword           MT[NUM_MT];        // Registri log PLC a bit
+dword           RT[NUM_RT];        // Registri log PLC a dword
+PERSIST string  Language[5];       // Lingua selezionata per UI
+UIPL            Uipl;              // Informazioni per pagine UIPL
+dword           ISOVERS;           // Versione PP iso
+dword           ISOREL;            // Release PP iso
+dword           PLCVERS;           // Versione programma plc
+dword           PLCREL;            // Release programma plc
+CNTHRU          cnthru[NUM_CANALI]; // CN-GUI per esecuzione passante
+CHANMON         ChanMon[NUM_CANALI];// Grafica Run-Time
+CNSYNC          CnSync[SYNC_MARKERS];
+dword           CnSyncEnab;
+VRTC            vrtc[NUM_VRTC];    // Tabelle compensazione vettoriale real-time
+RETAIN VRTC_TRANS   vrtcTransSensor[NUM_VRTC_TRANS_SEN];    //Transcaratteristica Sensore per VRTC
+RETAIN VRTC_TRANS   vrtcTransKp[NUM_VRTC_TRANS_KP];         //Transcaratteristica Kp per VRTC
+LINDAC_TRANS    linDacTrans[NUM_LNDC_TRANS];
+ERHLERR         ErHlErr[3];        // Buffer Errori CN
+RETAIN dword    ShFault;           // Conteggio shared fault
+EXCMON          ExcMon[10];        // Informazioni Exception monitor
+dword           IPuls[100];        // Input da pulsantiera seriale
+dword           QPuls[100];        // Output a pulsantiera seriale
+string			StrPuls[128];	   // Input da pulsantiera seriale (nome programma da eseguire)
+byte			MsgPuls[64];	   // Indice messaggio allarme
+ISRSTR          IsrStr[36];        // Parametri ingressi a interrupt
+ISQUEUE         IsQueue[30];       // Coda ingressi a interrupt
+word            IsWrIndex;		   //
+word            IsRdIndex;		   //
+CHKSUM byte     NumIsr;            // Numero ingressi a interrupt
+CNLIST          cnlist[NUM_CANALI]; // CN-GUI per esecuzione Liste di programmi
+dword           IX[NUM_IOXDW];     // Inputs per redirezione bit a bit
+dword           QX[NUM_IOXDW];     // Outputs per redirezione bit a bit
+IOXCFG          IXCFG[NUM_IOX];    // Config. inputs per redirezione bit a bit
+IOXCFG          QXCFG[NUM_IOX];    // Config. outputs per redirezione bit a bit
+
+dword           PlcPage;           // Pagina impostata dal PLC
+byte            TypeUiplPage;      // Tipo di pagina UIPL da aprire
+byte            ChangePlcPage;     // Comando che deve dare il PLC per cambiare la pagina
+byte            ChangePlcPageFlags; // Flags per gestione cambio pagina da PLC
+RETAIN byte     ViewOperator;       // Set punto di vista operatore per grafica
+dword           PlcExtAppl;        // Caricamento applicazioni esterne da PLC
+
+word            XRes;              // Risoluzione X del video
+word            YRes;              // Risoluzione Y del video
+
+dword           ShfProgX;          // Shift lungo l'asse X del pezzo
+dword           ShfProgY;          // Shift lungo l'asse Y del pezzo
+dword           ShfProgXUsr;       // Shift lungo l'asse X del pezzo da PLC
+dword           ShfProgYUsr;       // Shift lungo l'asse Y del pezzo da PLC
+dword           RotProg;           // Angolo di rotazione del pezzo
+dword           StepRotProg;
+dword           ShfModeOrigProgX;
+dword           ShfModeOrigProgY;
+
+INFO_TIME       InfoTime;          // informazioni date/time aggiornate da GUI
+
+CMD_UIPL_PLC_MNG CmdUiplPlcMng;
+
+ENDSECTION System //************ Sezione di Sistema ***************************
+
+
+SECTION TestEMC    //************ Sezione TestEMC **************************
+typedef struct {
+    RETAIN byte  TestEnable;
+    byte         TestStatus;   // 0 - Off, 1 - Red, 2 - Yellow, 3 - Green
+    dword        TestOK;
+    dword        TestKO;
+    string       TestErrorMsg[80];
+} TEST_INFO;
+
+typedef struct {
+    //----------- Parametri per il driver -------------
+    dword  dBaudRate;
+    byte   bDataBits;
+    byte   bStopBits;
+    byte   bParity;
+    byte   bEnabSer;
+
+    byte   bCtsSignal;
+    byte   bDsrSignal;
+    byte   bDtrSignal;
+    byte   bRtsSignal;
+    dword  dInQueue;
+    dword  dOutQueue;
+
+
+    //----------- Parametri per il protocollo ---------
+    dword  dTxDataTimeout;
+    dword  dRxDataTimeout;
+    dword  dRxDataGramTimeout;
+    dword  dTxRetry;
+    dword  dRxRetry;
+    dword  dXonLimit;
+    dword  dXoffLimit;
+    byte   bXonChar;
+    byte   bXoffChar;
+    byte   bEnableStxChar;
+    byte   bEnableEtxChar;
+    byte   bEnableEscChar;
+    byte   bStxChar;
+    byte   bEtxChar;
+    byte   bEscChar;
+} SERIAL;
+
+RETAIN byte     assesel;                // Codice asse selezionato
+RETAIN dword    speed[6];               // Velocita` asse
+
+RETAIN word     mfb_analog_out[2];      // Valori di tensione per uscite analogiche su MFB
+
+RETAIN byte     press_board_out[2];     // Valori per schede di pressione
+
+RETAIN byte     analog_out_enable;      // Abiliazione uscite analogiche
+RETAIN word     analog_out[8];          // Valori di tensione per uscite analogiche
+
+RETAIN word     mfb_analog_in_min[4];   // Valori minimi per ingressi analogici su MFB
+RETAIN word     mfb_analog_in_max[4];   // Valori massimi per ingressi analogici su MFB
+word            mfb_analog_in[4];       // Valori campionati
+byte            mfb_analog_err;         // Maschera I/O in errore su MFB
+
+RETAIN byte     analog_in_enable;       // Abiliazione ingressi analogici
+RETAIN byte     analog_in_type;         // Schede 12 bit o 16 bit
+RETAIN word     analog_in_min[8];       // Valori minimi di tensione per ingressi analogici
+RETAIN word     analog_in_max[8];       // Valori massimi di tensione per ingressi analogici
+word            analog_in_val[8];       // Valori campionati
+byte            analog_in_err;          // Maschera I/O In analogici in errore
+
+RETAIN byte     mfbexp_an_in_enable;    // Abiliazione ingressi analogici su espansione
+RETAIN word     mfbexp_an_in_min[8];    // Valori minimi di tensione per ingressi analogici su espansione
+RETAIN word     mfbexp_an_in_max[8];    // Valori massimi di tensione per ingressi analogici su espansione
+word            mfbexp_an_in_val[8];    // Valori campionati
+byte            mfbexp_an_in_err;       // Maschera I/O In analogici su espansione in errore
+
+RETAIN byte     mfbexp_an_out_enab;   // Abiliazione uscite analogiche su exp
+RETAIN word     mfbexp_an_out[8];       // Valori di tensione per uscite analogiche su exp
+
+RETAIN word     mask_qw[8];             // Maschera per byte di uscita QW
+RETAIN word     mask_iwnc[8];           // Maschera per byte di ingressi NC
+RETAIN word     mask_io;                // Maschera I/O presenti
+RETAIN byte     mask_fastio;            // Maschera fastI presenti
+dword           cod_err[7];             // Codice errore I/O e fastinput
+
+TEST_INFO       TestInfo[10];           // Informazioni sui test Kvara A e B
+                                        // 0 - FDisk, 1 - HDisk
+                                        // 2 - Com1,  3 - Com2
+                                        // 4 - LPT
+                                        // 5 - Assi
+                                        // 6 - MFB Analog Input
+                                        // 7 - Analog Input
+                                        // 8 - IO RING
+SERIAL SerCom[2];
+
+byte    bSerHwType;     // se 0 ==> RS232, se 1 ==>RS485
+byte    bSerCnTest;	// se 0 ==> Test su PC, se 1 ==> Test su CN
+word    wSerTypeTest;   // se 0 ==> 0 COM1,COM2 Rx-Tx Loop Locale; se 1 ==> COM1<-->COM2
+
+dword   dwPCtoCN[4];
+dword   dwCNtoPC[4];
+
+RETAIN word     mask_Expfastio_zero;   // Maschera exp. per fastIO - bank[0] presenti
+RETAIN word     mask_Expfastio_uno;    // Maschera exp. per fastIO - bank[1] presenti
+
+RETAIN word     Opl_Igain[2];
+RETAIN word     Opl_IOffs[2];
+RETAIN word     Opl_ICorr[2];
+
+RETAIN word     Opl_Imin[2];      // Valori minimi di corrente per uscite openloop
+RETAIN word     Opl_Imax[2];     // Valori massimi di corrente per uscite openloop
+word            Opl_ival[2];      // Valori campionati
+
+RETAIN word     Opl_Tmin[2];     // Valori minimi di periodo per uscite openloop
+RETAIN word     Opl_Tmax[2];     // Valori massimi di periodo per uscite openloop
+word            Opl_Tval[2];      // Valori campionati
+
+RETAIN word     Opl_up[2];      // Abilitazione Uscite UP
+RETAIN word     Opl_dn[2];      // Abilitazione Uscite DOWN
+RETAIN word     Opl_delay;      // Delay Lettura valori
+
+byte            Opl_Y_err;          // Maschera uscite Y in errore
+
+ENDSECTION TestEMC //************ Sezione TestEMC ***************************
+
+
+#include <defcn.can> // File defcn per dati CAN
+
+#include <defcn.app> // File defcn per dati applicativo
+
+               //*********************** Deve essere l'ultima sessione ********
+SECTION NoRfsh //*********************** Variabili non Rinfrescabili **********
+//Trasporto con datagrammi su memoria condivisa
+
+//Uniform McStream transport layer datagram
+
+typedef struct {
+    word    uhSize;
+    dword   frame[35];      //128 byte a pacchetto
+} MCSDGRAM;
+
+//Remote symbolic debugger data stream IO
+
+typedef struct {            //Canale Client --> Server
+    MCSDGRAM dgram_i[10];
+    word  uhXmitd;
+    word  uhRecvd;
+}SYMRXMACPIPE_I;
+
+
+typedef struct {            //Canale Server --> Client
+    MCSDGRAM dgram_j[20];
+    word  uhXmitd;
+    word  uhRecvd;
+}SYMTXMACPIPE_J;
+
+
+//Network FileSystem & TM Transport Layer
+
+typedef struct {
+    word    uhSize;
+    dword   frame[128];             //512 byte a pacchetto
+}FSDGRAM;
+
+typedef struct {
+    FSDGRAM dgram_a[20];
+    word    uhXmitd;
+    word    uhRecvd;
+}FSMACPIPE_A;
+
+
+//LATCh (Look-Ahead Tool CHange)
+
+typedef struct {
+    word    uhSize;
+    dword   frame[6];               //24 byte a pacchetto
+}LADGRAM;
+
+typedef struct {
+    LADGRAM dgram_b[20];            //20 = Solo per reattivita' iniziale
+    word    uhXmitd;
+    word    uhRecvd;
+}LAMACPIPE_B;
+
+//Trasporto con datagrammi su memoria condivisa
+
+//Network FileSystem & TM Transport Layer
+FSMACPIPE_A macpipe_a[1];
+
+//LATCh (Look-Ahead Tool CHange)
+LAMACPIPE_B macpipe_b[1];
+
+//Remote symbolic debugger data stream IO
+SYMRXMACPIPE_I macpipe_i[1];
+SYMTXMACPIPE_J macpipe_j[1];
+
+//Sincronizzazioni client-server per debugger parametrica
+byte            RunDaemon;
+byte            EnableClient;
+
+byte            PLCGATE[2048]; // Area WorKBench PLC (*****non modificare*****)
+RETAIN byte     PLCRETAINAREA[2048]; // Area in cui il nucleo del plc alloca
+                                     // le variabili retentive del PLC
+CHKSUM dword    LASTCHK;  // Variabile checksum fittizia per segnalare
+                          // dati macchina errati quando cambia la defcn
+dword           SHCHK; // Checksum della shared
+ENDSECTION NoRfsh //******************** Variabili non Rinfrescabili **********
+
+SECTION ShDrive //******************** Dischi F e G ********************
+typedef struct {
+    dword cluster[129];    // 1 Cluster = 516 byte (*** DO NOT MODIFY ***)
+}CLUSTER;
+
+RETAIN CLUSTER  mpramd_a[MAX_SPACE];  // primo disco virtuale (dimensione x 512b)
+ENDSECTION ShDrive //******************** Dischi F e G ********************

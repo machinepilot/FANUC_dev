@@ -1,0 +1,5509 @@
+E SERIES 420-200
+
+E SERIES 420-200Vers. 4.20
+
+USE AND MAINTENANCE MANUAL (translation)
+
+ELECTRIC PRESS BRAKE
+
+CHAPTER 1
+
+GENERAL CHARACTERISTICS01-1
+
+CHAPTER 1
+
+GENERAL CHARACTERISTICS01-1
+
+TABLE OF CONTENTS
+
+General notes regarding delivery01-2
+
+General presentation01-3
+
+Warranty declaration01-7
+
+EC Declaration of Conformity01-8
+
+Intended use01-9
+
+Reference standards01-10
+
+General characteristics of the machine01-11
+
+Most important components01-11
+
+Machine body01-11
+
+Lower beam01-12
+
+Top beam01-13
+
+Backgauge01-14
+
+Machine control panel01-15
+
+Control console01-16
+
+Description of the machine01-17
+
+Automatic recovery of pressure on the side frames01-17
+
+Recovery of pressure on the top (and lower) beams01-17
+
+Automatic compensation for variations in the thickness to be bent01-17
+
+Automatic measurement of the length of the sheet metal to be bent01-17
+
+Checking the power required for bending01-17
+
+Adjusting the bending angle01-18
+
+Speed adjustment01-18
+
+Stopping precision of the top beam descent01-18
+
+Adjusting the upper dead point (UDP) of the top beam01-19
+
+Possibility of interrupting an automatic bending cycle01-19
+
+Inclining the top beam01-19
+
+Noise and vibrations01-19
+
+1.9.1
+
+Noise
+
+01-19
+
+1.9.2
+
+Vibrations
+
+01-19
+
+CHAPTER 2
+
+LIFTING, TRANSPORT AND INSTALLATION CONDITIONS02-1
+
+Lifting the press02-2
+
+General warnings02-2
+
+Lifting02-4
+
+Transport instructions02-6
+
+Instructions for installation and/or assembly
+
+02-6
+
+Weather and ambient conditions02-6
+
+Lighting levels and conditions02-7
+
+Preparing the press brake02-7
+
+Characteristics of the site that has been prepared for installation of
+
+the press brake02-7
+
+Press brake installation02-8
+
+Levelling the press brake02-10
+
+Connecting to mains electricity and pneumatic supply lines02-12
+
+2.3.7.1
+
+The plant’s earthing system02-12
+
+Characteristics of the power line and the connection02-13
+
+Characteristics of the intended work area02-13
+
+Pneumatic supply02-13
+
+Checking the press brake before starting up02-14
+
+Efficiency of safety devices and guards02-14
+
+Checking the functionality of the pneumatic circuit (optional)02-14
+
+Cleaning the anticorrosive agent02-14
+
+Connecting the control console to the distribution board02-14
+
+Laser guard check02-15
+
+Backgauge check02-15
+
+Check on any optionals02-15
+
+CHAPTER 3
+
+STANDARD COMPOSITION AND VARIOUS OPTIONALS03-1
+
+3.1
+
+Machine composition
+
+03-2
+
+3.2
+
+STANDARD composition of the press brake
+
+03-2
+
+3.2.1
+
+Standard product models
+
+03-4
+
+3.2.2
+
+STANDARD composition of all the press brakes
+
+03-8
+
+Backgauge03-8
+
+Upper tool clamping03-9
+
+Lower tool clamping03-9
+
+Sliding guides03-10
+
+Lazer-safe guards03-11
+
+2D Touch Screen03-12
+
+Press brake optionals03-13
+
+Supplementary rear stop for the backgauge03-13
+
+Various types of backgauges03-14
+
+Upper pneumatic clamping03-16
+
+Lower pneumatic clamping03-18
+
+Upper hydraulic clamping03-18
+
+Lower hydraulic clamping03-19
+
+Robotic interface03-19
+
+Sheet metal supports03-20
+
+Lazer-safe guards with built-in angle control03-21
+
+Numerical control Esa S650 - S66003-22
+
+17" or 19" Sphera Numerical control03-23
+
+CHAPTER 4
+
+SAFETY04-1
+
+Introduction04-2
+
+Training instructions04-3
+
+Hazardous areas due to machine use04-4
+
+Indication of safety signals on the machine04-6
+
+Indications on clothing04-8
+
+Safety indications and measures04-8
+
+Safe machine use04-9
+
+Correct use04-9
+
+Installation and handling04-11
+
+Maintenance04-11
+
+Adjustments04-11
+
+Documentation04-11
+
+Safe machine maintenance04-12
+
+Safety warnings on work04-14
+
+Hazardous situations during the bending phase04-15
+
+Hazardous situations during backgauge
+
+movement (X-R-Z1-Z2)04-17
+
+Hazardous situations after upper beam rising04-18
+
+Hazardous situations due to sharp edges04-18
+
+Hazardous situations due to press maintenance and cleaning04-19
+
+Hazardous situations due to Laser-safe barrier use04-20
+
+CHAPTER 5
+
+BENDING PRESS USE05-1
+
+Safety devices on the press05-2
+
+Safety device operations05-2
+
+Emergency buttons05-2
+
+Lateral guard05-4
+
+Rear guard05-5
+
+Protection between tools (laser barrier)05-7
+
+Upper beam guards05-10
+
+Armoured sheath protection05-10
+
+Distribution board protection05-11
+
+Operator protection05-11
+
+Backgauges05-11
+
+Protection against part deflection05-11
+
+Periodic safety device checks05-12
+
+Lateral guard check05-12
+
+Rear guard check05-13
+
+Emergency stop check05-14
+
+Three-way descent pedal check05-15
+
+Guard mechanical fastening checks05-16
+
+Control layout05-20
+
+Distribution board controls05-20
+
+Control panel05-22
+
+Optional controls05-24
+
+Main control panel (pedal)05-25
+
+Panel pedals05-26
+
+Main control panel controls05-26
+
+General press operations05-28
+
+5.4Descent controls05-28
+
+5.4Ascent controls05-29
+
+5.4.3 Emergency control05-30
+
+Bending press use05-31
+
+Start05-31
+
+Stop05-35
+
+Emergency button use05-36
+
+Emergency start05-36
+
+Emergency reset05-37
+
+Reset after guard opening05-37
+
+Tool replacement and lateral bent part extraction05-39
+
+Tool replacement05-40
+
+Upper tool replacement05-41
+
+Lower tool replacement05-46
+
+Laser barrier alignment05-47
+
+Lateral bent part extraction05-50
+
+Special tools and couplings (OPTIONAL)05-52
+
+Pneumatic tool lock05-58
+
+Upper tool replacement with length &gt; 415 mm05-59
+
+Upper tool replacement with length &lt; 415 mm05-64
+
+General bending techniques05-67
+
+Air bending05-67
+
+Coined bending05-68
+
+Backgauge adjustments05-70
+
+Reference position adjustment along the bending line05-70
+
+Front adjustment05-71
+
+Rear adjustment05-72
+
+Mobile reference parallelism adjustment to bending axis05-74
+
+Front plate supports05-82
+
+Sliding supports05-82
+
+STANDARD sliding supports05-82
+
+Special sliding supports (OPTIONAL)05-84
+
+CHAPTER 6
+
+BENDING PRESS MAINTENANCE06-1
+
+General maintenance considerations06-2
+
+Hazards during maintenance06-3
+
+Maintenance instructions06-4
+
+Pneumatic system checks06-6
+
+Backgauge lubrication06-9
+
+Ram guide cleaning06-10
+
+Ram control screw lubrication06-11
+
+Summary maintenance table06-12
+
+Work/check sheets06-13
+
+Wiring diagram06-16
+
+Pneumatic diagram06-17
+
+Oil hydraulic diagram06-18
+
+APPENDICES:
+
+Lazer-safe PCSS manual CN manual
+
+Drive manual
+
+CHAPTER 01
+
+GENERAL CHARACTERISTICS OF THE MACHINE
+
+SHEET METAL TECHNOLOGY
+
+GENERAL NOTES REGARDING DELIVERY
+
+When the press brake is unloaded, in order for it to be installed later in the workshop, it is very important that you check the following two items which guarantee the STR s.r.l. product has been properly delivered and is intact:
+
+correspondence between what is supplied and the specifications of the order;
+
+that no damage is found on any parts of the machine.
+
+WARNING
+
+Should you find any damages, you must report them immediately to the carrier and then to STR
+
+s.r.l. in detail.
+
+Should you find any damages, you must report them immediately to the carrier and then to STR
+
+s.r.l. in detail.
+
+Please be reminded that reporting damages late and a signature on the machine delivery note will impede the Customer from obtaining compensation from STR s.r.l. for.
+
+Please be reminded that reporting damages late and a signature on the machine delivery note will impede the Customer from obtaining compensation from STR s.r.l. for.
+
+WARNING
+
+The following aspects must also be clarified in order to protect the customer from any misunderstandings:
+
+The following aspects must also be clarified in order to protect the customer from any misunderstandings:
+
+The catalogues and drawings that depict our machines are intended as a general reference guide for usage and are not necessarily precise in every specific technical detail. All indicated dimensions are therefore not binding and can be changed without notice.
+
+The drawings and any other document delivered with the machine are the property of STR s.r.l.,
+
+which reserves all rights to them and which must not be disclosed to third parties.
+
+STR s.r.l. reserves the right to change one or more characteristics of the machines without notice and without the obligation to provide said changes to machines already installed.
+
+No part of this text and/or the illustrations contained in the documents enclosed with the machine may be reproduced.
+
+GENERAL PRESENTATION
+
+DEAR CUSTOMER,
+
+If used correctly and according to the instructions provided by STR s.r.l., this press brake will not endanger the operator; that is, under the condition that the safety devices are not changed with respect to the conditions verified at the moment of delivery, are maintained in proper working order and are not bypassed.
+
+SAFETY DEVICE TESTING CERTIFICATE
+
+Machine: Electric Press BrakeModel: E SERIES 420-200Serial number: P 0122
+
+MANUFACTURERSTR s.r.l.
+
+Via Galvani, 18 - 24061 Albano Sant'Alessandro (Bg) Italy Ph.+3919912991 - Fax. +3919912992
+
+email: info@str-italy.com - www.str-italy.com
+
+RETAILER
+
+BUYER
+
+STR s.r.l. CERTIFIES that the machine complies with the current regulations. Usage is restricted to personnel that is properly trained on its functioning and informed on the risks and the usage procedures.
+
+The machine is equipped with the following safety devices (tick the appropriate box):
+
+yes
+
+yes
+
+yes
+
+yes
+
+yes
+
+yes
+
+yes
+
+yes
+
+yes
+
+yes
+
+yes
+
+yes
+
+yes
+
+yes
+
+yes
+
+yes
+
+yes
+
+yes
+
+no
+
+no
+
+no
+
+no
+
+no
+
+no
+
+no
+
+no
+
+no
+
+no
+
+no
+
+no
+
+no
+
+no
+
+no
+
+no
+
+no
+
+no
+
+Emergency stop buttons;Suitable:
+
+Rear safety guards;Suitable:
+
+Side safety guards;Suitable:
+
+Front safety guards;Suitable:
+
+Front photocell safety device;Suitable:
+
+Descent pedal safety device in panic positionSuitable:
+
+Front and backgauge protective casing safety devices;Suitable:
+
+Safety device for tool change;Suitable:
+
+Safety device and key shut-off functions;Suitable:
+
+The above safety devices have been tested for mechanical intactness and functionality with the following result: (cross out the appropriate result)
+
+POSITIVE
+
+NEGATIVE
+
+The names of staff members that have been instructed on the safety systems:
+
+First name Surname
+
+Signature
+
+Safety Manager
+
+Operator
+
+Operator
+
+By signing this document, the Customer assumes TOTAL responsibility regarding the proper functioning of the installed safety systems and undertakes to follow all the indications found in the Manuals in order to guarantee maximum safety for operators and the durability of the machine.
+
+Delivery date: Inspection date:
+
+(the warranty will not be effective unless filled out)
+
+STR s.r.l.. (representative)THE BUYER (stamped and signed for acceptance)
+
+This Instruction and Maintenance Manual refers to the press brake with the following distinguishing features. For any technical communications, the machine model and serial number must always be indicated as follows:
+
+Model:
+
+E SERIES 420-200
+
+Serial number:
+
+P 0122
+
+manufactured by: STR s.r.l.
+
+Via Galvani, 18 - 24061 Albano Sant'Alessandro (BG) - ITALY
+
+Ph. +39 035 - 19912991
+
+Fax +39 035 - 19912992
+
+Model:
+
+E SERIES 420-200
+
+Serial number:
+
+P 0122
+
+manufactured by: STR s.r.l.
+
+Via Galvani, 18 - 24061 Albano Sant'Alessandro (BG) - ITALY
+
+Ph. +39 035 - 19912991
+
+Fax +39 035 - 19912992
+
+To verify that the data inserted in the two previous tables is correct, you must check that it coincides with what is written on the nameplate located on the left side frame of the press brake, facing it, meaning the side frame where the programmer arm is not mounted. All the data identifies the press brake in its specificity.
+
+Manufacturer’s brand-name and address
+
+CE marking
+
+Type: Press Brake
+
+Machine model
+
+Capacity (maximum machine force, tonnage)
+
+Installed power
+
+Voltage and frequency
+
+Year manufactured
+
+Serial number
+
+Weight of the machine
+
+Laser/tool (punch) safety distance.
+
+GENERAL INDICATIONS FOR PROPER USAGE OF THE PRESS BRAKE
+
+GENERAL INDICATIONS FOR PROPER USAGE OF THE PRESS BRAKE
+
+It is indispensable that the press brake VERDE be used in complete safety to avoid risky situations for oneself and others, whether during normal machine operation or while carrying out maintenance and repairs on it.
+
+To this end, it is indispensable to carefully read this Instruction and Maintenance Manual and to follow the WARNINGS in it step by step, in addition to always making it available to the operator for reference.
+
+This Manual is an integral part of the product and must be properly stored so it may be referred to throughout the product life of the press brake.
+
+It is obligatory to abide by what is written in this Manual, in particular that which concerns safety regulations.
+
+STR s.r.l. will not be held responsible under any circumstances for direct or indirect damage to persons, animals or things due to the failure to comply with the instructions in this Manual.
+
+CAUTION: KEEP AND REFER TO THIS INSTRUCTION AND MAINTENANCE MANUAL
+
+CAUTION: KEEP AND REFER TO THIS INSTRUCTION AND MAINTENANCE MANUAL
+
+WARNING
+
+IMPORTANT WARNINGS FOR THE OPERATOR
+
+IMPORTANT WARNINGS FOR THE OPERATOR
+
+The operator must study the instructions.
+
+The operator must peremptorily be instructed on usage of the machine, know its features, its limits in usage and the safety regulations on working methods and must abide by them scrupulously.
+
+The operator is obliged to use the personal protective equipment required for the work area where the machine is to be used.
+
+The Instruction and Maintenance Manual is a fundamental element for proper usage of the machine and keeping it in good condition.
+
+CUSTOMER ASSISTANCE
+
+CUSTOMER ASSISTANCE
+
+For any type of repair, inspection or maintenance operation you must contact STR s.r.l. which offers Technical Assistance Service that is highly qualified and at your disposal for any needs you may have.
+
+SPARE PARTS SERVICE
+
+SPARE PARTS SERVICE
+
+Proper functioning and duration of the press brake is guaranteed only by using original spare parts which must be ordered directly from STR s.r.l.
+
+There are several Operations Sheets at the end of this Manual where all the repair work, updates and changes made during the machine’s product life can be recorded in writing.
+
+Regular updating of these sheets allows the user and STR s.r.l. to always have a record of the repairs and work done on the machine.
+
+PAGE LEFT INTENTIONALLY EMPTY FOR INSERTING THE WARRANTY DOCUMENT
+
+MACHINERY DIRECTIVE 2006/42 EC
+
+ANNEX IX
+
+EC DECLARATION OF CONFORMITY
+
+The undersigned Roberto Barcella, as legal representative of STR s.r.l. with offices in Albano Sant’Alessandro, Via Galvani 18 (BG), Italy,
+
+Declares on his own responsibility that the product
+
+Electric press brake for metals model: E SERIES 420-200
+
+identified by the following nameplate data: serial nr. P0122
+
+COMPLIES WITH MACHINERY DIRECTIVE 2006/42 EC and subsequent modifications and additions.
+
+COMPLIES also with the provisions of the following DIRECTIVES:
+
+DIRECTIVE 2014/30/EC
+
+COMPLIES with the model that obtained EC CERTIFICATION:
+
+14MAC003 Rev. 01 on 28/03/2018
+
+issued by the following NOTIFIED BODY:
+
+I.C.E.P.I. S.p.A. (Istituto Certificazione Europea prodotti Industriali) (European Institute for Certification of Industrial Products)
+
+Via Paolo Belizzi, 29/31/33 - 29100 Piacenza ITALY Identification number 0066
+
+The standards described in Chapter 1.6 have also been applied
+
+The technical file was drafted and kept by Roberto Barcella on our premises in Albano Sant'Alessandro (BG), via Galvani 18, Italy.
+
+Done at Albano Sant'Alessandro (BG), Italy on 22/04/2021
+
+________________________________
+
+________________________________Signature
+
+(Roberto Barcella, legal representative)
+
+INTENDED USE
+
+The press brake must be used exclusively for the purpose for which was manufactured. All uses not provided for in this Manual are to be considered improper and therefore strictly forbidden. STR s.r.l. will not be held responsible for any damages to persons, animals and things, due to the failure to comply with these instructions.
+
+The press brake must be used exclusively for the purpose for which was manufactured. All uses not provided for in this Manual are to be considered improper and therefore strictly forbidden. STR s.r.l. will not be held responsible for any damages to persons, animals and things, due to the failure to comply with these instructions.
+
+The press brake is intended to be used for bending cold (ambient temperature) soft stainless steel and non-ferrous metals such as copper, aluminium and brass.
+
+The press brake is intended to be used exclusively by a single operator using a single control pedal as specified in Chapter 4.4.
+
+WARNING
+
+GREAT ATTENTION MUST BE PAID TO THE FOLLOWING TEXT:
+
+GREAT ATTENTION MUST BE PAID TO THE FOLLOWING TEXT:
+
+The presence of more than one operator in the work area can cause serious danger to the operators. It is the user’s responsibility to check that the work to be done complies with safety requirements. For example, should the weight or dimensions of the sheet metal call for the presence of two or more operators to support it, you must contact STR s.r.l. which can supply auxiliary equipment (dual control pedal, sheet followers, etc.) if need be.
+
+The installation of auxiliary equipment not supplied by STR s.r.l. implies the assumption of sole responsibility on the part of the installer and the user who must proceed with the estimate and assessment of risks and the drafting of the EC Declaration of Conformity of the whole.
+
+It is strictly forbidden to install equipment that changes or alters the press brake’s functioning.
+
+Hot bending any material and any fragile material that might create dangerous projectiles is forbidden.
+
+REFERENCE STANDARDS
+
+The harmonised standards used to design and produce this press brake follow below:
+
+UNI EN ISO 12100:2010Machinery safety – General design principles – Risk assessment and reduction UNI EN ISO 13857Safety distances to prevent the upper limbs from accessing dangerous areas. UNI EN 349Machinery safety – Minimum spaces to prevent crushing of parts of the body.
+
+UNI EN ISO 13850Machinery safety – Emergency shut-off devices, functional aspects – Design principles.
+
+CEI EN 60204-1Machinery safety – Electrical equipment of the machines – General rules.
+
+EN 55011Limits and methods for measuring characteristics of radio interference from industrial, scientific and medical apparatuses.
+
+EN 50370-1Electromagnetic compatibility – Emissions for machine tools.
+
+EN 50370-2Electromagnetic compatibility – Immunity for machine tools.
+
+Furthermore and where applicable, the standard EN 12622:2009 + A1:2013 on the safety of hydraulic press brakes has been used as a reference technical specification for designing and manufacturing this product.
+
+GENERAL CHARACTERISTICS OF THE MACHINE
+
+The press brake VERDE model, which is a product range with models from 1250 to 2050 mm and from 40 to 60 tons, is the result of constant technological research and evolution in the field of modern metal bending. The system for controlling the movements of the ram, done with a combined electronic-mechanical function, is the most advanced technology found in press brakes today.
+
+These types of machines are used for deforming by bending flat sheet metal into a variety of shapes and manners and are composed of and feature the following parts:
+
+movable top beam, to which the punch is attached, driven by 2 high-load recirculating ball screws controlled by electric motors;
+
+fixed lower beam (not movable) with attached die;
+
+structural body;
+
+machine backgauge completely driven by CNC;
+
+machine is controlled and programmed by CNC with quick and simple controls;
+
+high level of safety in the work area owing to compliance with the latest safety regulations and usage of the finest devices to ensure it.
+
+Most important components
+
+MACHINE BODY
+
+The structure that connects all the fundamental parts of the press brake is composed of several steel parts welded together and its stability is verified according to FEM calculations. It consists of two steel sides fastened together on the top and bottom to further improve stability. The most important feature the structure must possess is high stability, as various equipment rests on it such as the backgauge, the top beam, the platform, etc.
+
+LOWER BEAM
+
+The lower beam in housed in a special recess, firmly fastened to the machine body and screwed on it. This type of connection makes the beam an integral part of the machine body and its function is:
+
+to give greater stability to the machine body;
+
+to facilitate changing the type of bending tool;
+
+to facilitate proper positioning of the backgauge;
+
+to change the position of the front support shelves according to the tools chosen by the user;
+
+TOP BEAM (RAM)
+
+The top beam is connected to the machine body by two high-load recirculating ball screws with joints that can rotate. This part of the machine moves during the bending phase and is therefore firmly connected to the motors (system patented Nr. MI2012A000052).
+
+The platform (beam table) and ram are perfectly parallel with two linear incremental transducers controlled by the programmer which, through electronics, control moment by moment the position of the ball screws and subsequent balancing, acting singularly on the motors that command Y1 and Y2.
+
+This system makes parallel bending possible even when bending is not centred in relation to the machine axis.
+
+N.B.: it is important to emphasise that the joints connected to the beam found on the nuts of the ball screws allow the beam to be inclined to a determined degree. Inclining is done by controlling the motors separately from the CNC; this is how conical bending is done.
+
+In linear difference, the degree of inclination cannot be greater than the maximum value of 10 mm, so it does not interfere with the structural parts of the machine.
+
+BACKGAUGE
+
+The backgauge of the press brake allows pieces to be shaped to specific designs because it supports and positions the sheet metal according to the desired heights. In fact, its position determines the bending edge, supports the piece when the moving part during the bending phase of the sheet metal is in the work area, etc…
+
+It plays a fundamental role during the bending phase and its precision, the regularity of its positioning and structural stability are decisive.
+
+The distance of the backgauge from the machine axis (adjusting X-axis), its height in reference to the positioning of the sheet metal (adjusting R-axis) and the displacement along the inner frame of the machine body of the turrets where the fingers are lodged, are controlled by the machine programmer.
+
+The backgauge features these functions:
+
+highly precise positioning of the axes while moving owing to the recirculating ball screws and gears located along the machine axes;
+
+quickly moving axes owing to the use of very reactive motors that allow for quick upper positioning, in particular when the press brake is inserted in a robotised cell;
+
+positioning regularity.
+
+A backgauge with these characteristics offers countless practical advantages:
+
+owing to the continuous programming of axes X and R, and their reliability and regular positions, large lots of complex pieces can be produced without significant wasting of time due to position tolerances when the backgauge stops in the upper part;
+
+the possibility of automating the press brake’s work cycle, which basically means the press brake can be inserted in a workcell due to the high and flexible positioning speeds. Production time can therefore be reduced in an automated system or for processing large pieces which require continuous adjustment of the axes on broad displacement strokes;
+
+continuous programming of all machine axes reduces setup times for X and R axes to a minimum;
+
+the possibility of setting up different workstations on the press brake owing to the motorised movement of axes Z1 and Z2;
+
+its structure and positioning on the machine make the backgauge stable and able to give structural stability to the entire movement system.
+
+MACHINE CONTROL PANEL
+
+The press brake is equipped with a control panel where all the controls for the machine’s functions are found. The Touch Screen control system allows users to touch and activate various machine controls displayed on a virtual panel; only a few buttons are found there physically. The control panel is equipped with dedicated ports where an industrial keyboard and mouse can be connected and interfaced, to improve interaction with the control.
+
+Programming
+
+The panel can be used to create a complete bending programme and name it so as to be able to retrieve it when necessary and make it as specific as possible according to its use. It is also important to note that programming can be done on a PC and data subsequently transferred to the CNC on the control panel.
+
+When there is not enough time to refer to the software guide, the online guide can be retrieved with the (F1) key in order to view the explanation of the active control or be able to search for a particular function.
+
+CONTROL CONSOLE
+
+The press brake is also equipped with a control console so the machine may be used comfortably; the console can be moved lengthwise to the best point during the bending phase. The main controls for movement are found on it, such as:
+
+top beam return pedal;
+
+top beam descent pedal;
+
+Emergency stop button
+
+3
+
+2
+
+1
+
+3
+
+2
+
+1
+
+DESCRIPTION OF THE MACHINE
+
+During the bending phase, the structural body of the machine is under stress for the strain caused by the tools and movement of the high-load ball screws located on it. At all times, all its functions are monitored so that the press brake always functions correctly and optimally.
+
+The most important functions and characteristics which are guaranteed during the bending phase follow below.
+
+Automatic recovery of pressure on the side frames
+
+Positioning optical scales on a structural part not subject to strain and well anchored on a stable part of the press brake, we can obtain a reading that is free of the small pressures that the machine structure undergoes. In this way, the optical scales transmit the exact position of the Y1 and Y2 axes to the motors.
+
+Recovery of pressure on the top (and lower) beams
+
+During the bending phase, the structural parts are subject to small variations in form which must be cancelled in order to bend properly. Thanks to the combined use of several sensors able to quantify the entity of variations in the beam’s form.
+
+Automatic compensation for variations in the thickness to be bent
+
+Using the information on pressure that the motors exercise on the high-load ball screws, the exact thickness of the sheet metal to be bent can be measured so that the CNC software is able to regulate itself to calculate all the variables necessary for bending.
+
+Automatic measurement of the length of the sheet metal to be bent
+
+Using the abovementioned information the sensors are able to communicate, the machine can measure the exact length of sheet metal that it is bending. In this manner, the CNC is able to fine-tune the calculation of the variables necessary for bending.
+
+Checking the power required for bending
+
+.
+
+After setting the values of the sheet metal thickness, its length, the bending angle of the piece, the material’s resistance and type of tool used on the machine’s CNC function, the programmer is able to calculate the power necessary to bend it.
+
+The exact measurement of the length of the sheet metal and its thickness can be calculated by the sensors on the machine, making the calculation precise.
+
+Adjusting the bending angle (OPTIONAL only upon request)
+
+The bending angle can be verified and corrected thanks to the laser device integrated into the system for measuring the angle. When bending is done, the top beam, now under slightly less bending pressure, allows the bended piece to “float” on the die in order to be measured by the laser device’s optical reader. If the measured angle is different from what is necessary, another bending can be done, calculated by the CNC, to correct the previous bending height.
+
+Speed adjustment
+
+The press brake’s CNC function allows all the speeds involved in the bending phase to be checked to make the machine more functional and safe while in use.
+
+By changing some of the CNC parameters, all the position variables and the following speeds can be programmed:
+
+APPROACH SPEED
+
+This is the speed with which the top beam moves until it reaches the speed change point.
+
+POINT OF SPEED CHANGE OR SAFETY
+
+This is the point in which the speed of the top beam changes from approaching to working speed which ranges between 0-10 mm/sec. This point is calculated and programmed according to the thickness of the sheet metal to ensure work area safety.
+
+SHEET METAL PINCHING POINT
+
+When requested, this point is used where the top beam rests on the sheet metal that has not yet been bent, and consequently on the die, to allow the backgauge to move backwards. Once the backgauge has moved back, bending continues until completed.
+
+WORKING SPEED
+
+This is the speed that the top beam has while it bends the sheet metal. It is established by the machinery directive to ensure work area safety; as previously mentioned, it can be programmed between 0-10 mm/sec.
+
+RETURN SPEED
+
+This is the speed with which the top beam returns to the upper dead point (UDP) or to a programmed point that carries out the same function, after sheet metal bending is completed.
+
+Stopping precision of the top beam descent
+
+All top beam movements are controlled by the machine’s CNC function and its positioning precision is +/-
+
+0.01 mm.
+
+Adjusting the upper dead point (UDP) of the top beam
+
+The upper dead point is where the ram, having finished the bending cycle, returns upward and then stops. The distance from its bending point can be programmed to reduce wasted time significantly in a bending sequence. Therefore, according to bending needs, the UDP point can be programmed in a lower point to save time.
+
+Possibility of interrupting an automatic bending cycle
+
+By using a switch, an automatic bending cycle can be interrupted to bend a single piece manually.
+
+Inclining the top beam
+
+By programming from the CNC, the top beam can be inclined so that conical bending can be done. The default inclination can be 10 mm, meaning the beam can be inclined making the two axes Y1 and y2 independent and staggering them with this linear measurement.
+
+NOISE AND VIBRATIONS
+
+Noise
+
+The operational conditions and the lowered measurement method are those specified in the EN12622 standard. The operator’s workstation was considered at the middle of the press brake at 1 m distant from the front and 1.6 m from the walking level.
+
+The measured levels appear in Chapter 3.
+
+VIBRATIONS
+
+The machine does not transmit dangerous vibrations to the operator.
+
+CHAPTER 02
+
+LIFTING, TRANSPORT AND INSTALLATION CONDITIONS
+
+SHEET METAL TECHNOLOGY
+
+LIFTING THE PRESS
+
+The press brake must be lifted in order to install it in the place where it will be used. This operation should not be underestimated as a wrong move and improper fastening of the press brake to the lifting apparatus can cause considerable harm to people as well as damage to the machine.
+
+General warnings
+
+Below follows a list of general warnings on lifting so it can be done safely. All press brake lifting and handling must be done by trained personnel.
+
+IT IS OBLIGATORY that a person in charge of making reports be present at all times;
+
+it is FORBIDDEN to stand in the area near the press brake during lifting, loading and unloading operations;
+
+it is FORBIDDEN to stand in the outreach area of the crane;
+
+it is FORBIDDEN to move the press brake using levers as it could turn over, given the location of its centre of gravity;
+
+it is OBLIGATORY to be very careful of how the press brake is secured to the crane to prevent sudden movements due to the location of its centre of gravity; in fact, this latter is located quite forward compared to the centre line of the side view of the machine;
+
+the space around the press brake must OBLIGATORILY be left free during moving operations to prevent risks of injury due to sudden displacements or imbalances;
+
+it is OBLIGATORY to secure the press brake, make it inaccessible and to FORBID that anyone use it should the machine be left in the warehouse without being anchored to the ground for an unspecified amount of time.
+
+The press brake must remain still once it is placed on the ground because its centre of gravity is located between the two supporting feet. Displacements or imbalances which may cause it to tip over can occur if it collides with moving vehicles, such as forklift trucks, cranes, etc.
+
+it is OBLIGATORY to verify, by contacting STR s.r.l., the weight of each part that is to be assembled onto the press brake;
+
+it is OBLIGATORY to ensure that suitable equipment for unloading and handling the machine pieces is available;
+
+it is OBLIGATORY to check the carrying capacity of the lifting devices (bridge cranes, cranes, etc.,), as well as shackles, cables, cords and chains used for slinging and hitching onto the various parts to be assembled;
+
+it is IMPORTANT that the device that is to lift the machine be positioned in the centre of each part to be assembled to ensure balanced lifting;
+
+it is OBLIGATORY to prevent cables from being laid on or extended over fragile parts (hydraulic components, tubes, etc.) as pulling them in the lifting phase could damage them;
+
+it is OBLIGATORY to prevent blows or pulling violently during the loading and unloading phases;
+
+it is FORBIDDEN to move or install the machine without an STR s.r.l. technician present;
+
+it is OBLIGATORY to contact STR s.r.l. in order to receive information on the best method to use should you want to move a previously installed machine.
+
+STR s.r.l. will not be held responsible for any injuries and declines all responsibility for any damages due to the failure to comply with the previously detailed instructions.
+
+WARNING
+
+Lifting
+
+A bridge crane or crane with sufficient carrying capacity must be used to lift the press brake without risks. Its weight can be found in this Manual and on the nameplate located on the left side frame of the machine. Particular attention must be paid that metal cables or chains extend linearly from where they are anchored to the structure all the way to the crane’s lifting hook. As shown in the diagram, the structure is fastened by means of shackles and u-bars, which are inserted in the holes in the upper parts of the side frames close to the cylinders. We recommend that you use two metal cables whose carrying capacity ensures safe lifting. The cables must be arranged as indicated in the below diagram so that the opening angle between the cables never exceeds 120°. There are charts that indicate optimal opening angles according to the weight of the body and lifting method.
+
+N.B. The carrying capacity of cables, chains and shackles must be sufficient to lift the press brake with no risks, and therefore much greater than the weight to be lifted and suitable for angled lifting, otherwise a lifting beam must be used.
+
+Max 120°
+
+Max 120°
+
+STANDING IN AND OCCUPYING THE AREA SURROUNDING THE PRESS BRAKE WHEN IT IS LIFTED IS FORBIDDEN
+
+STANDING IN AND OCCUPYING THE AREA SURROUNDING THE PRESS BRAKE WHEN IT IS LIFTED IS FORBIDDEN
+
+TRANSPORT INSTRUCTIONS
+
+HAZARD
+
+HAZARD
+
+The machine must be positioned properly on the transport vehicle used to move it because its centre of gravity weighs mainly on the front side.
+
+The press brake must be positioned on the transport vehicle so that its centre of gravity is located close to the centre line of the cargo area, or better aligned with the centre line.
+
+INSTRUCTIONS FOR INSTALLATION AND/OR ASSEMBLY
+
+Below follow the necessary operations for installing and adjusting the machine.
+
+These operations must be carried out by specialised, responsible and qualified personnel in order to guarantee safety.
+
+Weather and ambient conditions
+
+The press brake must be installed and used in a setting with well-defined characteristics. The following must be present:
+
+OPERATIONAL AMBIENT TEMPERATURES between +5° e +40° ALLOWED;
+
+RELATIVE HUMIDITY between 20% and 70%, though for short periods of time, humidity levels of 90% can be tolerated but without the formation of condensation;
+
+USAGE UP TO AN ALTITUDE of 1000 m above sea level;
+
+ELECTRICAL WIRING SYSTEM MUST BE PROTECTED according to protection rating IP54
+
+against ingress of solids and liquids;
+
+IT CANNOT BE USED in environments that are explosive or subject to water jets;
+
+Lighting levels and conditions
+
+The machine must be situated in a place with lighting that ensures sufficient visibility; to this aim, below follows a chart with minimum levels of light intensity.
+
+WORK AREA OR PLACE
+
+LIGHT INTENSITY (lux)
+
+Areas used for the storage of large/heavy materials
+
+10
+
+Walkways, corridors, stairs
+
+20
+
+Rough works
+
+40
+
+Works requiring medium perception of details
+
+100
+
+Works requiring perception of fine details
+
+200
+
+Works requiring perception of very fine details
+
+300
+
+Table of MINIMUM Lighting levels (art. 10 Pres. Decree 19 March 1956, no. 303)
+
+Preparing the press brake
+
+Sometimes the press brake is delivered to the customer completely wrapped in sacks of polymeric material (pieces of nylon material). Before installing the press brake, the packing material around the machine must be removed and disposed of according to the current regulations in the country where the machine is to be installed.
+
+Characteristics of the site that has been prepared for installation of the press brake
+
+The area where the press brake is to be installed must be chosen according to its correspondence to the following points:
+
+WARNINGS
+
+Space occupied
+
+there must be no other machinery which limits manoeuvrability around the press brake;
+
+the operator must always be able to protect the work area from any hazards and have the entire machine and the surrounding area within his or her total sight;
+
+the emergency exit must always be accessible once the distribution board and movable guards have been opened;
+
+there must be sufficient space for orienting the control panel;
+
+it must always be possible to open all the movable guards and the distribution board to allow maintenance work to be done;
+
+free space must be allotted on the right and left sides of the press brake to facilitate tool changes;
+
+the installation site must possess the minimum levels of light intensity as those mentioned previously.
+
+Floor and ambient conditions
+
+the installation area must be clean and free of all obstacles so it is clear and ready;
+
+the installation area must be protected from the elements, as previously mentioned;
+
+the work area must always comply with the current safety regulations in the country in which it is located;
+
+the floor must be as level as possible with a maximum variation of 5 mm tolerated;
+
+the floor must be free of cracks or seams;
+
+the floor slab must be oilproof and able to absorb variations in weight due to movements near the machine, such as the passage of vehicles for internal transport, assembly of other machinery, etc…;
+
+Press brake installation
+
+Owing to its precise design and the use of top quality materials, STR s.r.l. machines feature a structural rigidity that allows for safe and long-lasting operation. Nonetheless, proper placement and adequate anchoring of the machine to the ground will increase stability and eliminate any possible residual vibrations.
+
+It is a good practice to examine what type of floor the machine is to be installed on and verify in advance the weight and load distribution on the floor with the STR Technical Department.
+
+After this preliminary phase, creating suitable foundations with particular characteristics is OBLIGATORY. Regardless of the foundation being considered, the following instructions must be followed:
+
+create four pits embedded in the reinforced concrete foundation
+
+rest the machine on the floor with the four 10-mm-thick plates you have previously placed underneath the machine’s feet. Insert 4 lag-screw bolts in the slots in the machine’s feet;
+
+check more or less that the machine is levelled then pour mortar and cement in the pits which contain the lag-screw bolts;
+
+YOU MUST WAIT A DETERMINED AMOUNT OF TIME BEFORE ADJUSTING THE MACHINE, SO THERE IS NO POSSIBILITY OF EXTRACTING OR DAMAGING THE ANCHORING BOLTS.
+
+YOU MUST WAIT A DETERMINED AMOUNT OF TIME BEFORE ADJUSTING THE MACHINE, SO THERE IS NO POSSIBILITY OF EXTRACTING OR DAMAGING THE ANCHORING BOLTS.
+
+after checking that the cement has set perfectly, carry out a more accurate levelling using a centesimal spirit level positioned on the dies, as clearly explained in the following chapter;
+
+use the special screws found on the machine feet for precise adjustment;
+
+check that the machine feet rest perfectly on the plates, otherwise insert shims between the feet and the plates;
+
+finish by tightening the bolts to fasten the machine feet to the floor in the pit.
+
+N.B. 1 It is obligatory to anchor the machine to the floor keeping in mind that the press brake is heavier in the front creating a high risk of turning over.
+
+N.B.2 a foundation different from the one in the diagram can be created contacting STR s.r.l. in advance.
+
+FB fischer plugs or similar anchor plugs which have the following features can be used.
+
+A
+
+C
+
+D
+
+E
+
+M20
+
+120 min.
+
+200 max.
+
+FOOT sp.
+
+FOOT sp. + 50 mm
+
+A
+
+C
+
+D
+
+E
+
+M20
+
+120 min.
+
+200 max.
+
+FOOT sp.
+
+FOOT sp. + 50 mm
+
+If separated from the structure for transport reasons, the top and lower beams must be assembled by STR
+
+s.r.l. technicians before positioning the machine on the chosen floor.
+
+Levelling the press brake
+
+Accurate levelling can be done by turning the screws on the machine’s feet.
+
+First and foremost, necessary tools to have at hand are a centesimal spirit level with a measurement precision of 0.01 mm/m and wrenches for tightening or loosening the adjusting screws on the machine’s feet.
+
+Once the press brake has been positioned on the foundation floor, the following instructions must be followed in order to level it:
+
+place the centesimal spirit level with a measurement precision of 0.01 mm/m in the 1 position as shown in the below image, so that the horizontal levelling (LONGITUDINAL) can be checked;
+
+remove or loosen the 4 nuts C attached to the lag-screw bolts so the machine can be adjusted;
+
+check that the air bubble on the spirit level is located on the middle notch of the instrument;
+
+if the air bubble is not located on the middle notch, you must adjust the position of the press brake, tightening or loosening the screws A shown in the below image, until the correct position is reached;
+
+tighten the nuts C attached to the lag-screw bolts E once the exact levelling point has been reached;
+
+tighten the screws C once the exact levelling point has been reached;
+
+after having levelled the machine horizontally, vertical (transversal) levelling must be done, placing the spirit level in position 2, using specific tools as shown in the image. You need only place the spirit level on a “finished” part of the machine and not exactly as shown in the image;
+
+adjust the position of the press brake again, once more using the screws on the machine feet but tightening or loosening the screws B found on the rear feet of the press brake;
+
+once correctly levelled, as mentioned previously, you must tighten the nuts C connected to the lag-screw bolts E which anchor the machine to the ground;
+
+ADJUSTING SCREWS ON THE FOOT BARELY VISIBLE ON THE
+
+SIDE (similar to the other but specular).
+
+ADJUSTING SCREWS ON THE FOOT BARELY VISIBLE ON THE
+
+SIDE (similar to the other but specular).check points A and B again and if necessary, repeat adjustments.
+
+Assessing correct levelling
+
+CENTESIMAL SPIRIT LEVEL
+
+CENTESIMAL SPIRIT LEVEL
+
+SUBJECT MEASURING MACHINE LEVELLING:
+
+LONGITUDINAL direction +/- 0.0/1000 tolerance
+
+TRANSVERSAL direction +/- 0.02/100 tolerance
+
+Connecting to mains electricity and pneumatic supply lines
+
+This phase of installing the machines plays a fundamental role. In fact, failure to respect the general characteristics can cause serious damages to the electrical wiring system of the press brake as well as harm to the operator.
+
+HAZARD
+
+HAZARD
+
+IT IS OBLIGATORY to always check that the following indications are actually adopted. Failure to comply with them can cause serious injuries and even death.
+
+It is therefore necessary to scrupulously observe all the devices that will be illustrated, so that the safety conditions of the machine and the operator are always safeguarded.
+
+First of all, the Customer must verify:
+
+that the technical data of the electrical wiring system in your workshop is compatible with that which appears in the main electrical specifications: you must therefore check the voltage, frequency and number of phases;
+
+that the electrical connection to the distribution board of the press brake has the protective devices pursuant to safety regulations;
+
+THE PLANT’S EARTHING SYSTEM
+
+The minimal section of the yellow/green chassis earth cable must be the same as the section of the power supply cables.
+
+The yellow/green chassis earth cable must be hooked up to the terminal strip in the predefined point, that is, in the terminal marked with the letters “PE”.
+
+You must always check the efficacy of the earthing connection to prevent hazardous situations due to malfunctions.
+
+The customer must fit the power line with a magneto-thermal circuit breaker able to cut off power to the electrical wiring system to protect the machine and operator from any breakdowns.
+
+CHARACTERISTICS OF THE POWER LINE AND CONNECTION
+
+It is obligatory to connect the distribution board to a line with the following characteristics:
+
+the machine must be powered by a three-phase electrical line with 400 V with fluctuations of
+
+10%;
+
+its frequency must be 50 Hz and fluctuations of 2% are allowed;
+
+the power cable must have 5 poles (3 poles + Earth + Neutral);
+
+power going to the electrical cabinet must be derived from the general electrical line by means of a switch or an on-load switch-disconnector;
+
+the switch or on-load switch-disconnector to be installed must be fitted with a residual current or magneto-thermal circuit breaker upstream of the cabinet and must have the following characteristics: 400 volts, 50 Hz and a residual current protection calibration of 0.30 A;
+
+the incoming power line inside the electrical cabinet must be connected to the terminals (L1, L2, L3, N1) upstream from the main switch and the yellow/green earthing conductor wire to the yellow/green terminal strip (PE);
+
+there can be no power outages for more than 3msec and 1 sec must pass between successive outages;
+
+the maximum length of the power cable must be 30 m, and should it be longer, the cable section must be increased;
+
+jointing on the power cable is FORBIDDEN.
+
+CHARACTERISTICS OF THE INTENDED WORK AREA
+
+The room where the machine is installed must be equipped with a chassis earth link that complies with standard EN60204-1.
+
+The power line must not be subject to disturbances generated by power connections with other machinery, from sparks from powerful motors and all other disturbances pursuant to standards EN 50370-1 and EN 50370-2 on electromagnetic compatibility.
+
+The electrical wiring system must be able to function properly with an ambient temperature between +5°C and +40°C.
+
+The electrical wiring system must be able to function properly with a humidity rate between 20% and 70%, with exceptions for brief periods of up to 90%.
+
+Pneumatic supply
+
+The rooms where the machine is installed must be equipped with a pneumatic supply system of at least 6 bar. The capacity is extremely reduced.
+
+It must be connected with a quick release coupling with a 6 mm-diameter tube located on the right side of the press brake.
+
+There is a pressure regulator inside the press brake that can be reached through the lower hatch on the machine rear.
+
+Checking the press brake before starting up
+
+After installation, levelling and connecting to mains electricity, the machine is ready to operate.
+
+Despite being ready, it is NECESSARY that all the machine devices meet the requirements for which they were designed. Therefore, the quality and efficiency of the below parts must be verified:
+
+EFFICIENCY OF SAFETY DEVICES AND GUARDS
+
+Turning on the machine, tests must be done simulating the use of safety guards such as pressing the emergency stop button, opening the side guards, etc., to check that they function properly.
+
+The first machine start-up is forbidden if the following safety devices and functions do not respond to the functionalities described in Chapter 5.1.1.
+
+The first machine start-up is forbidden if the following safety devices and functions do not respond to the functionalities described in Chapter 5.1.1.
+
+Emergency stop button;
+
+laser safety devices checking for perfect light beam alignment;
+
+devices which activate the side guards positively;
+
+descent pedal and return pedal;
+
+backgauges (if provided);
+
+front sheet metal supports (if provided);
+
+tool clamping (if provided).
+
+CHECKING THE FUNCTIONALITY OF THE PNEUMATIC CIRCUIT (OPTIONAL)
+
+If the machine is equipped with pneumatic clamping, you must check that the pressure inside the circuit is correct and equal to the levels indicated by the machine tables. Afterwards, with the machine off, you can check its functionality once the plant is connected.
+
+CLEANING THE ANTICORROSIVE AGENT
+
+All processed surfaces are covered with substances able to maintain the metal’s surface condition. Their anticorrosive properties help keep the surface conditions of the processed parts of the cylinder (shank) and tools intact. Before starting up the machine, the above parts must be cleaned with cleansing solutions.
+
+CONNECTING THE CONTROL CONSOLE TO THE DISTRIBUTION BOARD
+
+To connect the console to the control panel, you must insert the plug which is found at the end of the console cable into the socket on the rear side of the distribution board.
+
+LASER GUARD CHECK
+
+Check that the distance between the light beam of the laser guards and the lower tip, the point, of the punch is as indicated on the machine nameplate (refer to the LAZER-SAFE Manual for adjustment instructions).
+
+BACKGAUGE CHECK
+
+Check that the backgauge is perfectly aligned on the entire machine.
+
+CHECK ON ANY OPTIONALS
+
+Check that any special devices are perfectly efficient, for example hydraulic clamps, sheet metal following arms, etc.
+
+At this point, bending trial runs can be carried out by STR technician to check that the machine functions properly.
+
+Should you change any of the bending programme parameters, we recommend that you save the new data on a removable data storage medium (e.g. floppy disk). This medium must be stored in a secure and suitable place.
+
+Before using the machine autonomously, the operator must attend a suitable training course held by STR s.r.l.
+
+Before using the machine autonomously, the operator must attend a suitable training course held by STR s.r.l.
+
+CHAPTER 03
+
+STANDARD COMPOSITION AND VARIOUS OPTIONALS
+
+SHEET METAL TECHNOLOGY
+
+MACHINE COMPOSITION
+
+The idea behind the design, development and production of the VERDE press brake was to create a machine that is versatile, functional and able to carry out the majority of bending processes that can be done on a single press brake.
+
+With this affirmation in mind, the machine was developed with STANDARD features but with the possibility of being customised with only a few mechanical operations according to the bending process required by the desired piece. All machine customising is done upon request and comes under the category of press brake OPTIONAL features.
+
+Further on, we will show both the STANDARD composition and the OPTIONALS, which consist of a carefully studied range of equipment that can supplement the functions already found on the press brake.
+
+STANDARD COMPOSITION OF THE PRESS BRAKE
+
+Before illustrating all the product models of the E SERIES range, it is important to see the machine’s standard composition.
+
+11
+
+11
+
+STANDARD compositions and various OPTIONALS
+
+STANDARD compositions and various OPTIONALS
+
+03-
+
+03-
+
+3
+
+3
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+ELECTRIAL EQUIPMENT
+
+9
+
+ELECTROMECHANICAL ACTUATORS 10
+
+HAZARD SYMBOLS PLATE TOP BEAM
+
+CYLINDER COVER LASER PHOTOCELL PUNCH
+
+DIE
+
+11
+
+12
+
+13
+
+BACKGAUGE STRUCTURE THROAT CASING LOWER BEAM
+
+REAR GATE
+
+1
+
+2
+
+3
+
+4
+
+5
+
+6
+
+7
+
+8
+
+ELECTRIAL EQUIPMENT
+
+9
+
+ELECTROMECHANICAL ACTUATORS 10
+
+HAZARD SYMBOLS PLATE TOP BEAM
+
+CYLINDER COVER LASER PHOTOCELL PUNCH
+
+DIE
+
+11
+
+12
+
+13
+
+BACKGAUGE STRUCTURE THROAT CASING LOWER BEAM
+
+REAR GATE
+
+10
+
+12
+
+13
+
+7
+
+6
+
+2
+
+9
+
+8
+
+5
+
+4
+
+3
+
+1
+
+10
+
+12
+
+13
+
+7
+
+6
+
+2
+
+9
+
+8
+
+5
+
+4
+
+3
+
+1
+
+STANDARD product models
+
+The range of machines produced, with the features that distinguish them appear, appear below divided by tonnage families.
+
+VERDE 40 Ton.
+
+VERDE 40 Ton.
+
+CHARACTERISTICSL=
+
+1250
+
+Capacity (maximum machine
+
+force, tonnage)
+
+Ton
+
+40
+
+Maximum working length
+
+mm
+
+1250
+
+Distance between uprights
+
+mm
+
+1050
+
+Standard throat
+
+mm
+
+260
+
+Distance between table and ram
+
+mm
+
+480
+
+Maximum series stroke
+
+mm
+
+260
+
+Table width
+
+mm
+
+60
+
+Fast descent speed
+
+mm/s
+
+0÷300
+
+Working speed
+
+mm/s
+
+0÷10
+
+Return speed
+
+mm/s
+
+0÷300
+
+Y-axis positioning tolerance
+
+mm
+
++/- 0.01
+
+Motor power
+
+Kw
+
+18
+
+Total weight
+
+kg
+
+4200
+
+Electrical connection
+
+Volt
+
+400
+
+Hz
+
+50
+
+Phases
+
+3+N
+
+Maximum instantaneous sound pressure level LP(c)
+
+dB(c)
+
+-
+
+Sound power level LwA
+
+dB(A)
+
+-
+
+Sound pressure level in work area LP(A)
+
+dB(A)
+
+74±2.5
+
+CHARACTERISTICSL=
+
+2050
+
+Capacity (maximum machine force, tonnage)
+
+Ton
+
+40
+
+Maximum working length
+
+mm
+
+2050
+
+Distance between uprights
+
+mm
+
+1550
+
+Standard throat
+
+mm
+
+260
+
+Distance between table and ram
+
+mm
+
+480
+
+Maximum series stroke
+
+mm
+
+260
+
+Table width
+
+mm
+
+60
+
+Fast descent speed
+
+mm/s
+
+0÷300
+
+Working speed
+
+mm/s
+
+0÷10
+
+Return speed
+
+mm/s
+
+0÷300
+
+Y-axis positioning tolerance
+
+mm
+
++/- 0.01
+
+Motor power
+
+Kw
+
+18
+
+Total weight
+
+kg
+
+6300
+
+Electrical connection
+
+Volt
+
+400
+
+Hz
+
+50
+
+Phases
+
+3+N
+
+Maximum instantaneous sound pressure level LP(c)
+
+dB(c)
+
+-
+
+Sound power level LwA
+
+dB(A)
+
+-
+
+Sound pressure level in work area LP(A)
+
+dB(A)
+
+74±2.5
+
+VERDE 60 Ton.
+
+VERDE 60 Ton.
+
+CHARACTERISTICSL=
+
+1250
+
+Capacity (maximum machine force, tonnage)
+
+Ton
+
+60
+
+Maximum working length
+
+mm
+
+1250
+
+Distance between uprights
+
+mm
+
+1050
+
+Standard throat
+
+mm
+
+260
+
+Distance between table and ram
+
+mm
+
+480
+
+Maximum series stroke
+
+mm
+
+260
+
+Table width
+
+mm
+
+60
+
+Fast descent speed
+
+mm/s
+
+0÷260
+
+Working speed
+
+mm/s
+
+0÷10
+
+Return speed
+
+mm/s
+
+0÷260
+
+Y-axis positioning tolerance
+
+mm
+
++/- 0.01
+
+Motor power
+
+Kw
+
+18
+
+Total weight
+
+kg
+
+4200
+
+Electrical connection
+
+Volt
+
+400
+
+Hz
+
+50
+
+Phases
+
+3+N
+
+Maximum instantaneous sound pressure level LP(c)
+
+dB(c)
+
+-
+
+Sound power level LwA
+
+dB(A)
+
+-
+
+Sound pressure level in work area LP(A)
+
+dB(A)
+
+74±2.5
+
+CHARACTERISTICSL=
+
+2050
+
+Capacity (maximum machine force, tonnage)
+
+Ton
+
+60
+
+Maximum working length
+
+mm
+
+2050
+
+Distance between uprights
+
+mm
+
+1550
+
+Standard throat
+
+mm
+
+260
+
+Distance between table and ram
+
+mm
+
+480
+
+Maximum series stroke
+
+mm
+
+260
+
+Table width
+
+mm
+
+60
+
+Fast descent speed
+
+mm/s
+
+0÷260
+
+Working speed
+
+mm/s
+
+0÷10
+
+Return speed
+
+mm/s
+
+0÷260
+
+Y-axis positioning tolerance
+
+mm
+
++/- 0.01
+
+Motor power
+
+Kw
+
+18
+
+Total weight
+
+kg
+
+6300
+
+Electrical connection
+
+Volt
+
+400
+
+Hz
+
+50
+
+Phases
+
+3+N
+
+Maximum instantaneous sound pressure level LP(c)
+
+dB(c)
+
+-
+
+Sound power level LwA
+
+dB(A)
+
+-
+
+Sound pressure level in work area LP(A)
+
+dB(A)
+
+74±2.5
+
+STANDARD composition of all the press brakes
+
+After having listed all the STANDARD structural features of the press brake, it is now necessary to specify the features that complete the machine’s functionalities.
+
+BACKGAUGE (MODEL 9S WITH 2 X-R AXES)
+
+The range of RGS backgauges was created both following a new design concept which is called the “Plug&amp;Play” assembly system guaranteeing maximum quality and reliability, as well as the “CANOPEN” product design which allows the positioning of sheet metal to be held in its stopping points which are positioned according to the programme with predefined heights in total precision and speed. Thus, the depth of bending to be done is always perfect.
+
+The backgauge with X and R axes is composed of a single-unit (X axis) arranged parallel to the bending line and where stops holding the sheet metal are inserted along its length. Another vertical (R axis) movement follows the X axis which allows the stops to follow the variations in height along the sheet metal edge or even that of the lower tool.
+
+The backgauge ensures great sturdiness and rigidity. It is equipped with state of the art motors which ensure not only high precision and speed but above all, exceptional silence. It also features an anti-collision system which unlocks the rear stop, to prevent damage to the relevant upright, in the event of accidental impact or manoeuvring errors.
+
+The properties and some of the advantages of the backgauge were listed previously. However, it must be clarified that the functionality of a backgauge also depends on its type. There are in fact various models of backgauges which can be used according to the characteristics of the piece to be bent.
+
+2 FINGERS
+
+2 FINGERSThe backgauge which is furnished with the STANDARD machine is the one illustrated in the below image, which shows the possible movements and all its mechanical features.
+
+STANDARD TYPE NEEDLE PUNCH AND FINGER
+
+UPPER TOOL CLAMPING
+
+Manual-type clamping is provided for the upper tools. In fact, the photograph below clearly shows how the upper tools are directly connected to the press brake so that it becomes a single unit thanks to the tool adapters. The latter connect the punch to the top beam and keep it in place. Furthermore, owing to the possibility of gauging, they stabilise the linearity of the punch resulting in bending precision.
+
+LOWER TOOL CLAMPING
+
+Manual-type clamping is provided for the lower tools. In fact, the photograph below clearly shows how the lower tool or die is connected so that it becomes a single unit with the lower beam. This is created by the platform (table) and a number of brackets that depends on the machine length. Thus by tightening the screws, shown in the below photograph, the die is fastened to the platform ensuring it stays in place.
+
+SLIDING GUIDES
+
+All VERDE press brakes are produced with a system of 4 sliding guides which give the top beam the following properties and advantages:
+
+Greater precision in movement resulting in precise top beam positioning.
+
+Increased stability of the top beam during movement.
+
+The sliding guides last longer given the surface coatings of the components which comprise them.
+
+No lubrication required to operate.
+
+Easy assembly and maintenance.
+
+The top beam can be inclined for conical bending.
+
+LAZER-SAFE GUARDS
+
+The use of lazer-safe guards makes work safe for the operator of a press brake. The area beneath the top beam is constantly monitored by laser beams which move together with the top beam. If the laser beams are interrupted, the fast descent movement of the top beam is also interrupted. The laser beams beneath the tip of the upper tool protect against crushing and shearing of the hands, fingers and parts of the body.
+
+N.B. THE MACHINE IS EQUIPPED WITH 2 GUARDS THAT OPERATE AS A PAIR. ONE ON THE RIGHT END AND ANOTHER ON THE LEFT.
+
+N.B. THE MACHINE IS EQUIPPED WITH 2 GUARDS THAT OPERATE AS A PAIR. ONE ON THE RIGHT END AND ANOTHER ON THE LEFT.
+
+2D TOUCH SCREEN
+
+The new CNC numerical control system developed by STR s.r.l. optimises the bending processes. This “open” system allows you to transfer and import data from other production software. You may also connect the machine to a network integrating it into a multiple production cycle.
+
+The new VERDE machines can be outfitted quickly for a new order because programming is done with great simplicity “step by step” with simple and clear dialogue boxes.
+
+The QUBO standard version on the machine is in 2D where equipment and tools are displayed in two dimensions.
+
+PRESS BRAKE OPTIONALS
+
+Should a customer require particular equipment and functionalities for the press brake, the machine can be outfitted with a series of OPTIONALS able to meet any production need.
+
+The press brake can be retrofitted with other functionalities even after it has been manufactured.
+
+Below follow all the OPTIONALS available which can be mounted on the VERDE press brake.
+
+SUPPLEMENTARY REAR STOP FOR THE BACKGAUGE
+
+Upon request, each backgauge can be fitted with at least 1 finger with an extra needle punch.
+
+VARIOUS TYPES OF BACKGAUGES
+
+As previously mentioned, according to the type of bending to be done, the press brake can be retrofitted with a different backgauge, even once it has been manufactured.
+
+Below follow some different types with the possible movements and mechanical features.
+
+MOD. 11 S  -
+
+4 axes (X-R-Z1-Z2)
+
+MOD. 11 S  -
+
+4 axes (X-R-Z1-Z2)
+
+MOD. ATF S - 6 axes (X1-X2-R1-R2-Z1-Z2)
+
+MOD. ATF S - 6 axes (X1-X2-R1-R2-Z1-Z2)
+
+Installed backgauges can have bars with variable lengths and variable strokes, number of axes from 1 to 6 and are summarised in the table below:
+
+STROKES, AXES AND SPECIAL LENGTHS AVAILABLE UPON REQUEST
+
+UPPER PNEUMATICO CLAMPING
+
+With our pneumatic clamping system, PROMECAM-type tools can be inserted frontally, automatically lifting and clamping them through compressed air movement.
+
+The remarkable advantage is being able to use standard punches without rear milling as a fall-proof device. The bracket is what keeps the punch from falling and allows it to be inserted frontally.
+
+In fact, the bracket is composed of six small individual brackets which, assembled on the body of the tool adapter, create the length of a standard bracket.
+
+The special shape of the bracket and the movement it creates allow whole and sectioned punches to be used and moreover, the removal of a single sectioned tool clamped together with other sectioned tools on the same tool adapter, eliminating the need to remove all the punches.
+
+3rd PUNCH CLAMPING, AFTER CUTTING OFF AIR PRESSURE, THE TOOL CAN BE REMOVED BY ROTATING IT SLIGHTLY
+
+3rd PUNCH CLAMPING, AFTER CUTTING OFF AIR PRESSURE, THE TOOL CAN BE REMOVED BY ROTATING IT SLIGHTLY
+
+2nd PUNCH CLAMPING AND AUTOMATIC TOOL LIFTING WITH COMPRESSED AIR
+
+2nd PUNCH CLAMPING AND AUTOMATIC TOOL LIFTING WITH COMPRESSED AIR
+
+The practicality of the system is clearly shown in the below sequence where the various phases of using pneumatic clamping are shown (the photos are illustrative but it is obligatory to wear special protective equipment (gloves) when the described operations are performed).
+
+1st PUNCH INSERTION
+
+1st PUNCH INSERTION
+
+The punch is inserted frontally and the bracket keeps it from falling
+
+The punch is inserted frontally and the bracket keeps it from falling
+
+LOWER PNEUMATIC CLAMPING
+
+Upon customer request, pneumatic clamping can also be fitted on lower tools to make press brake tooling versatile and quick. It is important to emphasise that real pneumatic clamping models such as the one in the image can be fitted.
+
+UPPER HYDRAULIC CLAMPING
+
+With the lower hydraulic clamping system, WILA-type tools can be inserted, lifting them automatically, and then clamping through hydraulic movement.
+
+LOWER HYDRAULIC CLAMPING
+
+Upon customer request, hydraulic clamping can also be fitted on lower tools to make press brake tooling versatile and quick. It is important to emphasise that real pneumatic clamping models such as the one in the image can be fitted.
+
+ROBOTIC INTERFACE
+
+The press brake can also be inserted in a work cell where an electromechanical robot loads and unloads sheets of metal. In this case, the system must be set up in compliance with the current safety regulations and a series of protective devices are required that are different from standard ones.
+
+SHEET METAL SUPPORTS
+
+Sturdier sheet metal supports can also be installed to help the operator, according to the type of metal to be bent. These serve to support the piece and facilitate positioning. At least two supports and a linear guide are mounted on the press brake. These can be manually adjusted in height and length.
+
+Support shelf MT 04
+
+Support shelf MT 04
+
+Support shelf MT 03 ( OPTIONAL )
+
+Support shelf MT 03 ( OPTIONAL )
+
+LAZER-SAFE GUARDS WITH BUILT-IN ANGLE CONTROL
+
+In addition to guaranteeing safe usage of the press brake, safety guards with built-in angle control, just as the standard guards seen previously, allow you to check and subsequently correct the bending angle.
+
+N.B. THE MACHINE IS EQUIPPED WITH 2 GUARDS THAT OPERATE AS A PAIR. ONE ON THE RIGHT END
+
+AND ANOTHER ON THE LEFT.
+
+N.B. THE MACHINE IS EQUIPPED WITH 2 GUARDS THAT OPERATE AS A PAIR. ONE ON THE RIGHT END
+
+AND ANOTHER ON THE LEFT.
+
+The bending angle control system used by STR s.r.l. is supplemented by a laser guard. Control over the bending angle has been optimised to such a level that regardless of the thickness, length and position of the sheet metal, the bending angle can be correctly measured from the first bended piece.
+
+There are no limits on the dimensions of the angle to be controlled, since if we measure with an optical camera-based system inside the safety system, no sensor or laser beam system or any other device can impede access to the press brake. The beam descends to its theoretical depth and stays in the safety position to prevent excessive bending. The software makes the top beam light which allows the sheet metal to spring back. The springback of the sheet metal pushes the top beam upward until it finishes the movement so as to prevent the sheet metal from slipping away during this phase. The software then calculates the necessary depth to correct the initial bending and then completes bending.
+
+NUMERICAL CONTROL ESA S 560 - S 660
+
+- see attached specific instruction manual
+
+17” OR 19” SPHERA NUMERICAL CONTROL
+
+- see attached specific instruction manual
+
+CHAPTER 04
+
+SAFETY
+
+SHEET METAL TECHNOLOGY
+
+OVERVIEW
+
+Like any industrial product of a certain quality, the VERDE bending press meets the requirements of the Machinery Directive 2006/42/EC. The CE mark is displayed on the identification plate on the left side of the press, as indicated above.
+
+In line with the machinery directive, during the design phase all risks related to its use were considered and an attempt was made to predict the possible dangerous situations due to its use, adopting the appropriate precautions in order to make it as safe and efficient as possible.
+
+It is however specified that the design of the machine as indicated above is not a guarantee that the product will be used correctly. The machine could therefore become a source of danger if used improperly and not in accordance with the manufacturer's intended use.
+
+To avoid these problems, it is useful to inform anyone who has to do with the bending press on safety issues. Operations that require special attention are:
+
+BENDING PRESS USE
+
+BENDING PRESS MAINTENANCE
+
+All operations carried out in the vicinity and on the machine must follow the safety standards provided and listed below.
+
+Every time the operator does not follow the operations and the precautions that will be described later, s/he is aware of violating the safety regulations and endangering his/her position.
+
+Every time the operator does not follow the operations and the precautions that will be described later, s/he is aware of violating the safety regulations and endangering his/her position.
+
+Please read the following instructions carefully. Who does not apply what is described below can suffer irreparable damage or cause harm to people, animals or property.
+
+STR s.r.l. cannot be held liable for direct or indirect damage caused, which are caused by the negligence or failure to observe the contents of the accident prevention instructions described below.
+
+Please read the following instructions carefully. Who does not apply what is described below can suffer irreparable damage or cause harm to people, animals or property.
+
+STR s.r.l. cannot be held liable for direct or indirect damage caused, which are caused by the negligence or failure to observe the contents of the accident prevention instructions described below.
+
+TRAINING INSTRUCTIONS
+
+STR s.r.l. tries to promote the learning of the use of the bending press and for this reason programs courses aimed at all those who will use the machine.
+
+The training course on the use of the machine and its programmer (CNC) is performed in a precise, clear and comprehensive manner.
+
+DESPITE THE FOLLOWING CUSTOMER COURSES, STR s.r.l. INVITES AND REQUIRES YOU TO READ, UNDERSTAND AND ASSIMILATE THAT WRITTEN IN THIS MANUAL IN ORDER TO PROTECT THOSE WHO USE THE BENDING PRESS.
+
+DESPITE THE FOLLOWING CUSTOMER COURSES, STR s.r.l. INVITES AND REQUIRES YOU TO READ, UNDERSTAND AND ASSIMILATE THAT WRITTEN IN THIS MANUAL IN ORDER TO PROTECT THOSE WHO USE THE BENDING PRESS.
+
+The training includes the explanation of the following steps:
+
+switching the machine on and off
+
+tool programming (punches and dies);
+
+programming of the pieces to be performed in the different ways provided for by the control;
+
+realisation and control of programmed parts;
+
+explanation of the bend correction function;
+
+explanation of how the machine parameters are changed by using software or physical keys;
+
+explanation of the different operating modes of the control devices;
+
+explanations concerning the regulation of safety systems;
+
+control and adjustment of safety systems;
+
+explanation and implementation of any special needs of the customer;
+
+explanation of how to stop the machine immediately if necessary.
+
+The Customer is advised to have as many people as possible follow the above course and above all by the person designated for the future use of the machine. It is also a good idea that the user himself, in the presence of the STR technician, programs and executes significant pieces of normal production.
+
+At this point the STR technician will deliver the keys of the various safety devices and the programmer, where provided, or will provide the "password" for access to the Head of the department or foreman; therefore, the latter person is responsible for any variation in parameters in the programmer or for the opening and/or variation of the condition of the safety devices.
+
+It is required that the keys must be handed over to the authorised person.
+
+DANGER ZONES ARISING FROM THE USE OF THE MACHINE
+
+During the use of the press it is necessary to pay the utmost attention in some areas as the many fastening points on the machine can make it dangerous.
+
+The zones in consideration can be viewed in the figure below and are the following:
+
+ZONE 1
+
+It is the most dangerous area of the press.
+
+During the maintenance, bending, cleaning and tooling phases, it is possible to create dangerous situations between the upper and lower tool and between the tools and the backgauge contacts due to their movement.
+
+It is important to bear in mind that the risks between the upper and lower tool can also occur with the machine switched off due to gravity fall.
+
+Furthermore, there is the danger related to the movement of the pieces during the bending or the fall of the same or to the fall of the tools during the set-up phases.
+
+ZONE 2
+
+It is represented by the area of movement of laser devices.
+
+When operating the machine, care must be taken to ensure that its moving parts could cause damage even to operators who are not using it. In the area surrounding the bending press, the provisions of current legislation must be followed.
+
+ZONE 3
+
+Inside the bending press, i.e. in the area where the backgauge is housed, countless risks and dangers can arise and therefore the possibility to stay there while using the machine and at any time when the emergencies that block the its functionality is prohibited.
+
+ZONE 4
+
+The control panel presents electrical risks for the operators.
+
+Near the electrical panel to guarantee the operator who is using the bending press to have full autonomy.
+
+DISPLAY OF HIGH-RISK WORK ZONES FOR SAFETY
+
+INDICATION OF SAFETY SIGNALS ON THE MACHINE
+
+In front of the machine, that is on the upper beam, are the signals of the greatest residual risks that occur during sheet metal working, in order to warn the operator during each bending phase on risks and related precautions to be taken to make work safe.
+
+It is very important to keep the signals clean so that they are always visible and readable by the operator and so that their information function is completed.
+
+The signs applied on the front of the machine showing the residual risks, and the relative mandatory safety rules, are indicated below:
+
+a)b)c)
+
+d)e)f)
+
+Only trained personnel who have read and understood the Instruction Manual can use the press, so that they are aware of the work to be performed before operating the machine.
+
+Danger of crushing between the work piece and parts of the bending press during the bending phase.
+
+Mandatory use of cut proof gloves.
+
+Danger of injury due to deflection of protruding pieces during bending, especially when using bulky parts.
+
+Pay attention when working on the machine.
+
+Danger of crushing and shearing between tools during low speed, bending operation and tool change.
+
+INDICATIONS ON CLOTHING
+
+It is also important and OBLIGATORY to follow the current regulations regarding the safety of the operator regarding the clothing to be used.
+
+There are specific rules in this regard, which we will not report specifically, but we will give two very important indications:
+
+you must use and wear cut proof gloves as indicated on the front of the press;
+
+safety shoes must be used;
+
+you should not wear clothing that can get caught up in moving parts, such as scarves, ties, overalls, fluttering dresses, etc.
+
+SAFETY INDICATIONS AND MEASURES
+
+The bending press, if not used for the purpose for which it was built, can cause considerable damage that can be divided into three large families:
+
+dangers to the safety of the operator that may materialise in permanent damage, such as amputation of limbs, hands, fingers and other parts of the body, or provisional, such as crushing of the parts of the body indicated above;
+
+damage to the machine and equipment;
+
+compromised machine efficiency.
+
+To make sure that the dangers do not turn into damage, all the instructions to be followed are indicated below to allow for safe press use during the following phases:
+
+BENDING PRESS INSTALLATION
+
+BENDING PRESS USE
+
+BENDING PRESS MAINTENANCE
+
+BENDING PRESS ADJUSTMENTS
+
+Before starting any kind of work with the press, it is recommended to pay attention to the two following
+
+aspects of fundamental importance:
+
+have a particular familiarity with the control devices and their functions;
+
+in case of contact of any part of the operator's body with the hydraulic oil, it is necessary to wash immediately and abundantly with running water.
+
+SAFE MACHINE USE
+
+During the bending phase, the dangers are numerous and it is therefore necessary to follow the following recommendations in order to make the workplace safe and to guarantee the efficiency of the machine. Any use other than those mentioned above does not respond to the correct use of the bending press.
+
+In case incorrect use is proven by one or more operators, the manufacturer will not be held liable for the resulting damages and will all warranty conditions will be void.
+
+Correct usebefore proceeding to use the bending press it is OBLIGATORY to read the User Manual completely and understand and assimilate its contents in their entirety;
+
+it is OBLIGATORY, every time the press is put into operation, to accurately check that no person or thing is inside or in dangerous areas;
+
+In case the press works irregularly it is OBLIGATORY to immediately interrupt the work cycle by pushing the emergency button located on the control panel or on the console. Then the power must be cut off and the electrical panel switch must be locked with a padlock;
+
+it is OBLIGATORY to free the work area and the areas adjacent to the machine of tools and equipment not necessary for the bending process that is taking place;
+
+it is OBLIGATORY to stop bending if a dangerous situation occurs on the press or in its vicinity, by pressing the emergency button;
+
+it is OBLIGATORY, after each work shift, to stop the press with the upper beam completely lowered until it comes into contact with the lower beam tools, so that it can not fall once the machine is off;
+
+it is OBLIGATORY to apply a second pedal or a second control console if you want the press to be controlled by two people;
+
+it is OBLIGATORY to correctly position the parts to be bent. In fact, care must be taken not to allow the backgauge to push the piece before it stops, causing operator injuries. It is therefore advisable to always place the piece 50 mm upstream of the bending line towards the operator;
+
+it is OBLIGATORY, if the machine is loaded by a robot, to protect the work area according to the safety regulations in force. The latter provide that the work area is further protected from possible external access and near part outfeed;
+
+it is FORBIDDEN to use and operate the bending press without having completely read, understood and assimilated the contents of the Manual in their entirety;
+
+it is FORBIDDEN to have the press used by unqualified, untrained personnel and in imperfect physical conditions;
+
+it is FORBIDDEN to lean on moving parts during the bending phase;
+
+it is FORBIDDEN to touch the moving parts placing yourself between them during the machine pressing phases;
+
+it is FORBIDDEN to stand and pass near the press during the bending phase;
+
+it is FORBIDDEN to use the press whenever it is not in optimal use conditions;
+
+Every piece of equipment or accessory must be applied on the press by the manufacturer. IT IS FORBIDDEN to intervene on the machine in order to modify it or transform it in any case, such as the implementation of accessories, etc. ;
+
+In the event that the machine is provided with accessories not foreseen by the Manufacturer, all liability for the consequent damages to people and property is excluded.
+
+In the event that the machine is provided with accessories not foreseen by the Manufacturer, all liability for the consequent damages to people and property is excluded.
+
+hot bending any material is PROHIBITED;
+
+bending fragile material or using tools that can create projections is PROHIBITED;
+
+leaving the press unattended once switched on or during use is
+
+PROHIBITED.
+
+Installation and
+
+handlingit is FORBIDDEN to use the press if not well anchored to the ground according to the foundation diagram;
+
+it is FORBIDDEN to move the bending press without using the specific equipment and especially as indicated in the Manual. The use of levers is therefore prohibited;
+
+it is FORBIDDEN to use the press in places where there are explosion and fire hazards. It is also necessary to use it in indoors, protected against the elements such as rain and ice. The correct environment is therefore the traditional mechanical workshop in good maintenance conditions;
+
+it is OBLIGATORY to provide correct flooring able to support the stress due to press installation and use.
+
+Maintenanceit is FORBIDDEN to place yourself between the press tools at any
+
+time, even if the machine is switched off, if appropriate precautions have not been taken against the gravity fall of the upper beam;
+
+it is OBLIGATORY to check the full functionality of the safety devices every time the machine is put into operation;
+
+it is OBLIGATORY to check the structural press conditions whenever operated;
+
+it is OBLIGATORY to cut off electrical panel power and lower the press when not used;
+
+it is OBLIGATORY to call the manufacturer in the event of press malfunctions.
+
+Adjustmentsit is FORBIDDEN to adjust any press part, especially the
+
+backgauge, placing yourself between tools.
+
+Documentationit is OBLIGATORY to carefully store the documentation relating
+
+to the press and this user manual;
+
+it is OBLIGATORY that the installation of the press is carried out by specialised technical personnel and not improvised by untrained personnel.
+
+SAFE MACHINE MAINTENANCE
+
+Before the various maintenance phases, or if a machine malfunction occurs during the operating cycle, its operation must be stopped to proceed with the verification operations.
+
+In these cases, the following steps must be performed to secure the press:
+
+Lower the upper beam in manual mode to the lower dead centre;
+
+push the emergency stop button;
+
+cut off electric panel power by turning the main switch.
+
+lock the switch using a padlock.
+
+N.B. In the event that the machine is equipped with pneumatic locks or compressed air devices, it is necessary to disconnect the air supply before carrying out any operation and lock the access door to the supply connection by means of a padlock.
+
+N.B. In the event that the machine is equipped with pneumatic locks or compressed air devices, it is necessary to disconnect the air supply before carrying out any operation and lock the access door to the supply connection by means of a padlock.
+
+All the safety conditions to be observed during press maintenance are listed below.
+
+it is OBLIGATORYthat only qualified, trained and specialised personnel intervene on the machine to restore its full functionality and safety;
+
+replace worn or damaged parts with original STR s.r.l. spare parts;
+
+that repairs to the hydraulic, electrical and pneumatic systems are carried out by specialised and qualified personnel who are also able to instruct the operator on the possible risks caused by using the machine;
+
+comply with the oil to be used, as stated by the manufacturer;
+
+remove oil stains found in the workplace and near the press because they create the possibility of sudden falls of various kinds;
+
+periodically check the status and operations of the safety devices as will be seen below;
+
+it is FORBIDDEN thateach type of intervention is performed by people who have not completely read and understood what is written in the Instruction Manual;
+
+any intervention is carried out with the machine in operation and not in safety conditions as previously indicated;
+
+machine safety devices are tampered with and removed;
+
+modifications are made to the machine such as drilling, flame cuts, welding, etc. which may vary the balance state of the press;
+
+use the press when the CNC indicates errors or lack of safety. These signals are used to operate safely and must the user must heed their information.
+
+SAFETY WARNINGS ON WORK
+
+As will be shown below, the bending press has a laser device capable of making machine use safe; in fact, the laser barriers mounted at the end of the upper beam are designed to protect the operator from the dangers due to the bending process. In particular, they protect the operator during the closing of the tools while the upper beam descends to meet the fixed one, i.e. the lower beam, where the lower tools are housed.
+
+Although this device ensures full security for a correct bending process, various situations that should not be underestimated may arise that can cause serious damage and be dangerous. Loading and unloading pieces on the machine, part handling during sheet bending, etc. are some of the hazardous situations.
+
+These situations are clarified and discussed during the course organised by STR s.r.l. technicians at the customer's premises. It is however useful to illustrate them so that you can always consult the Manual and minimise their risk of occurring.
+
+First of all it is essential to heed the following precautions before each bending process:
+
+It is forbidden to adjust the backgauge by passing hands or other parts of the body between the tools.
+
+It is forbidden to adjust the backgauge by passing hands or other parts of the body between the tools.
+
+It is mandatory to remove all the tools that are not necessary for the bending process in progress from the press.
+
+It is mandatory to remove all the tools that are not necessary for the bending process in progress from the press.
+
+Any intervention between the tools even when the press is off is prohibited.
+
+Any intervention between the tools even when the press is off is prohibited.
+
+CAUTION
+
+CAUTIONSignals are also indicated, not present on the bending press, with the aim of highlighting the degree of risk of a certain operation that the operator is carrying out. There are basically 3 degrees of risk as required by the machinery directive.
+
+This is the lowest level of danger (risk), the risk for the operator is practically absent. Warns that these operations could cause machine damages if not correctly performed.
+
+WARNING
+
+WARNINGIt is a higher level of risk than the first and in this case the operator's health is at risk. Warns that these operations could cause serious injuries, death and long-term health risks if not correctly performed.
+
+HAZARD
+
+HAZARDIt is the maximum danger level.
+
+Warns that these operations cause serious injuries, death and long-term health risks if not correctly performed.
+
+HAZARDOUS SITUATIONS DURING THE BENDING PHASE
+
+Care must be taken to the shape of bent parts because they have edges that can produce dangerous situations; underestimating these situations could cause crushing or shearing of hands, limbs and parts of the body. In fact, during the bending phase, care must be taken not to invade the area of bend sheet metal movement to prevent it from coming into contact with your body causing sudden unexpected shocks. Furthermore, while the machine is in operation, no part of the body and clothing must be placed near moving machine parts. This risk can be reduced by using suitable protective devices such as an appropriate accident prevention overalls, which must be provided to the operator by the employer.
+
+In some situations it is necessary to handle the partially bent pieces, it is however important to evaluate how they should be handled in order not to risk the above. In particular, it is necessary to handle the pieces in such a way that it is not possible to crush the hands or fingers of the operator between the piece and the fixed parts. Always simulate bending on a bench before processing.
+
+The point near the arrow creates a dangerous situation.
+
+HAZARD
+
+HAZARD
+
+INDICATIONON THE MACHINE
+
+It is forbidden, as repeated several times in the Manual, to place hands or the limbs between the tools in any case, you can create dangerous situations such as the cutting of limbs and parts of hands. The laser protection device is active during the rapid descent of the beam while in the descent phase at reduced speed less than or equal to 10 mm / it is inhibited; to minimise the risk of crushing it is mandatory to pay attention to the speed change zone. In this case, automatically, the operator's frontal protection system is linked to a reduced closing speed (less than or equal to 10 mm \ sec) combined with a retained action command. In this state it is the operator's responsibility to control the machine in a safe manner, verifying the absence of third parties in the tool area.
+
+DESCENT
+
+DESCENT
+
+HAZARD
+
+HAZARDThe point near the arrow creates a dangerous situation.
+
+INDICATION ON THE MACHINE
+
+HAZARDOUS SITUATIONS DURING BACKGAUGE MOVEMENT (X-R-Z1-Z2)
+
+As can be seen from the representation below, backgauge movements can create situations of crushing and shearing of the hands and limbs in the area near the tips and the lower tools. It is forbidden to place hands or the limbs between the tools in any case
+
+HAZARD
+
+HAZARDThe point near the arrow creates a dangerous situation.
+
+INDICATION ON THE MACHINE
+
+HAZARDOUS SITUATIONS AFTER UPPER BEAM RISING
+
+WARNING
+
+WARNING
+
+During the beam rising phase, there is the risk of falling of the bent pieces, as well as the possible fall of the tools during the tool change operation. To reduce the consequences due to these risks, it is mandatory to use safety shoes against crushing.
+
+HAZARDOUS SITUATIONS DUE TO SHARP EDGES
+
+WARNING
+
+WARNING
+
+There is a cutting risk due to bent part handling. Using appropriate protective gloves, you can manually move the sheet metal to be bent in absolute safety.
+
+INDICATION ON THE MACHINE
+
+HAZARDOUS SITUATIONS DUE TO PRESS MAINTENANCE AND CLEANING
+
+WARNING
+
+WARNING
+
+During the maintenance phases of the various parts of the machine, for which it is necessary to pass the safety devices, there is a risk of crushing or entrapment with the moving parts of the machine if the initial conditions are restored while an operator is inside the press. To avoid this risk, it is necessary to isolate the machine from the power supply mains, as it is well explained in the Manual for the various phases of intervention.
+
+INDICATION ON THE MACHINE
+
+EXAMPLE OF HAZARDOUS SITUATION
+
+During the operations carried out behind the machine, there is the danger of being trapped between moving gauge parts. When you are about to intervene on the press, during maintenance operations, you must operate in absolute safety as already mentioned in the chapters related to safety; the power is thus cut off and the press is isolated from the power mains. Furthermore, it is necessary to ensure that the press cannot cause any dangerous situation for the operators (see chapter 02 on safety) by inserting a safety lock inside the main switch which prevents the machine from being turned on again.
+
+HAZARDOUS SITUATIONS DUE TO LAZER-SAFE BARRIER USE
+
+The LAZER-SAFE barrier makes the workplace safe from incorrect attitudes to safety, especially when the bending area is invaded by tools where shearing and crushing of the hands or limbs could occur.
+
+However, there are some situations, listed below, in which the laser barrier is deactivated and special attention must be paid:
+
+the descent speed of the upper beam is less than or equal to 10 mm / sec, according to the canons of the machinery directive; it is therefore necessary to pay particular attention to the crushing and shearing of parts of the body during this phase;
+
+in this situation of slow speed, it is recommended to adjust the stroke to the minimum necessary to ensure the extraction of the bent piece.
+
+HAZARD
+
+HAZARD
+
+IT MUST BE SPECIFIED THAT SAFE LAZER-SAFE BARRIER USEIMPLIES THE FOLLOWING PROHIBITIONS:
+
+IT MUST BE SPECIFIED THAT SAFE LAZER-SAFE BARRIER USEIMPLIES THE FOLLOWING PROHIBITIONS:
+
+Using tools of different heights on the bending press.
+
+Using the bending press for straightening work.
+
+Using the press for jobs other than bending, such as scraping, shearing, punching, etc., where different moulds and bending processes are used.
+
+CHAPTER 05
+
+BENDING PRESS USE
+
+SHEET METAL TECHNOLOGY
+
+PRESS SAFETY DEVICES
+
+Before listing all the safety devices with which the press is equipped and its functions, it is important to read the two warnings below to avoid any misunderstanding.
+
+WARNING
+
+WARNING
+
+In the event of tampering with any of the safety devices installed on the press after delivery, as provided for by the safety regulations in force, safety is not guaranteed and STR srl cannot be held liable
+
+In the event of tampering with any of the safety devices installed on the press after delivery, as provided for by the safety regulations in force, safety is not guaranteed and STR srl cannot be held liable
+
+WARNING
+
+WARNING
+
+Before using the machine, check the safety devices. The first machine start-up is forbidden if the following safety devices and functions do not respond to the describe functionalities.
+
+Before using the machine, check the safety devices. The first machine start-up is forbidden if the following safety devices and functions do not respond to the describe functionalities.
+
+SAFETY DEVICE OPERATIONS
+
+When the press is delivered, it is equipped with the following safety devices with the functions described below:
+
+IN ORDER TO VERIFY THE GOOD STATE OF ALL SAFETY DEVICES, IN ADDITION TO VERIFYING INTEGRITY, SIMULATE EVERY PRESS FUNCTION IN ORDER TO BE ABLE TO DETECT ANY FAULTS.
+
+IN ORDER TO VERIFY THE GOOD STATE OF ALL SAFETY DEVICES, IN ADDITION TO VERIFYING INTEGRITY, SIMULATE EVERY PRESS FUNCTION IN ORDER TO BE ABLE TO DETECT ANY FAULTS.
+
+EMERGENCY BUTTONS
+
+The bending press is equipped with 1 emergency button, located on the control panel and 1 emergency button on the console (pedal board), mushroom-shaped and red on a yellow background.
+
+This safety command is very important and must be pressed in case of serious operator hazards or to avoid the possibility of serious damage to the press due to incorrect job evaluations. Once the button is pressed, press movement is interrupted, blocking all the functions including the possibility of lifting the upper beam. For this reason, if it is necessary to open the press, the button must be released and the control circuit reset.
+
+EMERGENCY
+
+EMERGENCYHazard situation
+
+example:
+
+entrapment of people between tools
+
+presence of people inside the machine
+
+example:
+
+entrapment of people between tools
+
+presence of people inside the machine
+
+PUSH
+
+PUSH
+
+RELEASE
+
+(rotating in the direction of the arrows)
+
+RELEASE
+
+(rotating in the direction of the arrows)
+
+EMERGENCY
+
+EMERGENCYReset initial conditions
+
+UP PEDAL
+
+UP PEDAL
+
+On the control panel
+
+On the control panel
+
+PRESS
+
+(until the green LEDs on the upper part of the press light up)
+
+PRESS
+
+(until the green LEDs on the upper part of the press light up)Possibility of movement
+
+UPPER BEAM ASCENT (RAM)
+
+UPPER BEAM ASCENT (RAM)
+
+PRESS
+
+PRESS
+
+LATERAL GUARD
+
+GUARD
+
+CAUTION !!!
+
+GUARD
+
+GUARD
+
+CAUTION !!!
+
+GUARD
+
+In case the micro is tampered with, visible in the figure, besides the possibility of compromising operator safety, STR s.r.l. cannot be held liable.
+
+In case the micro is tampered with, visible in the figure, besides the possibility of compromising operator safety, STR s.r.l. cannot be held liable.
+
+HINGE WITH MICRO
+
+HINGE WITH MICROThe presence of the lateral guards on the press is necessary to avoid finger or limb shearing and crushing in the area between the tools, bumps or cuts against the sheet during the bending phase, dragging due to the movement of moving parts, etc... With these guards, composed of two aluminium and polycarbonate frames and a sheet metal platform, the two side accesses inside the press are prevented, guaranteeing the operator's safety.
+
+The two polycarbonate frames are welded together by means of hinges, such as those shown in the previous figure, in each of which, for each guard, a safety micro is inserted to signal its status. Furthermore, at the base of the two guards a sheet is screwed in by means of bolts which, as per regulations, serves to prevent access to the internal parts of the machine and it is forbidden to climb above it.
+
+This guard is fixed on the machine with screws so that it is joined to the structure. It must be possible to open, once all functions have been locked (EMERGENCY STATUS), in order to access the moving parts of the machine, if necessary, as is the case with maintenance operations. When one of the two lateral guards is opened, or both of them, the movement of the press is interrupted, blocking all its functions and leaving the press in an emergency state.
+
+ATTENTION! YOU CAN NOT CLIMB ON THE SHEET
+
+ATTENTION! YOU CAN NOT CLIMB ON THE SHEET
+
+Hazardous situation Possibility of movement
+
+OPENING OF AT LEAST ONE OF THE TWO LATERAL GUARDS
+
+OPENING OF AT LEAST ONE OF THE TWO LATERAL GUARDS
+
+THE MACHINE IS BLOCKED (BOTH THE BEAM AND GAUGES STOPPED) AND IT IS POSSIBLE TO WORK ON IT
+
+THE MACHINE IS BLOCKED (BOTH THE BEAM AND GAUGES STOPPED) AND IT IS POSSIBLE TO WORK ON IT
+
+PRESS
+
+PRESS
+
+(until the green LEDs on the upper part of the press light up)
+
+(until the green LEDs on the upper part of the press light up)
+
+CLOSE THE OPEN GUARD OR BOTH IN THE CASE BOTH ARE OPENED
+
+CLOSE THE OPEN GUARD OR BOTH IN THE CASE BOTH ARE OPENEDReset initial conditions
+
+On the control panel
+
+On the control panelREAR GUARD
+
+At the back of the press there is a two-door guard along the entire free part to prevent people from entering. In fact, there is the possibility, as indicated in the previous point, that there are dangers such as shearing and crushing of fingers and limbs, impact and cut against the parts during the bending phase, dragging caused by moving parts, etc. All the free part is closed with a gate composed of 2 aluminium and polycarbonate doors and well welded to the structure by screws. It is possible to open and close the rear guard gate, without the use of keys but through the appropriate handle, eliminating further risks related to the entrapment of people inside the press.
+
+MICRO
+
+MICRO
+
+In case the micro is tampered with, visible in the figure, besides the possibility of compromising operator safety, STR s.r.l. cannot be held liable.
+
+CAUTION !!!
+
+In case the micro is tampered with, visible in the figure, besides the possibility of compromising operator safety, STR s.r.l. cannot be held liable.
+
+CAUTION !!!
+
+Hazard situation
+
+OPENING THE REAR GATE
+
+(opening of the safety micro)
+
+OPENING THE REAR GATE
+
+(opening of the safety micro)
+
+REAR GATE RESET
+
+REAR GATE RESETPossibility of movement
+
+THE MACHINE IS BLOCKED AND IT IS NOT POSSIBLE TO WORK ON IT
+
+THE MACHINE IS BLOCKED AND IT IS NOT POSSIBLE TO WORK ON IT
+
+FUNCTIONS BLOCKED
+
+FUNCTIONS BLOCKED
+
+Movement of the upper beam
+
+Movement of the backgauge axes
+
+Movement of the upper beam
+
+Movement of the backgauge axes
+
+Reset initial conditions
+
+Verifying that no operator or person is inside
+
+CLOSE THE OPEN BACK GATE
+
+Verifying that no operator or person is inside
+
+CLOSE THE OPEN BACK GATE
+
+PRESS
+
+PRESS
+
+On the electrical panel of the press
+
+On the electrical panel of the press
+
+PRESS
+
+PRESS
+
+On the control panel
+
+On the control panel
+
+PROTECTION BETWEEN TOOLS (Laser barriers)
+
+During bending press use the operator is in a danger zone, as asserted in the previous chapters, and to protect his safety the machine is equipped, at the end of the upper beam, with a laser device able to detect whether the bending axis is crossed with parts of the body. The LAZER-SAFE device mounted on the press is classified as type 4 ESPE and is composed of a laser beam emitter and a receiver.
+
+During the approach to the speed change point, point near the die, the upper beam has a speed&gt; 10 mm / sec, a speed considered not of safety for the operator. If the area highlighted in the figure below is invaded during the descent with a speed&gt; 10 mm / sec, the device just mentioned stops the upper beam, preventing the machine from working in safety conditions. If the laser is freed you can release the pedal and press again to start at high speed. If the laser remains obstructed, by pressing the lowering pedal twice the beam will move at a reduced speed thus ≤ 10 mm / sec, making the operator's work safe. In this situation, the red LEDs on the press that signal the inhibition of the laser barriers are automatically switched on.
+
+OPERATOR’S AREA
+
+AREA NOT TO INVADE
+
+OPERATOR’S AREA
+
+AREA NOT TO INVADE
+
+Using the laser barriers the work and the safety of the operator are protected, avoiding any crushing and shearing of fingers or limbs between the upper and lower tools. Every dangerous situation is therefore prevented, ensuring safety.
+
+In the event that the maximum stopping distance is exceeded, the upper beam is immediately blocked and the following instructions must be carried out to restore the initial conditions.
+
+CAUTION:
+
+Before operating on the machine, carefully read the enclosed documentation concerning the use and the working methods with the laser system.
+
+Hazard situation
+
+INTERCEPTING THE LASER BEAM
+
+INTERCEPTING THE LASER BEAM
+
+Possibility of movement
+
+THE MACHINE IS BLOCKED AND IT IS NOT POSSIBLE TO WORK ON IT
+
+THE MACHINE IS BLOCKED AND IT IS NOT POSSIBLE TO WORK ON IT
+
+FUNCTIONS BLOCKED
+
+FUNCTIONS BLOCKED
+
+Upper beam movement with speed ≥ 10 mm/sec
+
+Upper beam movement with speed ≥ 10 mm/sec
+
+POSSIBILITY OF MOVEMENT
+
+POSSIBILITY OF MOVEMENT
+
+ASCENT PEDAL
+
+ASCENT PEDAL
+
+UPPER BEAM ASCENT (RAM)
+
+UPPER BEAM ASCENT (RAM)
+
+PRESS
+
+PRESS
+
+DESCENT PEDAL
+
+DESCENT PEDAL
+
+DESCENT WITH SPEED ≤ 10 mm /
+
+sec
+
+DESCENT WITH SPEED ≤ 10 mm /
+
+sec
+
+PRESS 2 TIMES
+
+PRESS 2 TIMES
+
+Reset initial conditions
+
+1
+
+1
+
+IT IS POSSIBLE
+
+IT IS POSSIBLE
+
+RELEASING THE OBSTRUCTION FROM THE LASER BEAM, IT IS POSSIBLE TO COMMAND BEAM DESCENT WITH SPEED&gt; 10 mm / sec
+
+RELEASING THE OBSTRUCTION FROM THE LASER BEAM, IT IS POSSIBLE TO COMMAND BEAM DESCENT WITH SPEED&gt; 10 mm / sec
+
+2
+
+2
+
+IN THE EVENT
+
+IN THE EVENT
+
+THE LASER BEAM IS NEWLY OBSTRUCTED DURING THE DESCENT.
+
+THE LASER BEAM IS NEWLY OBSTRUCTED DURING THE DESCENT.
+
+THE UPPER BEAM CAN MOVE AT SPEED ≤ 10
+
+mm/sec (SLOW SPEED)
+
+THE UPPER BEAM CAN MOVE AT SPEED ≤ 10
+
+mm/sec (SLOW SPEED)
+
+STOP SPACE
+
+The laser device safety function is guaranteed by the stop of the mobile beam stop within
+
+a maximum stopping distance smaller than the one between the laser and the tip of the punch. For further details it is necessary to refer to the enclosed lazer-safe Manual.
+
+Each time the machine is switched on, a stop space test related to the laser interruption and a second test connected to the emergency stop is provided.
+
+SAFETY BRAKE
+
+The press is equipped with a safety brake that allows it to stop even in dynamic conditions. The correct functioning of the brake is checked automatically every time the machine is turned on and after eight hours of operation in order to carry out the check at each work shift.
+
+In the event that the test is not passed, it is impossible to use the press until the test is repeated and passed.
+
+The beam descent is enabled only by the unlocked brake signal, so that any anomalies that lead to the blocking of the brake could prevent the beam from descending. In the event of a blocking, the ascent of the beam remains enabled.
+
+UPPER BEAM GUARDS
+
+The front guards of the upper beam protect the operator from the risk of crushing and shearing parts of the body.
+
+FRONT GUARDS
+
+(sheet metal)
+
+FRONT GUARDS
+
+(sheet metal)Both the front and the rear guards are well fixed to the structure and are an integral part of it. The screws use a system of captive screws.
+
+ARMOURED SHEATH PROTECTION
+
+To avoid unintentional commands on the press, due to possible crushing of the cable that connects the console to the electrical panel, a connection is made with armoured sheath able to prevent possible short circuits. In this way, the reinforcement of the connecting cable allows a solid cable to remain intact even if subject to the most various stresses.
+
+ARMOURED CABLE
+
+ARMOURED CABLEAs you can see in the figure on the side, the ascent pedal is equipped with a cover able to prevent any accidental commands.
+
+Furthermore, only the descent pedal is equipped with the third safety position, which, once reached when the pedal is fully pressed, stops the descent of the upper beam.
+
+PROTECTION OF THE ELECTRIC PANEL
+
+When the main switch is in the "I" position, that is, the panel is powered, a device inside blocks the opening of the electrical panel and consequently forces power to be cut off to work inside the panel.
+
+DEVICE INSIDE
+
+DEVICE INSIDE
+
+OPERATOR PROTECTION (anti-panic pedal or position n ° 3 of the descent pedal)
+
+The descent pedal is composed of an anti-panic contact placed at end stroke (see paragraph 5.3.3.1) in order to avoid any dangerous situations that may occur during the bending process. When this contact is activated, the upper beam is stopped, preventing its descent. To restore normal working conditions, the descent pedal must be completely released.
+
+BACKGAUGES
+
+The speed of the gauges is automatically limited in the 50 mm stroke to a maximum value of 2 m / min.
+
+PROTECTION AGAINST PART DEFLECTION
+
+The press lets you;
+
+reduce bending speed.
+
+Reduce the beam opening speed.
+
+Prevent the automatic re-opening of the beam.
+
+ON THE MACHINE MUST BE CHECKED
+
+ON THE MACHINE MUST BE CHECKED
+
+AT EVERY OPENING
+
+AT EVERY OPENING
+
+The BLOCK of the movement of the backgauge
+
+The BLOCK of the movement of the backgauge
+
+The display of the alarm message on the CNC programmer
+
+The display of the alarm message on the CNC programmer
+
+PERIODIC CHECK OF SAFETY DEVICES
+
+After checking all press brake safety devices listed in the previous paragraph, it is necessary and
+
+OBLIGATORY to check the efficiency and integrity of each device according to planned checks. Whenever the press is used, it must be checked that everything is in order with the above:
+
+CHECKING THE LATERAL PROTECTIONS
+
+Start the bending press by lowering the upper beam rapidly, i.e. with a speed&gt; 10 mm / sec.
+
+UPPER BEAM
+
+DESCENT
+
+UPPER BEAM
+
+DESCENT
+
+WITH SPEED
+
+WITH SPEED
+
+&gt; 10 mm / sec
+
+&gt; 10 mm / sec
+
+Subsequently, while the beam falls in the previous conditions, open the lateral guards, in three different times, in the following ways:
+
+No. 1
+
+No. 1
+
+OPENING OF THE RIGHT LATERAL GUARD
+
+OPENING OF THE RIGHT LATERAL GUARD
+
+No. 2
+
+No. 2
+
+OPENING OF THE LEFT LATERAL GUARD
+
+OPENING OF THE LEFT LATERAL GUARD
+
+No. 3
+
+No. 3
+
+OPENING OF BOTH GUARDS (RIGHT AND LEFT)
+
+OPENING OF BOTH GUARDS (RIGHT AND LEFT)
+
+In each of these tests, the press must not be able to move and operate, but it is still possible to rise.
+
+The BLOCK of the movement of the upper beam
+
+CHECKING THE REAR PROTECTIONS
+
+Start the bending press by lowering the upper beam rapidly, i.e. with a speed&gt; 10 mm / sec.
+
+UPPER BEAM
+
+DESCENT
+
+UPPER BEAM
+
+DESCENT
+
+WITH SPEED
+
+WITH SPEED
+
+&gt; 10 mm / sec
+
+&gt; 10 mm / sec
+
+Subsequently, while the beam falls in the previous conditions, open the rear guard.
+
+OPENING THE REAR GUARD
+
+OPENING THE REAR GUARD
+
+When opening the rear guard of the press the following conditions must be verified.
+
+OPENING
+
+rear guard
+
+OPENING
+
+rear guard
+
+ON THE MACHINE MUST BE CHECKED
+
+ON THE MACHINE MUST BE CHECKED
+
+The BLOCK of the movement of the upper beam
+
+The BLOCK of the movement of the backgauge
+
+The display of the alarm message on the CNC programmer
+
+The BLOCK of the movement of the upper beam
+
+The BLOCK of the movement of the backgauge
+
+The display of the alarm message on the CNC programmer
+
+Then check that no movement is possible until the control circuit is reset using the special button on the side of the press.
+
+CHECKING THE EMERGENCY STOP
+
+Start the bending press by lowering the upper beam rapidly, i.e. with a speed&gt; 10 mm / sec.
+
+UPPER BEAM
+
+DESCENT
+
+UPPER BEAM
+
+DESCENT
+
+WITH SPEED
+
+WITH SPEED
+
+&gt; 10 mm / sec
+
+&gt; 10 mm / sec
+
+Subsequently, while the beam falls in the previous conditions, press the red emergency button.
+
+PRESS THE EMERGENCY BUTTON
+
+PRESS THE EMERGENCY BUTTON
+
+EMERGENCY
+
+EMERGENCY
+
+Pressing the emergency button on the press, the following conditions must be verified.
+
+WITH THE BUTTON PRESSED
+
+WITH THE BUTTON PRESSED
+
+ON THE MACHINE MUST BE CHECKED
+
+ON THE MACHINE MUST BE CHECKED
+
+The BLOCK of the movement of the upper beam
+
+The BLOCK of the movement of the backgauge
+
+The display of the alarm message on the CNC programmer
+
+The BLOCK of the movement of the upper beam
+
+The BLOCK of the movement of the backgauge
+
+The display of the alarm message on the CNC programmer
+
+CHECKING THE THREE WAY DESCENT PEDAL
+
+Start the bending press by lowering the upper beam.
+
+UPPER BEAM
+
+DESCENT
+
+UPPER BEAM
+
+DESCENT
+
+SPEED
+
+SPEED
+
+ANY
+
+ANY
+
+To check that the three way pedal is working and is efficient, fully press the pedal and check the following conditions (see chapter 5.3.3.1 descent pedal).
+
+WITH THE PEDAL FULLY PRESSED up
+
+to the third position
+
+WITH THE PEDAL FULLY PRESSED up
+
+to the third position
+
+ON THE MACHINE MUST BE CHECKED
+
+ON THE MACHINE MUST BE CHECKED
+
+The BLOCK of the movement of the upper beam
+
+The BLOCK of the movement of the upper beam
+
+To safeguard safety, it is important to verify that the following conditions are met:
+
+RELEASING THE PEDAL FROM THE THIRD TO THE SECOND POSITION
+
+RELEASING THE PEDAL FROM THE THIRD TO THE SECOND POSITION
+
+THE UPPER BEAM
+
+THE UPPER BEAM
+
+REMAINS BLOCKED AND DOES NOT DESCEND AGAIN
+
+REMAINS BLOCKED AND DOES NOT DESCEND AGAIN
+
+TO RESUME THE DESCENT CYCLE the pedal must be completely released and pressed again.
+
+IN THIS WAY THE SUPERIOR BEAM AND DESCENT AS IN THE INITIAL CONDITIONS
+
+TO RESUME THE DESCENT CYCLE the pedal must be completely released and pressed again.
+
+IN THIS WAY THE SUPERIOR BEAM AND DESCENT AS IN THE INITIAL CONDITIONS
+
+CHECKING ALL THE MECHANICAL GUARD FASTENERS
+
+As already mentioned above, all the guards and safety devices should not be tampered with, but above all must be checked to verify their integrity and functionality. In addition to their operation, it is necessary to check that they are all present and that their fastening is as foreseen by the manufacturer.
+
+Check the fastening integrity of the following devices:
+
+HINGE LIMIT SWITCHES ON TWO LATERAL GUARDS
+
+LATERAL HINGE CONNECTION
+
+LATERAL HINGE CONNECTION
+
+HINGE with LIMIT SWITCH ON REAR GATE
+
+INSIDE MICRO sheet ATTACHMENT
+
+INSIDE MICRO sheet ATTACHMENT
+
+REAR GATE FITTING
+
+FITTINGS
+
+FITTINGS
+
+SIDE GUARD FITTINGS
+
+UPPER GUARD FASTENING
+
+FASTENING SCREWS
+
+FASTENING SCREWS
+
+FASTENING OF THE TWO LASER BARRIERS TO THE END OF THE UPPER BEAM
+
+FASTENING SCREWS
+
+FASTENING SCREWS
+
+EMERGENCY BUTTONS FITTING
+
+Check the stability of the pedal board
+
+Check the stability of the pedal board
+
+MAIN SWITCH FITTING
+
+Check the stability of the circuit breaker connection
+
+Check the stability of the circuit breaker connection
+
+ALL BUTTON FITTINGS ON THE CONSOLE AND PROGRAMMER
+
+Valid for all buttons or physical commands
+
+Valid for all buttons or physical commands
+
+Check the stability of the control panel
+
+Check the stability of the control panel
+
+ARMOURED SHEATH AND PEDAL
+
+Check the integrity of the sheath along its entire length
+
+Check that all components are well connected to the panel at their positions
+
+Check the integrity of the sheath along its entire length
+
+Check that all components are well connected to the panel at their positions
+
+CONTROL LAYOUT
+
+The bending press can be controlled using the programmer (CNC) and in combination using the console as well.
+
+It is therefore important to know all the functions of the buttons on the control panel and on the console, in order to be able to easily communicate with the software installed in the machine CNC. We had previously stressed that the bending press is equipped with a programmer, on whose touch screen you can see all the information related to bending, and a console, portable pulpit, useful to control the machine in points the CNC cannot reach. On the electrical panel there are other commands useful above all to power the press, to reset the CNC if someone is introduced inside the machine, etc.
+
+The commands and functions on the two control devices are shown below, considering the STANDARD composition and the possible OPTIONAL versions, and the functions present on the electrical panel will be described.
+
+CONTROLS ON THE ELECTRIC PANEL
+
+Main switchReset button
+
+Turning the red switch, see figure, to the "I" position, the press electrical panel is powered so that all the functions and the press itself are ready to work. Turn the switch to "0" to cut off power. This last function is useful when the press must be kept in inactivity and in all the intervention procedures on the machine, so that safety is always safeguarded. It is important to block the switch in the "0" position, using the safety lock in the possession of the maintenance technician and indicated to stopped conditions.
+
+Rear gate reset
+
+REAR SAFETY RESET
+
+REAR SAFETY RESETBy pressing this button, the alarm situation due to the opening of the rear guard is eliminated. Opening the rear gate door when the machine is operating or powered puts the press in alarm conditions and all its functions are blocked.
+
+N.B. When the rear gate opens, press operations are blocked. To restore normal working conditions, it is necessary to check that no person is present inside the machine and then press the rear gate reset button located on the electrical panel, so that press operations are restored. It is also necessary to press the general reset button located on the console (pedal board panel) to allow the machine to resume its full functionality.
+
+N.B. When the rear gate opens, press operations are blocked. To restore normal working conditions, it is necessary to check that no person is present inside the machine and then press the rear gate reset button located on the electrical panel, so that press operations are restored. It is also necessary to press the general reset button located on the console (pedal board panel) to allow the machine to resume its full functionality.
+
+Release Brake
+
+Release Brake
+
+Release BrakeTurning the key clockwise allows you to unlock the machine's safety brake. It MUST be used if the cap is in a locking condition due to incorrect positioning and the working position must be re-established.
+
+By turning the key clockwise, in collaboration with a second operator who simultaneously presses the RESET button on the control console, it is possible to realign the cap in case of offset or incorrect positioning, in order to return to the correct working position
+
+TO USE ON PRECISE INSTRUCTIONS IMPOSED BY STR s.r.l. SERVICE
+
+By turning the key clockwise, in collaboration with a second operator who simultaneously presses the RESET button on the control console, it is possible to realign the cap in case of offset or incorrect positioning, in order to return to the correct working position
+
+TO USE ON PRECISE INSTRUCTIONS IMPOSED BY STR s.r.l. SERVICE
+
+CONTROL PANEL
+
+The control, machine CNC, is fitted into the terminal part of the programmer arm. It is important to specify that the control screen is equipped with touch screen technology and that, consequently, most of the command buttons are on the screen and are programmed at the software level in order to respond to the various bend requirements. Nevertheless, you can find the following physical commands located on the right side of the screen.
+
+1
+
+1
+
+1.   Numerical Control Esa 650 W
+
+For detailed use of the numerical control, refer to the specific manual supplied with the machine.
+
+Lamp
+
+Red LED
+
+Indicates safety laser barrier status at the end of the upper beam (ram).
+
+Under normal working conditions, i.e. with laser barriers on, the lamp is switched off.
+
+In the event that the laser barriers are deactivated, the lamp lights up, until they are inserted again, to signal the dangerous situation. In fact, with the laser barriers disengaged, the press works slowly and no longer has the possibility of rapid descent to the point of speed change.
+
+Green LED
+
+Indicates "Machine ready" status.
+
+OPTIONAL CONTROLS
+
+In case the bending press is equipped with special equipment, it is possible to have extra buttons to control them.
+
+Only the OPTIONAL commands will be mentioned below.
+
+Automatic release and block selector switch
+
+In the case where the bending press has upper and lower pneumatic or hydraulic tool locking, it is equipped with an unlocking and locking selector.
+
+Turning it to the left unlocks the upper tool clamp (punch), while turning it to the right unlocks the lower tool clamp (die). When it remains in the middle (third position), as in the picture on the side, both clamps on the machine are blocked.
+
+N.B. This is the case in which the press is provided with upper and lower clamps, there may also be cases in which there is only one tool clamp, upper or lower.
+
+EXAMPLE OF SELECTOR USED TO UNLOCK AND LOCK TOOLS
+
+EXAMPLE OF SELECTOR USED TO UNLOCK AND LOCK TOOLS
+
+MAIN CONTROL CONSOLE (PEDAL)
+
+The bending press also has a control console to control the press during work. After having programmed the bends with the programmer CNC, pressing the descent or ascent pedals allows the press to go down or up again.
+
+The pedal board is composed of two pedals, one on the right for the ascent of the upper beam and one for descent. Furthermore, all the commands necessary to operate and command the press near the work area and the emergency button are present on a panel. As can be seen from the figures below the pedal board is connected directly to the electrical system via a connector (A) whose connection is made with a grey sheath (B) armoured as required by safety regulations. In this way, in the event that a short circuit occurs due to possible crushing of the sheath, involuntary press commands cannot occur.
+
+A
+
+B
+
+ASCENT PEDAL
+
+A
+
+B
+
+ASCENT PEDAL
+
+CONSOLE PEDALS
+
+Ascent pedal
+
+Pressing the ascent pedal lifts the upper beam. This command has priority over that of descent, in fact, simultaneously pressing the two pedals causes the machine to open. In the event that an emergency stop has occurred or a guard has been opened, it is possible to execute the up command again only after having carried out the reset procedure. The reset procedure, described in detail later, consists in restoring the initial working safety conditions, such as closing the rear guard, then pressing the rear gate reset button and then the general reset button, located on the console panel (pedal board).
+
+Descent pedal
+
+Pressing the descent pedal controls the descent of the upper beam. It is called 3 way because it has 3 positions. The first position is that of rest (stationary), the second commands the descent of the ram and the third is reached by pressing the pedal further down. When the third position is reached, the upper beam is stopped during the descent. Restarting the upper beam is only possible after returning the pedal to position no. 1 so that the initial conditions are restored and the pedal can be pressed again.
+
+It is important to underline that position no. 2 is separated from no. 3 thanks to a pressure device. To exceed position no. 2, a specific force is required which must not exceed 350N.
+
+COMMANDS ON THE MAIN CONSOLE PANEL
+
+On the control panel you can find the following physical commands:
+
+Pedal indicator light on
+
+General reset button
+
+When the white light is on, it indicates that the machine pedal is active. If two pedal boards are installed, after having selected the operating mode from the CNC (see the user manual), the light indicates the successful selection of the work pedal.
+
+ROBOT button
+
+When the machine enters alarm conditions due to press emergency conditions or the guards have opened, the cause of the alarm must be cancelled so that the press returns to the initial safety conditions. To cancel the cause of the alarm, you must physically intervene by correcting it, for example by closing a side gate, and then pressing the general reset button in question.
+
+This button allows the machine to operate in Robot mode. If deactivated (position 0) the machine will work according to the current legislation for which it has been certified.
+
+If set to position I the press will work according to specific procedures required of STR by the customer STARMATIK for specific operation in a robot cell.
+
+GENERAL OPERATION OF THE PRESS
+
+This paragraph lists the machine operating modes, in particular it indicates how to lower and lift the upper beam to perform the various operating cycles suitable for bending the parts. Particular attention is paid to simple but very important operations for its use.
+
+DESCENT CONTROLS
+
+The descent of the upper beam (ram) can occur in various ways depending on the work being performed. Without particular references to the production cycles to create the parts, the various descent methods are listed below.
+
+Descent with laser barriers on
+
+LASER BARRIERS ON
+
+LASER BARRIERS ON
+
+AUTOMATIC CYCLE ON
+
+AUTOMATIC CYCLE ON
+
+DESCENT PEDAL
+
+PRESSED 2nd position
+
+DESCENT PEDAL
+
+PRESSED 2nd position
+
+In the conditions shown above, the press brake descends from the top dead centre rapidly, i.e. with a speed&gt; 10 mm / sec and ≤ of the approach speed shown in the technical specifications, up to the speed change point located near the lower tool (die). As required by the safety regulations, once the speed change point has been exceeded, the upper beam does not stop but continues its descent to the lower dead point, completing the bend with a reduced speed ≤10 mm / sec. During the descent, if the pedal is released, the approach of the upper beam to the lower tools is interrupted. Once the bend has been completed, the upper beam automatically rises to the top dead centre.
+
+Descent with laser barriers inhibited
+
+LASER BARRIERS OFF
+
+LASER BARRIERS OFF
+
+AUTOMATIC CYCLE ON
+
+AUTOMATIC CYCLE ON
+
+DESCENT PEDAL
+
+PRESSED 2nd position
+
+DESCENT PEDAL
+
+PRESSED 2nd position
+
+In the conditions shown above, the pending press slowly descends from the top dead centre, i.e. at speed ≤10 mm / sec, until the bend is completed. Unlike the previous case, once at the speed change point, the upper beam does not change its speed keeping it equal to slow until the end of the bend. If the pedal is released during the descent of the upper beam, its movement is interrupted. Once the bend has been completed, the upper beam automatically rises to the top dead centre.
+
+Descent with laser barriers off and manual work cycle (ACTIVATED BY CONTROL)
+
+LASER BARRIERS OFF
+
+LASER BARRIERS OFF
+
+MANUAL CYCLE ON
+
+MANUAL CYCLE ON
+
+DESCENT PEDAL
+
+PRESSED 2nd position
+
+DESCENT PEDAL
+
+PRESSED 2nd position
+
+In the conditions shown above, the bending press slowly descends from the top dead centre, i.e. at speed ≤10 mm / sec, for the entire stroke of the press to the bottom dead centre. During the descent, if the pedal is released, the approach of the upper beam to the lower tools is interrupted. Once the bend has been completed, the ascent does not take place automatically but must be controlled.
+
+ASCENT CONTROLS
+
+Without particular references to the production cycles to create the parts, below are some of the various upper beam ascent methods.
+
+Ascent with automatic cycle on (ACTIVATED BY CONTROL)
+
+LASER BARRIERS ON/OFF
+
+LASER BARRIERS ON/OFF
+
+AUTOMATIC CYCLE ON
+
+AUTOMATIC CYCLE ON
+
+When the upper tool reaches the required height, inside the groove of the die, to bend the sheet, the upper beam automatically rises up to reach the programmed PMS, starting point of the upper beam for each bending cycle.
+
+Ascent due to difficulty in extracting the piece
+
+N.B. If the opening of the machine, determined by the position of the PMS, is not sufficient to remove the bent piece once the programmed PMS has been reached, the ascent pedal must be pressed (impulsively) to bring the upper beam up to the PMS max, point of maximum machine opening.
+
+Ascent due to difficulty in extracting the piece
+
+LASER BARRIERS ON/OFF
+
+LASER BARRIERS ON/OFF
+
+MANUAL CYCLE ON
+
+MANUAL CYCLE ON
+
+DESCENT PEDAL
+
+PRESSED 2nd position
+
+DESCENT PEDAL
+
+PRESSED 2nd position
+
+When the upper tool reaches the required height, inside the groove of the die, to bend the sheet, the upper beam automatically rises up to reach the programmed PMS, starting point of the upper beam for each bending cycle, only if the ascent pedal is pressed impulsively.
+
+Ascent due to difficulty in extracting the piece
+
+N.B. If the opening of the machine, determined by the position of the PMS, is not sufficient to remove the bent piece once the programmed PMS has been reached, the ascent pedal must be pressed (impulsively) to bring the upper beam up to the PMS max, point of maximum machine opening.
+
+EMERGENCY CONTROL
+
+As previously mentioned, pressing the emergency button deactivates all the press descent commands. In addition to the movement of the upper beam, the possibility of backgauge movement, located inside the press as seen in the previous chapters, is also inhibited.
+
+To restore the full functionality of the press, you must remove the emergency status by turning the emergency button in the direction of the arrows, then press the reset button, located on the pedal board panel. After performing this last procedure, the press can start a new work cycle.
+
+BENDING PRESS USE
+
+SWITCHING ON
+
+Proceed as follows to turn on and start the press:
+
+Turn the main switch ON, that is in the "1" position.
+
+LOCATED ON THE ELECTRIC PANEL
+
+LOCATED ON THE ELECTRIC PANEL
+
+N.B. THIS SELECTOR IS TO BE TURNED TO THE "0" POSITION
+
+ONLY IN CASE OF CRITICAL ALARMS.
+
+N.B. THIS SELECTOR IS TO BE TURNED TO THE "0" POSITION
+
+ONLY IN CASE OF CRITICAL ALARMS.
+
+LOCATED ON THE PRESS SHOULDER
+
+LOCATED ON THE PRESS SHOULDER
+
+LAZER-SAFE
+
+01
+
+LAZER-SAFE
+
+01Make sure the LAZER-SAFE switch is ON, that is in the "1" position.
+
+WAIT SEVERAL SECONDS TO ALLOW THE SAFETY PLC TO ACTIVATE
+
+WAIT SEVERAL SECONDS TO ALLOW THE SAFETY PLC TO ACTIVATE
+
+Press the REAR RESET button making sure no one is inside.
+
+RESET SAFETY REAR
+
+RESET SAFETY REAR
+
+LOCATED ON THE ELECTRIC PANEL
+
+LOCATED ON THE ELECTRIC PANEL
+
+Press the MAIN RESET button.
+
+LOCATED ON THE NUMERICAL CONTROL CONSOLE
+
+LOCATED ON THE NUMERICAL CONTROL CONSOLE
+
+Select MANUAL CYCLE mode from the control.
+
+LOCATED ON THE PEDAL BOARD
+
+LOCATED ON THE PEDAL BOARDPress the ascent pedal (1 pulse) so that the upper beam reaches the top dead centre.
+
+ASCENT PEDAL
+
+ASCENT PEDAL
+
+Press the green START button on CNC to start backgauge axis calibration.
+
+ATTENTION!!! PRESSING THE BUTTON STARTS GAUGE MOVEMENT. CHECK THAT NO ONE IS IN THE NEAR THE AREA
+
+ATTENTION!!! PRESSING THE BUTTON STARTS GAUGE MOVEMENT. CHECK THAT NO ONE IS IN THE NEAR THE AREA
+
+The required 00DC brake test alarm will be displayed on the NC. Press down.
+
+Press and hold the decent pedal.
+
+When the test is completed, the 00D7 brake test OK alarm will be displayed on the NC. Perform calibration.
+
+Press '' repeat calibration ''.
+
+PEDAL BOARD LOCATION
+
+PEDAL BOARD LOCATIONPress the ascent pedal (1 pulse) so that the upper beam reaches the top dead centre.
+
+ASCENT PEDAL
+
+ASCENT PEDAL
+
+Call up the bending program or execute a new one (see CNC Manual).
+
+Select AUTOMATIC CYCLE mode from the control.
+
+PEDAL BOARD
+
+PEDAL BOARDPress the descent pedal, after a few millimetres the PCSS (safety PLC) interrupts fast descent and runs the first stop space test.
+
+DESCENT PEDAL
+
+DESCENT PEDAL
+
+At the end of the 1st test, the upper beam must be raised up to the PMS.
+
+PEDAL BOARD LOCATION
+
+PEDAL BOARD LOCATIONPress the descent pedal again, after a few millimetres the PCSS (safety PLC) interrupts fast descent and runs the second stop space test.
+
+DESCENT PEDAL
+
+DESCENT PEDAL
+
+PEDAL BOARD
+
+PEDAL BOARDPress the descent pedal again so that the machine continues the 1st cycle and the sheet contact test to save the position in case the machine is equipped with LASER photocells, as can be seen in the supplied LAZER-SAFE Manual.
+
+DESCENT PEDAL
+
+DESCENT PEDAL
+
+At the end of the 1st cycle, the machine automatically lifts.
+
+Place the sheet to bend a new piece.
+
+Press the descent pedal to start working normally.
+
+At this point, every time the descent pedal is pressed, the initial tests are no longer repeated, as seen above, but only point no. 14 is repeated without the sheet contact test and no. 15.
+
+At this point, every time the descent pedal is pressed, the initial tests are no longer repeated, as seen above, but only point no. 14 is repeated without the sheet contact test and no. 15.
+
+In case it is not necessary to activate the laser photocells for the work cycle in question and the MANUAL work cycle is selected instead of the AUTOMATIC one, the safety PLC does not require the test to check the stop space.
+
+In case it is not necessary to activate the laser photocells for the work cycle in question and the MANUAL work cycle is selected instead of the AUTOMATIC one, the safety PLC does not require the test to check the stop space.
+
+SWITCHING OFF
+
+Once the press has been used, if it remains unattended and inactive, it is necessary to follow the
+
+shut down procedure which includes the following steps:
+
+Move the upper beam to the top dead centre, the maximum opening point, as automatically happens when each AUTOMATIC bending cycle is finished.
+
+If the MANUAL cycle is on, it is necessary to control the ascent, using the appropriate pedal, up to the upper dead point.
+
+Select MANUAL CYCLE mode from the control.
+
+Turn off the press CNC, stopping the system like a normal computer (see the supplied CNC user manual).
+
+Turn the main switch OFF, that is in the "0" position.
+
+LOCATED ON THE ELECTRIC
+
+SLOT FOR LOCKING THE SWITCH IN THE "0" POSITION
+
+SLOT FOR LOCKING THE SWITCH IN THE "I" POSITION
+
+LOCATED ON THE ELECTRIC
+
+SLOT FOR LOCKING THE SWITCH IN THE "0" POSITION
+
+SLOT FOR LOCKING THE SWITCH IN THE "I" POSITION
+
+Lock the main switch until reused by placing the padlock in the special slot shown in the previous figure.
+
+1
+
+1
+
+BACKGAUGE MOVEMENT
+
+UPPER BEAM DESCENT
+
+BACKGAUGE MOVEMENT
+
+UPPER BEAM DESCENT
+
+THE EMERGENCY STATUS IS DISPLAYED ON THE CONTROL AND THE LAMP ON THE PROGRAMMER IS TURNED ON
+
+2
+
+THE EMERGENCY STATUS IS DISPLAYED ON THE CONTROL AND THE LAMP ON THE PROGRAMMER IS TURNED ON
+
+2
+
+ON THE PEDAL BOARD
+
+ON THE PEDAL BOARD
+
+MOVEMENT BLOCKED
+
+MOVEMENT BLOCKED
+
+PRESSING THE EMERGENCY BUTTON
+
+PRESSING THE EMERGENCY BUTTON
+
+USING THE EMERGENCY BUTTON
+
+As already seen above, using the emergency button determines an alarm situation on the press and it is necessary to follow a procedure in order to restore the initial and normal conditions of use. The sequences relating to the use of the emergency button are shown below.
+
+EMERGENCY ON
+
+When the emergency button is pressed because there is a risk of a dangerous situation, press operations are stopped, immediately stopping the descent of the upper beam and the movement of the backgauge.
+
+Below is a diagram showing the status of the press each time the emergency button is pressed.
+
+1ST OPERATION
+
+1ST OPERATION
+
+THE FOLLOWING 3 SITUATIONS ARE DETERMINED ON THE
+
+THE FOLLOWING 3 SITUATIONS ARE DETERMINED ON THE
+
+EMERGENCY RESET
+
+To restore the initial conditions and the full possibilities of the press it is necessary to:
+
+Turn the emergency button in the direction of the arrows on the red mushroom-head button, so that the emergency is reset.
+
+IF THERE ARE MORE PUSH BUTTONS, IT IS NECESSARY TO RELEASE THEM ALL
+
+IF THERE ARE MORE PUSH BUTTONS, IT IS NECESSARY TO RELEASE THEM ALL
+
+Press the main reset button.
+
+LOCATED ON THE NUMERICAL CONTROL CONSOLE
+
+LOCATED ON THE NUMERICAL CONTROL CONSOLE
+
+RESET AFTER A GUARD IS OPENED
+
+Lateral guards
+
+When you accidentally or voluntarily open both or only one of the lateral guards, the press is blocked. Proceed as follows to restore to initial conditions:
+
+Make sure that no one is in the danger zone near the recess of the press interposed between the sides of the structure and the open guard.
+
+Close all open lateral gates.
+
+Press the main reset button.
+
+LOCATED ON THE NUMERICAL CONTROL CONSOLE
+
+LOCATED ON THE NUMERICAL CONTROL CONSOLE
+
+Rear guards
+
+After opening the rear gate, to restore the initial conditions and resume work from the point where it was interrupted, it is necessary to:
+
+Make sure no one is inside the press.
+
+Close the rear gate.
+
+Press the rear reset button.
+
+RESET SAFETY REAR
+
+RESET SAFETY REAR
+
+LOCATED ON THE ELECTRIC PANEL
+
+LOCATED ON THE ELECTRIC PANEL
+
+Press the main reset button.
+
+LOCATED ON THE NUMERICAL CONTROL
+
+LOCATED ON THE NUMERICAL CONTROL
+
+REPLACEMENT OF TOOLS AND LATERAL EXTRACTION OF BENDED PIECES
+
+As can be seen in the figure below, the two lateral laser barriers once fixed to the upper beam become its integral parts and move simultaneously. The feature described in the previous lines is very important for the operation of laser barriers but can hinder some operations on the press.
+
+Operations where you might encounter obstacles are:
+
+tool replacement;
+
+bent part extraction.
+
+CONNECTION TO THE UPPER BEAM THROUGH FASTENING SCREWS
+
+ONCE THE LATERAL BARRIER IS SECURED TO THE UPPER BEAM, IT BECOMES AN INTEGRAL PART OF IT
+
+CONNECTION TO THE UPPER BEAM THROUGH FASTENING SCREWS
+
+ONCE THE LATERAL BARRIER IS SECURED TO THE UPPER BEAM, IT BECOMES AN INTEGRAL PART OF IT
+
+TOOL REPLACEMENT
+
+In the figure below you can see the problem, mentioned earlier, that is encountered when the upper tools (punches) of the upper beam must be replaced. It is understood that the tools must be replaced with the upper beam raised and not resting on the slot of the die as in the figure, just to be able to remove the tools.
+
+1
+
+2
+
+1
+
+2
+
+It is evident that if the upper tools are to be removed, the laser barriers obstruct the substitution since they can collide in the highlighted point with a prohibition signal in the previous figure.
+
+The procedure that is listed below should only be performed by the shift foreman who has been entrusted with the machine safety device keys or by an operator trained and informed of the procedure with written certification of his/her suitability.
+
+The procedure that is listed below should only be performed by the shift foreman who has been entrusted with the machine safety device keys or by an operator trained and informed of the procedure with written certification of his/her suitability.
+
+UPPER TOOL REPLACEMENT
+
+The operation of replacing the upper tools is the one that is carried out on the machine more frequently and it is necessary, to perform it in absolute safety, to follow the instructions below:
+
+Bring the machine to the top dead centre (PMS).
+
+MAXIMUM OPENING GAP
+
+MAXIMUM OPENING GAP
+
+Lower the upper beam in manual mode for several millimetres.
+
+mm NECESSARY FOR THE TOOL CHANGE
+
+PMS
+
+mm NECESSARY FOR THE TOOL CHANGE
+
+PMS
+
+Press the emergency button.
+
+PRESENT ON THE PEDAL BOARD
+
+PRESENT ON THE PEDAL BOARD
+
+Cut off electric panel power by turning the main switch.
+
+"0" POSITION
+
+"0" POSITION
+
+LOCATED ON THE ELECTRIC PANEL
+
+LOCATED ON THE ELECTRIC PANELLock the switch using a padlock.
+
+SLOT FOR LOCKING THE SWITCH IN THE "0" POSITION
+
+SLOT FOR LOCKING THE SWITCH IN THE "0" POSITION
+
+LOCATED ON THE ELECTRIC PANEL
+
+LOCATED ON THE ELECTRIC PANEL
+
+ONCE TAKEN TO THE DESIRED HEIGHT YOU MUST ALWAYS BLOCK THE BARRIER ROTATING THE LEVER CLOCKWISE
+
+ROTATING THE LEVER COUNTER-CLOCKWISE, THE LASER BARRIER CAN MOVE VERTICALLY
+
+ONCE TAKEN TO THE DESIRED HEIGHT YOU MUST ALWAYS BLOCK THE BARRIER ROTATING THE LEVER CLOCKWISE
+
+ROTATING THE LEVER COUNTER-CLOCKWISE, THE LASER BARRIER CAN MOVE VERTICALLYRaise the laser barrier so that the tools can be removed.
+
+Open the lateral guard.
+
+Loosen the screws of the brackets that lock the tool in order to reduce the grip and to remove them.
+
+THE SCREWS WILL PROTRUDE, WITHOUT FALLING, FROM THEIR SEAT
+
+ROTATE COUNTER-CLOCKWISE TO LOOSEN THE CONCERNED LOCK SCREWS
+
+THE SCREWS WILL PROTRUDE, WITHOUT FALLING, FROM THEIR SEAT
+
+ROTATE COUNTER-CLOCKWISE TO LOOSEN THE CONCERNED LOCK SCREWS
+
+Replace the tools in the various sectors, sliding them from the space created by one of the two ends.
+
+THE RIGHT BARRIER IS ILLUSTRATED BY THE PROCEDURE ALSO APPLIES TO THE LEFT BARRIER
+
+THE RIGHT BARRIER IS ILLUSTRATED BY THE PROCEDURE ALSO APPLIES TO THE LEFT BARRIER
+
+MAXIMUM BARRIER CLEARANCE LIMIT.
+
+(the tool and the barrier do not collide)
+
+MAXIMUM BARRIER CLEARANCE LIMIT.
+
+(the tool and the barrier do not collide)
+
+Then the new tools (punches) must be inserted as shown in the following figure.
+
+THE RIGHT BARRIER IS ILLUSTRATED BY THE PROCEDURE ALSO APPLIES TO THE LEFT BARRIER
+
+THE RIGHT BARRIER IS ILLUSTRATED BY THE PROCEDURE ALSO APPLIES TO THE LEFT BARRIER
+
+MAXIMUM BARRIER CLEARANCE LIMIT.
+
+(the tool and the barrier do not collide)
+
+MAXIMUM BARRIER CLEARANCE LIMIT.
+
+(the tool and the barrier do not collide)
+
+Once the upper tools have been inserted, they must be secured by rotating the various bracket fastening screws.
+
+UPPER TOOL BRACKETS
+
+UPPER TOOL BRACKETS
+
+Close the lateral guard.
+
+Remove the padlock from the main switch and turn it ON "I".
+
+Reset press functions.
+
+PRESENT ON THE PEDAL BOARD
+
+PRESENT ON THE PEDAL BOARD
+
+Press the main reset button.
+
+LOCATED ON THE NUMERICAL CONTROL
+
+LOCATED ON THE NUMERICAL CONTROL
+
+Using the appropriate magnetic plate supplied with the machine, check the correct positioning of the laser device (as reported in the paragraph "Laser alignment" in the enclosed Lazer-Safe Instruction Manual).
+
+14 mm
+
+14 mm
+
+RIGHT BARRIER ADJUSTMENT
+
+RIGHT BARRIER ADJUSTMENT
+
+LEFT BARRIER ADJUSTMENT
+
+LEFT BARRIER ADJUSTMENT
+
+The correct safety distance between the laser light beam and the end of the punch, visible on the lazer-safe plate, is also shown on the plate on the left shoulder of the machine.
+
+Once the tools have been replaced, after having closed the guard, it is necessary to check the absence of persons between the guards and the press before enabling the control circuit.
+
+CAUTION !!!
+
+Once the tools have been replaced, after having closed the guard, it is necessary to check the absence of persons between the guards and the press before enabling the control circuit.
+
+CAUTION !!!
+
+When replacing the punches it is mandatory to pay close attention to assemble them correctly, so that the safety nets of the same are facing the front of the machine and can correctly perform its "fall protection" function.
+
+CAUTION !!!
+
+When replacing the punches it is mandatory to pay close attention to assemble them correctly, so that the safety nets of the same are facing the front of the machine and can correctly perform its "fall protection" function.
+
+CAUTION !!!
+
+If the weight of the punch sector is expected to exceed 25 kg it is mandatory to provide fastening means and lifting devices, such as cranes, to be used for its handling.
+
+CAUTION !!!
+
+If the weight of the punch sector is expected to exceed 25 kg it is mandatory to provide fastening means and lifting devices, such as cranes, to be used for its handling.
+
+CAUTION !!!
+
+LOWER TOOL REPLACEMENT
+
+The quay where the lower tools (die) are located has, along its entire length, a series of brackets able to lock the tools.
+
+By loosening the screws of each bracket it is possible to replace the lower tools by pulling them out like the previous ones.
+
+In case the lower tools are integral, that is in a single piece for the whole length of the machine, or split, it is not necessary to raise the laser barriers to allow the tools to be removed. In fact, as can be seen from the previous figures, the lower tools are usually changed with the top upper beam, as in the previous conditions. The laser barriers do not hinder tool change and after having complied with the conditions listed for the upper tool change, excluding the points 7, 9, 10, 11 and 12, the dies can be safely removed.
+
+When the hydraulic or pneumatic lock is installed available as an option, the tools can be simply replaced by releasing the hydraulic tool lock device, thanks to the dedicated control, and subsequently, after having opened at least one lateral guard, by lifting or removing the various die sectors laterally.
+
+Also in this case, if the weight of the die sector is expected to exceed 25 Kg it is mandatory to use, for its handling, mechanical means such as cranes or other suitable systems.
+
+OPTIONAL
+
+When the hydraulic or pneumatic lock is installed available as an option, the tools can be simply replaced by releasing the hydraulic tool lock device, thanks to the dedicated control, and subsequently, after having opened at least one lateral guard, by lifting or removing the various die sectors laterally.
+
+Also in this case, if the weight of the die sector is expected to exceed 25 Kg it is mandatory to use, for its handling, mechanical means such as cranes or other suitable systems.
+
+OPTIONAL
+
+LASER BARRIER ALIGNMENT
+
+Once the upper tools have been replaced, follow the steps listed below:
+
+Close the lateral guard.
+
+Remove the padlock from the main switch and turn it ON "I".
+
+Press the main reset button.
+
+LOCATED ON THE NUMERICAL CONTROL
+
+LOCATED ON THE NUMERICAL CONTROL
+
+Press the emergency button.
+
+PRESENT ON THE PEDAL BOARD
+
+PRESENT ON THE PEDAL BOARD
+
+Using the appropriate magnetic plate supplied with the machine, check the correct positioning of the laser device (as reported in the paragraph "Laser alignment" in the enclosed Lazer-Safe Instruction Manual).
+
+Manual Lazer _Safe
+
+Manual Lazer _Safe
+
+RIGHT BARRIER ADJUSTMENT
+
+RIGHT BARRIER ADJUSTMENT
+
+LEFT BARRIER ADJUSTMENT
+
+LEFT BARRIER ADJUSTMENT
+
+The correct safety distance between the laser light beam and the end of the punch, visible on the lazer-safe plate, is also shown on the plate on the left shoulder of the machine.
+
+The laser beam, required for calibration, is only off when the machine is in manual mode. To calibrate the laser barriers, put the press in automatic mode.
+
+Reset press functions by rotating the emergency mushroom-head button after laser barrier alignment.
+
+PRESENT ON THE PEDAL BOARD
+
+PRESENT ON THE PEDAL BOARD
+
+Press the main reset button.
+
+LOCATED ON THE NUMERICAL CONTROL
+
+LOCATED ON THE NUMERICAL CONTROL
+
+Perform the various stop tests.
+
+Now the bending press is ready to perform bending operations.
+
+SIDE EXTRACTION OF BENDED PIECES
+
+As with tool replacement, when a piece bent by the bending press is to be removed, the presence of laser barriers can be hindered. It is good to specify that this problem does not exist in all bending situations, but that according to the bending sequence and PMS regulation, there is the risk just mentioned, that is, bent piece removal is hindered.
+
+In these cases, as previously, we must:
+
+Press the emergency button.
+
+PRESENT ON THE PEDAL BOARD
+
+PRESENT ON THE PEDAL BOARD
+
+Open the lateral guard where you want to remove the bent piece.
+
+Raise the laser barrier, from the side of the open lateral guard, so that the bent piece can be removed.
+
+ONCE TAKEN TO THE DESIRED HEIGHT YOU MUST ALWAYS BLOCK THE BARRIER ROTATING THE LEVER CLOCKWISE
+
+ROTATING THE LEVER COUNTER-CLOCKWISE, THE LASER BARRIER CAN MOVE VERTICALLY
+
+ONCE TAKEN TO THE DESIRED HEIGHT YOU MUST ALWAYS BLOCK THE BARRIER ROTATING THE LEVER CLOCKWISE
+
+ROTATING THE LEVER COUNTER-CLOCKWISE, THE LASER BARRIER CAN MOVE VERTICALLY
+
+Once the piece has been extracted, the laser barrier must be brought back to the initial height, verifying the correct positioning of the raised laser device to allow the punch to be removed.
+
+ONCE TAKEN TO THE DESIRED HEIGHT YOU MUST ALWAYS BLOCK THE BARRIER ROTATING THE LEVER CLOCKWISE
+
+ROTATING THE LEVER COUNTER-CLOCKWISE, THE LASER BARRIER CAN MOVE VERTICALLY
+
+ONCE TAKEN TO THE DESIRED HEIGHT YOU MUST ALWAYS BLOCK THE BARRIER ROTATING THE LEVER CLOCKWISE
+
+ROTATING THE LEVER COUNTER-CLOCKWISE, THE LASER BARRIER CAN MOVE VERTICALLY
+
+Reset press functions.
+
+PRESENT ON THE PEDAL BOARD
+
+PRESENT ON THE PEDAL BOARD
+
+Close the lateral guard.
+
+Press the main reset button.
+
+LOCATED ON THE NUMERICAL CONTROL
+
+LOCATED ON THE NUMERICAL CONTROL
+
+punch
+
+punch
+
+SPECIAL TOOLS AND ATTACHMENTS (OPTIONAL ONLY ON REQUEST)
+
+For some work processes it is necessary to equip the bending press with special equipment able to execute particular bent pieces.
+
+It must be specified that, to assemble these special tools with DIRECT FITTING, the upper beam must undergo a particular process which, if carried out in a time following the purchase of the press, entails a considerable waste of time and energy. In this case, in fact, it is necessary to work the upper beam again or look for suitable adapters. If the use of these particular tools is required, we recommend you rework the upper beam.
+
+The following figure shows the STANDARD fitting on the upper beam and the OPTIONAL fitting in question. You can notice the special processing mentioned previously highlighted in the circle below.
+
+STANDARD FITTING
+
+STANDARD FITTING
+
+OPTIONAL FITTING
+
+OPTIONAL FITTING
+
+punch
+
+Upper beam
+
+punch
+
+Upper beam
+
+Adjustable intermediate
+
+Adjustable intermediateThe STANDARD lower tool equipment is different from the SPECIAL solution taken into consideration. In fact, as can be seen from the figures below, with the STANDARD fitting the machine is equipped with intermediate and closing brackets, while with the SPECIAL fitting, the intermediate is not needed and the upper tool is mounted directly.
+
+Therefore, if the upper beam is equipped with a special connection that can be used both for a direct tool and for tools attached to the intermediates, follow the instructions below to change the tools.
+
+Bring the machine to the top dead centre (PMS).
+
+MAXIMUM OPENING GAP
+
+MAXIMUM OPENING GAP
+
+Lower the upper beam in manual mode for several millimetres.
+
+mm NECESSARY FOR TOOL CHANGE
+
+PMS
+
+mm NECESSARY FOR TOOL CHANGE
+
+PMS
+
+Press the emergency button.
+
+PRESENT ON THE PEDAL BOARD
+
+PRESENT ON THE PEDAL BOARD
+
+LOCATED ON THE ELECTRIC PANEL
+
+LOCATED ON THE ELECTRIC PANELCut off electric panel power by turning the main switch.
+
+"0" POSITION
+
+"0" POSITION
+
+LOCATED ON THE ELECTRIC PANEL
+
+LOCATED ON THE ELECTRIC PANELLock the switch using a padlock.
+
+SLOT FOR LOCKING THE SWITCH IN THE "0" POSITION
+
+SLOT FOR LOCKING THE SWITCH IN THE "0" POSITION
+
+Raise the laser barrier so that the tools can be removed.
+
+ONCE TAKEN TO THE DESIRED HEIGHT YOU MUST ALWAYS BLOCK THE BARRIER ROTATING THE LEVER CLOCKWISE
+
+ROTATING THE LEVER COUNTER-CLOCKWISE, THE LASER BARRIER CAN MOVE VERTICALLY
+
+ONCE TAKEN TO THE DESIRED HEIGHT YOU MUST ALWAYS BLOCK THE BARRIER ROTATING THE LEVER CLOCKWISE
+
+ROTATING THE LEVER COUNTER-CLOCKWISE, THE LASER BARRIER CAN MOVE VERTICALLY
+
+Open the lateral guard.
+
+Mark the intermediates, before they are removed, so that their position on the upper beam is identified.
+
+Loosen, rotating only a few turns, all the screws indicated with the letter "A", to allow the intermediates to be removed, as indicated by the arrow, from the side where the laser barrier was raised and the side guard opened.
+
+A
+
+A
+
+Once all the intermediates have been removed from the fitting, it is necessary to mount the new punch, which is usually made up of only one piece or a limited number depending on the length, inserting it in the direction of the arrow. Next release all the screws marked with the letter "B".
+
+B
+
+B
+
+Using the appropriate magnetic plate supplied with the machine, check the correct positioning of the laser device (as reported in the paragraph "Laser alignment" in the enclosed Lazer-Safe Instruction Manual).
+
+Lazer Safe
+
+manual
+
+Lazer Safe
+
+manual
+
+RIGHT BARRIER ADJUSTMENT
+
+RIGHT BARRIER ADJUSTMENT
+
+LEFT BARRIER ADJUSTMENT
+
+LEFT BARRIER ADJUSTMENT
+
+The correct safety distance between the laser light beam and the end of the punch, visible on the lazer-safe plate, is also shown on the plate on left shoulder of the machine.
+
+Close the lateral guard.
+
+Remove the padlock from the main switch and turn it ON "I".
+
+Reset press functions.
+
+PRESENT ON THE PEDAL BOARD
+
+PRESENT ON THE PEDAL BOARD
+
+Press the main reset button.
+
+LOCATED ON THE NUMERICAL CONTROL
+
+LOCATED ON THE NUMERICAL CONTROL
+
+LOCATED ON THE PEDAL BOARD
+
+LOCATED ON THE PEDAL BOARDPut the programmer in "calibration" mode from the control and lift the machine to the top dead point (PMS) by pressing the ascent pedal.
+
+ASCENT PEDAL
+
+ASCENT PEDAL
+
+PNEUMATIC TOOL LOCK
+
+For special bending operations it is necessary to change the upper tool (punch) several times in order to make even the most difficult bends, which would be impossible using the same tools.
+
+Using the pneumatic tool locking device, tool dismantling and assembly operations become faster and easier, improving the operator's work, the precision of the bent parts and the production.
+
+This device has further advantages such as the possibility of extracting and introducing tools from below. The latter is a very useful operation when you want to replace and use small fractional pieces.
+
+There is also the considerable advantage of being able to use standard punches without back milling for the fall arrester and the possibility, given the shape of the bracket visible in the figure below, to block whole and split punches simultaneously without affecting their position on the upper beam.
+
+PARTICULAR SHAPE OF THE BRACKETS.
+
+As you can see, no. 6 small brackets, separated from each other, cover the length of the intermediate.
+
+PARTICULAR SHAPE OF THE BRACKETS.
+
+As you can see, no. 6 small brackets, separated from each other, cover the length of the intermediate.
+
+The removal of a single piece blocked together with others divided on the same intermediate becomes a simple removal of the chosen piece avoiding to remove all the punches. In this way it is possible to equip the machine with various work stations, equipped in different ways, along the entire length of the upper beam.
+
+It is good to specify that in the case of tools having a length greater than 415 mm, to facilitate their extraction, it is necessary to remove them externally, as will be indicated below or remove them downwards.
+
+Moreover, thanks to this device, upper tool alignment is automatic and does not require further adjustments.
+
+Like all pneumatic systems, this is also composed of the filter-reducer unit with relative solenoid valve for the tool locking. These devices are inserted inside the machine in a protective box visible in the following figure.
+
+AIR TAP
+
+AIR TAP
+
+SOLENOID VALVE
+
+FRL UNIT
+
+PROTECTION BOX
+
+SOLENOID VALVE
+
+FRL UNIT
+
+PROTECTION BOXReplacement of upper tools with length&gt; 415 mm
+
+The sequence to be followed when replacing the upper tools is shown below using the pneumatic lock.
+
+Bring the machine to the top dead centre (PMS).
+
+MAXIMUM OPENING GAP
+
+MAXIMUM OPENING GAP
+
+Lower the upper beam in manual mode for several millimetres.
+
+mm NECESSARY FOR TOOL CHANGE
+
+PMS
+
+mm NECESSARY FOR TOOL CHANGE
+
+PMS
+
+Press the emergency button so that all the movements of the machine are locked and that safety is guaranteed during tool change.
+
+PRESENT ON THE PEDAL BOARD
+
+PRESENT ON THE PEDAL BOARD
+
+Raise the laser barrier so that the tools can be removed.
+
+ONCE TAKEN TO THE DESIRED HEIGHT YOU MUST ALWAYS BLOCK THE BARRIER ROTATING THE LEVER CLOCKWISE
+
+ROTATING THE LEVER COUNTER-CLOCKWISE, THE LASER BARRIER CAN MOVE VERTICALLY
+
+ONCE TAKEN TO THE DESIRED HEIGHT YOU MUST ALWAYS BLOCK THE BARRIER ROTATING THE LEVER CLOCKWISE
+
+ROTATING THE LEVER COUNTER-CLOCKWISE, THE LASER BARRIER CAN MOVE VERTICALLY
+
+Open the lateral guard where the barrier has been adjusted in height in order to remove the tools. Raising the right or left barrier is indifferent, the important thing is to raise the one in the best position for the change.
+
+Loosen the pneumatic clamp grip that lock the tools so that they can be removed.
+
+ROTATING COUNTER-CLOCKWISE LOOSENS THE UPPER CLAMP BRACKET GRIP
+
+ROTATING COUNTER-CLOCKWISE LOOSENS THE UPPER CLAMP BRACKET GRIP
+
+UNLOCKING THE BRACKET GRIP ON THE TOOLS PREVENTS TOOLS FROM FALLING DUE TO CLAMP ANTI-FALL ACTION
+
+UNLOCKING THE BRACKET GRIP ON THE TOOLS PREVENTS TOOLS FROM FALLING DUE TO CLAMP ANTI-FALL ACTION
+
+Indicated selector of the function
+
+Indicated selector of the function
+
+Indicated selector of the function
+
+Indicated selector of the function
+
+It is necessary to pay close attention once the lock has been released, in order to avoid unpleasant problems.
+
+CAUTION !!!
+
+It is necessary to pay close attention once the lock has been released, in order to avoid unpleasant problems.
+
+CAUTION !!!
+
+Proceed with the replacement of the various tool sectors, sliding them now that there is space from one of the two ends.
+
+THE RIGHT BARRIER IS ILLUSTRATED BUT THE PROCEDURE ALSO APPLIES TO THE LEFT BARRIER
+
+THE RIGHT BARRIER IS ILLUSTRATED BUT THE PROCEDURE ALSO APPLIES TO THE LEFT BARRIER
+
+MAXIMUM BARRIER CLEARANCE LIMIT.
+
+(the tool and the barrier do not collide)
+
+MAXIMUM BARRIER CLEARANCE LIMIT.
+
+(the tool and the barrier do not collide)
+
+TOOLS ARE AUTOMATICALLY ALIGNED WHEN LOCKED IN PLACE
+
+TOOLS ARE AUTOMATICALLY ALIGNED WHEN LOCKED IN PLACEAfter having inserted all the new tools, from the side where they are pulled out, you must insert, as shown below, the pneumatic bracket clamp in order to block them.
+
+ROTATE CLOCKWISE TO THE CENTRAL POSITION OF THE SELECTOR CLOSES THE BRACKET CLAMP
+
+ROTATE CLOCKWISE TO THE CENTRAL POSITION OF THE SELECTOR CLOSES THE BRACKET CLAMP
+
+When replacing the punches it is mandatory to pay close attention to assemble them correctly, so that the safety nets of the same are facing the front of the machine and can correctly perform its "fall protection" function.
+
+CAUTION !!!
+
+When replacing the punches it is mandatory to pay close attention to assemble them correctly, so that the safety nets of the same are facing the front of the machine and can correctly perform its "fall protection" function.
+
+CAUTION !!!
+
+If the weight of the punch sector is expected to exceed 25 kg it is mandatory to provide fastening means and lifting devices, such as cranes, to be used for its handling.
+
+If the weight of the punch sector is expected to exceed 25 kg it is mandatory to provide fastening means and lifting devices, such as cranes, to be used for its handling.
+
+Close the lateral guard.
+
+Once the tools have been replaced, after having closed the guard, it is necessary to check the absence of persons between the guards and the press before enabling the control circuit.
+
+CAUTION !!!
+
+Once the tools have been replaced, after having closed the guard, it is necessary to check the absence of persons between the guards and the press before enabling the control circuit.
+
+CAUTION !!!
+
+Reset press functions.
+
+PRESENT ON THE PEDAL BOARD
+
+PRESENT ON THE PEDAL BOARD
+
+Press the main reset button.
+
+LOCATED ON THE NUMERICAL CONTROL
+
+LOCATED ON THE NUMERICAL CONTROL
+
+LOCATED ON THE PEDAL
+
+LOCATED ON THE PEDALPut the programmer in "calibration" mode from the control and lift the machine to the top dead point (PMS) by pressing the ascent pedal.
+
+ASCENT PEDAL
+
+ASCENT PEDAL
+
+Using the appropriate magnetic plate supplied with the machine, check the correct positioning of the laser device (as reported in the paragraph "Laser alignment" in the enclosed Lazer-Safe Instruction Manual).
+
+Lazer Safe manual
+
+Lazer Safe manual
+
+RIGHT BARRIER ADJUSTMENT
+
+RIGHT BARRIER ADJUSTMENT
+
+LEFT BARRIER ADJUSTMENT
+
+LEFT BARRIER ADJUSTMENT
+
+The correct safety distance between the laser light beam and the end of the punch, visible on the lazer-safe plate, is also shown on the plate on the left shoulder of the machine.
+
+Replacement of upper tools with length &lt; 415 mm
+
+The tool change sequence was previously indicated for punches &gt; 415 mm long, length that conditions its weight. In these cases, the tools are removed from the side to avoid injury to the operator if proper attention is not paid to their weight during frontal extraction from the press. In the case in which the length of the tools is &lt; 415 mm and its weight is decidedly sustainable by the operator, the operations of extraction and insertion must be performed as in the previous paragraph excluding step no. 7.
+
+The tools must be extracted by pulling them downwards and must be inserted by inserting them upwards.
+
+It is necessary to pay close attention once the lock has been released, in order to avoid unpleasant problems.
+
+CAUTION !!!
+
+It is necessary to pay close attention once the lock has been released, in order to avoid unpleasant problems.
+
+CAUTION !!!
+
+EXTRACTION OF UPPER TOOL (PUNCH) FROM THE LOCK
+
+SAFETY HOOK
+
+SAFETY HOOKBy releasing the pneumatic lock clamp, bracket rotation is allowed to let the punch drop by gravity, as illustrated. It is important to specify that the punch does not fall but remains blocked thanks to the action of the safety hook.
+
+By slightly pushing the punch upwards with your hands and then rotating it, you can release the punch from the safety hook which determines the fall arrester.
+
+By tilting slightly in the opposite direction and pulling down the punch you can extract the punch so that it can be replaced.
+
+CAUTION !!!
+
+However, it is necessary to pay close attention once the lock is released, in order to avoid
+
+unpleasant problems due to incorrect evaluation of the weight of the tools or distractions of the operator.
+
+CAUTION !!!
+
+If the upper tool has very large dimensions, in spite of its length being less than 415 mm,
+
+and therefore has a considerable weight, proceed sideways, as previously seen for tools having a length &gt; 415 mm.
+
+CAUTION !!!
+
+ALWAYS WEAR PROTECTIVE GLOVES. THE FIGURES INDICATE THE OPERATIONS.
+
+INSERTING THE UPPER TOOL (PUNCH) IN THE LOCK
+
+Inserting the divided punch from the bottom allows the brackets to rotate, as shown in the figure below, until the punch stops because it has reached the end of its stroke.
+
+It is necessary and mandatory to lock the tools, inserting the block in the brackets through the appropriate selector, to bend the sheet.
+
+CAUTION !!!
+
+Until the central locking selector is rotated, as shown in the figure, the air pressure inside the clamp is not inserted and the tool will remain attached to the bracket. Care should be taken to avoid sudden bumps or collisions to the punch which can cause it to fall to the ground. In the figure you can see the forces on the sides of the tool highlighted once the lock has been inserted.
+
+It is necessary and mandatory to lock the tools, inserting the block in the brackets through the appropriate selector, to bend the sheet.
+
+CAUTION !!!
+
+Until the central locking selector is rotated, as shown in the figure, the air pressure inside the clamp is not inserted and the tool will remain attached to the bracket. Care should be taken to avoid sudden bumps or collisions to the punch which can cause it to fall to the ground. In the figure you can see the forces on the sides of the tool highlighted once the lock has been inserted.
+
+1
+
+1In the figures on the side and underneath you can see the rotary movement of each bracket, represented by the points 1 and 2, while inserting the punch.
+
+2
+
+2
+
+When the sides, shown in the figure, come into contact with the sides of the intermediate, the bracket rotates in the direction indicated by the arrow by hooking the punch anti-fall groove.
+
+Indicated selector of the function
+
+Indicated selector of the function
+
+CAUTION !!!
+
+ALWAYS WEAR PROTECTIVE GLOVES. THE FIGURES INDICATE THE OPERATIONS.
+
+GENERAL BENDING TECHNIQUES
+
+The bending techniques used with the bending press are basically of two types:
+
+1 - BENDING IN AIR OR FREE
+
+2 - COINED OR PUNCHED BEND
+
+2 - COINED OR PUNCHED BEND
+
+Below we will see the fundamental difference between the two bending types. It is good to specify that every time a sheet is bent, it comes up against a natural phenomenon called elastic return. The sheet, due to internal tensions and its own molecular disorder, retains a part of its elasticity when the force that deformed it ceases.
+
+Not all sheets have an identical behaviour, for example stainless steel sheets have a more solid elastic return compared to iron sheets with R = 40 ÷ 45 Kg / mm, the difference is attenuated by increasing the thickness of the sheet to be bent.
+
+According to the phenomenon just explained, elastic return, and the thickness of the sheet to be bent, we distinguish the two bending techniques listed above.
+
+AIR BENDING
+
+In this type of bending, the punch deforms the sheet and impresses it with an angle according to the requirements of the particular piece to be executed. During this bending technique the sheet retains a part of its elasticity, different for each material, and depending on the thickness and type of material, it is necessary to make a more closed angle than the one you want to obtain. Part precision thus depends on residual material elasticity and is determined by the punch penetration depth.
+
+There are additional advantages using this bending technique:
+
+it requires a limited bending force and consequently a low tonnage machine can be used;
+
+allows the execution of different bend angles with the same equipment;
+
+allows you to bend thick sheet metal better.
+
+It is important to consider that the use of slots having openings (width of "M" in the following table) smaller than a value between 6 ÷ 14 times the sheet thickness, can cause superficial defects such as cracks near the external radius of the sheet. On the other hand, by using larger M openings, coarse and much larger bending radii are obtained.
+
+N.B. It is specified that the optimum working cavity is 8 to 10 times the sheet thickness.
+
+N.B. It is specified that the optimum working cavity is 8 to 10 times the sheet thickness.
+
+ILLUSTRATIVE EXAMPLE
+
+As you can see, bending in the air is distinguished by having 3 contact points, highlighted in yellow, between the tools and the sheet
+
+ILLUSTRATIVE EXAMPLE
+
+As you can see, bending in the air is distinguished by having 3 contact points, highlighted in yellow, between the tools and the sheet
+
+COINED BENDING
+
+Unlike the previous system, this bending has the purpose of cancelling out the elasticity of the material, forcing it to acquire the shape of the punch tip by means of a real moulding action.
+
+The advantages of this bending technique are:
+
+a high angular precision of the bends performed;
+
+elimination of the phenomenon of elastic return;
+
+possibility to obtain angles with sharp corners unthinkable with the previous technique.
+
+However, there are disadvantages generated by coin bending which make it less and less used.
+
+presses with a high tonnage are required, since the bending force is 5 to 8 times greater than bending in air;
+
+the required equipment has high costs given its precision, which determines the successful outcome of the bent piece, and the lack of flexibility, given that each profile corresponds to a different piece of equipment;
+
+these folds have a good result for sheets with a maximum thickness of 1.5 mm.
+
+ILLUSTRATIVE EXAMPLE
+
+it can be noted that not only are the three contact points but the whole profile of the tip of the
+
+ILLUSTRATIVE EXAMPLE
+
+it can be noted that not only are the three contact points but the whole profile of the tip of the
+
+BACKGAUGE ADJUSTMENTS
+
+During scheduled maintenance operations, the status of the backgauge must be checked as some of its mechanical adjustments may have changed.
+
+The following are all the necessary and recommended operations to check and correct each change in the backgauge. Furthermore, all manual adjustments that can be performed on the standard machine gauge are described &lt;/g&gt;because in all the other backgauges each movement is automated.
+
+Adjustment of the position of the references along the bend line
+
+Depending on the position in which the sheet is located, it may be necessary to move the previously positioned movable reference points to obtain an appropriate reference before executing the bend.
+
+As shown below the upper references can scroll along the gauge bar and be adjusted.
+
+NEEDLE PUNCH
+
+NEEDLE PUNCH
+
+MOBILE CONTRAST
+
+MOBILE CONTRAST
+
+FRONT ADJUSTMENT
+
+Referring to the previous figures and captions, to make the references run along the bar, follow the instructions below.
+
+Activate the function (BG_Oriz) from the control, which, by moving the backgauge, allows the needle punches to exit with respect to the bending axis of the press.
+
+It is noted in the figure on the side that the function in question allows the needle punches to move above the level of the die and comfortably below the tip of the punch. In this way, by gripping the needle punches, you can slide the references to the desired point without having to interfere between the upper and lower tools and without having to act on any release screw.
+
+FUNCTION ACTIVATION (BG_Oriz)
+
+RETURN REFERENCES TO POSITION
+
+Although this function is very convenient and makes it very safe, the work of the operator has contraindications.
+
+The cases in which contraindications occur for the use of the function mentioned above are:
+
+when the press is equipped with different work stations, i.e. along the length of the machine there are dies and punches with different heights;
+
+when the "X" dimension, visible in the previous figure, is less than 125 mm.
+
+In both described cases, using the function described in this paragraph is prohibited
+
+STR srl cannot be held liable for direct and indirect damages due to failure to comply with the previous safety and prevention instructions, which can cause serious damage to the operator.
+
+In both described cases, using the function described in this paragraph is prohibited
+
+STR srl cannot be held liable for direct and indirect damages due to failure to comply with the previous safety and prevention instructions, which can cause serious damage to the operator.
+
+REAR ADJUSTMENT
+
+If the press is equipped with different work stations, or with very high matrices and punches that determine an "X" quota lower than that required above, the following instructions must be followed:
+
+Open the back gate of the press to access it.
+
+N.B. In these conditions, every movement of the press is
+
+inhibited.
+
+N.B. In these conditions, every movement of the press is
+
+inhibited.
+
+Once inside the press, slide the references by grasping them with your hands.
+
+NEEDLE PUNCH
+
+NEEDLE PUNCH
+
+MOBILE REFERENCE
+
+MOBILE REFERENCE
+
+Once the adjustment of the references is finished, exit the press paying attention that no one is inside and close the previously opened rear gate.
+
+Ensure that all emergency buttons are reset.
+
+PRESENT ON THE PEDAL BOARD
+
+PRESENT ON THE PEDAL BOARD
+
+LOCATED ON THE ELECTRIC
+
+LOCATED ON THE ELECTRICPress the rear reset button.
+
+RESET SAFETY REAR
+
+RESET SAFETY REAR
+
+Press the main reset button.
+
+LOCATED ON THE NUMERICAL CONTROL
+
+LOCATED ON THE NUMERICAL CONTROL
+
+ADJUSTMENT OF THE PARALLELISM OF THE REFERENCES IN RESPECT OF THE BENDING AXIS
+
+During scheduled press maintenance operations, it may be necessary to adjust the parallelism of the mobile reference needle punches, visible in the figure below.
+
+The necessary operations are divided into two general checks:
+
+verification of parallelism;
+
+parallelism adjustment.
+
+NEEDLE PUNCH
+
+MOBILE REFERENCE
+
+NEEDLE PUNCH
+
+MOBILE REFERENCE
+
+Verification of parallelism
+
+The operations necessary to control the parallelism of the needle punches are:
+
+Move the backgauge so that the mobile reference needle punches approach the lower tool (die), without bumping against it, so that a "" quota remains&lt;/g&gt;, measurable between the machined surface of the die and the reference needle punches.
+
+Bring the machine to the top dead centre (PMS).
+
+MAXIMUM OPENING GAP
+
+MAXIMUM OPENING GAP
+
+Lower the upper beam in manual mode for several millimetres.
+
+mm NECESSARY FOR TOOL CHANGE
+
+PMS
+
+mm NECESSARY FOR TOOL CHANGE
+
+PMS
+
+Press the emergency button.
+
+PRESENT ON THE PEDAL BOARD
+
+PRESENT ON THE PEDAL BOARD
+
+LOCATED ON THE ELECTRIC
+
+LOCATED ON THE ELECTRICCut off electric panel power by turning the main switch.
+
+"0" POSITION
+
+"0" POSITION
+
+2
+
+RD
+
+As you can see, a
+
+positioning tolerance is accepted when stopping with "RD" over axis "AD".
+
+AD
+
+2
+
+RD
+
+As you can see, a
+
+positioning tolerance is accepted when stopping with "RD" over axis "AD".
+
+AD
+
+1
+
+1
+
+LOCATED ON THE ELECTRIC PANEL
+
+LOCATED ON THE ELECTRIC PANELLock the switch using a padlock.
+
+SLOT FOR LOCKING THE SWITCH IN THE "0" POSITION
+
+SLOT FOR LOCKING THE SWITCH IN THE "0" POSITION
+
+Open the rear gate to access inside the press in complete safety because all the functions are blocked.
+
+Place the reference, indicated with the letter "RD" and visible in the figure below, in correspondence with the axis of the right support indicated with the letter "AD".
+
+AD
+
+AS
+
+RD
+
+RS
+
+AD
+
+AS
+
+RD
+
+RS
+
+FRONT VIEW OF THE GAUGE FROM THE BACK
+
+FRONT VIEW OF THE GAUGE FROM THE BACK
+
+Measure the "Y" distance with a gauge between the reference needle punch and the machined surface of the die.
+
+Mark the side of the die with a marker or chalk, to avoid leaving marks difficult to remove, the position used by the reference "RD" during the measurement.
+
+After measuring the "Y" quota, move the reference "RD" to the right so that the marked position used for the measurement is freed.
+
+AD
+
+RD
+
+AD
+
+RD
+
+1
+
+1
+
+2
+
+RS
+
+RD
+
+As you can see, a
+
+positioning tolerance is accepted when stopping with "RS" over axis "AD".
+
+AD
+
+2
+
+RS
+
+RD
+
+As you can see, a
+
+positioning tolerance is accepted when stopping with "RS" over axis "AD".
+
+ADPlace the reference, indicated with the letter "RS" and visible in the figure below, in correspondence with the axis of the right support, previously marked with the letter "AD".
+
+AS
+
+RD
+
+RS
+
+AD
+
+AS
+
+RD
+
+RS
+
+AD
+
+FRONT VIEW OF THE GAUGE FROM THE BACK
+
+FRONT VIEW OF THE GAUGE FROM THE BACK
+
+Measure the "Y2" distance between the reference needle punch "RS" with a gauge and the machined die surface to compare it with the previous "Y" measurement of the "RD" reference.
+
+In the event of discrepancies with the "Y" measurement, use the adjustment screw "C" to change the needle punch position according to "M" movement. After loosening screw "F" grip, rotate the knob "C" clockwise or counter-clockwise to adjust the needle punch position until the "Y2" distance is the same as "Y". After adjustment, restore screw "F" grip.
+
+M
+
+F
+
+M
+
+F
+
+A
+
+C
+
+A
+
+C
+
+FRO
+
+FRO
+
+MOBILE REFERENCE
+
+MOBILE REFERENCE
+
+1
+
+1
+
+2
+
+RS
+
+As you can see, a positioning tolerance is accepted when
+
+AS
+
+2
+
+RS
+
+As you can see, a positioning tolerance is accepted when
+
+ASPlace the reference, indicated with the letter "RS" in correspondence with the axis of the left support indicated with the letter "AS".
+
+AS
+
+RD
+
+RS
+
+AD
+
+AS
+
+RD
+
+RS
+
+AD
+
+FRONT VIEW OF THE GAUGE FROM THE BACK
+
+FRONT VIEW OF THE GAUGE FROM THE BACK
+
+Check the "Y2" quota at "AS" axis. If the quota coincides with the one measured on the right axis, the gauge is correctly positioned, if there are differences, the gauge bar must be aligned as indicated in the next paragraph (parallelism adjustment).
+
+Parallelism adjustment
+
+FASTENING PLATE
+
+BAR GAUGE
+
+FASTENING PLATE
+
+BAR GAUGE
+
+Fixed point
+
+Adjustment bar possible by loosening screws “D”
+
+M2
+
+Fixed point
+
+Adjustment bar possible by loosening screws “D”
+
+M2
+
+SCREWS "D"
+
+SCREWS "D"Loosen the screws, indicated with the letter "D", located under the gauge bar, at the fastening plate to permit "M2" bar movement visible in the following illustrations.
+
+Move the gauge bar in steps to match the “Y2” measurement, measured on the left axis “AS”, with the “Y2” measurement, measures on the right axis “AD”.
+
+When the "Y2" quotas match, lock the screw "D".
+
+Once the backgauge is parallel, bend at points "1" and "2" using small sized sheet metal to check correct adjustment. Once the two bends are completed, compare the bent pieces.
+
+1
+
+1
+
+2
+
+2
+
+FRONT SHEET METAL SUPPORTS (OPTIONAL)
+
+Sliding supports
+
+2 sliding support models are installed on the bending press to create a work surface to prepare sheet metal bends.
+
+SLIDING SUPPORTS
+
+WORK TABLE
+
+SLIDING SUPPORTS
+
+WORK TABLE
+
+Both models slide along the lower beam and can be height adjusted to always be in the correct bending position.
+
+STANDARD SLIDING SUPPORTS MT 04
+
+The possible support movements and operations required to adjust the position are illustrated below.
+
+RV
+
+B
+
+RO
+
+A
+
+RV
+
+B
+
+RO
+
+A
+
+Whenever the work die is changed, adjust support height.
+
+Whenever the work die is changed, adjust support height."RO" horizontal adjustment
+
+Loosen the grip of the handle indicated with the letter "A", rotating it releases the brake and the shelf can be moved along the guide to meet bending needs. At this point, tighten the handle "A" rotating it clockwise until horizontal support movement is blocked.
+
+"RV" vertical adjustment (this adjustment is best if performed first)
+
+Loosen the handle grip "B" rotating it and grasping the support to move the support shelf against the die edge. When the position is reached, tighten the handle "B" rotating it clockwise until vertical support movement is blocked.
+
+SPECIAL SLIDING SUPPORTS MT 03 (OPTIONAL)
+
+The substantial difference between the previous supports and those illustrated below consists in the facts that the supports are OPTIONAL:
+
+they have hand wheels to change the support vertical and horizontal positions;
+
+they have a more rigid and resistant structure for large and heavy sheet metal bending;
+
+they slide on two guides, upper and lower, thanks to runners and bearings that improve sliding.
+
+V
+
+RV
+
+RO
+
+P
+
+V
+
+RV
+
+RO
+
+P
+
+A
+
+A
+
+"RV" vertical adjustment (recommended first)
+
+Rotating the "V" hand wheel clockwise and counter-clockwise adjusts the sliding support table "P" so that its height is always correct, as indicated in the figure below, with the lower too, die, installed.
+
+The screws need not be loosened and locked once in the correct position since the support maintains the position thanks to an internal system.
+
+Whenever the work die is changed, adjust support height.
+
+Whenever the work die is changed, adjust support height.
+
+"RO" horizontal adjustment
+
+Loosen the grip of the screws indicated with the letter "A" and rotating the knobs a few turns, grasping the support and dragging it to the chosen bending position. When the position is selected, restore screw "A" grip rotating the handles clockwise until horizontal support movement is blocked.
+
+CHAPTER 06
+
+BENDING PRESS MAINTENANCE
+
+SHEET METAL TECHNOLOGY
+
+GENERAL MAINTENANCE CONSIDERATIONS
+
+This chapter contains the information necessary to check, during certain periods, all bending press functions to ensure that its functionality and its safety systems are always guaranteed. It is important to specify that whenever you need to intervene to check the status of the press and its parts, or to repair damaged parts of the same, you must comply with the safety conditions for each operator, especially for maintenance personnel. The second chapter of this manual contains all the safety conditions to be observed in every work situation.
+
+The following are all the indications regarding maintenance operations in order to make any intervention on the machine safe, efficient and correct. The indications discussed are the most significant as well as being, in most cases, the only ones able to guarantee the correct maintenance of the press. If there is a need for clarification and explanations regarding maintenance cases or exceptional assistance, please contact STR s.r.l. customer service. In this way you can better understand the problems present and organise any repairs and / or maintenance.
+
+For all types of maintenance operations not covered in this manual, contact STR s.r.l.
+
+For all types of maintenance operations not covered in this manual, contact STR s.r.l.
+
+This chapter also indicates the types of oils that can be used for the bending press with the relevant toxicological information. Please note that the management of waste oils must be carried out in accordance with the current legislation in force (in Italy, Presidential Decree 915/82 and Law 475/88), which states that waste oils, up to the storage phase before being sent to the regeneration terminal plants, must remain subject to the waste legislation.
+
+This chapter also indicates the types of oils that can be used for the bending press with the relevant toxicological information. Please note that the management of waste oils must be carried out in accordance with the current legislation in force (in Italy, Presidential Decree 915/82 and Law 475/88), which states that waste oils, up to the storage phase before being sent to the regeneration terminal plants, must remain subject to the waste legislation.
+
+HAZARDS DURING MAINTENANCE
+
+In addition to the dangers that exist during the use of the machine mentioned in the second chapter of this manual, during maintenance operations it is necessary to pay close attention to avoid physical damage to property and people as well as to guarantee workplace safety for each operation carried out.
+
+It is best to specify that the hours indicated for the maintenance periodicity are working hours, that is to say press operating hours.
+
+It is best to specify that the hours indicated for the maintenance periodicity are working hours, that is to say press operating hours.
+
+Existent hazards
+
+All maintenance operations must be carried out with the energy sources cut off and the residual energy discharged.
+
+The electrical cut off switch must be padlocked OFF, while the pneumatic supply unit cover lock must be locked after disconnecting the supply line.
+
+The following hazards may arise in the event of failure to follow these instructions:
+
+There is the possibility of injury if the pipes and all the hydraulic parts under pressure are hit, due to whiplash, especially in the case of pipes free to move and not constrained as often happens during maintenance operations.
+
+INJURY HAZARD
+
+There is the possibility of injury if the pipes and all the hydraulic parts under pressure are hit, due to whiplash, especially in the case of pipes free to move and not constrained as often happens during maintenance operations.
+
+INJURY HAZARD
+
+WARNING
+
+WARNING
+
+If you come into contact with the braking resistors, there is the possibility that these are at slightly elevated temperatures which do not create any risk in case of accidental contact.
+
+BURNING HAZARD
+
+If you come into contact with the braking resistors, there is the possibility that these are at slightly elevated temperatures which do not create any risk in case of accidental contact.
+
+BURNING HAZARD
+
+WARNING
+
+WARNING
+
+Care must be taken not to come into contact with the electrical cables present on the machine and with any electrical component in order to prevent the electric voltage from causing serious damage to the operators.
+
+FATAL HAZARD
+
+Care must be taken not to come into contact with the electrical cables present on the machine and with any electrical component in order to prevent the electric voltage from causing serious damage to the operators.
+
+FATAL HAZARD
+
+WARNING
+
+WARNING
+
+All interventions to the raised parts of the press must be carried out using suitable access means (i.e. workshop ladder with handrail and platform equipped with parapet) without ever climbing or standing on the press.
+
+FALLING HAZARD
+
+All interventions to the raised parts of the press must be carried out using suitable access means (i.e. workshop ladder with handrail and platform equipped with parapet) without ever climbing or standing on the press.
+
+FALLING HAZARD
+
+WARNING
+
+WARNING
+
+MAINTENANCE INSTRUCTIONS
+
+It is best to specify that only trained personnel are authorised to carry out maintenance and / or repair work on the press.
+
+Before starting any maintenance work, it is OBLIGATORY to follow the steps below.
+
+Make sure that the machine is completely stopped by checking that the upper beam cannot move in any way by placing the tip of the punch on the hollow bottom of the die, preventing it from falling by gravity and taking care not to weigh on the tools.
+
+THE PUNCH MUST STAND ON THE HOLLOW BOTTOM OF THE DIE
+
+THE PUNCH MUST STAND ON THE HOLLOW BOTTOM OF THE DIE
+
+Check that the emergency button is pressed.
+
+LOCATED ON THE CONTROL (PEDAL BOARD)
+
+LOCATED ON THE CONTROL (PEDAL BOARD)
+
+In case of machine part or component replacement, use only spare parts recommended by STR s.r.l.
+
+In case of machine part or component replacement, use only spare parts recommended by STR s.r.l.
+
+LOCATED ON THE ELECTRIC
+
+LOCATED ON THE ELECTRICCut off electric panel power by turning the main switch.
+
+"0" POSITION
+
+"0" POSITION
+
+LOCATED ON THE ELECTRIC
+
+LOCATED ON THE ELECTRICLock the switch using a padlock or plastic band.
+
+SLOT FOR LOCKING THE SWITCH IN THE "0" POSITION
+
+SLOT FOR LOCKING THE SWITCH IN THE "0" POSITION
+
+Before starting any type of work in the area around, above or below the machine, it is necessary to make sure that the machine work area is free and not occupied by other equipment or persons not responsible for press maintenance.
+
+Before starting any type of work in the area around, above or below the machine, it is necessary to make sure that the machine work area is free and not occupied by other equipment or persons not responsible for press maintenance.
+
+It is also important to check that the temperature of the parts making up the machine is not such as to cause contact burns during maintenance operations.
+
+It is also important to check that the temperature of the parts making up the machine is not such as to cause contact burns during maintenance operations.
+
+No one should intervene on the electrical system of the machine other than the authorised electrician, after making sure that the operations described above have been carried out.
+
+No one should intervene on the electrical system of the machine other than the authorised electrician, after making sure that the operations described above have been carried out.
+
+It is important to avoid the use of tools, such as ladders or scaffolding, without adequate protection and from which you can fall into the working area of the machine.
+
+It is important to avoid the use of tools, such as ladders or scaffolding, without adequate protection and from which you can fall into the working area of the machine.
+
+PNEUMATIC SYSTEM CONTROLevery 600h
+
+Before carrying out any check it is necessary to follow the warnings specified in paragraph 6.1.2 in order to operate safely on the machine.
+
+After following the instructions to turn off and secure the press, the compressed air supply MUST be turned off, turning the regulator to zero and locking the access door before carrying out any work on it.
+
+After following the instructions to turn off and secure the press, the compressed air supply MUST be turned off, turning the regulator to zero and locking the access door before carrying out any work on it.
+
+WARNING
+
+WARNING
+
+A painted metal box is fixed inside the press in the upper tie rod and along the right side of the machine structure, as can be seen from the figure below, which contains the core of the pneumatic circuit.
+
+AIR TAP
+
+OUTLET
+
+CUP
+
+PRESSURE REGULATOR
+
+FILTERING
+
+UNIT inside the cup
+
+SOLENOID VALVE
+
+PRESSURE GAUGE
+
+AIR TAP
+
+OUTLET
+
+CUP
+
+PRESSURE REGULATOR
+
+FILTERING
+
+UNIT inside the cup
+
+SOLENOID VALVE
+
+PRESSURE GAUGE
+
+The system inserted in the sheet metal box is composed of elements, indicated in the previous figure, able to eliminate the oil particles and the foreign particles contained in the compressed air. Thanks to this device, the compressed air that circulates inside the pneumatic system pipes is filtered and separated from the condensate and its internal pressure is regulated.
+
+Pressure regulation
+
+The knob which regulates the pressure inside the pneumatic circuit has a locking position so that no pressure calibration losses occur. To release the knob from the safety position, lift it slightly and then increase or decrease the internal pressure by turning it clockwise or counter-clockwise respectively. Once adjusted, the knob must be put back in its safety position, pushing it downwards until it is blocked.
+
+UNLOCK
+
+UNLOCK
+
+TURN CLOCKWISE TO INCREASE PRESSURE
+
+TURN CLOCKWISE TO INCREASE PRESSURE
+
+LOCK
+
+LOCK
+
+There is a possibility that the pressure gauge or regulator do not work properly. In these cases it must be checked that the general pressure that enters the circuit is always higher than that inside and there are no foreign bodies present in the main seat of the regulator. The presence of continuous air flows coming out of the cup outlet indicates that the filtering unit membrane is not in perfect condition and its condition should be checked to replace it.
+
+CUP
+
+CUP
+
+Cup cleaning
+
+To clean the filtering unit cups, visible in the previous figure, using trichlorethylene, thinners and hydrocarbons of various kinds is PROHIBITED because they would compromise the general state of the material and deteriorate it. Even contact with synthetic oils will ruin the state of the material of the cups.
+
+Neutral detergents or damp cloths are RECOMMENDED to clean the cups.
+
+Neutral detergents or damp cloths are RECOMMENDED to clean the cups.
+
+WARNING
+
+WARNINGFilters
+
+These devices inside the filtering unit are used to prevent condensation in the air from exceeding a certain limit which would cause damage to components that use compressed air and automatically eliminate it through the exhaust.
+
+Particular attention must be paid so that filter installation complies with the arrows indicated on it and the filter device SHOULD cleaned or replaced if the flow rate decreases, causing a considerable drop in pressure.
+
+Particular attention must be paid so that filter installation complies with the arrows indicated on it and the filter device SHOULD cleaned or replaced if the flow rate decreases, causing a considerable drop in pressure.
+
+WARNING
+
+WARNING
+
+BACKGAUGE LUBRICATION
+
+It is useful to lubricate moving backgauge parts with the frequency indicated in the table below. Before proceeding, the guards where the ball screws are inserted must be removed and then lubricated by inserting the appropriate oil into the hole in the screw nut. During this lubrication phase it is important to clean any dirty mechanical parts such as sliding guides, ball screws, etc.
+
+This maintenance phase requires access to an area inside the machine protected by a rear gate with a safety micro to warn the operator about the status of the press.
+
+Description
+
+Lubrication mode
+
+Working hours
+
+Description
+
+Lubricating Type
+
+Working hours
+
+Ball screw
+
+Grease NGLT2,265/295
+
+100
+
+Ball Screws
+
+Grease NGLT2,265/295
+
+100
+
+Ball bearing
+
+Grease NGLT2,265/295
+
+100
+
+Ball Scroll
+
+Grease NGLT2,265/295
+
+100
+
+Ball screw guides
+
+Grease NGLT2,265/295
+
+100
+
+Ball guides
+
+Grease NGLT2,265/295
+
+100
+
+R Axis Gear
+
+Grease NGLT2,265/295
+
+100
+
+R Axis Gear
+
+Grease NGLT2,265/295
+
+100
+
+R Axis pistons
+
+Oil / use the oiler
+
+60
+
+R Axis Gear
+
+Oil / Use the oiler
+
+60
+
+RAM GUIDE CLEANINGevery 1000h
+
+It is necessary to clean the press upper beam guides with the frequency indicated above.
+
+The guide system, shown in the figure below, consists of two hardened bearings and two hardened guides which have a high surface hardness, determining a considerable resistance to wear. The contact points between the guides and the sliding bearings are smaller than the previous guide system and determine low temperatures of the sliding surfaces and lower wear, or rather almost absent.
+
+Therefore the maintenance operations are not to be planned according to the previous assumptions, the only operation to be planned, according to the timing above, is guide cleaning.
+
+BEARING
+
+GUIDE
+
+BEARING
+
+GUIDE
+
+After following the instructions given in section 6.1.2, the guides and bearings must be cleaned with a clean cloth.
+
+RAM CONTROL SCREW LUBRICATION
+
+The lubrication of the ball screws and bearings that control the upper beam, ram and press is entrusted to an automatic system.
+
+The lubrication control system, shown in the figure below, consists of a control unit that automatically injects lubricant in the appropriate ball screws.
+
+The correct operation of the lubrication system (minimum level of grease, etc.) is monitored by the control that signals to the operator an alarm due to malfunction.
+
+The operator must top up and check correct system operations.
+
+For topping up, 2 kg of grease must be added with the characteristics indicated in the specific sheet.
+
+MAINTENANCE SUMMARY TABLE
+
+INTERVENTION DESCRIPTION
+
+INTERVAL
+
+(working h)
+
+VISUAL PLANT INSPECTION
+
+160 h
+
+CHECK THAT ALL FITTINGS ARE TIGHT
+
+300 h
+
+SCREW LUBRICATION UNIT
+
+Automatic
+
+PNEUMATIC SYSTEM CONTROL
+
+600 h
+
+BACKGAUGE LUBRICATION
+
+As per the table
+
+RAM GUIDE CLEANING
+
+1000 h
+
+WORK/CHECK SHEETS
+
+All repair and maintenance work must be recorded on the following sheets in order to have a complete summary of all ordinary and extraordinary operations performed on the machine.
+
+IMPORTANT: THE COPIES OF THE VARIOUS WORK/MAINTENANCE SHEETS MUST BE CLASSIFIED AND STORED IN THE LAST PART OF THE MANUAL.
+
+IMPORTANT: THE COPIES OF THE VARIOUS WORK/MAINTENANCE SHEETS MUST BE CLASSIFIED AND STORED IN THE LAST PART OF THE MANUAL.
+
+STR s.r.l. CANNOT BE HELD LIABLE IN THE EVENT OF FAILURE TO FOLLOW THE ABOVE PROCEDURE.
+
+STR s.r.l. CANNOT BE HELD LIABLE IN THE EVENT OF FAILURE TO FOLLOW THE ABOVE PROCEDURE.
+
+The HYDRAULIC BENDING PRESSES are machines that work at gravity, so for periods longer than 24 hours there may be slight oil leaks that can cause the ram to descend.
+
+In any case, when the machine is restarted, the normal working cycle is restored.
+
+The HYDRAULIC BENDING PRESSES are machines that work at gravity, so for periods longer than 24 hours there may be slight oil leaks that can cause the ram to descend.
+
+In any case, when the machine is restarted, the normal working cycle is restored.
+
+WORK SHEET
+
+DATE
+
+Report No
+
+INTERVENTION DESCRIPTION
+
+signature
+
+WORK SHEET
+
+DATE
+
+Report No
+
+INTERVENTION DESCRIPTION
+
+signature
+
+WIRING DIAGRAM
+
+(see technical booklet annex 2)
+
+PNEUMATIC DIAGRAM
+
+(page 17)
+
+OIL HYDRAULIC DIAGRAM
+
+(page 18)

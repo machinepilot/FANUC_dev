@@ -1,0 +1,48 @@
+{
+  "$schema": "./_manifest.schema.json",
+  "version": 1,
+  "customers": [
+    {
+      "id": "ldj_blm",
+      "name": "LDJ (BLM press brake cell)",
+      "active": true,
+      "industry": "metal_fabrication",
+      "contact": null,
+      "systems": [
+        {
+          "id": "blm_cell_1",
+          "application": "press_brake_tending",
+          "robot_model": "R-2000iC (to confirm)",
+          "controller": "R-30iB Plus",
+          "system_sw_version": "V9.x",
+          "fieldbus": ["modbus_tcp", "digital_io"],
+          "collaborative": false
+        }
+      ]
+    },
+    {
+      "id": "308_gh",
+      "name": "308-GH",
+      "active": false,
+      "industry": null,
+      "contact": null,
+      "systems": []
+    },
+    {
+      "id": "313_jd",
+      "name": "313-JD",
+      "active": false,
+      "industry": null,
+      "contact": null,
+      "systems": []
+    },
+    {
+      "id": "345_pj",
+      "name": "345-PJ",
+      "active": false,
+      "industry": null,
+      "contact": null,
+      "systems": []
+    }
+  ]
+}

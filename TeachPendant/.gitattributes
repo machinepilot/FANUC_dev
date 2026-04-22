@@ -1,0 +1,45 @@
+# Default: LF endings, text auto-detected
+* text=auto eol=lf
+
+# FANUC source files must stay CRLF (controller expects it)
+*.LS    text eol=crlf
+*.ls    text eol=crlf
+*.TP    binary
+*.tp    binary
+*.KL    text eol=crlf
+*.kl    text eol=crlf
+*.PC    binary
+*.pc    binary
+*.VR    binary
+*.vr    binary
+*.SV    binary
+*.sv    binary
+*.DF    text eol=crlf
+*.df    text eol=crlf
+*.XML   text eol=crlf
+*.xml   text eol=crlf
+
+# FANUC backup archives
+*.IMG   binary
+*.img   binary
+
+# LFS for raw-source binaries
+fanuc_dataset/raw_sources/**/*.pdf   filter=lfs diff=lfs merge=lfs -text
+fanuc_dataset/raw_sources/**/*.PDF   filter=lfs diff=lfs merge=lfs -text
+fanuc_dataset/raw_sources/**/*.zip   filter=lfs diff=lfs merge=lfs -text
+fanuc_dataset/raw_sources/**/*.docx  filter=lfs diff=lfs merge=lfs -text
+fanuc_dataset/raw_sources/**/*.pptx  filter=lfs diff=lfs merge=lfs -text
+
+# LFS for customer integration notes raw docs
+customer_programs/**/integration_notes/raw_docs/**/*.pdf   filter=lfs diff=lfs merge=lfs -text
+customer_programs/**/integration_notes/raw_docs/**/*.PDF   filter=lfs diff=lfs merge=lfs -text
+customer_programs/**/integration_notes/raw_docs/**/*.zip   filter=lfs diff=lfs merge=lfs -text
+customer_programs/**/integration_notes/raw_docs/**/*.docx  filter=lfs diff=lfs merge=lfs -text
+
+# Markdown / JSON / Python keep LF everywhere
+*.md    text eol=lf
+*.json  text eol=lf
+*.py    text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.toml  text eol=lf

@@ -1,0 +1,35 @@
+CURRENT BEND DATA REGISTERS (Read Only),,,,
+Address,Size,Type,Description,Units
+1232,1,WORD,Bend Type,
+1233,1,WORD,Rotation Direction,"0=None, 1=CW, 2=CCW"
+1234,1,WORD,Repetitions,count
+1242,4,DOUBLE,Sheet Thickness,mm
+1253,4,DOUBLE,Bending Angle Y1,degrees
+1257,4,DOUBLE,Bending Angle Y2,degrees
+1261,4,DOUBLE,Correction Angle Y1,degrees
+1265,4,DOUBLE,Correction Angle Y2,degrees
+1269,4,DOUBLE,X1 Position (Backstop),mm
+1273,4,DOUBLE,X2 Position (Backstop),mm
+1277,4,DOUBLE,X3 Position (Backstop),mm
+1281,4,DOUBLE,X4 Position (Backstop),mm
+1317,4,DOUBLE,Y1 Position (Ram Depth),mm
+1321,4,DOUBLE,Y2 Position (Ram Depth),mm
+1325,4,DOUBLE,Y1 Correction,mm
+1329,4,DOUBLE,Y2 Correction,mm
+1357,4,DOUBLE,R1 Position (Tool Rotation),degrees
+1361,4,DOUBLE,R2 Position (Tool Rotation),degrees
+1397,4,DOUBLE,Z1 Position (Lateral),mm
+1401,4,DOUBLE,Z2 Position (Lateral),mm
+1445,4,DOUBLE,Working Speed,mm/s
+1641,4,DOUBLE,Die Number,ID
+1645,4,DOUBLE,Punch Number,ID
+1657,4,DOUBLE,Die Width (V-Die),mm
+1665,4,DOUBLE,Bending Force,kN
+1669,4,DOUBLE,Crowning Value,mm
+1673,4,DOUBLE,Mute Point Position,mm
+1677,4,DOUBLE,Inner Radius,mm
+1681,40,STRING,Material Name,text
+1725,4,DOUBLE,Material Resistance (UTS),MPa
+1850,4,DOUBLE,Measured Angle Y1 (Laser),degrees
+1854,4,DOUBLE,Measured Angle Y2 (Laser),degrees
+1965,82,STRING,Program Name,text

@@ -1,0 +1,175 @@
+PROGRAM MQTT_NATIVE
+%COMMENT = 'Option B - Native MQTT: Karel speaks MQTT directly to Mosquitto'
+%NOLOCKGROUP
+%NOPAUSE = ERROR + COMMAND + TPENABLE
+%NOBUSYLAMP
+
+CONST
+    CLIENT_TAG = 'C2:'
+    TOPIC = 'robot/position'
+
+VAR
+    status      : INTEGER
+    time_int    : INTEGER
+    cur_jpos    : JOINTPOS
+    jpos_val    : ARRAY[9] OF REAL
+    payload     : STRING[256]
+    time_str    : STRING[24]
+    sec_str     : STRING[4]
+    fl          : FILE
+    connack     : STRING[4]
+    connect_pkt : STRING[64]
+    publish_pkt : STRING[320]
+    rem_len     : INTEGER
+    plen        : INTEGER
+
+ROUTINE fmt_real(val : REAL) : STRING
+VAR
+    s : STRING[16]
+BEGIN
+    IF UNINIT(val) THEN
+        RETURN('0.00')
+    ENDIF
+    CNV_REAL_STR(val, s, 2)
+    RETURN(SUB_STR(s, 1, STR_LEN(s)))
+END fmt_real
+
+ROUTINE get_timestamp : STRING
+VAR
+    s : STRING[24]
+    sec_int : INTEGER
+BEGIN
+    GET_TIME(time_int)
+    CNV_TIME_STR(time_int, time_str)
+    time_str = SUB_STR(time_str, 1, 15)
+    sec_int = (time_int AND 31) * 2
+    CNV_INT_STR(sec_int, sec_str)
+    sec_str = SUB_STR(sec_str, 1, STR_LEN(sec_str))
+    IF sec_int < 10 THEN
+        s = time_str + ':0' + sec_str
+    ELSE
+        s = time_str + ':' + sec_str
+    ENDIF
+    RETURN(s)
+END get_timestamp
+
+ROUTINE build_json : STRING
+VAR
+    jstr : STRING[256]
+BEGIN
+    jstr = '{"j1":' + fmt_real(jpos_val[1]) + ',"j2":' + fmt_real(jpos_val[2]) + ',"j3":' + fmt_real(jpos_val[3])
+    jstr = jstr + ',"j4":' + fmt_real(jpos_val[4]) + ',"j5":' + fmt_real(jpos_val[5]) + ',"j6":' + fmt_real(jpos_val[6])
+    jstr = jstr + ',"ts":"' + get_timestamp + '","opt":"B"}'
+    RETURN(jstr)
+END build_json
+
+ROUTINE build_connect : STRING
+VAR
+    pkt : STRING[64]
+BEGIN
+    -- MQTT 3.1.1 CONNECT: 0x10 + rem_len + proto + level + flags + keepalive + client_id
+    -- proto: 0x00 0x04 'M' 'Q' 'T' 'T', level 0x04, flags 0x02 (clean), keep 0x00 0x3C
+    -- client_id: 0x00 0x0B 'fanuc_robot' (11 chars)
+    -- remaining = 10 + 13 = 23 = 0x17
+    pkt = CHR(16) + CHR(23) + CHR(0) + CHR(4) + 'MQTT' + CHR(4) + CHR(2)
+    pkt = pkt + CHR(0) + CHR(60) + CHR(0) + CHR(11) + 'fanuc_robot'
+    RETURN(pkt)
+END build_connect
+
+ROUTINE build_publish : STRING
+VAR
+    pkt : STRING[320]
+    topic_len : INTEGER
+    byte2 : INTEGER
+BEGIN
+    -- PUBLISH QoS 0: 0x30 + rem_len + topic_len + topic + payload
+    -- topic 'robot/position' = 14 chars
+    topic_len = 14
+    plen = STR_LEN(payload)
+    rem_len = 2 + topic_len + plen
+
+    -- Remaining length: 1 byte if < 128, 2 bytes if 128-16383
+    IF rem_len < 128 THEN
+        pkt = CHR(48) + CHR(rem_len) + CHR(0) + CHR(topic_len) + 'robot/position' + payload
+    ELSE
+        byte2 = rem_len DIV 128
+        pkt = CHR(48) + CHR((rem_len MOD 128) + 128) + CHR(byte2)
+        pkt = pkt + CHR(0) + CHR(topic_len) + 'robot/position' + payload
+    ENDIF
+    RETURN(pkt)
+END build_publish
+
+BEGIN
+    WRITE(CHR(128), TPERROR)
+    WRITE('MQTT_NATIVE [Option B]: Extracting position...', CR, TPERROR)
+
+    -- Get current joint position
+    cur_jpos = CURJPOS(0, 0)
+    CNV_JPOS_REL(cur_jpos, jpos_val, status)
+    IF status <> 0 THEN
+        WRITE('MQTT_NATIVE: CNV_JPOS_REL failed = ', status, CR, TPERROR)
+        RETURN
+    ENDIF
+
+    -- Build JSON payload
+    payload = build_json
+    WRITE('MQTT_NATIVE: Payload = ', payload, CR, TPERROR)
+
+    -- Connect to Mosquitto (Client 2: WAGO IP, port 1883)
+    WRITE('MQTT_NATIVE: Connecting to C2 (Mosquitto)...', CR, TPERROR)
+    MSG_CONNECT(CLIENT_TAG, status)
+    IF status <> 0 THEN
+        WRITE('MQTT_NATIVE: MSG_CONNECT failed = ', status, CR, TPERROR)
+        RETURN
+    ENDIF
+
+    -- Open socket file for read/write
+    SET_FILE_ATR(fl, ATR_UF)
+    CLR_IO_STAT(fl)
+    OPEN FILE fl ('RW', CLIENT_TAG)
+    status = IO_STATUS(fl)
+    IF status <> 0 THEN
+        WRITE('MQTT_NATIVE: OPEN FILE failed = ', status, CR, TPERROR)
+        MSG_DISCO(CLIENT_TAG, status)
+        RETURN
+    ENDIF
+
+    -- Send MQTT CONNECT packet
+    connect_pkt = build_connect
+    WRITE fl(connect_pkt::STR_LEN(connect_pkt))
+    status = IO_STATUS(fl)
+    IF status <> 0 THEN
+        WRITE('MQTT_NATIVE: CONNECT write failed = ', status, CR, TPERROR)
+        CLOSE FILE fl
+        MSG_DISCO(CLIENT_TAG, status)
+        RETURN
+    ENDIF
+
+    -- Read CONNACK (4 bytes: 0x20 0x02 0x00 0x00)
+    READ fl(connack::4)
+    status = IO_STATUS(fl)
+    IF status <> 0 THEN
+        WRITE('MQTT_NATIVE: CONNACK read failed = ', status, CR, TPERROR)
+        CLOSE FILE fl
+        MSG_DISCO(CLIENT_TAG, status)
+        RETURN
+    ENDIF
+
+    -- Send MQTT PUBLISH packet
+    publish_pkt = build_publish
+    WRITE fl(publish_pkt::STR_LEN(publish_pkt))
+    status = IO_STATUS(fl)
+    IF status <> 0 THEN
+        WRITE('MQTT_NATIVE: PUBLISH write failed = ', status, CR, TPERROR)
+    ELSE
+        WRITE('MQTT_NATIVE: Published successfully', CR, TPERROR)
+    ENDIF
+
+    -- Close and disconnect
+    CLOSE FILE fl
+    MSG_DISCO(CLIENT_TAG, status)
+    IF status <> 0 THEN
+        WRITE('MQTT_NATIVE: MSG_DISCO warning = ', status, CR, TPERROR)
+    ENDIF
+
+END MQTT_NATIVE

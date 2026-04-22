@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<job>
+    <settings>
+        <version>1</version>
+        <unit>millimeter</unit>
+        <backcolour>0</backcolour>
+    </settings>
+    <entities>
+        <entity id="LOWERBEAM_MM_DURMA AD-S 30175" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>LOWERBEAM_MM_DURMA AD-S 30175</reference_id>
+            </geometry>
+        </entity>
+    </entities>
+    <states>
+        <state id="default">
+            <visibility>
+                <show type="Unspecified">1</show>
+                <show entity="LOWERBEAM_MM_DURMA AD-S 30175">1</show>
+            </visibility>
+            <transformations />
+            <views>
+                <view id="1">
+                    <pos>14000,8000,-14000</pos>
+                    <target>0,0,-0</target>
+                    <near>6000</near>
+                    <far>25000</far>
+                    <width>9050</width>
+                    <height>5615</height>
+                    <perspective>1</perspective>
+                </view>
+            </views>
+        </state>
+        <state order="1" id="LOWERBEAM_MM_DURMA AD-S 30175">
+            <visibility />
+            <transformations />
+            <views />
+        </state>
+    </states>
+    <geometries>
+        <geometry id="LOWERBEAM_MM_DURMA AD-S 30175">
+            <data encoding="1">UEsDBBQAAgAIAD5tjj3nYBg6MgMAADMKAAALABEAY29sbGFkYS54bWxVVA0AB/tzB037cwdN+3MHTdVWUU/bMBD+K5Z5ThOnCS0oCWLAJiRGEXQT46UyqdtaSpzMcYD++52duE2hlArxMlHs83ffnX13duzo5CXP0BOTFS9EjEnPw4iJtJhyMY9xrWbOEJ8k0dno6ur0/BQBWVQxXihVHrvu8/NzLy2yjE5pr5Bz1/e80CXEbdl36YLlFHe9Bz2Ck4hWFVNJlBZCSf5Yq0ICVqsF9KcwuhldRW47BlKeM6GqJHI3xI5pKhlVbJr4HvEc78jxhmNCjgP/ODx6AGqrjXIIasbf5a3UUS24QjlTTMbY63l+GGAkaM5izEW6wC4wygl94VXyMPl1E7l2BItuAsv4o6RyOaGC51RB6Fq3DbRYxucL1SVZwI7BZM66BAvYMbhkktOsy+lgFmKzGUs3ZlohFpizAmKXXHtv5SXi0xi3pbGEpU3K97MzqGnOqkUSVUUtU7aV7pRFxU3cwJ5lBVUTKiVdfkB2DAmjtKiFirEf4MQhoR8iJ/SQM/QGaD30WnlTYxSbJh2LDYM1P3I7S0wixdKF4H9rNtGbsBCwX9OUVVUhURNyjA/2jmGIUQUJnoJRH3JRUknzNpf3GKllCYKZXW+1rvbPTu3DG61rFwni2wjcZuW7iyYKmcMO2qdkLfVVsGSoC6ZL0/xIK1gRKmD+nbb5mtRvX8vhf5T4nJZOuqBCsIzsk/0u/1XYRzjxeiREXq8PDXSBlg8b+UjLg/CL8r5jFf33k3+3M73jndqbzyYfbiXFgWjSqQd6k3NR1gpVcG0JUIL30d3l+HJ0jfc55mZy6xYSCN9eMc9gBnsUfIzsNznGtz++TRyyZc7fF7fji/vOjM3iUDGbwe0CV5Ke57XR9ej25+kV/vhIrP2QbX5g5rPR6PYc71nktTsIbu22TPp6dyHfnG1iJNJBGgm+tdAH0BI0gNY3rUUODRIi7WkArfbTN37WSN8gA7DwgB8YJACk30F8gxyamQNj76/+LOKZUWCksF0xWa21QYhBIrfU+8rWFuTm5nNtejp3a/cqtZh5ucCbCd5EHeYG+gnqE69qmk2qlImNZ8Ir3PS66JWiImUbalRL2JUHtdDnatpgZke3RvZVl/wDUEsBAhcLFAACAAgAPm2OPedgGDoyAwAAMwoAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAf7cwdNUEsFBgAAAAABAAEAQgAAAGwDAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+    </geometries>
+</job>

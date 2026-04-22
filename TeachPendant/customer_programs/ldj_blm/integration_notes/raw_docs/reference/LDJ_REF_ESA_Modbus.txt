@@ -1,0 +1,171 @@
+TOPIC: ESA Modbus TCP Register Reference
+KEYWORDS: Modbus, ESA, EsaBend, register, holding register, command opcode, handshake, strobe, QW, PLC, press brake
+CATEGORY: reference
+SOURCE: sources/modbus_register_map, Kvara/Exe/ServerModbus.xml
+APPLIES_TO: BLM SERIES 420-200, ESA/Kvara, FANUC + PLC integration
+---
+
+============================================================
+1 CLIENT OUTPUT REGISTERS (PLC → Press Brake)
+============================================================
+
+Address | Size  | Type   | Description              | Notes
+--------|-------|--------|--------------------------|---------------------------
+0       | 1     | WORD   | Operating Mode Selection | BIT0=Editor, BIT1=Manual, BIT2=Semi, BIT3=Auto
+1       | 1     | WORD   | Command Strobe           | BIT0: 1=Execute, 0=Complete (handshake)
+2       | 2     | DWORD  | Command Opcode           | 3000-4000 range; see Command Opcodes
+4       | 1     | BYTE   | Data (BYTE)              | 0-255
+5       | 1     | WORD   | Data (WORD)              | 0-65535
+6       | 1     | WORD   | Reserved                 | Upper word for DWORD
+7       | 2     | DWORD  | Data (DWORD)             | 32-bit parameter
+9       | 4     | DOUBLE | Data (DOUBLE)            | Angles, dimensions; IEEE 754
+53      | 40    | STRING | Data (STRING)           | Program names (80 chars max)
+
+============================================================
+2 SERVER OUTPUT REGISTERS (Press Brake → PLC)
+============================================================
+
+Address | Size  | Type   | Description              | Notes
+--------|-------|--------|--------------------------|---------------------------
+1024    | 2     | DWORD  | Error Code               | 0=Success; check after every command
+1026    | 100   | STRING | Error Header             | 200 characters
+1126    | 100   | STRING | Error Description        | 200 characters
+1226    | 1     | WORD   | Mode Acknowledgment      | Mirrors mode selection bits
+1227    | 1     | WORD   | Active Operating Mode    | Current active mode
+1228    | 1     | WORD   | Windows Popup Error     | Internal error code
+1229    | 2     | —      | Reserved                 | —
+1231    | 1     | WORD   | Command Acknowledgment   | BIT0: Command received/complete
+1232    | 1     | WORD   | Bend Type                | Current bend type
+1242    | 4     | DOUBLE | Thickness                | Current material thickness (mm)
+1253    | 4     | DOUBLE | Angle Y1                 | Current bending angle Y1 (degrees)
+1257    | 4     | DOUBLE | Angle Y2                 | Current bending angle Y2 (degrees)
+1965    | 82    | STRING | Program Name             | Current program name (164 chars)
+
+============================================================
+3 COMMAND OPCODES
+============================================================
+
+Opcode | Command Name              | Data Reg | Data Type | Description
+-------|---------------------------|----------|-----------|---------------------------
+3001   | COMMAND_WORK_DIR           | 53       | STRING    | Set working directory
+3003   | COMMAND_SAVE_PROG          | —        | —         | Save current program
+3007   | COMMAND_STOP               | —        | —         | Stop operation
+3008   | COMMAND_START              | —        | —         | Start cycle
+3009   | COMMAND_LOAD_WORK_LIST     | —        | —         | Load work list
+3010   | COMMAND_DELETE_PROG        | 53       | STRING    | Delete program
+3011   | COMMAND_COPY_PROG          | 53       | STRING    | Copy program
+3012   | SHUT_DOWN                  | —        | —         | Shutdown system
+3013   | COMMAND_NEXT               | —        | —         | Next bend
+3014   | COMMAND_PREV               | —        | —         | Previous bend
+3015   | COMMAND_NEW_PROG_NUM       | 7        | DWORD     | Create new program
+3018   | COMMAND_CHANGE_SECTION     | 5        | WORD      | Jump to section
+3021   | COMMAND_UPDATE_PROG        | —        | —         | Update program
+3025   | COMMAND_SAVE_AS_PROG       | 53       | STRING    | Save program as...
+3027   | COMMAND_DEL_BEND           | 5        | WORD      | Delete bend
+3029   | COMMAND_NUM_BEND_SEC       | 5        | WORD      | Select bend number
+3030   | COMMAND_LOAD_PROG          | 53       | STRING    | Load program
+3031   | COMMAND_LEARN_Y            | —        | —         | Learn Y-axis position
+3032   | COMMAND_LEARN_Z            | —        | —         | Learn Z-axis position
+3033   | COMMAND_CHANGE_PROGRAM     | 53       | STRING    | Change to program
+3035   | COMMAND_CORR_BY_SEC        | varies   | varies    | Correct by section
+3036   | COMMAND_CORR_BY_PIECE      | varies   | varies    | Correct by piece
+3040   | COMMAND_LEARN_BEND_SENS_ANG | —        | —         | Learn angle from sensor
+3042   | COMMAND_CHANGE_OFFSET_POS_PEZZO | 9    | DOUBLE    | Change part offset
+3045   | COMMAND_RUN_LASERCHECK     | —        | —         | Run LaserCheck measurement
+3046   | COMMAND_INIT_COMM_LASERCHECK | —       | —         | Initialize LaserCheck
+3049   | COMMAND_SCAN_ANGLES        | —        | —         | Scan angles
+3002   | COMMAND_RESET_WIN_POPUP_ERR | —       | —         | Reset popup error
+
+Parameter modification codes (use as Command Opcode): 0=HD_PIECEP, 1=HD_PIECEM, 14=HD_ACT_BEND, 17=HD_NUM_BEND_SEC,
+1000=PG_TYPE, 1001=PG_ROT, 1002=PG_RIP, 1006=PG_THICK, 1009=PG_ANGY1, 1010=PG_ANGY2, 1011-1018=positions,
+1033-1040=corrections, 1045=PG_VELW, 1047=PG_PMS, 1111=PG_DIE, 1112=PG_PUNCH, 1139=PG_FORCE, etc.
+
+============================================================
+4 HANDSHAKE PROTOCOL
+============================================================
+
+All commands must follow this exact sequence:
+
+1. Write data (if needed) to appropriate register
+2. Write command opcode to register 2
+3. Set register 1 BIT0 = 1 (strobe)
+4. Wait for register 1231 BIT0 = 1 (acknowledgment)
+5. Set register 1 BIT0 = 0 (clear strobe)
+6. Wait for register 1231 BIT0 = 0 (ack clear)
+7. Check register 1024 for error (0 = success)
+
+============================================================
+5 IMPORTANT NOTES
+============================================================
+
+REGISTER ALIGNMENT
+- DWORD (2 regs): Must start on EVEN address
+- DOUBLE (4 regs): Must start on address divisible by 4
+- STRING: Can start on any address
+
+READ/WRITE LIMITS
+- Max registers per read: 125 (for strings)
+- Max registers per write: 123 (for strings)
+
+REQUIRED OPERATIONS
+- Heartbeat: Read any register every <10 seconds
+- Mode Check: Verify operating mode before commands
+- Error Check: Always read register 1024 after commands
+
+MODE REQUIREMENTS
+- Load Program: Requires EDITOR mode
+- Start Cycle: Requires AUTOMATIC mode
+- Modify Parameters: Requires EDITOR mode
+
+NETWORK CONFIGURATION
+- Press Brake IP: 172.16.0.51 (typical)
+- PLC IP: 172.16.0.50 (typical)
+- Port: 502 (standard ModbusTCP)
+- Unit ID: 1
+
+DATA FORMAT
+- All multi-byte values: Big-Endian (MSB first)
+- Strings: ASCII encoding, NULL terminated
+- Floating point: IEEE 754 double-precision
+
+============================================================
+6 DATA TYPES
+============================================================
+
+WORD (16-bit): 1 register; 0-65535 unsigned; Big-Endian
+DWORD (32-bit): 2 registers, EVEN address; Big-Endian
+DOUBLE (64-bit): 4 registers, address divisible by 4; IEEE 754; Big-Endian
+STRING: 2 bytes per register; ASCII; NULL terminated; max 80 chars (40 regs)
+
+============================================================
+7 USAGE EXAMPLES
+============================================================
+
+EXAMPLE 1: Load Program 'PART_A'
+1a. Switch to Editor Mode: Write 1 (BIT0) to Reg 0
+1b. Wait Reg 1226 BIT0=1 (Mode Ack)
+1c. Clear Mode Request: Write 0 to Reg 0
+1d. Wait Reg 1226 BIT0=0
+2. Write Program Name to Reg 53-56
+3. Write 3030 to Reg 2 (LOAD_PROG)
+4. Set Strobe: Write 1 to Reg 1
+5. Wait Reg 1231 BIT0=1
+6. Clear Strobe: Write 0 to Reg 1
+7. Wait Reg 1231 BIT0=0
+8. Check Reg 1024 = 0
+
+EXAMPLE 2: Change Angle to 95.0°
+Ensure Editor Mode; convert 95.0 to IEEE 754 DOUBLE in Reg 9-12;
+Write 1009 to Reg 2; strobe; wait ack; clear; verify Reg 1253-1256.
+
+EXAMPLE 3: Change Thickness to 3.2mm
+Ensure Editor Mode; convert 3.2 to IEEE 754 in Reg 9-12;
+Write 1006 to Reg 2; strobe; wait ack; clear; verify Reg 1242-1245.
+
+============================================================
+8 ADDRESS DISCREPANCY NOTE (VENDOR CUSTOMIZATION)
+============================================================
+
+Quick_Reference uses Reg 53 for program name. ServerModbus.xml (from Kvara)
+may use Reg 2 (OutputArea) for PPProgram. Document which map applies to
+your press in VENDOR_DISCREPANCIES.md. Extracted Kvara overrides generic docs.

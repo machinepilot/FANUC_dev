@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--Generic Client version: 1.0 licensed to ESAutomotion-->
+<!--Copyright (c) 2012-2013 Esautomotion. All rights reserved.-->
+<GenericClient>
+	<Config>
+		<Devices>
+			<Device>
+				<Comment><![CDATA[MODBUS TCP generic master]]></Comment>
+				<IPAddr>10.10.51.199</IPAddr>
+				<Port>502</Port>
+				<NodeAddr>2</NodeAddr>
+                <Fields>
+                    <Field>
+                        <Command>r</Command>
+                        <SharedAddr>M100</SharedAddr>
+                        <ModbusAddr>0</ModbusAddr>
+                        <ModbusNRegs>2</ModbusNRegs>
+                        <FieldSize>4</FieldSize>
+                    </Field>
+                    <Field>
+                        <Command>w</Command>
+                        <SharedAddr>M101</SharedAddr>
+                        <ModbusAddr>2</ModbusAddr>
+                        <ModbusNRegs>2</ModbusNRegs>
+                        <FieldSize>4</FieldSize>
+                    </Field>
+                </Fields>
+			</Device>
+		</Devices>
+	</Config>
+</GenericClient>

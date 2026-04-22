@@ -1,0 +1,125 @@
+
+Project :..\Plc\plc.kva
+ProjectPath :..\Plc\
+
+PLC Preprocessor - Version 5.1
+Copyright (C) Esautomotion SPA - 1999-2020 All rights reserved.
+
+..\Plc\Pgm.plc: 0 errors
+
+PLC Assembler - Version 5.1
+Copyright (C) Esautomotion SPA - 1996-2020 All rights reserved.
+
+
+..\Plc\Pgm.plc: 0 errors, 0 warnings
+
+PLC Preprocessor - Version 5.1
+Copyright (C) Esautomotion SPA - 1999-2020 All rights reserved.
+
+..\Plc\usercmd.plc: 0 errors
+
+PLC Assembler - Version 5.1
+Copyright (C) Esautomotion SPA - 1996-2020 All rights reserved.
+
+..\Plc\usercmd.plc(337): warning A0022: Type mismatching for 1
+
+..\Plc\usercmd.plc: 0 errors, 1 warnings
+
+PLC Preprocessor - Version 5.1
+Copyright (C) Esautomotion SPA - 1999-2020 All rights reserved.
+
+..\Plc\Assi.plc: 0 errors
+
+PLC Assembler - Version 5.1
+Copyright (C) Esautomotion SPA - 1996-2020 All rights reserved.
+
+
+..\Plc\Assi.plc: 0 errors, 0 warnings
+
+PLC Preprocessor - Version 5.1
+Copyright (C) Esautomotion SPA - 1999-2020 All rights reserved.
+
+..\Plc\Canfb.plc: 0 errors
+
+PLC Assembler - Version 5.1
+Copyright (C) Esautomotion SPA - 1996-2020 All rights reserved.
+
+
+..\Plc\Canfb.plc: 0 errors, 0 warnings
+
+PLC Preprocessor - Version 5.1
+Copyright (C) Esautomotion SPA - 1999-2020 All rights reserved.
+
+..\Plc\Cnc.plc: 0 errors
+
+PLC Assembler - Version 5.1
+Copyright (C) Esautomotion SPA - 1996-2020 All rights reserved.
+
+
+..\Plc\Cnc.plc: 0 errors, 0 warnings
+
+PLC Link Check - Version  5.00
+Copyright (C) Esautomotion SPA - 1996-2019 All rights reserved.
+
+
+Loading...
+File ..\Plc\obj\funblock.obj
+File ..\Plc\obj\micro.obj
+File ..\Plc\obj\function.obj
+File ..\Plc\obj\iox.obj
+File ..\Plc\obj\Pgm.obs
+File ..\Plc\obj\usercmd.obs
+File ..\Plc\obj\Assi.obs
+File ..\Plc\obj\Canfb.obs
+File ..\Plc\obj\Cnc.obs
+
+Linking...
+Checking duplicated...
+Resolving relocations...
+End
+Link Check :0 Errors
+
+Project :..\Plc\plc.kva
+ProjectPath :..\Plc\
+
+PLC Preprocessor - Version 5.1
+Copyright (C) Esautomotion SPA - 1999-2020 All rights reserved.
+
+..\Plc\Fast.plc: 0 errors
+
+PLC Assembler - Version 5.1
+Copyright (C) Esautomotion SPA - 1996-2020 All rights reserved.
+
+
+..\Plc\Fast.plc: 0 errors, 0 warnings
+
+PLC Link Check - Version  5.00
+Copyright (C) Esautomotion SPA - 1996-2019 All rights reserved.
+
+
+Loading...
+File ..\Plc\obj\funblock.obj
+File ..\Plc\obj\function.obj
+File ..\Plc\obj\microF.obj
+File ..\Plc\obj\Fast.obf
+
+Linking...
+Checking duplicated...
+Resolving relocations...
+End
+Link Check :0 Errors
+
+PLC File Transfer - Version 1.00
+Copyright (C) Esautomotion SPA - 1999-2019 All rights reserved.
+
+File Transfer :0 Errors
+
+PLC File Transfer - Version 1.00
+Copyright (C) Esautomotion SPA - 1999-2019 All rights reserved.
+
+File Transfer :0 Errors
+
+PLC Loader - Version 1.02
+Copyright (C) Esautomotion SPA - 1999-2019 All rights reserved.
+
+Plc Loader :0 Errors

@@ -1,0 +1,141 @@
+TOPIC: Physical I/O Wiring Specification (PLC to Press Brake)
+KEYWORDS: wiring, terminal block, M1, M2, foot pedal, KP16.7, KP16.8, XC2F, XC3M, XC4M, PLC, Wago, robot interface, 24V, FE4.1
+CATEGORY: reference
+SOURCE: robot_interface_reference.md, press_brake_reference.md Sections 3.1, 6, 11, 12, 13
+APPLIES_TO: BLM SERIES 420-200, ESA/Kvara, FANUC + PLC integration, Phase 1A (primary), Phase 1B (alternative)
+---
+
+============================================================
+0 ROBOT INTERFACE (XC2F/XC3M/XC4M) — PRIMARY WIRING
+============================================================
+
+Use when XC2F/XC3M/XC4M connectors are present on the press. Full reference: robot_interface_reference.md.
+
+POWER (XC2F):
+- Pin 1: 0 VDC PRESS — common reference for all I/O
+- Pin 2: 24 VDC PRESS — press SUPPLIES power to robot I/O cards
+- Do NOT use robot-side 24V for these signals; press powers the interface
+
+XC2F PINS 3-19 (Press → Robot, 24V logic):
+- All referenced to Pin 1 (0 VDC PRESS)
+- E20.0-E20.7, E21.0-E21.6, E22.3 — status signals to PLC DI
+
+XC3M PINS 1-16 (Safety — dry contacts):
+- Pins 1-4: Emergency from Press (NC) — robot monitors
+- Pins 5-8: Emergency from Robot (NC) — robot feeds into press
+- Pins 9-12: Enable from Robot (NO) — must close for beam down
+- Pins 13-16: Fence from Robot (NO) — open = slow speed only
+- Do NOT apply 24V directly; use safety relay interface
+
+XC3M PINS 17-24 (Robot → Press, 24V logic):
+- Referenced to XC2F Pin 1 (0 VDC PRESS)
+- A20.0, A20.1, A20.4, A20.6, A20.7, A21.0, A21.1, A21.2 — command signals from PLC DO
+
+XC4M (Tooling + Program):
+- E22.0, E22.1 (inputs); A22.0-A22.6 (outputs) — see robot_interface_reference.md
+
+WIRING CHECKLIST (XC2F/XC3M/XC4M):
+[ ] Confirm XC2F/XC3M/XC4M connectors present on press
+[ ] Verify 24V at XC2F Pin 2 (from press)
+[ ] Wire XC2F Pin 1 (0V) as common for all I/O
+[ ] Map E20.x/E21.x/E22.x to PLC DI; A20.x/A21.x to PLC DO
+[ ] Safety contacts (XC3M 1-16): wire through safety relay, dual-channel
+[ ] Document pin-to-connector mapping in VENDOR_DISCREPANCIES if different
+
+============================================================
+1 PLC OUTPUTS → PRESS BRAKE (Robot Triggers) — ALTERNATIVE
+============================================================
+Foot Pedal Sim — use when robot interface (XC2F/XC3M/XC4M) not available.
+
+PLC Output       | Press Terminal      | Component              | Purpose
+-----------------|---------------------|------------------------|------------------------------------------
+Foot Pedal Sim   | M1-167 or M1-168    | KP16.7 / KP16.8 (NO)   | Simulate operator pressing pedal; trigger bend cycle
+Clamping Command | 7A.B6 (via 4-6 rail)| QW 1.12 circuit        | Clamp/unclamp (if used)
+Robot Cell Clear | Gate logic / spare  | FC14.x / spare PCSS    | Arm clear; may gate foot pedal enable
+
+FOOT PEDAL SIMULATION (Primary Cycle Trigger):
+- Wire PLC relay output in PARALLEL with KP16.7 (Pedalboard 1) or KP16.8 (Pedalboard 2)
+- When PLC closes the contact, press sees same signal as operator pressing pedal
+- 24V source: FE4.1 channel 4-6 (7.E0) — Robot Interface & Clamping rail
+- Circuit: 24V (4-6) → PLC relay NO contact → M1-167 (or M1-168)
+- Verify on-site which pedalboard (M1-167 vs M1-168) is active in auto mode; document in VENDOR_DISCREPANCIES if different
+
+CLAMPING (if used):
+- 7A.B6 connects to clamping load valve via K7.3; 4-6 rail powers robot interface
+- PLC relay can mirror or override ESA QW 1.12; coordinate with clamping selector S7.1/S7.2
+
+============================================================
+2 PRESS BRAKE → PLC INPUTS (Robot Monitors) — ALTERNATIVE
+============================================================
+ESA QW/IW — use when robot interface (XC2F/XC3M/XC4M) not available.
+
+Press Source     | Terminal / Cross-ref | PLC Input | Purpose
+-----------------|---------------------|-----------|------------------------------------------
+CNC OK           | QW 1.6 → 15.D4     | DI        | Machine ready, auto mode
+Ram UP (UDP)     | QW 2.4 → 10.D4     | DI        | Safe to load/unload
+Drive OK         | IW 0.12 / 14.C6    | DI        | Y1+Y2 drives healthy
+Clamping Status  | QW 1.13 → 15.D6    | DI        | Clamping open/engaged
+Out of Grease    | M1-57 / IW 0.15    | DI        | Lubrification fault (optional)
+
+EXTERNAL SIGNAL AVAILABILITY:
+- ESA Rack outputs (QW 1.6, QW 2.4, etc.) are internal; cross-refs (15.D4, 10.D4) are diagram nodes
+- If press has "Robotic interface optional" (BLM Manual Ch. 03-19), it may provide these at dedicated terminals
+- Otherwise: add interface relays from ESA rack outputs to customer terminals, or use existing interface block
+- Document actual landing points after on-site verification
+
+============================================================
+3 WIRE GAUGE, 24V SOURCING, ISOLATION
+============================================================
+
+24V SOURCE (Phase 1A — Robot Interface):
+- XC2F Pin 2 (24 VDC PRESS) — press supplies; robot does NOT source
+- XC2F Pin 1 (0 VDC PRESS) — common reference
+
+24V SOURCE (Phase 1B — Foot Pedal Sim):
+- Use FE4.1 channel 4-6 (6A max) — Robot Interface & Clamping rail (7.E0)
+- OV4 = 0V reference; all signals 24VDC
+
+WIRE GAUGE:
+- Control signals: 0.5–1.0 mm² (AWG 20–18) typical
+- Follow local codes and press cabinet specifications
+
+ISOLATION RELAYS:
+- Use opto-isolated or relay modules between PLC and press to avoid ground loops
+- PLC output → relay coil; relay contact → press circuit (parallel to foot pedal)
+
+============================================================
+4 WIRING CHECKLIST (Field Installation)
+============================================================
+
+ROBOT INTERFACE (Phase 1A — if XC2F/XC3M/XC4M present):
+[ ] Confirm XC2F/XC3M/XC4M connectors on press
+[ ] Verify 24V at XC2F Pin 2, 0V at Pin 1
+[ ] Wire safety contacts (XC3M 1-16) per robot_interface_reference.md
+[ ] Map E20.x/E21.x/E22.x to PLC DI; A20.x/A21.x to PLC DO
+
+FOOT PEDAL SIM (Phase 1B — alternative):
+[ ] Confirm press is in AUTO mode and ram sized before wiring
+[ ] Identify which pedalboard circuit (M1-167 or M1-168) is used in auto
+[ ] Verify 24V at 4-6 rail (FE4.1 ch 4-6) and OV4
+[ ] Foot Pedal Sim: PLC relay NO contact — one side to 4-6, other to M1-167 (or M1-168)
+[ ] Press → PLC: Identify where QW 1.6, QW 2.4, IW 0.12 are available; wire to PLC DI
+[ ] E-Stop (if used): Coordinate with press OEM for PCSS CH1/CH2; dual-channel required
+[ ] Document actual terminal assignments in VENDOR_DISCREPANCIES if different from diagram
+
+============================================================
+5 VERIFICATION STEPS
+============================================================
+
+PEDAL SIM TEST:
+1. Press in AUTO, ram at UDP, gates closed
+2. With robot/PLC clear, pulse PLC Foot Pedal Sim output
+3. Ram should descend and return; verify cycle completes
+
+RAM UP MONITOR TEST:
+1. Run manual cycle; observe PLC DI for Ram UP
+2. DI should go HIGH when ram reaches upper dead point
+3. Correlate with QW 2.4 / 10.D4
+
+SAFETY:
+- Do not bypass safety circuits
+- E-Stop integration requires OEM approval for PLd compliance

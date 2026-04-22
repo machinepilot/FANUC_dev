@@ -1,0 +1,2169 @@
+{
+    "$schema":  "./_manifest.schema.json",
+    "version":  1,
+    "entries":  [
+                    {
+                        "id":  "EG_J_Motion_Hello",
+                        "path":  "normalized/examples/EG_J_Motion_Hello.md",
+                        "topic":  "motion",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.30"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-21",
+                        "tags":  [
+                                     "motion",
+                                     "example",
+                                     "hello-world"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_00_ONE_ROBOTICS_FANUC_PROGRAMMING_OVERVIEW",
+                        "path":  "normalized/articles/ONE_00_ONE_ROBOTICS_FANUC_PROGRAMMING_OVERVIEW.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_01_CRX_PLUGINS_AND_TIMELINE_EDITOR",
+                        "path":  "normalized/safety/ONE_01_CRX_PLUGINS_AND_TIMELINE_EDITOR.md",
+                        "topic":  "safety",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "karel",
+                                     "safety",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_02_ASYNC_PART_PRESENCE_CHECKING_WITH_MULTITASKING",
+                        "path":  "normalized/articles/ONE_02_ASYNC_PART_PRESENCE_CHECKING_WITH_MULTITASKING.md",
+                        "topic":  "motion",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "motion",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_03_TP_PROGRAMMING_BASICS_AND_STRUCTURE",
+                        "path":  "normalized/articles/ONE_03_TP_PROGRAMMING_BASICS_AND_STRUCTURE.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_04_DIAGNOSING_FANUC_ALARM_CODES",
+                        "path":  "normalized/articles/ONE_04_DIAGNOSING_FANUC_ALARM_CODES.md",
+                        "topic":  "error_codes",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "error_codes",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_05_CONTROLLING_ROBOT_SPEED_OVERRIDE",
+                        "path":  "normalized/articles/ONE_05_CONTROLLING_ROBOT_SPEED_OVERRIDE.md",
+                        "topic":  "motion",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "motion",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_06_REFACTORING_SKIP_CONDITIONS_WITH_AR_AND_INDIRECT_ADDRESSING",
+                        "path":  "normalized/articles/ONE_06_REFACTORING_SKIP_CONDITIONS_WITH_AR_AND_INDIRECT_ADDRESSING.md",
+                        "topic":  "motion",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "motion",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_07_POSITION_REGISTER_MATH_AND_OFFSET_CALCULATIONS",
+                        "path":  "normalized/articles/ONE_07_POSITION_REGISTER_MATH_AND_OFFSET_CALCULATIONS.md",
+                        "topic":  "bg_logic",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "bg_logic",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_08_FANUC_USER_FRAMES_AND_TOOL_FRAMES",
+                        "path":  "normalized/articles/ONE_08_FANUC_USER_FRAMES_AND_TOOL_FRAMES.md",
+                        "topic":  "bg_logic",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "bg_logic",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_09_FANUC_PROGRAM_TYPES_AND_SUBTYPES",
+                        "path":  "normalized/articles/ONE_09_FANUC_PROGRAM_TYPES_AND_SUBTYPES.md",
+                        "topic":  "karel",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "karel",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_10_FANUC_I_O_CONFIGURATION_AND_MAPPING",
+                        "path":  "normalized/articles/ONE_10_FANUC_I_O_CONFIGURATION_AND_MAPPING.md",
+                        "topic":  "io",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "io",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_11_KAREL_POSITION_LOGGING_TO_FILE",
+                        "path":  "normalized/articles/ONE_11_KAREL_POSITION_LOGGING_TO_FILE.md",
+                        "topic":  "karel",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "KAREL",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "karel",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_12_FANUC_PAYLOAD_SETUP_AND_CONFIGURATION",
+                        "path":  "normalized/articles/ONE_12_FANUC_PAYLOAD_SETUP_AND_CONFIGURATION.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_13_FANUC_REGISTER_TYPES_AND_USAGE",
+                        "path":  "normalized/articles/ONE_13_FANUC_REGISTER_TYPES_AND_USAGE.md",
+                        "topic":  "karel",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "karel",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_14_FANUC_VISION_SYSTEM_SETUP_AND_IRVISION",
+                        "path":  "normalized/articles/ONE_14_FANUC_VISION_SYSTEM_SETUP_AND_IRVISION.md",
+                        "topic":  "protocols",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "protocols",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_15_FANUC_MACRO_PROGRAMS",
+                        "path":  "normalized/articles/ONE_15_FANUC_MACRO_PROGRAMS.md",
+                        "topic":  "karel",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "karel",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_16_FANUC_FINE_VS_CNT_TERMINATION",
+                        "path":  "normalized/articles/ONE_16_FANUC_FINE_VS_CNT_TERMINATION.md",
+                        "topic":  "motion",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "motion",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_17_FANUC_PROGRAM_COMMENTS_AND_DOCUMENTATION",
+                        "path":  "normalized/articles/ONE_17_FANUC_PROGRAM_COMMENTS_AND_DOCUMENTATION.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_18_FANUC_TIMER_INSTRUCTIONS",
+                        "path":  "normalized/articles/ONE_18_FANUC_TIMER_INSTRUCTIONS.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_19_FANUC_CONDITION_HANDLERS_AND_MONITORS",
+                        "path":  "normalized/articles/ONE_19_FANUC_CONDITION_HANDLERS_AND_MONITORS.md",
+                        "topic":  "error_codes",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "error_codes",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_20_FANUC_VISION_LINE_TRACKING_SETUP",
+                        "path":  "normalized/articles/ONE_20_FANUC_VISION_LINE_TRACKING_SETUP.md",
+                        "topic":  "vision",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "vision",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_21_FANUC_ROBOT_CALIBRATION_AND_MASTERING",
+                        "path":  "normalized/articles/ONE_21_FANUC_ROBOT_CALIBRATION_AND_MASTERING.md",
+                        "topic":  "mastering",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "mastering",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_22_FANUC_DIGITAL_I_O_PULSE_INSTRUCTIONS",
+                        "path":  "normalized/articles/ONE_22_FANUC_DIGITAL_I_O_PULSE_INSTRUCTIONS.md",
+                        "topic":  "io",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "io",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_23_FANUC_BACKGROUND_LOGIC_PROGRAMMING",
+                        "path":  "normalized/articles/ONE_23_FANUC_BACKGROUND_LOGIC_PROGRAMMING.md",
+                        "topic":  "bg_logic",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "bg_logic",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_24_FANUC_TOOL_CENTER_POINT_TCP",
+                        "path":  "normalized/articles/ONE_24_FANUC_TOOL_CENTER_POINT_TCP.md",
+                        "topic":  "frames",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "frames",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_25_FANUC_ROBOT_INTERFERENCE_ZONES_AND_DCS",
+                        "path":  "normalized/safety/ONE_25_FANUC_ROBOT_INTERFERENCE_ZONES_AND_DCS.md",
+                        "topic":  "safety",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "dcs",
+                                     "safety",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_26_FANUC_PALLETIZING_PATTERNS_AND_GRID_CALCULATIONS",
+                        "path":  "normalized/articles/ONE_26_FANUC_PALLETIZING_PATTERNS_AND_GRID_CALCULATIONS.md",
+                        "topic":  "vision",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "vision",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_27_FANUC_TEACH_PENDANT_NAVIGATION_TIPS",
+                        "path":  "normalized/articles/ONE_27_FANUC_TEACH_PENDANT_NAVIGATION_TIPS.md",
+                        "topic":  "registers",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "registers",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_28_FANUC_ERROR_RECOVERY_PROGRAMMING",
+                        "path":  "normalized/articles/ONE_28_FANUC_ERROR_RECOVERY_PROGRAMMING.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_29_FANUC_MULTI_ROBOT_AND_MULTI_GROUP",
+                        "path":  "normalized/articles/ONE_29_FANUC_MULTI_ROBOT_AND_MULTI_GROUP.md",
+                        "topic":  "motion",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "motion",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_30_FANUC_PROGRAM_MAINTAINABILITY_BEST_PRACTICES",
+                        "path":  "normalized/articles/ONE_30_FANUC_PROGRAM_MAINTAINABILITY_BEST_PRACTICES.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_31_FANUC_SYSTEM_VARIABLE_REFERENCE",
+                        "path":  "normalized/articles/ONE_31_FANUC_SYSTEM_VARIABLE_REFERENCE.md",
+                        "topic":  "error_codes",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "error_codes",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_32_FANUC_ROBODRILL_MACHINE_TENDING_PATTERNS",
+                        "path":  "normalized/articles/ONE_32_FANUC_ROBODRILL_MACHINE_TENDING_PATTERNS.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_33_FANUC_MOTION_SPEED_AND_ACCELERATION_TUNING",
+                        "path":  "normalized/articles/ONE_33_FANUC_MOTION_SPEED_AND_ACCELERATION_TUNING.md",
+                        "topic":  "motion",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "motion",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_34_FANUC_COLLISION_DETECTION_AND_GUARD",
+                        "path":  "normalized/articles/ONE_34_FANUC_COLLISION_DETECTION_AND_GUARD.md",
+                        "topic":  "mastering",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "mastering",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_35_FANUC_PROGRAM_BRANCHING_AND_FLOW_CONTROL",
+                        "path":  "normalized/articles/ONE_35_FANUC_PROGRAM_BRANCHING_AND_FLOW_CONTROL.md",
+                        "topic":  "bg_logic",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "bg_logic",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_36_FANUC_CONVEYOR_TRACKING_INTEGRATION",
+                        "path":  "normalized/articles/ONE_36_FANUC_CONVEYOR_TRACKING_INTEGRATION.md",
+                        "topic":  "karel",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "karel",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_37_FANUC_WELD_APPLICATION_PROGRAMMING",
+                        "path":  "normalized/articles/ONE_37_FANUC_WELD_APPLICATION_PROGRAMMING.md",
+                        "topic":  "karel",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "karel",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_38_FANUC_ETHERNET_IP_AND_NETWORK_CONFIGURATION",
+                        "path":  "normalized/articles/ONE_38_FANUC_ETHERNET_IP_AND_NETWORK_CONFIGURATION.md",
+                        "topic":  "motion",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "motion",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_39_FANUC_KAREL_PROGRAMMING_FUNDAMENTALS",
+                        "path":  "normalized/articles/ONE_39_FANUC_KAREL_PROGRAMMING_FUNDAMENTALS.md",
+                        "topic":  "karel",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "KAREL",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "karel",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_40_FANUC_FORCE_SENSING_AND_COMPLIANCE",
+                        "path":  "normalized/articles/ONE_40_FANUC_FORCE_SENSING_AND_COMPLIANCE.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_41_FTP_CLIENT_FOR_FANUC_ROBOT_FILE_MANAGEMENT",
+                        "path":  "normalized/articles/ONE_41_FTP_CLIENT_FOR_FANUC_ROBOT_FILE_MANAGEMENT.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "T3",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "articles",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_FANUC_KAREL_REFERENCE",
+                        "path":  "normalized/reference/FANUC_REF_FANUC_KAREL_REFERENCE.md",
+                        "topic":  "karel",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "karel",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_ADVANCED_MOTION_CONTROL",
+                        "path":  "normalized/reference/FANUC_REF_ADVANCED_MOTION_CONTROL.md",
+                        "topic":  "motion",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "motion",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_BRANCHING_INSTRUCTIONS",
+                        "path":  "normalized/reference/FANUC_REF_BRANCHING_INSTRUCTIONS.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_COLLECTIONS",
+                        "path":  "normalized/reference/FANUC_REF_COLLECTIONS.md",
+                        "topic":  "error_codes",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "error_codes",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_FOR_ENDFOR",
+                        "path":  "normalized/reference/FANUC_REF_FOR_ENDFOR.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_IO_INSTRUCTIONS",
+                        "path":  "normalized/reference/FANUC_REF_IO_INSTRUCTIONS.md",
+                        "topic":  "io",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "io",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_LINE_NUMBER_PROGRAM_END",
+                        "path":  "normalized/reference/FANUC_REF_LINE_NUMBER_PROGRAM_END.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_MACRO_INSTRUCTION",
+                        "path":  "normalized/reference/FANUC_REF_MACRO_INSTRUCTION.md",
+                        "topic":  "motion",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "motion",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_MATH_FUNCTIONS",
+                        "path":  "normalized/reference/FANUC_REF_MATH_FUNCTIONS.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_MISCELLANEOUS_INSTRUCTIONS",
+                        "path":  "normalized/reference/FANUC_REF_MISCELLANEOUS_INSTRUCTIONS.md",
+                        "topic":  "motion",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "motion",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_MIXED_LOGIC",
+                        "path":  "normalized/reference/FANUC_REF_MIXED_LOGIC.md",
+                        "topic":  "registers",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "registers",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_MOTION_INSTRUCTIONS",
+                        "path":  "normalized/reference/FANUC_REF_MOTION_INSTRUCTIONS.md",
+                        "topic":  "motion",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "motion",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_MOTION_OPTIONS",
+                        "path":  "normalized/reference/FANUC_REF_MOTION_OPTIONS.md",
+                        "topic":  "motion",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "motion",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_MULTIPLE_CONTROL",
+                        "path":  "normalized/reference/FANUC_REF_MULTIPLE_CONTROL.md",
+                        "topic":  "frames",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "frames",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_OFFSET_FRAME",
+                        "path":  "normalized/reference/FANUC_REF_OFFSET_FRAME.md",
+                        "topic":  "motion",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "motion",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_OVERVIEW",
+                        "path":  "normalized/reference/FANUC_REF_OVERVIEW.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_PARAMETERS_CALL_MACRO",
+                        "path":  "normalized/reference/FANUC_REF_PARAMETERS_CALL_MACRO.md",
+                        "topic":  "karel",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "karel",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_POINT_LOGIC",
+                        "path":  "normalized/reference/FANUC_REF_POINT_LOGIC.md",
+                        "topic":  "motion",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "motion",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_POSITION_REGISTERS",
+                        "path":  "normalized/reference/FANUC_REF_POSITION_REGISTERS.md",
+                        "topic":  "registers",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "registers",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_PROCESS_AXES",
+                        "path":  "normalized/reference/FANUC_REF_PROCESS_AXES.md",
+                        "topic":  "motion",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "motion",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_PROCESS_SYNC",
+                        "path":  "normalized/reference/FANUC_REF_PROCESS_SYNC.md",
+                        "topic":  "motion",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "motion",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_PROGRAM_CONTROL",
+                        "path":  "normalized/reference/FANUC_REF_PROGRAM_CONTROL.md",
+                        "topic":  "io",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "io",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_PROGRAM_HEADER",
+                        "path":  "normalized/reference/FANUC_REF_PROGRAM_HEADER.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_REGISTER_INSTRUCTIONS",
+                        "path":  "normalized/reference/FANUC_REF_REGISTER_INSTRUCTIONS.md",
+                        "topic":  "registers",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "registers",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_SKIP_INSTRUCTIONS",
+                        "path":  "normalized/reference/FANUC_REF_SKIP_INSTRUCTIONS.md",
+                        "topic":  "motion",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "motion",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_STRING_REGISTERS",
+                        "path":  "normalized/reference/FANUC_REF_STRING_REGISTERS.md",
+                        "topic":  "registers",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "registers",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_SYNTAX_QUICK_REFERENCE",
+                        "path":  "normalized/reference/FANUC_REF_SYNTAX_QUICK_REFERENCE.md",
+                        "topic":  "registers",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "registers",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_VISION_INSTRUCTIONS",
+                        "path":  "normalized/reference/FANUC_REF_VISION_INSTRUCTIONS.md",
+                        "topic":  "vision",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "vision",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "FANUC_REF_WAIT_INSTRUCTIONS",
+                        "path":  "normalized/reference/FANUC_REF_WAIT_INSTRUCTIONS.md",
+                        "topic":  "motion",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "motion",
+                                     "reference",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_BACKGROUND_LOGIC",
+                        "path":  "normalized/examples/EG_BACKGROUND_LOGIC.md",
+                        "topic":  "bg_logic",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "bg_logic",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_CALIB_POSITION",
+                        "path":  "normalized/examples/EG_CALIB_POSITION.md",
+                        "topic":  "frames",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "frames",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_CHUCK_OPERATIONS",
+                        "path":  "normalized/examples/EG_CHUCK_OPERATIONS.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_COLLECTION_PROGRAMS",
+                        "path":  "normalized/examples/EG_COLLECTION_PROGRAMS.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_C_RECOVERY_MACRO",
+                        "path":  "normalized/examples/EG_C_RECOVERY_MACRO.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_C_RESET_MACRO",
+                        "path":  "normalized/examples/EG_C_RESET_MACRO.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_DQ_CHUCK_OPERATIONS",
+                        "path":  "normalized/examples/EG_DQ_CHUCK_OPERATIONS.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_DQ_C_RECOVERY",
+                        "path":  "normalized/examples/EG_DQ_C_RECOVERY.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_DQ_C_RESET",
+                        "path":  "normalized/examples/EG_DQ_C_RESET.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_DQ_INITIAL_CHECK",
+                        "path":  "normalized/examples/EG_DQ_INITIAL_CHECK.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_INITIAL_CHECK",
+                        "path":  "normalized/examples/EG_INITIAL_CHECK.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_JOB_A_CRDRILL_SINGLEHAND",
+                        "path":  "normalized/examples/EG_JOB_A_CRDRILL_SINGLEHAND.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_JOB_B_CRDRILL_DUALHAND",
+                        "path":  "normalized/examples/EG_JOB_B_CRDRILL_DUALHAND.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_JOB_C_DUALDRILL",
+                        "path":  "normalized/examples/EG_JOB_C_DUALDRILL.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_JOB_D_DUALDRILL_DUALHAND",
+                        "path":  "normalized/examples/EG_JOB_D_DUALDRILL_DUALHAND.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_OUTPUT_UNLOAD_FROM_MACHINE",
+                        "path":  "normalized/examples/EG_OUTPUT_UNLOAD_FROM_MACHINE.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_OUTSET_DUAL_EXCHANGE",
+                        "path":  "normalized/examples/EG_OUTSET_DUAL_EXCHANGE.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_PICK_DUAL_GRID",
+                        "path":  "normalized/examples/EG_PICK_DUAL_GRID.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_PICK_SINGLE_GRID",
+                        "path":  "normalized/examples/EG_PICK_SINGLE_GRID.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_PNS_PROGRAMS",
+                        "path":  "normalized/examples/EG_PNS_PROGRAMS.md",
+                        "topic":  "protocols",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "protocols",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_PRESS_BRAKE_MODBUS_HANDSHAKE",
+                        "path":  "normalized/examples/EG_PRESS_BRAKE_MODBUS_HANDSHAKE.md",
+                        "topic":  "protocols",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "protocols",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_PUT_DUAL_GRID",
+                        "path":  "normalized/examples/EG_PUT_DUAL_GRID.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_RESET_PROGRAM",
+                        "path":  "normalized/examples/EG_RESET_PROGRAM.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_RETURN_MATERIAL",
+                        "path":  "normalized/examples/EG_RETURN_MATERIAL.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_SET_LOAD_TO_MACHINE",
+                        "path":  "normalized/examples/EG_SET_LOAD_TO_MACHINE.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_SIGNAL_PROGRAMS",
+                        "path":  "normalized/examples/EG_SIGNAL_PROGRAMS.md",
+                        "topic":  "anti_pattern",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "anti_pattern",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_VISION_3POINT",
+                        "path":  "normalized/examples/EG_VISION_3POINT.md",
+                        "topic":  "vision",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "vision",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_VISION_CHECK",
+                        "path":  "normalized/examples/EG_VISION_CHECK.md",
+                        "topic":  "vision",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "vision",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "EG_VISION_WAIT",
+                        "path":  "normalized/examples/EG_VISION_WAIT.md",
+                        "topic":  "vision",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "vision",
+                                     "examples",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_FANUC_MODBUS_REFERENCE",
+                        "path":  "normalized/protocols/ONE_FANUC_MODBUS_REFERENCE.md",
+                        "topic":  "protocols",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "protocols",
+                                     "protocols",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    },
+                    {
+                        "id":  "ONE_FANUC_OPCUA_REFERENCE",
+                        "path":  "normalized/protocols/ONE_FANUC_OPCUA_REFERENCE.md",
+                        "topic":  "protocols",
+                        "tier":  "generated",
+                        "fanuc_controller":  [
+                                                 "R-30iB",
+                                                 "R-30iB Plus"
+                                             ],
+                        "system_sw_version":  [
+                                                  "V9.x"
+                                              ],
+                        "language":  "TP",
+                        "revision_date":  "2026-04-22",
+                        "tags":  [
+                                     "protocols",
+                                     "protocols",
+                                     "migrated"
+                                 ],
+                        "superseded_by":  null
+                    }
+                ]
+}

@@ -1,0 +1,44 @@
+Loop principale canale 0 pestone Ver.012.63 %1000
+ %ISOVERS = 12 ;versione PP iso
+ %ISOREL = 62 ;release PP iso
+ G71
+ %C21 = 0 ;resetta sincronismi canale 0
+ %C16 = 0
+ %C255 = 0
+ VL36 = %parspec.dsp[20] ;guadagno bilanciamento in DL
+ IF(VL36 == 0) VL36 = 50 ;valore di default
+ VL37 = %parspec.dsp[21] ;guadagno bilanciamento in DV
+ IF(VL37 == 0) VL37 = 1  ;valore di default
+ VL44 = %pargen_due.dgn[32] ;guadagno bilanciamento in SV
+ IF(VL44 == 0) VL44 = 1  ;valore di default uguale a 1
+ VL38 = %parspec.dsp[22] ;guadagno Feed Forward Y1 in DV
+ VL39 = %parspec.dsp[23] ;guadagno Feed Forward Y2 in DV
+ VL40 = %parspec.dsp[24] ;guadagno Feed Forward Y1 in SV
+ VL41 = %parspec.dsp[25] ;guadagno Feed Forward Y2 in SV
+ VL42 = %parspec.dsp[28] ;guadagno Feed Forward Y1 in DL
+ VL43 = %parspec.dsp[29] ;guadagno Feed Forward Y2 in DL
+
+
+ ;CON[%cn[0].cc[1]] = 1 ;serve per pilotare gli assi con freno da PP
+ FWR[X]= 0;abilita errore di inseguimento Y1
+ FWR[Y]= 0 ;abilita errore di inseguimento Y2
+ IF (%pargen_due.dgn[29] == 0) JMPF 300
+ %ax0.pa5 = %pargen_due.dgn[29] * 1000
+ %ax1.pa5 = %pargen_due.dgn[29] * 1000
+ FWR[X]= 1 ;abilita errore di inseguimento Y1
+ FWR[Y]= 1 ;abilita errore di inseguimento Y2
+N300
+ IF (%cax0.dt1 == 1) _ppmove_ol(0x00,X,Y,0,0,0,0,0,0) ;togli coppia
+ IF (%cax0.dt1 == 1) _insensibilita(0x00,X,3,%pst[33],%pst[31])
+ IF (%cax0.dt1 == 1) _insensibilita(0x00,Y,3,%pst[34],%pst[32])
+ IF (%cax0.dt1 == 1) _tollerap(0x00,X,0x00, %pst[4], %pst[30], %pst[4]); PROGRAMMA TOLLERANZA STANDARD
+ IF (%cax0.dt1 == 1) _tollerap(0x00,Y,0x00, %pst[4], %pst[30], %pst[4]);
+ ?%C10 = 0
+ AWAIT(!%C50 && %C32.0)
+ %C16.0=1
+ AWAIT(%C50)
+ JSR %C50
+ ?%C21 = 0 ;resetta sincronismi canale 0
+ ?%C16 = 0
+ JMPB 300
+

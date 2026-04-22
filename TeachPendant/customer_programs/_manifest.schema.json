@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://theway.automation/teachpendant/schemas/customers_manifest.schema.json",
+  "title": "CustomersManifest",
+  "type": "object",
+  "required": ["version", "customers"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "type": "integer", "minimum": 1 },
+    "customers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "active"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+          "name": { "type": "string" },
+          "active": { "type": "boolean" },
+          "industry": { "type": ["string", "null"] },
+          "contact": { "type": ["string", "null"] },
+          "systems": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id"],
+              "properties": {
+                "id": { "type": "string" },
+                "application": { "type": ["string", "null"] },
+                "robot_model": { "type": ["string", "null"] },
+                "controller": { "type": ["string", "null"] },
+                "system_sw_version": { "type": ["string", "null"] },
+                "fieldbus": { "type": "array", "items": { "type": "string" } },
+                "collaborative": { "type": "boolean" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+﻿---
+id: ONE_13_FANUC_REGISTER_TYPES_AND_USAGE
+title: "FANUC Register Types and Usage"
+topic: karel
+fanuc_controller: [R-30iB, R-30iB Plus]
+system_sw_version: [V9.x]
+language: TP
+source:
+  type: third_party_integrator
+  title: "ONE Robotics Company Blog"
+  tier: T3
+license: reference-only
+revision_date: "2026-04-22"
+related: []
+difficulty: intermediate
+status: draft
+supersedes: null
+---
+
+# FANUC Register Types and Usage
+
+## Summary
+
+Migrated from `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/articles/ONE_13_FANUC_Register_Types_and_Usage.txt` as part of the TeachPendant migration. Original source: ONE Robotics Company Blog. Review and update `related:` with neighbor entry IDs.
+
+## Body
+
+
+# FANUC Register Types and Usage
+
+Filed under:FANUCKAREL Programming
+I’m currently working on a project where two separate tasks need to pass data to eachother. How do we do that in KAREL? Enter the pipePIP:device.
+The concept of a pipe has been around since the early 1970s, originating as a crucial part of the Unix operating system. Pipes simply provide a mechanism for data to travel from one process to another.
+While the KAREL manual does a pretty good job of describing how pipes work and how to use them, I ran into a couple of issues while implementing the provided example. Here’s a quick tutorial showing some of the issues I dealt with along with aworkingexample of how to use KAREL pipes.
+The first thing to know about KARELREADandWRITEstatements is that they make use of an input/output buffer.
+While you may want toREADthrough a file just one-byte at a time, it makes more sense for the system to actually read a bigger chunk of the file into a buffer and then deliver the smaller chunks as you request them. This reduces the amount of I/O overhead on the actual filesystem.
+Similarly on theWRITEside of things, anything youWRITEwill go into the buffer before it’s actually written to disk. The magical carriage return characterCRactually causes the buffer to get written (it also writes when full).
+Now back to pipes. You would think that the default behavior of a pipe would be to wait on anyREADstatements (in fact, that’s what the manual describes), but I found that I had to explicitly set theATR_PIPWAITattribute toWAIT_USEDfor this functionality:SET_FILE_ATR(f, ATR_PIPWAIT, WAIT_USED).
+It’s probably not a good idea to haveREADstatements hanging forever, so you should also set theATR_TIMEOUTattribute. The value here is in milliseconds:SET_FILE_ATR(f, ATR_TIMEOUT, 1000) -- milliseconds.
+It’s good practice to use theIO_STATUSbuilt-in to check how yourREADoperations did. It’s not documented in the manual, but you will get a status of 282 when aREADtimes out.
+Be careful when using KAREL’s “interactive write” mode (SET_FILE_ATR(f, ATR_IA)). This mode will write the contents of the buffer after eachWRITEstatement without the carriage return. This seems fine and good until you realize that the defaultREADbehavior is to wait until it sees the end of a line.
+I found that myREADstatements could hang forever despite specifying a timeout whenATR_IAwas used. TheREADstatement would timeout as expected ifnothingwas written, but it would hang forever if something was written without that preciousCR.
+It’s probably smart to just avoid this potential issue bynot usinginteractive write mode, but it seems like you could just try and remember to use format specifiers (e.g.READ f(s::3)) which seems to allow the timeout to work.
+So without furthur ado, here’s aWORKINGexample of writing to and reading from a KAREL pipe:
+Let’s go over a few things:
+First notice that we have to have twoFILEdescriptors that open the same file. Open is opening thePIP:test.datfile for writing ('RW') while the other is opening for reading only ('RO'). If you try to open the same file for writing without irst closing it, you will get aFILE-018“File is already opened” error.
+Secondly, we made sure to set theATR_PIPWAITandATR_TIMEOUTattributes on the “read end” of our pipe. SettingATR_PIPWAITtoWAIT_USEDwill causeREADoperations to hang until the read is complete (when it sees aCR). Setting theATR_TIMEOUTattribute allows us to handle the condition where ourREADstatements does not get the expected data.
+I defined anERR_TIMEOUT = 282constant to check this undocumented status value which only seems to come up when aREADtimes out.
+Lastly I made sure to check if the result wasUNINITbefore printing it to the console. Otherwise you may get aINTP-311“Uninitialized data is used” error.
+Oh yeah, in case you’re not familiar with theCONS:console device, you can connect to your robot via telnet to see this output. You can also pull it up from the robot’s web page viahttp://robot.ip/MD/CONSLOG.DGorhttp://robot.ip/MD/CONSTAIL.DG.
+Note that this simple example is obviously just one task, but it would be more likely for you to use this to communicate between two tasks started via theRUN_TASKbuilt-in.
+I hope this helps you avoid some of the pitfalls I experienced while using KAREL pipes. Let me know if you have any questions or comments.
+I email(almost)every Tuesday with the latest insights, tools and techniques for programming FANUC robots. Drop your email in the box below, and I'll send new articles straight to your inbox!
+No spam, just robot programming. Unsubscribe any time. No hard feelings!
+©2013-2019 ONE Robotics Company LLC. All rights reserved.
+Privacy•Terms•RSS Feed
+
+URL: https://www.onerobotics.com/posts/2016/using-karel-pipe-files/
+
+## Citations
+
+- Primary: ONE Robotics Company Blog (keywords: register, R[], PR[], SR[], AR[], numeric, position, string, argument).
+- Applicability: FANUC TP Programming, R-30iB Plus.
+
+## Discrepancies
+
+None documented in the legacy source. Re-verify against a T1 vendor manual before promoting `status` from `draft` to `approved`.
+
+## Provenance
+
+- Migrated by: inline migration on 2026-04-22.
+- Source file: `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/articles/ONE_13_FANUC_Register_Types_and_Usage.txt`.
+- Classification: articles / topic=karel.
+

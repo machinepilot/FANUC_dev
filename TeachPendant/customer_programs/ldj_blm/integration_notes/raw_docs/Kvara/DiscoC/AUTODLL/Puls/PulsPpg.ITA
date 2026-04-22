@@ -1,0 +1,90 @@
+
+[STRING]
+0=      TARATURA
+1=Asse:
+2=Delta:
+3=Quota:
+4=   Esa/GV S.r.l.
+5=24 via Canale Carpi
+6=41100 Campogalliano
+7=   Modena Italy
+8=Conferma
+9=autoapprendimento??
+10=[Enter] conferma
+11=[//]    annulla
+12=   Messaggi PLC
+
+[STAT]
+0=M.PUL
+1=AUTOM
+2=SAUT. 
+3=MIND.
+4=MANU.
+5=MTARA
+6=IMPOS
+7=MANUALE PULS.
+8=AUTOMATICO 
+9=SEMAUTOMATICO
+10=MAN.ASSI IND.
+11=MANUALE DA CN
+12=MANUALE TARATURA
+13=IMPOSTAZIONE 
+
+
+[AXES]
+0=Y1
+1=Y2
+2=X1
+3=X2
+4=R1
+5=R2
+6=Z1
+7=Z2
+8=A1
+9=A2
+10=A3
+11=A4
+12=A5
+13=A6
+14=A7
+15=A8
+16=S1
+17=S2
+18=S3
+19=S4
+20=S5
+21=S6
+
+[SPECFUNCT]
+0=Opzione 1
+1=Opzione 2
+2=Opzione 3
+3=Opzione 4
+4=Opzione 5
+5=Opzione 6
+6=Opzione 7
+7=Opzione 8
+8=Opzione 9
+9=Opzione 10
+10=Opzione 11
+11=Opzione 12
+12=Opzione 13
+13=Opzione 14
+14=Opzione 15
+15=Opzione 16
+16=Opzione 17
+17=Opzione 18
+18=Opzione 19
+19=Opzione 20
+20=Opzione 21
+21=Opzione 22
+22=Opzione 23
+23=Opzione 24
+24=Opzione 25
+25=Opzione 26
+26=Opzione 27
+27=Opzione 28
+28=Opzione 29
+29=Opzione 30
+30=Opzione 31
+31=Opzione 32

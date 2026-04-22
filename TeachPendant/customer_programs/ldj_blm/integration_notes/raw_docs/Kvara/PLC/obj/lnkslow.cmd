@@ -1,0 +1,9 @@
+funblock.obj
+micro.obj
+function.obj
+iox.obj
+Pgm.obs
+usercmd.obs
+Assi.obs
+Canfb.obs
+Cnc.obs

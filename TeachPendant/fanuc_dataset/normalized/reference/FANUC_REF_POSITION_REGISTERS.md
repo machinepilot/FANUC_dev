@@ -1,0 +1,98 @@
+﻿---
+id: FANUC_REF_POSITION_REGISTERS
+title: "Position Registers"
+topic: registers
+fanuc_controller: [R-30iB, R-30iB Plus]
+system_sw_version: [V9.x]
+language: TP
+source:
+  type: generated
+  title: "FANUC Teach Pendant Help System / Operator Manual"
+  tier: generated
+license: reference-only
+revision_date: "2026-04-22"
+related: []
+difficulty: intermediate
+status: draft
+supersedes: null
+---
+
+# Position Registers
+
+## Summary
+
+Migrated from `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/reference/FANUC_REF_Position_Registers.txt` as part of the TeachPendant migration. Original source: FANUC Teach Pendant Help System / Operator Manual. Review and update `related:` with neighbor entry IDs.
+
+## Body
+
+
+19. POSITION REGISTER INSTRUCTIONS 19. POSITION REGISTER INSTRUCTIONS PROGRAM EL
+EMENTS 19. POSITION REGISTER INSTRUCTIONS 19.1. Overview A position register sto
+res positional information (x,y,z,w,p,r, configuration). The default number of p
+osition registers is 100. You can increase the number to 2000 (for single group 
+systems) using the Program Limits Setup menu at Controlled Start. Refer to the S
+oftware Installation Manual for more information. Note You cannot use PR[1] as a
+position register in your programs, as SpotTool uses this internally as a positi
+on register. You can increase the number of position registers at controlled sta
+rt. Refer to the “System Operations” appendix of the Setup and Operations Manual
+for information on performing a controlled start. There are two kinds of positio
+n register instructions: Instructions that manipulate position registers, PR[x] 
+Instructions that manipulate position register elements, PR[i,j] If your system 
+is configured to have more than one group, you can set the group mask when you c
+reate any position register instruction. The group mask allows you to use functi
+on keys to specify: Whether the group mask will be used. If the group mask is no
+t used, the position register instruction affects the default group only. The gr
+oup or groups that the position register instruction will affect. 19.2. PR[x] Po
+sition Register Instructions PR[GRPn:x] position register instructions manipulat
+e the position register. They include assignment, addition, and subtraction inst
+ructions. PR[GRPn:x] = [value] The PR[GRPn:x] = [value] instruction stores posit
+ional information in a position register. See Figure 91, " PR[GRPn:x] = [value] 
+" . Figure 91. PR[GRPn:x] = [value] PR[GRPn:x]=[value][operator] [value] The PR[
+GRPn:x] = [value] [operator] [value] instructions store the result of an arithme
+tic operation in a register. The arithmetic operations are addition and subtract
+ion. See Figure 92, " PR[GRPn:x] = [value] [operator] [value] " . You can use mu
+ltiple arithmetic operators in a single instruction. However, there are the foll
+owing limitations: You cannot mix +, -, or */ in the same instruction. The maxim
+um number of arithmetic operators you can have in the same instruction is 5. Fig
+ure 92. PR[GRPn:x] = [value] [operator] [value] 19.3. PR[i,j] Position Register 
+Element Instructions PR[i,j] position register element instructions manipulate a
+specific position register element. A position register element is one element o
+f a specified position register. In the designation PR[i,j], the i represents th
+e position register number and the j represents the position register element. P
+osition register element instructions include assignment, addition, and subtract
+ion instructions. See Figure 93, " Position Register Element PR[i,j] " . Figure 
+93. Position Register Element PR[i,j] PR[i,j] =[value] The PR[i,j] = [value] ins
+truction stores positional information in a position register element. See Figur
+e 94, " PR[i,j] = [value] " . Figure 94. PR[i,j] = [value] PR[i,j]=[value][opera
+tor][value] The PR[i,j] = [value] [operator] [value] instructions store the resu
+lt of an arithmetic operation in a position register element. The arithmetic ope
+rations are addition, subtraction, multiplication, division, whole number divisi
+on (DIV), and remainder division (MOD). See Figure 95, " PR[i,j] = [value] [oper
+ator] [value] " . You can use multiple arithmetic operators in a single instruct
+ion. However, there are the following limitations: You can mix + and - in the sa
+me instruction. Arithmetic operations within an instruction that mixes + and - w
+ill be performed from left to right. You cannot mix * or / in an instruction tha
+t already contains + or -. You can mix * and / in the same instruction. Arithmet
+ic operations within an instruction that mixes + and - will be performed from le
+ft to right. You cannot mix + or - in an instruction that already contains * or 
+/. The maximum number of arithmetic operators you can have in the same instructi
+on is 5. Figure 95. PR[i,j] = [value] [operator] [value] 18. POINT LOGIC INSTRUC
+TION 20. PROGRAM CONTROL INSTRUCTIONS
+Metadata:
+{}
+
+## Citations
+
+- Primary: FANUC Teach Pendant Help System / Operator Manual (keywords: position register, PR[], component, X, Y, Z, W, P, R, LPOS, JPOS, position assignment, coordinate, cartesian, joint, PR[n,1], PR[n,2], PR[n,3]).
+- Applicability: R-30iB Plus, TP Programming.
+
+## Discrepancies
+
+None documented in the legacy source. Re-verify against a T1 vendor manual before promoting `status` from `draft` to `approved`.
+
+## Provenance
+
+- Migrated by: inline migration on 2026-04-22.
+- Source file: `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/reference/FANUC_REF_Position_Registers.txt`.
+- Classification: reference / topic=registers.
+

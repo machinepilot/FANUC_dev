@@ -1,0 +1,112 @@
+PROGRAM MQTT_BRIDGE
+%COMMENT = 'Option A - JSON over TCP to bridge, publishes to MQTT'
+%NOLOCKGROUP
+%NOPAUSE = ERROR + COMMAND + TPENABLE
+%NOBUSYLAMP
+
+CONST
+    CLIENT_TAG = 'C1:'
+
+VAR
+    status      : INTEGER
+    time_int    : INTEGER
+    cur_jpos    : JOINTPOS
+    jpos_val    : ARRAY[9] OF REAL
+    payload     : STRING[512]
+    time_str    : STRING[24]
+    sec_str     : STRING[4]
+    fl          : FILE
+
+ROUTINE fmt_real(val : REAL) : STRING
+VAR
+    s : STRING[16]
+BEGIN
+    IF UNINIT(val) THEN
+        RETURN('0.00')
+    ENDIF
+    CNV_REAL_STR(val, s, 2)
+    RETURN(SUB_STR(s, 1, STR_LEN(s)))
+END fmt_real
+
+ROUTINE get_timestamp : STRING
+VAR
+    s : STRING[24]
+    sec_int : INTEGER
+BEGIN
+    GET_TIME(time_int)
+    CNV_TIME_STR(time_int, time_str)
+    time_str = SUB_STR(time_str, 1, 15)
+    sec_int = (time_int AND 31) * 2
+    CNV_INT_STR(sec_int, sec_str)
+    sec_str = SUB_STR(sec_str, 1, STR_LEN(sec_str))
+    IF sec_int < 10 THEN
+        s = time_str + ':0' + sec_str
+    ELSE
+        s = time_str + ':' + sec_str
+    ENDIF
+    RETURN(s)
+END get_timestamp
+
+ROUTINE build_json : STRING
+VAR
+    jstr : STRING[512]
+BEGIN
+    jstr = '{"j1":' + fmt_real(jpos_val[1]) + ',"j2":' + fmt_real(jpos_val[2]) + ',"j3":' + fmt_real(jpos_val[3])
+    jstr = jstr + ',"j4":' + fmt_real(jpos_val[4]) + ',"j5":' + fmt_real(jpos_val[5]) + ',"j6":' + fmt_real(jpos_val[6])
+    jstr = jstr + ',"ts":"' + get_timestamp + '","opt":"A"}'
+    RETURN(jstr)
+END build_json
+
+BEGIN
+    WRITE(CHR(128), TPERROR)
+    WRITE('MQTT_BRIDGE [Option A]: Extracting position...', CR, TPERROR)
+
+    -- Get current joint position
+    cur_jpos = CURJPOS(0, 0)
+    CNV_JPOS_REL(cur_jpos, jpos_val, status)
+    IF status <> 0 THEN
+        WRITE('MQTT_BRIDGE: CNV_JPOS_REL failed = ', status, CR, TPERROR)
+        RETURN
+    ENDIF
+
+    -- Build JSON payload
+    payload = build_json
+    WRITE('MQTT_BRIDGE: Payload = ', payload, CR, TPERROR)
+
+    -- Connect to bridge (Client 1: WAGO IP, port 5000)
+    WRITE('MQTT_BRIDGE: Connecting to C1 (bridge)...', CR, TPERROR)
+    MSG_CONNECT(CLIENT_TAG, status)
+    IF status <> 0 THEN
+        WRITE('MQTT_BRIDGE: MSG_CONNECT failed = ', status, CR, TPERROR)
+        RETURN
+    ENDIF
+
+    -- Open socket file for write
+    SET_FILE_ATR(fl, ATR_UF)
+    CLR_IO_STAT(fl)
+    OPEN FILE fl ('RW', CLIENT_TAG)
+    status = IO_STATUS(fl)
+    IF status <> 0 THEN
+        WRITE('MQTT_BRIDGE: OPEN FILE failed = ', status, CR, TPERROR)
+        MSG_DISCO(CLIENT_TAG, status)
+        RETURN
+    ENDIF
+
+    -- Send JSON payload
+    WRITE fl(payload::STR_LEN(payload))
+    WRITE fl(CR)
+    status = IO_STATUS(fl)
+    IF status <> 0 THEN
+        WRITE('MQTT_BRIDGE: WRITE failed = ', status, CR, TPERROR)
+    ELSE
+        WRITE('MQTT_BRIDGE: Sent successfully', CR, TPERROR)
+    ENDIF
+
+    -- Close and disconnect
+    CLOSE FILE fl
+    MSG_DISCO(CLIENT_TAG, status)
+    IF status <> 0 THEN
+        WRITE('MQTT_BRIDGE: MSG_DISCO warning = ', status, CR, TPERROR)
+    ENDIF
+
+END MQTT_BRIDGE

@@ -1,0 +1,853 @@
+/*--------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------*/
+/**************************************************************************
+  PegRes.ITA
+
+  (C)Copyright 2008 by
+  Esa/Gv S.r.l.
+  15, via Zamboni
+  41011 Campogalliano Modena Italy
+  Tel. +39 059 851414 - Fax. +39 059 851313
+
+  Target:            PEG
+  Autore:            Carlo Berselli BEC
+  Data di creazione: 27/08/2008
+  Descrizione:       String Table UIM in ITALIANO
+
+**************************************************************************/
+/*--------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------*/
+
+/*---------------------------------------------------------------*/
+/*-------------------------- ITALIANO ---------------------------*/
+/*---------------------------------------------------------------*/
+
+
+/*---------------------------------------------------------------*/
+/*-------------------DeskAddSystemMenuItem String----------------*/
+/*---------------------------------------------------------------*/
+
+IDS_UPDATEFW  = Aggiorna FW
+IDS_MONITORIO = Monitor IO
+IDS_CHMONITOR = Monitor Canale
+IDS_DATETIME  = Data/Ora
+IDS_LANGUAGE  = Lingua
+IDS_PASSWORD  = Password
+IDS_MEMVIEW   = Memoria
+
+/*---------------------------------------------------------------*/
+/*-------------------General String------------------------------*/
+/*---------------------------------------------------------------*/
+
+IDS_OK                    = Ok
+IDS_CANCEL                = Cancel
+IDS_DESKDIALOG_TITLE      = Menu Base
+IDS_PSW_DIALOG_TITLE      = Access Level
+IDS_DATETIME_DIALOG_TITLE = Date & Time
+IDS_LANGUAGE_DIALOG_TITLE = Setup Language
+IDS_OPEN_FILE             = Apri File
+IDS_SAVE_FILE             = Salva File
+IDS_ABORT                 = Imterrompi
+IDS_RETRY                 = Riprova
+
+IDS_UPDATEFW_RQST         = Inserire la chiave USB e premere "Si" per continuare
+IDS_UPDATEFW_OK           = Aggionamento terminato
+
+
+/*---------------------------------------------------------------*/
+/*-------------------SYS String----------------------------------*/
+/*---------------------------------------------------------------*/
+
+IDS_SYS_ERR              = SYS Error
+IDS_GET_DEF_IO_NUM_ERR   = GetDefinedIONumber error: %d
+IDS_GET_IOREDIR_INFO_ERR = GetIORedirInfo error: %d
+IDS_GET_REG_BY_NAME_ERR  = get_reg_by_name error: %d
+IDS_SCILEXER_LOAD_ERR=Libreria PegScilexer non caricata correttamente.\nVerificare errore in menu PLC -> visualizza errori
+IDS_SCILEXER_STACK_ERR=Dimensione stack troppo piccola per gestire multi editor.\nControllare StackSize in rtos.ini >= 196607
+
+
+/*---------------------------------------------------------------*/
+/*-------------------BMRCITA-------------------------------------*/
+/*---------------------------------------------------------------*/
+
+IDR_PSW                         = Password:
+IDR_CLEAR_PSW                   = Clear password
+IDS_PLCMENU_SLOW                = PLC Slow
+IDS_PLCMENU_FAST                = PLC Fast
+IDS_PLCMENU_PATH                = PLC Path
+IDR_PLCMENU_0                   = File
+ID_PLCMENU_PLC_LOAD             = Carica
+ID_PLCMENU_FILE_CLOSE           = Chiudi
+IDR_PLCMENU_1                   = Aiuti
+ID_PLCMENUAK_PLC_STATUS_START   = Start
+ID_PLCMENUAK_PLC_STATUS_STOP    = Stop
+ID_PLCMENUAK_PLC_LOAD           = Carica PLC
+ID_PLCMENUAK_PLC_UPDATE         = Aggiorna PLC
+ID_PLCMENUAK_PLC_SAVE           = Salva PLC
+ID_PLCMENUAK_VISUALIZZAERRORI   = Visualizza Errori
+ID_PLCMENUAK_CLEARERROR         = Cancella Errori
+ID_PLCMENUAK_FORMATSHARED       = Format Shared
+ID_CHMONITOR_STATO_REF          = REF
+ID_CHMONITOR_STATO_JOG          = JOG
+ID_CHMONITOR_STATO_INC          = INC
+ID_CHMONITOR_STATO_MDI          = MDI
+ID_CHMONITOR_STATO_AUT          = AUT
+IDR_CHMONITOR_2                 = Visualizzazione
+ID_CHMONITOR_VIS_DS             = Distanza Target
+ID_CHMONITOR_VIS_DE             = Errore Inseguimento
+ID_CHMONITOR_VIS_DV             = Tensione DAC
+ID_CHMONITORAK_CAMBIO_CANALE    = Seleziona Canale
+ID_CHMONITORAK_MON_SELPROG      = Seleziona programmi
+ID_CHMONITORAK_INSERT_INC       = Quota Inc.
+ID_CHMONITORAK_VARIABILI        = Variabili
+ID_CHMONITORAK_CHMONIT_DEBUG    = Debug
+ID_CHMONITORAK_TEST             = Test
+ID_ALMHIST_ALMLOAD              = Carica Allarmi
+ID_ALMHIST_ALMSAVE              = Salva Allarmi
+ID_ALMHIST_ALMREFRESH           = Aggiorna
+ID_ALMHIST_ALMCLEAR             = Cancella
+ID_ALMHIST_ALMTOGGLE            = Allarmi Messaggi
+ID_ALMHISTAK_ALM_SAVEDIAG       = Salva diagnostici
+ID_ALMHISTAK_ALMHIST_FILTRA     = Filtri
+ID_UIM_VIS_IO_UIM_ANALOGIO      = IO Analogici
+ID_UIM_VIS_IO_UIM_DIGITALIO     = IO Digitali
+ID_UIM_VIS_IO_UIM_POS_PREC      = Precedenti
+ID_UIM_VIS_IO_UIM_POS_SUC       = Successivi
+IDC_LOADPLC_PLCLOADFROMTXT      = Da progetto:
+ID_PULSANTI_CONTEXT_MENU       	= Menu
+ID_PULSANTI_DUPLICATE          	= Duplica
+ID_PULSANTI_FILE_PRINT_PREVIEW 	= Preview
+IDC_PULSANTI_STATIC_0           = Cerca in:
+IDD_DUPLICATE_0                 = Copia su
+IDC_DUPLICATE_STATIC_0          = Seleziona nuovo nome
+IDD_BREAKPOINT_0                = Breakpoint
+IDC_BREAKPOINT_LINE             = Alla riga:
+IDC_BREAKPOINT_CONDITION        = Condizione:
+IDC_BREAKPOINT_BTADDBP          = Aggiungi
+IDD_SERIALNUMBER_0              = Serial Number
+IDD_SELPROG_0                   = Seleziona programma
+IDC_SELPROG_SELPROGNEXT         = Prossimi
+IDC_SELPROG_SELCHAN0            = CH 0
+IDC_SELPROG_BROWSECHAN0         = Sfoglia
+IDC_SELPROG_SELCHAN1            = CH 1
+IDC_SELPROG_SELCHAN2            = CH 2
+IDC_SELPROG_SELCHAN3            = CH 3
+IDC_SELPROG_SELCHAN4            = CH 4
+IDC_SELPROG_SELCHAN5            = CH 5
+IDC_SELPROG_SELCHAN6            = CH 6
+IDC_SELPROG_SELCHAN7            = CH 7
+IDC_SELPROG_SELCHAN8            = CH 8
+IDC_SELPROG_SELCHAN9            = CH 9
+IDC_SELPROG_NAMECHAN0           = Name0
+IDC_SELPROG_NAMECHAN1           = Name1
+IDC_SELPROG_NAMECHAN2           = Name2
+IDC_SELPROG_NAMECHAN3           = Name3
+IDC_SELPROG_NAMECHAN4           = Name4
+IDC_SELPROG_NAMECHAN5           = Name5
+IDC_SELPROG_NAMECHAN6           = Name6
+IDC_SELPROG_NAMECHAN7           = Name7
+IDC_SELPROG_NAMECHAN8           = Name8
+IDC_SELPROG_NAMECHAN9           = Name9
+IDC_ALMHIST_FILTRA_ALMHIST_TYPE = Tipo
+IDC_ALMHIST_FILTRA_ALMHIST_CODE = Codice
+IDC_ALMHIST_FILTRA_ALMHIST_DATE = Data
+IDC_ALMHIST_FILTRA_ALMHIST_HOUR = Ora
+IDC_UIM_SITUAZ_IO_UIM_IO_NAM    = I/O
+IDR_CHMONITOR_PP                = Pagina di Monitor Canale ISO
+ID_ESEGUI_MDI                   = Esegui
+ID_INSDEL_BP                    = Inserisce / toglie un  Breakpoint
+ID_DELALL_BP                    = Rimuove tutti i Breakpoints
+ID_GO_BP                        = Esegue il programma
+ID_STEP_BP                      = Esecuzione Passo a Passo
+ID_STEPIN_BP                    = Esecuzione
+ID_STOP_BP                      = Ferma l'esecuzione
+ID_WATCH_BP                     = Visualizzazione delle variabili
+ID_EDTBREAK_BP                  = Edita i breakpoint nel programma
+IDS_PLC_CONFERMI                = Confermi azzeramento Shared Memory?
+IDS_PLC_RUN                     = Impossibile azzerare la shared con il PLC in run!
+IDR_PLCMENU_PP                  = Menu PLC
+IDS_ISO_8                       = Programma
+IDS_ISO_9                       = Nessun Programma
+IDS_ISO_10                      = Variabili LOCALI
+IDS_ISO_11                      = F. Modali
+IDS_ISO_12                      = F. Ausiliarie
+IDS_ISO_13                      = Selezione Canale
+IDS_ISO_14                      = Stato Canale
+IDS_ISO_15                      = Selezione Visualiz.
+IDS_ISO_16                      = Parametri Assi/Man.
+IDS_ISO_17                      = Fine Test
+IDS_ISO_18                      = Quota Jog
+IDS_ISO_19                      = Funz. Mod./AUX
+IDS_ISO_22                      = Automat.
+IDS_ISO_23                      = Globali
+IDS_ISO_24                      = Locali
+IDS_ISO_26                      = Programma non trovato: %s
+IDS_ISO_27                      = Ds = Distanza Target
+IDS_ISO_28                      = De = Errore Inseguimento
+IDS_ISO_29                      = Dv = Tensione DAC
+IDS_ISO_30                      = Fallita PgmOpen, %s, Programma %s
+IDS_ISO_31                      = Variabili AUTOMATICHE
+IDS_ISO_32                      = Variabili GLOBALI
+IDS_ISO_33                      = Errore in lettura variabili
+IDS_ISO_34                      = Livello di Esecuzione
+IDS_ISO_36                      = Monitor
+IDS_ISO_39                      = Fine Debug
+IDS_ISO_42                      = Go
+IDS_ISO_43                      = Step
+IDS_ISO_44                      = Step in
+IDS_ISO_45                      = Step out
+IDS_ISO_46                      = Stop Debugging
+IDS_ISO_47                      = Watch
+IDS_ISO_49                      = Valori
+IDS_ISO_50                      = Data not existing!
+IDS_ISO_51                      = Bad Framing!
+IDS_ISO_52                      = Data not defined!
+IDS_ISO_53                      = Data bad request!
+IDS_ISO_54                      = Error data unknow!
+IDS_ISO_55                      = Different data type!
+IDS_ISO_56                      = Unused level!
+IDS_ISO_57                      = Edit Breakpoint
+IDS_ERRBP                       = Wrong Breakpoint's condition!
+IDR_ALMHIST                     = Storia Allarmi
+IDS_SAVEDALARMS                 = Allarmi Salvati
+IDS_PLCMESSAGES                 = Messaggi PLC
+ID_ALMREFRESH                   = Aggiorna storia allarmi
+ID_ALMCLEAR                     = Cancella gli allarmi non attivi
+ID_ALMTOGGLE                    = Passa dalla visualizzazione allarmi a messaggi e viceversa
+ID_ALMLOAD                      = Carica una storia allarmi da file
+ID_ALMSAVE                      = Salva la storia allarmi corrente su file
+IDS_ALARMSFILTER                = Alarm files (*.alm)|*.alm||
+IDS_ERR_SHUTDOWN                = ATTENZIONE:\nIl CN non è stato spento correttamente a causa di un possibile blocco!\n(Possibile perdita di dati)
+IDS_ERR_POWERFAIL               = ATTENZIONE:\nIl CN non è stato spento correttamente!\n(Possibile perdita di dati)
+IDS_ALMSAVEDIAGMSG              = Salvataggio diagnostici in corso!
+IDS_ALMSAVEDIAGCPT              = Attendere!
+ID_PLC_UPDATE                   = Aggiorna file PLC da dischetto\nAggiorna PLC
+ID_PLC_SAVE                     = Salva PLC su dischetto\nSalva PLC
+IDS_PLC_BACKUP                  = Da backup:
+IDS_PLC_WARNING                 = Caricamento non configurato !!!
+ID_SINGLEREF                    = Singolo
+ID_GENREF                       = Generale
+ID_OVERSTORE                    = Ricerca con Overstore
+ID_NOOVERSTORE                  = Ricerca senza Overstore
+ID_VISPP                        = Visualizza PP
+ID_VISGRAPH                     = Visualizza Grafica
+ID_VISLIST                      = Visualizza Lista
+ID_COLLIMA                      = Collima Tratto
+ID_COLLIMA_PROF                 = Collima Profilo
+ID_COLLIMA_PUNTO                = Collima Punto
+ID_SINGREFKEY                   = Zero Singolo
+ID_GENREFKEY                    = Zero Generale
+ID_RICBLOCCO                    = Ricerca Blocco
+ID_MANREF                       = Zero Manuale
+ID_TROVABLOCCO                  = Trova
+ID_ERRORPGM                     = Errore
+ID_AUX_CMD                      = ModAux
+ID_FEED                         = Feed Aux
+ID_ITER                         = ITER
+ID_ISO_CHANNEL                  = ISO channel:
+ID_ENABLE_NAME_SEL              = Enable Name Selection
+ID_VELOCITA                     = SPEED
+ID_PLC_ERROR                    = Plc error
+ID_SHARED                       = Shared
+ID_MEMORY_SUBSYSTEM             = Win32 Memory Subsystem
+ID_MULTICHAN_MONITOR            = MultiChan Monitor
+ID_FLOPPY                       = FLOPPY
+ID_HARD_DISK                    = HARD DISK
+ID_NETWORK_DISK                 = NETWORK DISK
+ID_RAM_DISK                     = RAM DISK
+ID_CDROM                        = CDROM
+ID_CNC_DISK                     = CNC DISK
+ID_PGM                          = PGM ...
+ID_SHOW_VARIABILI               = Visualizza Variabili
+ID_NOME_VARIABILE               = Nome Variabile
+ID_VARIABILE                    = Variabile
+ID_VALORE                       = Valore
+ID_BASE                         = Base
+ID_AGGIUNGI_VAR                 = Aggiungi Variabile
+ID_ELIMINA_VAR                  = Elimina Variabile
+ID_MODIFICA_BASE_VAR            = Modifica Base
+ID_MODIFICA_VAL_VAR             = Modifica Valore
+ID_VAR_INSERITA                 = Variabile già inserita
+ID_VAR_MANCANTE                 = Nome variabile mancante
+ID_ERR_WRITE_SHARED             = Errore di scrittura su memoria shared
+ID_DATO_NON_VALIDO              = Dato non valido
+
+
+/*--------------------------------------------------------------*/
+/*-------------------AMNGRRESITA---------------------------------*/
+/*---------------------------------------------------------------*/
+
+ID_ARCMNGR_DIRECTORY_NEW                = Nuova cartella
+ID_ARCMNGR_DIRECTORY_CHANGE             = Cambia cartella
+ID_ARCMNGR_COPY                         = Copia
+ID_ARCMNGR_RENAME                       = Rinomina
+IDR_ARCMNGR_1                           = Unità
+ID_ARCMNGR_CHANGE_UNIT                  = Cambia
+IDR_ARCMNGR_2                           = Selezione
+ID_ARCMNGR_MARK_FROMTEXT                = Selezione / Deselezione filtrata
+ID_ARCMNGR_MULTI_MARK                   = Aggiunge / Rimuove evidenziati
+ID_ARCMNGR_TOGGLE_MARK                  = Inverte Selezione
+ID_ARCMNGR_UNMARK_ALL                   = Toglie selezione
+IDR_ARCMNGR_3                           = Finestra
+ID_ARCMNGR_VIEW_SWITCHVIEW              = Scambia
+ID_ARCMNGR_VIEW_LEFT                    = Sinistra
+ID_ARCMNGR_VIEW_RIGHT                   = Destra
+ID_ARCMNGR_FINESTRA_OPZIONI             = Opzioni
+IDR_ARCMNGR_4                           = Aiuto
+ID_ARCMNGR_ARC_ABOUT                    = Informazioni sulla Gestione Archivi
+ID_ARCMNGRAK_DIRECTORY_NEW              = Nuova Cartella
+ID_ARCMNGRAK_CHANGE_UNIT                = Cambia Unità
+ID_ARCMNGRAK_ORDINAMENTO                = Ordinamento
+ID_RENAMEIDOK                           = Conferma
+ID_RENAMEIDCANCEL                       = Annulla
+IDC_RENAME_STATIC_0                     = Nome Corrente:
+IDC_RENAME_STATIC_1                     = Nuovo Nome:
+IDD_NEWDIR_0                            = Crea cartella
+IDD_FILTERSELECT_0                      = Criterio di Ricerca
+ID_FILTERSELECTIDUNSELECT               = Deselezione
+IDC_FILTERSELECT_STATIC_0               = Nome
+IDD_DRIVE_0                             = Selezione unità
+IDC_DRIVE_PROPERTY                      = Proprietà
+IDC_DRIVE_FORMAT                        = Formatta
+IDC_DRIVE_DRIVE_SPACE_TXT               = Spazio:
+IDC_DRIVE_DRIVE_FREE_TXT                = Liberi:
+IDD_CNCFORMAT_0                         = Formattazione - 
+ID_CNCFORMATIDOK                        = Avvio
+IDC_CNCFORMAT_RAPIDFORMAT               = Formattazione rapida
+IDC_CNCFORMAT_COMPLFORMAT               = Completa
+IDC_CNCFORMAT_STATIC_0                  = Tipo di formattazione
+IDC_CNCFORMAT_STATIC_1                  = ATTENZIONE: Tutti i dati sull'unità verranno persi !
+IDC_VIEWER_OPTIONS_PAGE_SORT_ORDER      = Nessuno
+IDC_VIEWER_OPTIONS_PAGE_ORD_DIMENSION   = Dimensione
+IDC_VIEWER_OPTIONS_PAGE_VIEW_SELECTED   = Solo files selezionati
+IDC_VIEWER_OPTIONS_PAGE_SORT_DESCENDING = Sort ordine inverso
+IDC_VIEWER_OPTIONS_PAGE_STATIC_0        = Ordinamento Colonne
+IDD_ORDER_0                             = Ordinamento Visualizzazione
+IDC_ORDER_SORT_DESCENDING               = Sort ordine inverso
+IDC_SYSTEM_OPTIONS_PAGE_VIEW_GRID       = Griglia
+IDC_SYSTEM_OPTIONS_PAGE_VIEW_SYSFILES   = Files di sistema
+IDC_SYSTEM_OPTIONS_PAGE_VIEW_SYSUNITS   = Unità di sistema
+IDR_ARCMNGR_PP                          = Gestione Archivi
+IDS_IND_SPACE0                          = Occupazione
+IDS_IND_SPACE1                          = Dimensione
+IDS_IND_NUMBER0                         = Elementi
+IDS_IND_NUMBER1                         = Selezionati
+IDS_NOADDSELECT                         = Nessun nuovo elemento selezionato! 
+IDS_NOSUBSELECT                         = Nessun elemento deselezionato!
+IDS_TITLE_COL_1                         = Dim
+IDS_PARENT_DIRECTORY                    = Cartella Precedente
+IDS_FO_MOVE                             = Muove file/cartele
+IDS_FO_COPY                             = Copia file/cartelle
+IDS_FO_DELETE                           = Cancella file/cartelle
+IDS_FO_RENAME                           = Rinomina file/cartella
+IDS_CONFIRMDEL                          = Conferma cancellazione?
+IDS_CONFIRMDELMANY                      = Conferma cancellazione di %d file/cartelle?
+IDS_OPTIONS_TITLE                       = Opzioni di Visualizzazione
+IDS_OPTIONS_LEFT                        = Sinistra
+IDS_OPTIONS_RIGHT                       = Destra
+IDS_OPTIONS_SYSTEM                      = Sistema
+IDS_CAPTION                             = ATTENZIONE:
+IDS_ARCMNGR_FORMATINCORSO               = Formattazione in corso 
+ID_ORDINAMENTO                          = Visualizza le opzioni di ordinamento\nOpzioni Ordinamento
+ID_FINESTRA_OPZIONI                     = Impostazioni di visualizzazione\nVisualizza Opzioni
+ID_VIEW_SWITCHVIEW                      = Passa da una finestra all'altra\nScambia
+ID_VIEW_LEFT                            = Attiva la finestra a Sinistra\nFinestra Sinistra
+ID_VIEW_RIGHT                           = Attiva la finestra a Destra\nFinestra Destra
+ID_ARC_ABOUT                            = Visualizza le informazioni di Aiuto
+ID_UNMARK                               = Deseleziona file/cartella corrente\nDeseleziona file/cartella
+ID_UNMARK_ALL                           = Deseleziona file/cartelle selezionati\nDeseleziona Tutti
+ID_MARK                                 = Seleziona file/cartella corrente dalla lista dei selezionati\nSeleziona file/cartella
+ID_MULTI_MARK                           = Seleziona/Deseleziona tutti gli elementi evidenziati
+ID_MARK_FROMTEXT                        = Selezione/Deselezione filtrata\nSelezione con ricerca 
+ID_DIRECTORY_NEW                        = Crea una nuova cartella\nNuova cartella
+ID_DIRECTORY_CHANGE                     = Cambia la cartella corrente\nCambia cartella
+ID_CHANGE_UNIT                          = Seleziona l'unità nella finestra corrente\nSeleziona unità
+ID_COPY                                 = Copia file/cartelle selezionati\nCopia file/cartelle
+ID_DELETE                               = Elimina file/cartelle selezionati\nElimina file/cartelle
+ID_RENAME                               = Rinomina file/cartella corrente\nRinomina file/cartella
+ID_TOGGLE_MARK                          = Seleziona tutti gli elementi escludendo quelli evidenziati
+ID_VIEW_OPTIONS                         = Visualizza il dialog box con opzioni\nVisualizza Opzioni
+ID_CONF_MACCHINE                        = Conf. Macchine
+ID_CONF_RESOURCE                        = Conf. Risorse
+ID_MAPPING_UNIT                         = Mapping Unità
+ID_NETWORK_SETUP                        = Network Setup
+ID_INS_MACHINE                          = Inserisci Macchina
+ID_DEL_MACHINE                          = Elimina Macchina
+ID_UPDATE_MACHINE                       = Modifica Macchina
+ID_ADDRESS_MACHINE                      = Indirizzo
+ID_ERR_MACH_MANC                        = Nome macchina mancante
+ID_ERR_ADDR_MANC                        = Indirizzo macchina mancante
+ID_ERR_NAME_MACHINE                     = Nome macchina già esistente
+ID_INS_RESOURCE                         = Inserisci Risorsa
+ID_DEL_RESOURCE                         = Elimina Risorsa
+ID_UPDATE_RESOURCE                      = Modifica Risorsa
+ID_PROMPT_RESOURCE                      = Prompt
+ID_USERNAME_RESOURCE                    = UserName
+ID_ANONYMOUS_RESOURCE                   = Anonymous
+ID_ERR_USERNAME                         = UserName già esistente
+ID_ERR_PROMPT_MANC                      = Prompt Risorsa Mancante
+ID_USERNAME_MANC                        = UserName Mancante
+ID_NO_RISORSA                           = Risorsa non trovata
+ID_WRITE_IN_FLASH                       = Writing data to Flash memory...
+ID_MSG_WARNING1                         = PLEASE DO NOT POWER DOWN THE SYSTEM
+ID_MSG_WARNING2                         = UNTIL THIS MESSAGE DISAPPEARS!
+ID_HOST_IP                              = Host IP Addr
+ID_SUBNET_MASK                          = Subnet Mask
+ID_GATEWAY_IP                           = Gateway IP Addr
+ID_DNS_IP                               = DNS IP Addr
+ID_ERR_NET_SETUP_1                      = Not available on Windows, please right-click Network icon then select Properties
+ID_ERR_NET_SETUP_2                      = No network devices
+ID_ERR_NET_SETUP_3                      = Error reading network setup data
+ID_ERR_NET_SETUP_4                      = Error writing network setup data
+ID_ERR_NET_SETUP_5                      = Bad IP address field '%.20hs'
+ID_NET_CONNECT                          = Network Connection
+ID_PASSWERR                             = Password Non Valida !!
+ID_ACCOUNTERR                           = Account Non Valido !!
+
+/*---------------------------------------------------------------*/
+/*---------------ESAEDRESITA-------------------------------------*/
+/*---------------------------------------------------------------*/
+
+ID_ESAEDIT_FILE_NEW           = Nuovo
+ID_ESAEDIT_FILE_OPEN          = Apri
+ID_ESAEDIT_FILE_SAVE          = Salva
+ID_ESAEDIT_FILE_SAVE_AS       = Salva con nome
+ID_ESAEDIT_FILE_PRINT         = Stampa
+ID_ESAEDIT_FILE_PRINT_PREVIEW = Anteprima di stampa
+ID_ESAEDIT_FILE_PRINT_SETUP   = Imposta pagina
+ID_ESAEDIT_FILE_MRU_FILE1     = Recent File
+IDR_ESAEDIT_1                 = Edit
+ID_ESAEDIT_EDIT_UNDO          = Annulla
+ID_ESAEDIT_EDIT_CUT           = Taglia
+ID_ESAEDIT_EDIT_COPY          = Copia
+ID_ESAEDIT_EDIT_PASTE         = Incolla
+ID_ESAEDIT_EDIT_FIND          = Trova
+ID_ESAEDIT_EDIT_REPLACE       = Sostituisci
+ID_ESAEDIT_EDIT_GOTO          = Vai a
+IDR_ESAEDIT_2                 = Strumenti
+ID_ESAEDIT_STRUMENTI_OPZIONI  = Opzioni
+ID_ESAEDIT_STRUMENTI_NRIGA    = Visualizza numero riga
+ID_ESAEDIT_APP_ABOUT          = Informazioni su Esaedit...
+ID_ESAEDITAK_FINDNEXT         = Ripeti Ricerca
+IDC_GOTO_STATIC_0             = Numero della riga
+IDS_STRINGNOTFOUND            = Stringa non trovata!
+IDR_ESAEDIT_PP                = Editor ASCII
+ID_INDICATOR_EDITOVR          = OVR
+IDS_FINERICERCA               = Ricerca completata
+ID_FINDNEXT                   = Ripete l'ultima ricerca effettuata\nRipete ricerca
+IDS_CONF_SALVA                = Salvare le modifiche a %1?
+IDS_CONF_ERASE                = Confermi la cancellazione del contenuto attuale?
+IDS_FILECHANGED               = File cambiato!
+IDS_MESSAGE_LENGHT            = Linea troppo lunga. La massima lunghezza consentita è di 128 caratteri.
+IDS_WANTRELOAD                = Il file in uso è stato cambiato da un'altra applicazione!\n Vuoi Ricaricarlo?
+IDS_GRAPH                     = Grafica
+IDS_HELPS                     = Aiuti
+IDS_GRAPH_COR                 = Profilo Corretto
+IDS_GRAPH_RAP                 = Movimenti in Rapido
+IDS_CHANGEFOCUS               = Cambia finestra
+IDS_GRAPH_ZOOMIN              = Zoom +
+IDS_GRAPH_ZOOMOUT             = Zoom -
+IDS_GRAPH_PANN                = Pannello
+IDS_GRAPH_NEXT                = Linea +
+IDS_GRAPH_PREV                = Linea -
+IDS_GRAPH_PIUFAC              = Vista +
+IDS_GRAPH_MENOFAC             = Vista -
+IDS_CHECKPGM                  = Check PGM
+IDS_SPECIAL_KEY               = Symbols <>&$
+IDS_READONLY                  = Read Only
+IDS_MAIUS_MINUSC              = Maiuscole/Minuscole
+IDS_SU                        = Su
+IDS_GIU                       = Giu
+IDS_SUCCESSIVO                = Successivo
+IDS_DIREZIONE                 = Direzione
+IDS_SOSTITUISCI               = Sostituisci
+IDS_SOST_TUTTO                = Sost. Tutto
+IDS_SOST_CON                  = Sost. con:
+IDS_FILE_COLON                = File:
+IDS_CHANNEL                   = Canale
+IDS_RIGA                      = Linea
+
+/*---------------------------------------------------------------*/
+/*--------------IOREDIRITA---------------------------------------*/
+/*---------------------------------------------------------------*/
+
+ID_IOEDITOR_FILE_SAVE                 = Salva
+ID_IOEDITOR_FILE_SAVE_AS              = Salva con nome...
+IDR_IOEDITOR_1                        = Modifica
+ID_IOEDITOR_EDIT_CUT                  = Taglia
+ID_IOEDITOR_EDIT_COPY                 = Copia
+ID_IOEDITOR_EDIT_PASTE                = Incolla
+ID_IOEDITOR_MODIFICA_AGGIUNGI         = Aggiungi
+ID_IOEDITOR_MODIFICA_NUOVOELEMENTO    = Nuovo Elemento
+ID_IOEDITOR_MODIFICA_CANCELLAELEMENTO = Cancella Elemento
+ID_IOEDITOR_MODIFICA_EDITA            = Edita Elemento
+IDR_IOEDITOR_2                        = Visualizza
+ID_IOEDITOR_LISTCOLORDER              = Ordinamento
+ID_IOEDITOR_VIEW_STATUS_BAR           = Barra di stato
+IDR_IOEDITOR_3                        = Help
+ID_IOEDITOR_APP_ABOUT                 = Informazioni su IoredirEditor...
+IDC_VAR_DATA_HDR_MODO                 = Modo
+IDC_VAR_DATA_HDR_IND                  = Indirizzo
+IDC_VAR_DATA_HDR_NODO                 = Nodo
+IDC_VAR_DATA_HDR_SCHEDA               = Scheda
+IDC_VAR_DATA_HDR_OFFSET               = Offset
+IDC_VAR_DATA_HDR_CLASS                = Classe
+IDC_VAR_DATA_HDR_FLAGS                = Flags
+IDD_IOREDLISTORDER_0                  = Ordinamento
+IDC_IOREDLISTORDER_SORT_COL0          = Colonna 0
+IDC_IOREDLISTORDER_SORT_COL1          = Colonna 1
+IDC_IOREDLISTORDER_SORT_COL2          = Colonna 2
+IDC_IOREDLISTORDER_SORT_COL3          = Colonna 3
+IDC_IOREDLISTORDER_SORT_COL4          = Colonna 4
+IDC_IOREDLISTORDER_SORT_COL5          = Colonna 5
+IDC_IOREDLISTORDER_STATIC_0           = Colonna Tabella
+IDR_IOEDITOR_PP                       = Editor IoRedir
+INI_ERR_MAXITEMS                      = Il numero di elementi specificato in [Limits] Items non e' corretto! 
+INI_ERR_TYPEDEF                       = Errore nella definizione del tipo %1 delle variabili
+INI_ERR_TYPEUNDEF                     = Nessun tipo di variabile definito al sistema
+INVALID_FILE_RECORD                   = File: %1\n  >> '%2'\nDati non corretti!
+IDS_INVALID_DOCUMENT                  = Accesso ad un documento non valido
+IDS_LOW_MEMORY                        = Memoria Insufficiente
+IDS_INVALID_LOGADR                    = Indirizzo logico doppio : %d
+IDS_INVALID_PHYADR                    = Indirizzo fisico doppio alla linea %s
+IDS_UNCONFIGURED                      = Classi di I/O non configurate!
+IDS_LV_HEADER0                        = Classe I/O
+IDS_LV_HEADER1                        = Accesso
+IDS_LV_HEADER2                        = Numero
+IDS_TREE_CLASS1                       = Inputs
+IDS_TREE_CLASS2                       = Outputs
+IDS_TREE_CLASS3                       = Nodi
+IDS_TREE_CLASS4                       = Indirizzi Logici Globali
+ID_MODIFICA_NUOVOELEMENTO             = Nuovo Elemento\nNuovo Elemento
+ID_MODIFICA_CANCELLAELEMENTO          = Cancella Elemento\nCancella Elemento
+ID_MODIFICA_AGGIUNGI                  = Aggiunge un elemento prelevando i dati dagli appunti\nAggiunge
+ID_MODIFICA_EDITA                     = Modifica l'elemento evidenziato\nModifica Elemento
+IDS_IOREDIRFILTERS                    = Tutti i file (*.*)|*.*
+IDS_CONFIRMEXIT                       = Salvare le  modifiche?
+ID_LISTCOLORDER                       = Seleziona la colonna per l'ordinamento della lista\nSeleziona colonna ordinamento
+IDS_IOR_ERRFILE                       = Errore scrivendo il file..
+IDS_TRASFERISCI                       = Vuoi copiare il file %s sul CN?
+IDS_IOREDIR_SETIO                     = Impostazione Input Output
+
+/*---------------------------------------------------------------*/
+/*---------------SHMEDITORITA------------------------------------*/
+/*---------------------------------------------------------------*/
+
+ID_SHMEDITOR_LOAD_PAR       = Carica Parametri
+ID_SHMEDITOR_SAVE_PAR       = Salva Parametri
+IDR_SHMEDITOR_1             = Finestra
+ID_SHMEDITOR_BUTTON1        = Area di Lavoro
+ID_SHMEDITOR_BUTTON2        = Area di Editing
+IDR_SHMEDITOR_2             = Opzioni
+ID_SHMEDITOR_OPZIONI_AIUTI  = Visualizza Aiuti
+ID_SHMEDITOR_SHEDITRO_ABOUT = Informazioni su Editor Shared...
+ID_SHMEDITORAK_SHPREV       = Precedente
+ID_SHMEDITORAK_SHNEXT       = Prossimo
+ID_SHMEDITORAK_SHGOTO       = Seleziona Tabella
+ID_SHMEDITORAT_CALC         = EsaCalc
+IDD_SHGOTO_0                = Seleziona Tabella
+IDC_SHGOTO_SHCOPY           = Copia i dati nel nuovo elemento
+IDC_SHGOTO_STATIC_0         = Vai al n°
+IDC_SHSAVEDLG_DLG_MESSAGE   = Confermi salvataggio dati?
+ID_SHSAVEDLGIDYES           = Si
+ID_SHSAVEDLG_YESTOALL       = Sì a tutti
+ID_SHSAVEDLGIDNO            = No
+ID_SHSAVEDLG_NOTOALL        = No a tutti
+IDD_ERROR_EDPAR_0           = Messaggio di errore
+ID_ERROR_EDPARIDOK          = Continua
+IDC_ERROR_EDPAR_CHKMOSTRA   = Non visualizzare più questa finestra
+IDS_ISO_CARICADATI          = Confemi caricamento dati?
+IDS_ISO_SALVADATI           = Confermi salvataggio dati?
+ID_SHNEXT                   = Visualizza la pagina successiva
+ID_SHPREV                   = Visualizza la pagina precedente
+ID_SHGOTO                   = Vai direttamente alla pagina voluta
+IDS_SHCOPY                  = Confermi copia dati?
+ID_CALC                     = Visualizza la calcolatrice
+IDS_CONFCALC                = Confermi l'inserimento del risultato in campo di edit? 
+IDS_PAR                     = Finestre Edit Parametri
+IDS_SHM_INITIALIZING        = Inizializzazione in corso...
+ID_RANGE                    = Intervallo valori
+ID_UNITMIS                  = Unità di misura
+ID_TXTSTATUS                = Descrizione
+IDR_SHMEDITOR_PP            = Editor Shared
+IDS_COM_ERR1                = Formato non trovato
+IDS_COM_ERR2                = Errore di connessione al registro
+IDS_COM_ERR3                = Errore in scrittura dati
+IDS_COM_ERR4                = Errore in lettura dati
+IDS_FILE_NOT_FOUND          = File non trovato:
+IDS_ISO_5                   = - Editor Parametri ISO
+IDS_ISO_6                   = File di dati per parametri ISO
+IDS_ISO_7                   = Errore di lettura dal registro: 
+IDS_WARNING                 = Avvertimento
+
+/*---------------------------------------------------------------*/
+/*------------DATA/ORA ------------------------------------------*/
+/*---------------------------------------------------------------*/
+IDS_DAY     = Giorno
+IDS_MONTH   = Mese
+IDS_YEAR    = Anno
+IDS_HOURS   = HH
+IDS_MINUTES = MM
+
+/*---------------------------------------------------------------*/
+/*------------FILE DIALOG ---------------------------------------*/
+/*---------------------------------------------------------------*/
+IDS_FILE_NAME = File Name:
+IDS_FILE_TYPE = File Type:
+
+/*---------------------------------------------------------------*/
+/*------------AUTOSETUP------------------------------------------*/
+/*---------------------------------------------------------------*/
+
+ID_AUTOSETUP_APP_ABOUT         = Informazioni su AutoSetup...
+IDC_AUTOSETUP_OPER01           = Inizializzazione Boot Sector
+IDC_AUTOSETUP_OPER02           = Formattazione Disco C:
+IDC_AUTOSETUP_OPER03           = Copia file in Disco C:
+IDC_AUTOSETUP_OPER04           = Formattazione Disco D:
+IDC_AUTOSETUP_OPER05           = Copia file in Disco D:
+IDC_AUTOSETUP_OPER06           = Formattazione Disco H:
+IDC_AUTOSETUP_OPER07           = Copia file in Disco H:
+IDC_AUTOSETUP_OPER08           = Formattazione Disco I:
+IDC_AUTOSETUP_OPER09           = Copia file in Disco I:
+IDC_AUTOSETUP_OPER10           = Formattazione Memoria Shared
+IDC_AUTOSETUP_OPER11           = Formattazione Disco F:
+IDC_AUTOSETUP_OPER12           = Copia file in Disco F:
+IDC_AUTOSETUP_USERDATA         = Caricamento Parametri
+IDC_AUTOSETUP_OPER13           = Caricamento PLC
+ID_AUTOSETUP_AUTOSETUP         = Inizia
+IDC_AUTOSETUP_STATIC_0         = ATTENZIONE!
+IDC_AUTOSETUP_STATIC_1         = Questa procedura effettua le seguenti operazioni:
+ID_CONFIRMIDALLFILES           = XX Tutti
+IDC_CONFIRM_CONFDLGMSG         = Static
+IDC_FILEOPMONITORING2_ANIMATE  = Animate1
+IDC_FILEOPMONITORING2_PROGRESS = Progress1
+IDD_MOUNTVOL_0                 = Procedura Multi-Dischetto
+ID_MOUNTVOLIDCANCEL            = Interrompi
+IDC_MOUNTVOL_VOLMSG            = Inserire ....
+IDC_MOUNTVOL_LABMSG            = Label ....
+IDR_AUTOSETUP                  = AutoSetup
+IDS_ASTP_LOADSCRIPT            = Carica file %1..
+IDS_ASTP_FORMAT                = Formatta %1..
+IDS_ASTP_CREATEDIR             = Crea %1..
+IDS_ASTP_REMOVEDIR             = Rimuove %1..
+IDS_ASTP_DELFILE               = Cancella %1..
+IDS_ASTP_SENDFILE              = Invia %1..
+IDS_ASTP_RECEIVEFILE           = Riceve %1..
+IDS_ASTP_COPYFILE              = Copia %1..
+IDS_ASTP_ERASEFLASH            = Cancella FLASH..
+IDS_ASTP_ERASESHARED           = Cancella SHARED..
+IDS_ERR_INITCOMM               = Codice %1 - Inizializzazione canale di comunicazione fallita!!
+IDS_ERR_INITTRANSF             = Codice %1 - Inizializzazione trasferimento file fallita!!
+IDS_ERR_FORMATDISK             = Codice %1 - Formattazione Disco %2
+IDS_ERR_CREATEDIR              = Codice %1 - Creazione del direttorio: %2
+IDS_ERR_REMOVEDIR              = Codice %1 - Rimozione del direttorio: %2
+IDS_ERR_DELFILE                = Codice %1 - Cancellazione del file: %2
+IDS_ERR_CHKEXIST               = Codice %1 - Verifica presenza di: %2
+IDS_ERR_SENDFILE               = Codice %1 - Invio del file: %2
+IDS_ERR_RECEIVEFILE            = Codice %1 - Ricezione del file: %2
+IDS_ERR_COPYFILE               = Codice %1 - Copia del file: %2
+IDS_ERR_ERASEFLASH             = Cancellazione FLASH fallita! Ripetere l'operazione!
+IDS_ERR_NOINIKEY               = Chiave \"%1\" non presente nel file INI!
+IDS_ERR_LISTDIR                = Codice %1 - Esame del direttorio: %2
+IDS_ERR_BIOSEXTPROGRAM         = Codice %1 - Programmazione BIOS extension: %2
+IDS_ERR_LOADERPROGRAM          = Codice %1 - Programmazione Loader: %2
+IDS_ERR_INITBOARD              = Codice %1 - Connessione SHARED fallita!
+IDS_ERR_SHAREDFORMAT           = Codice %1 - Formattazione SHARED fallita!
+IDS_ERR_EXECUTING              = Codice %1 - Eseguendo: %2
+IDS_ERR_PLCLOAD                = Caricamento PLC: %1
+IDS_ERR_RESETCPU               = %1 - Reset CN
+IDS_ERR_LOADPAR                = Caricamento parametri fallito!
+IDS_ERR_KBOOTPRG               = Inizializzazione Multifunction-Board fallita!
+IDS_ERR_FEWPARAM               = Parametri insufficienti!
+IDS_ERR_BADLABEL               = Label \"%1\" non trovata!
+IDS_ERR_BADPARAM               = Parametro \"%1\" non valido!
+IDS_ERR_NOTAVLCMD              = Comando non supportato!
+IDS_ERR_UNKCMD                 = Comando sconosciuto!
+IDS_ERR_ERRORCMD               = Codice %1 - %2
+IDS_ASTP_WARNING               = ATTENZIONE! \nNON INTERROMPERE LA PROCEDURA DI AGGIORNAMENTO\nFINCHÉ É PRESENTE QUESTO MESSAGGIO. \n\nUna interruzione in questa fase puó provocare \nuna perdita irreversibile dei dati.
+IDS_CNC_RESET                  = Reset CN
+IDS_CNC_SHUTDOWN               = Shutdown CN
+IDS_CNC_WAIT                   = ATTENDERE...
+IDS_CNC_REBOOT                 = Riavvio CN in corso...
+IDS_CNC_READY                  = CN riavviato!
+IDS_CNC_CHGREBOOT              = Il CN deve essere riavviato affinchè le modifiche abbiano effetto!
+IDS_CNC_ASK                    = Riavvio ora?
+IDS_FILEOP                     = Operazioni File
+IDS_ALL                        = Tutti
+IDS_FILOVR                     = Sovrascrivere il file: %s
+IDS_OPABORT                    = Operazione Interrotta!
+IDS_OPABORTED                  = Operazione interrotta dall'operatore!
+IDS_OPERRABORT                 = Errore: %s %s
+IDS_FROMPATH                   = Da >> %s
+IDS_TOPATH                     = A >> %s
+IDS_FILDEL                     = Rimuovere il file: %s
+IDS_DIRDEL                     = Rimuovere la cartella: %s
+IDS_DLGCOPY                    = [Copia]
+IDS_DLGMOVE                    = [Muove]
+IDS_DLGDELETE                  = [Cancella]
+IDS_DLGRENAME                  = [Rinomina]
+IDS_ERRLOWMEMORY               = Memoria insufficiente!
+IDS_MKDIR                      = Creare la cartella: %s
+IDS_FORMATUNIT                 = Formattazione Unità
+IDS_DELFILDIR                  = Rimuovere %1 file/cartelle?\n
+IDS_MOUNTVOL                   = Inserire il disco #%1 nell'unità %2
+IDS_MOUNTDSK                   = Inserire %1 nell'unità %2
+IDS_MOUNTLAB                   = Etichetta: \"%1\"
+IDS_MOUNTCHK                   = Controllo ID ...
+IDS_REMOVEJP2                  = Rimuovere il jumper JP2 e/o il PenDrive dal connettore USB!
+IDS_BACKRESTORE                = Backup / Restore
+IDS_LOADCONF                   = Carica Configurazione
+IDS_LOADDAT                    = Carica Dati
+IDS_LOADIO                     = Carica I/O
+IDS_SAVEIO                     = Salva I/O
+IDS_LOADALL                    = Carica Tutti
+IDS_SAVEALL                    = Salva Tutti
+IDS_BCKUNIT                    = Unita` di Backup
+IDS_ERRLDCONF                  = Errore Caricamento Configurazione
+IDS_ERRSVCONF                  = Errore Salvataggio Configurazione
+IDS_TKSSCOPE                   = TksScope
+IDS_ERRCONNES                  = Oscilloscopio non connesso !!!\nVerificare che KVARA.INI contenga in [CHA.PATH] la chiave SLAOSC\nVerificare che sia presente sul CN la SlaOsc.DLL
+IDS_ERRINSTALL                 = Installazione Fallita !!!
+IDS_A                          = A
+IDS_B                          = B
+IDS_C                          = C
+IDS_D                          = D
+IDS_OFFLINE                    = OFFLine
+IDS_ONLINE                     = ONLine
+IDS_TRACK_A                    = Traccia A
+IDS_TRACK_B                    = Traccia B
+IDS_TRACK_C                    = Traccia C
+IDS_TRACK_D                    = Traccia D
+IDS_TRACK_E                    = Traccia E
+IDS_TRACK_F                    = Traccia F
+IDS_TIME_BASE                  = TIME BASE
+IDS_TIME_BASE_MS               = Time Base(ms)
+IDS_VISUALIZZA                 = VISUALIZZA
+IDS_CAMBIA_TRACK               = Cambia Traccia
+IDS_DATI_SAMPLING              = Dati Generali
+IDS_SET_TRIGGER                = Imposta Trigger
+IDS_SAVE_SAMPLES               = Salva Campioni
+IDS_ATTIVA_XY                  = Attiva X-Y
+IDS_DISATTIVA_XY               = Disattiva X-Y
+IDS_OPEN_FILE_CFG              = Apri File Config.
+IDS_SAVE_CFG                   = Salva Config.
+IDS_SELECTTRACK                = Selezionare almeno una traccia da visualizzare!
+IDS_SAMPLING_IN_CORSO          = Campionamento in corso
+IDS_STOPNOTRK                  = Stop Campionamento: Nessuna Traccia da visualizzare!
+IDS_SAMPLING_IN_ARRESTO        = Campionamento in arresto
+IDS_ERRSETTIME                 = SetTime fallita !!!
+IDS_ERRSETTRACK                = SetTrack Fallita!
+IDS_ERRSETTRACK1               = SetTrack A fallita !!!
+IDS_ERRSETTRACK2               = SetTrack B fallita !!!
+IDS_ERRSETTRACK3               = SetTrack C fallita !!!
+IDS_ERRSETTRACK4               = SetTrack D fallita !!!
+IDS_PRONTO                     = Pronto
+IDS_ON                         = ON
+IDS_OFF                        = OFF
+IDS_TRG                        = TRG
+IDS_SAVE                       = SAVE
+IDS_PERDITA_DATI               = POSSIBILE PERDITA DI DATI
+IDS_SEL_FILE_CFG               = Selezione file di configurazione
+IDS_END_SAVE_SAMPLES           = Fine Salva Campioni
+IDS_START                      = START
+IDS_STOP                       = STOP
+IDS_SELECTFILE                 = Selezionare il file!
+IDS_ACTIVTRIG                  = Trigger Attivo: impossibile memorizzare!
+IDS_SELECTDUR                  = Selezionare Durata campionamento > 0 !
+IDS_SELBROWSE                  = SELECT DATA & CONFIGURATION FILE
+IDS_ERRCFG                     = Impossibile Salvare il file CFG!
+IDS_ERRDAT                     = Impossibile Salvare il file DATI!
+IDS_ERROPEN                    = Impossibile Aprire il file
+IDS_SINGLE_TRG                 = Single
+IDS_AUTO_TRG                   = Auto
+IDS_CURSOR_AB                  = A-B
+IDS_CURSOR_CD                  = C-D
+IDS_PROMPT_DURCAMP             = Durata Campionam.(in sec)
+IDS_MEMDATI                    = MEMORIZZAZIONE DATI
+IDS_TEMPOTRASCORSO             = Tempo Trascorso
+IDS_EX                         = Ex
+IDS_EY                         = Ey
+IDS_FX                         = Fx
+IDS_FY                         = Fy
+IDS_ZOOM                       = ZOOM
+IDS_SET_MODXY                  = IMPOSTAZIONI
+IDS_DATI_TRACK                 = Dati Traccia
+IDS_TRIGGER                    = TRIGGER
+IDS_SEGNALE                    = Segnale
+IDS_RISORSA                    = Risorsa
+IDS_REGISTRO                   = Registro
+IDS_UNSIGNED                   = Unsigned
+IDS_OFFSET_MVOLT               = Offset[mVolt]
+IDS_OFFSET_PTI                 = Offset(Pti)
+IDS_MVOLT_DIV                  = mVolt/Div
+IDS_PTI_DIV                    = Pti/Div
+IDS_VAL_MAX                    = Val.Max.
+IDS_VAL_MIN                    = Val.Min
+IDS_CURSORI                    = Cursori
+IDS_ERR_REGSTR                 = Errore: Registro di tipo Stringa
+IDS_CURPOLARE                  = Cursore Polare
+IDS_COORD_CENTRO               = Coordinate Centro
+IDS_DELTA                      = Delta
+IDS_OPEN_FILE_DATI             = Apri File Dati
+IDS_OPEN_FILE_TEST             = Apri File di Test
+IDS_SELECT_DATA_FILE_NAME      = >>  SELECT DATA FILE NAME <<
+IDS_ERR_TESTFILE               = Manca il file .test 
+IDS_STAT                       = Statistiche
+IDS_RAGGIO_NOMINALE            = Raggio Nominale
+IDS_RAGGIO_MEDIO               = Raggio Medio
+IDS_DEV_MIN                    = Deviazione Radiale Min
+IDS_DEV_MAX                    = Deviazione Radiale Max
+IDS_ABSOLUTE                   = ABSOLUTE
+IDS_RELATIVE                   = RELATIVE
+IDS_FULL_SCREEN                = Full Screen
+IDS_MONITOR                    = Monitor
+IDS_STATUS                     = STATUS
+IDS_CALIBRAZIONE               = Calibrazione
+IDS_PREMI_CONF_CALIB           = Premi Conferma Calibrazione
+IDS_PREMI_MIRINO               = Premi Mirino %d
+IDS_CONF_CALIB                 = Conferma Calibrazione
+IDS_PREMI_START_CALIB          = Premi Start Calibrazione
+IDS_START_CALIB                = Start Calibrazione
+IDS_ANNULLA_CALIB              = Annulla Calibrazione
+IDS_CALIB_ESEGUITA             = Calibrazione eseguita
+IDS_KVOPTIONS                  = KvOptions
+IDS_USER_OPTIONS               = User Options
+IDS_SN                         = S/N
+IDS_MODEL                      = Model
+IDS_AXIS_NUMBER                = Axis N.
+IDS_OPTIONS                    = Options
+IDS_INSERT_CODE                = Insert Code
+IDS_INVALID_CODE               = Invalid Code
+IS_REBOOT_CN                   = OK! Reboot CNC
+IDS_CAPS_LOCK                  = Caps Lock
+IDS_SET_CAPS_LOCK              = PgUp/PgDn to set CapsLock
+IDS_TIMELOCK                   = Esa Service
+IDS_BACKUP_UNIT_SEL            = Selezione Unità Backup
+IDS_USB                        = USB
+IDS_ROT_PIU                    = ROT+
+IDS_ROT_MENO                   = ROT-
+IDS_SET_ROT                    = Imposta Rotazione
+IDS_ROTATION                   = Rotazione
+IDS_MNG_PGM                    = Gest.Programmi
+IDS_ARCH_EXT                   = Archivio programmi esterno
+IDS_ARCH_CNC                   = Archivio programmi su CNC
+IDS_NETWORK                    = Rete
+IDS_CONF_PRG                   = Conferma Programma
+IDS_RES_NOT_FOUND              = Risorsa non esistente!
+IDS_PRW_NOT_AVAILABLE          = Preview non disponibile
+IDS_ARCH_USB_NOT_EXIST         = Archivio su USB non esistente
+IDS_ARCH_NET_NOT_EXIST         = Archivio in rete non esistente
+IDS_SPEGNI_CN                  = Ora si puó spegnere il CN
+IDS_PRG_LOADED                 = Programma Caricato:
+IDS_ORIGIN_OFF_LIMIT           = Origine fuori dai limiti degli assi
+IDS_TOOL_PATH                  = Tool Path
+IDS_CLOSE_KEY                  = Close
+IDS_MENU_KEY                   = Menu
+IDS_DISTANCE_TO_GO             = DISTANCE to GO
+IDS_VOLT                       = VOLT
+IDS_ESC                        = ESC
+IDS_CLEAR                      = Clear
+IDS_BACKSPACE                  = BackS
+IDS_SHIFT                      = Shift
+IDS_SOFT_KEYB                  = Soft Keyboard
+IDS_CALIB_TOUCH_SCREEN         = Calibrazione Touch Screen

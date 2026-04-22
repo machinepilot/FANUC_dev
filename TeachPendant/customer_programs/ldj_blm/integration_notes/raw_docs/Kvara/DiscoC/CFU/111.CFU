@@ -1,0 +1,11 @@
+Ciclo fisso taratura diretta pestone Ver.012.38 : 111
+ ;presetta l'asse selezionato alla quota impostata dall'operatore
+ VA0 = %C90 / 1000
+ IF( %selasse == 0) PRS[X] = VA0 ;tara Y1
+ ;se pressa monocilindrica idraulica, tara anche Y2 perché è simulato
+ ;e deve stare in fase con Y1
+ IF( (%selasse == 1) || %C32.6) PRS[Y] = VA0 ;tara Y2
+ ?%C18.10 = 1 ;sincronismo taratura eseguita a u.i.
+ _wait_bit( 0,"%C33.23",1) ;attende sincronismo di ritorno da u.i.
+ ?%C18.10 = 0 ;sincronismo taratura eseguita a u.i.
+N1000 RET

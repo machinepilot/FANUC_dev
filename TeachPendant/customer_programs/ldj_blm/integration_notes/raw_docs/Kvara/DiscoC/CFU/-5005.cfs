@@ -1,0 +1,10 @@
+[S] : -5005
+;Scollega un asse slave
+;S=VA18: system wide asse slave
+
+?%rg17.1 = 1 ;test tempo ciclo completo
+
+?%ax[VA18].rga0.1 = 1 ;richiedi sconnessione slave
+?%rg17.0 = 1 ;busy
+
+RET

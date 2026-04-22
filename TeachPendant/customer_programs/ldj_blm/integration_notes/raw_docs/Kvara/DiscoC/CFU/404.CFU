@@ -1,0 +1,29 @@
+Ciclo fisso taratura assi ausiliari con potenziometro Ver.012.38 : 404
+ VA0 = %selasse
+ IF (%C3.2) JMPF 50
+ VA1 = 1 ;selez. inserimento taratura negativa
+ VA2 = 10 ;tipo comando: campiona quota A
+ JMPF 80
+N50
+ VA1 = 2 ;selez. inserimento taratura positiva
+ VA2 = 11 ;tipo comando: campiona quota B
+
+; se il primo punto è già stato inserito, e quello corrente
+; è il punto opposto al primo, va a tarare il secondo punto,
+; altrimenti parte sempre dal primo.
+N80 IF ((VG7 != 0) && (VG7 != VA1)) JMPF 100
+ ;taratura primo punto
+ _tarapot( 0x00, VA0, 14, 0.000) ;reset parametri taratura
+ _tarapot( 0x00, VA0, VA2, %tara) ;campiona prima quota
+ VG7 = VA1 ;memorizza il primo punto inserito (1=A, 2=B)
+ JMPF 1000
+N100 ;taratura secondo punto
+ _tarapot( 0x00, VA0, 0x80|VA2, %tara) ;campiona seconda quota e calibra
+ _tarapot( 0x00, VA0, 13, 0.000) ;scrive parametri in defcn
+ VG7 = 0 ;annulla il primo punto inserito in precedenza
+
+N1000
+ ?%C18.12 = 1 ;sincronismo taratura eseguita a u.i.
+ _wait_bit( 0, "%C0.9", 0) ;attende conferma
+ ?%C18.12 = 0 ;sincronismo taratura eseguita a u.i.
+ RET

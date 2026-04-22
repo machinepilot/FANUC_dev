@@ -1,0 +1,162 @@
+<?xml version="1.0" ?>
+<job>
+    <settings>
+        <version>1</version>
+        <unit>millimeter</unit>
+        <backcolour>0</backcolour>
+    </settings>
+    <entities>
+        <entity id="FRAME_MM_DURMA AD-S30100 MODELED#1" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_DURMA AD-S30100 MODELED#1</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_DURMA AD-S30100 MODELED#2" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_DURMA AD-S30100 MODELED#2</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_DURMA AD-S30100 MODELED#3" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_DURMA AD-S30100 MODELED#3</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_DURMA AD-S30100 MODELED#4" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_DURMA AD-S30100 MODELED#4</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_DURMA AD-S30100 MODELED#5" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_DURMA AD-S30100 MODELED#5</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_DURMA AD-S30100 MODELED#6" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_DURMA AD-S30100 MODELED#6</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_DURMA AD-S30100 MODELED#7" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_DURMA AD-S30100 MODELED#7</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_DURMA AD-S30100 MODELED#8" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_DURMA AD-S30100 MODELED#8</reference_id>
+            </geometry>
+        </entity>
+        <entity id="FRAME_MM_DURMA AD-S30100 MODELED#9" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>FRAME_MM_DURMA AD-S30100 MODELED#9</reference_id>
+            </geometry>
+        </entity>
+    </entities>
+    <states>
+        <state id="default">
+            <visibility>
+                <show type="Unspecified">1</show>
+                <show entity="FRAME_MM_DURMA AD-S30100 MODELED#1">1</show>
+                <show entity="FRAME_MM_DURMA AD-S30100 MODELED#2">1</show>
+                <show entity="FRAME_MM_DURMA AD-S30100 MODELED#3">1</show>
+                <show entity="FRAME_MM_DURMA AD-S30100 MODELED#4">1</show>
+                <show entity="FRAME_MM_DURMA AD-S30100 MODELED#5">1</show>
+                <show entity="FRAME_MM_DURMA AD-S30100 MODELED#6">1</show>
+                <show entity="FRAME_MM_DURMA AD-S30100 MODELED#7">1</show>
+                <show entity="FRAME_MM_DURMA AD-S30100 MODELED#8">1</show>
+                <show entity="FRAME_MM_DURMA AD-S30100 MODELED#9">1</show>
+            </visibility>
+            <transformations />
+            <views>
+                <view id="1">
+                    <pos>14000,8000,-14000</pos>
+                    <target>0,0,-0</target>
+                    <near>6000</near>
+                    <far>25000</far>
+                    <width>9050</width>
+                    <height>5615</height>
+                    <perspective>1</perspective>
+                </view>
+            </views>
+        </state>
+        <state order="1" id="FRAME_MM_DURMA AD-S30100 MODELED">
+            <visibility />
+            <transformations />
+            <views />
+        </state>
+    </states>
+    <geometries>
+        <geometry id="FRAME_MM_DURMA AD-S30100 MODELED#1">
+            <data encoding="1">UEsDBBQAAgAIADxtjj0JRk+AGAUAAGgQAAALABEAY29sbGFkYS54bWxVVA0AB/pzB036cwdN+nMHTdWYW2/bNhSA/4qgPlsSbyIZyC6ytBsKZHWQZEPXF0OV5ViALXmS3DT/voc3i1K8NCj6MhgIqe9cSJ5zSFHJ3n7b74KvZdtVTT0PUZSEQVkXzbqqH+bhsd/MRPh2kV0tr68v310GoFx383Db94eLOH58fIyKZrfL13nUtA8xThIWIxRb7btiW+7z0PdOIxQusrzryn6RFU3dt9WXY9+0wI79FtpLeLpZXmexfQal/b6s+26RxaOuZ1q0Zd6X6wVOUDJL5CwR9whdUHzB5GdQtdJsD4vaVP+pdxJnx7rqg33Zl+08TKIEMxoGdb4v52FVF9swBo3DKv9WdYvPq79ustg9waTNwnbVlzZvn1Z5Xe3zHpauZOegY7vqYdv7Sg64ZzB5KH0FB9wzuCzbKt/5Oh5zqNxsymI00ok48FA2sPa2Ut5t/ymo1vPQpsYpPLmg/H51BTndl912kXXNsS3Ks+qzQ9NVet2gvdk1eb/K2zZ/+oHyTCuFQdEc634eCh4uEMMsmEGxBQgTETEZeEQIMhCJIpyIdEw5hSqnLEA8gXLkBiLG0kiKsccTPGmSZDA/afrQ13zu04dOUzAUcTpZzwi6yQuwTHEwQ1JGRDJfeyI4WaQQAKQEPEqRbzEVDBYswtoVjXgqfIuJYLAQEdUCCAEeWUwEJwuewKAgEHrag8GED/ooSpniKBII+QYTwWAhIyHP5F9AdLgfB/ssKI90K9nzBI+gTVsWeyW8yPqy2NbVv8dypQ6ppobzrCjKrmvawGyJefjm1TWOZRh0sAPXYEVgsxzyNt/bzfYpDPqnA3T08Oos8qX/vCj9/Ewau1lC9/kSYjP1l3d13bR7OGJes6et6mS1RIaLGWQ9CdQPerqxPWg1gGJNOBHQkZwzSoxgpiWUIkjQDESp5DjV6pSTNKEKCmEMAaacEugCBEIx0VAQirW/iDFEpNGUlKRE+yQkkYIbKJmQWjORCSNMUTvHX1EN56ODyP+oFvb5YVZs87oud+g1BeHrT9YNRZFEcDBBBpjJqOqnpi9Vn6v+rwj8C7N4Ifh3L4b3/kXpzc8GH25SfQWKOpzqQe27qj4c+6CDq1YNQvC+vPtw/2H5MXzN0aMHd24hgHBfqB92MIKNgLr7uHvEPLz947cVSjnnGLEzI//9/vb+/SdvXDPFoNls4F4Elyk12tTo4/L2z8vr8Mc7Y/CDzvmBka+Wy9t34StTPbjDYHJye1ioVxiUllQNClLVYNOcIDdQvXLUIaDOAfgR0MKmGSAeQe0oQBQ8qBcc+AMoldsApYFQUDUD5COongZz1QyQjaB6GqZkBsJuVso3Ns1A4ToALSxLrwt6xKzPyLFtPe70U6tPLWeqxbb1OLacTvw7bkOs7FSM9VVCcTHh3GVEHQAc/mrGlCr3mdCMBeqcJ/BDsFwCRHqEa0K1GdNmxkp4RGqi16rXr4vCzGAg1CNUE6EJ5oGd/NTOIhND595BbCD2IR5DbDTNwLoZoBkHG59I+OYY+9Bqmjq2FauT4mrbssQwHTmEdOiwDh0eIeIxbCIM6SZmAxBTl8SMQcwYPuQjyA00OUMmaRidMcejwQmEP9E5VdlVYeEegSLzUGqYsNmjplo9PWTzm3i9gRCP6CmfBhoI0ySLD+pgd4cr9M3nUuxOJu+DzP/+ckx/7sKHNnxIe5oj+hOqX6vumO9WXVHWo2/LCdetOm+7Pq+LciQOji28Ft4ca/ViWxumXynWyP0rYPEdUEsBAhcLFAACAAgAPG2OPQlGT4AYBQAAaBAAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAf6cwdNUEsFBgAAAAABAAEAQgAAAFIFAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="16777215" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_DURMA AD-S30100 MODELED#2">
+            <data encoding="1">UEsDBBQAAgAIADxtjj1Ywg/BxgQAAGMPAAALABEAY29sbGFkYS54bWxVVA0AB/pzB036cwdN+nMHTdWXW2+bSBTHv8po+myYCzNAhKmyaXdVKVtHSXbV7YtFMbaRDHgBN8233zMXYHDSNKr6soqUM/M7/zln7mOSt9+qA/patF3Z1EtMPYJRUefNpqx3S3zqt4sIv02Tq9X19eW7SwTiulvifd8fL3z/4eHBy5vDIdtkXtPufEaI8Cn1rfou3xdVht3ogUdxmmRdV/Rpkjd135ZfTn3TAjv1e7CXULtZXSe+rYOoqoq679LEnxWdpnlbZH2xSRmhZEHiBYnuKb0I2IWIP4PUepMKBrUtv6sb3cmpLntUFX3RLjHxCBMBRnVWFUtc1vke+6A4rrNvZZd+Xv91k/hDDTptBnYov7RZ+7jO6rLKehi68j0HB3Yod/veFQ1gqEOTXeEKBjDUIWTRltnB1ThsQMV2W+SzTCMZwK5oYOxtqaLb8iMqN0tsl2YQPA6T8vvVFaxpVXT7NOmaU5sXz8oXx6Yr9bhBvT00Wb/O2jZ7/IF4oUUY5c2p7pc4jHBKBRNoAZsNLaQgaKpSxkNPxIZQIaQXR45mIJOMExQGsOcDMcgcMpOdRXPIKIsE9cLA7ZhLHJn0JEMLGscej8UondNJLqnHqHKEnqSj/Iw6cuExHSfwQhmN8jl15JEXaAeMmU3yOZ3kIYF04IhMb416Dh0x9aRQnHoRpaN6Tic5jDocx2cqc+dspVwyyBLf2Vdp0hf5vi7/PRVrdXM0NVwyeV50XdMis0+X+M2rNx6TGHVwLDbQisMOPmZtVtkT8Amj/vEIBZ1eXRCu958XvZ+feP2hl1B8OgTfdP3lo1Y3bQXn/jUHzUrPRsslThewZASpPyhpY0tg6fiPeCwIqNrHxItlHDKptF4QckkCBaOIhDzSUIYBhyJAIAHjGkY8YAFXUAjKY6OMAy65jsk5iaPQwFhEsVaSmAguFLX9+RUr//xMUPY/WvcqOy7yfVbXxYG+ZvFd/dm4Y5wSD24WWAFhVlSVpSnHqhyq8q+Y+Bd6wb8/+XcvTu/9i96bn518+CnTlyDU06kq6oyV9fHUow5+69TghOiruw/3H1Yf8WuuGZ18CAsTCA92vTtABjsDQYTR8JAv8e0fv62pDMOQUfFM5r/f396//+TkNV1EzXYLP0zg14zKdt7o4+r2z8tr/OOTMcWhz8WBzFer1e07/MqlnsKpIzaGPaYSUXWsQ2UoCpRhxoxQDDAAJpQTMVVhxoxMGMZNY3gCdWtmmxvrcJtL6dWFBy8sVVeM8hPF2Rknhsf6GoJ3Uv2pzjFjRkZcpmvq4UNSQYnUlUdDow1ghMyYCYoZVLWpuTIT5DOoalOPbKJId1eHZsZMMAbD7LCmYWovM8ahViwQ1/PN1YRwMMyYgcUuijWCHikWasQ1EpoIh1CH0KeRqGHMyLQZIeUzaOOZFNRGDJ9rbiC1ifRG4nojSb2PpENCTdQc6qnSG9W0mQhzCNNEGmYRe9LOokijyEXUhiAuZHNoslKTVpsJmizUxKTSbc6ICwclMo8+1RNPx11uSKQJsXVia8wyapdMkcQ/qit1uNagbL4U/OFOcL5F3E+PgekvPfjGhG9IRzmjPyH9Wnan7LDu8qKefVadcW3VTdf1WZ0XMzc6tXAhvznV6knZGKYvc9to+ApO/wNQSwECFwsUAAIACAA8bY49WMIPwcYEAABjDwAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUAB/pzB01QSwUGAAAAAAEAAQBCAAAAAAUAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="16777215" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_DURMA AD-S30100 MODELED#3">
+            <data encoding="1">UEsDBBQAAgAIADxtjj0GA6V1ywQAAIAPAAALABEAY29sbGFkYS54bWxVVA0AB/pzB036cwdN+nMHTdWXXW/bNhSG/wqhXlviIUVJDGQXWdoNBbI6SLKh642hyrItwJY8SW6af7/DL5ty0jQoejM4EcmH7zmH3xLzt992W/K16vq6baYBhDQgVVO2y7pZT4PDsJpkwdtZfjW/vr58d0lQ3PTTYDMM+4soenh4CMt2uy2WRdh264hRKiKAyKrvyk21KwLfexxCMMuLvq+GWV62zdDVXw5D2yE7DBtML7F0M7/OI1tG0W5XNUM/y6NR1jMtu6oYquWMUaATKic0uwe4iNmFkJ9RamvzHXZqVX9Xd6zOD009kF01VN00oCFlIg5IU+yqaVA35SaIULFfFN/qfvZ58ddNHrkSNtp0bFt/6YrucVE09a4YsOuq7jno2LZebwZf5IAro8m68gUOuDK6rLq62PoajzlUrVZVOYp0JA6sqxb73tXKu80/kno5DezUOMGjG5Tfr65wTndVv5nlfXvoyupZ+WTf9rXuN6pX27YYFkXXFY8/EE+0KCBle2iGaZBmwWwCmRQkFWSSCEqOJWA8DYV0IMa1HI81FnnCFMJEqAyEGcBRfIZ9AxomoDJJmLCTfkQ9eZKFMcpAYmSWHfVn2DcQIdM1cZgmnsEY+wYQMhVaptiEU3fPsGcgTMtBypDLk8EZ9g0gTGMywc19Ep/QSSg4PR91H42FIDCgzHyhQ56QiVHcY3ksOfflISfMI2/FzfKhKjdN/e+hWqgzpW3w+CnLqu/bjpgVPA3evHpJsiQgPW6YJVpxXNv7oit2dm98CsjwuMeMDq+ODr/2nxdrPz+pjVwrMfu0C5Fp+subsGm7HZ4Ir9mCVnrWW56oDUhwoNVfKKXIJFc5KqngIiUGxzzhQuU4pzKzNOMxi7VYCOA4PZomacx5pnIpz2LGDY1TntBYW2UUKwxlcQxS+5WJTFmCVE25SWwOUxg/6C+Z/+fHA9j/aPZ3xX5SboqmqbbwmiXg68/6LYMZDfFkwRkWavjDWOUTk5cqn4pfNPAvtIJ/f/DvXhze+xdrb3528PFTZ6hRqIdTFdROq5v9YSA9fgs1WIne53cf7j/MPwavOWx0cOcWBxBf6M16ixHsCMRZQNyLfhrc/vHbApI0TRmIZyL//f72/v0nL65pImlXK/xwwa8dFe3c6OP89s/L6+DHO+PkB57zg5Gv5vPbd8Erp/rkTm2xo9v9DI93XFkxPoGkhOFPPR1JPKLyQDLCVcqIWpDAibIHJWcmOUEYQdAejbV6HpH0kMq7ZrgQMQYG45SZ5ASFaVRC1JkIKSZg6phJTtAoqddZ9WP66YjQhOof6H9VYpYZwi0BhbhK0DJTKbPpCcsj1vbSuKTGAx1B0BAbq8p4aktjLxWUPsTXsQ+FgeBDa50alvrMR2CQ9Sc8NkImAnDDuM+MO+NNepbCI1bEmJ4i7ISejUTPsZ03B1M78Wq4sCrTI57p0fcQzqvHYs0Min0EzGfMMOPORsgMSzTTyREyY8xMEGY9ZkaZ+dAqwSizJ60xxMRQX1LUmIKddL0+TOpxanmsRk9PMoCJBWDGcsy54Xm0V+epO9Mwb64RkTsQvIuKfy9xTF8D8QKKF0xPOaI/If1a94diu+jLqhnduc64TtUx1w9FU1ajanLo8DR+c2jU+2RpmD7JrZG7Is/+A1BLAQIXCxQAAgAIADxtjj0GA6V1ywQAAIAPAAALAAkAAAAAAAAAAAAAgAAAAABjb2xsYWRhLnhtbFVUBQAH+nMHTVBLBQYAAAAAAQABAEIAAAAFBQAAAAA=</data>
+            <materials>
+                <material id="1">
+                    <color emissive="16777215" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_DURMA AD-S30100 MODELED#4">
+            <data encoding="1">UEsDBBQAAgAIADxtjj0yIV30HgUAAJIQAAALABEAY29sbGFkYS54bWxVVA0AB/pzB036cwdN+nMHTdWYbW/bNhDHvwqhvrZEUqREBrKLLO2GAlldJNnQ9Y2hKnIswJY8SW6bb98jT7QpxUuDom8GByb1u//xjo+mkr3+ttuSL2XbVU09D1hIA1LWRXNf1Q/z4NCvZyp4vciultfXl28uCYjrbh5s+n5/EUVfv34Ni2a7ze/zsGkfIk6pjBiLBvVtsSl3eeC3LkIWLLK868p+kRVN3bfV50PftMAO/QbKS3j6sLzOouEZRLtdWffdIotGVc+1aMu8L+8XnDI6o3pG1R1jF4JfSP0JpIM120Gn1tV/6o7m7FBXPdmVfdnOAxpSLkVA6nxXzoOqLjZBBIr9Kv9WdYtPq78+ZJF7gqSxY9vqc5u3j6u8rnZ5D103tnPQsW31sOl9kQPuGVweSl/ggHuGJsu2yre+xmMOlet1WYwiHYkDD2UDfW8r0/pQfyTV/TwYpsYJHt2g/H51BXO6K7vNIuuaQ1uUZ+WzfdNVtt+gXm+bvF/lbZs//kA8s6KAFM2h7ueBSoPFjCktSSoJ47EKpSYnoEQaQjkAActZPJE5mlJYjamhqQ4VmDULOVUJtKLiQZ+yMLHNsVAx5rc0tXg+NEyYqSRhwkcuY8PJI1Gh4FCBBChXvsvU4vnIkFuLCNNk7DOxeD7QQZOATiGR0bhMLScfaZMFiw5jPfKZWjwfFqaCzOA4GOk9etTKmJ6ZpxE9zpOhTEJYrSbaIz1puZwmcEKn6AY9nXaDz4QHeia8TwdtFnnre5H1ZbGpq38P5cqcYE0Nh11RlF3XtAT3yzx49eINwHVAOtie9+AVw07a522+G3bix4D0j3uo2PDmoPKt/zxr/fTEGrksofq0CxGm/vyWr5t2B+fPSzb8IJ30NtZmuxNKZuYv1FoqHZsa1VTGMiWIRZzE0tTimGo1UBULLqxYShbD9FiapCKOlamlsRI8RirSOKHCeikKBqRcCKZtuzrRKU+AAmdYDDUoLYD9g46hTlNp44LBfdFfsibOjxGL/0crYpfvZ8Umr+tyy16yLHz9pN+wNGgIhxXMurQzIEw9wbo29VT+ooF/JotnBv/22eG9e9b64WcHHy5bfQVCO5zmwey+qt4fetLBbawGI7S+vH139275PnjJAWSDu2ZhAOFKUT9sIcIwAuZ65K4a8+Dmj99WLEnTlDN5JvLfb2/u3n704mKKpFmv4eoE9y0Tber0fnnz5+V18OOdcWqHnWsHIl8tlzdvghdO9ak5Di7HZveLxO55OPjhowiHj/l2JPWIqTOiSWzKmJgFyQTqGBEGmuIE+QiaJ+dtvo+IUZ+ZB5eICyKJSdI2y7E4wQQKgCkxJyVTUDC0cSxOcFDiEWdLEx1zcER6BAcgsYRbBapMmtx+06MfxXxNJTYFfLQp+VAeMadHbHw5NsCHFtgIcoQJMVq4MWn01wbSEeQWxmb0KI4oRqIoHWE5xvjMTBjLGWIxVgsbLsFoElOQPhPIfB1TltnCsRHC5Bn2iGGPGD/j66AYQYEwwcixXQCQgJ3rFBdrOoLquJqpMSk7b7i0PQSrxmPSMkTSR7A2PRYjO+0gamZYYSoKU/EgR2fOLORDYI1K7cNByVCpn2SDBGOYSzVDV1xrHNca5xPOBp6akaV26jnGYhzHcszlhMuBi4G7dtTAE+RZtDfnuztjoY4vVpE7oLxXN/9NzTH7Ygyv5PDK7SlH9CekX6rukG9XXVHWo7fQCbelOXa7Pq+LcmQmhxZ+HV4davP7do/M/rIMTu6fBovvUEsBAhcLFAACAAgAPG2OPTIhXfQeBQAAkhAAAAsACQAAAAAAAAAAAACAAAAAAGNvbGxhZGEueG1sVVQFAAf6cwdNUEsFBgAAAAABAAEAQgAAAFgFAAAAAA==</data>
+            <materials>
+                <material id="1">
+                    <color emissive="16777215" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_DURMA AD-S30100 MODELED#5">
+            <data encoding="1">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</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_DURMA AD-S30100 MODELED#6">
+            <data encoding="1">UEsDBBQAAgAIAD5tjj2X8XJ2OgMAAEoKAAALABEAY29sbGFkYS54bWxVVA0AB/tzB037cwdN+3MHTdVWbW/bIBD+K4h+tg3OS5PK9pS13TSpW6q0m7Z+iZhDEiQbexivy7/fgU3jNGkWVf0yRYK75547uOMciN79yTP0m6tKFDLG1CcYcZkWCyFXMa710hvhd0l0Ob25mVxNEJBlFeO11uVFEDw+PvppkWVswfxCrYKQkEFAadCy79I1zxnuRu/7FCcRqyqukygtpFbiZ60LBVit1zBPQLud3kRBqwMpz7nUVRIFO2LHNVWcab5IQkKJR8YeGd1TetEPLwbjB6C21iiHpJbiRd6TOaql0CjnmqsYE5+Egz5GkuU8xkKmaxwAo5yzP6JKHuZfb6PAabDpJrFM/FRMbeZMipxpSN3YDoEOy8RqrbskBzgdXFa8S3CA0yEkV4JlXU4HcxBfLnm6s9IT4oAVLyB3JUz0Vt4gsYhxezSOsHFF+XB5CWea82qdRFVRq5QfpHtlUQmbN7CXWcH0nCnFNv8ge5aEUVrUUsc47OPEG/d6yKPnQz8cIEpGA7SLjAlpENrr2q1mbHvue947zju+UdDZehJpnq6l+FXzuWnOQkIfpymvqkKhphQxPjs5txFGFRR+AU49qFHJFMvbGn/HSG9KEOzqpgW71h9HrQ971sBtEsT9DIJm58cPUxYqh8465Shb6rNk6QgOkiI4KWKGrmRnO7WDNb1F5Q9vZfgf1T1npZeumZQ8o6cUv8t/lvYYJ8SnA0R8aG4oud838rCRx0Y+N/Jb1P3ILnovF//uaHnvj1pvX1t8uKy0AKItp1FMjwtZ1hpVcJtJMEL06d2n+0/TL/iUr9wu7sJCAeEvWa4yWMF9CSFG7q86xrOP7+cePbDmt+vZ/fX3zorN5lCxXMKlAzeVWee505fp7PPkBv/7k9jGoYfiwMqX0+nsCp94yNtwkNw2bJmcoz701BBGinowhnZ0SGiRATJ914eRonMYQzs6ZGiRHvyIjWE4PcvZIgOLGJ3AbFBqJdpBGmlotb61hU8/hxCr0ZZNbWRqd7hFmn1HQWn6yp0tyM2FGLjydK7c7g3rMPuggacUPJU6zB30FdTfoqpZNq9SLndeD89wO5tDrzSTKd8xo1pBV57V0nxXiwazHd06ucde8hdQSwECFwsUAAIACAA+bY49l/FydjoDAABKCgAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUAB/tzB01QSwUGAAAAAAEAAQBCAAAAdAMAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_DURMA AD-S30100 MODELED#7">
+            <data encoding="1">UEsDBBQAAgAIAD5tjj17/VI+xwMAANULAAALABEAY29sbGFkYS54bWxVVA0AB/tzB037cwdN+3MHTdWW227bOBCGX4Vgr2WR1MFSIKvIpt1FgWwdJNmizY3ByrQtQKK8EtXUb79DSrTpxHWNojeLBObwm59DcngQs7ff6wp9E21XNnKG6YRgJGTRLEu5nuFerbwEv82zm/nt7fW7awRi2c3wRqntle8/Pz9Piqaq+JJPmnbtM0Iin1J/VD8UG1Fz7EYPJxTnGe86ofKsaKRqy6+9alpgvdpAeQ21u/lt5o91ENW1kKrLM//IdJoWreBKLHNGKPFI6pHkkdKrkF1F6RNIR29Ww6RW5Q91e3fWy1KhWijRzjCZEBaFGEleixkuZbHBPii2C/697PKnxT93mW9rMOhhYlX5teXtbsFlWXMFU9e+U9CyqlxvlCuywNahyVq4AgtsHUKKtuSVq3GYRWK1EsVRT3tiwVo0MPe21NFHe4fK5QyPS2MFO5uUP29uYE1r0W3yrGv6thAn5d626Uozb1CvqoarBW9bvvuJ2DMijIqml2qGQ4bzNAiQx1iE0iScRBRKC2hKyFCj8XRCkhBZQIPoyDZKykgCDROwSBxOpolLBkFEXgr2xAgi6PVoLAfiCNzRGGKHs68YceY7eckzJYqNLP/txULv/EbCISkK0XVNi4Y8z/CbixNHYRN3sKxLaBXACmx5y+txBT9jpHZbMEz3eoO73i9nvU+vvL4dJZivp+APQz+/VWTT1rBvL9koo/TFbNkU5x5FsFT6f0LTmNJYW2lCokQ7gB/8CQtTQrUVxRGDZfZGgSlNMdinIo1hfsfinZ5M+j9auZpvvWLDpRQVvWT5XP2raeeQ7wiSDudD5z7UdjzYqban2v4deT8ziuDHyX84m97Hs967X00+fExVCUKTTl3Rp6SU216hDr62EpwQff7w4fHD/CO+5KIwnduwkED4ZMh1BT3YswQ3h/2UzPD9X38sPHqiz0/v7x/ff3Z6HAaHmtUKPorwJdX9vGz0cX7/9/Ut/vmROMShp+JAzzfz+f07fOEiH8IxaLIPu81jxGBPRfBLUQK/zPxaMjWEEjAIOKaAUgNTh0wNidFwN+g/uN6BRA4hhkxRYEIHJk5g4hwIcQgxhBnCDKHUacZQaCShDk6hYEOxZ2xgejbQNIDCCJNB6EJyBImB6cD0wIwwMsmJTHIcFDooNCQ2JHYINYQgMl6c1NTYyAYSOiQ0JDAEuol1dUhuiGIzbwcFBmX+Vh8hu43BHt4mvt0JzuvHfexYZt6W8KqFV6ujPKK/IP1Wdj2vFl0h5NFD7gU3pd7fneKyEEdu1LdwAN/0Ul8hy4GZwzs2su/u/D9QSwECFwsUAAIACAA+bY49e/1SPscDAADVCwAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUAB/tzB01QSwUGAAAAAAEAAQBCAAAAAQQAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_DURMA AD-S30100 MODELED#8">
+            <data encoding="1">UEsDBBQAAgAIAD5tjj1DPesMyQMAAOMLAAALABEAY29sbGFkYS54bWxVVA0AB/tzB037cwdN+3MHTdWWbW/bKhTHvwpir2ODn2JXjqfebvdqUrdUbTdtfRMxhySWbOzZeF2+/Q7YJCTNsmjam6tENufHn8PhAIb09Y+qRN952xW1mGHqEIy4yOtlIdYz3MvVJMavs/Rmfnt7/eYagVh0M7yRsrly3efnZyevy5ItmVO3a9cjJHQpdUf1Q77hFcO298ChOEtZ13GZpXktZFt87WXdAuvlBt7XYN3Nb1N3tEFUVVzILkvdg6LVNG85k3yZeYSSCUkmJH6k9CrwrsLkCaRjbVrBoFbFL3W76rQXhUQVl7ydYeIQLwwwEqziM1yIfINdUDQL9qPosqfFx7vUNRYEPQysLL62rN0umCgqJmHoqu4UNKws1htpiwwwNjRZc1tggLHBJW8LVtoaixnEVyueH/S0IwaseQ1jbwvlfSxvUbGc4XFqjGBrkvLvzQ3MacW7TZZ2dd/m/KR80tRdoccN6lVZM7lgbcu2vxFPtAijvO6FnOHAw9mEhl6IJh48kjhwQgrGHtGEEGPTaOqQOEB7RP3wyBr1XghPLyaIkihwpvEBGiUkfiHZIS1JfP8orh2xBAdRKbILyhhanLpWlrJU8nwjim89X6h9UAvYMnnOu65u0ZD1GX51cRopLOkOJnkJrXyYj4a1rBrn8zNGcttAQXevlrtd++Vs7dOLWtdECcWXQ3CH0M8vHFG3FaziS5bNKD0arTdViwZBgtXfoUlEaaRKSUzCWFWo6d3Vx16QEKpKYRR6ap5HgX7r11A+5Wl08zcm7/Rgkv/RzFWsmeQbJgQv6SXTZ+tfDDuDfIeQdNgfKveBKkdDOVHlqSr/jbyficL/dfIfzqb38Wzt3Z8mH45WWYBQp1MZapcUoukl6uDsFVAJ3ucP7x7fzT/gSz4UunPjFhIIB4hYl9CD2Uvw5TAHywzf//fPYkJP9Pnp7f3j289Wj0NwqF6t4IiEc1X1c9zow/z+/fUt/v2W2Puhp/xAzzfz+f0bfOEk79150GTntski5MGaCuFJUQxPTz8NmWoSoWHbqx98uYGEFiGaUAJiAo2nYCa6YWKRqSaUIh9QAk/Vxtfe94RoMtUk1CTRJLHIoKHKhI59HUmso41tFFgo0CTSJLII1YQgMn7TqLa8kQ0ksEigiT+SQIcSKD9K5g2vHfMGpmLQQcWDMB6ENiQHkGiYaOZDuKrbaHAYDQ4t5muWuo3aQmYZQ3m4qbhmJVh3IfvqY5i+acIdF+6wlvKA/oH0e9H1rFx0ORcH17ojrt9qfXeSiZwfVKO+hQ34qhfqE7IcmN68YyNzC89+AlBLAQIXCxQAAgAIAD5tjj1DPesMyQMAAOMLAAALAAkAAAAAAAAAAAAAgAAAAABjb2xsYWRhLnhtbFVUBQAH+3MHTVBLBQYAAAAAAQABAEIAAAADBAAAAAA=</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+        <geometry id="FRAME_MM_DURMA AD-S30100 MODELED#9">
+            <data encoding="1">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</data>
+            <materials>
+                <material id="1">
+                    <color emissive="-1" />
+                </material>
+            </materials>
+        </geometry>
+    </geometries>
+</job>

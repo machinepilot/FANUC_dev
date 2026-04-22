@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+
+# MCP / RAG caches
+.cache/
+mcp_servers/**/.cache/
+
+# Editor / OS
+.DS_Store
+Thumbs.db
+*.swp
+
+# Secrets and local overrides
+.env
+.env.*
+mcp.local.json
+*.local.json
+
+# Eval runtime output
+evals/results/
+evals/runs/
+
+# Ingestion scratch
+fanuc_dataset/ingestion_scratch/
+
+# Task state (templates only)
+task_state.json
+!cowork/templates/task_state.template.json
+
+# Roboguide generated/binary
+*.fpc
+*.sit
+*.wsp
+tools/roboguide/workcells/

@@ -1,0 +1,214 @@
+Ciclo fisso automatico assi riscontro Ver.012.59 : 201
+
+DBL MskRecG    ; Maschera per Disab/Enab recupero giochi
+DBL StartAtRetr=0 ; Flag avvio a quota di rinculo
+DBL QRincX1, QRincX2, QRincZ1, QRincZ2
+
+ ?%C17.1 = 1 ;ciclo riscontri avviato
+
+ ;se pestone oltre il PCL e rinculo abilitato, attiva flag per andare a quota + rinculo
+ IF(%C36.28 && %C33.11) THEN
+   StartAtRetr=1 ; Flag avvio a quota di rinculo
+ ENDIF
+
+ IF( (%prog[%np].xa >= 0) || ( (%prog[%np].type != 2) && (%prog[%np].type != 10) ) ) JMPF 30
+ ;nel caso di piega calandrata incrementale, decrementa ripetizioni
+ IF( %nrip <= 1 ) JMPF 30
+ %nrip = %nrip - 1
+ %C17.22 = 1 ;aggiorna ripetizioni su UI
+ _wait_bit(0, "%C33.24", 1) ;attende conferma da UI
+ JMPF 30
+
+N10
+ ?%C17.2 = 1 ;avvio tempo cambio passo
+ _wait_bit(0, "%C33.1", 1) ;attende fine tempo di cambio passo
+ ?%C17.3 = 1 ;fine tempo cambio passo
+ SYN
+ StartAtRetr=0 ; Azzera flag avvio a quota di rinculo
+ IF( %C0.2 ) JMPF 25 ;stato macchina semiautomatico
+
+ ;DECREMENTO RIPETIZIONI
+ %nrip = %nrip - 1 ;decrementa ripetizioni
+ IF( %nrip > 0 ) JMPF 25
+
+ ;INCREMENTO PASSO PROGRAMMA
+N11 VA0 = %np + 1 ;incrementa indice
+ IF( VA0 >= %nmaxp ) JMPF 12
+ %np = VA0
+ JMPF 20
+N12 %np = 0
+ IF( !%C3.5 ) JMPF 17 ;esecuzione programma singolo
+ IF( !%C3.3 ) JMPF 14 ;esecuzione lista singolo
+ IF( !%C3.4 ) JMPF 13 ;esecuzione ultimo programma
+
+ ;CONTATORE PEZZI LISTA circolare
+ %piecedlista = %piecedlista + 1
+ IF( %pieceflista == 0 ) JMPF 13
+ %pieceflista = %pieceflista - 1 ;aggiorna contapezzi
+ IF( %pieceflista > 0 ) JMPF 13 ;verifica se i pezzi sono arrivati a 0
+ ?%C17.21 = 1 ;setta messaggio Pezzi Finiti
+ _wait_bit(0, "%C33.2", 1) ;attendi pulsante START per continuare
+ ?%C17.21 = 0 ;resetta messaggio Pezzi Finiti
+ SYN
+
+
+ ;GESTIONE CAMBIO PROGRAMMA
+N13 _wait_bit(0, "%C32.16", 0) ;per evitare messaggio "assi in movimento"
+ ?%C18.0 = 1 ;richiesta cambio programma
+ _wait_bit(0, "%C0.14", 1)
+ ?%C18.0 = 0 ;richiesta cambio programma
+ SYN
+ JMPF 20
+
+ ;CONTATORE PEZZI LISTA singola
+N14 %piecedlista = %piecedlista + 1
+ IF( %pieceflista == 0 ) JMPF 20
+ %pieceflista = %pieceflista - 1 ;aggiorna contapezzi
+ IF( %pieceflista > 0 ) JMPF 20 ;verifica se i pezzi sono arrivati a 0
+
+ IF( !%C3.4 ) JMPF 15 ;esecuzione ultimo programma
+ ?%C17.21 = 1 ;setta messaggio Pezzi Finiti
+ _wait_bit(0, "%C33.2", 1) ;attendi pulsante START per continuare
+ ?%C17.21 = 0 ;resetta messaggio Pezzi Finiti
+ SYN
+
+ ;GESTIONE CAMBIO PROGRAMMA
+N15 _wait_bit(0, "%C32.16", 0) ;per evitare messaggio "assi in movimento"
+ ?%C18.0 = 1 ;richiesta cambio programma
+ _wait_bit(0, "%C0.14", 1)
+ ?%C18.0 = 0 ;richiesta cambio programma
+ SYN
+ JMPF 20
+
+
+ ;GESTIONE PEZZI PROGRAMMA
+N17
+ VA0 = %C6 ;pezzi prodotti per ogni ciclo
+ IF( VA0 == 0 ) VA0 = 1
+ %head.pieced = %head.pieced + VA0
+ IF( %head.piecef == 0 ) JMPF 20
+ %head.piecef = %head.piecef - VA0 ;aggiorna contapezzi
+ IF( %head.piecef > 0 ) JMPF 20 ;verifica se i pezzi sono arrivati a 0
+ ?%C17.21 = 1 ;setta messaggio Pezzi Finiti
+ _wait_bit(0, "%C33.2", 1) ;attendi pulsante START per continuare
+ ?%C17.21 = 0 ;resetta messaggio Pezzi Finiti
+ SYN
+N20 %nrip = %prog[%np].rip ;aggiorna numero di ripetizioni
+ IF( (%pargen_due.bgn.11) && (%nrip == 0) ) JMP 11 ;piega simulata saltata
+N25 %C17.4 = 1 ;cambio passo effettuato
+ _wait_bit(0, "%C33.7", 0) ;attende azzera cambio passo
+ SYN ;attende anche l'interprete, per avere da PLC C33.11 aggiornato
+N30
+; CAMBIO PASSO FINITO - AVVIO POSIZ. RISCONTRI
+ ?%C17.5 = 1 ;posiz. riscontri in corso
+ IF( (%prog[%np].type != 2) && (%prog[%np].type != 10) && (%prog[%np].type != 7) ) THEN
+  JSR 211 ;ciclo utente prima della anticoll
+ ENDIF
+ SYN
+ CALL AntiColl(0,0) ;chiama routine di anticollisione
+ JSR 209 ;ciclo utente
+ JSR 206 ;gestione parcheggio assi utente
+ IF(StartAtRetr) JSR 213 ; Avvio a quota di rinculo
+
+ MskRecG=%C80 ; Carica maschera per Disab/Enab recupero giochi
+
+ ;Gantry asse X1-X2 abilitato (X2 non va comandato)
+ IF((%ax[2].pa[3].25) && (%gantry[0].Gdat[0] == 3)) THEN
+   %faseaxb = QNAN()
+   %fasebxb = QNAN()
+   %fasecxb = QNAN()
+   %rincb = QNAN()
+   MskRecG = MskRecG & 0xFFFFFFE7 ;azzera bits X2 maschera recupero giochi
+ ENDIF
+
+ ;Gantry asse R1-R2 abilitato (R2 non va comandato)
+ IF((%ax[4].pa[3].25) && (%gantry[1].Gdat[0] == 5)) THEN
+   %fasearb = QNAN()
+   %fasebrb = QNAN()
+   %fasecrb = QNAN()
+   MskRecG = MskRecG & 0xFFFFFE7F ;azzera bits R2 maschera recupero giochi
+ ENDIF
+
+
+ ?%C17.6 = 1 ;sblocco prima G0 su CH3-CH5
+ _wait_bit(0, "%C33.3", 1) ;attende sblocco prima G0 da CH3
+
+; Disabilita recupero giochi fase uno
+ IF (MskRecG & 0x1) THEN ;Test del bit generale
+    IF (MskRecG & 0x2) RCG[X]=0
+    IF (MskRecG & 0x8) RCG[Y]=0
+    IF (MskRecG & 0x20) RCG[Z]=0
+    IF (MskRecG & 0x80) RCG[U]=0
+    IF (MskRecG & 0x200) RCG[V]=0
+    IF (MskRecG & 0x800) RCG[W]=0
+ ENDIF
+SYN
+IF (%cax7.dt0 == 1) VA0 = QTA(W)
+IF ((%cax7.dt0 == 1) && (%prog[%np].zb < VA0)) G4 F0.1
+; Posizionamento assi fase uno
+ G0 X%faseaxa Y%faseaxb Z%faseara U%fasearb V%faseaza W%faseazb
+
+ PAUSE
+ ?%C17.7 = 1 ;sblocco seconda G0 su CH3-CH5
+ _wait_bit( 0,"%C33.4",1) ;attende sblocco seconda G0 da CH3
+
+; Disabilita recupero giochi fase due
+ IF (MskRecG & 1) THEN ;Test del bit generale
+    IF (MskRecG & 0x4) RCG[X]=0
+    IF (MskRecG & 0x10) RCG[Y]=0
+    IF (MskRecG & 0x40) RCG[Z]=0
+    IF (MskRecG & 0x100) RCG[U]=0
+    IF (MskRecG & 0x400) RCG[V]=0
+    IF (MskRecG & 0x1000) RCG[W]=0
+ ENDIF
+SYN
+IF (%cax7.dt0 == 1) VA0 = QTA(W)
+IF ((%cax7.dt0 == 1) && (%prog[%np].zb < VA0)) G4 F0.1
+; Posizionamento assi fase due
+ G0 X%fasebxa Y%fasebxb Z%fasebra U%fasebrb V%fasebza W%fasebzb
+
+ ?%C17.8 = 1 ;sblocco terza G0 su CH3-CH5
+ _wait_bit( 0,"%C33.5",1) ;attende sblocco terza G0 da CH3
+
+; Riabilita recupero giochi
+IF (MskRecG & 1) THEN ;Test del bit generale
+  IF (MskRecG & 0x6) RCG[X]=1
+  IF (MskRecG & 0x18) RCG[Y]=1
+  IF (MskRecG & 0x60) RCG[Z]=1
+  IF (MskRecG & 0x180) RCG[U]=1
+  IF (MskRecG & 0x600) RCG[V]=1
+  IF (MskRecG & 0x1800) RCG[W]=1
+ENDIF
+SYN
+IF (%cax7.dt0 == 1) VA0 = QTA(W)
+IF ((%cax7.dt0 == 1) && (%prog[%np].zb < VA0)) G4 F0.1
+; Posizionamento assi fase tre
+ G0 X%fasecxa Y%fasecxb Z%fasecra U%fasecrb V%fasecza W%faseczb
+
+ ?%C17.9 = 1 ;setta assi in posizione
+
+ ;verifica se abilitato rinculo assi X o Z
+ IF(!%C33.11) JMPF 200
+ QRincX1 = %prog[%np].xa + %prog[%np].corxa + %rinca ;quota rinculo X1
+ QRincX2 = %prog[%np].xb + %prog[%np].corxb + %rincb ;quota rinculo X2
+ VA2 = ABS(%pargene.dwgn[5]) ;quota rinculo assi Z
+ QRincZ1 = %prog[%np].za - VA2 ;quota rinculo Z1
+ QRincZ2 = %prog[%np].zb + VA2 ;quota rinculo Z2
+ _wait_bit(0, "%C33.6", 1) ;attende abilitazione per rinculo
+ ?%C17.10 = 1 ;rinculo in corso
+ IF(!%C33.9) JMPF 170
+ G0 V(QRincZ1) W(QRincZ2) ;eventuale rinculo Z prima di X
+ ?%C17.12 = 1 ;rinculo Z prima di X terminato
+ _wait_bit(0, "%C33.16", 1) ;attende abilitazione per rinculo X
+N170 G0 X(QRincX1) Y(QRincX2) ;rinculo X
+ IF(!%C33.10) JMPF 200
+ ?%C17.13 = 1 ;rinculo X terminato
+ _wait_bit(0, "%C33.17", 1) ;attende abilitazione per rinculo Z dopo X
+ G0 V(QRincZ1) W(QRincZ2) ;eventuale rinculo Z dopo X
+
+N200
+ ?%C17.11 = 1 ;fine ciclo riscontri
+ _wait_bit(0, "%C33.7", 1) ;attende cambio passo
+ ?%C17 = 3 ;mantiene attivi C17.0 e C17.1
+ _wait_bit(0, "%C33.8", 1) ;attende conferma fine ciclo
+ JMPB 10

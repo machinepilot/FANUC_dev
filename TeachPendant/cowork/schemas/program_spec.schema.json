@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://theway.automation/teachpendant/schemas/program_spec.schema.json",
+  "title": "ProgramSpec",
+  "description": "Architect's program specification for a TP or KAREL program.",
+  "type": "object",
+  "required": ["task_id", "customer_id", "program_name", "program_kind", "fanuc_controller", "language", "status"],
+  "additionalProperties": true,
+  "properties": {
+    "schema": { "type": "string", "const": "program_spec" },
+    "task_id": { "type": "string", "format": "uuid" },
+    "customer_id": { "type": "string" },
+    "system": { "type": "string" },
+    "program_name": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]{0,35}$" },
+    "program_kind": {
+      "type": "string",
+      "enum": ["tp_main", "tp_subprog", "karel", "bg_logic", "cond_program", "error_handler", "condition_monitor"]
+    },
+    "fanuc_controller": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["R-30iB", "R-30iB Plus", "R-30iB Mate", "R-30iB Compact Plus", "R-30iA"]
+      },
+      "minItems": 1
+    },
+    "system_sw_version": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "language": {
+      "type": "string",
+      "enum": ["TP", "KAREL", "mixed"]
+    },
+    "groups": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 1, "maximum": 8 }
+    },
+    "created_by": { "type": "string" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "in_review", "approved", "superseded"]
+    },
+    "related": {
+      "type": "object",
+      "properties": {
+        "program_intake": { "type": "string" },
+        "integration_spec": { "type": "string" },
+        "safety_review": { "type": "string" }
+      }
+    },
+    "citations": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

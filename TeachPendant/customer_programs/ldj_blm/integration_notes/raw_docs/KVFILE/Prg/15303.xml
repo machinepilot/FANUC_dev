@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<config>
+    <upper>
+        <ip>192.168.2.237</ip>
+        <port>2011</port>
+        <tools>
+            <tool contour="50289C" station="0" pos="1487.42" length="1473.2" rotation="front" />
+        </tools>
+    </upper>
+    <lower>
+        <ip>192.168.2.237</ip>
+        <port>2012</port>
+        <tools>
+            <tool contour="50298" station="0" pos="1174.24" length="1879.6" rotation="front" />
+        </tools>
+    </lower>
+</config>

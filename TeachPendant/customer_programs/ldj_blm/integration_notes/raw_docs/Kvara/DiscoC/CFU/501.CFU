@@ -1,0 +1,23 @@
+Ciclo fisso taratura sensori in automatico Ver.012.38 : 501
+ IF(!%C37.20) JMPF 20
+ PRS[X] = %ap[16].pt[2] ;quota taratura asse S1
+ _isocmd(0x0, X, 6)
+N20 IF(!%C37.21) JMPF 30
+ PRS[Y] = %ap[17].pt[2] ;quota taratura asse S2
+ _isocmd(0x0, Y, 6)
+N30 IF(!%C37.22) JMPF 40
+ PRS[Z] = %ap[18].pt[2] ;quota taratura asse S3
+ _isocmd(0x0, Z, 6)
+N40 IF(!%C37.23) JMPF 50
+ PRS[U] = %ap[19].pt[2] ;quota taratura asse S4
+ _isocmd(0x0, U, 6)
+N50 IF(!%C37.24) JMPF 60
+ PRS[V] = %ap[20].pt[2] ;quota taratura asse S5
+ _isocmd(0x0, V, 6)
+N60 IF(!%C37.25) JMPF 900
+ PRS[W] = %ap[21].pt[2] ;quota taratura asse S6
+ _isocmd(0x0, W, 6)
+N900 ?%C18.14 = 1 ;setta sincronismo taratura eseguita a plc
+ _wait_bit(0, "%C37.1", 1) ;attende taratura immediata eseguita da plc
+ ?%C18.14 = 0 ;resetta sincronismo taratura eseguita a plc
+N1000 RET

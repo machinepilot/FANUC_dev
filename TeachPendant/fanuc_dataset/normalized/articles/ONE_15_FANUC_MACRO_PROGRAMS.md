@@ -1,0 +1,71 @@
+﻿---
+id: ONE_15_FANUC_MACRO_PROGRAMS
+title: "FANUC Macro Programs"
+topic: karel
+fanuc_controller: [R-30iB, R-30iB Plus]
+system_sw_version: [V9.x]
+language: TP
+source:
+  type: third_party_integrator
+  title: "ONE Robotics Company Blog"
+  tier: T3
+license: reference-only
+revision_date: "2026-04-22"
+related: []
+difficulty: intermediate
+status: draft
+supersedes: null
+---
+
+# FANUC Macro Programs
+
+## Summary
+
+Migrated from `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/articles/ONE_15_FANUC_Macro_Programs.txt` as part of the TeachPendant migration. Original source: ONE Robotics Company Blog. Review and update `related:` with neighbor entry IDs.
+
+## Body
+
+
+# FANUC Macro Programs
+
+Filed under:FANUCKAREL ProgrammingOpen Source
+I was working on a KAREL project the other day where I really wanted to use anassociative arrayto store somekey => valuepairs. While aSTRUCTwould be appropriate if my keys were known ahead of time, there’s no data type for mapping unknown keys to values…
+…so I built ahash tableimplementation that you can use in your own KAREL programs. The source is available here:https://github.com/onerobotics/hash.
+Usage is documented in theREADME, but I thought it might be interesting/useful to talk a bit about what’s going on behind the scenes.
+The KAREL translator allows you to include other files into your source code line-for-line with the%INCLUDEdirective.
+I’ve found that it’s useful to separate shared library constants, types, routines and vars into their own*.c.kl,*.t.kland*.h.klfiles respectively.
+I wanted to allow other users the flexibility to customize the memory footprint of their hash tables while still simplying includinghash.t.kl.
+ThehashNodestruct defined inhash.t.kluses the constantsHASH_KEYSIZEandHASH_VALSIZEfor the string-lengths of those fields. When translated, your KAREL program will use the current value of those constants, and the translator will throw an error if they are undefined.
+Thehash functionmakes use of theORDbuilt-in which returns the ASCII code for a given character. I haven’t needed this one many times, but I do make use of its cousinCHRfrom time to time.
+Hash tables work by computing an index for a given key with ahash function. Ideally the index would be unique for all keys, but given limited memory available, it is possible that keys will collide. It’s also possible that the table will fill up completely. (You can see these conditions tested inthe KUnit test suite).
+To prevent my index function from looping forever on a potentially full table, I used aFORloop that can only go aroundARRAY_LEN(tbl)times, incrementing theindexattempt on each go (this is calledlinear probingin hash-table speak). If the index was available in the table, IRETURNthe value immediately, stopping theFORloop before it finishes.
+This is about the closest thing KAREL has a pointer. Essentially it allows you to pass any variable from any program to a routine without having to previously declare it.
+Why did I use it here?
+Well, the current implementation only supports mapping string keys to string values, but I might want to have a hash table that stored something else like numbers or positions someday.
+If that were the case, thehashPut,hashGetandhashDelroutines could be modified to dispatch to alternative routines based on the provided variable’s type.
+Well it wouldn’t be a post about KAREL unless I talked a little bit about testing. Though I haven’t used this library extensively, I am pretty confident that it works as intended because it’sunit test suitepasses.
+It’s strangely satisfying to think of edge-cases and devise tests for them.
+Side-note:KUnithas been updated to provide plaintext responses by default, so I can run all the tests with a simplecurlcommand:curl -s http://localhost/karel/kunit?filenames=test_hash.
+I hope you learned something new about KAREL by reading this post or reading through the library’s source code. Let me know if you make use of the hash table in a project!
+I email(almost)every Tuesday with the latest insights, tools and techniques for programming FANUC robots. Drop your email in the box below, and I'll send new articles straight to your inbox!
+No spam, just robot programming. Unsubscribe any time. No hard feelings!
+©2013-2019 ONE Robotics Company LLC. All rights reserved.
+Privacy•Terms•RSS Feed
+
+URL: https://www.onerobotics.com/posts/2016/hash-table-implementation-for-fanuc-karel/
+
+## Citations
+
+- Primary: ONE Robotics Company Blog (keywords: macro, macro program, manual function, group mask, utility, background).
+- Applicability: FANUC TP Programming, R-30iB Plus.
+
+## Discrepancies
+
+None documented in the legacy source. Re-verify against a T1 vendor manual before promoting `status` from `draft` to `approved`.
+
+## Provenance
+
+- Migrated by: inline migration on 2026-04-22.
+- Source file: `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/articles/ONE_15_FANUC_Macro_Programs.txt`.
+- Classification: articles / topic=karel.
+

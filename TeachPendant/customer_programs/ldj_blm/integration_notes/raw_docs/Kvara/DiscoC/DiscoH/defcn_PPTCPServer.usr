@@ -1,0 +1,98 @@
+SECTION User
+
+typedef struct {
+	string  NameProg[21];
+} LIST_PROG;
+
+typedef struct {
+	word    PPCtrl;
+	
+//Client OutputArea	
+	word	PPMode;	
+	word    PPCommand;	
+
+	string  PPProgram[41];	
+	string  PPList[41];
+	string  PPWorkProgPath[41];
+		
+	word    PPActiveData;	
+	word    PPActiveDataB;
+
+	dword   PPbendO;		
+	dword 	PPpiecefO;
+	dword 	PPpiecedO;
+
+	dword 	PPlargO;
+	dword 	PPangyaO;
+	dword 	PPcorayaO;
+	dword 	PPcoraybO;
+	dword 	PPxaO;
+	dword 	PPxbO;
+	dword 	PPcorxaO;
+	dword 	PPcorxbO;	
+        dword   PPaaO;
+        dword   PPabO;
+	dword   PPnewpbO;
+	dword   PPnewpcO;
+	dword   PPforceO;
+	dword   PPtbendO;
+	dword   PPpmsO;	
+	dword   PPMuteO;
+	dword   PPcorpinO;
+	dword   PPyaO;
+	
+	dword   PPBeamFeedRateO;
+	dword   PPBackGFeedRateO;
+	
+	
+//Client InputArea				
+	string  PPErUITextA[200];
+	string  PPErUITextB[200];
+	word 	PPErrorCode;
+	word    PPAckMode;
+	word    PPAckCommand;
+	word    PPActualMode;		
+	word    PPErrData;
+	dword   PPErrValue;
+	
+	word    PPAckData;
+	word    PPAckDataB;
+
+	dword 	PPpiecefI;
+	dword 	PPpiecedI;
+	
+	dword 	PPlargI;
+	dword 	PPangyaI;
+	dword 	PPcorayaI;
+	dword 	PPcoraybI;
+	dword 	PPxaI;
+	dword 	PPxbI;
+	dword 	PPcorxaI;
+	dword 	PPcorxbI;
+        dword   PPaaI;
+        dword   PPabI;		
+	dword   PPnewpbI;
+	dword   PPnewpcI;
+	dword   PPforceI;
+	dword   PPtbendI;
+	dword   PPpmsI;	
+	dword   PPMuteI;	
+	dword   PPcorpinI;
+	dword   PPyaI;
+		
+	dword   PPBeamFeedRateI;
+	dword   PPBackGFeedRateI;
+	
+	LIST_PROG ListProg[21];
+	
+//EsaBend as Client
+	word    PPServerCommand;
+	word    PPClientAckCmd;
+	string  PPServerProgram[41];
+
+	
+} S_PP_TCP_SERVER;
+
+S_PP_TCP_SERVER PPTcpServer;
+
+ENDSECTION User

@@ -1,0 +1,10 @@
+SERVER OUTPUT REGISTERS (Press Brake → PLC),,,,,
+Address,Size,Type,Description,Values,Notes
+1024,2,DWORD,Error Code,0=Success,Check after every command
+1026,100,STRING,Error Header,ASCII,200 characters
+1126,100,STRING,Error Description,ASCII,200 characters
+1226,1,WORD,Mode Acknowledgment,BIT0-3,Mirrors mode selection
+1227,1,WORD,Active Operating Mode,BIT0-3,Current active mode
+1228,1,WORD,Windows Popup Error,,Internal error code
+1229,2,Reserved,Reserved,,
+1231,1,WORD,Command Acknowledgment,BIT0,Command received/complete

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" ?>
+<job>
+    <settings>
+        <version>1</version>
+        <unit>inch</unit>
+        <backcolour>0</backcolour>
+    </settings>
+    <entities>
+        <entity id="UPPERBEAM_INCH_PRIMA POWER EP1336" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>UPPERBEAM_INCH_PRIMA POWER EP1336</reference_id>
+            </geometry>
+        </entity>
+    </entities>
+    <states>
+        <state id="default">
+            <visibility>
+                <show type="Unspecified">1</show>
+                <show entity="UPPERBEAM_INCH_PRIMA POWER EP1336">1</show>
+            </visibility>
+            <transformations />
+            <views>
+                <view id="1">
+                    <pos>14000,8000,-14000</pos>
+                    <target>0,0,-0</target>
+                    <near>6000</near>
+                    <far>25000</far>
+                    <width>9050</width>
+                    <height>5615</height>
+                    <perspective>1</perspective>
+                </view>
+            </views>
+        </state>
+        <state order="1" id="UPPERBEAM_INCH_PRIMA POWER EP1336">
+            <visibility />
+            <transformations />
+            <views />
+        </state>
+    </states>
+    <geometries>
+        <geometry id="UPPERBEAM_INCH_PRIMA POWER EP1336">
+            <data encoding="1">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</data>
+            <materials>
+                <material id="1">
+                    <color emissive="14145495" />
+                </material>
+            </materials>
+        </geometry>
+    </geometries>
+</job>

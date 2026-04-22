@@ -1,0 +1,90 @@
+
+[STRING]
+0=     ETALONNAGE
+1=Axes:
+2=Delta:
+3=Refer:
+4=   Esa/GV S.r.l.
+5=24 via Canale Carpi
+6=41100 Campogalliano
+7=   Modena Italy
+8=Confirme
+9=apprentissage??
+10=[Enter] Confirme
+11=[//]    Effacer
+12= Messages Automat
+
+[STAT]
+0=M.PUP
+1=AUTOM
+2=SAUT. 
+3=MIND.
+4=MAN..
+5=MREF.
+6=DEFIN
+7=MANUEL PUPITRE
+8=AUTOMATIQUE
+9=SEMIAUTOMATIQUE
+10=MAN.AXES INDEPEND.
+11=MANUEL CNC
+12=MANUEL ETALONNAGE
+13=DEFINITIONS 
+
+
+[AXES]
+0=Y1
+1=Y2
+2=X1
+3=X2
+4=R1
+5=R2
+6=Z1
+7=Z2
+8=A1
+9=A2
+10=A3
+11=A4
+12=A5
+13=A6
+14=A7
+15=A8
+16=S1
+17=S2
+18=S3
+19=S4
+20=S5
+21=S6
+
+[SPECFUNCT]
+0=Option 1
+1=Option 2
+2=Option 3
+3=Option 4
+4=Option 5
+5=Option 6
+6=Option 7
+7=Option 8
+8=Option 9
+9=Option 10
+10=Option 11
+11=Option 12
+12=Option 13
+13=Option 14
+14=Option 15
+15=Option 16
+16=Option 17
+17=Option 18
+18=Option 19
+19=Option 20
+20=Option 21
+21=Option 22
+22=Option 23
+23=Option 24
+24=Option 25
+25=Option 26
+26=Option 27
+27=Option 28
+28=Option 29
+29=Option 30
+30=Option 31
+31=Option 32

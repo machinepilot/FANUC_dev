@@ -1,0 +1,154 @@
+File defcn non specificato da KVARA.INI.=defcn file not specified on KVARA.INI.
+Attenzione=Warning
+Il file %s non esiste. Selezionare un file defcn valido.=File %s does not exist. Please select a valid defcn file.
+Tipo di link da utilizzare non specificato da KVARA.INI: verrà utilizzata la modalità di simulazione.=LINK type not specified in KVARA.INI: the simulation mode will be used.
+Inizializzazione shared memory fallita!=Initialization of shared memory failed!
+Errore=Error
+# dialog button
+Modifica bottone=Modify button
+Aggiungi bottone=Add Button
+Inserisci dati bottone:=Insert button data:
+Testo bottone:=Button text:
+Descrizione:=Description:
+Impulsivo=Impulsive
+Bistabile=Bistable
+Normale Aperto=Normally Open
+Normale Chiuso=Normally Closed
+Avvio attivo=Active Startup
+Avvio inattivo=Inactive Startup
+Nome variabile associata:=Associated variable name:
+Indice bit:=Bit index:
+OK=OK
+Ok=Ok
+Annulla=Cancel
+
+# dialog slider
+Modifica slider=Modify slider
+La slider non puo' supportare il range impostato.=The slider cannot support the set range
+Aggiungi slider=Add slider
+Inserisci dati slider:=Insert slider data
+Val. minimo:=Minimum val.:
+Val. massimo:=Maximum val.:
+Risoluzione:=Resolution:
+Val. iniziale:=Initial value:
+
+Informazioni su TKSKey=About TKSKey
+TKSKey Versione=TKSKey version
+Tempo di rinfresco (ms):=Refresh timer (ms)
+
+Seleziona lingua=Select language
+Riavviare applicazione per caricare la nuova lingua=Please, restart application to load new language
+
+
+
+File=&File
+Nuovo=&New
+Apri=&Open
+Chiudi=&Close
+Salva=&Save
+Salva con nome=Sa&ve as
+Lingua=Lan&guage
+Apri ultimo file all'avvio=Open &last file on startup
+Ultimo file usato=Most recent used
+Esci=&Exit
+
+Modifica=&Edit
+Aggiungi=&Add
+Elimina=De&lete
+Modifica=&Edit
+Sposta in su=Move &up
+Sposta in giù=Mode &down
+Timer di Rinfresco=&Refresh Timer
+Stato iniziale=Initial s&tate
+Sync PLC=PLC Sync
+
+
+Visualizza=&View
+Barra degli strumenti=Toolba&r
+Barra di stato=St&atus bar
+Primo piano=Always on &top
+Solo bottoni=Only &button
+Solo slider=Only &slider
+Entrambi=&Both
+Dimensioni comp.=Components &dim.
+Piccoli=Small
+Grandi=Normal
+Finestra=&Window
+Nuova finestra=&New window
+Sovrapponi=&Cascade
+Affianca=&Tile horz
+Disponi icone=&Arrange
+Dividi=&Split
+Bottoni=&Buttons
+Slider=S&lider
+
+?=&?
+Informazioni su TKSKey=&About TKSKey
+
+Procedere ad eliminazione bottone associato a =Do you confirm delete button associate with 
+Procedere ad eliminazione slider associata a =Do you confirm delete slider associated with 
+
+Non è possibile mettere in watch tutti o alcuni dei bottoni richiesti.=Is not possible add to the set all or part of the requested buttons
+Non è possibile mettere in watch tutte o alcune delle slider richieste.=Is not possible add to the set all or part of the requested sliders
+
+impulsivo=impulsive
+bistabile=bistable
+#NA/NC abbr. per normalmente aperto/chiuso
+NA=NO
+NC=NC
+Variabile %s (da %s a %s): %s=Variable %s (from %s to %s): %s
+Errore di lettura da memoria shared.=Error reading shared memory
+Errore di scrittura su memoria shared.=Error writing on shared memory
+Non è possibile mettere altri bottoni in watch.=Is not possible add more buttons to the set
+Variabile non trovata o tipo errato!=Variable not found or wrong type
+Non e' possibile mettere altre slider in watch.=Is not possible add more slider to the set
+
+NUM=NUM
+MA=CAPS
+
+Pronto=Ready
+Crea un nuovo documento=Create a new key set
+Apre un documento esistente=Open an existing key set 
+Chiude il documento attivo=Close active key set
+Salva il documento attivo=Save active key set
+Salva il documento attivo con un nuovo nome=Save active key set with a new name
+
+Visualizza le informazioni sul programma, il numero di versione e le informazioni di copyright=Show information on program, version number and copyright
+Esce dall'applicazione e chiede di salvare i documenti=Exit from application and ask to save documents
+Apre questo documento=Open this document
+Dispone le finestre sovrapponendole=Arrange windows in cascade
+Dispone le finestre senza sovrapporle=Tile the windows without overlapping them
+Mostra o nasconde la barra degli strumenti=Show/hide the toolbar
+Mostra o nasconde la barra di stato=Show/hide the statusbar
+Attiva riquadro bottoni=Activate the buttons box 
+Attiva riquadro slider=Activate the sliders box
+Espande il riquadro bottoni=Expand the buttons box
+Espande il riquadro slider=Expand the sliders box
+Ridimensiona i riquadri bottoni e slider=Redim box of buttons and slider
+Mostra la finestra sempre in primo piano=Show the windows always on top
+Aggiunge bottone/slider=Add a button/slider
+Elimina bottone/slider=Delete a button/slider
+Sposta il bottone/slider nella posizione precedente=Shift the button/slider in previous position
+Sposta il bottone/slider nella posizione successiva=Shift the buttun/slider in next position
+Modifica bottone/slider=Edit the button/slider properties
+Abilita l'apertura dell'ultimo file usato all'avvio dell'applicazione=Enable opening last used file on application start
+Usa bottoni di dimensioni piccole=Use small button size
+Usa bottoni di dimensioni grandi=Use normal button size
+Porta tutti i controlli allo stato iniziale=Set all buttons and sliders to the inital state
+Seleziona la lingua per l'applicazione=Select the language for the application
+Attiva segnale sicronismo per PLC=Activate sync signal for PLC
+Imposta tempo di rinfresco=Set refresh timer
+Attiva questa finestra=Activate this window
+
+
+
+
+
+
+
+
+
+
+
+
+

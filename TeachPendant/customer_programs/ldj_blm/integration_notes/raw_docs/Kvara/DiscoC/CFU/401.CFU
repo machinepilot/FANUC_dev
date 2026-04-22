@@ -1,0 +1,241 @@
+Ciclo fisso automatico assi ausiliari Ver.012.58: 401
+DBL qParkA5, qParkA8 ;quota parcheggio sensori angolo
+DBL AngSensNum ;numero carrelli sensori angolo (0=nessuno, 1=A8 lato Sx, 2=A5 lato Sx + A8 lato Dx)
+DBL AngSensAct ;numero sensore attivo (0=nessuno, 1=lato Sx, 2=lato Dx, 3=Entrambi)
+DBL MeasPointNum ;Numero punti misura (0-3)
+DBL SensPressEn ;Abil. utilizzo sensore pressione + centinatura su A2-A3
+DBL AngSensTarget ;Quota target carrello sensore angolo
+DBL ReverseASdir ;Inversione direzione movimento carrello sensore angolo
+
+N10 _wait_bit( 0,"%C35.1",1) ;attende sblocco calcolo Datiaux da CH1
+ SYN ;esegue DatiAux solo al momento in cui serve (non in anticipo)
+ IF(%C38.3) G4 F0.05
+ CALL DatiAux(0,0) ;chiama routine che genera quote di posizionamento
+ JSR 409 ;ciclo utente
+ SYN
+
+ ?%C20.1 = 1 ;sblocco prima G0 su CH1
+
+ ;Ciclo misure multiple con sensore angolo LC
+ AngSensNum = 0 ;Numero carrelli sensori angolo
+ AngSensAct = 0 ;Numero sensore attivo
+ MeasPointNum = 0 ;Numero punti misura
+ ;Almeno un carrello sensori angolo presente
+ IF (%C38.8) THEN
+   ;Determina numero carrelli sensori angolo
+   IF ((%cax12.dt0 == 1) && (%cax12.dt27 == 5)) THEN
+     AngSensNum = 2
+   ELSE
+     AngSensNum = 1
+   ENDIF
+
+   ;forzamento quota assi telecamere fuori ingombri
+   IF (AngSensNum == 1) THEN
+     qParkA8 = %prog[%np].DatiIMG.dQtaParchLaser ;telecamera fuori ingombri dal valore impostato
+     IF (qParkA8 == 0) qParkA8 = %ap[15].pt[0] + 1 ;telecamera fuori ingombri (quota minima + 1 mm)
+     %posah = qParkA8
+     %posbh = qParkA8
+     %posch = qParkA8
+   ELSE
+     qParkA5 = %prog[%np].DatiIMG.dQtaParchLaser ;telecamera fuori ingombri dal valore impostato
+     IF (qParkA5 == 0) qParkA5 = %ap[12].pt[0] + 1 ;telecamera fuori ingombri (quota minima + 1 mm)
+     %posae = qParkA5
+     %posbe = qParkA5
+     %posce = qParkA5
+     qParkA8 = %prog[%np].DatiIMG.dQtaParchLaserDx ;telecamera fuori ingombri dal valore impostato
+     IF (qParkA8 == 0) qParkA8 = %ap[15].pt[1] - 1 ;telecamera fuori ingombri (quota massima - 1 mm)
+     %posah = qParkA8
+     %posbh = qParkA8
+     %posch = qParkA8
+   ENDIF
+
+   AngSensAct = %prog[%np].DatiIMG.nSensoriAttivi ;numero sensore attivo
+
+   ;Sel. punti misura con foto multiple
+   VA2 = %prog[%np].DatiIMG.nSelPuntiMisura
+   MeasPointNum = 1 ;Default misura su 1 punto
+   IF(VA2 == 0) MeasPointNum = 3 ;Misura su 3 punti
+   IF(VA2 == 1) MeasPointNum = 2 ;Misura su 2 punti
+
+   ; Imposta inversione direzione carrello in base alla posizione di parcheggio SX-DX
+   IF ((AngSensNum == 1) && (MeasPointNum >= 2) && (qParkA8 > ((%ap[15].pt[1] + %ap[15].pt[0]) / 2))) THEN ;telecamera su lato DX
+     ReverseASdir = 1 ;Primo punto su Y2
+   ELSE
+     ReverseASdir = 0 ;Primo punto su Y1
+   ENDIF
+ ENDIF
+
+ ; Ciclo con sensore di pressione e asse centinatura su A2 o A3
+ SensPressEn = (%C35.6) && (%C36.30 || %C36.31) && (%parpres.dQtaGallegg != 0) && (!%C38.8)
+ IF (SensPressEn != 0) THEN
+   IF (!%C35.7) THEN
+     %posab = 0 ;centinatura su A2
+     %posbb = 0
+     %poscb = 0
+   ELSE
+     %posac = 0 ;centinatura su A3
+     %posbc = 0
+     %poscc = 0
+   ENDIF
+ ENDIF
+
+ IF(%C35.5) JMPF 100 ;verifica se esiste asse Z3
+
+ ;se non c'è Z3 muove tutto insieme e finisce il ciclo
+ ?%C20.2 = 1 ;sblocco seconda G0 su CH1
+ ?%C20.3 = 1 ;sblocco terza G0 su CH1
+ G0 X%posaa Y%posab Z%posac U%posad V%posae W%posaf A%posag B%posah
+ JMPF 150
+
+N100 G0 X%posaa Y%posab Z%posac U%posad V%posae W%posaf A%posag B%posah
+
+ PAUSE
+ ?%C20.2 = 1 ;sblocco seconda G0 su CH1
+
+ _wait_bit( 0,"%C35.2",1) ;attende sblocco seconda G0 da CH1
+
+ G0 X%posba Y%posbb Z%posbc U%posbd V%posbe W%posbf A%posbg B%posbh
+
+ ?%C20.3 = 1 ;sblocco terza G0 su CH1
+ _wait_bit( 0,"%C35.3",1) ;attende sblocco terza G0 da CH1
+
+ G0 X%posca Y%poscb Z%poscc U%poscd V%posce W%poscf A%poscg B%posch
+
+N150 ?%C20.4 = 1 ;assi in posizione
+
+ ; Ciclo con sensore angolo LC e asse telecamera su A8 o su A5-A8
+ IF((!%C38.8) || (!%C38.3)) JMPF 700
+
+N180
+ ; Posiziona le 2 telecamere su Y1 e Y2
+ IF ((AngSensNum < 2) || (AngSensAct < 3)) JMPF 200
+ _wait_bit( 0,"%C35.9",1) ;attende richiesta posiz. telecamera
+ G0 V%prog[%np].DatiIMG.dQtaPntMisuraYA B%prog[%np].DatiIMG.dQtaPntMisuraYB ;telecamere su Y1 e Y2
+ JMPF 600
+
+ ; Posiziona su Y1
+N200
+ IF(MeasPointNum == 1) JMPF 300
+ _wait_bit( 0,"%C35.9",1) ;attende richiesta posiz. telecamera
+
+ ;Target su Y1 o Y2
+ IF(ReverseASdir) THEN
+    AngSensTarget = %prog[%np].DatiIMG.dQtaPntMisuraYB
+ ELSE
+    AngSensTarget = %prog[%np].DatiIMG.dQtaPntMisuraYA
+ ENDIF
+
+ IF ((AngSensNum == 2) && (AngSensAct == 1)) THEN
+   G0 V(AngSensTarget) ;pos. telecamera A5
+ ELSE
+   G0 B(AngSensTarget) ;pos. telecamera A8
+ ENDIF
+ ?%C20.6 = 1 ;conferma posiz. telecamera eseguito
+ _wait_bit( 0,"%C35.9",0) ;attende fine richiesta
+ ?%C20.6 = 0 ;conferma sincronismo
+
+ ; Posiziona su YB
+N300
+ IF(MeasPointNum == 2) JMPF 400
+ _wait_bit( 0,"%C35.9",1) ;attende richiesta posiz. telecamera
+
+ ;Target su YB
+ AngSensTarget = %prog[%np].DatiIMG.dQtaPntMisuraYBB
+ IF ((AngSensNum == 2) && (AngSensAct == 1)) THEN
+   G0 V(AngSensTarget) ;pos. telecamera A5
+ ELSE
+   G0 B(AngSensTarget) ;pos. telecamera A8
+ ENDIF
+ ?%C20.6 = 1 ;conferma posiz. telecamera eseguito
+ _wait_bit( 0,"%C35.9",0) ;attende fine richiesta
+ ?%C20.6 = 0 ;conferma sincronismo
+
+ ; Posiziona su Y2
+N400
+ IF(MeasPointNum == 1) JMPF 700
+ _wait_bit( 0,"%C35.9",1) ;attende richiesta posiz. telecamera
+
+ ;Target su Y2 o Y1
+ IF(ReverseASdir) THEN
+    AngSensTarget = %prog[%np].DatiIMG.dQtaPntMisuraYA
+ ELSE
+    AngSensTarget = %prog[%np].DatiIMG.dQtaPntMisuraYB
+ ENDIF
+
+ IF ((AngSensNum == 2) && (AngSensAct == 1)) THEN
+   G0 V(AngSensTarget) ;pos. telecamera A5
+ ELSE
+   G0 B(AngSensTarget) ;pos. telecamera A8
+ ENDIF
+ JMPF 600
+
+ ; Sincronismo senza posizionamento telecamera dopo il prebend
+N500
+ _wait_bit( 0,"%C35.9",1) ;attende richiesta posiz. telecamera
+N600
+ ?%C20.6 = 1 ;conferma posiz. telecamera eseguito
+ _wait_bit( 0,"%C35.9",0) ;attende fine richiesta
+ ?%C20.6 = 0 ;conferma sincronismo
+
+ ; Ciclo con sensore di pressione e asse centinatura su A2 o A3
+N700
+ IF(!SensPressEn) JMPF 800
+ _wait_bit( 0,"%C35.8",1) ;attende richiesta posiz. centinatura
+ SYN
+ IF(%C35.7) JMPF 710
+ G0 Y%parpres.dQtaRicBomb ;centinatura su A2
+ JMPF 720
+N710 G0 Z%parpres.dQtaRicBomb ;centinatura su A3
+N720 ?%C20.5 = 1 ;conferma posiz. centinatura eseguito
+
+ ; Ciclo con telecamera
+N800
+ IF((!%C38.3) && (!%C38.24)) JMPF 1000 ;se non c'è un sens. angolo e non c'è la correzione centinatura, va a attesa cambio passo
+ SYN
+ AWAIT(%C35.10 || %C35.8 || (%C38.25 && !%C38.26)) ;attende richiesta pos. telecamera, o rich. pos. centinatura o fine piega
+ IF(%C35.10) JMPF 910 ;se richiesta pos. telecamera o fine piega, salta comunque la centinatura
+
+ IF(!%C35.8) JMPF 900 ;se centinatura in tolleranza, procede
+
+ ;Riposizionamento centinatura su A2 o A3
+ IF(%C38.24) THEN ;se è richiesta la correzione da sensore
+   VA10 = %C46 / 1000 ;Quota centinatura da plc
+ ELSE
+   VA10 = %prog[%np].IMG.tp[%byNumPres-1].dBomb_YBB ;Quota centinatura da sensore d'angolo
+ ENDIF
+ IF(!%C35.7) THEN
+   G0 YVA10 ;centinatura su A2
+ ELSE
+   G0 ZVA10 ;centinatura su A3
+ ENDIF
+ ?%C20.5 = 1 ;conferma posiz. centinatura eseguito
+ _wait_bit( 0,"%C35.8",0) ;attende sincronismo
+ ?%C20.5 = 0 ;azzera conferma posiz. centinatura eseguito
+
+N900
+ IF(!%C38.3) JMPF 1000 ;se non c'è un sens. angolo, va a attesa cambio passo
+
+ ; Attende richiesta pos. telecamera o fine piega
+ SYN
+ AWAIT(%C35.10)
+N910
+ IF(!%C35.9) JMPF 1000 ;se sono finite le pressate va al cambio passo
+ ;altrimenti ritorna a posizionare le telecamere
+ ReverseASdir = !ReverseASdir ;Inversione direzione carrello
+ IF(%parsensLC.byOttMis != 0) JMPB 500
+ JMPB 180
+
+ ;CAMBIO PASSO
+N1000
+ ;se ci sono gli accompagnatori porta le telecamere fuori ingombri
+ IF ((AngSensNum != 0) && (%cax8.dt0 == 1)) THEN
+   IF (AngSensNum == 1) THEN
+     G0 B(qParkA8) ;telecamera in parcheggio
+   ELSE
+     G0 V(qParkA5) B(qParkA8) ;telecamere in parcheggio
+   ENDIF
+ ENDIF
+ ?%C20.7 = 1 ;parcheggio telecamera effettuato
+ _wait_bit( 0,"%C35.4",1) ;attende cambio passo da canale 1
+ ?%C20 = 1 ;mantiene attivo C20.0
+ JMPB 10

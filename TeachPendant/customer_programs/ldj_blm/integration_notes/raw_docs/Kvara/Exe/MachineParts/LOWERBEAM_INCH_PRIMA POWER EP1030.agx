@@ -1,0 +1,50 @@
+<?xml version="1.0" ?>
+<job>
+    <settings>
+        <version>1</version>
+        <unit>inch</unit>
+        <backcolour>0</backcolour>
+    </settings>
+    <entities>
+        <entity id="LOWERBEAM_INCH_PRIMA POWER EP1030" displaytype="Unspecified">
+            <geometry type="Body">
+                <reference_id>LOWERBEAM_INCH_PRIMA POWER EP1030</reference_id>
+            </geometry>
+        </entity>
+    </entities>
+    <states>
+        <state id="default">
+            <visibility>
+                <show type="Unspecified">1</show>
+                <show entity="LOWERBEAM_INCH_PRIMA POWER EP1030">1</show>
+            </visibility>
+            <transformations />
+            <views>
+                <view id="1">
+                    <pos>14000,8000,-14000</pos>
+                    <target>0,0,-0</target>
+                    <near>6000</near>
+                    <far>25000</far>
+                    <width>9050</width>
+                    <height>5615</height>
+                    <perspective>1</perspective>
+                </view>
+            </views>
+        </state>
+        <state order="1" id="LOWERBEAM_INCH_PRIMA POWER EP1030">
+            <visibility />
+            <transformations />
+            <views />
+        </state>
+    </states>
+    <geometries>
+        <geometry id="LOWERBEAM_INCH_PRIMA POWER EP1030">
+            <data encoding="1">UEsDBBQAAgAIAIaOkUHZomq6BgcAACobAAALABEAY29sbGFkYS54bWxVVA0AB/Nbz1DzW89Q81vPUM1ZbY/bNhL+K4L62TLfKQW2i1yudyiQ6wZp7tDLl4Xq1e4KsOU9WW66/77DGUqkZTENDvfhgOTJzDMzJIcvQyrefP/78ZD91vTn9tRtc16wPGu6/emh7Z62+WV4XJX597vNu7v379/+9W0Gzt15mz8Pw8ub9frLly/F/nQ41A91ceqf1oIxveZ87b1/3j83xzqPW1cFz3eb+nxuht1mf+qGvv31Mpx64C7DM/z7FrQPd+83a6+D0/HYdMN5t1lfiVHovm/qoXnYCcbZilUrVn7i/I0Sb3T1GVy9dXOEpB7bpN9k3ly6dsiOzdD025wVTGiVZ119bLZ52+2f8zV4vNzXv7fn3ef7f37YrEcNBk2JHdpf+7p/va+79lgPkLqzLZEjd2ifnofYaSRGHUKemthhJEYdmmz6tj7EPhE3Us3jY7O/6mliRuKpOUHufeta9/Jr1j5sc780o8PrOCl/e/cO1vTYnJ93m/Pp0u+bRffVy+ncYt7g/Xg41cN93ff16584r9Apz/anSzdsc6FYvlsZU5SSmWzFC15ynq1gX0lZ6uzWwgpemdiSDLmN0EWpjAxtSVMIwdSCxRScCRnFJEOWIoyq9HJb15YwZG9JhixFqMqYuBdWCiEXLBCjZWWDJRmyFCG1Ele9COlDri2qEFzEMcmQpQgheRXa0kUlKlkuWFQBK1uKYEmGLEVw5xAiSmaZvTWoQomKh4hUwJI/s1dpGKOMvjWoQluugyEVsOivy6suNOflgkEVVigVDKmAG39WaO2I29Mzs/DCVkyqZsV4FJcMW4pKdvbVvlJdfbWnxMSl5i0xbYlZSy18at0Ty55Y9dTGTe3bxLZN7Nrk4UuevdTRS528ZBFJ1pBUCUlVkGQxTNbCVClMVcJkUU/W9FRJT1X05OWUvJtSV1PqZkpessk7NnXFpm7YzTp6B+w2Q7N/7tr/XJp799I7dfAo3O+b8/nUZ/Su2ObfffNDoYSH7BmeMQ8QJeHF8VL39dG/WH7Js+H1BQTs3j3oYuu/v2r9fGNdj6ME8TaFNQ3960+j7tQf4Z32LQ8j7zrL1pbwKuIZLJ3b+K6Gwb3D3ExXRlfCZCgLXZbuhEZsTJbGwGOXXPUV4XUoCxwqA4vkmI1J34xvwROx7ruNxxizgbzOye0e2EdCQAF0FDhYOIJlCYp0mx5bzGZTweNMr6Zlocf54GdjX5yGpVmYT+hsPheXZmll+GwOIHvLJSX/vzhByztKmP+z8wNfkUMLjngsnOKOS9u9XIbsDJ+ZHRi3+Ye7n3/89OPdT/m3VAzsfGwWJg++lbqnA/Tgp4BrmIPxI2qbf/z7X+6lYZot9PuvHz5++uGXqFcaYHZ6fIQvQviMdH3Ng366+/iPt+/zP1+a0A7H6dwpqNYyk5VDxQMSI+2IPJPGobOO6BnmEIkqsIRIQAsTQTK3UwgLbkgKPm+DGNjsgUFZVAGlnEd5RkQMytoEJMawgJ5RAYkRZWBIFipCNo8ihpvAkMyj9klWE5BeTjpKelLtzdA8UwbZysD4RMV8YohRZbSAZVhGj8SoiCFZR1jdRCGjZWBI1jag4fMoYoyOGJQNtmZxhNYGxvM2+NvS7Qh4vjo0ERJjEYWbX+XARohgHIBdZdKBW4oRkXBP14kgWQf0TIUyohKBJyRGs8CQrFUUJYOnRcbywHgeGWMDQ7KRUVQZeSKvq3k7xGgdMShrHlDZeZRnTMSYeS66nOfuGRXxJOtgNSLiVWCMiRiSWUBiBKJFxkaehJ6JaFyt6A8RLGpEzwJt8PB/ynk3xIho0CTT4ChVyedTQ4ywgSFZyIB+Y9E2wtIHm96hjJAY4WWosRbrtlukEYmxWNXd28K9C7T/62TlKjHFOignQFXjNSDARzpHKIGCAFVYjlFFyUBr5IKSmgBVd+BIRYlNgCexhF5RRQmq5gioChwjirQkIkJiMAfPsCkLqcexw8UwAqouqcoXX45TVXkgXU86ShVNyCjZCZwqcKbsKAk+Aaoa6glJNpNeRXCq2wykklSNgCqOn1Q9jl+EUbMJSK98iXOVT/v6F5AY7Nyiu8WpNVVAYiyWRoUVFKoCjF1hLKFnKswJZY3pEuN5mgAZITE4Yx6JqSIGZVe9rGdINjxCYqxbF8+QrCMkhvJCmfIlRuEtQdkpFaENOVrcQu5IG7xX5YjEqAiJwe3pkRgRMShr2uEsyNpESAweD8+QLCIkhrlz5BmU4d6e0DOYkZdNyNHiiabsrIyQhRylqwvSFQsoPyOg6j5yuHdxGIB0DGfo5LYp/XWyYzfrF/c8H5/IINN/+K/Ht2r0k0L8C8LI4Q82p8Oh6eMfH67Y/8L1t/Z8qQ/3533TXf06MuPxX/f+Pg91t2+uzNmlh7f9d5fOfZ48EIcfBj5o/DFr9wdQSwECFwsUAAIACACGjpFB2aJqugYHAAAqGwAACwAJAAAAAAAAAAAAAIAAAAAAY29sbGFkYS54bWxVVAUAB/Nbz1BQSwUGAAAAAAEAAQBCAAAAQAcAAAAA</data>
+            <materials>
+                <material id="1">
+                    <color emissive="36050" />
+                </material>
+            </materials>
+        </geometry>
+    </geometries>
+</job>

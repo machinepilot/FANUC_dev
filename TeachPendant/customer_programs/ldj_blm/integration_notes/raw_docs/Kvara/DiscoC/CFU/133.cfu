@@ -1,0 +1,298 @@
+Ciclo piega con sensore d'angolo DATAM-IRIS con strain gauge Ver.012.58 : 133
+DBL RevPointDir ;Inversione direzione lettura punti
+SYN
+ %C255.0 = 0 ;Reset sono al PMI
+ %C255.2 = 0 ;Reset misura angolo ok
+ %C255.3 = 0 ;Reset misura angolo ko
+ ?%C255.15 = 0 ;Lettura angolo a fine pressata
+ ?%C255.16 = 0 ;Lettura angolo a fine pressata OK
+ ?%C255.17 = 0 ;Lettura angolo a fine pressata KO
+ %byNumPres = 0
+ %byNumFoto = 0
+ RevPointDir = 0 ;Inversione direzione lettura punti
+
+ %prog[%np].IMG.tp[0].dAngSB = 0 ;SpringBack angolare per Y1
+ %prog[%np].IMG.tp[0].dMAng = 0;Angolo IMG100 per Y1
+ %prog[%np].IMG.tp[0].dAngSB_YB = 0 ;SpringBack angolare per Y2
+ %prog[%np].IMG.tp[0].dMAng_YB = 0;Angolo IMG100 per Y2
+ VA1 = %parsensLC.nNumeroTentativiLC
+ IF(%C38.5) VA1 = %parIMG.nNumeroTentativi
+ VA3 = 0 ;Numero punti misura
+ VA9 = (%PestQ[%np].pcl + %pargen_due.dgn[28]);quota target Y tandem = PCL
+
+ ; doppio sensore LC
+ VA19 = %prog[%np].DatiIMG.nSensoriAttivi
+
+ ;Sel. punti misura con foto multiple
+ IF(%C38.8) THEN
+   VA2 = %prog[%np].DatiIMG.nSelPuntiMisura
+   VA3 = 1 ;Default misura su 1 punto
+   IF(VA2 == 0) VA3 = 3 ;Misura su 3 punti
+   IF(VA2 == 1) VA3 = 2 ;Misura su 2 punti
+ ENDIF
+
+ VL30 = VL1 ;per deb, quota prebend
+
+ AWAIT(%C38.4) ;attende sensore attivo da plc
+N20
+ ;Strain Gauge : set bit richiesta inizializzazione ciclo
+ IF(%par_sens_sg.dwSGFlag.0) ?%par_sens_sg.dwSGCiclo.1 = 1
+
+SYN
+ IF (%byNumPres == 0) JMPF 200 ;prebend gia eseguito, procede con la prima misura
+
+ ;Abilita filtro FIR su DAC pestone
+ _ppconf_sx(0x00,X,Y,0,0,0xFF00,%pargen_due.dgn[12],%pargen_due.dgn[13],0,0,0,0,%pargen_due.dgn[14],0)
+ ;Imposta guadagno variabile per raggiungimento punto target
+ _ppconf_sx(0x00,X,Y,0,0,0x03,%pargen_due.dgn[8],%pargen_due.dgn[9],0,0,0,0,%pargen_due.dgn[10],0)
+
+ ;Effettua piega
+
+ ; Se macchina in tandem
+ IF(%C32.8) THEN
+    _ppconf_sx(0x00,X,Y,16,17,0x4008,VL17,VL18,%pargene.dwgn[9],0,VL36,0.01,0.01,1)
+    _ppmove_sx(0x01,X,Y,16,17,0x4003,VL25,VL26,VL1,VL2,VA9,VA9,%pst[30],0)
+ ELSE
+    _ppconf_sx(0x00,X,Y,0,0,0,VL17,VL18,0,0,VL36,0,0.01,1)
+    _ppmove_sx(0x01,X,Y,0,0,VL13,VL25,VL26,VL1,VL2,0,0,%pst[30],0)
+ ENDIF
+
+ ; Comando per lettura angolo a fine pressata
+ IF ((%pargen_due.dwgn89.1==1) && (%byNumPres == 1)) THEN
+     SYN
+     %C255.15 = 1
+     AWAIT(%C255.16 || %C255.17)
+     
+     ; In caso di errore salto alla fine del ciclo
+     IF(%C255.17) THEN
+        POP(0)
+        JMPF 1000        
+     ENDIF
+     
+     ?%C255.15 = 0 
+     
+ ENDIF     
+
+SYN
+
+ PAUSE
+N200
+ G4 F(%pargene.dwgn14 / 1000) ;tempo attesa inizio galleggiamento
+
+ IF((%byNumPres == 0) || (%parsensLC.byUsoSGsoloPB == 0)) THEN
+    ;Effettua galleggiamento con PP_STOP
+
+    ?%C16.7 = 1 ;galleggiamento in corso
+    ;Disabilita filtro FIR su DAC pestone
+    _ppconf_sx(0x00,X,Y,0,0,0xFF00,0,0,0,0,0,0,0,0)
+    ;Disabilita guadagno variabile
+    _ppconf_sx(0x00,X,Y,0,0,0x01,0,0,0,0,0,0,0,0)
+
+    ;target galleggiamento di default
+    VA10 = (%dap[%np].largc / 16 ) * 0.15 * 10
+    VA12 = VL1 + VA10
+    VA17 = VL2 + VA10
+
+    ;guadagno bilanciamento per galleggiamento
+    VA18 = %pargen_due.dwgn[36]
+    IF (VA18 == 0 ) VA18 = 10
+
+    VA10 = %pargen_due.dwgn[37] / 1000 ;quota massima galleggiamento
+
+    ;target galleggiamento se impostata quota massima galleggiamento
+    IF (VA10 != 0) THEN
+       SYN
+       VA15 = QTA(X)
+       VA16 = QTA(Y)
+       VA12 = VA15 + VA10
+       VA17 = VA16 + VA10
+    ENDIF
+
+    ;quota PCL come limite risalita del più basso dei due cilindri
+    VA11 = %PestQ[%np].pcl
+    ;Y1 più alto di Y2
+    IF (VA12 > VA17) THEN
+       IF (VA17 > VA11) THEN
+          VA12 = VA11 + VA12 - VA17
+          VA17 = VA11
+       ENDIF
+    ;Y2 più alto di Y1
+    ELSE
+       IF (VA12 > VA11) THEN
+          VA17 = VA11 + VA17 - VA12
+          VA12 = VA11
+       ENDIF
+    ENDIF
+
+    IF( %C32.6 ) THEN ;pressa monocilindrica
+       VA17 = VA12 ;copia quota target Galleggiamento Y1 in quota Y2
+    ENDIF
+
+    ;Velocitá di galleggiamento impostata o ricalcolata
+    VA14=%prog[%np].DatiIMG.dVelSal * 1000
+    IF (VA14 == 0) THEN
+       VA14 = %parsensLC.dVelGallTarParEst * 1000
+       IF(%C38.5) VA14 = %parIMG.dPa * 1000
+    ENDIF
+
+    ;Effettua il galleggiamento con PP_STOP da sensore
+    _ppconf_sx(0x00,X,Y,0,0,0,%pst[28],%pst[29],0,0,VA18,0,0.01,1)
+    _ppmove_sx(0x01,X,Y,0,0,(VL13+0x10),%pst[27],VA14,VA12,VA17,0,0,%pst[30],0)
+
+ ELSE
+    ;Effettua galleggiamento a quota appresa durante il prebend
+
+    VA7 = VL1+%prog[%np].IMG.dGallYA
+    VA8 = VL2+%prog[%np].IMG.dGallYB
+
+    ?%C16.7 = 1 ;galleggiamento in corso
+    ;Disabilita filtro FIR su DAC pestone
+    _ppconf_sx(0x00,X,Y,0,0,0xFF00,0,0,0,0,0,0,0,0)
+    ;Disabilita guadagno variabile
+    _ppconf_sx(0x00,X,Y,0,0,0x01,0,0,0,0,0,0,0,0)
+
+    ;Velocitá di galleggiamento massima
+    VA14=600
+
+    ;Effettua risalita
+    _ppconf_sx(0x00,X,Y,0,0,0,VL17,VL18,0,0,VL36,0,0.01,1)
+    _ppmove_sx(0x01,X,Y,0,0,VL13,VL25,VA14,VA7,VA8,0,0,%pst[30],0)
+
+ ENDIF
+
+ ?%C16.7 = 0 ;galleggiamento terminato
+
+ IF (%byNumPres == 1) VL31 = VL1 ;per deb, quota prima corr
+ IF (%byNumPres == 2) VL32 = VL1 ;per deb, quota seconda corr
+ IF (%byNumPres == 3) VL33 = VL1 ;per deb, quota terza corr
+
+SYN
+ IF (%byNumPres == VA1) JMPF 1000 ;se finiti i tentativi, esce
+
+ ;siamo al prebend
+ IF (%byNumPres == 0) THEN
+    VA5 = QTA(X) ;quota attuale Y1
+    VA6 = QTA(Y) ;quota attuale Y2
+    %prog[%np].IMG.dGallYA = VA5-VL1
+    %prog[%np].IMG.dGallYB = VA6-VL2
+ ENDIF
+
+ IF (%byNumPres == 0) JMPF 400 ;
+ IF (%prog[%np].IMG.tp[(%byNumPres-1)].nRet == 2) JMPF 1000 ;precisione foto non corretta, prendo DB corry
+
+N400
+
+ ;se asse telecamere presente, lo posiziona
+ IF(!%C38.8) JMPF 500
+
+ %C21.27 = 1 ;richiede posizionamento telecamere
+ AWAIT(%C38.6) ;attende telecamere in posizione
+ %C21.27 = 0 ;azzera richiesta posizionamento telecamere
+ AWAIT(!%C38.6) ;attende conferma sincronismo
+
+N500
+ ;Ritardo lettura
+ IF(%pargen_due.dwgn30 != 0) THEN
+   G4 F(%pargen_due.dwgn30 / 1000)
+ ELSE
+   IF(%C38.5) THEN
+     G4 F0.05 ;ritardo di default IRIS
+   ELSE
+     G4 F0.5 ;ritardo di default LC
+   ENDIF
+ ENDIF
+ SYN
+ VA4 = 0 ;Azzera abil. riposiz. centinatura
+
+ %C255.0 = 1 ;Sono al PMI
+
+ ;quote target vengono ricalcolate
+
+ AWAIT(%C255.2 || %C255.3) ;attende SET OK Angolo misurato e ricalcoli eseguiti
+
+ ; Se macchina in tandem
+ IF(%C32.8) THEN
+    ?%C16.31 = 1 ;segnala calcoli terminati
+    _wait_bit( 0,"%C33.27",1) ;attende macchina remota
+     G4 F0.05
+     ?%C16.31 = 0
+SYN
+    ;attende anche macchina remota in tolleranza
+    IF(%C255.3 && %C32.30) THEN
+        POP(0)
+        JMPF 1000 ;ERRORE o angolo in tolleranza
+    ENDIF
+ ELSE
+    IF(%C255.3) THEN
+        POP(0)
+        JMPF 1000 ;ERRORE o angolo in tolleranza
+    ENDIF
+ ENDIF
+
+ VA4 = %C255.4 ;Legge abil. riposiz. centinatura
+
+ %C255.0 = 0 ;Reset sono al PMI
+ AWAIT(!%C255.2) ;attende RESET OK Angolo misurato e ricalcoli eseguiti
+
+ ;se asse telecamere presente, se deve fare altre foto ripete il ciclo
+ ;(con doppio sensore fa una sola foto)
+ IF((!%C38.8) || (VA19 == 3)  || ((%byNumPres != 0) && (%parsensLC.byOttMis != 0))) JMPF 600
+
+ ;verifica completamento foto
+ IF((!RevPointDir) && ((%byNumFoto + 1) >= VA3)) JMPF 600
+ IF((RevPointDir) && (%byNumFoto <= 0)) JMPF 600
+
+ ;se mancano ancora delle foto, va alla prossima
+ IF(RevPointDir) THEN
+    %byNumFoto = %byNumFoto - 1 ; Foto successiva in direzione inversa
+ ELSE
+    %byNumFoto = %byNumFoto + 1 ; Foto successiva
+ ENDIF
+ JMPB 400
+
+N600
+
+ VL1 = %prog[%np].IMG.tp[%byNumPres].dPMI ;copia quota target Y1
+ VL2 = %prog[%np].IMG.tp[%byNumPres].dPMI_YB ;copia quota target Y2
+ IF((VL2==0) || (%C38.5)) VL2 = VL1 ;copia quota target Y1 in quota Y2
+
+ %byNumPres = %byNumPres + 1 ; Pressata successiva
+ RevPointDir = !RevPointDir ;Inversione direzione lettura punti
+
+ ;Eventuale riposizionamento centinatura
+ IF ((!%C35.6) || (VA4 == 0)) JMPF 900
+ ?%C21.22 = 1 ;abilitazione posiz. centinatura
+ _wait_bit( 0,"%C32.21",1) ;attende posiz. centinatura eseguito
+ ?%C21.22 = 0 ;terminato posiz. centinatura
+
+N900
+ PAUSE
+
+ ; Se macchina in tandem
+ IF(%C32.8) THEN
+	 ?%C16.29 = 1 ;macchina pronta per i-esimo tentativo
+	 _wait_bit( 0,"%C32.29",1) ;attende macchina remota
+     G4 F0.05
+	 ?%C16.29 = 0 ;macchina pronta per i-esimo tentativo
+ ENDIF
+
+ JMPB 20
+
+N1000
+ ?%C255.0 = 0 ;Reset sono al PMI
+ ?%C255.15 = 0
+
+ ; Se macchina in tandem
+ IF(%C32.8) THEN
+     ?%C16.30 = 1
+     _wait_bit( 0,"%C32.31",1) ;attende macchina remota per risalire insieme
+     G4 F0.05
+     ?%C16.30 = 0
+ ENDIF
+
+ ;Disabilita filtro FIR su DAC pestone
+ _ppconf_sx(0x00,X,Y,0,0,0xFF00,0,0,0,0,0,0,0,0)
+ ;Disabilita guadagno variabile
+ _ppconf_sx(0x00,X,Y,0,0,0x01,0,0,0,0,0,0,0,0)
+ RET
+

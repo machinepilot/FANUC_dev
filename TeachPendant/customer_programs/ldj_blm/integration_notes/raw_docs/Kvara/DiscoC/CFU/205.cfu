@@ -1,0 +1,23 @@
+Ciclo fisso riscontri per zeta manuali Ver.012.41 : 205
+
+ VA0 = %pargene.dwgn[11] + %dap[%np].altm + %dap[%np].altDieHolder ;quota fuoriuscita R1
+ IF(VA0 > %ap[4].pt[1]) VA0 = %ap[4].pt[1] ;limita target R1 a qmax
+ IF(!%cax[4].dt[0]) VA0 = QNAN() ;R1 non configurato
+ VA1 = %pargene.dwgn[11] + %dap[%np].altm + %dap[%np].altDieHolder ;quota fuoriuscita R2
+ IF(VA1 > %ap[5].pt[1]) VA1 = %ap[5].pt[1] ;limita target R2 a qmax
+ IF(!%cax[5].dt[0]) VA1 = QNAN() ;R2 non configurato
+
+ G0 ZVA0 UVA1 ;posiziona R1 e R2 su quota sorvolo matrice
+
+ VA2 = %ap[2].pt[0] ;quota fuoriuscita X1
+ IF(!%cax[2].dt[0]) VA2 = QNAN() ;X1 non configurato
+ VA3 = %ap[3].pt[0] ;quota fuoriuscita X2
+ IF(!%cax[3].dt[0]) VA3 = QNAN() ;X2 non configurato
+ IF(%ax[2].pa[3].25) VA3 = QNAN() ;X2 in gantry
+
+ G0 XVA2 YVA3 ;posiziona X1 e X2 su quota fuoriuscita macchina
+
+ ?%C17.20 = 1 ;fine ciclo Z manuali
+ _wait_bit(0, "%C33.22", 1) ;attesa fine regolazione assi Zeta manuali
+
+ RET

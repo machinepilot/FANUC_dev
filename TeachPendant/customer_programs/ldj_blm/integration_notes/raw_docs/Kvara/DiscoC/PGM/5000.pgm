@@ -1,0 +1,12 @@
+Loop principale canale 4 sensori Ver.012.38 %5000
+ G71
+ %C18.13 = 0 ;resetta sincronismi canale 4
+ CON[%cn[4].cc[1]] = 1 ;altrimenti con isocmd() va in allarme
+N50
+ AWAIT(!%C54 && %C37.0)
+ %C18.13=1
+ AWAIT(%C54)
+ JSR %C54
+ ?%C18.13 = 0 ;resetta sincronismi canale 4
+ JMPB 50
+

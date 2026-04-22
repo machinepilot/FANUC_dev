@@ -1,0 +1,52 @@
+Ciclo piega con sensore d'angolo Ver.012.51 : 129
+N10
+
+ ;Strain Gauge : set bit richiesta inizializzazione ciclo
+ IF(%par_sens_sg.dwSGFlag.0) ?%par_sens_sg.dwSGCiclo.1 = 1
+
+ ;Abilita filtro FIR su DAC pestone
+ _ppconf_sx(0x00,X,Y,0,0,0xFF00,%pargen_due.dgn[12],%pargen_due.dgn[13],0,0,0,0,%pargen_due.dgn[14],0)
+ ;Imposta guadagno variabile per raggiungimento punto target
+ _ppconf_sx(0x00,X,Y,0,0,0x03,%pargen_due.dgn[8],%pargen_due.dgn[9],0,0,0,0,%pargen_due.dgn[10],0)
+
+ ;Effettua piega
+ _ppconf_sx(0x00,X,Y,0,0,0,VL17,VL18,0,0,VL36,0,0.01,1)
+ _ppmove_sx(0x09,X,Y,0,0,VL13,VL19,VL16,VL23,VL24,0,0,%pst[30],0)
+ _ppmove_sx(0x01,X,Y,0,0,VL13,VL25,VL26,VL1,VL2,0,0,%pst[30],0)
+
+ AWAIT(%C4.0) ;attende avvio galleggiamento
+
+ ;_wait_bit( 0,"%C4.0",1) ;attende avvio galleggiamento
+ G4 F%pargene.dwgn14 ;tempo attesa inizio galleggiamento
+ ?%C16.7 = 1 ;galleggiamento in corso
+ ;Disabilita filtro FIR su DAC pestone
+ _ppconf_sx(0x00,X,Y,0,0,0xFF00,0,0,0,0,0,0,0,0)
+ ;Disabilita guadagno variabile
+ _ppconf_sx(0x00,X,Y,0,0,0x01,0,0,0,0,0,0,0,0)
+ VA12 = %PestQ[%np].pcl ;quota PCL come limite risalita
+ ;Effettua il galleggiamento con PP_STOP da sensore
+ _ppconf_sx(0x00,X,Y,0,0,0,%pst[49],%pst[50],0,0,VL36,0,0.01,1)
+ _ppmove_sx(0x01,X,Y,0,0,(VL13+0x10),%pst[27],VL16,VA12,VA12,0,0,%pst[30],0)
+
+ AWAIT(%C2.6 || %C4.2) ;attende conferma ricalcolo quota target
+ IF (%C4.2) JMPF 1000 ;se in tolleranza, esce
+
+ ?%C16.7 = 0 ;galleggiamento terminato
+ ;Ricalcola il target
+ VL1 = %prog[%np].ya ;copia quota target Y1
+ VL2 = %prog[%np].yb ;copia quota target Y2
+ IF( !%C32.6 ) JMPF 398 ;pressa monocilindrica
+ VL2 = VL1 ;copia quota target Y1 in quota Y2
+N398
+ VL23 = (VL1 + ( VL27 / 1000 )) ;quota target Y1 PrePiega
+ VA10 = QTA(X)
+ IF ( VL23 > VA10 ) VL23 = VA10
+ VL24 = (VL2 + ( VL27 / 1000 )) ;quota target Y2 PrePiega
+ VA11 = QTA(Y)
+ IF ( VL24 > VA11 ) VL24 = VA11
+ JMPB 10
+
+N1000
+ ?%C16.7 = 0 ;galleggiamento terminato
+ RET
+

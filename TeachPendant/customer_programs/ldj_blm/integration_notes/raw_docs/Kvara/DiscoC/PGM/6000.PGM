@@ -1,0 +1,10 @@
+Loop principale canale 5 riscontri 3-4 Ver.012.38 %6000
+ G71
+ %C22 = 0 ;resetta sincronismi canale 3
+N10
+ AWAIT(!%C59 && %C39.0)
+ %C22.0=1
+ AWAIT(%C59)
+ JSR %C59
+ ?%C22 = 0 ;resetta sincronismi canale 3
+ JMPB 10

@@ -1,0 +1,15 @@
+Loop principale canale 1 riscontri Ver.012.38 %2000
+ G71
+ %C17 = 0 ;resetta sincronismi canale 1
+ %C18.0 = 0 ;richiesta cambio programma
+ %C18.15 = 0
+ ;se manca Y e c'e' U, X non posiziona senza la G16
+ G16 XYZ+
+ ;CON[%cn[1].cc[1]] = 1 ;serve per pilotare gli assi con freno da PP
+N10
+ AWAIT(!%C51 && %C33.0)
+ %C17.0=1
+ AWAIT(%C51)
+ JSR %C51
+ ?%C17 = 0 ;resetta sincronismi canale 1
+ JMPB 10

@@ -1,0 +1,72 @@
+Ciclo fisso utente riscontri Ver.012.55 : 209
+
+ ;Accompagnatore 1 non abilitato esclude movimento R2
+ ; IF(!%C34.1) THEN
+ ;  %fasearb = QNAN()
+ ;  %fasebrb = QNAN()
+ ;  %fasecrb = QNAN()
+ ;ENDIF
+
+ ;Accompagnatore 2 non abilitato esclude movimento R3
+; IF(!%C34.2) THEN
+;   %fasearc = QNAN()
+;   %fasebrc = QNAN()
+;   %fasecrc = QNAN()
+; ENDIF
+;   IF(!%M181.0) JMPF 1000
+;Verifica se Asse X2 presente e modo di funzionamento 7 (Conico Incrementale)
+;sovrascrive fasea perchè alle volte calcola valori strani
+ IF((%cax3.dt0 == 1) && (%cax3.dt27 == 7)) THEN
+;   %faseaxa = QNAN();Commentato perchè in alcune condizioni provoca un non posizionamento della X
+;   %faseaxb = QNAN()
+ ENDIF
+ ;se X2 va indietro e X1 viene avanti, X2 deve muovere per primo
+ ;perché è più lento, altrimenti può collidere col punzone se questo è basso.
+; IF(!(ISQNAN(%fasecxb)) && (%gen2 == 3)) THEN
+;   VA0 = QTA(X) - 1 ;quota attuale X1
+;   VA1 = QTA(Y) + 1 ;quota attuale X2
+;   IF((%fasecxb>VA1) && (%fasecxa<VA0)) THEN
+;     G0 Y%fasecxb
+;   ENDIF
+; ENDIF
+
+ ;se X1va indietro e X2 viene avanti, X1 deve muovere per primo
+ ;perché è più lento, altrimenti può collidere col punzone se questo è basso.
+; IF(!(ISQNAN(%fasecxa)) && (%gen2 == 3)) THEN
+;   VA0 = QTA(X) + 1 ;quota attuale X1
+;   VA1 = QTA(Y) - 1 ;quota attuale X2
+;   IF((%fasecxa>VA0) && (%fasecxb<VA1)) THEN
+;     G0 X%fasecxa
+;   ENDIF
+; ENDIF
+
+;Rich. parcheggio X1 per cambio utensili
+ IF (!%C33.19) JMPF 1000
+  VA0 = %prog[%np].xa + %prog[%np].corxa ;target X1
+  VA1 = %prog[%np].xb + %prog[%np].corxb ;target X2
+  VA2 = %prog[%np].xc + %prog[%np].corxc ;target X3
+  ;trova la quota di parcheggio peggiore in base a X2-X3 conici
+  VA4 = %ax[2].pa[31] / 1000 ;quota parcheggio X1
+  VA3 = 0
+  IF(%cax3.dt27 == 7) THEN
+   ;modo di funzionamento 7 (Conico Incrementale)
+   IF(VA1 < VA3) VA3 = VA1
+  ENDIF
+  IF(%cax22.dt27 == 7) THEN
+   ;modo di funzionamento 7 (Conico Incrementale)
+   IF(VA2 < VA3) VA3 = VA2
+  ENDIF
+  VA5 = VA4 - VA3
+  IF(QTA(X) >= VA5) THEN
+   %faseaxa = QNAN()
+   %fasebxa = QNAN()
+   %fasecxa = QNAN()
+  ELSE
+   IF(VA0 < VA5) THEN
+    IF (!(ISQNAN(%faseaxa))) %faseaxa = VA5
+    IF (!(ISQNAN(%fasebxa))) %fasebxa = VA5
+    %fasecxa = VA5
+   ENDIF
+  ENDIF
+N1000
+  RET

@@ -1,0 +1,74 @@
+﻿---
+id: ONE_03_TP_PROGRAMMING_BASICS_AND_STRUCTURE
+title: "TP Programming Basics and Structure"
+topic: anti_pattern
+fanuc_controller: [R-30iB, R-30iB Plus]
+system_sw_version: [V9.x]
+language: TP
+source:
+  type: third_party_integrator
+  title: "ONE Robotics Company Blog"
+  tier: T3
+license: reference-only
+revision_date: "2026-04-22"
+related: []
+difficulty: intermediate
+status: draft
+supersedes: null
+---
+
+# TP Programming Basics and Structure
+
+## Summary
+
+Migrated from `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/articles/ONE_03_TP_Programming_Basics_and_Structure.txt` as part of the TeachPendant migration. Original source: ONE Robotics Company Blog. Review and update `related:` with neighbor entry IDs.
+
+## Body
+
+
+# TP Programming Basics and Structure
+
+Filed under:FANUCTP Programmingfexcel
+When I first learned to program FANUC robots, I was bothered by the TP programming language. At the time I was usingRubyprimarily, which, according to theofficial website, “has an elegant syntax that is natural to read and easy to write.”
+I was annoyed that I had to manage my own memory locations for numbers, positions, I/O, etc.
+Wouldn’t it be nice if I could program FANUC robots with Ruby? …or at least something Ruby-esque?
+EnterTP+back in 2014. At last… the holy grail! Named variables for numregs, posregs, I/O, etc., namespaces, constants, labels, syntax that’s easy to read and write… what else could you need?
+Well the truth is I only really used TP+ on one production project, and althoughothers continue to use and develop the language, I wasn’t happy with the workflow.
+The TP+ source code was too far-removed from the eventually-compiled TP source that ran on the robot. Fixing bugs was a bit of a pain, and it was pretty difficult to find differences between two sets of source files that are in two very different languages.
+It only took seven more years of programming TP the old way before I realized I could have the best of both worlds: standard TP programs with the power of named variables and constants.
+Luckily I had already written a tool in 2019 that did most of the hard work…
+Fexcel, the tool I wrote to simply help with labeling robot data, can now supercharge your LS files.
+Basically you use an Excel spreadsheet to define all of the robot stuff you care about: numeric registers, position registers, I/O, etc., and then you can use those definitions directly in your code without worrying about where they are located.
+Here’s a quick example:
+Depending on your spreadsheet’s definitions, this may translate to:
+The source code is the same line-for-line. The only difference is the variable and constant definitions have been replaced with their values.
+Most of the time I start filling out my robot spreadsheet before I write a single line of code. Withfexcelyou don’t have to. If I tried to compile the above example against a blank spreadsheet, the tool would output:
+example.ls:1:11: ${WORLD} is undefined
+You could write your code first and then figure out where you want your data to go later.
+Just checking typos has been huge for my development workflow. I can’t tell you how many times I’ve fat-fingered a register index and regretted it. (e.g.R[12:numreg thirteen]OOPS!)
+It also used to be a huge pain to move my data around. I’d have to usegrepor something to find every instance sayR[1]was used and then update it by hand. Now that the data indices are nowhere to be found in the code, you can just update your spreadsheet and recompile.
+I’ve been guilty of this in the past… using a register for a speed or CNT-value to tweak things during development. This is fine, but once a good value has been found, that register should really be swapped out for a constant. Fexcel doesn’t find rogue variables for you, but it does make it easy to try new values for constants (and the value is saved to your spreadsheet for reference later in case someone changes it.)
+If you’d like to givefexcela try, head over to thereleases pageand download the latest release. (NOTE: fexcel is a command-line utility. There is no GUI, so you’ll have to use it from a command prompt and may need to place the executable on your system $PATH before using it.)
+There’s a fairly completematerial handling examplein the source repository.
+I email(almost)every Tuesday with the latest insights, tools and techniques for programming FANUC robots. Drop your email in the box below, and I'll send new articles straight to your inbox!
+No spam, just robot programming. Unsubscribe any time. No hard feelings!
+©2013-2019 ONE Robotics Company LLC. All rights reserved.
+Privacy•Terms•RSS Feed
+
+URL: https://www.onerobotics.com/posts/2021/programming-fanuc-robots-with-variables-and-constants/
+
+## Citations
+
+- Primary: ONE Robotics Company Blog (keywords: TP programming, teach pendant, program structure, basics, getting started).
+- Applicability: FANUC TP Programming, R-30iB Plus.
+
+## Discrepancies
+
+None documented in the legacy source. Re-verify against a T1 vendor manual before promoting `status` from `draft` to `approved`.
+
+## Provenance
+
+- Migrated by: inline migration on 2026-04-22.
+- Source file: `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/articles/ONE_03_TP_Programming_Basics_and_Structure.txt`.
+- Classification: articles / topic=anti_pattern.
+

@@ -1,0 +1,111 @@
+﻿---
+id: ONE_06_REFACTORING_SKIP_CONDITIONS_WITH_AR_AND_INDIRECT_ADDRESSING
+title: "Refactoring Skip Conditions with AR and Indirect Addressing"
+topic: motion
+fanuc_controller: [R-30iB, R-30iB Plus]
+system_sw_version: [V9.x]
+language: TP
+source:
+  type: third_party_integrator
+  title: "ONE Robotics Company Blog"
+  tier: T3
+license: reference-only
+revision_date: "2026-04-22"
+related: []
+difficulty: intermediate
+status: draft
+supersedes: null
+---
+
+# Refactoring Skip Conditions with AR and Indirect Addressing
+
+## Summary
+
+Migrated from `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/articles/ONE_06_Refactoring_Skip_Conditions_with_AR_and_Indirect_Addressing.txt` as part of the TeachPendant migration. Original source: ONE Robotics Company Blog. Review and update `related:` with neighbor entry IDs.
+
+## Body
+
+
+# Refactoring Skip Conditions with AR and Indirect Addressing
+
+Filed under:FANUCTP Programming
+In mylast articlewe talked aboutFANUC’s Skip Conditions: how they work, where you might use them and why they can be confusing. We also discussed the SkipJump option which may have better semantics.
+Today I want to use the Skip Condition syntax as an opportunity for refactoring. We’ll work with TP parameters and their corresponding argument registers (AR[]), side-step some argument register limitations, discuss return values and eventually create a pretty powerful two-stage search algorithm that has high accuracy without sacrificing cycle time.
+Let’s quickly reviewSkip Conditions. First you setup a condition to monitor (e.g.SKIP CONDITION RI[1]=ON), and then you use theSkip,LBL(orSkip,LBL,PR) option within your subsequent motion statements.
+If the condition becomes true, the motion segment is halted, and the interpreter moves to the next line. If the condition stays false the whole time, the interpreter jumps to the provided label.
+I won’t rehash why theSkip,LBLoption functionality feels awkward, but let’s refactor it into a subroutine that’s more explicit.
+Sticking with the example above, I’ve extracted the search functionality into a subroutine calledSEARCH.
+Main routine:
+SEARCH.TP:
+This obviously has some problems, but it’s a start.
+I like how we can set the Skip Condition in the main routine, but right now the main routine has no way of knowing if the search was successful or not.
+Let’s use a numeric register to hold the return status fromSEARCH.
+SEARCH.TP:
+Returning0on atruecondition might feel wrong to you, but let’s discuss why I’m using that value.
+FANUC tends to use0to indicate asuccessfulornormalreturn status from a program or function; anything non-zero indicates an abnormal or error condition. (This is likely inspired byC’s convention of returning0forEXIT_SUCCESSand1forEXIT_FAILURE.)
+Of course it’s up to you to decide how you want your programs to work, but it’s a good idea to follow conventions when they make sense.
+So how does this affect our main program?
+At first glance this looks almost identical to the first example, but there is one important difference.
+Where theSkip,LBLfunctionality is sometimes confusing, ourIF R[1:status]<>0,JMP LBL[501]is explicit and unmistakable. One just has to be aware of what the0status means (see the comment?).
+This is a good start, but I don’t like howR[1:status]is hard-coded into theSEARCHprogram. If our goal is to eventually create aloosely coupledprogram, we should probably clean that up.
+FANUC allows us to provide parameters to our called programs. These can be constant values (e.g.1,3.14,42), strings (e.g.’foo’,’bar’), numeric registers (e.g.R[1],R[2]) or argument registers (e.g.AR[1],AR[2]). These parameters are passed by value to the called program and are available in their corresponding argument register.
+Example:
+Let’s pass a numeric register index as a parameter toSEARCHand return the status toR[AR[1]].
+SEARCH.TP:
+Normally we specify a numeric register index directly, but we can use anindirect indexby specifyingAR[1]as the index. IfAR[1]=1, we’ll send the status toR[1]. IfAR[1]=42, we’ll send the status toR[42].
+NOTE:You can also use numeric registers as indirect indices (e.g.R[R[x]]).
+BE CAREFUL:parameter types are not checked until runtime. If we incorrectly provide a string parameter (e.g.CALL SEARCH(‘foo’)) we’ll get an interpreter error when theR[AR[1]]assignments are executed.
+Our main routine now looks like this:
+You can probably spot a few other places that could be converted into parameters. Let’s parameterize the destinationPRindex, the speed and theCNT-value.
+SEARCH.TP:
+Lots of changes here.
+First I added a block of comments to explain how theSEARCHprogram works. It’s a good idea to describe how a program’s parameters are used, especially since they’re not named or type-checked.
+I moved the status numeric register index to the end of the parameter list for two reasons:
+I also copied the values ofAR[2]andAR[3]into numeric registersR[102:search speed]andR[103:search CNT]because TP does not support the use of argument registers to define speeds orCNT-values.
+It’s probably a good idea to copy your argument registers over to numeric registers anyway. Not only are they not supported everywhere (SELECTstatements too), but there’s also no status screen to see or edit argument registers on the teach pendant.
+Let’s go ahead and make this change:
+SEARCH.TP:
+Let’s try it out in our main program:
+I added a comment to remind us what the parameters are, but I’m pretty happy with the result.
+NOTE:Of course you always have to be careful when specifying PR indices (and using motion in general). If you wanted to be extra careful, you could add extra parameters to make sure the robot is using the correctUFRAMEandUTOOLin theSEARCHprogram. You could also validate the PR index. I’ll leave that as an exercise for the reader.
+Since we’re having so much fun with Skip Conditions and parameters, let’s take them a little further.
+You may recall that there is also a Quick Skip (Skip,LBL,PR) motion option which accurately records the current robot position during the skip, but it’s limited to just100mm/sec. This is inconvenient for long searches.
+I’m not sure why it never dawned on me to try this, but a friend emailed me to point out that you can search intwo stagesto save time.
+The first stage is done at a relatively high speed using theSkip,LBLoption. The robot should overshoot a bit. You can then search in the opposite direction for the opposite condition with the Quick Skip option for just the overshoot distance without sacrificing accuracy for cycle time. (Thanks for the tip, Bartlomiej!)
+Let’s modify our main routine to search in this manner:
+This should work, but I think we can refactor and pull a lot of this stuff out. I’ll skip the step where we cut/paste and move directly to a parameterized search function.
+SEARCH_RI1.TP:
+Again we copy all of our argument registers over to numeric registers for debugging and flexibility purposes. It would be nice if we didn’t have to do this, but at least we have some extra documentation.
+We’ve hard-coded a few things intoSEARCH_RI1: theRIindex, the temp PR we’re using, and the search direction. TP supports up to 10 parameters in a program call, so you could parameterize those as well.
+You could also provide some validation (e.g. check to make sure the provided slow search speed is<= 100mm/sec, make sure the search distance is greater thanXmm, etc.).
+So what was the point of all this?
+At first, we were just trying to hide the details of theSkip,LBLmotion option, but we then took the opportunity to enhance what we extracted into a more general-purposeSEARCHroutine. Going further, we created a useful two-stage search routine that lets our robot find something accurately without taking forever to do so.
+All of this is neatly hidden behind a couplesmall programs:
+If you want to get extra fancy, you could pass in string parameters for program names. You could use these to gain a sort ofcallbackflexibility that could be use in the error-branches or even to define the actual Skip Conditions.
+Main routine:
+SEARCH.TP:
+This all just goes to show how you can implement the same feature a million different ways. The “correct” or “best” way really comes down to experience, feel and what works best for your customer.
+Does it work?Is it easy to understand and maintain?Does it make me more productive?
+These are the questions I ask myself while writing code and refactoring. In general, I try my best tokeep things simpleandavoid repeating myself. Parameterized programs like these do just that.
+I email(almost)every Tuesday with the latest insights, tools and techniques for programming FANUC robots. Drop your email in the box below, and I'll send new articles straight to your inbox!
+No spam, just robot programming. Unsubscribe any time. No hard feelings!
+©2013-2019 ONE Robotics Company LLC. All rights reserved.
+Privacy•Terms•RSS Feed
+
+URL: https://www.onerobotics.com/posts/2019/refactoring-skip-conditions/
+
+## Citations
+
+- Primary: ONE Robotics Company Blog (keywords: skip condition, AR[], argument register, refactoring, parameterized search, indirect, two-stage search).
+- Applicability: FANUC TP Programming, R-30iB Plus.
+
+## Discrepancies
+
+None documented in the legacy source. Re-verify against a T1 vendor manual before promoting `status` from `draft` to `approved`.
+
+## Provenance
+
+- Migrated by: inline migration on 2026-04-22.
+- Source file: `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/articles/ONE_06_Refactoring_Skip_Conditions_with_AR_and_Indirect_Addressing.txt`.
+- Classification: articles / topic=motion.
+

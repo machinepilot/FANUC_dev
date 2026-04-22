@@ -1,0 +1,112 @@
+TOPIC: PLC Signal Reference (Kvara Iol.inc)
+KEYWORDS: PLC, C0, C1, C2, C5, C11, PPTcpServer, Modbus, shared address, Iol.inc, ESA
+CATEGORY: reference
+SOURCE: Kvara/PLC/Iol.inc, Kvara/Exe/ServerModbus.xml
+APPLIES_TO: BLM SERIES 420-200, ESA/Kvara, FANUC + PLC integration
+---
+
+============================================================
+1 PLC → MODBUS MAPPING (ServerModbus OutputArea)
+============================================================
+
+Modbus Addr | ShAddr (Shared)           | Description
+------------|---------------------------|----------------------------------
+0           | PPTcpServer.PPMode        | Select Operating Modes (C0)
+1           | PPTcpServer.PPCommand     | Command / Strobe (C1)
+2           | PPTcpServer.PPProgram    | Program Name (80 regs) — NOTE: Quick_Ref uses Reg 53
+42          | PPTcpServer.PPList        | List Name
+82          | PPTcpServer.PPClientAckCmd| Active Command / Command Ack
+83          | PPTcpServer.PPActiveData  | Active Data
+
+============================================================
+2 KEY PLC REGISTERS (UI → PLC → PP)
+============================================================
+
+C0 — Mode Selection (maps to Modbus Reg 0)
+  C0.0  Settings menu active
+  C0.1  Automatic menu active
+  C0.2  Semiautomatic menu active
+  C0.3  Positioning menu active
+  C0.4  Manual menu active
+  C0.5  Axis/ram test page active
+  C0.6  Immediate calibration menu active
+  C0.14 Program change confirmation
+  C0.15 Program change request from operator
+  C0.16 Program list menu active
+  C0.17 Tool list menu active
+  C0.18 Corrections menu active
+
+C2 — Command / Step Confirmations
+  C2.0  Step change confirmation
+  C2.1  Program modified by operator
+  C2.2  Program verify OK
+  C2.3  Program verify NOT OK
+  C2.7  Bend with angle sensor SER/LC
+  C2.9  Bend angle calc from LC: OK
+  C2.10 Bend angle calc from LC: error
+  C2.11 Bend angle calc from LC: bend complete
+
+C3 — List / Execution Mode
+  C3.3  List execution mode (0=single, 1=circular)
+  C3.5  Execution mode (0=program, 1=list)
+
+C4 — Angle Sensor (SER)
+  C4.0  Float start from angle sensor
+  C4.1  Angle write complete from sensor
+  C4.2  Bend complete from angle sensor
+  C4.3  Error from angle sensor
+
+C5 — START / STOP (Critical for robot integration)
+  C5.0  START button (UI)
+  C5.1  STOP button (UI)
+  C5.2  + button (UI)
+  C5.3  - button (UI)
+
+C6  — Pieces per cycle (UI-PP)
+C7  — Real-time angle value from sensor (descent)
+C8  — Dynamic Y1 correction for angle measurement
+C9  — Dynamic Y2 correction for angle measurement
+C10 — Crowning correction indexed by bend
+C11 — Real-time angle value from sensor (float) — Modbus data path
+C12 — Real-time angle value (descent)
+C13 — Real-time angle value (float)
+
+============================================================
+3 ROBOT / EXTERNAL INTEGRATION SIGNALS
+============================================================
+
+%robotnam    — Robot program code (UI-PLC)
+%robotnam.0  — Robot program code bit 0
+%robotnam.1  — Robot program code bit 1
+... (bits 2-4)
+
+============================================================
+4 MODBUS TCP SERVER (PPTcpServer) SHARED ADDRESSES
+============================================================
+
+OutputArea (PLC writes to Modbus client):
+  PPMode, PPCommand, PPProgram, PPList, PPClientAckCmd, PPActiveData
+  PPlargO (Width), PPangyaO (Y1 Angle), PPxaO (X1), PPxbO (X2)
+  PPyaO (BDC), PPMuteO, PPpiecedO (To do), PPpiecefO (Comp.Pcs.)
+  PPcorxaO, PPcorxbO, PPbendO, PPBeamFeedRateO, PPBackGFeedRateO
+  PPforceO, PPtbendO, PPpmsO (TDC), PPcorpinO (Pinch P)
+
+InputArea (PLC reads from Modbus client):
+  ErHlErr0.ErHlText, ErHlErr1.ErHlText, ErHlErr2.ErHlText
+  PPTcpServer.PPErrorCode, PPAckMode, PPAckCommand, PPActualMode
+  PPErUITextA, PPErUITextB, PPAckData, PPforceI, PPyaI, PPMuteI
+  PPTcpServer.ListProg[0..19].NameProg (program list)
+
+============================================================
+5 CROSS-REFERENCE: PLC C* → MODBUS REGISTER
+============================================================
+
+C0 (mode bits)     → MbAddr 0  (PPMode)
+C1 (command)       → MbAddr 1  (PPCommand)
+Program name       → MbAddr 2  (PPProgram, 80 regs) — ServerModbus
+                     MbAddr 53 (Quick_Reference — verify which applies)
+Command Ack        → MbAddr 82 (PPClientAckCmd) — read by client
+                     MbAddr 1231 (Quick_Reference Error/status area)
+
+Always verify against VENDOR_DISCREPANCIES.md; Kvara/ServerModbus
+may differ from generic ESA documentation.

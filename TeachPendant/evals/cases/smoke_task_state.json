@@ -1,0 +1,8 @@
+{
+  "case_id": "smoke_task_state",
+  "agent": "orchestrator",
+  "mode": "schema-only",
+  "input": null,
+  "expected_schema": "cowork/schemas/task_state.schema.json",
+  "golden_path": "evals/golden/smoke_task_state.json"
+}

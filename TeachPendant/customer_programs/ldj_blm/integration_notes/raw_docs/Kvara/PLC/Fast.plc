@@ -1,0 +1,626 @@
+* -----------------------------------------------------------------------
+* PLC FAST pressa piegatrice
+* -----------------------------------------------------------------------
+*
+
+VAR
+#include "iof.inc"
+END_VAR
+#include "iol.inc"
+#include "mem.inc"
+
+* Gestione antiwindup pestone
+VAR
+SmpFwErrY1: DWORD; * Following error Y1 sampled
+SmpFwErrY2: DWORD; * Following error Y2 sampled
+MaxSmpFwErr: DWORD; * Maximum sampled following error
+END_VAR
+
+*//
+*// Regolatore posizione spool servovalvole
+*//
+
+VAR
+VR_TS               AT %at_reg0.VRS_TS; * Tempo campionamento [usec]
+INV_SENSOR          AT %at_reg0.VRS_INV_SENSORIN.0; * Inv. sensore (1=tensione cresce in direzione DOWN)
+INPUT_FULL_SCALE    AT %at_reg0.VRS_END_VOL_SCALE;      * Fondo scala tensione LVDT (mV) (10000 o 12000)
+MAX_SLIDE_POS       AT %at_reg0.VRS_MAX_SLIDE; * Massimo comando spoletta (mV)
+REG_ENABLE          AT %VRS_ENAB; * Abil. regolatore (0=Disab 1=Enab 2=Bypass)
+REGOL_RESET         AT %VRS_RESET.0;    * Master reset regolatore
+SENS_OFFSET         AT %VRS_SENS_OFFS;  * offset ingresso sensore [mV]
+SENS_OFFSETB        AT %VRS_SENS_OFFSB; * offset ingresso sensore per Salita Veloce [mV]
+DEMAND_SCALE        AT %VRS_SCALE;      * scala uscita attuatore [Dac/mV x1000]
+PROP_GAIN           AT %VRS_PROP_GAIN;  * Guadagno proporzionale [Hz x1000]
+VEL_GAIN            AT %VRS_VEL_GAIN;   * Guadagno velocità [Hz x1000] (P/s/P x1000)
+VEL_DEADBAND        AT %VRS_DEADBAND;   * deadband compens. spoletta [P]
+SPCOM_UPPER_LIM     AT %VRS_COM_UP_LIM; * lim sup compens. spoletta [P]
+SPCOM_LOWER_LIM     AT %VRS_COM_DN_LIM; * lim inf compens. spoletta [P] (>0)
+SPCOM_DOT_POS_LIM   AT %VRS_DOT_P_LIM;  * lim sup velocita' compens. spoletta [P/s]
+SPCOM_DOT_NEG_LIM   AT %VRS_DOT_N_LIM;  * lim inf velocita' compens. spoletta [P/s] (>0)
+N_SETPOINT          AT %VRS_SETPOINT; * Setpoint nominale [P]
+N_SENSOR            AT %VRS_SENSORIN; * Ingresso sensore [P]
+N_REGOL_OUT         AT %VRS_DEMANDOUT; * Uscita regolatore in mV sensore
+N_DAC_OUT           AT %VRS_OUT; * Uscita regolatore in punti DAC 14 bit
+END_VAR
+
+
+
+FUNCTION_BLOCK FBValveRegol
+
+VAR_INPUT
+*//Variabili di input
+xSetpoint: DWORD; * Setpoint nominale (DAC 14 bit + 2 bit direzione)
+xSensorIn: DWORD; * Ingresso sensore (ADC 12 bit)
+
+END_VAR
+
+VAR_OUTPUT
+*//Variabili di output
+yDemandOut: DWORD; * Output demand (DAC 14 bit + 2 bit direzione)
+yIntegrMonitor: DWORD; * Valore Integratore [P]
+ySpcomIntegD: DWORD; * Vel. Integratore [P/s]
+
+END_VAR
+
+VAR
+*//Variabili interne
+SpcomPropD: DWORD; * Componente proporzionale
+vDac1: DWORD; * Input LVDT in mV
+ErrorVal: DWORD; * Valore errore [P]
+ErrorDbd: DWORD; * Errore con deadband [P]
+LimitVal: DWORD; * Temporaneo per valore limite
+*//Memorie di stato
+SpcomIntegOutput1k: DWORD; * integrale compens. spoletta [P*1000]
+DemandOutCheck: DWORD; * Output demand [P] Check
+SpcomIntegOutputCheck: DWORD; * integrale compens. spoletta [P]Check
+SpcomIntegOutputOK: DWORD; * integrale compens. spoletta [P]OK per uscita
+LimitSlideCmd: DWORD; * Valore limite output comando spoletta [P]
+LoopClosed_Hold: BOOL; * Abilita Closed Loop anche se in Hold (Chiudi anello asse non presente
+
+#defcom T_LVDT1.Q Fine ritardo attivazione regolatore
+T_LVDT1: TON;
+
+END_VAR
+
+LD   REG_ENABLE    ** Abil. regolatore (0=Disab 1=Enab 2=Bypass)
+EQ   0
+JMPC endcpy1
+
+* Ricava l'uscita dello slave in mV con segno
+
+LD   xSetpoint     ** Setpoint nominale (DAC 14 bit + 2 bit direzione)
+AND  16#3FFF       * Elimina bit di direzione
+MUL  10000
+DIV  16383
+ST   vDac1         ** Input LVDT in mV
+
+LD   xSetpoint     ** Setpoint nominale (DAC 14 bit + 2 bit direzione)
+AND  16#8000       * Bit direzione DOWN
+JMPCN vav1
+
+LD   vDac1         ** Input LVDT in mV
+MUL  -1
+ST   vDac1         ** Input LVDT in mV
+
+vav1:
+
+* Converte il setpoint in mV del sensore
+
+LD   vDac1         ** Input LVDT in mV
+MUL  1000
+DIV  DEMAND_SCALE  ** scala uscita attuatore [Dac/mV x1000]
+ST   N_SETPOINT    ** Setpoint nominale [P]
+
+* Legge l'ingresso del sensore, lo converte in mV e lo rende bidirezionale
+
+LDN  %M17.2        ** Comando elettrovalvole salita veloce
+OR   (
+LD   SENS_OFFSETB  ** offset ingresso sensore per Salita Veloce [mV]
+EQ   0
+)
+JMPC FAST_UP_OFFS
+
+LD   xSensorIn     ** Ingresso sensore (ADC 12 bit)
+MUL  INPUT_FULL_SCALE ** Fondo scala tensione LVDT (mV) (10000 o 12000)
+DIV  4095
+SUB  SENS_OFFSETB  ** offset ingresso sensore per Salita Veloce [mV]
+ST   N_SENSOR      ** Ingresso sensore [P]
+
+JMP  STD_OFFS
+
+FAST_UP_OFFS:
+
+LD   xSensorIn     ** Ingresso sensore (ADC 12 bit)
+MUL  INPUT_FULL_SCALE ** Fondo scala tensione LVDT (mV) (10000 o 12000)
+DIV  4095
+SUB  SENS_OFFSET   ** offset ingresso sensore [mV]
+ST   N_SENSOR      ** Ingresso sensore [P]
+
+STD_OFFS:
+
+* Se richiesto da parametro, inverte l'ingresso
+
+LD   INV_SENSOR    ** Inv. sensore (1=tensione cresce in direzione DOWN)
+JMPCN INV_SV
+
+LD   N_SENSOR      ** Ingresso sensore [P]
+MUL  -1
+ST   N_SENSOR      ** Ingresso sensore [P]
+
+INV_SV:
+
+LD   %ra3.10       ** AX-PLC Anello di posizione chiuso
+OR   %M17.0        ** Comando elettrovalvole discesa veloce
+OR   %M17.1        ** Comando elettrovalvole discesa lenta
+OR   %M17.2        ** Comando elettrovalvole salita veloce
+OR   %M17.3        ** Comando elettrovalvole salita lenta
+OR   (
+LDN  %M6.0         ** Emergenza generale
+AND  (
+LD   REG_ENABLE    ** Abil. regolatore (0=Disab 1=Enab 2=Bypass)
+NE   0
+)
+AND  %at_dat.atdummy_d.1 ** PAR-PLC Abilita Closed Loop Spool Valvole senza comando ma con Emergenza OK
+)
+ST   LoopClosed_Hold ** Abilita Closed Loop anche se in Hold (Chiudi anello asse non presente
+
+CAL  T_LVDT1(IN=LoopClosed_Hold, PT=100) ** Abilita Closed Loop anche se in Hold (Chiudi anello asse non presente
+
+LDN  T_LVDT1.Q     ** Fine ritardo attivazione regolatore
+ST   REGOL_RESET   ** Master reset regolatore
+
+LD   REG_ENABLE    ** Abil. regolatore (0=Disab 1=Enab 2=Bypass)
+EQ   1
+JMPCN endregv1
+
+* Calcolo grandezza errore
+
+LD   N_SETPOINT    ** Setpoint nominale [P]
+SUB  N_SENSOR      ** Ingresso sensore [P]
+ST   ErrorVal      ** Valore errore [P]
+ST   ErrorDbd      ** Errore con deadband [P]
+
+* Errore con banda morta
+
+LD   ErrorVal      ** Valore errore [P]
+ABS
+LE   VEL_DEADBAND  ** deadband compens. spoletta [P]
+JMPCN dbdNotClampToZero
+
+LD   0
+ST   ErrorDbd      ** Errore con deadband [P]
+
+dbdNotClampToZero:
+
+* Componente proporzionale
+
+LD   ErrorVal      ** Valore errore [P]
+MUL  PROP_GAIN     ** Guadagno proporzionale [Hz x1000]
+DIV  1000
+ST   SpcomPropD    ** Componente proporzionale
+
+* Componente integrativa
+
+LD   ErrorDbd      ** Errore con deadband [P]
+MUL  VEL_GAIN      ** Guadagno velocità [Hz x1000] (P/s/P x1000)
+DIV  1000
+ST   ySpcomIntegD  ** Vel. Integratore [P/s]
+
+* Limitazione velocità componente integrativa
+
+LD   ySpcomIntegD  ** Vel. Integratore [P/s]
+GT   SPCOM_DOT_POS_LIM ** lim sup velocita' compens. spoletta [P/s]
+JMPCN integNotClipUp
+
+LD   SPCOM_DOT_POS_LIM ** lim sup velocita' compens. spoletta [P/s]
+ST   ySpcomIntegD  ** Vel. Integratore [P/s]
+
+integNotClipUp:
+
+LD   SPCOM_DOT_NEG_LIM ** lim inf velocita' compens. spoletta [P/s] (>0)
+MUL  -1
+GT   ySpcomIntegD  ** Vel. Integratore [P/s]
+JMPCN integNotClipDn
+
+LD   SPCOM_DOT_NEG_LIM ** lim inf velocita' compens. spoletta [P/s] (>0)
+MUL  -1
+ST   ySpcomIntegD  ** Vel. Integratore [P/s]
+
+integNotClipDn:
+
+* Accumulo componente integrativa
+
+LD   ySpcomIntegD  ** Vel. Integratore [P/s]
+MUL  VR_TS         ** Tempo campionamento [usec]
+DIV  1000                    * trasformazione Hz/1000
+ADD  SpcomIntegOutput1k ** integrale compens. spoletta [P*1000]
+ST   SpcomIntegOutput1k ** integrale compens. spoletta [P*1000]
+
+* Limitazione valore componente integrativa
+
+LD   SPCOM_UPPER_LIM ** lim sup compens. spoletta [P]
+MUL  1000
+ST   LimitVal      ** Temporaneo per valore limite
+
+LD   SpcomIntegOutput1k ** integrale compens. spoletta [P*1000]
+GT   LimitVal      ** Temporaneo per valore limite
+JMPCN integOutputNotClipUp
+
+LD   LimitVal      ** Temporaneo per valore limite
+ST   SpcomIntegOutput1k ** integrale compens. spoletta [P*1000]
+
+integOutputNotClipUp:
+
+LD   SPCOM_LOWER_LIM ** lim inf compens. spoletta [P] (>0)
+MUL  -1000
+ST   LimitVal      ** Temporaneo per valore limite
+
+LD   SpcomIntegOutput1k ** integrale compens. spoletta [P*1000]
+LT   LimitVal      ** Temporaneo per valore limite
+JMPCN integOutputNotClipDn
+
+LD   LimitVal      ** Temporaneo per valore limite
+ST   SpcomIntegOutput1k ** integrale compens. spoletta [P*1000]
+
+integOutputNotClipDn:
+
+LD   REGOL_RESET   ** Master reset regolatore
+JMPCN integNotReset
+
+LD   0
+ST   SpcomIntegOutput1k ** integrale compens. spoletta [P*1000]
+ST   yIntegrMonitor ** Valore Integratore [P]
+ST   DemandOutCheck ** Output demand [P] Check
+
+JMP  END_SET_OUT
+
+integNotReset:
+
+* Trova valore output regolatore nella stessa scala dei mV sensore
+
+LD   SpcomIntegOutput1k ** integrale compens. spoletta [P*1000]
+DIV  1000
+ST   yIntegrMonitor ** Valore Integratore [P]
+
+LD   yIntegrMonitor ** Valore Integratore [P]
+ADD  SpcomPropD    ** Componente proporzionale
+ADD  N_SETPOINT    ** Setpoint nominale [P]
+ST   DemandOutCheck ** Output demand [P] Check
+
+* Trova limite output in mV sensore per 10 Volt DAC
+
+LD   10000000
+DIV  DEMAND_SCALE  ** scala uscita attuatore [Dac/mV x1000]
+ST   LimitSlideCmd ** Valore limite output comando spoletta [P]
+
+* Riduce limite output in mV sensore per valore impostato
+
+LD   LimitSlideCmd ** Valore limite output comando spoletta [P]
+GT   MAX_SLIDE_POS ** Massimo comando spoletta (mV)
+JMPCN LIM_SLP
+
+LD   MAX_SLIDE_POS ** Massimo comando spoletta (mV)
+ST   LimitSlideCmd ** Valore limite output comando spoletta [P]
+
+LIM_SLP:
+
+LD   DemandOutCheck ** Output demand [P] Check
+ABS
+GT   LimitSlideCmd ** Valore limite output comando spoletta [P]
+JMPCN END_SET_OUT
+
+LD   DemandOutCheck ** Output demand [P] Check
+LT   0
+JMPC LIMIT_DN
+
+LD   LimitSlideCmd ** Valore limite output comando spoletta [P]
+ST   DemandOutCheck ** Output demand [P] Check
+
+JMP  END_SET_OUT
+
+LIMIT_DN:
+
+LD   LimitSlideCmd ** Valore limite output comando spoletta [P]
+MUL  -1
+ST   DemandOutCheck ** Output demand [P] Check
+
+JMP  END_SET_OUT
+
+END_SET_OUT:
+
+* Scrive output regolatore nella scala dei mV sensore
+
+LD   DemandOutCheck ** Output demand [P] Check
+ST   N_REGOL_OUT   ** Uscita regolatore in mV sensore
+
+* Converte l'output da mV sensore a DAC 14 bit
+
+LD   N_REGOL_OUT   ** Uscita regolatore in mV sensore
+MUL  DEMAND_SCALE  ** scala uscita attuatore [Dac/mV x1000]
+DIV  1000
+MUL  16383
+DIV  10000
+ST   N_DAC_OUT     ** Uscita regolatore in punti DAC 14 bit
+
+* Aggiunge all'output DAC i bit di direzione
+
+LD   N_REGOL_OUT   ** Uscita regolatore in mV sensore
+LT   0
+JMPC refneg1
+
+LD   N_DAC_OUT     ** Uscita regolatore in punti DAC 14 bit
+OR   16#4000       * Bit direzione UP
+ST   yDemandOut    ** Output demand (DAC 14 bit + 2 bit direzione)
+
+JMP  endregv1
+
+refneg1:
+
+LD   N_DAC_OUT     ** Uscita regolatore in punti DAC 14 bit
+MUL  -1
+OR   16#8000       * Bit direzione DOWN
+ST   yDemandOut    ** Output demand (DAC 14 bit + 2 bit direzione)
+
+* Forzamento output = setpoint con enable = 2
+
+endregv1:
+
+LD   REG_ENABLE    ** Abil. regolatore (0=Disab 1=Enab 2=Bypass)
+EQ   2
+JMPCN endcpy1
+
+LD   xSetpoint     ** Setpoint nominale (DAC 14 bit + 2 bit direzione)
+ST   yDemandOut    ** Output demand (DAC 14 bit + 2 bit direzione)
+
+endcpy1:
+
+END_FUNCTION_BLOCK
+
+
+* FB per comando valvole alte prestazioni a solenoidi pilotati contemporaneamente,
+* partendo dal valore standard di comando dei solenoidi in alternativa.
+
+FUNCTION_BLOCK FPIH_CONV
+
+VAR_INPUT
+xStdCommand: DWORD; * Comando valvola singolo solenoide (14 bit + direzioni)
+END_VAR
+
+VAR_OUTPUT
+yUpCommand: DWORD; * Comando valvola solenoide UP (14 bit + bit UP)
+yDownCommand: DWORD; * Comando valvola solenoide DOWN (14 bit + bit DOWN)
+END_VAR
+
+VAR
+DrValue: DWORD; * Valore output senza segno (13 bit)
+END_VAR
+
+LD   0
+ST   yUpCommand    ** Comando valvola solenoide UP (14 bit + bit UP)
+ST   yDownCommand  ** Comando valvola solenoide DOWN (14 bit + bit DOWN)
+
+LD   REGOL_RESET   ** Master reset regolatore
+JMPC EDWM
+
+LD   xStdCommand   ** Comando valvola singolo solenoide (14 bit + direzioni)
+AND  16#3FFF       * 14 bit senza bit di direzione
+DIV  2
+ST   DrValue       ** Valore output senza segno (13 bit)
+
+LD   xStdCommand.14 * Bit di UP
+JMPCN EUPM
+
+LD   16#2000       * Offset a mezza scala per 14 bit
+ADD  DrValue       ** Valore output senza segno (13 bit)
+OR   16#4000       * Bit direzione UP
+ST   yUpCommand    ** Comando valvola solenoide UP (14 bit + bit UP)
+
+LD   16#2000       * Offset a mezza scala per 14 bit
+SUB  DrValue       ** Valore output senza segno (13 bit)
+OR   16#8000       * Bit direzione DOWN
+ST   yDownCommand  ** Comando valvola solenoide DOWN (14 bit + bit DOWN)
+
+JMP  EDWM
+
+EUPM:
+
+LD   16#2000       * Offset a mezza scala per 14 bit
+SUB  DrValue       ** Valore output senza segno (13 bit)
+OR   16#4000       * Bit direzione UP
+ST   yUpCommand    ** Comando valvola solenoide UP (14 bit + bit UP)
+
+LD   16#2000       * Offset a mezza scala per 14 bit
+ADD  DrValue       ** Valore output senza segno (13 bit)
+OR   16#8000       * Bit direzione DOWN
+ST   yDownCommand  ** Comando valvola solenoide DOWN (14 bit + bit DOWN)
+
+EDWM:
+
+END_FUNCTION_BLOCK
+
+
+
+VAR
+Valve1: FBValveRegol;
+Valve2: FBValveRegol;
+FPIHY1: FPIH_CONV;
+FPIHY2: FPIH_CONV;
+END_VAR
+
+
+FUNCTION MAIN
+
+INGRESSI    * Lettura input (in C)
+
+*------------------------------------------------------------------------
+* Campionamento quota inizio arresto pestone per misura spazio arresto
+*------------------------------------------------------------------------
+
+LD   %M17.0        ** Comando elettrovalvole discesa veloce
+JMPCN END_SMP_QSTOP
+
+LD   %ax0.ra4      ** AX-PLC Quota attuale asse Y1
+ST   %M40          ** Quota Y1 inizio campionamento spazio arresto
+
+LD   %ax1.ra4      ** AX-PLC Quota attuale asse Y2
+ST   %M41          ** Quota Y2 inizio campionamento spazio arresto
+
+END_SMP_QSTOP:
+
+**** COMANDO VALVOLE *********************************************
+
+**** Solo per collaudo in ESA
+*LD    65280             * Gain Offset per valvole proporzionali
+*ST    %QW206                    * UP
+*ST    %QW207                    * DN
+*ST    %QW208                    * UP
+*ST    %QW209                    * DN
+
+**** VALVOLA1
+
+PATH %ax0
+PATH %at_reg0
+
+LD   %C86          ** OUT (QW211) Uscita simulata valvola Y1 da slave (14 bit + direzioni)
+ST   Valve1.xSetpoint
+
+LD   %C95          ** IN (IW90) Posizione cursore valvola Y1 (0-4095)
+ST   Valve1.xSensorIn
+
+CAL  Valve1
+
+LD   %pargen_due.dwgn64.25 ** PAR-PLC Abil. comando valvole Y1-Y2 a doppio solenoide
+JMPC MPIHY1
+
+LD   Valve1.yDemandOut
+ST   %C88          ** OUT (QW204) Comando valvola Y1 (14 bit + direzioni)
+
+LD   0
+ST   %C133         ** OUT (QW214) Comando valvola Y1 down
+
+JMP  EPIHY1
+
+MPIHY1:
+
+LD   Valve1.yDemandOut
+ST   FPIHY1.xStdCommand
+
+CAL  FPIHY1
+
+LD   FPIHY1.yUpCommand
+ST   %C88          ** OUT (QW204) Comando valvola Y1 (14 bit + direzioni)
+
+LD   FPIHY1.yDownCommand
+ST   %C133         ** OUT (QW214) Comando valvola Y1 down
+
+EPIHY1:
+
+**** VALVOLA2
+
+PATH %ax1
+PATH %at_reg1
+
+LD   %C87          ** OUT (QW212) Uscita simulata valvola Y2 da slave (14 bit + direzioni)
+ST   Valve2.xSetpoint
+
+LD   %C96          ** IN (IW91) Posizione cursore valvola Y2 (0-4095)
+ST   Valve2.xSensorIn
+
+CAL  Valve2
+
+LD   %pargen_due.dwgn64.25 ** PAR-PLC Abil. comando valvole Y1-Y2 a doppio solenoide
+JMPC MPIHY2
+
+LD   Valve2.yDemandOut
+ST   %C89          ** OUT (QW205) Comando valvola Y2 (14 bit + direzioni)
+
+LD   0
+ST   %C134         ** OUT (QW215) Comando valvola Y2 down
+
+JMP  EPIHY2
+
+MPIHY2:
+
+LD   Valve2.yDemandOut
+ST   FPIHY2.xStdCommand
+
+CAL  FPIHY2
+
+LD   FPIHY2.yUpCommand
+ST   %C89          ** OUT (QW205) Comando valvola Y2 (14 bit + direzioni)
+
+LD   FPIHY2.yDownCommand
+ST   %C134         ** OUT (QW215) Comando valvola Y2 down
+
+EPIHY2:
+
+* Valori per diagnostica
+
+*LD   Valve1.yIntegrMonitor
+*ST   %M100
+
+*LD   Valve2.yIntegrMonitor
+*ST   %M101
+
+*LD   Valve1.ySpcomIntegD
+*ST   %M102
+
+*LD   Valve2.ySpcomIntegD
+*ST   %M103
+
+*** Lettura errore inseguimento per congelamento generatore di posizione per anti-windup
+
+LD   %ax0.ra7     * Errore inseguimento Y1 in impulsi
+ST   SmpFwErrY1    ** Following error Y1 sampled
+
+LD   %ax1.ra7     * Errore inseguimento Y2 in impulsi
+ST   SmpFwErrY2    ** Following error Y2 sampled
+
+LD   %M45.1        ** PLC-FAST Direzione negativa per antiwindup
+JMPCN REVFW
+
+LD   %ax0.ra7     * Errore inseguimento Y1 in impulsi
+MUL  -1
+ST   SmpFwErrY1    ** Following error Y1 sampled
+
+LD   %ax1.ra7     * Errore inseguimento Y2 in impulsi
+MUL  -1
+ST   SmpFwErrY2    ** Following error Y2 sampled
+
+REVFW:
+
+LD   SmpFwErrY2    ** Following error Y2 sampled
+GT   SmpFwErrY1    ** Following error Y1 sampled
+JMPC FWY2_GTF
+
+LD   SmpFwErrY1    ** Following error Y1 sampled
+ST   MaxSmpFwErr   ** Maximum sampled following error
+
+JMP  FWGT_ENDF
+
+FWY2_GTF:
+
+LD   SmpFwErrY2    ** Following error Y2 sampled
+ST   MaxSmpFwErr   ** Maximum sampled following error
+
+FWGT_ENDF:
+
+*** Comando a slappg per congelamento generatore di posizione per anti-windup
+
+LD   MaxSmpFwErr   ** Maximum sampled following error
+GT   %M46          ** PLC-FAST Errore inseguimento limite (impulsi) per antiwindup
+AND  %M45.0        ** PLC-FAST Abil. verifica errore inseguimento per antiwindup
+ST   %SLAPPG1.0    ** PLC-Slave Abil. congelamento generatore di posizione pestone
+
+* Comando DAC Y1-Y2 per ibrida
+
+LD   %SLAPPG140    ** Slave-PLC Tensione uscita DAC Y1 (mV)
+ST   %ax28.ra90   * DAC Y1 verso il drive (mV)
+
+LD   %SLAPPG141    ** Slave-PLC Tensione uscita DAC Y2 (mV)
+ST   %ax29.ra90   * DAC Y2 verso il drive (mV)
+
+USCITE       * Scrittura output (in C)
+
+END_FUNCTION
+

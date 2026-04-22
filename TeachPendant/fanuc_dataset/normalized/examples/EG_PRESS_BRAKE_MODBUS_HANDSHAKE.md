@@ -1,0 +1,153 @@
+﻿---
+id: EG_PRESS_BRAKE_MODBUS_HANDSHAKE
+title: "Press Brake Modbus Handshake (Physical I/O via PLC)"
+topic: protocols
+fanuc_controller: [R-30iB, R-30iB Plus]
+system_sw_version: [V9.x]
+language: TP
+source:
+  type: generated
+  title: "LDJ integration framework, robot_interface_reference.md, PJ_TRAILER patterns"
+  tier: generated
+license: reference-only
+revision_date: "2026-04-22"
+related: []
+difficulty: intermediate
+status: draft
+supersedes: null
+---
+
+# Press Brake Modbus Handshake (Physical I/O via PLC)
+
+## Summary
+
+Migrated from `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/examples/EG_Press_Brake_Modbus_Handshake.txt` as part of the TeachPendant migration. Original source: LDJ integration framework, robot_interface_reference.md, PJ_TRAILER patterns. Review and update `related:` with neighbor entry IDs.
+
+## Body
+
+
+============================================================
+PATTERN A: Robot Interface (XC2F/XC3M/XC4M) — Phase 1 Primary
+============================================================
+
+Use when XC2F/XC3M/XC4M connectors present. Full reference: LDJ/robot_interface_reference.md.
+
+Robot DI = E20.x, E21.x, E22.x (Press → PLC → Robot)
+Robot DO = A20.x, A21.x (Robot → PLC → Press)
+
+Key DI mapping (PLC receives from XC2F, drives robot DI):
+  DI[udp]    = E20.2 Beam at UDP — safe to load/unload
+  DI[axis]   = E20.6 Axis in Position — backgauge ready
+  DI[clear]  = E21.6 Press Devices Out of Robot Area
+  DI[eob]    = E20.5 End of Bend — bend complete
+  DI[angle]  = E20.7 Angle Control OK (if angle device active)
+
+Key DO mapping (Robot drives PLC, PLC drives XC3M):
+  DO[beam_down]   = A20.1 Beam Downwards — initiate bend
+  DO[reset_mute]  = A21.0 Reset Mute Point — continue past mute
+  DO[reset_cp]    = A21.1 Reset Clamping Point — continue past CP
+  DO[reset_eob]   = A21.2 Reset End Bend — command beam retract
+  DO[change_step] = A20.4 Change Bending Step — next bend
+
+BEND CYCLE EXAMPLE (XC2F/XC3M/XC4M):
+  ! Preconditions: E20.0 (Auto), E21.6 (Devices Clear), Enable closed
+  ! Wait for safe to load
+  WAIT DI[udp]=ON TIMEOUT,LBL[100] ;
+  WAIT DI[axis]=ON TIMEOUT,LBL[100] ;
+  WAIT DI[clear]=ON TIMEOUT,LBL[100] ;
+  ! Load part, wait finger sensors (E21.0-3), release gripper
+  ! ...
+  ! Initiate bend — pre-send reset signals to avoid pause
+  DO[reset_mute]=ON ;
+  DO[reset_cp]=ON ;
+  DO[beam_down]=ON ;
+  ! Wait for bend complete (E20.5 + E20.7 if angle device)
+  WAIT DI[eob]=ON TIMEOUT,LBL[100] ;
+  ! If angle device: WAIT DI[angle]=ON TIMEOUT,LBL[100] ;
+  DO[reset_eob]=ON ;
+  ! Wait for beam retract to UDP
+  WAIT DI[udp]=ON TIMEOUT,LBL[100] ;
+  DO[reset_eob]=OFF ;
+
+============================================================
+PATTERN B: Robot → PLC (physical I/O) → Press (Modbus TCP / Foot Pedal)
+============================================================
+
+PLC acts as gateway. Robot does NOT talk Modbus directly.
+Robot DI = signals FROM press (via PLC)
+Robot DO = signals TO press (via PLC)
+
+Typical DI mapping (PLC receives from press, drives robot DI):
+  DI[x] = CNC OK / Machine Ready (ESA QW 1.6) or E20.0
+  DI[y] = Ram at Upper Dead Point (ESA QW 2.4) or E20.2
+  DI[z] = Clamping status / Drive OK
+
+Typical DO mapping (Robot drives PLC, PLC drives press/Modbus):
+  DO[a] = Robot Cell Clear / Arm Clear
+  DO[b] = Part Present
+  DO[c] = Inhibit Down (optional — prevent ram while robot in zone)
+
+============================================================
+EXAMPLE: Wait for Safe to Load, Load Part, Wait for Bend, Unload
+============================================================
+
+  ! Wait for machine ready and ram UP before entering
+  1:  WAIT DI[x]=ON TIMEOUT,LBL[100] ;
+  2:  WAIT DI[y]=ON TIMEOUT,LBL[100] ;
+  3:   ;
+  ! Signal arm clear / cell clear to PLC
+  4:  DO[a]=ON ;
+  5:  PULSE DO[b],0.5 ;
+  6:   ;
+  ! Load part (approach, pick, place in press)
+  7:  J P[1] 100% FINE ;
+  8:  L P[2] 100mm/sec FINE ;
+  9:  ! ... gripper close, place part ...
+  10: L P[3] 100mm/sec FINE ;
+  11:  ;
+  ! Part loaded — PLC can enable press cycle
+  12: DO[b]=ON ;
+  13:  ;
+  ! Retract and wait for bend complete (ram UP again)
+  14: L P[4] 100mm/sec FINE ;
+  15: WAIT DI[y]=ON TIMEOUT,LBL[100] ;
+  16:  ;
+  ! Unload part
+  17: J P[5] 100% FINE ;
+  18: L P[6] 100mm/sec FINE ;
+  19: ! ... gripper open, pick bent part ...
+  20: L P[7] 100mm/sec FINE ;
+  21:  ;
+  22: DO[b]=OFF ;
+  23: JMP LBL[1] ;
+  24:  ;
+  25: LBL[100] ;
+  26: ! Timeout / fault handling
+  27:  ;
+
+============================================================
+NOTES
+============================================================
+
+- Pattern A (robot interface): Use LDJ/robot_interface_reference.md for full PHASE 0-6 cycle, interlock rules.
+- Pattern B: Replace DI[x], DI[y], DO[a], DO[b] with actual I/O from LDJ_REF_Physical_IO_Terminal_Map.
+- PLC logic: On Part Present (DO[b]), enable foot pedal or send Modbus Start; on Ram UP (QW 2.4 or E20.2), drive robot DI[y].
+- Mode: Press must be in AUTOMATIC for Start. PLC typically sets mode via Modbus Reg 0 before cycle.
+- Reference: LDJ/robot_interface_reference.md, LDJ/INTEGRATION_FLOW.md (PHASE 0-6, 12-step), LDJ/reference/LDJ_REF_ESA_Modbus.txt.
+
+
+## Citations
+
+- Primary: LDJ integration framework, robot_interface_reference.md, PJ_TRAILER patterns (keywords: press brake, Modbus, handshake, DI, DO, PLC, machine ready, ram UP, load unload, ESA, BLM, XC2F, XC3M, E20, A20, A21).
+- Applicability: R-30iB Plus, Press Brake Tending, BLM ESA/Kvara.
+
+## Discrepancies
+
+None documented in the legacy source. Re-verify against a T1 vendor manual before promoting `status` from `draft` to `approved`.
+
+## Provenance
+
+- Migrated by: inline migration on 2026-04-22.
+- Source file: `FANUC_dev/FANUC_Optimized_Dataset/optimized_dataset/examples/EG_Press_Brake_Modbus_Handshake.txt`.
+- Classification: examples / topic=protocols.
+
