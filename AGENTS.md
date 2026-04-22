@@ -57,7 +57,7 @@ When planning FANUC + press brake integration:
 
 3. **Use FANUC dataset** — Modbus, signal handshake, machine tending patterns.
 
-4. **Reference `customer_programs/345-PJ/press_brake_tending/`** — Tandem press brake patterns, WAIT/cycle-time patterns.
+4. **Reference customer press-brake backups** — `customer_programs/345-PJ/press_brake_tending/` (PJ tandem patterns, WAIT/cycle-time); `customer_programs/LDJ-BLM Robot/` (LDJ BLM cell TP backups, including nested `41526_LSfiles backup/`).
 
 ## Physical AI Development (FANUC + NVIDIA)
 
